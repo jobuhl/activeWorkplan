@@ -1,0 +1,130 @@
+/* überschrift ausrichtung im Change Menü*/
+.modal-ueberschrift, .select-ueberschrift{
+    text-align: center;
+}
+
+
+/* Change Button im Change Menue*/
+.modal-change-button{
+    margin: 0;
+    width: 100%;
+    background: var(--main-yellow-button);
+    color: white;
+}
+
+/* Länge vom Feld im Change Menue*/
+.modal-input{
+    margin: 0;
+    width: 100%;
+}
+
+/* Textausrichtung der linken Tabellen haelfte Change Menue*/
+.aside-left{
+    text-align: right;
+}
+
+.aside-left-add, .aside-left-add-special{
+    text-align: right;
+}
+
+.aside-left-delete{
+    text-align: right;
+}
+
+.aside-right-delete{
+    border-left: solid 1px var(--main-border-color);
+}
+
+.aside-right{
+    border-left: solid 1px var(--main-border-color);
+}
+
+
+/* Linie zwischen den Bereichen im change Menü*/
+.placeholder-mobil{
+    display: none;
+}
+
+.space-line{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.space-cap{
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+
+.space-cap-inner{
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.space-cap-bottom{
+    margin-top: 3px;
+    margin-bottom: 10px;
+}
+
+.add-button{
+    background-color: var(--main-green-button);
+    color: white;
+}
+
+.next-button{
+    background-color: var(--main-highlight-color);
+    color: white;
+}
+
+.delete-button{
+    background-color: var(--main-red-button);
+    color: white;
+}
+
+.inputmodal{
+    color:black;
+}
+
+
+
+/*Mobile divice ansicht*/
+@media(max-width:767px){
+    /*Kapitel weden ausgeblendet*/
+    .aside-left{
+        display: none;
+    }
+
+    .aside-left-add{
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .aside-left-add-special{
+        font-weight: bold;
+    }
+    /* Specialfall zeile 1*/
+    .special-case-left{
+        display: block;
+        text-align: left;
+    }
+
+    /*div zwischen den Kapitel*/
+    .placeholder-mobil{
+        display: block;
+    }
+    /*linie zwischen den Kapitel*/
+    .hr-line{
+        height: 5px;
+        background-color: var(--main-border-color);
+        margin-left: 30%;
+        margin-right: 30%;
+    }
+
+    .aside-right{
+        border-left: none;
+    }
+
+    .aside-right-add{
+        text-align: center;
+    }
+
+}

@@ -1,0 +1,79 @@
+/* Zeile ueber der Tabelle mit kleinerer Ueberschrift */
+.table-head-store {
+    width: 100%;
+    background-color: var(--main-small-header-color);
+    font-weight: bold;
+    font-size: 13pt;
+    padding: 10px 0 10px 10px;
+    margin: 0; /* weil drunter sonst Abstand */
+}
+
+/* ---------------------- TABLE LISTED ---------------------- */
+
+.table-calendar {
+    width: 100%;
+    background-color: var(--main-table-background);
+}
+
+/* Alle Zellen */
+.table-calendar th,
+.table-calendar td {
+    padding: 2px 2px 2px 2px;
+    font-weight: normal; /* damit th nicht bold */
+}
+
+.table-calendar tr th:first-child,
+.table-calendar tr td:first-child {
+    padding-left: 10px;
+}
+
+/* alles ausser linke Spalte zentriert */
+.table-calendar th:not(:first-child),
+.table-calendar td:not(:first-child) {
+    text-align: center;
+}
+
+/* horizontale Linien */
+.table-calendar tr:nth-child(2n) th,
+.table-calendar tr:nth-child(2n) td,
+.table-calendar td:not(:first-child) {
+    border-bottom: 1px solid var(--main-border-color);
+}
+
+/* verticale Linien */
+.table-calendar td:not(:nth-child(1), :nth-child(2)) {
+    border-left: 1px solid var(--main-border-color);
+}
+
+/* Samstag/Sonntag Hintergrund */
+.table-calendar td:nth-last-child(2),
+.table-calendar td:nth-last-child(1) {
+    background-color: var(--main-small-header-color);
+}
+
+
+/* ---------------------- TABLE WEEK HOURS ---------------------- */
+
+/* erste Spalte keine Border */
+.table-week-hours tr td:first-child {
+    border: none;
+    text-align: right;
+    max-width: 30px;
+}
+
+/* vertikale dicke Trennlinie unter All-Day zeile */
+.table-week-hours tr:nth-child(3) td {
+    border-bottom: 2px solid var(--main-border-color);
+}
+
+/* ---------------------- TABLE LISTED SINGLE EMPLOYEE ---------------------- */
+
+/* erste Spalte keine Border */
+.table-week-listed-single tr td:first-child {
+    border: none;
+}
+
+/* Erste Spalte ganz unten eine Border */
+.table-week-listed-single tr:last-child td:first-child {
+    border-bottom: 1px solid var(--main-border-color);
+}

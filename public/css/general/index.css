@@ -1,0 +1,80 @@
+body {
+    text-align: justify; /* Blocksatz */
+}
+
+/* Section1 BigImage*/
+.backgroundheadindex {
+    background: url('../../img/imageindex2.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: top;
+    width: 100%;
+    height: 460px;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.my-horizontal-center {
+    display: block; /* für Bild */
+    text-align: center; /* fuer Text oder Fomular */
+    margin-left: auto; /* fuer Bild */
+    margin-right: auto; /* fuer Bild */
+}
+
+.my-center {
+    width:50%; /* muss leider fix festgelegt werden */
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: table; /* passt die Hoehe an Inhalt an */
+}
+
+.index-under-image-logo {
+    width: 30%;
+}
+
+.index-image-logo {
+    padding: 5%;
+    border-radius: 15px;
+    background-color: var(--main-header-color);
+}
+
+
+
+/*Innenabstand aller Article Boxen unterhalb vom Bild*/
+article {
+    padding: 30px 50px 30px 50px;
+}
+
+.grey {
+    background-color: var(--main-article-color); /* Farbabhebung jedes zweiten Artikels */
+}
+
+/* Bilder der Article */
+.bodyimage {
+    width: 100%;
+    height: 100%;
+}
+
+.index-image-aside {
+    height: 100%; /* aside auf kompletter höhe */
+}
+
+/* 768px entspricht Bootstrap small-size (sm) */
+@media (max-width: 768px) {
+    .my-hidden-small {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .my-hidden-big {
+        display: none
+    }
+}

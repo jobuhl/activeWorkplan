@@ -1,0 +1,36 @@
+#external-events .fc-event {
+    margin: 10px 0;
+    cursor: pointer;
+    background: white;
+    color: black;
+    padding-top: 0px;
+}
+
+
+/* Trennlinie zwischen Side-bar und aside-right */
+.my-right-side {
+    border-left: 1px solid var(--main-border-color);
+}
+
+
+/* Ueberschrift im small header */
+.side-bar p {
+    font-weight: bold;
+    text-align: center;
+}
+
+.side-bar li {
+    list-style: none; /* damit keine punkte */
+}
+
+
+.side-bar p,
+.side-bar a,
+.side-bar input {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid var(--main-border-color);
+    margin: 0;
+    text-decoration: none;
+    color: var(--main-text-black);
+}

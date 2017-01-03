@@ -1,0 +1,202 @@
+.my-right-side,
+.side-bar {
+    margin: 0;
+    padding: 0;
+}
+
+.side-bar {
+    padding-right: 20px; /* Abstand zwischen Beiden spalten und Trennlinie */
+}
+
+/* Trennlinie zwischen Side-bar und aside-right */
+.my-right-side {
+    padding-left: 20px; /* Abstand zwischen Beiden spalten und Trennlinie */
+}
+
+/* --------------------------- LIST / Kachel --------------------------- */
+/* Padding rausnehmen, wenn darstellung auf kachel */
+.overview.my-right-side.kachel {
+    padding-left: 0;
+}
+
+.overview.my-right-side aside,
+.overview.navigation {
+    padding: 0;
+}
+
+/* jedes zweite aside mit Padding (in der mitte quasi) */
+.overview.my-right-side.kachel aside:nth-child(2n) {
+    padding-left: 20px;
+}
+
+/* wenn kleiner als md (992px) size */
+@media screen and (max-width: 992px) {
+    /* jedes zweite aside mit Padding (in der mitte quasi) wieder weg machen */
+    .overview.my-right-side.kachel aside:nth-child(2n) {
+        padding: 0;
+    }
+
+    /* list und kachel item in der navigation bar */
+    .calendar-navigation-list-kachel-elemets,
+    #overview-list,
+    #overview-kachel {
+        display: none;
+    }
+
+    .calendar-navigation-padding h4 {
+        display: none;
+    }
+}
+
+/* --------------------------- LIST / Kachel Ende --------------------------- */
+
+@media screen and (max-width: 767px) {
+    .side-bar,
+    .my-right-side {
+        padding: 0;
+        border: none;
+    }
+
+    /* Auflistung der Stores nicht anzeigen */
+    .overview.side-bar > ul {
+        display: none;
+    }
+
+    /* ueberschrift aller Stores in Overview */
+    .side-bar .headline,
+    .list .current-selected-store,
+    .side-bar .headline {
+        background: var(--main-small-header-color);
+        border-bottom: 2px solid white;
+    }
+
+    /* zwischen-freiraum */
+    .overview.side-bar br,
+    .overview.list .br-under-navigation {
+        display: none;
+    }
+}
+
+/* Ueberschrift im small header */
+.middle-bold {
+    font-weight: bold;
+    text-align: center;
+}
+
+.side-bar li {
+    list-style: none; /* damit keine punkte */
+}
+
+/* Search-Feld */
+.side-bar .input-sidebar{
+    border: 0;
+    background: none;
+}
+
+.glyphicon-chevron-down {
+    color: black;
+}
+
+/*.side-bar p */
+.side-bar .input-sidebar,
+.side-bar a,
+.current-selected-store,
+.headline {
+     width: 100%;
+     display: block;
+     border-bottom: 1px solid var(--main-border-color);
+     padding: 10px 0 10px 5px;
+     margin: 0;
+     text-decoration: none;
+     color: var(--main-text-black);
+ }
+
+/* Current Store nicht anzeigen, wenn bildsfhrim breit */
+@media screen and (min-width: 768px) {
+    .list .current-selected-store {
+        display: none;
+    }
+
+    .overview.side-bar > ul {
+        display: block;
+    }
+
+    .side-bar .headline aside:nth-child(3) {
+        display: none;
+    }
+}
+
+/* Sub-Menu wichtig muss hierarchisch aufgeschrieben bleiben*/
+.side-bar li ul li {
+    padding-left: 20px;
+}
+
+/* Fuer Employer grosse Sidebar */
+.lower-list li ul {
+    display: none;
+}
+
+/* Wenn Cursor ueber dem Element */
+.side-bar .headline:hover,
+.side-bar a:hover,
+.current-selected-store aside:nth-child(2n+1):hover p {
+    background-color: var(--main-highlight-color); /* Variable in header-footer.css deklariert */
+    color: var(--main-text-white); /* text-farbe */
+}
+
+/* auch die asides auf der seite sollen weissen text bekommen */
+.side-bar .headline:hover aside p {
+    color: var(--main-text-white); /* text-farbe */
+}
+
+/* Wenn Search-Feld angeklickt */
+.side-bar .input-sidebar:focus {
+    outline: none;
+    background: var(--main-focus-color);
+}
+
+/* Unterer teil der Liste wegen ueberlappung */
+.lower-list {
+    float: left;
+    width: 100%;
+}
+
+.current-selected-store,
+.headline {
+    padding: 0;
+    margin: 0;
+}
+.current-selected-store aside p,
+.headline aside p {
+    padding: 10px 0 10px 0px;
+    margin: 0;
+}
+
+
+/* ----------------------- A-CHANGES IN SUB-MENU ----------------------- */
+
+.side-bar .a-changes a {
+    float: left;
+}
+
+.side-bar .a-changes a:first-child {
+    width: 49%;
+}
+
+.side-bar .a-changes a:not(:first-child) {
+    width: 17%;
+    text-align: center;
+    border-left: 1px solid var(--main-border-color);
+}
+
+.side-bar .a-changes a:nth-child(2) {
+    background-color: var(--main-green-button);
+}
+
+.side-bar .a-changes a:nth-child(3) {
+    background-color: var(--main-yellow-button);
+}
+
+.side-bar .a-changes a:nth-child(4) {
+    background-color: var(--main-red-button);
+}

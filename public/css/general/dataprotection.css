@@ -1,0 +1,13 @@
+.dataprotection p{
+    text-align: justify; /* Blocksatz */
+}
+
+.dataprotection hr{
+    border: 0.1px solid var(--main-border-color); /* Trennlinie zwischen den Abschnitten */
+}
+
+/* ul */
+.data-protection-list {
+    padding-left: 50px;
+}
+

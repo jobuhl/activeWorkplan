@@ -1,0 +1,6 @@
+.glyphicon-th-list,
+.glyphicon-th-large,
+.glyphicon-envelope,
+.glyphicon-print {
+    color: var(--main-text-white);
+}
