@@ -75,3 +75,6 @@ Route::get('/impressum', function () {
 Route::get('/protection', function () {
     return view('general.protection');
 });
+
+
+

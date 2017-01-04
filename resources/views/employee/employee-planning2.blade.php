@@ -1,12 +1,6 @@
-@extends('employee.layout.employee-start')
+@extends('general.layout.general-start')
 
 @section('css')
-    <!--<link rel='stylesheet' href='../../calendar/lib/cupertino/jquery-ui.min.css'/>-->
-    <!--<link rel="stylesheet" type="text/css"  href="{{asset('calendar/fullcalendar.css')}}">
-    <link rel="stylesheet" type="text/css"  href="{{asset('calendar/fullcalendar.print.css')}}">
-    <link rel="stylesheet" type="text/css"  href="{{asset('css/employee/planning-employee.css')}}">
-    <link rel="stylesheet" type="text/css"  href="{{asset('css/global/side-bar.css')}}">
-    <link rel="stylesheet" type="text/css"  href="{{asset('css/global/header-footer.css')}}">-->
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/side-bar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-calendar-navigation.css')}}">
@@ -15,38 +9,29 @@
 
 @section('content')
 
-    <!--<section class="fake-body container">
+    <section class="fake-body container">
         <h2 style="display: none">fakeheading</h2>
-        <section class="fake-body">
-            <h2 style="display: none">fakeheading</h2>
-
-        </section>
-
         <br>
+        <aside class="col-xs-12 col-sm-3 side-bar overview">
 
-        <!-- Navigation auf der Linken Seite beinhaltet die Aktivitäten -->
-       <!-- <aside class="col-xs-12 col-sm-3 side-bar" id="external-events">
+            <div class="row headline" draggable="true">
+                <aside class="col-xs-2 middle-bold"></aside>
+                <aside class="col-xs-8 middle-bold"><p>Stores</p></aside>
+                <aside class="col-xs-2 middle-bold">
+                    <p class="glyphicon glyphicon-chevron-down"></p>
+                </aside>
+            </div>
+
             <ul>
-                <li><p>Add Events</p></li>
-                <li><a class="fc-event">Work</a></li>
-                <li><a class="fc-event">Vacation</a></li>
-                <li><a class="fc-event">Illness</a></li>
-                <li><a class="fc-event">Study</a></li>
-                <li><a class="fc-event">Training</a></li>
-                <li><a class="fc-event">Seminar</a></li>
-                <li><a class="fc-event">Private</a></li>
+                <li><input class="input-sidebar" type="text" placeholder="Search Store..."></li>
+                <li><a onclick="sideBarBorder()">0001 Store Konstanz</a></li>
+                <li><a>0002 Store München</a></li>
+                <li><a>0003 Store Freiburg</a></li>
+                <li><a>0004 Store Stuttgart</a></li>
             </ul>
             <br>
         </aside>
 
-
-        <aside class="col-xs-12 col-sm-9 my-right-side " id="calendar">
-        </aside>
-
-    </section> -->
-
-    <section class="fake-body container">
-        <h2 style="display: none">fakeheading</h2>
 
         <aside id="aside-overview" class="col-xs-12 col-sm-9 my-right-side overview list">
 
@@ -952,16 +937,11 @@
             </aside>
         </aside>
 
-
-
     </section>
-
 @endsection
 
 @section('js')
-   <!-- <script type="text/javascript" src="{{ asset('calendar/lib/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('calendar/lib/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('calendar/lib/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('calendar/fullcalendar.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('calendar/script.js') }}"></script>-->
+    <script type="text/javascript" src="{{ asset('/js/employer/overview.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/general/side-bar.js') }}"></script>
+
 @endsection

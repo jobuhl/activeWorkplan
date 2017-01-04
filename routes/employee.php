@@ -14,9 +14,6 @@ Route::get('/employee-workplan', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
-
-    //dd($users);
-
     return view('employee.employee-workplan');
 })->name('home');
 
@@ -24,19 +21,20 @@ Route::get('/employee-planning', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
-
-    //dd($users);
-
     return view('employee.employee-planning');
+})->name('home');
+
+Route::get('/employee-planning2', function () {
+    $users[] = Auth::user();
+    $users[] = Auth::guard()->user();
+    $users[] = Auth::guard('employee')->user();
+    return view('employee.employee-planning2');
 })->name('home');
 
 Route::get('/employee-account', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
-
-    //dd($users);
-
     return view('employee.employee-account');
 })->name('home');
 

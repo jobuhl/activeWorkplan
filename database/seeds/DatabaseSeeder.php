@@ -1,8 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
-
+use App\Admin;
+use App\Country;
+use App\City;
+use App\Address;
+use App\Company;
+use App\RetailStore;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,75 +17,77 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $admin = DB::table('admin')->insert(array(
+        $admins = Admin::create(array(
             'forename' => 'Alex',
-            'surname' => 'Schmutz',
+            'name' => 'Schmutz',
             'email' => 'my@email.com',
             'password' => bcrypt('b43G3jb4G')
         ));
 
         // Datensatz nur erstellen, wenn noch nicht vorhanden
-        $country = DB::table('country')->insert(array(
+        $country = Country::create(array(
             'name' => 'Deutschland'
         ));
 
-        $city = DB::table('city')->insert(array(
+        $city = City::create(array(
             'name' => 'Konstanz',
             'country_id' => $country->id
         ));
 
         // Adresse wird immer erstellt, falls Company umzieht -> einfacher zu warten
-        $adminAddress = DB::table('address')->insert(array(
+        $adminAddress = Address::create(array(
             'street' => 'myStreet',
             'street_nr' => '23a',
             'postcode' => '78464',
             'city_id' => $city->id
         ));
 
-        $company = DB::table('company')->insert(array(
+        $company = Company::create(array(
             'name' => 'myCompany',
-            'admin_id' => $admin->id,
+            'admin_id' => $admins->id,
             'address_id' => $adminAddress->id
         ));
 
-        $store1Address = DB::table('address')->insert(array(
+        $store1Address = Address::create(array(
             'street' => 'myStreet1',
             'street_nr' => '23a',
             'postcode' => '78464',
             'city_id' => $city->id
         ));
 
-        $store2Address = DB::table('address')->insert(array(
+        $store2Address = Address::create(array(
             'street' => 'myStreet2',
             'street_nr' => '23a',
             'postcode' => '78464',
             'city_id' => $city->id
         ));
 
-        $store3Address = DB::table('address')->insert(array(
+        $store3Address = Address::create(array(
             'street' => 'myStreet3',
             'street_nr' => '23a',
             'postcode' => '78464',
             'city_id' => $city->id
         ));
 
-        DB::table('retail_store')->insert(array(
+        $store1 = RetailStore::create(array(
             'name' => 'myRetailStore1',
             'company_id' => $company->id,
             'address_id' => $store1Address->id
         ));
 
-        DB::table('retail_store')->insert(array(
+        $store2 = RetailStore::create(array(
             'name' => 'myRetailStore2',
             'company_id' => $company->id,
             'address_id' => $store2Address->id
         ));
 
-        DB::table('retail_store')->insert(array(
+        $store3 = RetailStore::create(array(
             'name' => 'myRetailStore2',
             'company_id' => $company->id,
             'address_id' => $store3Address->id
         ));
+
+
 
 
     }

@@ -14,8 +14,6 @@
 
         <aside class="col-xs-12 col-sm-6 index-image-aside my-hidden-small">
             <img class="my-center index-image-logo" src="{{asset('img/imagelogo.gif')}}" alt="Bild">
-
-
         </aside>
 
 
