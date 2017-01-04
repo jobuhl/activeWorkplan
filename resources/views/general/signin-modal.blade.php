@@ -1,5 +1,3 @@
-
-
 <!--Start Sign in-->
 <!-- wird über Button click im header (Sign in) aufgerufen -->
 <div id="signinbutton" class="modal fade" role="dialog">
@@ -15,7 +13,15 @@
 
                 <!-- Überschrift -->
                 <h1>Sign in</h1>
-                <h5 class="modal-sub"><div class="col-xs-6">Employee</div> <div class="col-xs-6">Admin</div></h5>
+
+
+                <div class="modal-sub">
+
+                    <p class="col-xs-6 signin-head1" onclick="nextStep(4)">Employee</p>
+                    <p class="col-xs-6 signin-head2" onclick="nextStep(5)">Admin</p>
+
+                </div>
+
                 <br>
 
                 <!-- Übersicht der Navigation die bei Fortschritt markiert weden -->
@@ -23,16 +29,17 @@
 
             <!-- Modal body-->
             <!-- Basic-->
+
+            <!-- JavaScript Methoden in SignUp.Js-->
             <div class="modal-body">
-            <div id="modal-body-admin">
+                <div id="modal-body-admin">
+                    @include('admin.auth.login')
+                </div>
 
-             @include('admin.auth.login')
-            </div>
-
-             <div id="modal-body-emp"></div>
+                <div id="modal-body-emp">
                 @include('employee.auth.login')
+                </div>
             </div>
-        </div>
         </div>
     </div>
 </div>

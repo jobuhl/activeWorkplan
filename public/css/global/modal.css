@@ -92,6 +92,21 @@
     text-align: center;
 }
 
+.signin-head1, .signin-head2{
+    padding-bottom: 15px;
+    margin-bottom: 0px;
+}
+
+.signin-head1 {
+    font-weight: bold;
+    border-bottom: 5px solid var(--main-pop-up-progress-bar-behind);
+}
+
+.signin-head2 {
+    color: var(--main-pop-up-progress-bar);
+    font-weight: normal;
+    border-bottom: 5px solid var(--main-pop-up-progress-bar);
+}
 
 /*Mobile divice ansicht*/
 @media(max-width:767px){

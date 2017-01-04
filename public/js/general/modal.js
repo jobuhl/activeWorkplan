@@ -19,17 +19,4 @@ function signup() {
     window.location.href="../../php/employer/overview.php";
 }
 
-function nextStep(step){
 
-    /*zweiter schritt vom Sign up*/
-    if (step == admin) {
-        $("#modal-body-admin").css("display", "block");
-        $("#modal-body-emp").css("display", "none");
-    }
-
-    /*zweiter schritt vom Sign up*/
-    if (step == emp) {
-        $("#modal-body-emp").css("display", "block");
-        $("#modal-body-admin").css("display", "none");
-    }
-}
