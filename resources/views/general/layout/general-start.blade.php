@@ -28,7 +28,7 @@
     <script type="text/javascript" src="{{ asset('/js/general/general-mainsection.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/employer/modal_add_change_delete.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/general/modal.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('signup_in.js.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/general/signup_in.js') }}"></script>
 
 
     <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>

@@ -13,7 +13,7 @@ class CreateAdmin2 extends Migration
      */
     public function up()
 {
-    Schema::create('admins', function (Blueprint $table) {
+    Schema::create('admin', function (Blueprint $table) {
         $table->increments('id');
         $table->string('forename');
         $table->string('surname');
