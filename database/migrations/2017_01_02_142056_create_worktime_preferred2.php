@@ -20,7 +20,7 @@ class CreateWorktimePreferred2 extends Migration
         $table->string('to');
 
         $table->integer('employee_id')->unsigned();
-        $table->foreign('employee_id')->references('id')->on('employee')->onDelete('cascade');
+        $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
 
         $table->timestamps();
     });

@@ -12,17 +12,17 @@ class CreateAdmin2 extends Migration
      * @return void
      */
     public function up()
-{
-    Schema::create('admin', function (Blueprint $table) {
-        $table->increments('id');
-        $table->string('forename');
-        $table->string('surname');
-        $table->string('email')->unique();
-        $table->string('password');
+    {
+        Schema::create('admin', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('forename');
+            $table->string('surname');
+            $table->string('email')->unique();
+            $table->string('password');
 
-        $table->timestamps();
-    });
-}
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -30,7 +30,7 @@ class CreateAdmin2 extends Migration
      * @return void
      */
     public function down()
-{
-    Schema::dropIfExists('admin');
-}
+    {
+        Schema::dropIfExists('admin');
+    }
 }

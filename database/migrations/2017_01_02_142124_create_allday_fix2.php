@@ -19,7 +19,7 @@ class CreateAlldayFix2 extends Migration
         $table->string('name');
 
         $table->integer('employee_id')->unsigned();
-        $table->foreign('employee_id')->references('id')->on('employee')->onDelete('cascade');
+        $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
 
         $table->timestamps();
     });

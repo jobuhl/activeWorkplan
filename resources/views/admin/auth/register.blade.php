@@ -1,4 +1,3 @@
-
 <div id="signupbutton" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
@@ -43,7 +42,8 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control" name="email"
+                                       value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -75,7 +75,8 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                <input id="password-confirm" type="password" class="form-control"
+                                       name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -103,7 +104,8 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
+                                       autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -113,13 +115,12 @@
                             </div>
                         </div>
 
-
-
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="forename" class="col-md-4 control-label">Forename</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                                <input id="forename" type="text" class="form-control" name="forename"
+                                       value="{{ old('name') }}" autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">

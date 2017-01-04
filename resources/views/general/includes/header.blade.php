@@ -16,6 +16,7 @@
         <li><a id="index" href="index">Home</a></li>
         <li><a id="feature" href="feature">Features</a></li>
         @if (Auth::guest())
+            <li><a id="index" href="employee/register">emplyoee</a></li>
             <li><a data-toggle="modal" data-target="#signinbutton">Sign In</a></li>
             <li><a data-toggle="modal" data-target="#signupbutton" onclick="nextStep(1)">Sign Up</a></li>
         @else
