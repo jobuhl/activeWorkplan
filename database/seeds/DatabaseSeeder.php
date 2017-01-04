@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        /*$admin = DB::table('admin')->insert(array(
+        $admin = DB::table('admin')->insert(array(
             'forename' => 'Alex',
             'surname' => 'Schmutz',
             'email' => 'my@email.com',
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
             'company_id' => $company->id,
             'address_id' => $store3Address->id
         ));
-*/
+
 
     }
 }
