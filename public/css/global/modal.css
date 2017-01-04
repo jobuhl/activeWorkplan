@@ -88,6 +88,10 @@
     display: none;
 }
 
+.modal-sub{
+    text-align: center;
+}
+
 
 /*Mobile divice ansicht*/
 @media(max-width:767px){

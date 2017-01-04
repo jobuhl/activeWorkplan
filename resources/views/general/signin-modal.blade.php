@@ -15,7 +15,7 @@
 
                 <!-- Überschrift -->
                 <h1>Sign in</h1>
-                <h5><div class="col-xs-6">Employee</div> <div class="col-xs-6">Admin</div></h5>
+                <h5 class="modal-sub"><div class="col-xs-6">Employee</div> <div class="col-xs-6">Admin</div></h5>
                 <br>
 
                 <!-- Übersicht der Navigation die bei Fortschritt markiert weden -->

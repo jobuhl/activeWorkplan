@@ -2,7 +2,6 @@
  * Created by Jojo on 10.11.16.
  */
 
-
 function nextStep(step){
 
     /*zweiter schritt vom Sign up*/
