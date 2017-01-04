@@ -17,7 +17,7 @@ Route::get('/employee-workplan', function () {
 
     //dd($users);
 
-    return view('employee-workplan');
+    return view('employee.employee-workplan');
 })->name('home');
 
 Route::get('/employee-planning', function () {
@@ -27,28 +27,28 @@ Route::get('/employee-planning', function () {
 
     //dd($users);
 
-    return view('employee-planning');
+    return view('employee.employee-planning');
 })->name('home');
 
-Route::get('/emplyoee-account', function () {
+Route::get('/employee-account', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
 
     //dd($users);
 
-    return view('employer-account');
+    return view('employee.employee-account');
 })->name('home');
 
 Route::get('/contact', function () {
-    return view('admin.contact');
+    return view('employee.contact');
 });
 
 Route::get('/impressum', function () {
-    return view('admin.impressum');
+    return view('employee.impressum');
 });
 
 Route::get('/protection', function () {
-    return view('admin.protection');
+    return view('employee.protection');
 });
 

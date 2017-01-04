@@ -15,8 +15,18 @@
     <ul class="right-list" id="id-right">
         <li><a id="employee-workplan" href="employee-workplan">Workplan</a></li>
         <li><a id="employee-planning" href="employee-planning">Planning</a></li>
-        <li><a id="employee-account" href="employee-account">Account</a></li>
-        <li><a id="welcome" href="welcome">Logout</a></li>
+        <li><a id="employee-account" href="employee-account">{{ Auth::user()->name }}</a></li>
+        <li><a href="{{ url('/employee/logout') }}"
+               onclick="event.preventDefault();
+               document.getElementById('logout-form').submit();">
+                Logout
+            </a>
+
+            <form id="logout-form" action="{{ url('/employee/logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+
+        </li>
     </ul>
 </header>
 
