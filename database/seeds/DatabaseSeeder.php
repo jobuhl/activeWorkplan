@@ -7,6 +7,8 @@ use App\City;
 use App\Address;
 use App\Company;
 use App\RetailStore;
+use App\Contract;
+use App\Employee;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,8 +22,8 @@ class DatabaseSeeder extends Seeder
         $admins = Admin::create(array(
             'forename' => 'Alex',
             'name' => 'Schmutz',
-            'email' => 'my@email.com',
-            'password' => bcrypt('b43G3jb4G')
+            'email' => 'admin@web.de',
+            'password' => bcrypt('123456')
         ));
 
         // Datensatz nur erstellen, wenn noch nicht vorhanden
@@ -69,6 +71,7 @@ class DatabaseSeeder extends Seeder
             'city_id' => $city->id
         ));
 
+        /* ---------------------- Stores -------------------------- */
         $store1 = RetailStore::create(array(
             'name' => 'myRetailStore1',
             'company_id' => $company->id,
@@ -87,8 +90,21 @@ class DatabaseSeeder extends Seeder
             'address_id' => $store3Address->id
         ));
 
+        /* ---------------------- Employee -------------------------- */
+        $contract1 = Contract::create(array(
+            'period_of_agreement' => 'unlimitted',
+            'working_hours' => '40',
+            'classification' => 'Cashier'
+        ));
 
-
+        $employee1 = Employee::create(array(
+            'forename' => 'Joachim',
+            'name' => 'Buhl',
+            'email' => 'emp@web.de',
+            'password' => bcrypt('123456'),
+            'retail_store_id' => $store1->id,
+            'contract_id' => $contract1->id
+        ));
 
     }
 }

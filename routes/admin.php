@@ -17,12 +17,20 @@ Route::get('/home', function () {
     return view('admin.home');
 })->name('home');
 
+
+
+
+
 Route::get('/employer-overview', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('admin')->user();
     return view('admin.home');
 })->name('home');
+
+
+
+
 
 Route::get('/employer-planning', function () {
     $users[] = Auth::user();
@@ -34,12 +42,47 @@ Route::get('/employer-planning', function () {
     return view('admin.employer-planning');
 })->name('home');
 
+
+
+
+
+
+
+
+
 Route::get('/employer-account', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('admin')->user();
-    return view('admin.employer-account');
+
+    $company = DB::table('company')
+        ->where('company.admin_id', Auth::user()->id)
+        ->get();
+
+    $address = DB::table('address')
+        ->where('address.id', $company[0]->id)
+        ->get();
+
+    $city = DB::table('city')
+        ->where('city.id', $address[0]->id)
+        ->get();
+
+    $country = DB::table('country')
+        ->where('country.id', $city[0]->id)
+        ->get();
+
+
+    return view('admin.employer-account')
+        ->with('company', $company)
+        ->with('address', $address)
+        ->with('city', $city)
+        ->with('country', $country);
 })->name('home');
+
+
+
+
+
 
 Route::get('/employer-planning-single-employee', function () {
     $users[] = Auth::user();
@@ -48,6 +91,10 @@ Route::get('/employer-planning-single-employee', function () {
 
     return view('admin.employer-planning-single-employee');
 })->name('home');
+
+
+
+
 
 // ------------------------ Footer ------------------------
 Route::get('/contact', function () {

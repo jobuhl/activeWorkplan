@@ -15,7 +15,7 @@ class CreateContract2 extends Migration
 {
     Schema::create('contract', function (Blueprint $table) {
         $table->increments('id');
-        $table->integer('period_of_agreement');
+        $table->string('period_of_agreement');
         $table->integer('working_hours');
         $table->string('classification');
 

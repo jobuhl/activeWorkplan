@@ -20,11 +20,11 @@
                 <table class="table-account">
                     <tr>
                         <td>Admin ID</td>
-                        <td>987652</td>
+                        <td>{{ Auth::user()->id }}</td>
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td>********</td>
+                        <td>{{ Auth::user()->password }}</td>
                     </tr>
 
                     <tr class="table-space">
@@ -34,15 +34,15 @@
 
                     <tr>
                         <td>Surname</td>
-                        <td>Administrator</td>
+                        <td>{{ Auth::user()->name }}</td>
                     </tr>
                     <tr>
                         <td>Forename</td>
-                        <td>Admin</td>
+                        <td>{{ Auth::user()->forename }}</td>
                     </tr>
                     <tr>
                         <td>E-Mail</td>
-                        <td>admin.administrator@html.de</td>
+                        <td>{{ Auth::user()->email }}</td>
                     </tr>
 
                     <tr class="table-space">
@@ -52,13 +52,17 @@
 
                     <tr class="table-space-above">
                         <td>Company name</td>
-                        <td>HTWG</td>
+                        <td>{{ $company[0]->name }}</td>
                     </tr>
                     <tr>
                         <td>Headquarter Address</td>
-                        <td>Brauneggerstraße 55, 78462 Konstanz</td>
+                        <td>{{ $address[0]->street }} {{ $address[0]->street_nr }}
+                            , {{ $address[0]->postcode }} {{ $city[0]->name }}
+                            , {{ $country[0]->name }}
+                        </td>
                     </tr>
                 </table>
+
 
                 <button class="form-control to-right red my-account-button" data-toggle="modal" data-target="#delete-button-admin">Delete
                 </button>

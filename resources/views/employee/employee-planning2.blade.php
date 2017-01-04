@@ -1,10 +1,22 @@
-@extends('general.layout.general-start')
+@extends('employee.layout.employee-start')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/side-bar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-calendar-navigation.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/employer/overview.css')}}">
+
+    <style type="text/css">
+        .table-calendar.table-week-hours tr td p{
+            margin: 0;
+            padding: 0;
+        }
+
+        .table-calendar.table-week-hours tr:nth-child(3n+1) td,
+        .table-calendar.table-week-hours tr:nth-child(3n+2) td {
+            border-bottom: 0;
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -12,46 +24,12 @@
     <section class="fake-body container">
         <h2 style="display: none">fakeheading</h2>
         <br>
-        <aside class="col-xs-12 col-sm-3 side-bar overview">
 
-            <div class="row headline" draggable="true">
-                <aside class="col-xs-2 middle-bold"></aside>
-                <aside class="col-xs-8 middle-bold"><p>Stores</p></aside>
-                <aside class="col-xs-2 middle-bold">
-                    <p class="glyphicon glyphicon-chevron-down"></p>
-                </aside>
-            </div>
+        <aside id="aside-overview" class="col-xs-12 col-sm-12 overview list">
 
-            <ul>
-                <li><input class="input-sidebar" type="text" placeholder="Search Store..."></li>
-                <li><a onclick="sideBarBorder()">0001 Store Konstanz</a></li>
-                <li><a>0002 Store München</a></li>
-                <li><a>0003 Store Freiburg</a></li>
-                <li><a>0004 Store Stuttgart</a></li>
-            </ul>
-            <br>
-        </aside>
-
-
-        <aside id="aside-overview" class="col-xs-12 col-sm-9 my-right-side overview list">
-
-            <div class="row current-selected-store">
-                <aside class="col-xs-2 middle-bold"><p>❮</p></aside>
-                <aside class="col-xs-8 middle-bold"><p>Current Store</p></aside>
-                <aside class="col-xs-2 middle-bold"><p>❯</p></aside>
-            </div>
             <nav class="calendar-navigation">
 
                 <div class="col-xs-6 col-md-5">
-
-                    <aside class="col-md-3 calendar-navigation-padding">
-                        <button id="overview-list" onclick="overviewList()">
-                            <span class="glyphicon glyphicon-th-list"></span>
-                        </button>
-                        <button id="overview-kachel" onclick="overviewKachel()">
-                            <span class="glyphicon glyphicon-th-large"></span>
-                        </button>
-                    </aside>
                     <div class="col-xs-9 col-md-9 navigation-today">
                         <button>&lt;</button>
                         <button>Today</button>
@@ -71,9 +49,8 @@
             </nav>
             <br class="br-under-navigation">
 
-            <aside class="col-xs-12">
                 <div class="table-head-store">
-                    <a class="table-head-a">0001 Store Konstanz</a>
+                    <a class="table-head-a">{{ Auth::user()->name }}</a>
                     <button onclick="sendEmail()">
                         <span class="glyphicon glyphicon-envelope"></span> E-Mail
                     </button>
@@ -81,9 +58,9 @@
                         <span class="glyphicon glyphicon-print"></span> Print
                     </button>
                 </div>
-                <table class="table-calendar">
+            <aside>
+                <table class="table-calendar table-week-hours">
                     <tr>
-                        <th></th>
                         <th></th>
                         <th>01.01</th>
                         <th>02.01</th>
@@ -96,8 +73,7 @@
 
 
                     <tr>
-                        <th>Employees</th>
-                        <th>Time</th>
+                        <th></th>
                         <th>Mo</th>
                         <th>Tu</th>
                         <th>We</th>
@@ -108,9 +84,29 @@
                     </tr>
 
                     <tr>
-                        <td>Tim Bohnert</td>
-                        <td>start</td>
+                        <td>All-day</td>
                         <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Private</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Time-Events</td>
+                        <td>Work</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>from 14:00</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -121,31 +117,7 @@
 
                     <tr>
                         <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Maria Schuster</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
+                        <td>to 20:00</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -154,788 +126,12 @@
                         <td></td>
                     </tr>
 
-                    <tr>
-                        <td>Michael Ebert</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Trudi Haller</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Dario Koller</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Hirte Stempel</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Marco Speicher</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                </table>
-                <br>
-            </aside>
-
-
-            <aside class="col-xs-12">
-                <div class="table-head-store">
-                    <a class="table-head-a">0002 Store München</a>
-                    <button onclick="sendEmail()">
-                        <span class="glyphicon glyphicon-envelope"></span> E-Mail
-                    </button>
-                    <button onclick="printing()">
-                        <span class="glyphicon glyphicon-print"></span> Print
-                    </button>
-                </div>
-                <table class="table-calendar">
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th>01.01</th>
-                        <th>02.01</th>
-                        <th>03.01</th>
-                        <th>04.01</th>
-                        <th>05.01</th>
-                        <th>06.01</th>
-                        <th>07.01</th>
-                    </tr>
-
-
-                    <tr>
-                        <th>Employees</th>
-                        <th>Time</th>
-                        <th>Mo</th>
-                        <th>Tu</th>
-                        <th>We</th>
-                        <th>Th</th>
-                        <th>Fr</th>
-                        <th>Sa</th>
-                        <th>Su</th>
-                    </tr>
-
-                    <tr>
-                        <td>Jan Ebert</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Melanie Holz</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Günther Illner</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Gertrud Miller</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Frederik Hase</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Gustav Vollmann</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Elise Neufeld</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Danny Mehring</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
 
 
                 </table>
                 <br>
             </aside>
 
-            <aside class="col-xs-12">
-                <div class="table-head-store">
-                    <a class="table-head-a">0003 Store Freiburg</a>
-                    <button onclick="sendEmail()">
-                        <span class="glyphicon glyphicon-envelope"></span> E-Mail
-                    </button>
-                    <button onclick="printing()">
-                        <span class="glyphicon glyphicon-print"></span> Print
-                    </button>
-                </div>
-                <table class="table-calendar">
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th>01.01</th>
-                        <th>02.01</th>
-                        <th>03.01</th>
-                        <th>04.01</th>
-                        <th>05.01</th>
-                        <th>06.01</th>
-                        <th>07.01</th>
-                    </tr>
-
-
-                    <tr>
-                        <th>Employees</th>
-                        <th>Time</th>
-                        <th>Mo</th>
-                        <th>Tu</th>
-                        <th>We</th>
-                        <th>Th</th>
-                        <th>Fr</th>
-                        <th>Sa</th>
-                        <th>Su</th>
-                    </tr>
-
-                    <tr>
-                        <td>Dana Müller</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Dejan Himmel</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Kim Fulldorf</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Giselle Münster</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Lisa Haga</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Ella Fassel</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Ulrich Neuer</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-
-                </table>
-                <br>
-            </aside>
-
-            <aside class="col-xs-12">
-                <div class="table-head-store">
-                    <a class="table-head-a">0004 Store Stuttgart</a>
-                    <button onclick="sendEmail()">
-                        <span class="glyphicon glyphicon-envelope"></span> E-Mail
-                    </button>
-                    <button onclick="printing()">
-                        <span class="glyphicon glyphicon-print"></span> Print
-                    </button>
-                </div>
-                <table class="table-calendar">
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th>01.01</th>
-                        <th>02.01</th>
-                        <th>03.01</th>
-                        <th>04.01</th>
-                        <th>05.01</th>
-                        <th>06.01</th>
-                        <th>07.01</th>
-                    </tr>
-
-
-                    <tr>
-                        <th>Employees</th>
-                        <th>Time</th>
-                        <th>Mo</th>
-                        <th>Tu</th>
-                        <th>We</th>
-                        <th>Th</th>
-                        <th>Fr</th>
-                        <th>Sa</th>
-                        <th>Su</th>
-                    </tr>
-
-                    <tr>
-                        <td>Izmir Gundelach</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Michelle Engel</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Lukas Hirte</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Dieter Krug</td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Gerhart Winter</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Nadja Simm</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-                    <tr>
-                        <td>Karolin Hummel</td>
-                        <td>start</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-
-
-                </table>
-                <br>
-            </aside>
-        </aside>
 
     </section>
 @endsection
