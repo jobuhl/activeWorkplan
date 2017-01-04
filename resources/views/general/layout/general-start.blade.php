@@ -10,8 +10,8 @@
     <body>
         @include('general.includes.header')
 
-        @include('admin.auth.login')
         @include('admin.auth.register')
+        @include('general.signin-modal')
 
         @yield('content')
 

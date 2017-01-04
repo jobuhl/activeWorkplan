@@ -1,28 +1,4 @@
-
-
-<!--Start Sign in-->
-<!-- wird über Button click im header (Sign in) aufgerufen -->
-<div id="signinbutton" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <!-- Modal header-->
-            <div class="modal-header">
-
-                <!-- Close Button oben rechts im Header -->
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                <!-- Überschrift -->
-                <h1>Sign in</h1>
-                <br>
-
-                <!-- Übersicht der Navigation die bei Fortschritt markiert weden -->
-            </div>
-
-            <!-- Modal body-->
-            <!-- Basic-->
-            <div class="modal-body">
+<div class="modal-body">
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/login') }}">
                     {{ csrf_field() }}
 
@@ -77,9 +53,7 @@
                     </div>
                 </form>
             </div>
-        </div>
-    </div>
-</div>
+
 
 
 

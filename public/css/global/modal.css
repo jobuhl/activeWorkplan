@@ -84,6 +84,9 @@
     color:black;
 }
 
+#modal-body-admin{
+    display: none;
+}
 
 
 /*Mobile divice ansicht*/
