@@ -15,9 +15,9 @@
     </ul>
 
     <ul class="right-list" id="id-right">
-        <li><a id="employer-overview" href="employer-overview">Overview</a></li>
-        <li><a id="employer-planning" href="employer-planning/1">Planning</a></li>
-        <li><a id="employer-account" href="employer-account"> {{ Auth::user()->name }}</a></li>
+        <li><a id="employer-overview" href="/activeWorkplan/public/admin/employer-overview">Overview</a></li>
+        <li><a id="employer-planning" href="/activeWorkplan/public/admin/employer-planning/1">Planning</a></li>
+        <li><a id="employer-account" href="/activeWorkplan/public/admin/employer-account"> {{ Auth::user()->name }}</a></li>
         <li><a href="{{ url('/admin/logout') }}"
                onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">

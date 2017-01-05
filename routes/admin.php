@@ -119,7 +119,7 @@ Route::get('/employer-account', function () {
 
 
 
-Route::get('/employer-planning/*/employee/{id}', function ($id) {
+Route::get('/employee-single/{id}', function ($id) {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('admin')->user();
@@ -156,6 +156,7 @@ Route::get('/employer-planning/*/employee/{id}', function ($id) {
     $country = DB::table('country')
         ->where('country.id', $city[0]->id)
         ->get();
+
 
 
     return view('admin.employer-planning-single-employee')
