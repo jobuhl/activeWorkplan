@@ -2,6 +2,8 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/employee/calendar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/employee/modal-event.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
 @endsection
 
 @section('content')

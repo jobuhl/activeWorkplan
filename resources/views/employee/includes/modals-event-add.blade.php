@@ -13,107 +13,36 @@
 
                 <!-- Überschrift -->
                 <h2 class="modal-ueberschrift">Add Event</h2>
+
+                <br>
+                <div class="modal-sub">
+                    <p class="col-xs-6 signin-head1" onclick="nextStep(10)">Time-Event</p>
+                    <p class="col-xs-6 signin-head2" onclick="nextStep(11)">Allday-Event</p>
+                </div>
+
                 <br>
 
                 <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
 
-            </div>
-            <form type="form" method="POST" action="{{ url('/emploee/eventCreate') }}">
-            {{ csrf_field() }}
 
-            <!-- Modal body-->
-                <!-- Basic-->
+                <!-- JavaScript Methoden in SignUp.Js-->
                 <div class="modal-body">
+                    <div id="modal-body-event-allday">
+                        @include('employee.includes.event-allday')
+                    </div>
 
-                    <!-- Zeile 1 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
-
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">Type</aside>
-
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control" type="text" name="type"
-                                      placeholder="Type (Allday or Time-Event)">
-                        </aside>
-
-                    </article>
-
-                    <!-- Zeile 2 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
-
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4"></aside>
-
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control" type="text" name="category"
-                                      placeholder="Category">
-                        </aside>
-
-                    </article>
-
-                    <!-- Zeile 3 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
-
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">Time</aside>
-
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class=" inputmodal form-control space-cap" type="text" name="date"
-                                      placeholder="Date">
-                            </p>
-                        </aside>
-
-                    </article>
-
-                    <!-- Zeile 4 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
-
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4"></aside>
-
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control space-cap" type="text"
-                                      name="from" placeholder="From ">
-                            </p>
-                        </aside>
-
-                    </article>
-
-                    <!-- Zeile 5 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
-
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4"></aside>
-
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control space-cap" type="text" name="to"
-                                      placeholder="To">
-                            </p>
-                        </aside>
-
-                    </article>
-
-                </div>
-                <!-- Modal footer-->
-                <div class="modal-footer">
-                    <button type="submit" class="form-control to-right add-button" data-toggle="modal"
-                            data-target="#add-button-store" onclick="addstore()">Add
-                    </button>
+                    <div id="modal-body-event-time">
+                        @include('employee.includes.event-time')
+                    </div>
                 </div>
 
-            </form>
+            </div>
 
         </div>
 
     </div>
 </div>
+
+@section('js')
+    <script type="text/javascript" src="{{ asset('/js/employee/event.js') }}"></script>
+@endsection

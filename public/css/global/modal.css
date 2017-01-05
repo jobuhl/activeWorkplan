@@ -93,7 +93,8 @@
     text-align: center;
 }
 
-.signin-head1, .signin-head2{
+.signin-head1,
+.signin-head2{
     padding-bottom: 15px;
     margin-bottom: 0px;
 }
@@ -107,6 +108,22 @@
     color: var(--main-pop-up-progress-bar);
     font-weight: normal;
     border-bottom: 5px solid var(--main-pop-up-progress-bar);
+}
+
+
+/* on HOVER */
+.signin-head1:hover,
+.signin-head2:hover {
+    background-color: var(--main-highlight-color);
+    color: white;
+    cursor: pointer;
+}
+
+/* on ACTIVE */
+.signin-head1:active,
+.signin-head2:active {
+    background-color: var(--main-active-color);
+    color: white;
 }
 
 /*Mobile divice ansicht*/
