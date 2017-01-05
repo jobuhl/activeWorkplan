@@ -160,8 +160,8 @@
                                 </button>
                             </div>
                             <div class="col-xs-6">
-                                <button id="back-button" class="form-control to-right next-button" type="submit"
-                                >SignUp
+                                <button id="back-button" class="form-control to-right next-button" type="submit">
+                                    SignUp
                                 </button>
 
                             </div>

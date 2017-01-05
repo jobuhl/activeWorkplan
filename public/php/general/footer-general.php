@@ -23,7 +23,7 @@ include '../general/links-general.php';
 <link rel="stylesheet" type="text/css" href="../../css/global/modal.css">
 
 <!-- JavaScript -->
-<!-- Header wird erst im Footer geladen, da sonst die Hoehe des fake-body nicht berechnet werden kann und aus performace gruenden -->
+<!-- Header -footer.js wird erst im Footer geladen, da sonst die Hoehe des fake-body nicht berechnet werden kann und aus performace gruenden -->
 <script src="../../js/general/header-footer.js"></script>
 <script src="../../js/general/signup_in.js"></script>
 <script src="../../js/general/general-mainsection.js"></script>

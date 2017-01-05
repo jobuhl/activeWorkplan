@@ -25,6 +25,7 @@
 
 .aside-left-add, .aside-left-add-special{
     text-align: right;
+    padding-top: 10px; /* von alex weil text zu hoch */
 }
 
 .aside-left-delete{

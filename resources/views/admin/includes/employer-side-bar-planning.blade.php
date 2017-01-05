@@ -50,7 +50,7 @@
 
     </section>
 
-    @include('includes.employer-modals-store')
+    @include('admin.includes.modals-store-add')
     @include('includes.employer-modals-employee')
     @include('employee.auth.register')
 

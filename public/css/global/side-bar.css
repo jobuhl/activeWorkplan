@@ -86,6 +86,7 @@
 
 .side-bar li {
     list-style: none; /* damit keine punkte */
+    cursor: pointer;
 }
 
 /* Search-Feld */
@@ -188,6 +189,8 @@
     width: 17%;
     text-align: center;
     border-left: 1px solid var(--main-border-color);
+    cursor: pointer;
+    color: var(--main-text-white);
 }
 
 .side-bar .a-changes a:nth-child(2) {
@@ -202,9 +205,20 @@
     background-color: var(--main-red-button);
 }
 
+/* on HOVER */
+.side-bar .a-changes a:not(:first-child):hover {
+    opacity: 0.9;
+}
+
+/* on ACTIVE */
+.side-bar .a-changes a:not(:first-child):active {
+    opacity: 0.8;
+}
+
 /* ----------------------- STORES ARROWS DOWN ----------------------- */
 .arrow-down a{
     float: left;
+    cursor: pointer;
 }
 
 .arrow-down > a:first-child {

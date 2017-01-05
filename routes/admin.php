@@ -173,6 +173,7 @@ Route::get('/employee-single/{id}', function ($id) {
 
 
 
+Route::post('/storeCreate', 'StoreController@create');
 
 
 // ------------------------ Footer ------------------------
