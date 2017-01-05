@@ -22,11 +22,19 @@
 
     <ul class="lower-list">
         @foreach($retailStores as $retailStore)
-            <li><a href="{{ $retailStore->id }}">{{ $retailStore->id }} {{ $retailStore->name }}</a>
+            <li>
+                <a href="{{ $retailStore->id }}">{{ $retailStore->id }} {{ $retailStore->name }}</a>
+                <a>
+                    <button id="overview-kachel" onclick="overviewKachel()">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </button>
+                </a>
                 <ul>
                     @foreach($employees as $employee)
                         @if($employee->retail_store_id == $retailStore->id)
-                        <li><a href="employee/{{ $employee->id }}">{{ $employee->name }} {{ $employee->forename }}</a></li>
+                            <li>
+                                <a href="employee/{{ $employee->id }}">{{ $employee->name }} {{ $employee->forename }}</a>
+                            </li>
                         @endif
                     @endforeach
                 </ul>
