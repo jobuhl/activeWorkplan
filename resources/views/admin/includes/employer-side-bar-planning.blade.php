@@ -15,6 +15,12 @@
                     <a data-toggle="modal" data-target="#change-button-emp">⇄</a>
                     <a data-toggle="modal" data-target="#delete-button-emp">-</a>
                 </li>
+
+                <!-- zum löschen -->
+                <li class="a-changes">
+                    <a href="../../employee/register">Employee</a>
+                    <a data-toggle="modal" data-target="#test">-</a>
+                </li>
             </ul>
         </li>
     </ul>
@@ -46,5 +52,6 @@
 
     @include('includes.employer-modals-store')
     @include('includes.employer-modals-employee')
+    @include('employee.auth.register')
 
 </section>

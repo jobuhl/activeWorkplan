@@ -55,7 +55,7 @@
                         <aside class="col-xs-12 col-sm-8 aside-right">
                             <p><input class="inputmodal form-control " type="text"
                                       placeholder="Store Name">
-                            
+
                         </aside>
 
                     </article>

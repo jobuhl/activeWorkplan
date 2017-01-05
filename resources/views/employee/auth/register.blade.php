@@ -1,82 +1,227 @@
-@extends('employee.layout.auth')
+<div id="test" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/employee/register') }}">
-                        {{ csrf_field() }}
+        <!-- Modal content-->
+        <div class="modal-content">
+            <!-- Modal header-->
+            <div class="modal-header">
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                <!-- Close Button oben rechts im Header -->
+                <button type="button" class="close" data-dismiss="modal"
+                >&times;</button>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+                <!-- Überschrift -->
+                <h2 class="modal-ueberschrift">Add Employee</h2>
+                <br>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+            </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+            <!-- Modal body-->
+            <!-- Basic-->
+            <div class="modal-body">
+                <form>
 
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                    <!-- Zeile 1 -->
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                            <p>Employee ID</p>
+                        </aside>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right aside-right-add">
+                            <p class="inputmodal form-control">7928752</p>
+                        </aside>
 
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                    </article>
 
-                        <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                    <!-- Zeile 2 password Change button -->
 
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
 
-                                @if ($errors->has('password_confirmation'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <input class="form-control " type="password"
+                                   placeholder="Initial Password"></p>
+                        </aside>
+
+                    </article>
+
+                    <!-- Zeile 3 -->
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
+
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                            Employee
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <p><input class="form-control to-right modal-input space-cap" type="text"
+                                      placeholder="Employee Surname"></p>
+                        </aside>
+
+                    </article>
+
+                    <!-- Zeile 4 -->
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
+
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <p><input class="form-control to-right modal-input space-cap" type="text"
+                                      placeholder="Employee Forename"></p>
+                        </aside>
+
+                    </article>
+
+                    <!-- Zeile 5 -->
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
+
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <p><input class="form-control to-right modal-input space-cap" type="text"
+                                      placeholder="E-Mail"></p>
+                        </aside>
+
+                    </article>
+
+                    <!-- Zeile 6 -->
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
+
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                            Contract
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <p><input class="form-control to-right modal-input space-cap" type="text"
+                                      placeholder="Period of Agreement"></p>
+                        </aside>
+
+                    </article>
+
+                    <!-- Zeile 7 -->
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
+
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <p><input class="form-control to-right modal-input space-cap" type="text"
+                                      placeholder="Role"></p>
+                        </aside>
+
+                    </article>
+
+                    <!-- Zeile 8 -->
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
+
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <p><input class="form-control to-right modal-input space-cap" type="text"
+                                      placeholder="Classification"></p>
+                        </aside>
+
+                    </article>
+
+                    <!-- Zeile 9 -->
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
+
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <p><input class="form-control to-right modal-input space-cap" type="text"
+                                      placeholder="Agreement working hours"></p>
+                        </aside>
+
+                    </article>
+
+                    <!-- Zeile 10 -->
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
+
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                            Company
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <p><input class="form-control to-right modal-input space-cap" type="text"
+                                      placeholder="Preferred Retail Store"></p>
+                        </aside>
+
+                    </article>
+
+                    <!-- Zeile 11 -->
+                    <article class="row">
+                        <h2 style="display: none">fakeheading</h2>
+
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <p><input class="form-control to-right modal-input space-cap" type="text"
+                                      placeholder="Adress of Retail Store"></p>
+                        </aside>
+
+                    </article>
+
+
+                </form>
+
+
+            </div>
+
+            <!-- Modal footer-->
+            <div class="modal-footer">
+                <button type="submit" class="form-control to-right add-button" data-toggle="modal"
+                        data-target="#add-button-emp" onclick="addemp()">Add
+                </button>
             </div>
         </div>
+
     </div>
 </div>
-@endsection

@@ -50,7 +50,7 @@ Route::get('/employer-overview', function () {
 
 
 
-Route::get('/employer-planning/{id}', function ($id) {
+Route::get('employer-planning/{id}', function ($id) {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('admin')->user();
