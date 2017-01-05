@@ -366,10 +366,6 @@
         </aside>
 
     </section>
-
-    @include('includes.employer-modals-store')
-    @include('includes.employer-modals-employee')
-
 @endsection
 
 @section('js')

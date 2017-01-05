@@ -2,7 +2,7 @@
 
     <ul class="left-list" id="id-left">
         <li class="nav-image">
-            <a href="employer-overview">
+            <a href="/activeWorkplan/public/admin/employer-overview">
                 <img class="nav-logo" src="{{asset('img/imagelogo.gif')}}" alt="Logo">
             </a>
         </li>
