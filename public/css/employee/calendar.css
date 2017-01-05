@@ -1,0 +1,143 @@
+/* --------------------- NAVIGATION ---------------------------- */
+
+/* Allgemeine Button-Anpassungen */
+.navigation-today > button,
+.print-email > button {
+    background-color: var(--main-middle-dark-color);
+    border: none;
+    border-radius: 3px;
+    padding: 3px 7px 3px 7px;
+    color: var(--main-text-white); /* Text-Farbe */
+}
+
+.glyphicon-envelope,
+.glyphicon-print {
+    color: var(--main-text-white);
+}
+
+.emp-planning .calendar-navigation {
+    background: var(--main-small-header-color);
+    height: 40px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
+    padding: 7px 0 7px 0; /* Abstand wegen Button oben und unten */
+}
+
+.calendar-navigation-p {
+    text-align: center;
+}
+.print-email > button {
+    float: right; /* rechts am Rand haltend */
+    margin-left: 5px; /* Abstand zwischen Print und email button */
+}
+
+
+/* --------------------------- TABLE -------------------------------- */
+
+.calendar-days {
+    background-color: var(--main-table-background);
+    width: 100%;
+    table-layout: fixed;
+}
+
+.calendar-days > tr > td:first-child {
+    max-width: 12px;
+}
+
+.calendar-days td {
+    text-align: center;
+}
+
+.calendar-days .week-days {
+    border-bottom: 1px solid var(--main-border-color);
+}
+
+.calendar-days .all-day {
+    border-bottom: 2px solid var(--main-border-color);
+}
+
+.calendar-days .time-events {
+    height: 200px; /* it means min-height */
+    vertical-align: top; /* events (elemente) oben ausrichten */
+}
+
+.calendar-days .add-buttons {
+    height: 40px;
+    border-bottom: 1px solid var(--main-border-color);
+}
+.calendar-days .all-day td:not(:first-child),
+.calendar-days .time-events td:not(:first-child),
+.calendar-days .add-buttons td:not(:first-child) {
+    border-left: 1px solid var(--main-border-color);
+}
+
+.round-button {
+    background-color: var(--main-green-button);
+    color: var(--main-text-white);
+    border-radius: 15px;
+    padding: 4px 8px 5px 8px;
+}
+ /* --------------------------- HOVER ACTIVE --------------------------- */
+
+.emp-planning .calendar-navigation button:hover {
+    background-color: var(--main-highlight-color);
+}
+
+.emp-planning .calendar-navigation button:active {
+    background-color: var(--main-active-color);
+}
+
+.round-button:hover {
+    text-decoration: none;
+    color: white;
+    background-color: var(--main-highlight-color);
+    cursor: pointer;
+}
+
+.round-button:active {
+    text-decoration: none;
+    color: white;
+    background-color: var(--main-active-color);
+
+}
+
+
+/* ---------------------------- EVENTS ------------------------------ */
+
+.one-time-event *,
+.one-allday-event * {
+    padding: 0;
+    margin: 0;
+}
+
+.one-time-event,
+.one-allday-event {
+    margin: 2px;/* damit event abstand zur week-day border hat */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.one-time-event p,
+.one-allday-event p {
+    margin: 2px; /* damit linie im event nicht komplett durchgezogen */
+}
+
+.one-time-event p:first-child {
+    border-bottom: 1px solid white;
+}
+
+.blue,
+.blue p {
+    background-color: cornflowerblue;
+    color: var(--main-text-white);
+}
+
+.red,
+.red p {
+    background-color: orangered;
+    color: var(--main-text-white);
+}
+
+.green,
+.green p {
+    background-color: yellowgreen;
+    color: var(--main-text-white);
+}
