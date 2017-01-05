@@ -69,6 +69,16 @@
     border-left: 1px solid var(--main-border-color);
 }
 
+/* Samstag Sonntag Hintergrund */
+.calendar-days .all-day td:nth-child(7),
+.calendar-days .all-day td:nth-child(8),
+.calendar-days .time-events td:nth-child(7),
+.calendar-days .time-events td:nth-child(8),
+.calendar-days .add-buttons td:nth-child(7),
+.calendar-days .add-buttons td:nth-child(8) {
+    background-color: var(--main-small-header-color);
+}
+
 .round-button {
     background-color: var(--main-green-button);
     color: var(--main-text-white);
@@ -124,20 +134,20 @@
     border-bottom: 1px solid white;
 }
 
-.blue,
-.blue p {
-    background-color: cornflowerblue;
-    color: var(--main-text-white);
-}
-
-.red,
-.red p {
-    background-color: orangered;
-    color: var(--main-text-white);
-}
-
-.green,
+.blue p,
+.red p,
 .green p {
-    background-color: yellowgreen;
     color: var(--main-text-white);
+}
+
+.blue {
+    background-color: cornflowerblue;
+}
+
+.red {
+    background-color: orangered;
+}
+
+.green {
+    background-color: yellowgreen;
 }
