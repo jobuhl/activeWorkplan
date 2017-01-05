@@ -61,12 +61,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return Employee
      */
+
     protected function create(array $data)
     {
         return Employee::create([
             'name' => $data['name'],
+            'forename' => $data['forename'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'retail_store_id'=> $data[ 'retail_store_id'],
+            'contract_id'=> $data['contract_id'],
         ]);
     }
 

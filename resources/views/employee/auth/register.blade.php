@@ -21,28 +21,15 @@
             <!-- Modal body-->
             <!-- Basic-->
             <div class="modal-body">
-                <form>
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/employee/register') }}">
+                {{ csrf_field() }}
 
-                    <!-- Zeile 1 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
 
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-                            <p>Employee ID</p>
-                        </aside>
-
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right aside-right-add">
-                            <p class="inputmodal form-control">7928752</p>
-                        </aside>
-
-                    </article>
 
                     <!-- Zeile 2 password Change button -->
 
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row {{ $errors->has('password') ? ' has-error' : '' }}">
+
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -51,15 +38,41 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <input class="form-control " type="password"
-                                   placeholder="Initial Password"></p>
+                            <p><input id="password" type="password" class="form-control" name="password" placeholder="password..."></p>
+
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
                         </aside>
 
-                    </article>
+                    </div>
+
+                    <div class="row {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+
+
+                        <!-- links -->
+                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+
+                        </aside>
+
+                        <!-- rechts -->
+                        <aside class="col-xs-12 col-sm-8 aside-right">
+                            <p><input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="password..."></p>
+
+                            @if ($errors->has('password_confirmation'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                            @endif
+                        </aside>
+
+                    </div>
 
                     <!-- Zeile 3 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row {{ $errors->has('name') ? ' has-error' : '' }}">
+
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -68,15 +81,20 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      placeholder="Employee Surname"></p>
+                            <p><input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif</p>
                         </aside>
 
-                    </article>
+                    </div>
 
                     <!-- Zeile 4 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row{{ $errors->has('name') ? ' has-error' : '' }}">
+
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -85,15 +103,20 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      placeholder="Employee Forename"></p>
+                            <p><input id="forename" type="text" class="form-control" name="forename" placeholder="forename" value="{{ old('name') }}" autofocus>
+
+                                @if ($errors->has('name'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif</p>
                         </aside>
 
-                    </article>
+                    </div>
 
                     <!-- Zeile 5 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row{{ $errors->has('email') ? ' has-error' : '' }}">
+
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -102,32 +125,19 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      placeholder="E-Mail"></p>
+                            <p><input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif</p>
                         </aside>
 
-                    </article>
+                    </div>
 
-                    <!-- Zeile 6 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row">
 
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-                            Contract
-                        </aside>
-
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      placeholder="Period of Agreement"></p>
-                        </aside>
-
-                    </article>
-
-                    <!-- Zeile 7 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -136,31 +146,14 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      placeholder="Role"></p>
+                            <p><input id="retail_store_id" type="number" class="form-control" name="retail_store_id">
+
                         </aside>
 
-                    </article>
+                    </div>
 
-                    <!-- Zeile 8 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row">
 
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-                        </aside>
-
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      placeholder="Classification"></p>
-                        </aside>
-
-                    </article>
-
-                    <!-- Zeile 9 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -169,58 +162,27 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      placeholder="Agreement working hours"></p>
-                        </aside>
-
-                    </article>
-
-                    <!-- Zeile 10 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
-
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-                            Company
-                        </aside>
-
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      placeholder="Preferred Retail Store"></p>
-                        </aside>
-
-                    </article>
-
-                    <!-- Zeile 11 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
-
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                            <p><input id="contract_id" type="number" class="form-control" name="contract_id">
 
                         </aside>
 
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      placeholder="Adress of Retail Store"></p>
-                        </aside>
-
-                    </article>
+                    </div>
 
 
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary">
+                                Register
+                            </button>
+                        </div>
+                    </div>
                 </form>
 
 
             </div>
 
-            <!-- Modal footer-->
-            <div class="modal-footer">
-                <button type="submit" class="form-control to-right add-button" data-toggle="modal"
-                        data-target="#add-button-emp" onclick="addemp()">Add
-                </button>
-            </div>
+
+
         </div>
 
     </div>
