@@ -21,18 +21,10 @@
 
     <ul class="lower-list">
 
-        <li class="arrow-down">
-            <a href="1">store</a>
-            <a style="padding: 0px;" class="glyphicon glyphicon-chevron-down">s</a>
-            <ul>
-                <li>
-                    <a href="employee/1">emp</a>
-                </li>
-            </ul>
-        </li>
         @foreach($retailStores as $retailStore)
-            <li>
+            <li class="arrow-down">
                 <a href="{{ $retailStore->id }}">{{ $retailStore->id }} {{ $retailStore->name }}</a>
+                <a style="padding: 13.5px;" class="glyphicon glyphicon-chevron-down"></a>
                 <ul>
                     @foreach($employees as $employee)
                         @if($employee->retail_store_id == $retailStore->id)

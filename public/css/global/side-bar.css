@@ -207,7 +207,7 @@
     float: left;
 }
 
-.arrow-down a:first-child {
+.arrow-down > a:first-child {
     width: 83%;
 }
 
