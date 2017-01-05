@@ -47,8 +47,9 @@
         display: none;
     }
 }
-
 /* --------------------------- LIST / Kachel Ende --------------------------- */
+
+
 
 @media screen and (max-width: 767px) {
     .side-bar,
@@ -199,4 +200,17 @@
 
 .side-bar .a-changes a:nth-child(4) {
     background-color: var(--main-red-button);
+}
+
+/* ----------------------- STORES ARROWS DOWN ----------------------- */
+.arrow-down a{
+    float: left;
+}
+
+.arrow-down a:first-child {
+    width: 83%;
+}
+
+.arrow-down a:nth-child(2) {
+    width: 17%;
 }

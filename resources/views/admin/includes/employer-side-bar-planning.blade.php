@@ -2,8 +2,7 @@
     <ul class="upper-list">
         <li><a>Preferences</a>
             <ul>
-                <li><input class="input-sidebar" type="text" placeholder="Search Store...">
-                </li>
+                <li><input class="input-sidebar" type="text" placeholder="Search Store..."></li>
                 <li class="a-changes">
                     <a>Store</a>
                     <a data-toggle="modal" data-target="#add-button-store">+</a>
@@ -21,14 +20,19 @@
     </ul>
 
     <ul class="lower-list">
+
+        <li class="arrow-down">
+            <a href="1">store</a>
+            <a style="padding: 0px;" class="glyphicon glyphicon-chevron-down">s</a>
+            <ul>
+                <li>
+                    <a href="employee/1">emp</a>
+                </li>
+            </ul>
+        </li>
         @foreach($retailStores as $retailStore)
             <li>
                 <a href="{{ $retailStore->id }}">{{ $retailStore->id }} {{ $retailStore->name }}</a>
-                <a>
-                    <button id="overview-kachel" onclick="overviewKachel()">
-                        <span class="glyphicon glyphicon-envelope"></span>
-                    </button>
-                </a>
                 <ul>
                     @foreach($employees as $employee)
                         @if($employee->retail_store_id == $retailStore->id)
