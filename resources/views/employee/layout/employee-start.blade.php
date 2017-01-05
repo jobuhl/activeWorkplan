@@ -14,7 +14,7 @@
 
         @yield('content')
 
-        @include('includes.footer')
+        @include('employee.includes.footer')
 
     </body>
 

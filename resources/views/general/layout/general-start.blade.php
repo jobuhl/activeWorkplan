@@ -15,7 +15,7 @@
 
         @yield('content')
 
-        @include('includes.footer')
+        @include('general.includes.footer')
 
     </body>
     <!-- JQuery -->
