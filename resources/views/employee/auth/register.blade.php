@@ -146,7 +146,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="retail_store_id" type="text" class="form-control" name="retail_store_id">
+                            <p><input id="retail_store_id" type="number" class="form-control" name="retail_store_id">
 
                         </aside>
 
@@ -162,7 +162,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="contract_id" type="text" class="form-control" name="contract_id" value="{{ old('name') }}" autofocus>
+                            <p><input id="contract_id" type="number" class="form-control" name="contract_id">
 
                         </aside>
 
