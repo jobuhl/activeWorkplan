@@ -19,6 +19,9 @@ class CreateContract2 extends Migration
         $table->integer('working_hours');
         $table->string('classification');
 
+        $table->integer('role_id')->unsigned();
+        $table->foreign('role_id')->references('id')->on('role')->onDelete('cascade');
+
         $table->timestamps();
     });
 }

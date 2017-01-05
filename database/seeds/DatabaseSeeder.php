@@ -7,6 +7,7 @@ use App\City;
 use App\Address;
 use App\Company;
 use App\RetailStore;
+use App\Role;
 use App\Contract;
 use App\Employee;
 
@@ -91,10 +92,39 @@ class DatabaseSeeder extends Seeder
         ));
 
         /* ---------------------- Employee -------------------------- */
+
+
+        $role1 = Role::create(array(
+            'name' => 'Cashier'
+        ));
+
+        $role2 = Role::create(array(
+            'name' => 'stockman'
+        ));
+
+        $role3 = Role::create(array(
+            'name' => 'office worker'
+        ));
+
         $contract1 = Contract::create(array(
             'period_of_agreement' => 'unlimitted',
             'working_hours' => '40',
-            'classification' => 'Cashier'
+            'classification' => 'Full-Time',
+            'role_id' => $role1->id
+        ));
+
+        $contract2 = Contract::create(array(
+            'period_of_agreement' => 'unlimitted',
+            'working_hours' => '30',
+            'classification' => 'Part-Time',
+            'role_id' => $role2->id
+        ));
+
+        $contract3 = Contract::create(array(
+            'period_of_agreement' => 'unlimitted',
+            'working_hours' => '20',
+            'classification' => 'student-employee',
+            'role_id' => $role3->id
         ));
 
         $employee1 = Employee::create(array(
@@ -105,6 +135,37 @@ class DatabaseSeeder extends Seeder
             'retail_store_id' => $store1->id,
             'contract_id' => $contract1->id
         ));
+
+        $employee2 = Employee::create(array(
+            'forename' => 'Daniel',
+            'name' => 'Haller',
+            'email' => 'dani@web.de',
+            'password' => bcrypt('123456'),
+            'retail_store_id' => $store1->id,
+            'contract_id' => $contract2->id
+        ));
+
+        $employee3 = Employee::create(array(
+            'forename' => 'Fabian',
+            'name' => 'Götz',
+            'email' => 'fabi@web.de',
+            'password' => bcrypt('123456'),
+            'retail_store_id' => $store2->id,
+            'contract_id' => $contract3->id
+        ));
+
+        $employee4 = Employee::create(array(
+            'forename' => 'Simon',
+            'name' => 'Geist',
+            'email' => 'simon@web.de',
+            'password' => bcrypt('123456'),
+            'retail_store_id' => $store3->id,
+            'contract_id' => $contract3->id
+        ));
+
+
+
+
 
     }
 }

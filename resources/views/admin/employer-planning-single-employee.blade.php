@@ -15,14 +15,14 @@
         <br>
         <aside class="col-xs-12 col-sm-3 side-bar">
 
-            @include('includes.employer-side-bar-planning')
+            @include('admin.includes.employer-side-bar-planning')
 
         </aside>
 
 
         <aside class="col-xs-12 col-sm-9 my-right-side">
 
-            <h2>Maria Schuster</h2>
+            <h2>{{ $employee->name }} {{ $employee->forename }}</h2>
 
             <nav class="calendar-navigation">
                 <div class="calendar-navigation-padding">
@@ -70,7 +70,7 @@
                 </tr>
 
                 <tr>
-                    <td>Maria Schuster</td>
+                    <td>{{ $employee->name }} {{ $employee->forename }}</td>
                     <td>All-day</td>
                     <td></td>
                     <td></td>
@@ -116,11 +116,11 @@
             <table class="table-account">
                 <tr>
                     <td>Employer ID</td>
-                    <td>7928752</td>
+                    <td>{{ $employee->id }}</td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td>********</td>
+                    <td>{{ $employee->password }}</td>
                 </tr>
 
                 <tr class="table-space">
@@ -130,15 +130,15 @@
 
                 <tr>
                     <td>Surname</td>
-                    <td>Schuster</td>
+                    <td>{{ $employee->name }}</td>
                 </tr>
                 <tr>
                     <td>Forename</td>
-                    <td>Maria</td>
+                    <td>{{ $employee->forename }}</td>
                 </tr>
                 <tr>
                     <td>E-Mail</td>
-                    <td>maria.schuster@html.de</td>
+                    <td>{{ $employee->email }}</td>
                 </tr>
 
                 <tr class="table-space">
@@ -148,19 +148,47 @@
 
                 <tr>
                     <td>Period of Agreement</td>
-                    <td>unlimitted</td>
+                    <td>
+                        @foreach($contracts as $contract)
+                            @if($employee->contract_id == $contract->id)
+                                {{ $contract->period_of_agreement }}
+                            @endif
+                        @endforeach
+                    </td>
                 </tr>
                 <tr>
                     <td>Role</td>
-                    <td>Cashier</td>
+                    <td>
+                        @foreach($contracts as $contract)
+                            @if($employee->contract_id == $contract->id)
+                                @foreach($roles as $role)
+                                    @if($contract->role_id == $role->id)
+                                    {{ $role->name }}
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
+                    </td>
                 </tr>
                 <tr>
                     <td>Classification</td>
-                    <td>Full-Time</td>
+                    <td>
+                        @foreach($contracts as $contract)
+                            @if($employee->contract_id == $contract->id)
+                                {{ $contract->classification }}
+                            @endif
+                        @endforeach
+                    </td>
                 </tr>
                 <tr>
                     <td>Agreement working hours</td>
-                    <td>40</td>
+                    <td>
+                        @foreach($contracts as $contract)
+                            @if($employee->contract_id == $contract->id)
+                                {{ $contract->working_hours }}
+                            @endif
+                        @endforeach
+                    </td>
                 </tr>
 
                 <tr class="table-space">
@@ -170,19 +198,26 @@
 
                 <tr>
                     <td>Company name</td>
-                    <td>HTWG</td>
+                    <td>{{ $company->name }}</td>
                 </tr>
                 <tr>
                     <td>Preferred Retail Store</td>
-                    <td>Konstanz</td>
+                    <td>
+                        @foreach($retailStores as $retailStore)
+                            @if($employee->retail_store_id == $retailStore->id)
+                                {{ $retailStore->id }} {{ $retailStore->name }}
+                            @endif
+                        @endforeach
+                    </td>
                 </tr>
                 <tr>
                     <td>Address Retail Store</td>
-                    <td>Brauneggerstraße 55, 78462 Konstanz</td>
+                    <td>
+                        --------fehlt noch!!!
+                    </td>
                 </tr>
-
-
             </table>
+
 
             <button class="form-control to-right red" type="submit" data-toggle="modal"
                     data-target="#delete-button-emp-single-3">

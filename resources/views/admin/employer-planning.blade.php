@@ -15,14 +15,14 @@
         <aside class="col-xs-12 col-sm-3 side-bar">
 
 
-            @include('includes.employer-side-bar-planning')
+            @include('admin.includes.employer-side-bar-planning')
 
         </aside>
 
 
         <aside class="col-xs-12 col-sm-9 my-right-side">
 
-            <h2>0001 Store Konstanz</h2>
+            <h2>{{ $thisRetailStore->name }}</h2>
 
             <nav class="calendar-navigation">
                 <div class="calendar-navigation-padding">
