@@ -1,7 +1,7 @@
 <header>
     <ul class="left-list" id="id-left">
         <li class="nav-image">
-            <a href="/activeWorkplan/public/admin/index">
+            <a href="index">
                 <img class="nav-logo" src="{{asset('img/imagelogo.gif')}}" alt="Logo">
             </a>
         </li>
@@ -13,8 +13,8 @@
         </li>
     </ul>
     <ul class="right-list" id="id-right">
-        <li><a id="index" href="/activeWorkplan/public/admin/index">Home</a></li>
-        <li><a id="feature" href="/activeWorkplan/public/admin/feature">Features</a></li>
+        <li><a id="index" href="index">Home</a></li>
+        <li><a id="feature" href="feature">Features</a></li>
         @if (Auth::guest())
             <li><a data-toggle="modal" data-target="#signinbutton">Sign In</a></li>
             <li><a data-toggle="modal" data-target="#signupbutton" onclick="nextStep(1)">Sign Up</a></li>
