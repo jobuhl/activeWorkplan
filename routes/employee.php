@@ -47,7 +47,7 @@ Route::get('/employee-planning2', function () {
 
 
     // anzuzeigendes Datum
-    $today = new DateTime('06-01-2017');
+    $today = new DateTime();
 
     // Montag vor dem Datum
     $monday = clone $today->modify('-' . ($today->format('N') - 1) . ' days');
@@ -87,4 +87,9 @@ Route::get('/impressum', function () {
 Route::get('/protection', function () {
     return view('employee.protection');
 });
+
+Route::post('/weekBack', 'WeekController@back');
+Route::post('/weekNext', 'WeekController@next');
+Route::post('/weekToday', 'WeekController@today');
+
 

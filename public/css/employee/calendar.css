@@ -1,8 +1,11 @@
 /* --------------------- NAVIGATION ---------------------------- */
 
+.nav-form {
+    display: inline;
+}
 /* Allgemeine Button-Anpassungen */
-.navigation-today > button,
-.print-email > button {
+.navigation-today button,
+.print-email >  button {
     background-color: var(--main-middle-dark-color);
     border: none;
     border-radius: 3px;

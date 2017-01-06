@@ -14,9 +14,20 @@
         <aside id="aside-overview" class="col-xs-12 calendar-navigation">
 
             <div class="col-xs-4 navigation-today">
-                <button>&lt;</button>
-                <button>Today</button>
-                <button> ></button>
+                <form class="nav-form" method="POST" action="{{ url('/employee/weekBack') }}">
+                    {{ csrf_field() }}
+                    <button name="date" value="{{ $date[0]->format('d-m-Y') }}" type="submit"><</button>
+                </form>
+
+                <form class="nav-form" method="POST" action="{{ url('/employee/weekToday') }}">
+                    {{ csrf_field() }}
+                    <button  name="date" value="{{ $date[0]->format('d-m-Y') }}"type="submit">Today</button>
+                </form>
+
+                <form class="nav-form" method="POST" action="{{ url('/employee/weekNext') }}">
+                    {{ csrf_field() }}
+                    <button  name="date" value="{{ $date[0]->format('d-m-Y') }}"type="submit">></button>
+                </form>
             </div>
 
             <div class="col-xs-4 calendar-navigation-p">
@@ -67,7 +78,7 @@
                         <td>
                             @endif
                             @foreach($manyAlldayFix as $oneAlldayFix)
-                                @if( new DateTime($oneAlldayFix->date) == $date[$i])
+                                @if( (new DateTime($oneAlldayFix->date))->format('d m Y') == $date[$i]->format('d m Y'))
                                     <div class="one-allday-event {{ $oneAlldayFix->color }}" draggable="true">
                                         <p>{{ $oneAlldayFix->name }}</p>
                                     </div>
@@ -86,7 +97,7 @@
                         <td>
                             @endif
                             @foreach($manyWorktimePreferred as $oneWorktimePreferred)
-                                @if( new DateTime($oneWorktimePreferred->date) == $date[$i] )
+                                @if( (new DateTime($oneWorktimePreferred->date))->format('d m Y') == $date[$i]->format('d m Y') )
                                     <div class="one-time-event {{ $oneWorktimePreferred->color }}" draggable="true">
                                         <p>{{ $oneWorktimePreferred->name }}</p>
                                         <p>{{ $oneWorktimePreferred->from }}</p>
