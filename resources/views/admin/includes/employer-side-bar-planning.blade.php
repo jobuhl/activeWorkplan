@@ -18,7 +18,6 @@
 
                 <!-- zum löschen -->
                 <li class="a-changes">
-                    <a href="../../employee/register">Employee</a>
                     <a data-toggle="modal" data-target="#test">-</a>
                 </li>
             </ul>
@@ -53,5 +52,6 @@
     @include('admin.includes.add-store')
     @include('includes.employer-modals-employee')
     @include('admin.includes.add-emp')
+    @include('admin.includes.change-emp')
 
 </section>

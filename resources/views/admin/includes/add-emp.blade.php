@@ -1,4 +1,4 @@
-<div id="test" class="modal fade" role="dialog">
+<div id="add-button-emp" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -146,13 +146,13 @@
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
-
+                            Store
                         </aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
                             <p><select class="form-control to-right modal-input space-cap" type="text"
-                                        name="retail_store_name">
+                                       name="retail_store_name">
 
                                     @foreach($retailStores as $retailStore)
                                         <option>{{ $retailStore->name }}</option>
@@ -250,11 +250,13 @@
 
                     </div>
 
+                    <br>
+
 
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary">
-                                Register
+                        <div class="col-xs-12">
+                            <button type="submit" class="form-control to-right add-button">
+                                Add
                             </button>
                         </div>
                     </div>
