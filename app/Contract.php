@@ -14,6 +14,6 @@ class Contract extends Model
      */
     protected $table = 'contract';
 
-    protected $fillable = ['id', 'period_of_agreement', 'working_hours', 'classification'];
+    protected $fillable = ['id', 'period_of_agreement', 'working_hours', 'classification','role_id'];
 
 }

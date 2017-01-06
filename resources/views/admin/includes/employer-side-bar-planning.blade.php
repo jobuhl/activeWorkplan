@@ -50,7 +50,7 @@
 
     </section>
 
-    @include('admin.includes.modals-store-add')
+    @include('admin.includes.add-store')
     @include('includes.employer-modals-employee')
     @include('admin.includes.add-emp')
 

@@ -70,6 +70,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
+
         $admin = Admin::create([
             'name' => $data['name'],
             'forename' => $data['forename'],
