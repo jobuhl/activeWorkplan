@@ -35,12 +35,9 @@ class EmpController extends Controller
             ->get();
 
 
-
-
-
-
-
-
+        $retailStore = DB::table('retail_store')
+            ->where('retail_store.name', $data['retail_store_name'])
+            ->get();
 
         $role = Role::firstOrCreate(array(
             'name' => $data['roleid']
@@ -59,7 +56,7 @@ class EmpController extends Controller
             'forename' => $data['forename'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'retail_store_id' => $data['retail_store_id'],
+            'retail_store_id' => $retailStore[0]->id,
             'contract_id' => $contracts->id,
         ]);
 

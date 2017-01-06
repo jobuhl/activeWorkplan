@@ -26,19 +26,20 @@
 
                 <!-- Zeile 1  -->
 
-                <!-- Zeile 2 password Change button -->
+                    <!-- Zeile 2 password Change button -->
 
                     <div class="row {{ $errors->has('password') ? ' has-error' : '' }}">
 
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
-Password
+                            Password
                         </aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="password" type="password" class="form-control" name="password" placeholder="password..."></p>
+                            <p><input id="password" type="password" class="form-control" name="password"
+                                      placeholder="password..."></p>
 
                             @if ($errors->has('password'))
                                 <span class="help-block">
@@ -59,7 +60,8 @@ Password
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="confirm password..."></p>
+                            <p><input id="password-confirm" type="password" class="form-control"
+                                      name="password_confirmation" placeholder="confirm password..."></p>
 
                             @if ($errors->has('password_confirmation'))
                                 <span class="help-block">
@@ -81,7 +83,8 @@ Password
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="name" type="text" class="form-control" name="name" placeholder="surename" value="{{ old('name') }}" autofocus>
+                            <p><input id="name" type="text" class="form-control" name="name" placeholder="surename"
+                                      value="{{ old('name') }}" autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -103,7 +106,8 @@ Password
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="forename" type="text" class="form-control" name="forename" placeholder="forename" value="{{ old('name') }}" autofocus>
+                            <p><input id="forename" type="text" class="form-control" name="forename"
+                                      placeholder="forename" value="{{ old('name') }}" autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -125,7 +129,8 @@ Password
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="email" type="email" class="form-control" name="email" placeholder="e-mail" value="{{ old('email') }}">
+                            <p><input id="email" type="email" class="form-control" name="email" placeholder="e-mail"
+                                      value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -146,8 +151,13 @@ Password
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="retail_store_id" type="number" class="form-control" name="retail_store_id">
+                            <p><select class="form-control to-right modal-input space-cap" type="text"
+                                        name="retail_store_name">
 
+                                    @foreach($retailStores as $retailStore)
+                                        <option>{{ $retailStore->name }}</option>
+                                    @endforeach
+                                </select>
 
 
                         </aside>
@@ -166,15 +176,15 @@ Password
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="form-control to-right modal-input space-cap" type="text" name="period_of_agreement"
-                                     >
+                            <p><select class="form-control to-right modal-input space-cap" type="text"
+                                       name="period_of_agreement"
+                                >
                                     <option>limited</option>
                                     <option>unlimited</option>
 
                                 </select>
 
                             </p>
-
 
 
                         </aside>
@@ -210,7 +220,8 @@ Password
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="form-control to-right modal-input space-cap" type="text" name="classification"
+                            <p><select class="form-control to-right modal-input space-cap" type="text"
+                                       name="classification"
                                        placeholder="Classification">
                                     <option>parttime</option>
                                     <option>fulltime</option>
@@ -232,7 +243,8 @@ Password
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text" name="working_hours"
+                            <p><input class="form-control to-right modal-input space-cap" type="text"
+                                      name="working_hours"
                                       placeholder="Agreement working hours"></p>
                         </aside>
 
@@ -250,7 +262,6 @@ Password
 
 
             </div>
-
 
 
         </div>
