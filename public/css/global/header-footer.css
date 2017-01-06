@@ -31,6 +31,7 @@
     --main-focus-color: #CFE8FD;
     --main-highlight-color: #00A9FF;
     --main-active-color: #0C8EE8; /* weil noch nicht funktioniert */
+    --main-today-color: #FF7780; /* in wochen-kalender */
 
     /* red / yellow / green */
     --main-red-button: #FF5702;

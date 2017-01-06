@@ -10,6 +10,12 @@ use App\RetailStore;
 use App\Role;
 use App\Contract;
 use App\Employee;
+use App\Category;
+use App\AlldayFix;
+use App\WorktimeFix;
+use App\WorktimePreferred;
+
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -91,7 +97,7 @@ class DatabaseSeeder extends Seeder
             'address_id' => $store3Address->id
         ));
 
-        /* ---------------------- Employee -------------------------- */
+        /* ---------------------- Role -------------------------- */
 
 
         $role1 = Role::create(array(
@@ -105,6 +111,8 @@ class DatabaseSeeder extends Seeder
         $role3 = Role::create(array(
             'name' => 'office worker'
         ));
+
+        /* ---------------------- Contract -------------------------- */
 
         $contract1 = Contract::create(array(
             'period_of_agreement' => 'unlimitted',
@@ -126,6 +134,8 @@ class DatabaseSeeder extends Seeder
             'classification' => 'student-employee',
             'role_id' => $role3->id
         ));
+
+        /* ---------------------- Employee -------------------------- */
 
         $employee1 = Employee::create(array(
             'forename' => 'Joachim',
@@ -162,6 +172,85 @@ class DatabaseSeeder extends Seeder
             'retail_store_id' => $store3->id,
             'contract_id' => $contract3->id
         ));
+
+        /* ---------------------- Category -------------------------- */
+
+        $category1 = Category::create(array(
+            'name' => 'Work',
+            'color' => 'blue'
+        ));
+
+        $category2 = Category::create(array(
+            'name' => 'Vacation',
+            'color' => 'yellow'
+        ));
+
+        $category3 = Category::create(array(
+            'name' => 'Illness',
+            'color' => 'red'
+        ));
+
+        $category4 = Category::create(array(
+            'name' => 'Study',
+            'color' => 'orange'
+        ));
+
+        $category5 = Category::create(array(
+            'name' => 'Training',
+            'color' => 'light-green'
+        ));
+
+        $category6 = Category::create(array(
+            'name' => 'Seminar',
+            'color' => 'dark-green'
+        ));
+
+        $category6 = Category::create(array(
+            'name' => 'Private',
+            'color' => 'grey'
+        ));
+
+        /* ---------------------- Worktime Preferred -------------------------- */
+
+        $worktimePreferred1 = WorktimePreferred::create(array(
+            'date' => date('2017-01-03'),
+            'from' => '14:00',
+            'to' => '18:00',
+            'employee_id' => $employee1->id,
+            'category_id' => $category1->id
+        ));
+
+        $worktimePreferred2 = WorktimePreferred::create(array(
+            'date' => date('2017-01-04'),
+            'from' => '8:00',
+            'to' => '14:30',
+            'employee_id' => $employee1->id,
+            'category_id' => $category1->id
+        ));
+
+        $worktimePreferred2 = WorktimePreferred::create(array(
+            'date' => date('2017-01-04'),
+            'from' => '15:00',
+            'to' => '20:00',
+            'employee_id' => $employee1->id,
+            'category_id' => $category4->id
+        ));
+
+        /* ---------------------- Allday Fix -------------------------- */
+
+        $alldayFix1 = AlldayFix::create(array(
+            'date' => date('2017-01-06'),
+            'employee_id' => $employee1->id,
+            'category_id' => $category2->id
+        ));
+
+        $alldayFix2 = AlldayFix::create(array(
+            'date' => date('2017-01-07'),
+            'employee_id' => $employee1->id,
+            'category_id' => $category2->id
+        ));
+
+
 
 
 

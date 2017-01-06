@@ -22,8 +22,8 @@ class StoreController extends Controller
             'country' => 'required|max:255',
             'city' => 'required|max:255',
             'street' => 'required|max:255',
-            'street_nr' => 'required|max:255', //integer?
-            'postcode' => 'required|max:255',  //integer?
+            'street_nr' => 'required|max:255', //integer?nein!
+            'postcode' => 'required|max:255',  //integer?nein!
             'name' => 'required|max:255',
         ]);
     }

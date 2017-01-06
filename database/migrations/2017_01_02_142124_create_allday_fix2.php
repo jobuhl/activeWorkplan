@@ -16,10 +16,12 @@ class CreateAlldayFix2 extends Migration
     Schema::create('allday_fix', function (Blueprint $table) {
         $table->increments('id');
         $table->date('date');
-        $table->string('name');
 
         $table->integer('employee_id')->unsigned();
         $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
+
+        $table->integer('category_id')->unsigned();
+        $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
 
         $table->timestamps();
     });

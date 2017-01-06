@@ -20,7 +20,10 @@
             </div>
 
             <div class="col-xs-4 calendar-navigation-p">
-                <p>01. - 07. Jan. 2018</p>
+                <p>
+                    {{ $date[0]->format('d. - ') }}
+                    {{ $date[6]->format('d. M. Y') }}
+                </p>
             </div>
 
             <div class="col-xs-4 print-email">
@@ -38,81 +41,73 @@
         <table class="calendar-days">
             <tr class="week-date">
                 <td></td>
-                <td>01.01</td>
-                <td>02.01</td>
-                <td>03.01</td>
-                <td>04.01</td>
-                <td>05.01</td>
-                <td>06.01</td>
-                <td>07.01</td>
+                @for ($i = 0; $i < 7; $i++)
+                    <td>
+                        {{ $date[$i]->format('d.m.') }}</td>
+                @endfor
             </tr>
             <tr class="week-days">
                 <td></td>
-                <td>Mo</td>
-                <td>Tu</td>
-                <td>We</td>
-                <td>Th</td>
-                <td>Fr</td>
-                <td>Sa</td>
-                <td>Su</td>
+                @for ($i = 0; $i < 7; $i++)
+                    @if((new DateTime())->format('d m Y') == $date[$i]->format('d m Y'))
+                        <td class="today">
+                    @else
+                        <td>
+                            @endif
+                            {{ $date[$i]->format('D') }}</td>
+                        @endfor
             </tr>
 
             <tr class="all-day">
                 <td>Allday</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                    <div class="one-allday-event red" draggable="true">
-                        <p>Private</p>
-                    </div>
-                </td>
-                <td>
-                    <div class="one-allday-event red" draggable="true">
-                        <p>Private</p>
-                    </div>
-                </td>
+                @for ($i = 0; $i < 7; $i++)
+                    @if((new DateTime())->format('d m Y') == $date[$i]->format('d m Y'))
+                        <td class="today">
+                    @else
+                        <td>
+                            @endif
+                            @foreach($manyAlldayFix as $oneAlldayFix)
+                                @if( new DateTime($oneAlldayFix->date) == $date[$i])
+                                    <div class="one-allday-event {{ $oneAlldayFix->color }}" draggable="true">
+                                        <p>{{ $oneAlldayFix->name }}</p>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </td>
+                        @endfor
             </tr>
 
             <tr class="time-events">
                 <td>Time-Events</td>
-                <td>
-                    <div class="one-time-event blue" draggable="true">
-                        <p>Work</p>
-                        <p>14:00</p>
-                        <p>20:00</p>
-                    </div>
-                </td>
-                <td></td>
-                <td>
-                    <div class="one-time-event blue" draggable="true">
-                        <p>Work</p>
-                        <p>9:30</p>
-                        <p>13:30</p>
-                    </div>
-                    <div class="one-time-event green" draggable="true">
-                        <p>Study</p>
-                        <p>14:0</p>
-                        <p>18:00</p>
-                    </div>
-                </td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                @for ($i = 0; $i < 7; $i++)
+                    @if((new DateTime())->format('d m Y') == $date[$i]->format('d m Y'))
+                        <td class="today">
+                    @else
+                        <td>
+                            @endif
+                            @foreach($manyWorktimePreferred as $oneWorktimePreferred)
+                                @if( new DateTime($oneWorktimePreferred->date) == $date[$i] )
+                                    <div class="one-time-event {{ $oneWorktimePreferred->color }}" draggable="true">
+                                        <p>{{ $oneWorktimePreferred->name }}</p>
+                                        <p>{{ $oneWorktimePreferred->from }}</p>
+                                        <p>{{ $oneWorktimePreferred->to }}</p>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </td>
+                        @endfor
             </tr>
 
             <tr class="add-buttons">
                 <td></td>
-                <td><a class="round-button" data-toggle="modal" data-target="#add-button-event">+</a></td>
-                <td><a class="round-button">+</a></td>
-                <td><a class="round-button">+</a></td>
-                <td><a class="round-button">+</a></td>
-                <td><a class="round-button">+</a></td>
-                <td><a class="round-button">+</a></td>
-                <td><a class="round-button">+</a></td>
+                @for ($i = 0; $i < 7; $i++)
+                    @if((new DateTime())->format('d m Y') == $date[$i]->format('d m Y'))
+                        <td class="today">
+                    @else
+                        <td>
+                            @endif
+                            <a class="round-button" data-toggle="modal" data-target="#add-button-event">+</a></td>
+                        @endfor
             </tr>
         </table>
 

@@ -22,6 +22,9 @@ class CreateWorktimeFix2 extends Migration
         $table->integer('employee_id')->unsigned();
         $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
 
+        $table->integer('category_id')->unsigned();
+        $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
+
         $table->timestamps();
     });
 }

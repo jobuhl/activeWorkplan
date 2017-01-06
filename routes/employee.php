@@ -24,12 +24,50 @@ Route::get('/employee-planning', function () {
     return view('employee.employee-planning');
 })->name('home');
 
+
 Route::get('/employee-planning2', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
-    return view('employee.employee-planning2');
+
+
+    $employee = DB::table('employees')
+        ->where('employees.id', Auth::user()->id)
+        ->get();
+
+    $manyWorktimePreferred = DB::table('worktime_preferred')
+        ->join('category', 'category.id', '=', 'worktime_preferred.category_id')
+        ->where('worktime_preferred.employee_id', $employee[0]->id)
+        ->get();
+
+    $manyAlldayFix = DB::table('allday_fix')
+        ->join('category', 'category.id', '=', 'allday_fix.category_id')
+        ->where('allday_fix.employee_id', $employee[0]->id)
+        ->get();
+
+
+    // anzuzeigendes Datum
+    $today = new DateTime('06-01-2017');
+
+    // Montag vor dem Datum
+    $monday = clone $today->modify('-' . ($today->format('N') - 1) . ' days');
+
+    $date = array(
+        clone $monday,
+        clone $monday->add(new DateInterval('P1D')),
+        clone $monday->add(new DateInterval('P1D')),
+        clone $monday->add(new DateInterval('P1D')),
+        clone $monday->add(new DateInterval('P1D')),
+        clone $monday->add(new DateInterval('P1D')),
+        clone $monday->add(new DateInterval('P1D'))
+    );
+
+    return view('employee.employee-planning2')
+        ->with('manyWorktimePreferred', $manyWorktimePreferred)
+        ->with('manyAlldayFix', $manyAlldayFix)
+        ->with('date', $date);
 })->name('home');
+
 
 Route::get('/employee-account', function () {
     $users[] = Auth::user();

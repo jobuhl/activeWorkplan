@@ -116,21 +116,41 @@
 
 .blue p,
 .red p,
-.green p {
+.orange p,
+.dark-green p,
+.grey p {
     color: var(--main-text-white);
+}
+
+.yellow p,
+.light-green p {
+    color: var(--main-text-black);
 }
 
 .blue {
     background-color: cornflowerblue;
 }
-
 .red {
     background-color: orangered;
 }
+.orange {
+    background-color: orange;
+}
+.dark-green {
+    background-color: green;
+}
 
-.green {
+.yellow {
+    background-color: yellow;
+}
+.light-green {
     background-color: yellowgreen;
 }
+
+.today {
+    background-color: var(--main-today-color);
+}
+
 
 
 /* --------------------------- HOVER ACTIVE --------------------------- */
