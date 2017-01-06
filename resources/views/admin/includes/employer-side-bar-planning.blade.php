@@ -52,6 +52,6 @@
 
     @include('admin.includes.modals-store-add')
     @include('includes.employer-modals-employee')
-    @include('employee.auth.register')
+    @include('admin.includes.add-emp')
 
 </section>

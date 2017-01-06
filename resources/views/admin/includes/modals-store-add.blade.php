@@ -27,8 +27,8 @@
                 <div class="modal-body">
 
                     <!-- Zeile 1 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row">
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -40,12 +40,12 @@
                             <p class=" inputmodal form-control">0005</p>
                         </aside>
 
-                    </article>
+                    </div>
 
 
                     <!-- Zeile 2 password Change button -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row">
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4">
@@ -57,11 +57,11 @@
                             <p><input class="inputmodal form-control" type="text" name="name" placeholder="Store Name">
                         </aside>
 
-                    </article>
+                    </div>
 
                     <!-- Zeile 3 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row{{ $errors->has('street') ? ' has-error' : '' }}">
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -72,13 +72,18 @@
                         <aside class="col-xs-12 col-sm-8 aside-right">
                             <p><input class=" inputmodal form-control space-cap" type="text" name="street" placeholder="Street">
                             </p>
+                            @if ($errors->has('street'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('street') }}</strong>
+                                    </span>
+                            @endif
                         </aside>
 
-                    </article>
+                    </div>
 
                     <!-- Zeile 4 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row">
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4">
@@ -92,11 +97,11 @@
                             </p>
                         </aside>
 
-                    </article>
+                    </div>
 
                     <!-- Zeile 5 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row">
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4">
@@ -109,11 +114,11 @@
                             </p>
                         </aside>
 
-                    </article>
+                    </div>
 
                     <!-- Zeile 6 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row">
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4">
@@ -125,11 +130,11 @@
                             <p><input class="inputmodal form-control space-cap" type="text" name="city" placeholder="City"></p>
                         </aside>
 
-                    </article>
+                    </div>
 
                     <!-- Zeile 7 -->
-                    <article class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                    <div class="row">
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4">
@@ -144,7 +149,7 @@
                             </p>
                         </aside>
 
-                    </article>
+                    </div>
 
                 </div>
                 <!-- Modal footer-->

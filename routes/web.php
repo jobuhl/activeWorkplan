@@ -34,9 +34,6 @@ Route::group(['prefix' => 'employee'], function () {
   Route::post('/login', 'EmployeeAuth\LoginController@login');
   Route::post('/logout', 'EmployeeAuth\LoginController@logout');
 
-  Route::get('/register', 'EmployeeAuth\RegisterController@showRegistrationForm');
-  Route::post('/register', 'EmployeeAuth\RegisterController@register');
-
   Route::post('/password/email', 'EmployeeAuth\ForgotPasswordController@sendResetLinkEmail');
   Route::post('/password/reset', 'EmployeeAuth\ResetPasswordController@reset');
   Route::get('/password/reset', 'EmployeeAuth\ForgotPasswordController@showLinkRequestForm');

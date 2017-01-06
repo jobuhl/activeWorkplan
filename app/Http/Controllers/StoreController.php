@@ -15,18 +15,22 @@ use Illuminate\Http\Request;
 class StoreController extends Controller
 {
 
-
-    public function create(Request $data) {
-
-        // Validierung klappt nicht :D
-        /*Validator::make($data, [
+    //sol sollte es funktionieren
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
             'country' => 'required|max:255',
             'city' => 'required|max:255',
             'street' => 'required|max:255',
-            'street_nr' => 'required|max:255',
-            'postcode' => 'required|max:255',
+            'street_nr' => 'required|max:255', //integer?
+            'postcode' => 'required|max:255',  //integer?
             'name' => 'required|max:255',
-        ]);*/
+        ]);
+    }
+
+    public function create(Request $data) {
+
+
 
 
         /* Aktuelle Company rausbekommen */

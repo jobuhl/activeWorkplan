@@ -175,6 +175,8 @@ Route::get('/employee-single/{id}', function ($id) {
 
 Route::post('/storeCreate', 'StoreController@create');
 
+Route::post('/addEmp', 'EmpController@create');
+
 
 // ------------------------ Footer ------------------------
 Route::get('/contact', function () {
