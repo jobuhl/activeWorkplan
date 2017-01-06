@@ -15,7 +15,6 @@ use Illuminate\Http\Request;
 class StoreController extends Controller
 {
 
-    //sol sollte es funktionieren
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -27,7 +26,10 @@ class StoreController extends Controller
             'name' => 'required|max:255',
         ]);
     }
+    // Validierung klappt nicht :D
+    /*Validator::make($data, [
 
+    ]);*/
     public function create(Request $data) {
 
 

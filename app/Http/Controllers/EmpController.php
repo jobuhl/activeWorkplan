@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
+
 use DB;
 use Auth;
 use App\Employee;
+use App\Role;
+use App\Contract;
 use Validator;
 
 
@@ -21,7 +25,8 @@ class EmpController extends Controller
         ]);
     }
 
-    public function create(Request $data) {
+    public function create(Request $data)
+    {
 
 
         /* Aktuelle Company rausbekommen */
@@ -30,16 +35,47 @@ class EmpController extends Controller
             ->get();
 
 
+
+
+
+
+
+
+
+        $role = Role::firstOrCreate(array(
+            'name' => $data['roleid']
+        ));
+
+        $contracts = Contract::create([
+            'period_of_agreement' => $data['period_of_agreement'],
+            'working_hours' => $data['working_hours'],
+            'classification' => $data['classification'],
+            'role_id' =>  $role->id,
+
+        ]);
+
         $emp = Employee::create([
             'name' => $data['name'],
             'forename' => $data['forename'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'retail_store_id'=> $data[ 'retail_store_id'],
-            'contract_id'=> $data['contract_id'],
+            'retail_store_id' => $data['retail_store_id'],
+            'contract_id' => $contracts->id,
         ]);
 
-        /* Daten zum uebergeben */
+
+
+
+
+
+
+
+
+
+        $company = DB::table('company')
+            ->where('company.admin_id', Auth::user()->id)
+            ->get();
+
         $retailStores = DB::table('retail_store')
             ->where('retail_store.company_id', $company[0]->id)
             ->get();
@@ -47,7 +83,42 @@ class EmpController extends Controller
         $employees = DB::table('employees')
             ->get();
 
+        $employee = DB::table('employees')
+            ->where('employees.id', $emp->id)
+            ->get();
 
-        return view('admin.employer-planning');
+        $roles = DB::table('role')
+            ->get();
+
+        $contracts = DB::table('contract')
+            ->get();
+
+        $address = DB::table('address')
+            ->where('address.id', $company[0]->id)
+            ->get();
+
+        $city = DB::table('city')
+            ->where('city.id', $address[0]->id)
+            ->get();
+
+        $country = DB::table('country')
+            ->where('country.id', $city[0]->id)
+            ->get();
+
+
+        //Auslesen der Datenbank für Selectfeld
+
+
+        return view('admin.employer-planning-single-employee')
+        ->with('retailStores', $retailStores)
+        ->with('employees', $employees)
+        ->with('employee', $employee[0])
+        ->with('contracts', $contracts)
+        ->with('roles', $roles)
+        ->with('company', $company[0])
+        ->with('address', $address[0])
+        ->with('city', $city[0])
+        ->with('country', $country[0]);
+
     }
 }
