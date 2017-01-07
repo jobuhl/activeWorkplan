@@ -31,6 +31,8 @@ Route::get('/employer-account', function () {
 Route::post('/storeCreate', 'StoreController@create');
 
 Route::post('/addEmp', 'EmpController@create');
+Route::post('/changeAdmin', 'AdminController@update');
+
 
 Route::post('/weekBackAdmOver', 'WeekController@backAdmOver');
 Route::post('/weekNextAdmOver', 'WeekController@nextAdmOver');

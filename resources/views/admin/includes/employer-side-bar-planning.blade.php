@@ -18,7 +18,7 @@
 
                 <!-- zum löschen -->
                 <li class="a-changes">
-                    <a data-toggle="modal" data-target="#test">-</a>
+                    <a  data-toggle="modal" data-target="#test">-</a>
                 </li>
             </ul>
         </li>
