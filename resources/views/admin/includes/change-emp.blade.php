@@ -26,21 +26,18 @@
 
                 <form>
 
-
                 @include('includes.employer-searchbar-employee')
                 <!-- Modal footer-->
                     <div class="modal-footer">
-                        <button class="form-control to-right modal-change-button" type="button" onclick="test()">
+                        <button class="form-control to-right modal-change-button" data-dismiss="modal" data-toggle="modal"
+                                data-target="#change-button-emp-2" type="button">
                             Change
                         </button>
                     </div>
 
                 </form>
             </div>
-
-
         </div>
-
     </div>
 </div>
 

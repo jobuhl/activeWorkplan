@@ -1,7 +1,7 @@
 @extends('employee.layout.employee-start')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('css/employee/calendar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/global/calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/employee/modal-event.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
 @endsection
@@ -14,23 +14,20 @@
         <aside id="aside-overview" class="col-xs-12 calendar-navigation">
 
             <div class="col-xs-4 navigation-today">
-                <form class="nav-form" method="POST" action="{{ url('/employee/weekBackEmpWork') }}">
-                    {{ csrf_field() }}
+                <form method="POST" action="{{ url('/employee/weekBackEmpWork') }}"> {{ csrf_field() }}
                     <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit"><</button>
                 </form>
 
-                <form class="nav-form" method="POST" action="{{ url('/employee/weekTodayEmpWork') }}">
-                    {{ csrf_field() }}
+                <form method="POST" action="{{ url('/employee/weekTodayEmpWork') }}"> {{ csrf_field() }}
                     <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">Today</button>
                 </form>
 
-                <form class="nav-form" method="POST" action="{{ url('/employee/weekNextEmpWork') }}">
-                    {{ csrf_field() }}
+                <form method="POST" action="{{ url('/employee/weekNextEmpWork') }}"> {{ csrf_field() }}
                     <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">></button>
                 </form>
             </div>
 
-            <div class="col-xs-4 calendar-navigation-p">
+            <div class="col-xs-4">
                 <p>
                     {{ $week[0]->format('d. - ') }}
                     {{ $week[6]->format('d. M. Y') }}
@@ -49,7 +46,7 @@
             <br>
         </aside>
 
-        <table class="calendar-days">
+        <table class="calendar-days-one-emp">
             <tr class="week-date">
                 <td></td>
                 @for ($i = 0; $i < 7; $i++)

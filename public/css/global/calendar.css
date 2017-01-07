@@ -1,6 +1,50 @@
 /* --------------------- NAVIGATION ---------------------------- */
 
-.nav-form {
+/* Small header zur Navigation über den Kalender in Overview und planning Ordner Employer */
+.calendar-navigation {
+    background: var(--main-small-header-color);
+    height: 42px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
+    padding: 7px 0 7px 0; /* Abstand wegen Button oben und unten */
+}
+
+.calendar-navigation-p > p {
+    float: right;
+}
+
+@media screen and (max-width: 768px) {
+    .navigation-today {
+        padding-left: 0;
+    }
+    .calendar-navigation-p {
+        padding-right: 0;
+    }
+    .calendar-navigation {
+        background-color: white;
+    }
+}
+
+.table-head-store {
+    width: 100%;
+    background-color: var(--main-small-header-color);
+    padding: 10px 0 10px 10px;
+    margin: 0; /* weil drunter sonst Abstand */
+    min-height: 45px;
+}
+
+.table-head-store .table-head-a {
+    font-weight: bold;
+    font-size: 13pt;
+    text-decoration: none;
+    color: var(--main-text-black);
+    float: left;
+}
+
+.table-head-store button {
+    float: right;
+    margin-right: 10px;
+}
+
+.calendar-navigation * {
     display: inline;
 }
 /* Allgemeine Button-Anpassungen */
@@ -35,51 +79,51 @@
 
 /* --------------------------- TABLE EMPLOYEE -------------------------------- */
 
-.calendar-days{
+.calendar-days-one-emp{
     background-color: var(--main-table-background);
     width: 100%;
     table-layout: fixed;
 }
 
-.calendar-days > tr > td:first-child {
+.calendar-days-one-emp > tr > td:first-child {
     max-width: 12px;
 }
 
-.calendar-days td {
+.calendar-days-one-emp td {
     text-align: center;
 }
 
-.calendar-days .week-days {
+.calendar-days-one-emp .week-days {
     border-bottom: 1px solid var(--main-border-color);
 }
 
-.calendar-days .all-day {
+.calendar-days-one-emp .all-day {
     border-bottom: 2px solid var(--main-border-color);
     height: 28px; /* damit zeile nicht kleiner, wenn kein allday event drin ist */
 }
 
-.calendar-days .time-events {
+.calendar-days-one-emp .time-events {
     height: 200px; /* it means min-height */
     vertical-align: top; /* events (elemente) oben ausrichten */
 }
 
-.calendar-days .add-buttons {
+.calendar-days-one-emp .add-buttons {
     height: 40px;
     border-bottom: 1px solid var(--main-border-color);
 }
-.calendar-days .all-day td:not(:first-child),
-.calendar-days .time-events td:not(:first-child),
-.calendar-days .add-buttons td:not(:first-child) {
+.calendar-days-one-emp .all-day td:not(:first-child),
+.calendar-days-one-emp .time-events td:not(:first-child),
+.calendar-days-one-emp .add-buttons td:not(:first-child) {
     border-left: 1px solid var(--main-border-color);
 }
 
 /* Samstag Sonntag Hintergrund */
-.calendar-days .all-day td:nth-child(7),
-.calendar-days .all-day td:nth-child(8),
-.calendar-days .time-events td:nth-child(7),
-.calendar-days .time-events td:nth-child(8),
-.calendar-days .add-buttons td:nth-child(7),
-.calendar-days .add-buttons td:nth-child(8) {
+.calendar-days-one-emp .all-day td:nth-child(7),
+.calendar-days-one-emp .all-day td:nth-child(8),
+.calendar-days-one-emp .time-events td:nth-child(7),
+.calendar-days-one-emp .time-events td:nth-child(8),
+.calendar-days-one-emp .add-buttons td:nth-child(7),
+.calendar-days-one-emp .add-buttons td:nth-child(8) {
     background-color: var(--main-small-header-color);
 }
 
@@ -90,49 +134,44 @@
     padding: 4px 8px 5px 8px;
 }
 
-.today {
-    background-color: var(--main-today-color);
-}
-
 /* ---------------------------- TABLE ADMIN ------------------------------ */
-.calendar-days-admin {
+.calendar-days-all-emp {
     background-color: var(--main-table-background);
     width: 100%;
     table-layout: fixed;
 }
 
-.calendar-days-admin td {
+.calendar-days-all-emp td {
     text-align: center;
 }
 
-.calendar-days-admin .all-day {
-    border-top: 2px solid var(--main-border-color);
+.calendar-days-all-emp .week-days,
+.calendar-days-all-emp .all-day td:not(:first-child),
+.calendar-days-all-emp .time-events {
+    border-bottom: 1px solid var(--main-border-color);
     height: 28px; /* damit zeile nicht kleiner, wenn kein allday event drin ist */
 }
 
-
-.calendar-days-admin .all-day td:not(:first-child) {
-    border-bottom: 1px solid var(--main-border-color);
-}
-
-.calendar-days-admin .time-events {
+.calendar-days-all-emp .time-events {
     vertical-align: top; /* events (elemente) oben ausrichten */
 }
 
-.calendar-days-admin .all-day td:not(:nth-child(1)):not(:nth-child(2)),
-.calendar-days-admin .time-events td:not(:nth-child(1)):not(:nth-child(2)),
-.calendar-days-admin .add-buttons td:not(:nth-child(1)):not(:nth-child(2)) {
+.calendar-days-all-emp .all-day td:not(:nth-child(1)):not(:nth-child(2)),
+.calendar-days-all-emp .time-events td:not(:nth-child(1)):not(:nth-child(2)),
+.calendar-days-all-emp .add-buttons td:not(:nth-child(1)):not(:nth-child(2)) {
     border-left: 1px solid var(--main-border-color);
 }
 
 /* Samstag Sonntag Hintergrund */
-.calendar-days-admin .all-day td:nth-child(9),
-.calendar-days-admin .all-day td:nth-child(8),
-.calendar-days-admin .time-events td:nth-child(9),
-.calendar-days-admin .time-events td:nth-child(8),
-.calendar-days-admin .add-buttons td:nth-child(9),
-.calendar-days-admin .add-buttons td:nth-child(8) {
+.calendar-days-all-emp .all-day td:nth-child(9),
+.calendar-days-all-emp .all-day td:nth-child(8),
+.calendar-days-all-emp .time-events td:nth-child(9),
+.calendar-days-all-emp .time-events td:nth-child(8) {
     background-color: var(--main-small-header-color);
+}
+
+.today {
+    background-color: var(--main-today-color);
 }
 
 

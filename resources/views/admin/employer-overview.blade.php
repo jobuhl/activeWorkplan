@@ -1,11 +1,9 @@
 @extends('admin.layout.employer-start')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/side-bar.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-calendar-navigation.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/employer/overview.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/employee/calendar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/global/calendar.css')}}">
 @endsection
 
 @section('content')
@@ -43,18 +41,15 @@
             <nav class="calendar-navigation">
 
                 <div class="col-xs-4 navigation-today">
-                    <form class="nav-form" method="POST" action="{{ url('/admin/weekBackAdmOver') }}">
-                        {{ csrf_field() }}
+                    <form method="POST" action="{{ url('/admin/weekBackAdmOver') }}"> {{ csrf_field() }}
                         <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit"><</button>
                     </form>
 
-                    <form class="nav-form" method="POST" action="{{ url('/admin/weekTodayAdmOver') }}">
-                        {{ csrf_field() }}
+                    <form method="POST" action="{{ url('/admin/weekTodayAdmOver') }}"> {{ csrf_field() }}
                         <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">Today</button>
                     </form>
 
-                    <form class="nav-form" method="POST" action="{{ url('/admin/weekNextAdmOver') }}">
-                        {{ csrf_field() }}
+                    <form method="POST" action="{{ url('/admin/weekNextAdmOver') }}"> {{ csrf_field() }}
                         <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">></button>
                     </form>
                 </div>
@@ -72,7 +67,7 @@
             <br class="br-under-navigation">
 
             @foreach($allRetailStores as $retailStore)
-                    <div class="table-head-store">
+                    <div class="print-email table-head-store">
                         <a class="table-head-a">{{ $retailStore->id }} {{ $retailStore->name }}</a>
                         <button onclick="sendEmail()">
                             <span class="glyphicon glyphicon-envelope"></span> E-Mail
@@ -82,9 +77,8 @@
                         </button>
                     </div>
 
-                    <table class="calendar-days-admin">
+                    <table class="calendar-days-all-emp">
                         <tr class="week-date">
-                            <td></td>
                             <td></td>
                             @for ($i = 0; $i < 7; $i++)
                                 <td>
@@ -96,7 +90,6 @@
 
                         <tr class="week-days">
                             <td>Employees</td>
-                            <td></td>
                             @for ($i = 0; $i < 7; $i++)
                                 @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                     <td class="today">
@@ -111,7 +104,6 @@
                             @if($employee->retail_store_id == $retailStore->id)
                                 <tr class="all-day">
                                     <td>{{ $employee->surname }} {{ $employee->forename }}</td>
-                                    <td>Allday</td>
                                     @for ($i = 0; $i < 7; $i++)
                                         @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                             <td class="today">
@@ -132,7 +124,6 @@
 
                                 <tr class="time-events">
                                     <td></td>
-                                    <td>Time-Events</td>
                                     @for ($i = 0; $i < 7; $i++)
                                         @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                             <td class="today">

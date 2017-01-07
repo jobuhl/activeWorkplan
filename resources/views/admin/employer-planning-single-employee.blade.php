@@ -1,9 +1,8 @@
 @extends('admin.layout.employer-start')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-calendar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/global/calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/side-bar.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-calendar-navigation.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-account.css')}}">
 @endsection
 
