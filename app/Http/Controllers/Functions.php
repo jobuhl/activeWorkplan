@@ -35,6 +35,13 @@ class Functions extends Controller
             ->get()[0];
     }
 
+    function oneRetailStore($retailStoreName)
+    {
+        return DB::table('retail_store')
+            ->where('retail_store.name', $retailStoreName)
+            ->get()[0];
+    }
+
     function allRetailStoresOfCompany($companyId)
     {
         return DB::table('retail_store')

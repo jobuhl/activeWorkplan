@@ -10,8 +10,8 @@
  <h5 class="select-ueberschrift">Search or select the Employee</h5>
 <br>
 
-    <select class="form-control to-right modal-input space-cap selectpicker col-xs-12"  data-live-search="true"
-            name="retail_store_name">
+    <select id="select-emp" class="form-control to-right modal-input space-cap selectpicker col-xs-12"  data-live-search="true"
+            name="select-emp" onchange="test(this)">
 
         @foreach($allRetailStores as $retailStore)
             <optgroup label="{{ $retailStore->name }}">
@@ -20,10 +20,10 @@
                 @foreach($allEmployees as $employee)
                     @if($employee->retail_store_id == $retailStore->id)
 
-                    <option>{{ $employee->surname }} {{ $employee->forename }}</option>
+                    <option value="{{ $employee->id }}">{{ $employee->surname }} {{ $employee->forename }}</option>
 
                     @endif
-                    @endforeach
+                @endforeach
 
             </optgroup>
         @endforeach

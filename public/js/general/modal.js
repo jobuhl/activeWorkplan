@@ -19,4 +19,7 @@ function signup() {
     window.location.href="../../php/employer/overview.php";
 }
 
-
+function test(vari) {
+    var mal = vari.value;
+    alert(mal);
+}

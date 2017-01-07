@@ -32,13 +32,8 @@ class StoreController extends Controller
     ]);*/
     public function create(Request $data) {
 
-
-
-
         /* Aktuelle Company rausbekommen */
-        $company = DB::table('company')
-            ->where('company.admin_id', Auth::user()->id)
-            ->get();
+        $company = thisCompany();
 
 
         /* Daten speichern */
@@ -62,22 +57,11 @@ class StoreController extends Controller
 
         $thisRetailStore = RetailStore::create(array(
             'name' => $data['name'],
-            'company_id' => $company[0]->id,
+            'company_id' => $company->id,
             'address_id' => $newAddress->id
         ));
 
 
-        /* Daten zum uebergeben */
-        $retailStores = DB::table('retail_store')
-            ->where('retail_store.company_id', $company[0]->id)
-            ->get();
-
-        $employees = DB::table('employees')
-            ->get();
-
-        return view('admin.employer-planning')
-            ->with('retailStores', $retailStores)
-            ->with('thisRetailStore', $thisRetailStore)
-            ->with('employees', $employees);
+        return redirect('/admin/employer-planning/' . $thisRetailStore->id);
     }
 }
