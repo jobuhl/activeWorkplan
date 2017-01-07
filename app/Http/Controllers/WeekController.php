@@ -7,120 +7,84 @@ use DateTime;
 use DB;
 use Auth;
 use DateInterval;
+use App\Http\Controllers\Functions;
 
 class WeekController extends Controller
 {
+    /* ------------------------- Employee Planning -------------------------- */
 
-    public function next(Request $data) {
-
-        $monday = clone (new DateTime($data['date']))->modify('+7 days');
-
-
-
-        $employee = DB::table('employees')
-            ->where('employees.id', Auth::user()->id)
-            ->get();
-
-        $manyWorktimePreferred = DB::table('worktime_preferred')
-            ->join('category', 'category.id', '=', 'worktime_preferred.category_id')
-            ->where('worktime_preferred.employee_id', $employee[0]->id)
-            ->get();
-
-        $manyAlldayFix = DB::table('allday_fix')
-            ->join('category', 'category.id', '=', 'allday_fix.category_id')
-            ->where('allday_fix.employee_id', $employee[0]->id)
-            ->get();
-
-        $date = array(
-            clone $monday,
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D'))
-        );
-
-        return view('employee.employee-planning2')
-            ->with('manyWorktimePreferred', $manyWorktimePreferred)
-            ->with('manyAlldayFix', $manyAlldayFix)
-            ->with('date', $date);
+    public function nextEmpPlan(Request $data)
+    {
+        $today = clone (new DateTime($data['date']))->modify('+7 days');
+        return $this->empPlan($today);
     }
 
-    public function back(Request $data) {
-
-        $monday = clone (new DateTime($data['date']))->modify('-7 days');
-
-
-        $employee = DB::table('employees')
-            ->where('employees.id', Auth::user()->id)
-            ->get();
-
-        $manyWorktimePreferred = DB::table('worktime_preferred')
-            ->join('category', 'category.id', '=', 'worktime_preferred.category_id')
-            ->where('worktime_preferred.employee_id', $employee[0]->id)
-            ->get();
-
-        $manyAlldayFix = DB::table('allday_fix')
-            ->join('category', 'category.id', '=', 'allday_fix.category_id')
-            ->where('allday_fix.employee_id', $employee[0]->id)
-            ->get();
-
-        $date = array(
-            clone $monday,
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D'))
-        );
-
-        return view('employee.employee-planning2')
-            ->with('manyWorktimePreferred', $manyWorktimePreferred)
-            ->with('manyAlldayFix', $manyAlldayFix)
-            ->with('date', $date);
+    public function backEmpPlan(Request $data)
+    {
+        $today = clone (new DateTime($data['date']))->modify('-7 days');
+        return $this->empPlan($today);
     }
 
-    public function today(Request $data) {
-
-
-
-
-        $employee = DB::table('employees')
-            ->where('employees.id', Auth::user()->id)
-            ->get();
-
-        $manyWorktimePreferred = DB::table('worktime_preferred')
-            ->join('category', 'category.id', '=', 'worktime_preferred.category_id')
-            ->where('worktime_preferred.employee_id', $employee[0]->id)
-            ->get();
-
-        $manyAlldayFix = DB::table('allday_fix')
-            ->join('category', 'category.id', '=', 'allday_fix.category_id')
-            ->where('allday_fix.employee_id', $employee[0]->id)
-            ->get();
-
-        // anzuzeigendes Datum
+    public function todayEmpPlan(Request $data)
+    {
         $today = new DateTime();
+        return $this->empPlan($today);
+    }
 
-        // Montag vor dem Datum
-        $monday = clone $today->modify('-' . ($today->format('N') - 1) . ' days');
+    public function empPlan($date) {
+        $thisEmployee = oneEmployee(Auth::user()->id);
 
+        $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
 
-        $date = array(
-            clone $monday,
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D')),
-            clone $monday->add(new DateInterval('P1D'))
-        );
+        $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
+
+        $monday = getMondayBeforeDay($date);
+
+        $week = getWeekArray($monday);
 
         return view('employee.employee-planning2')
-            ->with('manyWorktimePreferred', $manyWorktimePreferred)
-            ->with('manyAlldayFix', $manyAlldayFix)
-            ->with('date', $date);
+            ->with('manyTimeEvent', $manyTimeEvent)
+            ->with('manyAlldayEvent', $manyAlldayEvent)
+            ->with('week', $week);
+    }
+
+
+    /* ------------------------- Employee Workplan -------------------------- */
+    public function nextEmpWork(Request $data)
+    {
+        $today = clone (new DateTime($data['date']))->modify('+7 days');
+        return $this->empWork($today);
+    }
+
+    public function backEmpWork(Request $data)
+    {
+        $today = clone (new DateTime($data['date']))->modify('-7 days');
+        return $this->empWork($today);
+    }
+
+    public function todayEmpWork(Request $data)
+    {
+        $today = new DateTime();
+        return $this->empWork($today);
+    }
+
+    public function empWork($date) {
+        $thisEmployee = oneEmployee(Auth::user()->id);
+
+        $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
+
+        $manyWorktimeEvent = worktimeFixOfEmployee($thisEmployee->id);
+
+        $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
+
+        $monday = getMondayBeforeDay($date);
+
+        $week = getWeekArray($monday);
+
+        return view('employee.employee-workplan2')
+            ->with('manyTimeEvent', $manyTimeEvent)
+            ->with('manyWorktimeEvent', $manyWorktimeEvent)
+            ->with('manyAlldayEvent', $manyAlldayEvent)
+            ->with('week', $week);
     }
 }

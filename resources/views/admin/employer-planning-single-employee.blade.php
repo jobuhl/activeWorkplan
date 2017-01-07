@@ -22,7 +22,7 @@
 
         <aside class="col-xs-12 col-sm-9 my-right-side">
 
-            <h2>{{ $employee->name }} {{ $employee->forename }}</h2>
+            <h2>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</h2>
 
             <nav class="calendar-navigation">
                 <div class="calendar-navigation-padding">
@@ -70,7 +70,7 @@
                 </tr>
 
                 <tr>
-                    <td>{{ $employee->name }} {{ $employee->forename }}</td>
+                    <td>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
                     <td>All-day</td>
                     <td></td>
                     <td></td>
@@ -116,11 +116,11 @@
             <table class="table-account">
                 <tr>
                     <td>Employer ID</td>
-                    <td>{{ $employee->id }}</td>
+                    <td>{{ $thisEmployee->id }}</td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td>{{ $employee->password }}</td>
+                    <td>{{ $thisEmployee->password }}</td>
                 </tr>
 
                 <tr class="table-space">
@@ -130,15 +130,15 @@
 
                 <tr>
                     <td>Surname</td>
-                    <td>{{ $employee->name }}</td>
+                    <td>{{ $thisEmployee->surname }}</td>
                 </tr>
                 <tr>
                     <td>Forename</td>
-                    <td>{{ $employee->forename }}</td>
+                    <td>{{ $thisEmployee->forename }}</td>
                 </tr>
                 <tr>
                     <td>E-Mail</td>
-                    <td>{{ $employee->email }}</td>
+                    <td>{{ $thisEmployee->email }}</td>
                 </tr>
 
                 <tr class="table-space">
@@ -148,47 +148,19 @@
 
                 <tr>
                     <td>Period of Agreement</td>
-                    <td>
-                        @foreach($contracts as $contract)
-                            @if($employee->contract_id == $contract->id)
-                                {{ $contract->period_of_agreement }}
-                            @endif
-                        @endforeach
-                    </td>
+                    <td>{{ $thisEmployee->period_of_agreement }}</td>
                 </tr>
                 <tr>
                     <td>Role</td>
-                    <td>
-                        @foreach($contracts as $contract)
-                            @if($employee->contract_id == $contract->id)
-                                @foreach($roles as $role)
-                                    @if($contract->role_id == $role->id)
-                                    {{ $role->name }}
-                                    @endif
-                                @endforeach
-                            @endif
-                        @endforeach
-                    </td>
+                    <td>{{ $thisEmployee->role }}</td>
                 </tr>
                 <tr>
                     <td>Classification</td>
-                    <td>
-                        @foreach($contracts as $contract)
-                            @if($employee->contract_id == $contract->id)
-                                {{ $contract->classification }}
-                            @endif
-                        @endforeach
-                    </td>
+                    <td>{{ $thisEmployee->classification }}</td>
                 </tr>
                 <tr>
                     <td>Agreement working hours</td>
-                    <td>
-                        @foreach($contracts as $contract)
-                            @if($employee->contract_id == $contract->id)
-                                {{ $contract->working_hours }}
-                            @endif
-                        @endforeach
-                    </td>
+                    <td>{{ $thisEmployee->working_hours }}</td>
                 </tr>
 
                 <tr class="table-space">
@@ -201,20 +173,15 @@
                     <td>{{ $company->name }}</td>
                 </tr>
                 <tr>
-                    <td>Preferred Retail Store</td>
-                    <td>
-                        @foreach($retailStores as $retailStore)
-                            @if($employee->retail_store_id == $retailStore->id)
-                                {{ $retailStore->id }} {{ $retailStore->name }}
-                            @endif
-                        @endforeach
-                    </td>
+                    <td>Retail Store</td>
+                    <td>{{ $thisRetailStore->name }} (id: {{ $thisRetailStore->id }})</td>
                 </tr>
                 <tr>
-                    <td>Address Retail Store</td>
-                    <td>
-                        --------fehlt noch!!!
+                    <td>Address of Retail Store</td>
+                    <td>{{ $address->street }} {{ $address->street_nr }}
+                        , {{ $address->postcode }} {{ $address->city }}, {{ $address->country }}
                     </td>
+
                 </tr>
             </table>
 

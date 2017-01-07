@@ -13,14 +13,14 @@
     <select class="form-control to-right modal-input space-cap selectpicker col-xs-12"  data-live-search="true"
             name="retail_store_name">
 
-        @foreach($retailStores as $retailStore)
+        @foreach($allRetailStores as $retailStore)
             <optgroup label="{{ $retailStore->name }}">
 
                 <option style="display: none">Search...</option>
-                @foreach($employees as $employee)
+                @foreach($allEmployees as $employee)
                     @if($employee->retail_store_id == $retailStore->id)
 
-                    <option>{{ $employee->name }} {{ $employee->forename }}</option>
+                    <option>{{ $employee->surname }} {{ $employee->forename }}</option>
 
                     @endif
                     @endforeach

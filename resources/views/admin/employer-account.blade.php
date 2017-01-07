@@ -20,11 +20,11 @@
                 <table class="table-account">
                     <tr>
                         <td>Admin ID</td>
-                        <td>{{ Auth::user()->id }}</td>
+                        <td>{{ $admin->id }}</td>
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td>{{ Auth::user()->password }}</td>
+                        <td>{{ $admin->password }}</td>
                     </tr>
 
                     <tr class="table-space">
@@ -34,15 +34,15 @@
 
                     <tr>
                         <td>Surname</td>
-                        <td>{{ Auth::user()->name }}</td>
+                        <td>{{ $admin->name }}</td>
                     </tr>
                     <tr>
                         <td>Forename</td>
-                        <td>{{ Auth::user()->forename }}</td>
+                        <td>{{ $admin->forename }}</td>
                     </tr>
                     <tr>
                         <td>E-Mail</td>
-                        <td>{{ Auth::user()->email }}</td>
+                        <td>{{ $admin->email }}</td>
                     </tr>
 
                     <tr class="table-space">
@@ -52,13 +52,13 @@
 
                     <tr class="table-space-above">
                         <td>Company name</td>
-                        <td>{{ $company[0]->name }}</td>
+                        <td>{{ $company->name }}</td>
                     </tr>
                     <tr>
                         <td>Headquarter Address</td>
-                        <td>{{ $address[0]->street }} {{ $address[0]->street_nr }}
-                            , {{ $address[0]->postcode }} {{ $city[0]->name }}
-                            , {{ $country[0]->name }}
+                        <td>{{ $address->street }} {{ $address->street_nr }}
+                            , {{ $address->postcode }} {{ $address->city }}
+                            , {{ $address->country }}
                         </td>
                     </tr>
                 </table>

@@ -9,22 +9,22 @@
 @section('content')
 
     <section class="fake-body container emp-planning">
-        <h2>Proposal working time</h2>
+        <h2>Fix Workplan</h2>
 
         <aside id="aside-overview" class="col-xs-12 calendar-navigation">
 
             <div class="col-xs-4 navigation-today">
-                <form class="nav-form" method="POST" action="{{ url('/employee/weekBackEmpPlan') }}">
+                <form class="nav-form" method="POST" action="{{ url('/employee/weekBackEmpWork') }}">
                     {{ csrf_field() }}
                     <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit"><</button>
                 </form>
 
-                <form class="nav-form" method="POST" action="{{ url('/employee/weekTodayEmpPlan') }}">
+                <form class="nav-form" method="POST" action="{{ url('/employee/weekTodayEmpWork') }}">
                     {{ csrf_field() }}
                     <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">Today</button>
                 </form>
 
-                <form class="nav-form" method="POST" action="{{ url('/employee/weekNextEmpPlan') }}">
+                <form class="nav-form" method="POST" action="{{ url('/employee/weekNextEmpWork') }}">
                     {{ csrf_field() }}
                     <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">></button>
                 </form>
@@ -96,12 +96,12 @@
                     @else
                         <td>
                             @endif
-                            @foreach($manyTimeEvent as $oneTimeEvent)
-                                @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y') )
-                                    <div class="one-time-event {{ $oneTimeEvent->color }}" draggable="true">
-                                        <p>{{ $oneTimeEvent->name }}</p>
-                                        <p>{{ $oneTimeEvent->from }}</p>
-                                        <p>{{ $oneTimeEvent->to }}</p>
+                            @foreach($manyWorktimeEvent as $oneWorktimeEvent)
+                                @if( (new DateTime($oneWorktimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y') )
+                                    <div class="one-time-event {{ $oneWorktimeEvent->color }}" draggable="true">
+                                        <p>{{ $oneWorktimeEvent->name }}</p>
+                                        <p>{{ $oneWorktimeEvent->from }}</p>
+                                        <p>{{ $oneWorktimeEvent->to }}</p>
                                     </div>
                                 @endif
                             @endforeach
@@ -117,7 +117,7 @@
                     @else
                         <td>
                             @endif
-                            <a class="round-button" data-toggle="modal" data-target="#add-button-event">+</a></td>
+                        </td>
                         @endfor
             </tr>
         </table>

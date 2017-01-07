@@ -24,7 +24,7 @@
 
             <ul>
                 <li><input class="input-sidebar" type="text" placeholder="Search Store..."></li>
-                @foreach($retailStores as $retailStore)
+                @foreach($allRetailStores as $retailStore)
                     <li><a>{{ $retailStore->id }} {{ $retailStore->name }}</a></li>
                 @endforeach
             </ul>
@@ -70,7 +70,7 @@
             </nav>
             <br class="br-under-navigation">
 
-            @foreach($retailStores as $retailStore)
+            @foreach($allRetailStores as $retailStore)
                 <aside class="col-xs-12">
                     <div class="table-head-store">
                         <a class="table-head-a">{{ $retailStore->id }} {{ $retailStore->name }}</a>
@@ -107,10 +107,10 @@
                             <th>Su</th>
                         </tr>
 
-                        @foreach($employees as $employee)
+                        @foreach($allEmployees as $employee)
                             @if($employee->retail_store_id == $retailStore->id)
                                 <tr>
-                                    <td>{{ $employee->name }} {{ $employee->forename }}</td>
+                                    <td>{{ $employee->surname }} {{ $employee->forename }}</td>
                                     <td>start</td>
                                     <td></td>
                                     <td></td>

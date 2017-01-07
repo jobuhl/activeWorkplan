@@ -1,25 +1,15 @@
 <?php
 
+include('functions.php');
+/* --------------------------- OVERVIEW ------------------------------- */
 
 Route::get('/home', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('admin')->user();
 
-    $company = DB::table('company')
-        ->where('company.admin_id', Auth::user()->id)
-        ->get();
+    return redirect('/admin/employer-overview');
 
-    $retailStores = DB::table('retail_store')
-        ->where('retail_store.company_id', $company[0]->id)
-        ->get();
-
-    $employees = DB::table('employees')
-        ->get();
-
-    return view('admin.home')
-        ->with('retailStores', $retailStores)
-        ->with('employees', $employees);
 })->name('home');
 
 
@@ -28,157 +18,96 @@ Route::get('/employer-overview', function () {
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('admin')->user();
 
-    $company = DB::table('company')
-        ->where('company.admin_id', Auth::user()->id)
-        ->get();
+    $company = thisCompany();
 
-    $retailStores = DB::table('retail_store')
-        ->where('retail_store.company_id', $company[0]->id)
-        ->get();
+    $allRetailStores = allRetailStoresOfCompany($company->id);
 
-    $employees = DB::table('employees')
-        ->get();
+    $allEmployees = allEmployeesOfCompany($company->id);
 
     return view('admin.home')
-        ->with('retailStores', $retailStores)
-        ->with('employees', $employees);
+        ->with('allRetailStores', $allRetailStores)
+        ->with('allEmployees', $allEmployees);
 })->name('home');
 
 
+/* --------------------------- Planning ------------------------------- */
 
-
-
-
-
-Route::get('employer-planning/{id}', function ($id) {
+Route::get('employer-planning/{id}', function ($thisRetailStoreId) {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('admin')->user();
 
-    $company = DB::table('company')
-        ->where('company.admin_id', Auth::user()->id)
-        ->get();
+    $company = thisCompany();
 
-    $retailStores = DB::table('retail_store')
-        ->where('retail_store.company_id', $company[0]->id)
-        ->get();
+    $allRetailStores = allRetailStoresOfCompany($company->id);
 
-    $thisRetailStore = DB::table('retail_store')
-        ->where('retail_store.company_id', $company[0]->id)
-        ->where('retail_store.id', $id)
-        ->get();
+    $thisRetailStore = thisRetailStore($thisRetailStoreId);
 
-    $employees = DB::table('employees')
-        ->get();
+    $allEmployees = allEmployeesOfCompany($company->id);
 
     return view('admin.employer-planning')
-        ->with('retailStores', $retailStores)
-        ->with('thisRetailStore', $thisRetailStore[0])
-        ->with('employees', $employees);
+        ->with('allRetailStores', $allRetailStores)
+        ->with('thisRetailStore', $thisRetailStore)
+        ->with('allEmployees', $allEmployees);
 })->name('home');
 
 
+Route::get('/employee-single/{id}', function ($employeeId) {
+    $users[] = Auth::user();
+    $users[] = Auth::guard()->user();
+    $users[] = Auth::guard('admin')->user();
+
+    $company = thisCompany();
+
+    $allRetailStores = allRetailStoresOfCompany($company->id);
+
+    $allEmployees = allEmployeesOfCompany($company->id);
+
+    $thisEmployee = oneEmployee($employeeId);
+
+    $address = oneAddress($thisEmployee->retail_store_id);
+
+    $thisRetailStore = thisRetailStore($thisEmployee->retail_store_id);
+
+    return view('admin.employer-planning-single-employee')
+        ->with('allRetailStores', $allRetailStores)
+        ->with('thisRetailStore', $thisRetailStore)
+        ->with('allEmployees', $allEmployees)
+        ->with('thisEmployee', $thisEmployee)
+        ->with('company', $company)
+        ->with('address', $address);
+})->name('home');
 
 
-
-
-
-
+/* --------------------------- Account ------------------------------- */
 
 Route::get('/employer-account', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('admin')->user();
 
-    $company = DB::table('company')
-        ->where('company.admin_id', Auth::user()->id)
-        ->get();
+    $company = thisCompany();
 
-    $address = DB::table('address')
-        ->where('address.id', $company[0]->id)
-        ->get();
+    $admin = thisAdmin();
 
-    $city = DB::table('city')
-        ->where('city.id', $address[0]->id)
-        ->get();
-
-    $country = DB::table('country')
-        ->where('country.id', $city[0]->id)
-        ->get();
-
+    $address = oneAddress($company->id);
 
     return view('admin.employer-account')
         ->with('company', $company)
-        ->with('address', $address)
-        ->with('city', $city)
-        ->with('country', $country);
+        ->with('admin', $admin)
+        ->with('address', $address);
 })->name('home');
 
 
-
-
-
-
-Route::get('/employee-single/{id}', function ($id) {
-    $users[] = Auth::user();
-    $users[] = Auth::guard()->user();
-    $users[] = Auth::guard('admin')->user();
-
-    $company = DB::table('company')
-        ->where('company.admin_id', Auth::user()->id)
-        ->get();
-
-    $retailStores = DB::table('retail_store')
-        ->where('retail_store.company_id', $company[0]->id)
-        ->get();
-
-    $employees = DB::table('employees')
-        ->get();
-
-    $employee = DB::table('employees')
-        ->where('employees.id', $id)
-        ->get();
-
-    $roles = DB::table('role')
-        ->get();
-
-    $contracts = DB::table('contract')
-        ->get();
-
-    $address = DB::table('address')
-        ->where('address.id', $company[0]->id)
-        ->get();
-
-    $city = DB::table('city')
-        ->where('city.id', $address[0]->id)
-        ->get();
-
-    $country = DB::table('country')
-        ->where('country.id', $city[0]->id)
-        ->get();
-
-
-
-    return view('admin.employer-planning-single-employee')
-        ->with('retailStores', $retailStores)
-        ->with('employees', $employees)
-        ->with('employee', $employee[0])
-        ->with('contracts', $contracts)
-        ->with('roles', $roles)
-        ->with('company', $company[0])
-        ->with('address', $address[0])
-        ->with('city', $city[0])
-        ->with('country', $country[0]);
-})->name('home');
-
-
+/* --------------------------- Formulare ------------------------------- */
 
 Route::post('/storeCreate', 'StoreController@create');
 
 Route::post('/addEmp', 'EmpController@create');
 
 
-// ------------------------ Footer ------------------------
+/* --------------------------- Footer ------------------------------- */
+
 Route::get('/contact', function () {
     return view('admin.contact');
 });

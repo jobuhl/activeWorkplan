@@ -1,80 +1,104 @@
 <?php
 
+/* --------------------------- WORKPLAN ------------------------------- */
 Route::get('/home', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
 
-    //dd($users);
-
-    return view('employee.home');
+    return redirect('/employee/employee-workplan2');
 })->name('home');
 
-Route::get('/employee-workplan', function () {
+
+Route::get('/employee-workplan2', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
-    return view('employee.employee-workplan');
+
+    $thisEmployee = oneEmployee(Auth::user()->id);
+
+    $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
+
+    $manyWorktimeEvent = worktimeFixOfEmployee($thisEmployee->id);
+
+    $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
+
+    $today = new DateTime();
+
+    $monday = getMondayBeforeDay($today);
+
+    $week = getWeekArray($monday);
+
+    return view('employee.employee-workplan2')
+        ->with('manyTimeEvent', $manyTimeEvent)
+        ->with('manyWorktimeEvent', $manyWorktimeEvent)
+        ->with('manyAlldayEvent', $manyAlldayEvent)
+        ->with('week', $week);
 })->name('home');
 
-Route::get('/employee-planning', function () {
-    $users[] = Auth::user();
-    $users[] = Auth::guard()->user();
-    $users[] = Auth::guard('employee')->user();
-    return view('employee.employee-planning');
-})->name('home');
 
+/* --------------------------- PLANNING ------------------------------- */
 
 Route::get('/employee-planning2', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
 
+    $thisEmployee = oneEmployee(Auth::user()->id);
 
-    $employee = DB::table('employees')
-        ->where('employees.id', Auth::user()->id)
-        ->get();
+    $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
 
-    $manyWorktimePreferred = DB::table('worktime_preferred')
-        ->join('category', 'category.id', '=', 'worktime_preferred.category_id')
-        ->where('worktime_preferred.employee_id', $employee[0]->id)
-        ->get();
+    $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
 
-    $manyAlldayFix = DB::table('allday_fix')
-        ->join('category', 'category.id', '=', 'allday_fix.category_id')
-        ->where('allday_fix.employee_id', $employee[0]->id)
-        ->get();
-
-
-    // anzuzeigendes Datum
     $today = new DateTime();
 
-    // Montag vor dem Datum
-    $monday = clone $today->modify('-' . ($today->format('N') - 1) . ' days');
+    $monday = getMondayBeforeDay($today);
 
-    $date = array(
-        clone $monday,
-        clone $monday->add(new DateInterval('P1D')),
-        clone $monday->add(new DateInterval('P1D')),
-        clone $monday->add(new DateInterval('P1D')),
-        clone $monday->add(new DateInterval('P1D')),
-        clone $monday->add(new DateInterval('P1D')),
-        clone $monday->add(new DateInterval('P1D'))
-    );
+    $week = getWeekArray($monday);
+
 
     return view('employee.employee-planning2')
-        ->with('manyWorktimePreferred', $manyWorktimePreferred)
-        ->with('manyAlldayFix', $manyAlldayFix)
-        ->with('date', $date);
+        ->with('manyTimeEvent', $manyTimeEvent)
+        ->with('manyAlldayEvent', $manyAlldayEvent)
+        ->with('week', $week);
 })->name('home');
 
+
+/* --------------------------- ACCOUNT ------------------------------- */
 
 Route::get('/employee-account', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
-    return view('employee.employee-account');
+
+    $thisEmployee = oneEmployee(Auth::user()->id);
+
+    $thisRetailStore = thisRetailStore($thisEmployee->retail_store_id);
+
+    $company = oneCompany($thisRetailStore->company_id);
+
+    $address = oneAddress($thisRetailStore->address_id);
+
+    return view('employee.employee-account')
+        ->with('thisEmployee', $thisEmployee)
+        ->with('company', $company)
+        ->with('thisRetailStore', $thisRetailStore)
+        ->with('address', $address);
 })->name('home');
+
+
+/* --------------------------- Formulare ------------------------------- */
+
+Route::post('/weekBackEmpPlan', 'WeekController@backEmpPlan');
+Route::post('/weekNextEmpPlan', 'WeekController@nextEmpPlan');
+Route::post('/weekTodayEmpPlan', 'WeekController@todayEmpPlan');
+
+Route::post('/weekBackEmpWork', 'WeekController@backEmpWork');
+Route::post('/weekNextEmpWork', 'WeekController@nextEmpWork');
+Route::post('/weekTodayEmpWork', 'WeekController@todayEmpWork');
+
+
+/* --------------------------- FOOTER ------------------------------- */
 
 Route::get('/contact', function () {
     return view('employee.contact');
@@ -88,8 +112,7 @@ Route::get('/protection', function () {
     return view('employee.protection');
 });
 
-Route::post('/weekBack', 'WeekController@back');
-Route::post('/weekNext', 'WeekController@next');
-Route::post('/weekToday', 'WeekController@today');
+
+
 
 

@@ -26,15 +26,15 @@
 
     <ul class="lower-list">
 
-        @foreach($retailStores as $retailStore)
+        @foreach($allRetailStores as $retailStore)
             <li class="arrow-down">
                 <a href="/activeWorkplan/public/admin/employer-planning/{{ $retailStore->id }}">{{ $retailStore->id }} {{ $retailStore->name }}</a>
                 <a style="padding: 13.5px;" class="glyphicon glyphicon-chevron-down"></a>
                 <ul>
-                    @foreach($employees as $employee)
+                    @foreach($allEmployees as $employee)
                         @if($employee->retail_store_id == $retailStore->id)
                             <li>
-                                <a href="/activeWorkplan/public/admin/employee-single/{{ $employee->id }}">{{ $employee->name }} {{ $employee->forename }}</a>
+                                <a href="/activeWorkplan/public/admin/employee-single/{{ $employee->id }}">{{ $employee->surname }} {{ $employee->forename }}</a>
                             </li>
                         @endif
                     @endforeach

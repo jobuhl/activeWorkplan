@@ -154,7 +154,7 @@
                             <p><select class="form-control to-right modal-input space-cap" type="text"
                                        name="retail_store_name">
 
-                                    @foreach($retailStores as $retailStore)
+                                    @foreach($allRetailStores as $retailStore)
                                         <option>{{ $retailStore->name }}</option>
                                     @endforeach
                                 </select>

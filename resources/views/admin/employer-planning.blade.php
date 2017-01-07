@@ -66,10 +66,10 @@
                     <th>Su</th>
                 </tr>
 
-                @foreach($employees as $employee)
+                @foreach($allEmployees as $employee)
                     @if($employee->retail_store_id == $thisRetailStore->id)
                         <tr>
-                            <td>{{ $employee->name }} {{ $employee->forename }}</td>
+                            <td>{{ $employee->surname }} {{ $employee->forename }}</td>
                             <td>start</td>
                             <td></td>
                             <td></td>
@@ -126,10 +126,10 @@
                     <th>Su</th>
                 </tr>
 
-                @foreach($employees as $employee)
+                @foreach($allEmployees as $employee)
                     @if($employee->retail_store_id == $thisRetailStore->id)
                         <tr>
-                            <td>{{ $employee->name }} {{ $employee->forename }}</td>
+                            <td>{{ $employee->surname }} {{ $employee->forename }}</td>
                             <td>start</td>
                             <td></td>
                             <td></td>

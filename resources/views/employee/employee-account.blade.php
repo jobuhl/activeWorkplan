@@ -1,7 +1,7 @@
 @extends('employee.layout.employee-start')
 
 @section('css')
-<link rel="stylesheet" type="text/css"  href="{{asset('css/global/table-account.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-account.css')}}">
 @endsection
 
 @section('content')
@@ -14,7 +14,8 @@
             <article class="row-col-12">
                 <h2 class="modal-ueberschrift">User Details</h2>
 
-                <button class="form-control to-right yellow my-account-button" type="submit" data-toggle="modal" data-target="#change-button">
+                <button class="form-control to-right yellow my-account-button" type="submit" data-toggle="modal"
+                        data-target="#change-button">
                     Change
                 </button>
 
@@ -22,11 +23,11 @@
                 <table class="table-account">
                     <tr>
                         <td>Employer ID</td>
-                        <td>987652</td>
+                        <td>{{ $thisEmployee->id }}</td>
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td>********</td>
+                        <td>{{ $thisEmployee->password }}</td>
                     </tr>
 
                     <tr class="table-space">
@@ -36,15 +37,15 @@
 
                     <tr>
                         <td>Surname</td>
-                        <td>Mustermann</td>
+                        <td>{{ $thisEmployee->surname }}</td>
                     </tr>
                     <tr>
                         <td>Forename</td>
-                        <td>Max</td>
+                        <td>{{ $thisEmployee->forename }}</td>
                     </tr>
                     <tr>
                         <td>E-Mail</td>
-                        <td>max.mustermann@html.de</td>
+                        <td>{{ $thisEmployee->email }}</td>
                     </tr>
 
                     <tr class="table-space">
@@ -54,19 +55,21 @@
 
                     <tr>
                         <td>Company name</td>
-                        <td>HTWG</td>
+                        <td>{{ $company->name }}</td>
                     </tr>
                     <tr>
                         <td>Preferred Retail Store</td>
-                        <td>Konstanz</td>
+                        <td>{{ $thisRetailStore->name }}</td>
                     </tr>
                     <tr>
-                        <td>Headquarter Address</td>
-                        <td>Brauneggerstraße 55, 78462 Konstanz</td>
+                        <td>Address of Retail Store</td>
+                        <td>{{ $address->street }} {{ $address->street_nr }}
+                            , {{ $address->postcode }} {{ $address->city }}, {{ $address->country }}
+                        </td>
                     </tr>
                     <tr>
                         <td>Agreement working hours</td>
-                        <td>40</td>
+                        <td>{{ $thisEmployee->working_hours }}</td>
                     </tr>
 
 
@@ -132,7 +135,8 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <button type="button" class="form-control  modal-change-button space-line" data-dismiss="modal"
+                                <button type="button" class="form-control  modal-change-button space-line"
+                                        data-dismiss="modal"
                                         data-toggle="modal"
                                         data-target="#change-password">Change Password
                                 </button>

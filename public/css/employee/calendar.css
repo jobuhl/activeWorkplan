@@ -55,6 +55,7 @@
 
 .calendar-days .all-day {
     border-bottom: 2px solid var(--main-border-color);
+    height: 28px; /* damit zeile nicht kleiner, wenn kein allday event drin ist */
 }
 
 .calendar-days .time-events {
@@ -87,6 +88,10 @@
     color: var(--main-text-white);
     border-radius: 15px;
     padding: 4px 8px 5px 8px;
+}
+
+.today {
+    background-color: var(--main-today-color);
 }
 
 
@@ -148,10 +153,6 @@
 }
 .light-green {
     background-color: yellowgreen;
-}
-
-.today {
-    background-color: var(--main-today-color);
 }
 
 
