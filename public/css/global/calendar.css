@@ -239,11 +239,13 @@
 .calendar-navigation button:hover,
 .table-head-store button:hover {
     background-color: var(--main-highlight-color);
+    cursor: pointer;
 }
 
 .calendar-navigation button:active,
 .table-head-store button:active {
     background-color: var(--main-active-color);
+    cursor: pointer;
 }
 
 .round-button:hover {
@@ -257,14 +259,17 @@
     text-decoration: none;
     color: white;
     background-color: var(--main-active-color);
+    cursor: pointer;
 }
 
 .one-time-event:hover,
 .one-allday-event:hover {
     opacity: 0.9;
+    cursor: pointer;
 }
 
 .one-time-event:active,
 .one-allday-event:active {
     opacity: 0.8;
+    cursor: pointer;
 }

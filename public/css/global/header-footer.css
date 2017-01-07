@@ -145,6 +145,7 @@ footer a:focus {
     text-decoration: none; /* Nicht als link anzeigen: Wegen Bootstrap */
     outline: none;
     font-weight: normal;
+    cursor: pointer;
 }
 
 /* ---------------------------- RESPONSIVE ---------------------------- */

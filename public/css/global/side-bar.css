@@ -107,6 +107,7 @@
 .current-selected-store aside:nth-child(2n+1):hover p {
     background-color: var(--main-highlight-color); /* Variable in header-footer.css deklariert */
     color: var(--main-text-white); /* text-farbe */
+    cursor: pointer;
 }
 
 /* auch die asides auf der seite sollen weissen text bekommen */
@@ -171,11 +172,13 @@
 /* on HOVER */
 .side-bar .a-changes a:not(:first-child):hover {
     opacity: 0.9;
+    cursor: pointer;
 }
 
 /* on ACTIVE */
 .side-bar .a-changes a:not(:first-child):active {
     opacity: 0.8;
+    cursor: pointer;
 }
 
 /* ----------------------- STORES ARROWS DOWN ----------------------- */

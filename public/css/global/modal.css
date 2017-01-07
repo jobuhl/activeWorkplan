@@ -114,16 +114,16 @@
 /* on HOVER */
 .signin-head1:hover,
 .signin-head2:hover {
-    background-color: var(--main-highlight-color);
-    color: white;
+    background-color: var(--main-small-header-color);
+    color: black;
     cursor: pointer;
 }
 
 /* on ACTIVE */
 .signin-head1:active,
 .signin-head2:active {
-    background-color: var(--main-active-color);
-    color: white;
+    background-color: var(--main-mainsection-lower-header-color);
+    color: black;
 }
 
 /*Mobile divice ansicht*/

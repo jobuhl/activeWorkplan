@@ -21,8 +21,7 @@
             <form class="my-center">
                 <h4 class="my-horizontal-center">Sign up</h4>
                 <p><input class="form-control to-right modal-input" id="email" type="email" placeholder="Email"></p>
-                <p><input class="form-control to-right modal-input" id="password1" type="text" placeholder="Password">
-                </p>
+                <p><input class="form-control to-right modal-input" id="password1" type="text" placeholder="Password"></p>
                 <p><input class="form-control to-right modal-input" id="password2" type="password"
                           placeholder=" Confirm Password"></p>
 

@@ -11,8 +11,8 @@ function highlightTab() {
 
 
     /* Sonderfall, da die Mitarbeiter Seite im gleichen Tab wie planning ist */
-    if(tabId == "planning-employer-single-employee") {
-        tabId = "planning-employer";
+    if(tabId == "employee-single") {
+        tabId = "planning-employe-single-employee";
     }
 
     /* da die header Listen-IDs gleich benannt sind wie die dateien, kann ich diese exakt ansprechen */

@@ -48,7 +48,7 @@ Route::get('/home', 'HomeController@index');
 
 // ------------------------ general ------------------------
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/index');
 });
 
 Route::get('/index', function () {
