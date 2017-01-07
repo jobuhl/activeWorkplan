@@ -214,8 +214,8 @@ class DatabaseSeeder extends Seeder
 
         $worktimePreferred1 = WorktimePreferred::create(array(
             'date' => date('2017-01-03'),
-            'from' => '14:00',
-            'to' => '18:00',
+            'from' => '8:00',
+            'to' => '20:00',
             'employee_id' => $employee1->id,
             'category_id' => $category1->id
         ));
@@ -223,7 +223,7 @@ class DatabaseSeeder extends Seeder
         $worktimePreferred2 = WorktimePreferred::create(array(
             'date' => date('2017-01-04'),
             'from' => '8:00',
-            'to' => '14:30',
+            'to' => '14:00',
             'employee_id' => $employee1->id,
             'category_id' => $category1->id
         ));
@@ -234,6 +234,14 @@ class DatabaseSeeder extends Seeder
             'to' => '20:00',
             'employee_id' => $employee1->id,
             'category_id' => $category4->id
+        ));
+
+        $worktimePreferred4 = WorktimePreferred::create(array(
+            'date' => date('2017-01-05'),
+            'from' => '8:00',
+            'to' => '22:00',
+            'employee_id' => $employee1->id,
+            'category_id' => $category1->id
         ));
 
         /* ---------------------- Allday Fix -------------------------- */
@@ -249,6 +257,43 @@ class DatabaseSeeder extends Seeder
             'employee_id' => $employee1->id,
             'category_id' => $category2->id
         ));
+
+
+        /* ---------------------- Worktime Fix -------------------------- */
+
+        $worktimeFix = WorktimeFix::create(array(
+            'date' => date('2017-01-03'),
+            'from' => '8:00',
+            'to' => '10:00',
+            'employee_id' => $employee1->id,
+            'category_id' => $category1->id
+        ));
+
+        $worktimeFix = WorktimeFix::create(array(
+            'date' => date('2017-01-03'),
+            'from' => '16:00',
+            'to' => '20:00',
+            'employee_id' => $employee1->id,
+            'category_id' => $category1->id
+        ));
+
+        $worktimeFix = WorktimeFix::create(array(
+            'date' => date('2017-01-04'),
+            'from' => '8:00',
+            'to' => '12:00',
+            'employee_id' => $employee1->id,
+            'category_id' => $category1->id
+        ));
+
+        $worktimeFix = WorktimeFix::create(array(
+            'date' => date('2017-01-05'),
+            'from' => '17:00',
+            'to' => '21:30',
+            'employee_id' => $employee1->id,
+            'category_id' => $category1->id
+        ));
+
+
 
 
 

@@ -105,6 +105,15 @@
                                     </div>
                                 @endif
                             @endforeach
+                            @foreach($manyTimeEvent as $oneTimeEvent)
+                                @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y') && $oneTimeEvent->name != 'Work')
+                                    <div class="one-time-event {{ $oneTimeEvent->color }}" draggable="true">
+                                        <p>{{ $oneTimeEvent->name }}</p>
+                                        <p>{{ $oneTimeEvent->from }}</p>
+                                        <p>{{ $oneTimeEvent->to }}</p>
+                                    </div>
+                                @endif
+                            @endforeach
                         </td>
                         @endfor
             </tr>
