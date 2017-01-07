@@ -13,43 +13,6 @@
     padding-left: 20px; /* Abstand zwischen Beiden spalten und Trennlinie */
 }
 
-/* --------------------------- LIST / Kachel --------------------------- */
-/* Padding rausnehmen, wenn darstellung auf kachel */
-.overview.my-right-side.kachel {
-    padding-left: 0;
-}
-
-.overview.my-right-side aside,
-.overview.navigation {
-    padding: 0;
-}
-
-/* jedes zweite aside mit Padding (in der mitte quasi) */
-.overview.my-right-side.kachel aside:nth-child(2n) {
-    padding-left: 20px;
-}
-
-/* wenn kleiner als md (992px) size */
-@media screen and (max-width: 992px) {
-    /* jedes zweite aside mit Padding (in der mitte quasi) wieder weg machen */
-    .overview.my-right-side.kachel aside:nth-child(2n) {
-        padding: 0;
-    }
-
-    /* list und kachel item in der navigation bar */
-    .calendar-navigation-list-kachel-elemets,
-    #overview-list,
-    #overview-kachel {
-        display: none;
-    }
-
-    .calendar-navigation-padding h4 {
-        display: none;
-    }
-}
-/* --------------------------- LIST / Kachel Ende --------------------------- */
-
-
 
 @media screen and (max-width: 767px) {
     .side-bar,

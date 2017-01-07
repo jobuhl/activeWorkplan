@@ -87,4 +87,49 @@ class WeekController extends Controller
             ->with('manyAlldayEvent', $manyAlldayEvent)
             ->with('week', $week);
     }
+
+    /* ------------------------- Admin Overview -------------------------- */
+    public function nextAdmOver(Request $data)
+    {
+        $today = clone (new DateTime($data['date']))->modify('+7 days');
+        return $this->admOver($today);
+    }
+
+    public function backAdmOver(Request $data)
+    {
+        $today = clone (new DateTime($data['date']))->modify('-7 days');
+        return $this->admOver($today);
+    }
+
+    public function todayAdmOver(Request $data)
+    {
+        $today = new DateTime();
+        return $this->admOver($today);
+    }
+
+    public function admOver($date) {
+        $company = thisCompany();
+
+        $allRetailStores = allRetailStoresOfCompany($company->id);
+
+        $allEmployees = allEmployeesOfCompany($company->id);
+
+        $manyTimeEvent = allTimeEventOfCompany($company->id);
+
+        $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
+
+        $manyAlldayEvent = allAlldayEventOfCompany($company->id);
+
+        $monday = getMondayBeforeDay($date);
+
+        $week = getWeekArray($monday);
+
+        return view('admin.home')
+            ->with('allRetailStores', $allRetailStores)
+            ->with('allEmployees', $allEmployees)
+            ->with('manyTimeEvent', $manyTimeEvent)
+            ->with('manyWorktimeEvent', $manyWorktimeEvent)
+            ->with('manyAlldayEvent', $manyAlldayEvent)
+            ->with('week', $week);
+    }
 }

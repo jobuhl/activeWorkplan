@@ -33,9 +33,9 @@
 }
 
 
-/* --------------------------- TABLE -------------------------------- */
+/* --------------------------- TABLE EMPLOYEE -------------------------------- */
 
-.calendar-days {
+.calendar-days{
     background-color: var(--main-table-background);
     width: 100%;
     table-layout: fixed;
@@ -94,6 +94,46 @@
     background-color: var(--main-today-color);
 }
 
+/* ---------------------------- TABLE ADMIN ------------------------------ */
+.calendar-days-admin {
+    background-color: var(--main-table-background);
+    width: 100%;
+    table-layout: fixed;
+}
+
+.calendar-days-admin td {
+    text-align: center;
+}
+
+.calendar-days-admin .all-day {
+    border-top: 2px solid var(--main-border-color);
+    height: 28px; /* damit zeile nicht kleiner, wenn kein allday event drin ist */
+}
+
+
+.calendar-days-admin .all-day td:not(:first-child) {
+    border-bottom: 1px solid var(--main-border-color);
+}
+
+.calendar-days-admin .time-events {
+    vertical-align: top; /* events (elemente) oben ausrichten */
+}
+
+.calendar-days-admin .all-day td:not(:nth-child(1)):not(:nth-child(2)),
+.calendar-days-admin .time-events td:not(:nth-child(1)):not(:nth-child(2)),
+.calendar-days-admin .add-buttons td:not(:nth-child(1)):not(:nth-child(2)) {
+    border-left: 1px solid var(--main-border-color);
+}
+
+/* Samstag Sonntag Hintergrund */
+.calendar-days-admin .all-day td:nth-child(9),
+.calendar-days-admin .all-day td:nth-child(8),
+.calendar-days-admin .time-events td:nth-child(9),
+.calendar-days-admin .time-events td:nth-child(8),
+.calendar-days-admin .add-buttons td:nth-child(9),
+.calendar-days-admin .add-buttons td:nth-child(8) {
+    background-color: var(--main-small-header-color);
+}
 
 
 /* ---------------------------- EVENTS ------------------------------ */
@@ -110,8 +150,6 @@
     border-radius: 5px;
     cursor: pointer;
 }
-
-
 
 .one-time-event p,
 .one-allday-event p {
@@ -159,11 +197,13 @@
 
 /* --------------------------- HOVER ACTIVE --------------------------- */
 
-.emp-planning .calendar-navigation button:hover {
+.calendar-navigation button:hover,
+.table-head-store button:hover {
     background-color: var(--main-highlight-color);
 }
 
-.emp-planning .calendar-navigation button:active {
+.calendar-navigation button:active,
+.table-head-store button:active {
     background-color: var(--main-active-color);
 }
 

@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/side-bar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-calendar-navigation.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/employer/overview.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/employee/calendar.css')}}">
 @endsection
 
 @section('content')
@@ -41,37 +42,36 @@
             </div>
             <nav class="calendar-navigation">
 
-                <div class="col-xs-6 col-md-5">
+                <div class="col-xs-4 navigation-today">
+                    <form class="nav-form" method="POST" action="{{ url('/admin/weekBackAdmOver') }}">
+                        {{ csrf_field() }}
+                        <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit"><</button>
+                    </form>
 
-                    <aside class="col-md-3 calendar-navigation-padding">
-                        <button id="overview-list" onclick="overviewList()">
-                            <span class="glyphicon glyphicon-th-list"></span>
-                        </button>
-                        <button id="overview-kachel" onclick="overviewKachel()">
-                            <span class="glyphicon glyphicon-th-large"></span>
-                        </button>
-                    </aside>
-                    <div class="col-xs-9 col-md-9 navigation-today">
-                        <button>&lt;</button>
-                        <button>Today</button>
-                        <button> ></button>
-                    </div>
+                    <form class="nav-form" method="POST" action="{{ url('/admin/weekTodayAdmOver') }}">
+                        {{ csrf_field() }}
+                        <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">Today</button>
+                    </form>
+
+                    <form class="nav-form" method="POST" action="{{ url('/admin/weekNextAdmOver') }}">
+                        {{ csrf_field() }}
+                        <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">></button>
+                    </form>
                 </div>
 
-                <div class="col-xs-6 col-md-7 calendar-navigation-padding">
-
-                    <div class="col-xs-12 col-md-6">
-                        <h4>Workplans</h4>
-                    </div>
-                    <div class="col-xs-12 col-md-6 calendar-navigation-p">
-                        <p>01. - 07. Jan. 2018</p>
-                    </div>
+                <div class="col-xs-4">
+                    <h4>Workplans</h4>
+                </div>
+                <div class="col-xs-4 calendar-navigation-p">
+                    <p>
+                        {{ $week[0]->format('d. - ') }}
+                        {{ $week[6]->format('d. M. Y') }}
+                    </p>
                 </div>
             </nav>
             <br class="br-under-navigation">
 
             @foreach($allRetailStores as $retailStore)
-                <aside class="col-xs-12">
                     <div class="table-head-store">
                         <a class="table-head-a">{{ $retailStore->id }} {{ $retailStore->name }}</a>
                         <button onclick="sendEmail()">
@@ -81,62 +81,91 @@
                             <span class="glyphicon glyphicon-print"></span> Print
                         </button>
                     </div>
-                    <table class="table-calendar">
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th>01.01</th>
-                            <th>02.01</th>
-                            <th>03.01</th>
-                            <th>04.01</th>
-                            <th>05.01</th>
-                            <th>06.01</th>
-                            <th>07.01</th>
+
+                    <table class="calendar-days-admin">
+                        <tr class="week-date">
+                            <td></td>
+                            <td></td>
+                            @for ($i = 0; $i < 7; $i++)
+                                <td>
+                                    {{ $week[$i]->format('d.m.') }}
+                                </td>
+                            @endfor
                         </tr>
 
 
-                        <tr>
-                            <th>Employees</th>
-                            <th>Time</th>
-                            <th>Mo</th>
-                            <th>Tu</th>
-                            <th>We</th>
-                            <th>Th</th>
-                            <th>Fr</th>
-                            <th>Sa</th>
-                            <th>Su</th>
+                        <tr class="week-days">
+                            <td>Employees</td>
+                            <td></td>
+                            @for ($i = 0; $i < 7; $i++)
+                                @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                                    <td class="today">
+                                @else
+                                    <td>
+                                        @endif
+                                        {{ $week[$i]->format('D') }}</td>
+                                    @endfor
                         </tr>
 
                         @foreach($allEmployees as $employee)
                             @if($employee->retail_store_id == $retailStore->id)
-                                <tr>
+                                <tr class="all-day">
                                     <td>{{ $employee->surname }} {{ $employee->forename }}</td>
-                                    <td>start</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>Allday</td>
+                                    @for ($i = 0; $i < 7; $i++)
+                                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                                            <td class="today">
+                                        @else
+                                            <td>
+                                                @endif
+                                                @foreach($manyAlldayEvent as $oneAlldayEvent)
+                                                    @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                                                    && $oneAlldayEvent->employee_id == $employee->id)
+                                                        <div class="one-allday-event {{ $oneAlldayEvent->color }}" draggable="true">
+                                                            <p>{{ $oneAlldayEvent->name }}</p>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            @endfor
                                 </tr>
 
-                                <tr>
+                                <tr class="time-events">
                                     <td></td>
-                                    <td>end</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>Time-Events</td>
+                                    @for ($i = 0; $i < 7; $i++)
+                                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                                            <td class="today">
+                                        @else
+                                            <td>
+                                                @endif
+                                                @foreach($manyWorktimeEvent as $oneWorktimeEvent)
+                                                    @if( (new DateTime($oneWorktimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                                                    && $oneWorktimeEvent->employee_id == $employee->id)
+                                                        <div class="one-time-event {{ $oneWorktimeEvent->color }}" draggable="true">
+                                                            <p>{{ $oneWorktimeEvent->name }}</p>
+                                                            <p>{{ $oneWorktimeEvent->from }}</p>
+                                                            <p>{{ $oneWorktimeEvent->to }}</p>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                                @foreach($manyTimeEvent as $oneTimeEvent)
+                                                    @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y') && $oneTimeEvent->name != 'Work'
+                                                    && $oneTimeEvent->employee_id == $employee->id)
+                                                        <div class="one-time-event {{ $oneTimeEvent->color }}" draggable="true">
+                                                            <p>{{ $oneTimeEvent->name }}</p>
+                                                            <p>{{ $oneTimeEvent->from }}</p>
+                                                            <p>{{ $oneTimeEvent->to }}</p>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            @endfor
                                 </tr>
                             @endif
                         @endforeach
                     </table>
                     <br>
-                </aside>
             @endforeach
 
         </aside>

@@ -24,9 +24,25 @@ Route::get('/employer-overview', function () {
 
     $allEmployees = allEmployeesOfCompany($company->id);
 
+    $manyTimeEvent = allTimeEventOfCompany($company->id);
+
+    $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
+
+    $manyAlldayEvent = allAlldayEventOfCompany($company->id);
+
+    $today = new DateTime();
+
+    $monday = getMondayBeforeDay($today);
+
+    $week = getWeekArray($monday);
+
     return view('admin.home')
         ->with('allRetailStores', $allRetailStores)
-        ->with('allEmployees', $allEmployees);
+        ->with('allEmployees', $allEmployees)
+        ->with('manyTimeEvent', $manyTimeEvent)
+        ->with('manyWorktimeEvent', $manyWorktimeEvent)
+        ->with('manyAlldayEvent', $manyAlldayEvent)
+        ->with('week', $week);
 })->name('home');
 
 
@@ -104,6 +120,11 @@ Route::get('/employer-account', function () {
 Route::post('/storeCreate', 'StoreController@create');
 
 Route::post('/addEmp', 'EmpController@create');
+
+Route::post('/weekBackAdmOver', 'WeekController@backAdmOver');
+Route::post('/weekNextAdmOver', 'WeekController@nextAdmOver');
+Route::post('/weekTodayAdmOver', 'WeekController@todayAdmOver');
+
 
 
 /* --------------------------- Footer ------------------------------- */
