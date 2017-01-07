@@ -6,11 +6,11 @@ Route::get('/home', function () {
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
 
-    return redirect('/employee/employee-workplan2');
+    return redirect('/employee/employee-workplan');
 })->name('home');
 
 
-Route::get('/employee-workplan2', function () {
+Route::get('/employee-workplan', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
@@ -29,7 +29,7 @@ Route::get('/employee-workplan2', function () {
 
     $week = getWeekArray($monday);
 
-    return view('employee.employee-workplan2')
+    return view('employee.employee-workplan')
         ->with('manyTimeEvent', $manyTimeEvent)
         ->with('manyWorktimeEvent', $manyWorktimeEvent)
         ->with('manyAlldayEvent', $manyAlldayEvent)
@@ -39,7 +39,7 @@ Route::get('/employee-workplan2', function () {
 
 /* --------------------------- PLANNING ------------------------------- */
 
-Route::get('/employee-planning2', function () {
+Route::get('/employee-planning', function () {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
@@ -57,7 +57,7 @@ Route::get('/employee-planning2', function () {
     $week = getWeekArray($monday);
 
 
-    return view('employee.employee-planning2')
+    return view('employee.employee-planning')
         ->with('manyTimeEvent', $manyTimeEvent)
         ->with('manyAlldayEvent', $manyAlldayEvent)
         ->with('week', $week);

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAlldayFix2 extends Migration
+class CreateAlldayEvent extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAlldayFix2 extends Migration
      */
     public function up()
 {
-    Schema::create('allday_fix', function (Blueprint $table) {
+    Schema::create('allday_event', function (Blueprint $table) {
         $table->increments('id');
         $table->date('date');
 
@@ -34,6 +34,6 @@ class CreateAlldayFix2 extends Migration
      */
     public function down()
 {
-    Schema::dropIfExists('allday_fix');
+    Schema::dropIfExists('allday_event');
 }
 }

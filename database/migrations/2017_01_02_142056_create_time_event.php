@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWorktimePreferred2 extends Migration
+class CreateTimeEvent extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateWorktimePreferred2 extends Migration
      */
     public function up()
 {
-    Schema::create('worktime_preferred', function (Blueprint $table) {
+    Schema::create('time_event', function (Blueprint $table) {
         $table->increments('id');
         $table->date('date');
         $table->string('from');
@@ -36,6 +36,6 @@ class CreateWorktimePreferred2 extends Migration
      */
     public function down()
 {
-    Schema::dropIfExists('worktime_preferred');
+    Schema::dropIfExists('time-event');
 }
 }

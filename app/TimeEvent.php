@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class WorktimePreferred extends Model
+class TimeEvent extends Model
 {
-    protected $table = 'worktime_preferred';
+    protected $table = 'time_event';
 
     protected $fillable = ['id', 'date', 'from', 'to', 'employee_id', 'category_id'];
 }

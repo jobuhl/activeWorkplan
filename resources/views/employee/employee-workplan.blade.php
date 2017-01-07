@@ -1,49 +1,138 @@
 @extends('employee.layout.employee-start')
 
 @section('css')
-    <!--<link rel='stylesheet' href='../../calendar/lib/cupertino/jquery-ui.min.css'/>-->
-    <link rel="stylesheet" type="text/css" href="{{asset('calendar/fullcalendar.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('calendar/fullcalendar.print.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/employee/planning-employee.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/global/side-bar.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/global/header-footer.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/employee/workplan.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/global/calendar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/employee/modal-event.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
 @endsection
 
 @section('content')
 
-    <section class="fake-body container">
-        <h2 style="display: none">fakeheading</h2>
+    <section class="fake-body container emp-planning">
+        <h2>Fix Workplan</h2>
 
-        <article class="col-xs-12 firstrow">
-            <button type="button" class="form-control my-account-button to-right btn btn-default btn-sm"
-                    onclick="printing()">
-                <span class="glyphicon glyphicon-print"></span> Print
-            </button>
+        <aside id="aside-overview" class="col-xs-12 calendar-navigation">
 
-            <button type="button" class="form-control my-account-button to-right btn btn-default btn-sm"
-                    onclick="sendEmail()">
-                <span class="glyphicon glyphicon-envelope"></span> E-Mail
-            </button>
-        </article>
+            <div class="col-xs-4 navigation-today">
+                <form method="POST" action="{{ url('/employee/weekBackEmpWork') }}"> {{ csrf_field() }}
+                    <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit"><</button>
+                </form>
 
-        <!-- Calender -->
-        <div id='calendar'></div>
+                <form method="POST" action="{{ url('/employee/weekTodayEmpWork') }}"> {{ csrf_field() }}
+                    <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">Today</button>
+                </form>
 
-        <div class="space"></div>
+                <form method="POST" action="{{ url('/employee/weekNextEmpWork') }}"> {{ csrf_field() }}
+                    <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">></button>
+                </form>
+            </div>
 
+            <div class="col-xs-4">
+                <p>
+                    {{ $week[0]->format('d. - ') }}
+                    {{ $week[6]->format('d. M. Y') }}
+                </p>
+            </div>
+
+            <div class="col-xs-4 print-email">
+                <button onclick="sendEmail()">
+                    <span class="glyphicon glyphicon-envelope"></span> E-Mail
+                </button>
+                <button onclick="printing()">
+                    <span class="glyphicon glyphicon-print"></span> Print
+                </button>
+            </div>
+
+            <br>
+        </aside>
+
+        <table class="calendar-days-one-emp">
+            <tr class="week-date">
+                <td></td>
+                @for ($i = 0; $i < 7; $i++)
+                    <td>
+                        {{ $week[$i]->format('d.m.') }}</td>
+                @endfor
+            </tr>
+            <tr class="week-days">
+                <td></td>
+                @for ($i = 0; $i < 7; $i++)
+                    @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                        <td class="today">
+                    @else
+                        <td>
+                            @endif
+                            {{ $week[$i]->format('D') }}</td>
+                        @endfor
+            </tr>
+
+            <tr class="all-day">
+                <td>Allday</td>
+                @for ($i = 0; $i < 7; $i++)
+                    @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                        <td class="today">
+                    @else
+                        <td>
+                            @endif
+                            @foreach($manyAlldayEvent as $oneAlldayEvent)
+                                @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y'))
+                                    <div class="one-allday-event {{ $oneAlldayEvent->color }}" draggable="true">
+                                        <p>{{ $oneAlldayEvent->name }}</p>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </td>
+                        @endfor
+            </tr>
+
+            <tr class="time-events">
+                <td>Time-Events</td>
+                @for ($i = 0; $i < 7; $i++)
+                    @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                        <td class="today">
+                    @else
+                        <td>
+                            @endif
+                            @foreach($manyWorktimeEvent as $oneWorktimeEvent)
+                                @if( (new DateTime($oneWorktimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y') )
+                                    <div class="one-time-event {{ $oneWorktimeEvent->color }}" draggable="true">
+                                        <p>{{ $oneWorktimeEvent->name }}</p>
+                                        <p>{{ $oneWorktimeEvent->from }}</p>
+                                        <p>{{ $oneWorktimeEvent->to }}</p>
+                                    </div>
+                                @endif
+                            @endforeach
+                            @foreach($manyTimeEvent as $oneTimeEvent)
+                                @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y') && $oneTimeEvent->name != 'Work')
+                                    <div class="one-time-event {{ $oneTimeEvent->color }}" draggable="true">
+                                        <p>{{ $oneTimeEvent->name }}</p>
+                                        <p>{{ $oneTimeEvent->from }}</p>
+                                        <p>{{ $oneTimeEvent->to }}</p>
+                                    </div>
+                                @endif
+                            @endforeach
+                        </td>
+                        @endfor
+            </tr>
+
+            <tr class="add-buttons">
+                <td></td>
+                @for ($i = 0; $i < 7; $i++)
+                    @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                        <td class="today">
+                    @else
+                        <td>
+                            @endif
+                        </td>
+                        @endfor
+            </tr>
+        </table>
+
+        @include('employee.includes.modals-event-add')
     </section>
-
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('calendar/lib/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('calendar/lib/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('calendar/lib/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('calendar/fullcalendar.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('calendar/script.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/employee/workplan.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/employee/workplan.js') }}"></script>
 
-    <!-- Kopie, weil Calendar.js-Dateien die Datei überschrieben haben -->
-    <script type="text/javascript" src="{{ asset('js/general/header-footer.js') }}"></script>
 @endsection

@@ -14,9 +14,9 @@
     </ul>
     <ul class="right-list" id="id-right">
         <!--<li><a id="employee-workplan" href="employee-workplan">Workplan</a></li>-->
-        <li><a id="employee-workplan2" href="employee-workplan2">Workplan</a></li>
+        <li><a id="employee-workplan" href="employee-workplan">Workplan</a></li>
         <!--<li><a id="employee-planning" href="employee-planning">Planning</a></li>-->
-        <li><a id="employee-planning2" href="employee-planning2">Planning</a></li>
+        <li><a id="employee-planning" href="employee-planning">Planning</a></li>
         <li><a id="employee-account" href="employee-account">{{ Auth::user()->name }}</a></li>
         <li><a href="{{ url('/employee/logout') }}"
                onclick="event.preventDefault();

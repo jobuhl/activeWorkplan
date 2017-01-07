@@ -74,9 +74,9 @@ function employeePerHourOfRetailStore($retailStoreId)
 
 function timeEventOfEmployee($employeeId)
 {
-    return DB::table('worktime_preferred')
-        ->join('category', 'category.id', '=', 'worktime_preferred.category_id')
-        ->where('worktime_preferred.employee_id', $employeeId)
+    return DB::table('time_event')
+        ->join('category', 'category.id', '=', 'time_event.category_id')
+        ->where('time_event.employee_id', $employeeId)
         ->get();
 }
 
@@ -92,18 +92,18 @@ function worktimeFixOfEmployee($employeeId)
 /* hier tabellen name ändern */
 function alldayEventOfEmployee($employeeId)
 {
-    return DB::table('allday_fix')
-        ->join('category', 'category.id', '=', 'allday_fix.category_id')
-        ->where('allday_fix.employee_id', $employeeId)
+    return DB::table('allday_event')
+        ->join('category', 'category.id', '=', 'allday_event.category_id')
+        ->where('allday_event.employee_id', $employeeId)
         ->get();
 }
 
 /* hier tabellen name ändern */
 function allTimeEventOfCompany($companyId)
 {
-    return DB::table('worktime_preferred')
-        ->join('category', 'category.id', '=', 'worktime_preferred.category_id')
-        ->join('employees', 'employees.id', '=', 'worktime_preferred.employee_id')
+    return DB::table('time_event')
+        ->join('category', 'category.id', '=', 'time_event.category_id')
+        ->join('employees', 'employees.id', '=', 'time_event.employee_id')
         ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
         ->where('retail_store.company_id', $companyId)
         ->select('category.name as name', 'from', 'to', 'date', 'employee_id','color')
@@ -125,9 +125,9 @@ function allWorktimeFixOfCompany($companyId)
 /* hier tabellen name ändern */
 function allAlldayEventOfCompany($companyId)
 {
-    return DB::table('allday_fix')
-        ->join('category', 'category.id', '=', 'allday_fix.category_id')
-        ->join('employees', 'employees.id', '=', 'allday_fix.employee_id')
+    return DB::table('allday_event')
+        ->join('category', 'category.id', '=', 'allday_event.category_id')
+        ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
         ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
         ->where('retail_store.company_id', $companyId)
         ->select('category.name as name', 'date', 'employee_id','color')

@@ -11,9 +11,9 @@ use App\Role;
 use App\Contract;
 use App\Employee;
 use App\Category;
-use App\AlldayFix;
+use App\AlldayEvent;
 use App\WorktimeFix;
-use App\WorktimePreferred;
+use App\TimeEvent;
 
 
 
@@ -38,61 +38,73 @@ class DatabaseSeeder extends Seeder
             'name' => 'Deutschland'
         ));
 
-        $city = City::create(array(
+        $city1 = City::create(array(
+            'name' => 'Berlin',
+            'country_id' => $country->id
+        ));
+
+        $city2 = City::create(array(
+            'name' => 'Stuttgart',
+            'country_id' => $country->id
+        ));
+
+        $city3 = City::create(array(
             'name' => 'Konstanz',
             'country_id' => $country->id
         ));
 
         // Adresse wird immer erstellt, falls Company umzieht -> einfacher zu warten
         $adminAddress = Address::create(array(
-            'street' => 'myStreet',
-            'street_nr' => '23a',
-            'postcode' => '78464',
-            'city_id' => $city->id
+            'street' => 'Alexanderplatz',
+            'street_nr' => '1',
+            'postcode' => '10178',
+            'city_id' => $city1->id
         ));
 
         $company = Company::create(array(
-            'name' => 'myCompany',
+            'name' => 'Fashion Style GmbH',
             'admin_id' => $admins->id,
             'address_id' => $adminAddress->id
         ));
 
         $store1Address = Address::create(array(
-            'street' => 'myStreet1',
-            'street_nr' => '23a',
-            'postcode' => '78464',
-            'city_id' => $city->id
+            'street' => 'Alexanderplatz',
+            'street_nr' => '1',
+            'postcode' => '10178',
+            'city_id' => $city1->id
         ));
 
         $store2Address = Address::create(array(
-            'street' => 'myStreet2',
-            'street_nr' => '23a',
-            'postcode' => '78464',
-            'city_id' => $city->id
+            'street' => 'Königsstraße',
+            'street_nr' => '20-22',
+            'postcode' => '70173',
+            'city_id' => $city2->id
         ));
 
         $store3Address = Address::create(array(
-            'street' => 'myStreet3',
-            'street_nr' => '23a',
-            'postcode' => '78464',
-            'city_id' => $city->id
+            'street' => 'Münsterplatz',
+            'street_nr' => '7',
+            'postcode' => '78462',
+            'city_id' => $city3->id
         ));
+
+
 
         /* ---------------------- Stores -------------------------- */
         $store1 = RetailStore::create(array(
-            'name' => 'myRetailStore1',
+            'name' => 'Berlin Alexanderplatz',
             'company_id' => $company->id,
             'address_id' => $store1Address->id
         ));
 
         $store2 = RetailStore::create(array(
-            'name' => 'myRetailStore2',
+            'name' => 'Stuttgart Bahnhofstraße',
             'company_id' => $company->id,
             'address_id' => $store2Address->id
         ));
 
         $store3 = RetailStore::create(array(
-            'name' => 'myRetailStore2',
+            'name' => 'Konstanz Münsterplatz',
             'company_id' => $company->id,
             'address_id' => $store3Address->id
         ));
@@ -105,11 +117,11 @@ class DatabaseSeeder extends Seeder
         ));
 
         $role2 = Role::create(array(
-            'name' => 'stockman'
+            'name' => 'Stockman'
         ));
 
         $role3 = Role::create(array(
-            'name' => 'office worker'
+            'name' => 'Office Worker'
         ));
 
         /* ---------------------- Contract -------------------------- */
@@ -129,10 +141,17 @@ class DatabaseSeeder extends Seeder
         ));
 
         $contract3 = Contract::create(array(
-            'period_of_agreement' => 'unlimitted',
+            'period_of_agreement' => 'limitted',
             'working_hours' => '20',
             'classification' => 'student-employee',
             'role_id' => $role3->id
+        ));
+
+        $contract3 = Contract::create(array(
+            'period_of_agreement' => 'limitted',
+            'working_hours' => '20',
+            'classification' => 'student-employee',
+            'role_id' => $role2->id
         ));
 
         /* ---------------------- Employee -------------------------- */
@@ -147,18 +166,18 @@ class DatabaseSeeder extends Seeder
         ));
 
         $employee2 = Employee::create(array(
-            'forename' => 'Daniel',
-            'name' => 'Haller',
-            'email' => 'dani@web.de',
+            'forename' => 'Gerhart',
+            'name' => 'Jung',
+            'email' => 'gerhart.jung@web.de',
             'password' => bcrypt('123456'),
             'retail_store_id' => $store1->id,
             'contract_id' => $contract2->id
         ));
 
         $employee3 = Employee::create(array(
-            'forename' => 'Fabian',
-            'name' => 'Götz',
-            'email' => 'fabi@web.de',
+            'forename' => 'Jürgen',
+            'name' => 'Friedrich',
+            'email' => 'jürgen.friedrich@web.de',
             'password' => bcrypt('123456'),
             'retail_store_id' => $store2->id,
             'contract_id' => $contract3->id
@@ -166,8 +185,8 @@ class DatabaseSeeder extends Seeder
 
         $employee4 = Employee::create(array(
             'forename' => 'Simon',
-            'name' => 'Geist',
-            'email' => 'simon@web.de',
+            'name' => 'Weiler',
+            'email' => 'simon.weiler@web.de',
             'password' => bcrypt('123456'),
             'retail_store_id' => $store3->id,
             'contract_id' => $contract3->id
@@ -210,9 +229,9 @@ class DatabaseSeeder extends Seeder
             'color' => 'grey'
         ));
 
-        /* ---------------------- Worktime Preferred -------------------------- */
+        /* ---------------------- Time Event -------------------------- */
 
-        $worktimePreferred1 = WorktimePreferred::create(array(
+        $worktimePreferred1 = TimeEvent::create(array(
             'date' => date('2017-01-03'),
             'from' => '8:00',
             'to' => '20:00',
@@ -220,7 +239,7 @@ class DatabaseSeeder extends Seeder
             'category_id' => $category1->id
         ));
 
-        $worktimePreferred2 = WorktimePreferred::create(array(
+        $worktimePreferred2 = TimeEvent::create(array(
             'date' => date('2017-01-04'),
             'from' => '8:00',
             'to' => '14:00',
@@ -228,7 +247,7 @@ class DatabaseSeeder extends Seeder
             'category_id' => $category1->id
         ));
 
-        $worktimePreferred2 = WorktimePreferred::create(array(
+        $worktimePreferred2 = TimeEvent::create(array(
             'date' => date('2017-01-04'),
             'from' => '15:00',
             'to' => '20:00',
@@ -236,7 +255,7 @@ class DatabaseSeeder extends Seeder
             'category_id' => $category4->id
         ));
 
-        $worktimePreferred4 = WorktimePreferred::create(array(
+        $worktimePreferred4 = TimeEvent::create(array(
             'date' => date('2017-01-05'),
             'from' => '8:00',
             'to' => '22:00',
@@ -244,15 +263,15 @@ class DatabaseSeeder extends Seeder
             'category_id' => $category1->id
         ));
 
-        /* ---------------------- Allday Fix -------------------------- */
+        /* ---------------------- Allday Event -------------------------- */
 
-        $alldayFix1 = AlldayFix::create(array(
+        $alldayFix1 = AlldayEvent::create(array(
             'date' => date('2017-01-06'),
             'employee_id' => $employee1->id,
             'category_id' => $category2->id
         ));
 
-        $alldayFix2 = AlldayFix::create(array(
+        $alldayFix2 = AlldayEvent::create(array(
             'date' => date('2017-01-07'),
             'employee_id' => $employee1->id,
             'category_id' => $category2->id
@@ -292,14 +311,6 @@ class DatabaseSeeder extends Seeder
             'employee_id' => $employee1->id,
             'category_id' => $category1->id
         ));
-
-
-
-
-
-
-
-
 
     }
 }

@@ -42,7 +42,7 @@ class WeekController extends Controller
 
         $week = getWeekArray($monday);
 
-        return view('employee.employee-planning2')
+        return view('employee.employee-planning')
             ->with('manyTimeEvent', $manyTimeEvent)
             ->with('manyAlldayEvent', $manyAlldayEvent)
             ->with('week', $week);
@@ -85,7 +85,7 @@ class WeekController extends Controller
 
         $week = getWeekArray($monday);
 
-        return view('employee.employee-workplan2')
+        return view('employee.employee-workplan')
             ->with('manyTimeEvent', $manyTimeEvent)
             ->with('manyWorktimeEvent', $manyWorktimeEvent)
             ->with('manyAlldayEvent', $manyAlldayEvent)
@@ -132,7 +132,7 @@ class WeekController extends Controller
 
         $week = getWeekArray($monday);
 
-        return view('admin.home')
+        return view('admin.employer-overview')
             ->with('allRetailStores', $allRetailStores)
             ->with('allEmployees', $allEmployees)
             ->with('manyTimeEvent', $manyTimeEvent)
