@@ -107,22 +107,36 @@ class Functions extends Controller
     /* hier tabellen name ändern */
     function allTimeEventOfCompany($companyId)
     {
+        return DB::table('worktime_preferred')
+            ->join('category', 'category.id', '=', 'worktime_preferred.category_id')
+            ->join('employees', 'employees.id', '=', 'worktime_preferred.employee_id')
+            ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
+            ->where('retail_store.company_id', $companyId)
+            ->select('category.name as name', 'from', 'to', 'date', 'employee_id','color')
+            ->get();
+    }
+
+    /* hier tabellen name ändern */
+    function allWorktimeFixOfCompany($companyId)
+    {
         return DB::table('worktime_fix')
             ->join('category', 'category.id', '=', 'worktime_fix.category_id')
             ->join('employees', 'employees.id', '=', 'worktime_fix.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.company_id', $companyId)
+            ->select('category.name as name', 'from', 'to', 'date', 'employee_id','color')
             ->get();
     }
 
     /* hier tabellen name ändern */
     function allAlldayEventOfCompany($companyId)
     {
-        return DB::table('work_time_preferred')
-            ->join('category', 'category.id', '=', 'work_time_preferred.category_id')
-            ->join('employees', 'employees.id', '=', 'work_time_preferred.employee_id')
+        return DB::table('allday_fix')
+            ->join('category', 'category.id', '=', 'allday_fix.category_id')
+            ->join('employees', 'employees.id', '=', 'allday_fix.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.company_id', $companyId)
+            ->select('category.name as name', 'date', 'employee_id','color')
             ->get();
     }
 
