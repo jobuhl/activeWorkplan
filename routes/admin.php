@@ -32,6 +32,7 @@ Route::post('/storeCreate', 'StoreController@create');
 
 Route::post('/addEmp', 'EmpController@create');
 Route::post('/changeAdmin', 'AdminController@update');
+Route::post('/deleteAdmin', 'AdminController@delete');
 
 
 Route::post('/weekBackAdmOver', 'WeekController@backAdmOver');

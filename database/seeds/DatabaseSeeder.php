@@ -43,6 +43,14 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('123456')
         ));
 
+
+
+
+
+
+
+
+
         /* ---------------------- COUNTRY -------------------------- */
         $country = Country::create(array(
             'name' => 'Deutschland'
@@ -63,6 +71,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Konstanz',
             'country_id' => $country->id
         ));
+
+
+
+
+
+
+
+
+
+
 
         /* ---------------------- ADDRESS ADMIN -------------------------- */
         $adminAddress1 = Address::create(array(
@@ -91,6 +109,18 @@ class DatabaseSeeder extends Seeder
             'admin_id' => $admins1->id,
             'address_id' => $adminAddress2->id
         ));
+
+
+
+
+
+
+
+
+
+
+
+
 
         /* ---------------------- ADDRESS STORE -------------------------- */
 
@@ -122,7 +152,6 @@ class DatabaseSeeder extends Seeder
             'city_id' => $city2->id
         ));
 
-
         /* ---------------------- Stores -------------------------- */
         $store1 = RetailStore::create(array(
             'name' => 'Berlin Alexanderplatz',
@@ -138,7 +167,7 @@ class DatabaseSeeder extends Seeder
 
         $store3 = RetailStore::create(array(
             'name' => 'Konstanz Münsterplatz',
-            'company_id' => $company1->id,
+            'company_id' => $company2->id,
             'address_id' => $store3Address->id
         ));
 
@@ -148,8 +177,20 @@ class DatabaseSeeder extends Seeder
             'address_id' => $store4Address->id
         ));
 
-        /* ---------------------- Role -------------------------- */
 
+
+
+
+
+
+
+
+
+
+
+
+
+        /* ---------------------- Role -------------------------- */
 
         $role1 = Role::create(array(
             'name' => 'Cashier'
@@ -163,13 +204,33 @@ class DatabaseSeeder extends Seeder
             'name' => 'Office Worker'
         ));
 
+        $role4 = Role::create(array(
+            'name' => 'Rolle4'
+        ));
+
+        $role5 = Role::create(array(
+            'name' => 'Rolle5'
+        ));
+
+        $role6 = Role::create(array(
+            'name' => 'Rolle6'
+        ));
+
+        $role7 = Role::create(array(
+            'name' => 'Rolle7'
+        ));
+
+        $role8 = Role::create(array(
+            'name' => 'Rolle8'
+        ));
+
         /* ---------------------- Contract -------------------------- */
 
         $contract1 = Contract::create(array(
-            'period_of_agreement' => 'unlimitted',
-            'working_hours' => '40',
-            'classification' => 'Full-Time',
-            'role_id' => $role1->id
+        'period_of_agreement' => 'unlimitted',
+        'working_hours' => '40',
+        'classification' => 'Full-Time',
+        'role_id' => $role1->id
         ));
 
         $contract2 = Contract::create(array(
@@ -186,22 +247,64 @@ class DatabaseSeeder extends Seeder
             'role_id' => $role3->id
         ));
 
-        $contract3 = Contract::create(array(
+        $contract4 = Contract::create(array(
             'period_of_agreement' => 'limitted',
             'working_hours' => '20',
             'classification' => 'student-employee',
             'role_id' => $role2->id
         ));
 
+        $contract5 = Contract::create(array(
+            'period_of_agreement' => 'unlimitted',
+            'working_hours' => '40',
+            'classification' => 'Full-Time',
+            'role_id' => $role1->id
+        ));
+
+        $contract6 = Contract::create(array(
+            'period_of_agreement' => 'unlimitted',
+            'working_hours' => '30',
+            'classification' => 'Part-Time',
+            'role_id' => $role2->id
+        ));
+
+        $contract7 = Contract::create(array(
+            'period_of_agreement' => 'limitted',
+            'working_hours' => '20',
+            'classification' => 'student-employee',
+            'role_id' => $role3->id
+        ));
+
+        $contract8 = Contract::create(array(
+            'period_of_agreement' => 'limitted',
+            'working_hours' => '20',
+            'classification' => 'student-employee',
+            'role_id' => $role2->id
+        ));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         /* ---------------------- Employee -------------------------- */
 
         $employee1 = Employee::create(array(
-            'forename' => 'Joachim',
-            'name' => 'Buhl',
-            'email' => 'emp@web.de',
-            'password' => bcrypt('123456'),
-            'retail_store_id' => $store1->id,
-            'contract_id' => $contract1->id
+        'forename' => 'Joachim',
+        'name' => 'Buhl',
+        'email' => 'emp@web.de',
+        'password' => bcrypt('123456'),
+        'retail_store_id' => $store1->id,
+        'contract_id' => $contract1->id
         ));
 
         $employee2 = Employee::create(array(
@@ -209,7 +312,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Jung',
             'email' => 'gerhart.jung@web.de',
             'password' => bcrypt('123456'),
-            'retail_store_id' => $store1->id,
+            'retail_store_id' => $store2->id,
             'contract_id' => $contract2->id
         ));
 
@@ -218,7 +321,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Friedrich',
             'email' => 'jürgen.friedrich@web.de',
             'password' => bcrypt('123456'),
-            'retail_store_id' => $store4->id,
+            'retail_store_id' => $store3->id,
             'contract_id' => $contract3->id
         ));
 
@@ -228,8 +331,60 @@ class DatabaseSeeder extends Seeder
             'email' => 'simon.weiler@web.de',
             'password' => bcrypt('123456'),
             'retail_store_id' => $store4->id,
-            'contract_id' => $contract3->id
+            'contract_id' => $contract4->id
         ));
+
+        $employee1 = Employee::create(array(
+            'forename' => 'Fabian',
+            'name' => 'Gustav',
+            'email' => 'fabian.gustav@web.de',
+            'password' => bcrypt('123456'),
+            'retail_store_id' => $store1->id,
+            'contract_id' => $contract5->id
+        ));
+
+        $employee2 = Employee::create(array(
+            'forename' => 'Hans',
+            'name' => 'Mustafa',
+            'email' => 'hans.mustafa@web.de',
+            'password' => bcrypt('123456'),
+            'retail_store_id' => $store2->id,
+            'contract_id' => $contract6->id
+        ));
+
+        $employee3 = Employee::create(array(
+            'forename' => 'Olaf',
+            'name' => 'Maier',
+            'email' => 'olaf.maier@web.de',
+            'password' => bcrypt('123456'),
+            'retail_store_id' => $store3->id,
+            'contract_id' => $contract7->id
+        ));
+
+        $employee4 = Employee::create(array(
+            'forename' => 'Maria',
+            'name' => 'Müller',
+            'email' => 'emp2@web.de',
+            'password' => bcrypt('123456'),
+            'retail_store_id' => $store4->id,
+            'contract_id' => $contract8->id
+        ));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /* ---------------------- Category -------------------------- */
 
@@ -268,88 +423,189 @@ class DatabaseSeeder extends Seeder
             'color' => 'grey'
         ));
 
-        /* ---------------------- Time Event -------------------------- */
-
-        $worktimePreferred1 = TimeEvent::create(array(
-            'date' => date('2017-01-03'),
-            'from' => '8:00',
-            'to' => '20:00',
-            'employee_id' => $employee1->id,
-            'category_id' => $category1->id
-        ));
-
-        $worktimePreferred2 = TimeEvent::create(array(
-            'date' => date('2017-01-04'),
-            'from' => '8:00',
-            'to' => '14:00',
-            'employee_id' => $employee1->id,
-            'category_id' => $category1->id
-        ));
-
-        $worktimePreferred2 = TimeEvent::create(array(
-            'date' => date('2017-01-04'),
-            'from' => '15:00',
-            'to' => '20:00',
-            'employee_id' => $employee1->id,
-            'category_id' => $category4->id
-        ));
-
-        $worktimePreferred4 = TimeEvent::create(array(
-            'date' => date('2017-01-05'),
-            'from' => '8:00',
-            'to' => '22:00',
-            'employee_id' => $employee1->id,
-            'category_id' => $category1->id
-        ));
-
-        /* ---------------------- Allday Event -------------------------- */
-
-        $alldayFix1 = AlldayEvent::create(array(
-            'date' => date('2017-01-06'),
-            'employee_id' => $employee1->id,
-            'category_id' => $category2->id
-        ));
-
-        $alldayFix2 = AlldayEvent::create(array(
-            'date' => date('2017-01-07'),
-            'employee_id' => $employee1->id,
-            'category_id' => $category2->id
-        ));
 
 
-        /* ---------------------- Worktime Fix -------------------------- */
 
-        $worktimeFix = WorktimeFix::create(array(
-            'date' => date('2017-01-03'),
-            'from' => '8:00',
-            'to' => '10:00',
-            'employee_id' => $employee1->id,
-            'category_id' => $category1->id
-        ));
 
-        $worktimeFix = WorktimeFix::create(array(
-            'date' => date('2017-01-03'),
-            'from' => '16:00',
-            'to' => '20:00',
-            'employee_id' => $employee1->id,
-            'category_id' => $category1->id
-        ));
 
-        $worktimeFix = WorktimeFix::create(array(
-            'date' => date('2017-01-04'),
-            'from' => '8:00',
-            'to' => '12:00',
-            'employee_id' => $employee1->id,
-            'category_id' => $category1->id
-        ));
 
-        $worktimeFix = WorktimeFix::create(array(
-            'date' => date('2017-01-05'),
-            'from' => '17:00',
-            'to' => '21:30',
-            'employee_id' => $employee1->id,
-            'category_id' => $category1->id
-        ));
+
+
+        {
+            /* ---------------------- Time Event -------------------------- */
+
+            $worktimePreferred1 = TimeEvent::create(array(
+                'date' => date('2017-01-03'),
+                'from' => '8:00',
+                'to' => '20:00',
+                'employee_id' => $employee1->id,
+                'category_id' => $category1->id
+            ));
+
+            $worktimePreferred2 = TimeEvent::create(array(
+                'date' => date('2017-01-04'),
+                'from' => '8:00',
+                'to' => '14:00',
+                'employee_id' => $employee1->id,
+                'category_id' => $category1->id
+            ));
+
+            $worktimePreferred2 = TimeEvent::create(array(
+                'date' => date('2017-01-04'),
+                'from' => '15:00',
+                'to' => '20:00',
+                'employee_id' => $employee1->id,
+                'category_id' => $category4->id
+            ));
+
+            $worktimePreferred4 = TimeEvent::create(array(
+                'date' => date('2017-01-05'),
+                'from' => '8:00',
+                'to' => '22:00',
+                'employee_id' => $employee1->id,
+                'category_id' => $category1->id
+            ));
+
+            /* ---------------------- Allday Event -------------------------- */
+
+            $alldayFix1 = AlldayEvent::create(array(
+                'date' => date('2017-01-06'),
+                'employee_id' => $employee1->id,
+                'category_id' => $category2->id
+            ));
+
+            $alldayFix2 = AlldayEvent::create(array(
+                'date' => date('2017-01-07'),
+                'employee_id' => $employee1->id,
+                'category_id' => $category2->id
+            ));
+
+
+            /* ---------------------- Worktime Fix -------------------------- */
+
+            $worktimeFix = WorktimeFix::create(array(
+                'date' => date('2017-01-03'),
+                'from' => '8:00',
+                'to' => '10:00',
+                'employee_id' => $employee1->id,
+                'category_id' => $category1->id
+            ));
+
+            $worktimeFix = WorktimeFix::create(array(
+                'date' => date('2017-01-03'),
+                'from' => '16:00',
+                'to' => '20:00',
+                'employee_id' => $employee1->id,
+                'category_id' => $category1->id
+            ));
+
+            $worktimeFix = WorktimeFix::create(array(
+                'date' => date('2017-01-04'),
+                'from' => '8:00',
+                'to' => '12:00',
+                'employee_id' => $employee1->id,
+                'category_id' => $category1->id
+            ));
+
+            $worktimeFix = WorktimeFix::create(array(
+                'date' => date('2017-01-05'),
+                'from' => '17:00',
+                'to' => '21:30',
+                'employee_id' => $employee1->id,
+                'category_id' => $category1->id
+            ));
+
+
+        }
+
+
+
+        {
+
+            /* ---------------------- Time Event -------------------------- */
+
+            $worktimePreferred1 = TimeEvent::create(array(
+                'date' => date('2017-01-03'),
+                'from' => '8:00',
+                'to' => '20:00',
+                'employee_id' => $employee3->id,
+                'category_id' => $category1->id
+            ));
+
+            $worktimePreferred2 = TimeEvent::create(array(
+                'date' => date('2017-01-04'),
+                'from' => '8:00',
+                'to' => '14:00',
+                'employee_id' => $employee3->id,
+                'category_id' => $category1->id
+            ));
+
+            $worktimePreferred2 = TimeEvent::create(array(
+                'date' => date('2017-01-04'),
+                'from' => '15:00',
+                'to' => '20:00',
+                'employee_id' => $employee3->id,
+                'category_id' => $category4->id
+            ));
+
+            $worktimePreferred4 = TimeEvent::create(array(
+                'date' => date('2017-01-05'),
+                'from' => '8:00',
+                'to' => '22:00',
+                'employee_id' => $employee3->id,
+                'category_id' => $category1->id
+            ));
+
+            /* ---------------------- Allday Event -------------------------- */
+
+            $alldayFix1 = AlldayEvent::create(array(
+                'date' => date('2017-01-06'),
+                'employee_id' => $employee3->id,
+                'category_id' => $category2->id
+            ));
+
+            $alldayFix2 = AlldayEvent::create(array(
+                'date' => date('2017-01-07'),
+                'employee_id' => $employee3->id,
+                'category_id' => $category2->id
+            ));
+
+
+            /* ---------------------- Worktime Fix -------------------------- */
+
+            $worktimeFix = WorktimeFix::create(array(
+                'date' => date('2017-01-03'),
+                'from' => '8:00',
+                'to' => '10:00',
+                'employee_id' => $employee3->id,
+                'category_id' => $category1->id
+            ));
+
+            $worktimeFix = WorktimeFix::create(array(
+                'date' => date('2017-01-03'),
+                'from' => '16:00',
+                'to' => '20:00',
+                'employee_id' => $employee3->id,
+                'category_id' => $category1->id
+            ));
+
+            $worktimeFix = WorktimeFix::create(array(
+                'date' => date('2017-01-04'),
+                'from' => '8:00',
+                'to' => '12:00',
+                'employee_id' => $employee3->id,
+                'category_id' => $category1->id
+            ));
+
+            $worktimeFix = WorktimeFix::create(array(
+                'date' => date('2017-01-05'),
+                'from' => '17:00',
+                'to' => '21:30',
+                'employee_id' => $employee3->id,
+                'category_id' => $category1->id
+            ));
+
+        }
 
     }
 }
