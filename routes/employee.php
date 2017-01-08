@@ -99,6 +99,9 @@ Route::post('/weekTodayEmpWork', 'WeekController@todayEmpWork');
 
 Route::post('/changeEmp', 'EmpController@update');
 
+Route::post('/alldayEventCreate', 'EmpController@update');
+
+
 /* --------------------------- FOOTER ------------------------------- */
 
 Route::get('/contact', function () {

@@ -1,6 +1,6 @@
 
 
-<form type="form" method="POST" action="{{ url('/emploee/eventAlldayCreate') }}">
+<form type="form" method="POST" action="{{ url('/employee/alldayEventCreate') }}">
 {{ csrf_field() }}
 
 <!-- Modal body-->
@@ -16,8 +16,7 @@
 
             <!-- rechts -->
             <aside class="col-xs-12 col-sm-8 aside-right">
-                <p><input class="inputmodal form-control" type="text" name="category"
-                          placeholder="Category">
+                <p><input class="inputmodal form-control" type="text" name="category" placeholder="Category"></p>
             </aside>
 
         </article>
@@ -31,9 +30,7 @@
 
             <!-- rechts -->
             <aside class="col-xs-12 col-sm-8 aside-right">
-                <p><input class=" inputmodal form-control space-cap" type="text" name="date"
-                          placeholder="Date">
-                </p>
+                <p><input class="inputmodal form-control space-cap" type="date" name="date" id="datepicker" placeholder="Date"/></p>
             </aside>
 
         </article>

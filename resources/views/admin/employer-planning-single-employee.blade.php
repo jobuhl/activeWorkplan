@@ -25,13 +25,18 @@
 
             <nav class="calendar-navigation">
                 <div class="calendar-navigation-padding">
-                    <div class="navigation-today">
+                    <div class="col-xs-6 navigation-today">
                         <button>&lt;</button>
                         <button>Today</button>
                         <button>></button>
                     </div>
 
-                    <p>01. - 07. Jan. 2018</p>
+                    <div class="col-xs-6 calendar-navigation-p">
+                        <p>
+                            {{ $week[0]->format('d. - ') }}
+                            {{ $week[6]->format('d. M. Y') }}
+                        </p>
+                    </div>
                 </div>
 
             </nav>
@@ -40,77 +45,164 @@
             <br>
 
             <div class="table-head-store">
-                <p class="table-head-a">Individual proposals of Employees</p>
+                <p class="table-head-a">Proposal Working Time</p>
             </div>
-            <table class="table-calendar table-week-listed-single">
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th>01.01</th>
-                    <th>02.01</th>
-                    <th>03.01</th>
-                    <th>04.01</th>
-                    <th>05.01</th>
-                    <th>06.01</th>
-                    <th>07.01</th>
+            <table class="calendar-days-all-emp">
+                <tr class="week-date">
+                    <td></td>
+
+                    <!------------------- DATE ----------------------->
+                    @for ($i = 0; $i < 7; $i++)
+                        <td>
+                            {{ $week[$i]->format('d.m.') }}
+                        </td>
+                    @endfor
                 </tr>
 
 
-                <tr>
-                    <th>Employees</th>
-                    <th>Time</th>
-                    <th>Mo</th>
-                    <th>Tu</th>
-                    <th>We</th>
-                    <th>Th</th>
-                    <th>Fr</th>
-                    <th>Sa</th>
-                    <th>Su</th>
+                <tr class="week-days">
+                    <td>Employees</td>
+
+
+                    <!------------------- WEEKDAY ----------------------->
+                    @for ($i = 0; $i < 7; $i++)
+                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                            <td class="today">
+                        @else
+                            <td>
+                                @endif
+                                {{ $week[$i]->format('D') }}</td>
+                            @endfor
                 </tr>
 
-                <tr>
+                <!------------------- EMPLOYEE ROW ----------------------->
+                <tr class="all-day">
+
                     <td>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
-                    <td>All-day</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                @for ($i = 0; $i < 7; $i++)
 
-                <tr>
-                    <td></td>
-                    <td>start</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>end</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
 
+                    <!------------------- IF TODAY ----------------------->
+                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                            <td class="today">
+                        @else
+                            <td>
+                            @endif
+
+
+                            <!------------------- ALLDAY EVENT ----------------------->
+                                @foreach($manyAlldayEvent as $oneAlldayEvent)
+                                    @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                                    && $oneAlldayEvent->employee_id == $thisEmployee->id)
+
+                                        <div class="one-allday-event {{ $oneAlldayEvent->color }}"
+                                             draggable="true">
+                                            <p>{{ $oneAlldayEvent->name }}</p>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </td>
+                            @endfor
+                </tr>
+                <tr class="time-events">
+                    <td></td>
+
+                @for ($i = 0; $i < 7; $i++)
+
+
+                    <!------------------- IF TODAY ----------------------->
+                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                            <td class="today">
+                        @else
+                            <td>
+                            @endif
+
+
+                            <!------------------- TIME EVENT ----------------------->
+                                @foreach($manyTimeEvent as $oneTimeEvent)
+                                    @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                                    && $oneTimeEvent->employee_id == $thisEmployee->id)
+                                        <div class="one-time-event {{ $oneTimeEvent->color }}" draggable="true">
+                                            <p>{{ $oneTimeEvent->name }}</p>
+                                            <p>{{ $oneTimeEvent->from }}</p>
+                                            <p>{{ $oneTimeEvent->to }}</p>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </td>
+                            @endfor
+                </tr>
             </table>
 
             <br>
+            <div class="table-head-store">
+                <p class="table-head-a">Fix Worktime</p>
+            </div>
+            <table class="calendar-days-all-emp">
+                <tr class="week-date">
+                    <td></td>
 
+                    <!------------------- DATE ----------------------->
+                    @for ($i = 0; $i < 7; $i++)
+                        <td>
+                            {{ $week[$i]->format('d.m.') }}
+                        </td>
+                    @endfor
+                </tr>
+
+
+                <tr class="week-days">
+                    <td>Employees</td>
+
+
+                    <!------------------- WEEKDAY ----------------------->
+                    @for ($i = 0; $i < 7; $i++)
+                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                            <td class="today">
+                        @else
+                            <td>
+                                @endif
+                                {{ $week[$i]->format('D') }}</td>
+                            @endfor
+                </tr>
+
+                <!------------------- EMPLOYEE ROW ----------------------->
+                <tr class="time-events">
+                    <td>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
+                @for ($i = 0; $i < 7; $i++)
+
+
+                    <!------------------- IF TODAY ----------------------->
+                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                            <td class="today">
+                        @else
+                            <td>
+                            @endif
+
+
+                            <!------------------- WORKTIME EVENT ----------------------->
+                                @foreach($manyWorktimeEvent as $oneWorktimeEvent)
+                                    @if( (new DateTime($oneWorktimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                                    && $oneWorktimeEvent->employee_id == $thisEmployee->id)
+                                        <div class="one-time-event {{ $oneWorktimeEvent->color }}"
+                                             draggable="true">
+                                            <p>{{ $oneWorktimeEvent->name }}</p>
+                                            <p>{{ $oneWorktimeEvent->from }}</p>
+                                            <p>{{ $oneWorktimeEvent->to }}</p>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </td>
+                            @endfor
+                </tr>
+            </table>
+
+            <br>
             <button class="form-control to-right yellow" type="submit" data-toggle="modal"
                     data-target="#change-button-emp-2">
                 Change
             </button>
+            <br>
 
             <table class="table-account">
                 <tr>
@@ -184,11 +276,12 @@
                 </tr>
             </table>
 
-
+            <br>
             <button class="form-control to-right red" type="submit" data-toggle="modal"
                     data-target="#delete-button-emp-single-3">
                 Delete
             </button>
+            <br>
 
             <div id="delete-button-emp-single-3" class="modal fade" role="dialog">
                 <div class="modal-dialog">

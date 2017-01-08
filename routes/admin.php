@@ -129,13 +129,25 @@ function admPlanningSingle($employeeId) {
     $address = oneAddress($thisEmployee->retail_store_id);
     $thisRetailStore = thisRetailStore($thisEmployee->retail_store_id);
 
+    $manyTimeEvent = allTimeEventOfCompany($company->id);
+    $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
+    $manyAlldayEvent = allAlldayEventOfCompany($company->id);
+
+    $date = new DateTime();
+    $monday = getMondayBeforeDay($date);
+    $week = getWeekArray($monday);
+
     return view('admin.employer-planning-single-employee')
         ->with('allRetailStores', $allRetailStores)
         ->with('thisRetailStore', $thisRetailStore)
         ->with('allEmployees', $allEmployees)
         ->with('thisEmployee', $thisEmployee)
         ->with('company', $company)
-        ->with('address', $address);
+        ->with('address', $address)
+        ->with('manyTimeEvent', $manyTimeEvent)
+        ->with('manyWorktimeEvent', $manyWorktimeEvent)
+        ->with('manyAlldayEvent', $manyAlldayEvent)
+        ->with('week', $week);
 }
 
 function admAccount() {
