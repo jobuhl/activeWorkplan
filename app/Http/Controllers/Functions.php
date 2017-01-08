@@ -21,6 +21,13 @@ class Functions extends Controller
             ->get()[0];
     }
 
+    function oneCompanyOfAdmin($adminId)
+    {
+        return DB::table('company')
+            ->where('company.admin_id', $adminId)
+            ->get()[0];
+    }
+
     function thisAdmin()
     {
         return DB::table('admins')

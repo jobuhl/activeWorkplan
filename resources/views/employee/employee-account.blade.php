@@ -8,10 +8,10 @@
 
     <!-- body -->
     <section class="fake-body container">
-        <h2 style="display: none">fakeheading</h2>
+       
         <section class="container">
-            <h2 style="display: none">fakeheading</h2>
-            <article class="row-col-12">
+           
+            <div class="row-col-12">
                 <h2 class="modal-ueberschrift">User Details</h2>
 
                 <button class="form-control to-right yellow my-account-button" type="submit" data-toggle="modal"
@@ -75,7 +75,7 @@
 
                 </table>
 
-            </article>
+            </div>
 
 
         </section>
@@ -106,27 +106,12 @@
                 <!-- Modal body-->
                 <!-- Basic-->
                 <div class="modal-body">
-                    <form>
 
-                        <!-- Zeile 1 -->
-                        <article class="row">
-                            <h2 style="display: none">fakeheading</h2>
-
-                            <!-- links -->
-                            <aside class="col-sm-4 col-xs-4  aside-left special-case-left">
-                                Employer ID
-                            </aside>
-
-                            <!-- rechts -->
-                            <aside class="col-sm-8 col-xs-8  aside-right">
-                                <p class="inputmodal form-control">835372</p>
-                            </aside>
-
-                        </article>
-
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/employee/changeEmp') }}">
+                        {{ csrf_field() }}
                         <!-- Zeile 2 password Change button -->
-                        <article class="row">
-                            <h2 style="display: none">fakeheading</h2>
+                        <div class="row">
+                           
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-line">
@@ -142,15 +127,15 @@
                                 </button>
                             </aside>
 
-                        </article>
+                        </div>
 
                         <div class="placeholder-mobil col-xs-12">
                             <hr class="hr-line">
                         </div>
 
                         <!-- Zeile 3 -->
-                        <article class="row">
-                            <h2 style="display: none">fakeheading</h2>
+                        <div class="row">
+                           
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap">
@@ -159,15 +144,15 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class="inputmodal form-control  modal-input space-cap" type="text"
-                                       placeholder="Employee Lastname">
+                                <input class="inputmodal form-control  modal-input space-cap" type="text" name="name"
+                                       value="{{ $thisEmployee->surname }}">
                             </aside>
 
-                        </article>
+                        </div>
 
                         <!-- Zeile 4 -->
-                        <article class="row modal-person">
-                            <h2 style="display: none">fakeheading</h2>
+                        <div class="row modal-person">
+                           
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
@@ -176,15 +161,15 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                       placeholder="Employee Firstname">
+                                <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="forename"
+                                       value="{{ $thisEmployee->forename }}">
                             </aside>
 
-                        </article>
+                        </div>
 
                         <!-- Zeile 5 -->
-                        <article class="row">
-                            <h2 style="display: none">fakeheading</h2>
+                        <div class="row">
+                           
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap-bottom">
@@ -193,99 +178,33 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class="inputmodal form-control  modal-input space-cap-bottom" type="text"
-                                       placeholder="admin.administrator@email.com">
+                                <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" name="email"
+                                       value="{{ $thisEmployee->email }}">
                             </aside>
 
-                        </article>
+                        </div>
 
                         <div class="placeholder-mobil col-xs-12">
                             <hr class="hr-line">
                         </div>
 
+                        <!-- Modal footer-->
+                        <div >
+                            <div class="col-xs-12">
 
-                        <!-- Zeile 6 -->
-                        <article class="row ">
-                            <h2 style="display: none">fakeheading</h2>
+                                <button type="submit" class="form-control  modal-change-button"
+                                      ">Change
+                                </button>
 
-                            <!-- links -->
-                            <aside class="col-sm-4 col-xs-12  aside-left ">
-                                Company
-                            </aside>
 
-                            <!-- rechts -->
-                            <aside class="col-sm-8 col-xs-12  aside-right">
-                                <p class=" inputmodal form-control  modal-input space-cap-inner"
-                                >HTWG</p>
-                            </aside>
-
-                        </article>
-
-                        <!-- Zeile 7 -->
-                        <article class="row">
-                            <h2 style="display: none">fakeheading</h2>
-
-                            <!-- links -->
-                            <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
-                                Prefferd Retail Store 
-                            </aside>
-
-                            <!-- rechts -->
-                            <aside class="col-sm-8 col-xs-12  aside-right">
-                                <p class=" inputmodal form-control  modal-input space-cap-inner"
-                                >Konstanz</p>
-                            </aside>
-
-                        </article>
-
-                        <!-- Zeile 8 -->
-                        <article class="row">
-                            <h2 style="display: none">fakeheading</h2>
-
-                            <!-- links -->
-                            <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
-                                Adresse
-                            </aside>
-
-                            <!-- rechts -->
-                            <aside class="col-sm-8 col-xs-12  aside-right">
-                                <p class=" inputmodal form-control  modal-input space-cap-inner"
-                                >Brauneggerstraße 55</p>
-                            </aside>
-                        </article>
-
-                        <!-- Zeile 9 -->
-                        <article class="row">
-                            <h2 style="display: none">fakeheading</h2>
-
-                            <!-- links -->
-                            <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
-                                Agreement working hours 
-                            </aside>
-
-                            <!-- rechts -->
-                            <aside class="col-sm-8 col-xs-12  aside-right">
-                                <p class=" inputmodal form-control space-cap-inner">44</p>
-                            </aside>
-
-                        </article>
-
+                            </div>
+                        </div>
                     </form>
 
 
                 </div>
 
-                <!-- Modal footer-->
-                <div class="modal-footer">
-                    <div class="col-xs-12">
 
-                        <button type="submit" class="form-control  modal-change-button" data-dismiss="modal"
-                                data-toggle="modal" onclick="modalChange()">Change
-                        </button>
-
-
-                    </div>
-                </div>
             </div>
 
         </div>

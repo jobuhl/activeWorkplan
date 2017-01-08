@@ -1,19 +1,20 @@
 @extends('admin.layout.employer-start')
 
 @section('css')
-    <link rel="stylesheet" type="text/css"  href="{{asset('css/global/table-account.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-account.css')}}">
 @endsection
 
 @section('content')
 
     <section class="fake-body">
-       
+
         <section class="container">
-           
+
             <div class="row -col-12">
                 <h2 class="modal-ueberschrift">Admin Details</h2>
 
-                <button class="form-control to-right yellow my-account-button" type="submit" data-toggle="modal" data-target="#change-button">
+                <button class="form-control to-right yellow my-account-button" type="submit" data-toggle="modal"
+                        data-target="#change-button">
                     Change
                 </button>
 
@@ -64,7 +65,8 @@
                 </table>
 
 
-                <button class="form-control to-right red my-account-button" data-toggle="modal" data-target="#delete-button-admin">Delete
+                <button class="form-control to-right red my-account-button" data-toggle="modal"
+                        data-target="#delete-button-admin">Delete
                 </button>
 
 
@@ -99,28 +101,11 @@
                 <div class="modal-body">
 
 
-                        <!-- Zeile 1 -->
-                        <div class="row">
-                           
-
-                            <!-- links -->
-                            <aside class="col-sm-4 col-xs-3  aside-left special-case-left">
-                                Admin ID
-                            </aside>
-
-                            <!-- rechts -->
-                            <aside class="col-sm-8 col-xs-9  aside-right special-case-right">
-                                <p class="inputmodal form-control  modal-input space-cap">
-                                    {{ $admin->id }}</p>
-                            </aside>
-
-                        </div>
-
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changeAdmin') }}">
                     {{ csrf_field() }}
-                        <!-- Zeile 2 password Change button -->
+                    <!-- Zeile 2 password Change button -->
                         <div class="row">
-                           
+
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-line">
@@ -129,7 +114,8 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <button type="button" class="form-control  modal-change-button space-line yellow" data-dismiss="modal"
+                                <button type="button" class="form-control  modal-change-button space-line yellow"
+                                        data-dismiss="modal"
                                         data-toggle="modal"
                                         data-target="#change-password">Change Password
                                 </button>
@@ -143,7 +129,7 @@
 
                         <!-- Zeile 3 -->
                         <div class="row">
-                           
+
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap">
@@ -153,14 +139,14 @@
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
                                 <input class="inputmodal form-control  modal-input space-cap" type="text" name="name"
-                                     value="{{ $admin->name }}" >
+                                       value="{{ $admin->name }}">
                             </aside>
 
                         </div>
 
                         <!-- Zeile 4 -->
                         <div class="row modal-person">
-                           
+
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
@@ -169,15 +155,16 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="forename"
-                                       value="{{ $admin->forename }}" >
+                                <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
+                                       name="forename"
+                                       value="{{ $admin->forename }}">
                             </aside>
 
                         </div>
 
                         <!-- Zeile 5 -->
                         <div class="row">
-                           
+
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap-bottom">
@@ -186,7 +173,8 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" name="email"
+                                <input class="inputmodal form-control  modal-input space-cap-bottom" type="text"
+                                       name="email"
                                        value="{{ $admin->email }}">
                             </aside>
 
@@ -199,7 +187,7 @@
 
                         <!-- Zeile 6 -->
                         <div class="row ">
-                           
+
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap">
@@ -208,14 +196,15 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class="inputmodal form-control  modal-input space-cap" type="text" placeholder="{{ $company->name }}">
+                                <input class="inputmodal form-control  modal-input space-cap" type="text" name="company_name"
+                                       value="{{ $company->name }}">
                             </aside>
 
                         </div>
 
                         <!-- Zeile 7 -->
                         <div class="row">
-                           
+
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
@@ -224,15 +213,15 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                       placeholder=" {{ $address->street }}">
+                                <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="street"
+                                       value="{{ $address->street }}">
                             </aside>
 
                         </div>
 
                         <!-- Zeile 8 -->
                         <div class="row">
-                           
+
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
@@ -241,14 +230,15 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class="inputmodal form-control  modal-input space-cap-inner" type="text" placeholder=" {{ $address->street_nr }}">
+                                <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="street_nr"
+                                       value="{{ $address->street_nr }}">
                             </aside>
 
                         </div>
 
                         <!-- Zeile 9 -->
                         <div class="row">
-                           
+
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
@@ -257,14 +247,15 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class="inputmodal form-control  modal-input space-cap-inner" type="text" placeholder="{{ $address->postcode }}">
+                                <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="postcode"
+                                       value="{{ $address->postcode }}">
                             </aside>
 
                         </div>
 
                         <!-- Zeile 10 -->
                         <div class="row ">
-                           
+
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
@@ -273,14 +264,15 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class=" inputmodal form-control  modal-input space-cap-inner" type="text" placeholder="{{ $address->city }}">
+                                <input class=" inputmodal form-control  modal-input space-cap-inner" type="text" name="city"
+                                       value="{{ $address->city }}">
                             </aside>
 
                         </div>
 
                         <!-- Zeile 11 -->
                         <div class="row space-cap-bottom">
-                           
+
 
                             <!-- links -->
                             <aside class="col-sm-4 col-xs-12  aside-left">
@@ -289,7 +281,8 @@
 
                             <!-- rechts -->
                             <aside class="col-sm-8 col-xs-12  aside-right">
-                                <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" placeholder=" {{ $address->country }}">
+                                <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" name="country"
+                                       value="{{ $address->country }}">
 
                             </aside>
 
@@ -350,7 +343,8 @@
 
                 <!-- Modal footer-->
                 <div class="modal-footer">
-                    <button type="button" class="form-control  modal-change-button space-line yellow" data-dismiss="modal"
+                    <button type="button" class="form-control  modal-change-button space-line yellow"
+                            data-dismiss="modal"
                             data-toggle="modal"
                             data-target="#change-password">Change Password
                     </button>
@@ -383,7 +377,8 @@
 
                 <!-- Modal footer-->
                 <div class="modal-footer">
-                    <button class="form-control  red modal-bottom" data-toggle="modal" data-target="#delete-button-admin"
+                    <button class="form-control  red modal-bottom" data-toggle="modal"
+                            data-target="#delete-button-admin"
                             onclick="deleteAdmin()">
                         Delete
                     </button>

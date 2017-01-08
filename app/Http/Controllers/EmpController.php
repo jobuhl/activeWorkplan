@@ -61,4 +61,22 @@ function create(Request $data)
 
     return redirect('/admin/employee-single/' . $thisEmployee->id);
 }
+
+    public function update(Request $request)
+    {
+        $employee = Employee::find(Auth::user()->id);
+
+
+
+        Employee::where('employees.id', $employee->id)
+            ->update(array(
+
+                'forename' => $request['forename'],
+                'name' => $request['name'],
+                'email' => $request['email'],
+
+            ));
+
+        return redirect('/employee/employee-account');
+    }
 }

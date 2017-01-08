@@ -26,18 +26,29 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $admins = Admin::create(array(
+
+        /* ---------------------- ADMIN -------------------------- */
+
+        $admins1 = Admin::create(array(
             'forename' => 'Alex',
             'name' => 'Schmutz',
             'email' => 'admin@web.de',
             'password' => bcrypt('123456')
         ));
 
-        // Datensatz nur erstellen, wenn noch nicht vorhanden
+        $admins2 = Admin::create(array(
+            'forename' => 'Daniel',
+            'name' => 'fellhauer',
+            'email' => 'daniel@web.de',
+            'password' => bcrypt('123456')
+        ));
+
+        /* ---------------------- COUNTRY -------------------------- */
         $country = Country::create(array(
             'name' => 'Deutschland'
         ));
 
+        /* ---------------------- CITY -------------------------- */
         $city1 = City::create(array(
             'name' => 'Berlin',
             'country_id' => $country->id
@@ -53,19 +64,35 @@ class DatabaseSeeder extends Seeder
             'country_id' => $country->id
         ));
 
-        // Adresse wird immer erstellt, falls Company umzieht -> einfacher zu warten
-        $adminAddress = Address::create(array(
+        /* ---------------------- ADDRESS ADMIN -------------------------- */
+        $adminAddress1 = Address::create(array(
             'street' => 'Alexanderplatz',
             'street_nr' => '1',
             'postcode' => '10178',
             'city_id' => $city1->id
         ));
 
-        $company = Company::create(array(
-            'name' => 'Fashion Style GmbH',
-            'admin_id' => $admins->id,
-            'address_id' => $adminAddress->id
+        $adminAddress2 = Address::create(array(
+            'street' => 'straße',
+            'street_nr' => '22',
+            'postcode' => 'eee',
+            'city_id' => $city2->id
         ));
+
+        /* ---------------------- COMPANY -------------------------- */
+        $company1 = Company::create(array(
+            'name' => 'UNI GmbH',
+            'admin_id' => $admins2->id,
+            'address_id' => $adminAddress1->id
+        ));
+
+        $company2 = Company::create(array(
+            'name' => 'HTWG GmbH',
+            'admin_id' => $admins1->id,
+            'address_id' => $adminAddress2->id
+        ));
+
+        /* ---------------------- ADDRESS STORE -------------------------- */
 
         $store1Address = Address::create(array(
             'street' => 'Alexanderplatz',
@@ -88,25 +115,37 @@ class DatabaseSeeder extends Seeder
             'city_id' => $city3->id
         ));
 
+        $store4Address = Address::create(array(
+            'street' => 'Bablabla',
+            'street_nr' => '122',
+            'postcode' => '396322',
+            'city_id' => $city2->id
+        ));
 
 
         /* ---------------------- Stores -------------------------- */
         $store1 = RetailStore::create(array(
             'name' => 'Berlin Alexanderplatz',
-            'company_id' => $company->id,
+            'company_id' => $company1->id,
             'address_id' => $store1Address->id
         ));
 
         $store2 = RetailStore::create(array(
             'name' => 'Stuttgart Bahnhofstraße',
-            'company_id' => $company->id,
+            'company_id' => $company1->id,
             'address_id' => $store2Address->id
         ));
 
         $store3 = RetailStore::create(array(
             'name' => 'Konstanz Münsterplatz',
-            'company_id' => $company->id,
+            'company_id' => $company1->id,
             'address_id' => $store3Address->id
+        ));
+
+        $store4 = RetailStore::create(array(
+            'name' => 'Konstanz Münsterplatz',
+            'company_id' => $company2->id,
+            'address_id' => $store4Address->id
         ));
 
         /* ---------------------- Role -------------------------- */
@@ -179,7 +218,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Friedrich',
             'email' => 'jürgen.friedrich@web.de',
             'password' => bcrypt('123456'),
-            'retail_store_id' => $store2->id,
+            'retail_store_id' => $store4->id,
             'contract_id' => $contract3->id
         ));
 
@@ -188,7 +227,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Weiler',
             'email' => 'simon.weiler@web.de',
             'password' => bcrypt('123456'),
-            'retail_store_id' => $store3->id,
+            'retail_store_id' => $store4->id,
             'contract_id' => $contract3->id
         ));
 

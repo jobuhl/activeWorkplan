@@ -97,6 +97,7 @@ Route::post('/weekBackEmpWork', 'WeekController@backEmpWork');
 Route::post('/weekNextEmpWork', 'WeekController@nextEmpWork');
 Route::post('/weekTodayEmpWork', 'WeekController@todayEmpWork');
 
+Route::post('/changeEmp', 'EmpController@update');
 
 /* --------------------------- FOOTER ------------------------------- */
 
