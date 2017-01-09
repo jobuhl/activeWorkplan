@@ -40,7 +40,7 @@
                             <aside class="col-xs-12 col-sm-8 aside-right">
                                 <p><input class="form-control to-right modal-input space-cap"
                                           type="password"
-                                          value="Password"></p>
+                                          value="{{ $thisEmployee->surname }}"></p>
                             </aside>
 
                         </div>
@@ -167,17 +167,9 @@
 
                             <!-- rechts -->
                             <aside class="col-xs-12 col-sm-8 aside-right">
-                                <p><select class="selectpicker form-control to-right modal-input space-cap">
-                                        <option>20</option>
-                                        <option>25</option>
-                                        <option>30</option>
-                                        <option>35</option>
-                                        <option>38</option>
-                                        <option>40</option>
-                                        <option>42</option>
-                                        <option>45</option>
-                                        <option>48</option>
-                                    </select></p>
+                                <p><input class="selectpicker form-control to-right modal-input space-cap" value="{{ $thisEmployee->working_hours}}" name="working_hours">
+
+                                   </p>
                             </aside>
 
 
@@ -214,7 +206,7 @@
                                            name="retail_store_name">
 
                                         @foreach($allRetailStores as $retailStore)
-                                            <option>{{ $retailStore->name }}</option>
+                                            <option value="{{$retailStore->id}}">{{ $retailStore->name }}</option>
                                         @endforeach
                                     </select></p>
                             </aside>

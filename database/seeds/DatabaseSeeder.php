@@ -172,7 +172,7 @@ class DatabaseSeeder extends Seeder
         ));
 
         $store4 = RetailStore::create(array(
-            'name' => 'Konstanz Münsterplatz',
+            'name' => 'Konstanz Gutstav-Hammer-Platz',
             'company_id' => $company2->id,
             'address_id' => $store4Address->id
         ));

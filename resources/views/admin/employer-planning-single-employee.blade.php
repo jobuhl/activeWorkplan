@@ -194,7 +194,7 @@
             </table>
 
             <button class="form-control set-right delete-button space-to-top-bottom" type="submit" data-toggle="modal"
-                    data-target="#delete-button-emp-single-3">
+                    data-target="#delete">
                 Delete
             </button>
 
@@ -203,53 +203,10 @@
 
 
 
-            {{--Delete Modal--}}
-            <div id="delete-button-emp-single-3" class="modal fade" role="dialog">
-                <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-
-                        <!-- Basic-->
-                        <div class="modal-body">
-                            <div class="modal-header">
-
-                                <!-- Close Button oben rechts im Header -->
-                                <button type="button" class="close" data-dismiss="modal"
-                                >&times;</button>
-
-                                <!-- Überschrift -->
-                                <h2 class="modal-ueberschrift">Delete Employee</h2>
-                                <h5 class="select-ueberschrift">Do you really want to delete Maria Schuster </h5>
-                                <br>
-
-
-                            </div>
-                            <!-- Modal footer-->
-                            <div class="modal-footer">
-                                <button class="form-control set-right delete-button" data-toggle="modal"
-                                        data-target="#delete-button-emp-3"
-                                        onclick="deleteUserSingle()">
-                                    Delete
-                                </button>
-                            </div>
-
-
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </aside>
-
-    </div>
 @endsection
 @include('admin.includes.change-emp')
+
 @section('js')
     <script src="{{asset('js/general/side-bar.js')}}"></script>
 
