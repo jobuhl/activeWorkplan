@@ -28,7 +28,7 @@
 
         @foreach($allRetailStores as $retailStore)
             <li class="arrow-down">
-                <a href="/activeWorkplan/public/admin/employer-planning/{{ $retailStore->id }}">{{ $retailStore->id }} {{ $retailStore->name }}</a>
+                <a href="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . (clone $week[0])->format('d-m-Y') }}">{{ $retailStore->id }} {{ $retailStore->name }}</a>
                 <a style="padding: 13.5px;" class="glyphicon glyphicon-chevron-down"></a>
                 <ul>
                     @foreach($allEmployees as $employee)
