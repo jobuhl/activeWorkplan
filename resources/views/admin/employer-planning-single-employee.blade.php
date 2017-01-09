@@ -194,7 +194,7 @@
             </table>
 
             <button class="form-control set-right delete-button space-to-top-bottom" type="submit" data-toggle="modal"
-                    data-target="#delete">
+                    data-target="#delete-emp">
                 Delete
             </button>
 
@@ -202,11 +202,12 @@
             <br>
 
 
+        </aside>
 
-
+    </div>
 @endsection
 @include('admin.includes.change-emp')
-
+@include('admin.includes.delete-emp')
 @section('js')
     <script src="{{asset('js/general/side-bar.js')}}"></script>
 
