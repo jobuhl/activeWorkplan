@@ -6,11 +6,11 @@ Route::get('/home', function () {
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
 
-    return redirect('/employee/employee-workplan');
+    return redirect('/employee/employee-workplan/' . (new DateTime())->format('d-m-Y'));
 })->name('home');
 
 
-Route::get('/employee-workplan', function () {
+Route::get('/employee-workplan/{date}', function ($urlDate) {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
@@ -18,15 +18,11 @@ Route::get('/employee-workplan', function () {
     $thisEmployee = oneEmployee(Auth::user()->id);
 
     $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
-
     $manyWorktimeEvent = worktimeFixOfEmployee($thisEmployee->id);
-
     $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
 
-    $today = new DateTime();
-
+    $today = new DateTime($urlDate);
     $monday = getMondayBeforeDay($today);
-
     $week = getWeekArray($monday);
 
     return view('employee.employee-workplan')
@@ -39,7 +35,7 @@ Route::get('/employee-workplan', function () {
 
 /* --------------------------- PLANNING ------------------------------- */
 
-Route::get('/employee-planning', function () {
+Route::get('/employee-planning/{date}', function ($urlDate) {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
@@ -50,10 +46,9 @@ Route::get('/employee-planning', function () {
     $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
     $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
 
-    $today = new DateTime();
+    $today = new DateTime($urlDate);
     $monday = getMondayBeforeDay($today);
     $week = getWeekArray($monday);
-
 
     return view('employee.employee-planning')
         ->with('manyTimeEvent', $manyTimeEvent)
@@ -87,14 +82,6 @@ Route::get('/employee-account', function () {
 
 
 /* --------------------------- Formulare ------------------------------- */
-
-Route::post('/weekBackEmpPlan', 'WeekController@backEmpPlan');
-Route::post('/weekNextEmpPlan', 'WeekController@nextEmpPlan');
-Route::post('/weekTodayEmpPlan', 'WeekController@todayEmpPlan');
-
-Route::post('/weekBackEmpWork', 'WeekController@backEmpWork');
-Route::post('/weekNextEmpWork', 'WeekController@nextEmpWork');
-Route::post('/weekTodayEmpWork', 'WeekController@todayEmpWork');
 
 Route::post('/changeEmp', 'EmpController@update');
 
