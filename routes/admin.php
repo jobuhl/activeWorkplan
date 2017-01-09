@@ -38,16 +38,31 @@ Route::post('/deleteAdmin', 'AdminController@delete');
 
 /* ---------------------------- FOOTER -------------------------------- */
 
-Route::get('/contact', function () {
-    return view('admin.contact');
+Route::get('/contact/{date}', function ($urlDate) {
+    $week = getWeekArray($urlDate);
+    $company = thisCompany();
+    $allRetailStores = allRetailStoresOfCompany($company->id);
+    return view('admin.contact')
+        ->with('week', $week)
+        ->with('allRetailStores', $allRetailStores);
 });
 
-Route::get('/impressum', function () {
-    return view('admin.impressum');
+Route::get('/impressum/{date}', function ($urlDate) {
+    $week = getWeekArray($urlDate);
+    $company = thisCompany();
+    $allRetailStores = allRetailStoresOfCompany($company->id);
+    return view('admin.impressum')
+        ->with('week', $week)
+        ->with('allRetailStores', $allRetailStores);
 });
 
-Route::get('/protection', function () {
-    return view('admin.protection');
+Route::get('/protection/{date}', function ($urlDate) {
+    $week = getWeekArray($urlDate);
+    $company = thisCompany();
+    $allRetailStores = allRetailStoresOfCompany($company->id);
+    return view('admin.protection')
+        ->with('week', $week)
+        ->with('allRetailStores', $allRetailStores);
 });
 
 
@@ -71,9 +86,7 @@ function admOverview($urlDate) {
     $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id);
 
-    $today = new DateTime($urlDate);
-    $monday = getMondayBeforeDay($today);
-    $week = getWeekArray($monday);
+    $week = getWeekArray($urlDate);
 
     return view('admin.home')
         ->with('allRetailStores', $allRetailStores)
@@ -97,9 +110,7 @@ function admPlanning($thisRetailStoreId, $urlDate) {
     $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id);
 
-    $date = new DateTime($urlDate);
-    $monday = getMondayBeforeDay($date);
-    $week = getWeekArray($monday);
+    $week = getWeekArray($urlDate);
 
     return view('admin.employer-planning')
         ->with('allRetailStores', $allRetailStores)
@@ -125,9 +136,7 @@ function admPlanningSingle($employeeId, $urlDate) {
     $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id);
 
-    $date = new DateTime($urlDate);
-    $monday = getMondayBeforeDay($date);
-    $week = getWeekArray($monday);
+    $week = getWeekArray($urlDate);
 
     return view('admin.employer-planning-single-employee')
         ->with('allRetailStores', $allRetailStores)
@@ -150,9 +159,7 @@ function admAccount($urlDate) {
     $admin = thisAdmin();
     $address = oneAddress($company->id);
 
-    $date = new DateTime($urlDate);
-    $monday = getMondayBeforeDay($date);
-    $week = getWeekArray($monday);
+    $week = getWeekArray($urlDate);
 
     return view('admin.employer-account')
         ->with('company', $company)

@@ -138,11 +138,12 @@ function allCategory()
         ->get();
 }
 
-function getMondayBeforeDay($day) {
-    return $day->modify('-' . ($day->format('N') - 1) . ' days');
-}
+function getWeekArray($urlDate) {
 
-function getWeekArray($monday) {
+    $day = new DateTime($urlDate);
+
+    $monday = clone $day->modify('-' . ($day->format('N') - 1) . ' days');
+
     return array(
         clone $monday,
         clone $monday->add(new DateInterval('P1D')),

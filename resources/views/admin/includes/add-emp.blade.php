@@ -256,6 +256,7 @@
 
                     <div class="form-group">
                         <div class="col-xs-12">
+                            <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                             <button type="submit" class="form-control to-right add-button">
                                 Add
                             </button>

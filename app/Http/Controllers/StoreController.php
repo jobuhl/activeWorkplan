@@ -15,9 +15,9 @@ use Illuminate\Http\Request;
 class StoreController extends Controller
 {
 
-    protected function validator(array $data)
+    protected function validator(array $request)
     {
-        return Validator::make($data, [
+        return Validator::make($request, [
             'country' => 'required|max:255',
             'city' => 'required|max:255',
             'street' => 'required|max:255',
@@ -28,7 +28,7 @@ class StoreController extends Controller
     }
 
     // Admin erstellt Reatil Store
-    public function create(Request $data) {
+    public function create(Request $request) {
 
         /* Aktuelle Company rausbekommen */
         $company = thisCompany();
@@ -37,28 +37,28 @@ class StoreController extends Controller
         /* Daten speichern */
         // Datensatz nur erstellen, wenn noch nicht vorhanden
         $newCountry = Country::firstOrCreate(array(
-            'name' => $data['country']
+            'name' => $request['country']
         ));
 
         $newCity = City::firstOrCreate(array(
-            'name' => $data['city'],
+            'name' => $request['city'],
             'country_id' => $newCountry->id
         ));
 
         // Adresse wird immer erstellt, falls Company umzieht -> einfacher zu warten
         $newAddress = Address::create(array(
-            'street' => $data['street'],
-            'street_nr' => $data['street_nr'],
-            'postcode' => $data['postcode'],
+            'street' => $request['street'],
+            'street_nr' => $request['street_nr'],
+            'postcode' => $request['postcode'],
             'city_id' => $newCity->id
         ));
 
         $thisRetailStore = RetailStore::create(array(
-            'name' => $data['name'],
+            'name' => $request['name'],
             'company_id' => $company->id,
             'address_id' => $newAddress->id
         ));
 
-        return redirect('/admin/employer-planning/' . $thisRetailStore->id);
+        return redirect('/admin/employer-planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
     }
 }

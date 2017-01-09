@@ -1,7 +1,7 @@
 <header>
     <ul class="left-list" id="id-left">
         <li class="nav-image">
-            <a href="employee-workplan">
+            <a href="{{ url('/employee/employee-workplan') . '/' . $week[0]->format('d-m-Y') }}">
                 <img class="nav-logo" src="{{asset('img/imagelogo.gif')}}" alt="Logo">
             </a>
         </li>

@@ -154,6 +154,7 @@
                 </div>
                 <!-- Modal footer-->
                 <div class="modal-footer">
+                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                     <button type="submit" class="form-control to-right add-button" data-toggle="modal"
                             data-target="#add-button-store" onclick="addstore()">Add
                     </button>

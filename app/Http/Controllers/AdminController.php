@@ -61,7 +61,7 @@ class AdminController extends Controller
                 'admin_id' => $admin->id
             ));
 
-        return redirect('/admin/employer-account');
+        return redirect('/admin/employer-account/' . $request['thisDate']);
     }
 
     public function delete(Request $request)
@@ -139,7 +139,6 @@ class AdminController extends Controller
         $addressCompany->delete();
         $addressRetailStores->delete();
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
-
 
         return redirect('/');
     }

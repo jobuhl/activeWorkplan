@@ -2,7 +2,7 @@
 
     <ul class="left-list" id="id-left">
         <li class="nav-image">
-            <a href="/activeWorkplan/public/admin/employer-overview">
+            <a href="{{ url('/admin/employer-overview') . '/' . $week[0]->format('d-m-Y') }}">
                 <img class="nav-logo" src="{{asset('img/imagelogo.gif')}}" alt="Logo">
             </a>
         </li>

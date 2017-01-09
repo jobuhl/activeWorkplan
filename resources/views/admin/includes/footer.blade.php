@@ -1,7 +1,7 @@
 <footer>
     <ul>
-        <li><a id="protection" href="/activeWorkplan/public/admin/protection">Dataprotection</a></li>
-        <li><a id="impressum" href="/activeWorkplan/public/admin/impressum">Impressum</a></li>
-        <li><a id="contact" href="/activeWorkplan/public/admin/contact">Contact</a></li>
+        <li><a id="protection" href="{{ url('/admin/protection') . '/' . $week[0]->format('d-m-Y') }}">Dataprotection</a></li>
+        <li><a id="impressum" href="{{ url('/admin/impressum') . '/' . $week[0]->format('d-m-Y') }}">Impressum</a></li>
+        <li><a id="contact" href="{{ url('/admin/contact') . '/' . $week[0]->format('d-m-Y') }}">Contact</a></li>
     </ul>
 </footer>

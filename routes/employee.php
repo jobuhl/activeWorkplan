@@ -21,9 +21,7 @@ Route::get('/employee-workplan/{date}', function ($urlDate) {
     $manyWorktimeEvent = worktimeFixOfEmployee($thisEmployee->id);
     $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
 
-    $today = new DateTime($urlDate);
-    $monday = getMondayBeforeDay($today);
-    $week = getWeekArray($monday);
+    $week = getWeekArray($urlDate);
 
     return view('employee.employee-workplan')
         ->with('manyTimeEvent', $manyTimeEvent)
@@ -46,9 +44,7 @@ Route::get('/employee-planning/{date}', function ($urlDate) {
     $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
     $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
 
-    $today = new DateTime($urlDate);
-    $monday = getMondayBeforeDay($today);
-    $week = getWeekArray($monday);
+    $week = getWeekArray($urlDate);
 
     return view('employee.employee-planning')
         ->with('manyTimeEvent', $manyTimeEvent)
@@ -70,9 +66,7 @@ Route::get('/employee-account/{date}', function ($urlDate) {
     $company = oneCompany($thisRetailStore->company_id);
     $address = oneAddress($thisRetailStore->address_id);
 
-    $today = new DateTime($urlDate);
-    $monday = getMondayBeforeDay($today);
-    $week = getWeekArray($monday);
+    $week = getWeekArray($urlDate);
 
     return view('employee.employee-account')
         ->with('thisEmployee', $thisEmployee)
@@ -97,16 +91,22 @@ Route::post('/timeEventDelete', 'EventController@deleteTimeEvent');
 
 /* --------------------------- FOOTER ------------------------------- */
 
-Route::get('/contact', function () {
-    return view('employee.contact');
+Route::get('/contact/{date}', function ($urlDate) {
+    $week = getWeekArray($urlDate);
+    return view('employee.contact')
+        ->with('week', $week);
 });
 
-Route::get('/impressum', function () {
-    return view('employee.impressum');
+Route::get('/impressum/{date}', function ($urlDate) {
+    $week = getWeekArray($urlDate);
+    return view('employee.impressum')
+        ->with('week', $week);
 });
 
-Route::get('/protection', function () {
-    return view('employee.protection');
+Route::get('/protection/{date}', function ($urlDate) {
+    $week = getWeekArray($urlDate);
+    return view('employee.protection')
+        ->with('week', $week);
 });
 
 

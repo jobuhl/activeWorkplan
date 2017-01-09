@@ -214,6 +214,7 @@
                         </div>
 
                         <div>
+                            <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                             <button class="form-control to-right modal-change-button space-to-top-bottom" type="submit"
                                     value="{{ $thisEmployee->id }}" name="thisEmployeeId">
                                 Change
