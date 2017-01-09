@@ -16,13 +16,13 @@
 
             <!-- Body-->
             <div class="modal-body">
-                Do you really want to delete all accounts of your company?
+               <h5  class="select-ueberschrift"> Do you really want to delete all accounts of your company?</h5>
             </div>
 
             <div class="modal-footer">
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/deleteAdmin') }}">
                     {{ csrf_field() }}
-                    <button class="form-control  red modal-bottom" type="submit">
+                    <button class="form-control  delete-button modal-bottom" type="submit">
                         Delete
                     </button>
                 </form>

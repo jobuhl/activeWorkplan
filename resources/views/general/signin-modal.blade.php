@@ -12,8 +12,9 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 <!-- Überschrift -->
-                <h1>Sign in</h1>
+                <h1 class="modal-ueberschrift">Sign in</h1>
 
+                <br>
 
                 <div class="modal-sub">
 
@@ -31,7 +32,7 @@
             <!-- Basic-->
 
             <!-- JavaScript Methoden in SignUp.Js-->
-            <div class="modal-body">
+
                 <div id="modal-body-admin">
                     @include('admin.auth.login')
                 </div>
@@ -40,7 +41,6 @@
                     @include('employee.auth.login')
                 </div>
             </div>
-        </div>
     </div>
 </div>
 

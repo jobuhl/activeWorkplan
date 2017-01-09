@@ -17,14 +17,14 @@
                 <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
 
             </div>
-
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/addEmp') }}">
+            {{ csrf_field() }}
             <!-- Modal body-->
-            <!-- Basic-->
-            <div class="modal-body">
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/addEmp') }}">
-                {{ csrf_field() }}
+                <!-- Basic-->
+                <div class="modal-body">
 
-                <!-- Zeile 1  -->
+
+                    <!-- Zeile 1  -->
 
                     <!-- Zeile 2 password Change button -->
 
@@ -151,7 +151,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="form-control to-right modal-input space-cap" type="text"
+                            <p><select class="selectpicker form-control to-right modal-input space-cap" type="text"
                                        name="retail_store_name">
 
                                     @foreach($allRetailStores as $retailStore)
@@ -176,7 +176,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="form-control to-right modal-input space-cap" type="text"
+                            <p><select class="selectpicker form-control to-right modal-input space-cap" type="text"
                                        name="period_of_agreement"
                                 >
                                     <option>limited</option>
@@ -220,7 +220,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="form-control to-right modal-input space-cap" type="text"
+                            <p><select class="selectpicker form-control to-right modal-input space-cap" type="text"
                                        name="classification"
                                        placeholder="Classification">
                                     <option>Fulltime</option>
@@ -252,20 +252,17 @@
                     </div>
 
                     <br>
+                </div>
 
-
-                    <div class="form-group">
-                        <div class="col-xs-12">
-                            <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                            <button type="submit" class="form-control to-right add-button">
-                                Add
-                            </button>
-                        </div>
+                <div class="modal-footer">
+                    <div class="col-xs-12">
+                        <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                        <button type="submit" class="form-control to-right add-button">
+                            Add
+                        </button>
                     </div>
-                </form>
-
-
-            </div>
+                </div>
+            </form>
 
 
         </div>

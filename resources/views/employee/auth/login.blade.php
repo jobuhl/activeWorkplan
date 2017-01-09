@@ -41,12 +41,16 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-8 col-md-offset-4">
-                <button type="submit" class="btn btn-primary">
+            <div class="col-xs-12">
+                <button type="submit" class="form-control add-button">
                     Login
                 </button>
+            </div>
+        </div>
 
-                <a class="btn btn-link" href="{{ url('/employee/password/reset') }}">
+        <div class="form-group">
+            <div class="col-xs-12 right">
+                <a class="btn btn-link" href="{{ url('/admin/password/reset') }}">
                     Forgot Your Password?
                 </a>
             </div>

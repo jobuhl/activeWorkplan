@@ -21,11 +21,12 @@
 
             <!-- Modal body-->
             <!-- Basic-->
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changeAdmin') }}">
+                {{ csrf_field() }}
             <div class="modal-body">
 
 
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changeAdmin') }}">
-                {{ csrf_field() }}
+
                 <!-- Zeile 2 password Change button -->
                     <div class="row">
 
@@ -211,22 +212,24 @@
 
                     </div>
 
-                    <div class="modal-footer">
-                        <div class="col-xs-12">
-                            <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                            <button type="submit" class="form-control  modal-change-button yellow">Change
-                            </button>
-
-
-                        </div>
-                    </div>
-
-                </form>
 
 
             </div>
+                <!-- Modal footer-->
+                <div class="modal-footer">
+                    <div class="col-xs-12">
+                        <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                        <button type="submit" class="form-control  modal-change-button yellow">Change
+                        </button>
 
-            <!-- Modal footer-->
+
+                    </div>
+                </div>
+
+
+            </form>
+
+
 
         </div>
 
@@ -239,6 +242,7 @@
 
         <!-- Modal content-->
         <div class="modal-content">
+
             <div class="modal-header">
 
                 <!-- Close Button oben rechts im Header -->

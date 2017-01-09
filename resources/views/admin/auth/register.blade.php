@@ -10,7 +10,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 <!-- Überschrift -->
-                <h1>Sign up</h1>
+                <h1 class="modal-ueberschrift">Sign up</h1>
                 <br>
 
                 <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
@@ -88,13 +88,7 @@
                         <!-- password1 ende-->
 
 
-                        <div class="modal-footer footer1">
-                            <div class="col-xs-12">
-                                <button type="button" class="form-control to-right next-button" ONCLICK="nextStep(2)">
-                                    Next
-                                </button>
-                            </div>
-                        </div>
+
                     </div>
 
                     <!-- User-->
@@ -127,18 +121,7 @@
                         </div>
 
 
-                        <div class="modal-footer footer2">
-                            <div class="col-xs-6">
-                                <button class=" form-control to-right next-button" type="button" ONCLICK="nextStep(1)">
-                                    Back
-                                </button>
-                            </div>
-                            <div class="col-xs-6">
-                                <button class=" form-control to-right next-button" type="button" ONCLICK="nextStep(3)">
-                                    Next
-                                </button>
-                            </div>
-                        </div>
+
                     </div>
 
                     <!-- Company-->
@@ -153,19 +136,39 @@
                         <p><input class="form-control" type="email" name="city" placeholder="City"></p>
                         <p><input class="form-control" type="email" name="country" placeholder="Country"></p>
 
-                        <div class="modal-footer footer3">
-                            <div class="col-xs-6">
-                                <button id="back-button" class="form-control to-right next-button" type="button"
-                                        ONCLICK="nextStep(2)">Back
-                                </button>
-                            </div>
-                            <div class="col-xs-6">
-                                <button id="back-button" class="form-control to-right next-button" type="submit">
-                                    SignUp
-                                </button>
 
-                            </div>
-                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer footer1">
+                    <div class="col-xs-12">
+                        <button type="button" class="form-control to-right next-button" ONCLICK="nextStep(2)">
+                            Next
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer footer2">
+                    <div class="col-xs-6">
+                        <button class=" form-control to-right next-button" type="button" ONCLICK="nextStep(1)">
+                            Back
+                        </button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button class=" form-control to-right next-button" type="button" ONCLICK="nextStep(3)">
+                            Next
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer footer3">
+                    <div class="col-xs-6">
+                        <button id="back-button" class="form-control to-right next-button" type="button"
+                                ONCLICK="nextStep(2)">Back
+                        </button>
+                    </div>
+                    <div class="col-xs-6">
+                        <button id="back-button" class="form-control to-right next-button" type="submit">
+                            SignUp
+                        </button>
+
                     </div>
                 </div>
             </form>
