@@ -26,9 +26,15 @@
             <nav class="calendar-navigation">
                 <div class="calendar-navigation-padding">
                     <div class="navigation-today">
-                        <button>&lt;</button>
-                        <button>Today</button>
-                        <button>></button>
+                        <form method="GET" action="{{ url('/admin/employer-single') . '/' . $thisEmployee->id . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button type="submit"><</button>
+                        </form>
+                        <form method="GET" action="{{ url('/admin/employer-single') . '/' . $thisEmployee->id . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button type="submit">Today</button>
+                        </form>
+                        <form method="GET" action="{{ url('/admin/employer-single') . '/' . $thisEmployee->id . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button type="submit">></button>
+                        </form>
                     </div>
 
                     <p>01. - 07. Jan. 2018</p>

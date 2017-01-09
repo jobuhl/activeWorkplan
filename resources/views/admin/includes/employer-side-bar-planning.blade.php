@@ -34,7 +34,7 @@
                     @foreach($allEmployees as $employee)
                         @if($employee->retail_store_id == $retailStore->id)
                             <li>
-                                <a href="/activeWorkplan/public/admin/employee-single/{{ $employee->id }}">{{ $employee->surname }} {{ $employee->forename }}</a>
+                                <a href="{{ url('/admin/employer-single') . '/' . $employee->id . '/' . (clone $week[0])->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</a>
                             </li>
                         @endif
                     @endforeach

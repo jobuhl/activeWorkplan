@@ -25,17 +25,19 @@
 
             <nav class="calendar-navigation">
                 <div class="calendar-navigation-padding">
+
                     <div class="col-xs-6 navigation-today">
-                        <form method="POST" action="{{ url('/admin/weekAdmPlan/' . $thisRetailStore->id) }}"> {{ csrf_field() }}
-                            <button name="date" value="array({{ $week[0]->format('d-m-Y') }}, 2)" type="submit"><</button>
+                        <form method="GET" action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button type="submit"><</button>
                         </form>
-                        <form method="POST" action="{{ url('/admin/weekAdmPlan/' . $thisRetailStore->id) }}"> {{ csrf_field() }}
-                            <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">Today</button>
+                        <form method="GET" action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button type="submit">Today</button>
                         </form>
-                        <form method="POST" action="{{ url('/admin/weekAdmPlan/' . $thisRetailStore->id) }}"> {{ csrf_field() }}
-                            <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">></button>
+                        <form method="GET" action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button type="submit">></button>
                         </form>
                     </div>
+
                     <div class="col-xs-6 calendar-navigation-p">
                         <p>
                             {{ $week[0]->format('d. - ') }}

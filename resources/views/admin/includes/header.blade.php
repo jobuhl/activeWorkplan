@@ -15,9 +15,9 @@
     </ul>
 
     <ul class="right-list" id="id-right">
-        <li><a id="employer-overview" href="/activeWorkplan/public/admin/employer-overview">Overview</a></li>
-        <li><a id="employer-planning" href="/activeWorkplan/public/admin/employer-planning/{{ $allRetailStores[0]->id }}">Planning</a></li>
-        <li><a id="employer-account" href="/activeWorkplan/public/admin/employer-account"> {{ Auth::user()->name }}</a></li>
+        <li><a id="employer-overview" href="{{ url('/admin/employer-overview') . '/' . (new DateTime())->format('d-m-Y') }}">Overview</a></li>
+        <li><a id="employer-planning" href=" {{ url('/admin/employer-planning') . '/' . $allRetailStores[0]->id . '/' . (new DateTime())->format('d-m-Y') }}">Planning</a></li>
+        <li><a id="employer-account" href="{{ url('/admin/employer-account') }}"> {{ Auth::user()->name }}</a></li>
         <li><a href="{{ url('/admin/logout') }}"
                onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">

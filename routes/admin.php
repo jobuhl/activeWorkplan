@@ -5,19 +5,19 @@ include('functions.php');
 /* --------------------------- LINK ------------------------------- */
 
 Route::get('/home', function () {
-    return redirect('/admin/employer-overview');
+    return redirect('/admin/employer-overview/' . (new DateTime())->format('d-m-Y'));
 })->name('home');
 
-Route::get('/employer-overview', function () {
-    return admOverview();
+Route::get('/employer-overview/{date}', function ($urlDate) {
+    return admOverview($urlDate);
 })->name('home');
 
-Route::get('employer-planning/{id}', function ($thisRetailStoreId) {
-    return admPlanning($thisRetailStoreId);
+Route::get('employer-planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
+    return admPlanning($thisRetailStoreId, $urlDate);
 })->name('home');
 
-Route::get('/employee-single/{id}', function ($employeeId) {
-    return admPlanningSingle($employeeId);
+Route::get('/employer-single/{id}/{date}', function ($employeeId, $urlDate) {
+    return admPlanningSingle($employeeId, $urlDate);
 })->name('employer-planning');
 
 Route::get('/employer-account', function () {
@@ -33,19 +33,8 @@ Route::post('/storeCreate', 'StoreController@create');
 Route::post('/addEmp', 'EmpController@create');
 Route::post('/changeEmp', 'EmpController@change');
 
-
 Route::post('/changeAdmin', 'AdminController@update');
 Route::post('/deleteAdmin', 'AdminController@delete');
-
-
-Route::post('/weekBackAdmOver', 'WeekController@backAdmOver');
-Route::post('/weekNextAdmOver', 'WeekController@nextAdmOver');
-Route::post('/weekTodayAdmOver', 'WeekController@todayAdmOver');
-
-Route::post('/weekBackAdmPlan/{retailStoreId}', 'WeekController@backAdmPlan')->where('retailStoreId', '.+');
-Route::post('/weekNextAdmPlan/{retailStoreId}', 'WeekController@nextAdmPlan')->where('retailStoreId', '.+');
-Route::post('/weekTodayAdmPlan/{retailStoreId}', 'WeekController@todayAdmPlan')->where('retailStoreId', '.+');
-
 
 /* ---------------------------- FOOTER -------------------------------- */
 
@@ -71,7 +60,7 @@ function authUser()
     $users[] = Auth::guard('admin')->user();
 }
 
-function admOverview() {
+function admOverview($urlDate) {
     authUser();
 
     $company = thisCompany();
@@ -82,7 +71,7 @@ function admOverview() {
     $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id);
 
-    $today = new DateTime();
+    $today = new DateTime($urlDate);
     $monday = getMondayBeforeDay($today);
     $week = getWeekArray($monday);
 
@@ -95,7 +84,7 @@ function admOverview() {
         ->with('week', $week);
 }
 
-function admPlanning($thisRetailStoreId) {
+function admPlanning($thisRetailStoreId, $urlDate) {
     authUser();
 
     $company = thisCompany();
@@ -108,7 +97,7 @@ function admPlanning($thisRetailStoreId) {
     $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id);
 
-    $date = new DateTime();
+    $date = new DateTime($urlDate);
     $monday = getMondayBeforeDay($date);
     $week = getWeekArray($monday);
 
@@ -122,7 +111,7 @@ function admPlanning($thisRetailStoreId) {
         ->with('week', $week);
 }
 
-function admPlanningSingle($employeeId) {
+function admPlanningSingle($employeeId, $urlDate) {
     authUser();
 
     $company = thisCompany();
@@ -136,7 +125,7 @@ function admPlanningSingle($employeeId) {
     $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id);
 
-    $date = new DateTime();
+    $date = new DateTime($urlDate);
     $monday = getMondayBeforeDay($date);
     $week = getWeekArray($monday);
 
