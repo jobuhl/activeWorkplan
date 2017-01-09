@@ -71,6 +71,7 @@ class RegisterController extends Controller
     {
 
 
+
         $admin = Admin::create([
             'name' => $data['name'],
             'forename' => $data['forename'],
