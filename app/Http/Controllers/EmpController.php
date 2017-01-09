@@ -31,41 +31,44 @@ class EmpController extends Controller
 //
 //    }
 
-public
-function create(Request $data)
-{
-    $retailStore = DB::table('retail_store')
-        ->where('retail_store.name', $data['retail_store_name'])
-        ->get()[0];
+    public
 
-    $role = Role::firstOrCreate(array(
-        'name' => $data['roleid']
-    ));
+//Admin legt user an
+    function create(Request $data)
+    {
+        $retailStore = DB::table('retail_store')
+            ->where('retail_store.name', $data['retail_store_name'])
+            ->get()[0];
 
-    $contracts = Contract::create([
-        'period_of_agreement' => $data['period_of_agreement'],
-        'working_hours' => $data['working_hours'],
-        'classification' => $data['classification'],
-        'role_id' => $role->id,
+        $role = Role::firstOrCreate(array(
+            'name' => $data['roleid']
+        ));
 
-    ]);
+        $contracts = Contract::create([
+            'period_of_agreement' => $data['period_of_agreement'],
+            'working_hours' => $data['working_hours'],
+            'classification' => $data['classification'],
+            'role_id' => $role->id,
 
-    $thisEmployee = Employee::create([
-        'name' => $data['name'],
-        'forename' => $data['forename'],
-        'email' => $data['email'],
-        'password' => bcrypt($data['password']),
-        'retail_store_id' => $retailStore->id,
-        'contract_id' => $contracts->id,
-    ]);
+        ]);
 
-    return redirect('/admin/employee-single/' . $thisEmployee->id);
-}
+        $thisEmployee = Employee::create([
+            'name' => $data['name'],
+            'forename' => $data['forename'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'retail_store_id' => $retailStore->id,
+            'contract_id' => $contracts->id,
+        ]);
 
+        return redirect('/admin/employee-single/' . $thisEmployee->id);
+    }
+
+
+//User ändert seine eigenen Werte
     public function update(Request $request)
     {
         $employee = Employee::find(Auth::user()->id);
-
 
 
         Employee::where('employees.id', $employee->id)
@@ -80,5 +83,16 @@ function create(Request $data)
         return redirect('/employee/employee-account');
     }
 
+//Admin löscht user
+    public function delete(Request $request)
+    {
+
+
+    }
+
+//Admin ändert User
+    public function change(Request $request){
+
+    }
 
 }
