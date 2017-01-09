@@ -20,8 +20,8 @@ Route::get('/employer-single/{id}/{date}', function ($employeeId, $urlDate) {
     return admPlanningSingle($employeeId, $urlDate);
 })->name('employer-planning');
 
-Route::get('/employer-account', function () {
-    return admAccount();
+Route::get('/employer-account/{date}', function ($urlDate) {
+    return admAccount($urlDate);
 })->name('home');
 
 
@@ -142,7 +142,7 @@ function admPlanningSingle($employeeId, $urlDate) {
         ->with('week', $week);
 }
 
-function admAccount() {
+function admAccount($urlDate) {
     authUser();
 
     $company = thisCompany();
@@ -150,9 +150,14 @@ function admAccount() {
     $admin = thisAdmin();
     $address = oneAddress($company->id);
 
+    $date = new DateTime($urlDate);
+    $monday = getMondayBeforeDay($date);
+    $week = getWeekArray($monday);
+
     return view('admin.employer-account')
         ->with('company', $company)
         ->with('admin', $admin)
         ->with('address', $address)
-        ->with('allRetailStores', $allRetailStores);
+        ->with('allRetailStores', $allRetailStores)
+        ->with('week', $week);
 }

@@ -7,12 +7,12 @@ function highlightTab() {
     var url = window.location.pathname;
 
     /* Regular Expression Literale mit Slashes, Gruppierung und Alles durch Gruppe 1 ersetzen */
-    var tabId = url.replace(/.+\/public\/([a-zA-Z_-]+)[\/a-zA-Z_-]*/ , "$1");
+    var tabId = url.replace(/.+\/public\/[a-zA-Z_-]*\/([a-zA-Z_-]+)\/.*/ , "$1");
 
 
-    /* Sonderfall, da die Mitarbeiter Seite im gleichen Tab wie planning ist */
-    if(tabId == "employee-single") {
-        tabId = "planning-employe-single-employee";
+    /* Sonderfall, da die Mitarbeiter Seite im gleichen Tab wie Planning ist */
+    if(tabId == "employer-single") {
+        tabId = "employer-planning";
     }
 
     /* da die header Listen-IDs gleich benannt sind wie die dateien, kann ich diese exakt ansprechen */

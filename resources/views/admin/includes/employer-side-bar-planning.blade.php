@@ -28,13 +28,13 @@
 
         @foreach($allRetailStores as $retailStore)
             <li class="arrow-down">
-                <a href="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . (clone $week[0])->format('d-m-Y') }}">{{ $retailStore->id }} {{ $retailStore->name }}</a>
+                <a href="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->id }} {{ $retailStore->name }}</a>
                 <a style="padding: 13.5px;" class="glyphicon glyphicon-chevron-down"></a>
                 <ul>
                     @foreach($allEmployees as $employee)
                         @if($employee->retail_store_id == $retailStore->id)
                             <li>
-                                <a href="{{ url('/admin/employer-single') . '/' . $employee->id . '/' . (clone $week[0])->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</a>
+                                <a href="{{ url('/admin/employer-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</a>
                             </li>
                         @endif
                     @endforeach

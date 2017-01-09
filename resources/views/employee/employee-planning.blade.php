@@ -99,6 +99,7 @@
                                                 </form>
                                                 <form method="POST"
                                                       action="{{ url('/employee/alldayEventDelete') }}"> {{ csrf_field() }}
+                                                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                                                     <button class="delete-event-button" name="eventId"
                                                             value="{{ $oneAlldayEvent->id }}">-
                                                     </button>
@@ -138,6 +139,7 @@
                                             </form>
                                             <form method="POST"
                                                   action="{{ url('/employee/timeEventDelete') }}"> {{ csrf_field() }}
+                                                <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                                                 <button class="delete-event-button" name="eventId"
                                                         value="{{ $oneTimeEvent->id }}">-
                                                 </button>

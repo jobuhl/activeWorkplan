@@ -60,24 +60,26 @@ Route::get('/employee-planning/{date}', function ($urlDate) {
 
 /* --------------------------- ACCOUNT ------------------------------- */
 
-Route::get('/employee-account', function () {
+Route::get('/employee-account/{date}', function ($urlDate) {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
 
     $thisEmployee = oneEmployee(Auth::user()->id);
-
     $thisRetailStore = thisRetailStore($thisEmployee->retail_store_id);
-
     $company = oneCompany($thisRetailStore->company_id);
-
     $address = oneAddress($thisRetailStore->address_id);
+
+    $today = new DateTime($urlDate);
+    $monday = getMondayBeforeDay($today);
+    $week = getWeekArray($monday);
 
     return view('employee.employee-account')
         ->with('thisEmployee', $thisEmployee)
         ->with('company', $company)
         ->with('thisRetailStore', $thisRetailStore)
-        ->with('address', $address);
+        ->with('address', $address)
+        ->with('week', $week);
 })->name('home');
 
 

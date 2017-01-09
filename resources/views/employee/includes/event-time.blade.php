@@ -68,8 +68,8 @@
 
     </div>
     <!-- Modal footer-->
-    <div class="modal-footer">
-        <button type="submit" class="form-control to-right add-button" data-toggle="modal"
+    <div>
+        <button type="submit" class="form-control to-right add-button" data-toggle="modal" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"
                 data-target="#add-button-store"">Add
         </button>
     </div>

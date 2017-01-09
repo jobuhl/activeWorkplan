@@ -12,6 +12,7 @@ use App\AlldayEvent;
 
 class EventController extends Controller
 {
+    // Employee adds an Allday Event
     function addAlldayEvent(Request $request)
     {
 
@@ -29,9 +30,10 @@ class EventController extends Controller
             'employee_id' => $thisEmployee->id
         ));
 
-        return redirect('/employee/employee-planning');
+        return redirect('/employee/employee-planning/' . $request['thisDate']);
     }
 
+    // Employee adds a Time Event
     function addTimeEvent(Request $request)
     {
 
@@ -51,9 +53,10 @@ class EventController extends Controller
             'employee_id' => $thisEmployee->id
         ));
 
-        return redirect('/employee/employee-planning');
+        return redirect('/employee/employee-planning/' . $request['thisDate']);
     }
 
+    // Employee deletes an Allday Event
     function deleteAlldayEvent(Request $request)
     {
 
@@ -63,9 +66,10 @@ class EventController extends Controller
             ->where('allday_event.id', $eventId)
             ->delete();
 
-        return redirect('/employee/employee-planning');
+        return redirect('/employee/employee-planning/' . $request['thisDate']);
     }
 
+    // Employee deletes a Time Event
     function deleteTimeEvent(Request $request)
     {
 
@@ -75,6 +79,6 @@ class EventController extends Controller
             ->where('time_event.id', $eventId)
             ->delete();
 
-        return redirect('/employee/employee-planning');
+        return redirect('/employee/employee-planning/' . $request['thisDate']);
     }
 }
