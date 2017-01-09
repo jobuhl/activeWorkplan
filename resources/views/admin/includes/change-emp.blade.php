@@ -117,7 +117,7 @@
 
                         </div>
 
-                        <!-- Zeile 7  -->
+                        <!-- Zeilen 7-->
                         <div class="row">
 
 
