@@ -83,6 +83,40 @@ class EmpController extends Controller
     public function delete(Request $request)
     {
 
+        $employee = Employee::find($request['thisEmployeeId']);
+
+        dd($employee);
+
+        $contracts = DB::table('contract')
+            ->select('contract.*')
+            ->join('employees', 'employees.contract_id', '=', 'contract.id')
+            ->where('emloyees.id', $employee->get()[0]->id);
+
+        $roles = DB::table('role')
+            ->select('role.*')
+            ->join('contract', 'contract.role_id', '=', 'role.id')
+            ->join('employees', 'employees.contract_id', '=', 'contract.id')
+            ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
+            ->where('emloyees.id', $employee->get()[0]->id);
+
+        $timeEvent = DB::table('time_event')
+            ->select('time_event.*')
+            ->join('employees', 'employees.id', '=', 'time_event.employee_id')
+            ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
+            ->where('emloyees.id', $employee->get()[0]->id);
+
+        $alldayEvent = DB::table('allday_event')
+            ->select('allday_event.*')
+            ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
+            ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
+            ->where('emloyees.id', $employee->get()[0]->id);
+
+        $worktimFix = DB::table('worktime_fix')
+            ->select('worktime_fix.*')
+            ->join('employees', 'employees.id', '=', 'worktime_fix.employee_id')
+            ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
+            ->where('emloyees.id', $employee->get()[0]->id);
+
 
     }
 
