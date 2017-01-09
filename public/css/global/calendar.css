@@ -100,6 +100,7 @@
 .calendar-days-one-emp .all-day {
     border-bottom: 2px solid var(--main-border-color);
     height: 28px; /* damit zeile nicht kleiner, wenn kein allday event drin ist */
+    vertical-align: top; /* events (elemente) oben ausrichten */
 }
 
 .calendar-days-one-emp .time-events {
@@ -152,7 +153,8 @@
     height: 28px; /* damit zeile nicht kleiner, wenn kein allday event drin ist */
 }
 
-.calendar-days-all-emp .time-events {
+.calendar-days-all-emp .time-events,
+.calendar-days-all-emp .all-day {
     vertical-align: top; /* events (elemente) oben ausrichten */
 }
 
@@ -163,9 +165,9 @@
 }
 
 /* Samstag Sonntag Hintergrund */
-.calendar-days-all-emp .all-day td:nth-child(9),
+.calendar-days-all-emp .all-day td:nth-child(7),
 .calendar-days-all-emp .all-day td:nth-child(8),
-.calendar-days-all-emp .time-events td:nth-child(9),
+.calendar-days-all-emp .time-events td:nth-child(7),
 .calendar-days-all-emp .time-events td:nth-child(8) {
     background-color: var(--main-small-header-color);
 }
@@ -233,6 +235,46 @@
 }
 
 
+/* --------------------------- CLICK EVENT CHANGE DELETE --------------------------- */
+
+.event-dropdown-content {
+    display: none;
+    z-index: 5;
+    padding: 5px;
+    margin: 0 2px 0 2px;
+}
+
+.event-dropdown-content button {
+    color: white;
+    border-radius: 40px;
+    border: 2px solid white;
+    width: 38px;
+    height: 38px;
+}
+
+.event-dropdown-content button,
+.event-dropdown-content form {
+    display: inline-block;
+}
+
+.event-dropdown-content .change-event-button {
+    background-color: var(--main-yellow-button);
+}
+
+.event-dropdown-content .delete-event-button {
+    background-color: var(--main-red-button);
+}
+
+.event-dropdown-content select {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 25px;
+    display: inline-block;
+    width: 100%;
+}
+
 
 /* --------------------------- HOVER ACTIVE --------------------------- */
 
@@ -271,5 +313,22 @@
 .one-time-event:active,
 .one-allday-event:active {
     opacity: 0.8;
+    cursor: pointer;
+}
+
+.event-dropdown-content .change-event-button:hover {
+    background-color: var(--main-highlight-color);
+    cursor: pointer;
+}
+.event-dropdown-content .delete-event-button:hover {
+    background-color: var(--main-highlight-color);
+    cursor: pointer;
+}
+.event-dropdown-content .change-event-button:active {
+    background-color: var(--main-active-color);
+    cursor: pointer;
+}
+.event-dropdown-content .delete-event-button:active {
+    background-color: var(--main-active-color);
     cursor: pointer;
 }

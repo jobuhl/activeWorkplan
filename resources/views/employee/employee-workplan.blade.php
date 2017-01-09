@@ -127,8 +127,6 @@
                         @endfor
             </tr>
         </table>
-
-        @include('employee.includes.modals-event-add')
     </section>
 @endsection
 

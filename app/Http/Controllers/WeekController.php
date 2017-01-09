@@ -34,10 +34,10 @@ class WeekController extends Controller
     public function empPlan($date) {
         $thisEmployee = oneEmployee(Auth::user()->id);
 
+        $category = allCategory();
+
         $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
-
         $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
-
         $monday = getMondayBeforeDay($date);
 
         $week = getWeekArray($monday);
@@ -45,6 +45,7 @@ class WeekController extends Controller
         return view('employee.employee-planning')
             ->with('manyTimeEvent', $manyTimeEvent)
             ->with('manyAlldayEvent', $manyAlldayEvent)
+            ->with('category', $category)
             ->with('week', $week);
     }
 
@@ -75,20 +76,20 @@ class WeekController extends Controller
     public function empWork($date) {
         $thisEmployee = oneEmployee(Auth::user()->id);
 
+        $category = allCategory();
+
         $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
-
         $manyWorktimeEvent = worktimeFixOfEmployee($thisEmployee->id);
-
         $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
 
         $monday = getMondayBeforeDay($date);
-
         $week = getWeekArray($monday);
 
         return view('employee.employee-workplan')
             ->with('manyTimeEvent', $manyTimeEvent)
             ->with('manyWorktimeEvent', $manyWorktimeEvent)
             ->with('manyAlldayEvent', $manyAlldayEvent)
+            ->with('category', $category)
             ->with('week', $week);
     }
 

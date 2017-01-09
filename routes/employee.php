@@ -44,22 +44,21 @@ Route::get('/employee-planning', function () {
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
 
+    $category = allCategory();
+
     $thisEmployee = oneEmployee(Auth::user()->id);
-
     $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
-
     $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
 
     $today = new DateTime();
-
     $monday = getMondayBeforeDay($today);
-
     $week = getWeekArray($monday);
 
 
     return view('employee.employee-planning')
         ->with('manyTimeEvent', $manyTimeEvent)
         ->with('manyAlldayEvent', $manyAlldayEvent)
+        ->with('category', $category)
         ->with('week', $week);
 })->name('home');
 
@@ -99,7 +98,12 @@ Route::post('/weekTodayEmpWork', 'WeekController@todayEmpWork');
 
 Route::post('/changeEmp', 'EmpController@update');
 
-Route::post('/alldayEventCreate', 'EmpController@update');
+Route::post('/alldayEventCreate', 'EventController@addAlldayEvent');
+Route::post('/timeEventCreate', 'EventController@addTimeEvent');
+Route::post('/alldayEventDelete', 'EventController@deleteAlldayEvent');
+Route::post('/timeEventDelete', 'EventController@deleteTimeEvent');
+
+
 
 
 /* --------------------------- FOOTER ------------------------------- */

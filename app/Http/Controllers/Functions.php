@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class Functions extends Controller
 {
 
+
     function thisCompany()
     {
         return DB::table('company')
@@ -18,13 +19,6 @@ class Functions extends Controller
     {
         return DB::table('company')
             ->where('company.id', $companyId)
-            ->get()[0];
-    }
-
-    function oneCompanyOfAdmin($adminId)
-    {
-        return DB::table('company')
-            ->where('company.admin_id', $adminId)
             ->get()[0];
     }
 
@@ -87,43 +81,42 @@ class Functions extends Controller
 
     function timeEventOfEmployee($employeeId)
     {
-        return DB::table('time-event')
-            ->join('category', 'category.id', '=', 'time-event.category_id')
-            ->where('time-event.employee_id', $employeeId)
+        return DB::table('time_event')
+            ->join('category', 'category.id', '=', 'time_event.category_id')
+            ->where('time_event.employee_id', $employeeId)
+            ->select('time_event.id as id', 'date', 'from', 'to', 'color', 'category.name as name')
             ->get();
     }
 
-    /* hier tabellen name ändern */
     function worktimeFixOfEmployee($employeeId)
     {
         return DB::table('worktime_fix')
             ->join('category', 'category.id', '=', 'worktime_fix.category_id')
             ->where('worktime_fix.employee_id', $employeeId)
+            ->select('worktime_fix.id as id', 'date', 'from', 'to', 'color', 'category.name as name')
             ->get();
     }
 
-    /* hier tabellen name ändern */
     function alldayEventOfEmployee($employeeId)
     {
         return DB::table('allday_event')
             ->join('category', 'category.id', '=', 'allday_event.category_id')
             ->where('allday_event.employee_id', $employeeId)
+            ->select('allday_event.id as id', 'date', 'color', 'category.name as name')
             ->get();
     }
 
-    /* hier tabellen name ändern */
     function allTimeEventOfCompany($companyId)
     {
-        return DB::table('time-event')
-            ->join('category', 'category.id', '=', 'time-event.category_id')
-            ->join('employees', 'employees.id', '=', 'time-event.employee_id')
+        return DB::table('time_event')
+            ->join('category', 'category.id', '=', 'time_event.category_id')
+            ->join('employees', 'employees.id', '=', 'time_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.company_id', $companyId)
-            ->select('category.name as name', 'from', 'to', 'date', 'employee_id','color')
+            ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color')
             ->get();
     }
 
-    /* hier tabellen name ändern */
     function allWorktimeFixOfCompany($companyId)
     {
         return DB::table('worktime_fix')
@@ -131,11 +124,10 @@ class Functions extends Controller
             ->join('employees', 'employees.id', '=', 'worktime_fix.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.company_id', $companyId)
-            ->select('category.name as name', 'from', 'to', 'date', 'employee_id','color')
+            ->select('worktime_fix.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color')
             ->get();
     }
 
-    /* hier tabellen name ändern */
     function allAlldayEventOfCompany($companyId)
     {
         return DB::table('allday_event')
@@ -143,7 +135,13 @@ class Functions extends Controller
             ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.company_id', $companyId)
-            ->select('category.name as name', 'date', 'employee_id','color')
+            ->select('allday_event.id as id', 'category.name as name', 'date', 'employee_id','color')
+            ->get();
+    }
+
+    function allCategory()
+    {
+        return DB::table('category')
             ->get();
     }
 
@@ -162,6 +160,7 @@ class Functions extends Controller
             clone $monday->add(new DateInterval('P1D'))
         );
     }
+
 
 
 

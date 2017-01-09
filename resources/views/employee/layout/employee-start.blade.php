@@ -30,7 +30,8 @@
 
     <script type="text/javascript" src="{{ asset('/js/general/header-footer.js') }}"></script>
 
+    <script type="text/javascript" src="{{ asset('/js/general/calendar.js') }}"></script>
+
     @yield('js')
-    <script> $("#datepicker").datepicker(); </script>
 
 </html>

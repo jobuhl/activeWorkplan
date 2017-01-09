@@ -5,9 +5,8 @@
 <select class="selectpicker col-xs-12" data-live-search="true">
 
     <option style="display: none">Search...</option>
-    <option>0001 Konstanz</option>
-    <option>0002 München</option>
-    <option>0003 Freiburg</option>
-    <option>0004 Store Stuttgart</option>
+    @foreach($allRetailStores as $retailStore)
+        <option>{{ $retailStore->id }} {{ $retailStore->name }}</option>
+    @endforeach
 
 </select>
