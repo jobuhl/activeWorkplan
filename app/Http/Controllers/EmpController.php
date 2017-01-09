@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 
+use App\Company;
+use App\RetailStore;
 use DB;
 use Auth;
 use App\Employee;
 use App\Role;
 use App\Contract;
 use Validator;
+use DateTime;
 
 
 use Illuminate\Http\Request;
@@ -61,7 +64,7 @@ class EmpController extends Controller
             'contract_id' => $contracts->id,
         ]);
 
-        return redirect('/admin/employee-single/' . $thisEmployee->id);
+        return redirect('/admin/employer-single/' . $thisEmployee->id);
     }
 
 
@@ -96,9 +99,11 @@ class EmpController extends Controller
 
         $employee = Employee::find($request['thisEmployeeId']);
 
-        $contract_id =  $employee->contract_id;
 
-            dd($contract_id);
+        $contract = DB::table('contract')
+        ->join('employees', 'employees.contract_id', '=', 'contract.id')
+        ->where('employees.id',$employee->id)
+        ->get();
 
         Employee::where('employees.id', $employee->id)
             ->update(array(
@@ -108,8 +113,17 @@ class EmpController extends Controller
                 'email' => $request['email'],
 
             ));
+        dd($request['retail_store_name']);
 
-       $contract = Contract::where('contract.id', $employee->contract_id)
+
+        RetailStore::where('retail_store.id', $employee->retail_store_id)
+            ->update(array(
+
+
+                'name' => $request['retail_store_name'],
+            ));
+
+        Contract::where('contract.id', $employee->contract_id)
             ->update(array(
 
                 'period_of_agreement' => $request['agreement'],
@@ -119,22 +133,17 @@ class EmpController extends Controller
             ));
 
 
-        $role = DB::table('contract')
-            ->select('role_id')
-            ->where('contract.id',  $contract);
+       Role::where('role.id', $contract[0]->role_id)
+           ->update(array(
+
+               'name' => $request['role'],
 
 
-        $roleid = Role::where('role.id', $contract->role_id)
-            ->update(array(
-
-                'name' => $request['role'],
-
-
-            ));
+           ));
 
 
 //        dd($employee);
-        return redirect('/admin/employee-single/'.$employee->id);
+        return redirect('/admin/employer-single/' . $employee->id . '/' . (new DateTime())->format('d-m-Y'));
 
 
     }
