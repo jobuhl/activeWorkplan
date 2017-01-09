@@ -117,7 +117,7 @@
 
                         </div>
 
-                        <!-- Zeilen 7-->
+                        <!-- Zeile 7-->
                         <div class="row">
 
 
@@ -210,7 +210,7 @@
 
                             <!-- rechts -->
                             <aside class="col-xs-12 col-sm-8 aside-right">
-                                <p><select class="form-control to-right modal-input space-cap" type="text"
+                                <p><select class="selectpicker form-control to-right modal-input space-cap" type="text"
                                            name="retail_store_name">
 
                                         @foreach($allRetailStores as $retailStore)
@@ -222,7 +222,7 @@
                         </div>
 
                         <div>
-                            <button class="form-control to-right modal-change-button" type="submit"
+                            <button class="form-control to-right modal-change-button space-to-top-bottom" type="submit"
                                     value="{{ $thisEmployee->id }}" name="thisEmployeeId">
                                 Change
                             </button>
