@@ -5,33 +5,35 @@
         <!-- Modal content-->
         <div class="modal-content">
 
-            <form>
-                <!-- Basic-->
-                <div class="modal-body">
+            <!-- Basic-->
+            <div class="modal-header">
 
-                    <div class="modal-header">
+                <!-- Close Button oben rechts im Header -->
+                <button type="button" class="close" data-dismiss="modal"
+                >&times;</button>
 
-                        <!-- Close Button oben rechts im Header -->
-                        <button type="button" class="close" data-dismiss="modal"
-                        >&times;</button>
+                <!-- Überschrift -->
+                <h2 class="modal-ueberschrift">Delete Employee</h2>
 
-                        <!-- Überschrift -->
-                        <h2 class="modal-ueberschrift">Delete Employee</h2>
-                        <h5 class="select-ueberschrift">Do you really want to
-                            delete {{ $thisEmployee->forename }} {{ $thisEmployee->surname}}</h5>
-                        <br>
-                    </div>
-                    <div>
-                        <button class="form-control set-right delete-button" data-toggle="modal"
-                                data-target="#delete-button-emp-3">
-                            Delete
-                        </button>
-                    </div>
+                <br>
 
 
-                </div>
+            </div>
+            <div class="modal-body">
+                <h5 class="select-ueberschrift">Do you really want to delete {{ $thisEmployee->forename }} {{ $thisEmployee->surname}}</h5>
+                <!-- Modal footer-->
 
-            </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <form>
+                    <button class="form-control  delete-button" type="submit">
+                        Delete
+                    </button>
+                </form>
+            </div>
+
 
         </div>
 
