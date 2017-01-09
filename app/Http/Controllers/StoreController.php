@@ -26,10 +26,8 @@ class StoreController extends Controller
             'name' => 'required|max:255',
         ]);
     }
-    // Validierung klappt nicht :D
-    /*Validator::make($data, [
 
-    ]);*/
+    // Admin erstellt Reatil Store
     public function create(Request $data) {
 
         /* Aktuelle Company rausbekommen */
@@ -60,7 +58,6 @@ class StoreController extends Controller
             'company_id' => $company->id,
             'address_id' => $newAddress->id
         ));
-
 
         return redirect('/admin/employer-planning/' . $thisRetailStore->id);
     }

@@ -20,16 +20,16 @@
         <aside id="aside-overview" class="col-xs-12 calendar-navigation">
 
             <div class="col-xs-4 navigation-today">
-                <form method="POST" action="{{ url('/employee/weekBackEmpPlan') }}"> {{ csrf_field() }}
-                    <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit"><</button>
+                <form method="GET" action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                    <button type="submit"><</button>
                 </form>
 
-                <form method="POST" action="{{ url('/employee/weekTodayEmpPlan') }}"> {{ csrf_field() }}
-                    <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">Today</button>
+                <form method="GET" action="{{ url('/employee/employee-planning') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                    <button type="submit">Today</button>
                 </form>
 
-                <form method="POST" action="{{ url('/employee/weekNextEmpPlan') }}"> {{ csrf_field() }}
-                    <button name="date" value="{{ $week[0]->format('d-m-Y') }}" type="submit">></button>
+                <form method="GET" action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                    <button type="submit">></button>
                 </form>
             </div>
 

@@ -14,20 +14,18 @@
     </ul>
     <ul class="right-list" id="id-right">
         <!--<li><a id="employee-workplan" href="employee-workplan">Workplan</a></li>-->
-        <li><a id="employee-workplan" href="employee-workplan">Workplan</a></li>
+        <li><a id="employee-workplan" href="{{ url('/employee/employee-workplan') . '/' . (new DateTime())->format('d-m-Y') }}">Workplan</a></li>
         <!--<li><a id="employee-planning" href="employee-planning">Planning</a></li>-->
-        <li><a id="employee-planning" href="employee-planning">Planning</a></li>
-        <li><a id="employee-account" href="employee-account">{{ Auth::user()->name }}</a></li>
+        <li><a id="employee-planning" href="{{ url('/employee/employee-planning') . '/' . (new DateTime())->format('d-m-Y') }}">Planning</a></li>
+        <li><a id="employee-account" href="{{ url('/employee/employee-account') }}">{{ Auth::user()->name }}</a></li>
         <li><a href="{{ url('/employee/logout') }}"
                onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">
                 Logout
             </a>
 
-            <form id="logout-form" action="{{ url('/employee/logout') }}" method="POST" style="display: none;">
-                {{ csrf_field() }}
+            <form id="logout-form" action="{{ url('/employee/logout') }}" method="POST" style="display: none;"> {{ csrf_field() }}
             </form>
-
         </li>
     </ul>
 </header>
