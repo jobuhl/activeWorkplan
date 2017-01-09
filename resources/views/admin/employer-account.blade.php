@@ -13,7 +13,7 @@
             <div class="row -col-12">
                 <h2 class="modal-ueberschrift">Admin Details</h2>
 
-                <button class="form-control to-right yellow my-account-button" type="submit" data-toggle="modal"
+                <button class="form-control set-right yellow my-account-button" type="submit" data-toggle="modal"
                         data-target="#change-button">
                     Change
                 </button>
@@ -65,7 +65,7 @@
                 </table>
 
 
-                <button class="form-control to-right red my-account-button" data-toggle="modal"
+                <button class="form-control set-right red my-account-button" data-toggle="modal"
                         data-target="#delete-button-admin">Delete
                 </button>
 

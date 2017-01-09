@@ -93,6 +93,50 @@ class EmpController extends Controller
 //Admin ändert User
     public function change(Request $request){
 
+
+        $employee = Employee::find($request['thisEmployeeId']);
+
+        $contract_id =  $employee->contract_id;
+
+            dd($contract_id);
+
+        Employee::where('employees.id', $employee->id)
+            ->update(array(
+
+                'forename' => $request['forename'],
+                'name' => $request['name'],
+                'email' => $request['email'],
+
+            ));
+
+       $contract = Contract::where('contract.id', $employee->contract_id)
+            ->update(array(
+
+                'period_of_agreement' => $request['agreement'],
+                'classification' => $request['classification'],
+
+
+            ));
+
+
+        $role = DB::table('contract')
+            ->select('role_id')
+            ->where('contract.id',  $contract);
+
+
+        $roleid = Role::where('role.id', $contract->role_id)
+            ->update(array(
+
+                'name' => $request['role'],
+
+
+            ));
+
+
+//        dd($employee);
+        return redirect('/admin/employee-single/'.$employee->id);
+
+
     }
 
 }
