@@ -54,7 +54,7 @@ zu definieren, sowie eine generelle css für die jeweiligen Klassen
 }
 
 /* button an rechter seite */
-.to-right {
+.set-right {
     width: 100px;
     float: right;
 }
@@ -66,4 +66,9 @@ zu definieren, sowie eine generelle css für die jeweiligen Klassen
 
 .yellow {
     background-color: var(--main-yellow-button);
+}
+
+.space-to-top-bottom{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

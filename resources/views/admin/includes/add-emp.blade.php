@@ -157,7 +157,7 @@
                                     @foreach($allRetailStores as $retailStore)
                                         <option>{{ $retailStore->name }}</option>
                                     @endforeach
-                                </select>
+                                </select></p>
 
 
                         </aside>
@@ -223,9 +223,10 @@
                             <p><select class="form-control to-right modal-input space-cap" type="text"
                                        name="classification"
                                        placeholder="Classification">
-                                    <option>parttime</option>
-                                    <option>fulltime</option>
-                                    <option>temp</option>
+                                    <option>Fulltime</option>
+                                    <option>Halftime</option>
+                                    <option>Parttime</option>
+                                    <option>Internship</option>
                                 </select>
                             </p>
                         </aside>

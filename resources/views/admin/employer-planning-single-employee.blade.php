@@ -8,8 +8,8 @@
 
 @section('content')
 
-    <section class="fake-body container">
-        <h2 style="display:none ">fake</h2>
+    <div class="fake-body container">
+
 
         <br>
         <aside class="col-xs-12 col-sm-3 side-bar">
@@ -25,18 +25,13 @@
 
             <nav class="calendar-navigation">
                 <div class="calendar-navigation-padding">
-                    <div class="col-xs-6 navigation-today">
+                    <div class="navigation-today">
                         <button>&lt;</button>
                         <button>Today</button>
                         <button>></button>
                     </div>
 
-                    <div class="col-xs-6 calendar-navigation-p">
-                        <p>
-                            {{ $week[0]->format('d. - ') }}
-                            {{ $week[6]->format('d. M. Y') }}
-                        </p>
-                    </div>
+                    <p>01. - 07. Jan. 2018</p>
                 </div>
 
             </nav>
@@ -45,164 +40,80 @@
             <br>
 
             <div class="table-head-store">
-                <p class="table-head-a">Proposal Working Time</p>
+                <p class="table-head-a">Individual proposals of Employees</p>
             </div>
-            <table class="calendar-days-all-emp">
-                <tr class="week-date">
-                    <td></td>
-
-                    <!------------------- DATE ----------------------->
-                    @for ($i = 0; $i < 7; $i++)
-                        <td>
-                            {{ $week[$i]->format('d.m.') }}
-                        </td>
-                    @endfor
+            <table class="table-calendar table-week-listed-single">
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>01.01</th>
+                    <th>02.01</th>
+                    <th>03.01</th>
+                    <th>04.01</th>
+                    <th>05.01</th>
+                    <th>06.01</th>
+                    <th>07.01</th>
                 </tr>
 
 
-                <tr class="week-days">
-                    <td>Employees</td>
-
-
-                    <!------------------- WEEKDAY ----------------------->
-                    @for ($i = 0; $i < 7; $i++)
-                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
-                            <td class="today">
-                        @else
-                            <td>
-                                @endif
-                                {{ $week[$i]->format('D') }}</td>
-                            @endfor
+                <tr>
+                    <th>Employees</th>
+                    <th>Time</th>
+                    <th>Mo</th>
+                    <th>Tu</th>
+                    <th>We</th>
+                    <th>Th</th>
+                    <th>Fr</th>
+                    <th>Sa</th>
+                    <th>Su</th>
                 </tr>
 
-                <!------------------- EMPLOYEE ROW ----------------------->
-                <tr class="all-day">
-
+                <tr>
                     <td>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
-                @for ($i = 0; $i < 7; $i++)
-
-
-                    <!------------------- IF TODAY ----------------------->
-                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
-                            <td class="today">
-                        @else
-                            <td>
-                            @endif
-
-
-                            <!------------------- ALLDAY EVENT ----------------------->
-                                @foreach($manyAlldayEvent as $oneAlldayEvent)
-                                    @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
-                                    && $oneAlldayEvent->employee_id == $thisEmployee->id)
-
-                                        <div class="one-allday-event {{ $oneAlldayEvent->color }}"
-                                             draggable="true">
-                                            <p>{{ $oneAlldayEvent->name }}</p>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </td>
-                            @endfor
-                </tr>
-                <tr class="time-events">
+                    <td>All-day</td>
                     <td></td>
-
-                @for ($i = 0; $i < 7; $i++)
-
-
-                    <!------------------- IF TODAY ----------------------->
-                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
-                            <td class="today">
-                        @else
-                            <td>
-                            @endif
-
-
-                            <!------------------- TIME EVENT ----------------------->
-                                @foreach($manyTimeEvent as $oneTimeEvent)
-                                    @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
-                                    && $oneTimeEvent->employee_id == $thisEmployee->id)
-                                        <div class="one-time-event {{ $oneTimeEvent->color }}" draggable="true">
-                                            <p>{{ $oneTimeEvent->name }}</p>
-                                            <p>{{ $oneTimeEvent->from }}</p>
-                                            <p>{{ $oneTimeEvent->to }}</p>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </td>
-                            @endfor
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
+
+                <tr>
+                    <td></td>
+                    <td>start</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>end</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
             </table>
 
             <br>
-            <div class="table-head-store">
-                <p class="table-head-a">Fix Worktime</p>
-            </div>
-            <table class="calendar-days-all-emp">
-                <tr class="week-date">
-                    <td></td>
 
-                    <!------------------- DATE ----------------------->
-                    @for ($i = 0; $i < 7; $i++)
-                        <td>
-                            {{ $week[$i]->format('d.m.') }}
-                        </td>
-                    @endfor
-                </tr>
-
-
-                <tr class="week-days">
-                    <td>Employees</td>
-
-
-                    <!------------------- WEEKDAY ----------------------->
-                    @for ($i = 0; $i < 7; $i++)
-                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
-                            <td class="today">
-                        @else
-                            <td>
-                                @endif
-                                {{ $week[$i]->format('D') }}</td>
-                            @endfor
-                </tr>
-
-                <!------------------- EMPLOYEE ROW ----------------------->
-                <tr class="time-events">
-                    <td>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
-                @for ($i = 0; $i < 7; $i++)
-
-
-                    <!------------------- IF TODAY ----------------------->
-                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
-                            <td class="today">
-                        @else
-                            <td>
-                            @endif
-
-
-                            <!------------------- WORKTIME EVENT ----------------------->
-                                @foreach($manyWorktimeEvent as $oneWorktimeEvent)
-                                    @if( (new DateTime($oneWorktimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
-                                    && $oneWorktimeEvent->employee_id == $thisEmployee->id)
-                                        <div class="one-time-event {{ $oneWorktimeEvent->color }}"
-                                             draggable="true">
-                                            <p>{{ $oneWorktimeEvent->name }}</p>
-                                            <p>{{ $oneWorktimeEvent->from }}</p>
-                                            <p>{{ $oneWorktimeEvent->to }}</p>
-                                        </div>
-                                    @endif
-                                @endforeach
-                            </td>
-                            @endfor
-                </tr>
-            </table>
-
-            <br>
-            <button class="form-control to-right yellow" type="submit" data-toggle="modal"
-                    data-target="#change-button-emp-2">
+            <button class="form-control set-right modal-change-button space-to-top-bottom" type="submit" data-toggle="modal"
+                    data-target="#change">
                 Change
             </button>
             <br>
+            <br>
+
 
             <table class="table-account">
                 <tr>
@@ -276,13 +187,255 @@
                 </tr>
             </table>
 
-            <br>
-            <button class="form-control to-right red" type="submit" data-toggle="modal"
+            <button class="form-control set-right delete-button space-to-top-bottom" type="submit" data-toggle="modal"
                     data-target="#delete-button-emp-single-3">
                 Delete
             </button>
+
+            <br>
             <br>
 
+
+            {{--Change Modal--}}
+            <div id="change" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <!-- Modal header-->
+                        <div class="modal-header">
+
+                            <!-- Close Button oben rechts im Header -->
+                            <button type="button" class="close" data-dismiss="modal"
+                            >&times;</button>
+
+                            <!-- Überschrift -->
+                            <h2 class="modal-ueberschrift">Change Employee</h2>
+                            <br>
+
+                            <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
+
+                        </div>
+
+                        <!-- Modal body-->
+                        <!-- Basic-->
+                        <div class="modal-body">
+                            <form>
+
+                                <!-- Zeile 2 password Change button -->
+                                <div class="row">
+
+
+                                    <!-- links -->
+                                    <aside class="col-xs-12 col-sm-4  aside-left-add">
+                                        Password
+                                    </aside>
+
+                                    <!-- rechts -->
+                                    <aside class="col-xs-12 col-sm-8 aside-right">
+                                        <p><input class="form-control to-right modal-input space-cap" type="password"
+                                                  value="Password"></p>
+                                    </aside>
+
+                                </div>
+
+
+                                <!-- Zeile 3 -->
+                                <div class="row">
+
+
+                                    <!-- links -->
+                                    <aside class="col-xs-12 col-sm-4 aside-left-add">
+                                        Employee
+                                    </aside>
+
+                                    <!-- rechts -->
+                                    <aside class="col-xs-12 col-sm-8 aside-right">
+                                        <p><input class="form-control to-right modal-input space-cap" type="text"
+                                                  value="{{ $thisEmployee->surname }}"></p>
+                                    </aside>
+
+                                </div>
+
+                                <!-- Zeile 4 -->
+                                <div class="row">
+
+
+                                    <!-- links -->
+                                    <aside class="col-xs-12 col-sm-4">
+
+                                    </aside>
+
+                                    <!-- rechts -->
+                                    <aside class="col-xs-12 col-sm-8 aside-right">
+                                        <p><input class="form-control to-right modal-input space-cap" type="text"
+                                                  value="{{ $thisEmployee->forename }}"></p>
+                                    </aside>
+
+                                </div>
+
+                                <!-- Zeile 5 -->
+                                <div class="row">
+
+
+                                    <!-- links -->
+                                    <aside class="col-xs-12 col-sm-4">
+
+                                    </aside>
+
+                                    <!-- rechts -->
+                                    <aside class="col-xs-12 col-sm-8 aside-right">
+                                        <p><input class="form-control to-right modal-input space-cap" type="text"
+                                                  value="{{ $thisEmployee->email }}"></p>
+                                    </aside>
+
+                                </div>
+
+                                <!-- Zeile 6 -->
+                                <div class="row">
+
+
+                                    <!-- links -->
+                                    <aside class="col-xs-12 col-sm-4 aside-left-add">
+                                        Contract
+                                    </aside>
+
+                                    <!-- rechts -->
+                                    <aside class="col-xs-12 col-sm-8 aside-right">
+                                        <p><select class="selectpicker form-control to-right modal-input space-cap">
+                                                <option>unlimited</option>
+                                                <option>limited</option>
+                                            </select></p>
+
+                                    </aside>
+
+                                </div>
+
+                                <!-- Zeile 7  -->
+                                <div class="row">
+
+
+                                    <!-- links -->
+                                    <aside class="col-xs-12 col-sm-4">
+
+                                    </aside>
+
+                                    <!-- rechts -->
+                                    <aside class="col-xs-12 col-sm-8 aside-right">
+                                        <p><input class="form-control to-right modal-input space-cap" type="text"
+                                                  value="{{ $thisEmployee->role }}"></p>
+
+                                    </aside>
+
+                                </div>
+
+                                <!-- Zeile 8 -->
+                                <div class="row">
+
+
+                                    <!-- links -->
+                                    <aside class="col-xs-12 col-sm-4">
+
+                                    </aside>
+
+                                    <!-- rechts -->
+                                    <aside class="col-xs-12 col-sm-8 aside-right">
+                                        <p><select class="selectpicker form-control to-right modal-input space-cap">
+                                                <option>Fulltime</option>
+                                                <option>Halftime</option>
+                                                <option>Parttime</option>
+                                                <option>Internship</option>
+                                            </select></p>
+                                    </aside>
+
+                                </div>
+
+                                <!-- Zeile 9 -->
+                                <div class="row">
+
+
+                                    <!-- links -->
+                                    <aside class="col-xs-12 col-sm-4">
+
+                                    </aside>
+
+                                    <!-- rechts -->
+                                    <aside class="col-xs-12 col-sm-8 aside-right">
+                                        <p><select class="selectpicker form-control to-right modal-input space-cap">
+                                                <option>20</option>
+                                                <option>25</option>
+                                                <option>30</option>
+                                                <option>35</option>
+                                                <option>38</option>
+                                                <option>40</option>
+                                                <option>42</option>
+                                                <option>45</option>
+                                                <option>48</option>
+                                            </select></p>
+                                    </aside>
+
+
+                                </div>
+
+                                <!-- Zeile 10 -->
+                                <div class="row">
+
+
+                                    <!-- links -->
+                                    <aside class="col-xs-12 col-sm-4 aside-left-add">
+                                        Company
+                                    </aside>
+
+                                    <!-- rechts -->
+                                    <aside class="col-xs-12 col-sm-8 aside-right">
+                                        <p class="inputmodal form-control">HTWG</p>
+                                    </aside>
+
+                                </div>
+
+                                <!-- Zeile 11 -->
+                                <div class="row">
+
+
+                                    <!-- links -->
+                                    <aside class="col-xs-12 col-sm-4">
+
+                                    </aside>
+
+                                    <!-- rechts -->
+                                    <aside class="col-xs-12 col-sm-8 aside-right">
+                                        <p><select class="form-control to-right modal-input space-cap" type="text"
+                                                   name="retail_store_name">
+
+                                                @foreach($allRetailStores as $retailStore)
+                                                    <option>{{ $retailStore->name }}</option>
+                                                @endforeach
+                                            </select></p>
+                                    </aside>
+
+                                </div>
+
+
+                            </form>
+
+                        </div>
+                        <!-- Modal footer-->
+                        <div class="modal-footer">
+                            <button class="form-control to-right modal-change-button" data-toggle="modal"
+                                    data-target="#change-button-emp-2" onclick="modalChange()">
+                                Change
+                            </button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            {{--Delete Modal--}}
             <div id="delete-button-emp-single-3" class="modal fade" role="dialog">
                 <div class="modal-dialog">
 
@@ -306,7 +459,7 @@
                             </div>
                             <!-- Modal footer-->
                             <div class="modal-footer">
-                                <button class="form-control to-right delete-button" data-toggle="modal"
+                                <button class="form-control set-right delete-button" data-toggle="modal"
                                         data-target="#delete-button-emp-3"
                                         onclick="deleteUserSingle()">
                                     Delete
@@ -326,7 +479,7 @@
 
         </aside>
 
-    </section>
+    </div>
 @endsection
 
 @section('js')

@@ -154,11 +154,13 @@ function admAccount() {
     authUser();
 
     $company = thisCompany();
+    $allRetailStores = allRetailStoresOfCompany($company->id);
     $admin = thisAdmin();
     $address = oneAddress($company->id);
 
     return view('admin.employer-account')
         ->with('company', $company)
         ->with('admin', $admin)
-        ->with('address', $address);
+        ->with('address', $address)
+        ->with('allRetailStores', $allRetailStores);
 }
