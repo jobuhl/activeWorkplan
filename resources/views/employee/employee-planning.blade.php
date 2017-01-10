@@ -20,15 +20,18 @@
         <aside id="aside-overview" class="col-xs-12 calendar-navigation">
 
             <div class="col-xs-4 navigation-today">
-                <form method="GET" action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                <form method="GET"
+                      action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button type="submit"><</button>
                 </form>
 
-                <form method="GET" action="{{ url('/employee/employee-planning') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                <form method="GET"
+                      action="{{ url('/employee/employee-planning') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button type="submit">Today</button>
                 </form>
 
-                <form method="GET" action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                <form method="GET"
+                      action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button type="submit">></button>
                 </form>
             </div>
@@ -92,14 +95,27 @@
                                              ondragstart="drag(event)">
                                             <p>{{ $oneAlldayEvent->name }}</p>
 
-                                            <div id="allday{{ $oneAlldayEvent->id }}"
-                                                 class="event-dropdown-content">
+
+                                            <div>
+                                                <select class="select-change-event" name="category">
+                                                    @foreach($category as $cat)
+                                                        <option>{{ $cat->name }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                                <input class="datepicker input-change-event inputmodal form-control space-cap"
+                                                       type="date" name="date"
+                                                       placeholder="Date"/>
+                                            </div>
+
+                                            <div id="allday{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
                                                 <form>
                                                     <button class="change-event-button">⇄</button>
                                                 </form>
                                                 <form method="POST"
                                                       action="{{ url('/employee/alldayEventDelete') }}"> {{ csrf_field() }}
-                                                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                    <input style="display: none;" name="thisDate"
+                                                           value="{{ $week[0]->format('d-m-Y') }}"/>
                                                     <button class="delete-event-button" name="eventId"
                                                             value="{{ $oneAlldayEvent->id }}">-
                                                     </button>
@@ -139,7 +155,8 @@
                                             </form>
                                             <form method="POST"
                                                   action="{{ url('/employee/timeEventDelete') }}"> {{ csrf_field() }}
-                                                <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                <input style="display: none;" name="thisDate"
+                                                       value="{{ $week[0]->format('d-m-Y') }}"/>
                                                 <button class="delete-event-button" name="eventId"
                                                         value="{{ $oneTimeEvent->id }}">-
                                                 </button>

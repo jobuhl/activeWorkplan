@@ -72,6 +72,7 @@ class RegisterController extends Controller
     {
 
 
+
         $admin = Admin::create([
             'name' => $request['name'],
             'forename' => $request['forename'],
