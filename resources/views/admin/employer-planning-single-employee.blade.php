@@ -194,10 +194,9 @@
             </table>
 
             <button class="form-control set-right delete-button space-to-top-bottom" type="submit" data-toggle="modal"
-                    data-target="#delete-emp">
+                    data-target="#delete-emp" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
                 Delete
             </button>
-
             <br>
             <br>
 

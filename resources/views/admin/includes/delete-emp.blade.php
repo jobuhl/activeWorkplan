@@ -21,20 +21,21 @@
             </div>
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/deleteEmp') }}">
                 {{ csrf_field() }}
-            <div class="modal-body">
-                <h5 class="select-ueberschrift">Do you really want to delete {{ $thisEmployee->forename }} {{ $thisEmployee->surname}}</h5>
-                <!-- Modal footer-->
+                <div class="modal-body">
+                    <h5 class="select-ueberschrift">Do you really want to
+                        delete {{ $thisEmployee->forename }} {{ $thisEmployee->surname}}</h5>
+                    <!-- Modal footer-->
 
 
+                </div>
+                <div class="modal-footer">
 
-            </div>
-            <div class="modal-footer">
-
-                    <button class="form-control  delete-button" type="submit">
-                        Delete
+                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                    <button class="form-control  delete-button" type="submit" value="{{ $thisEmployee->id }}"
+                            name="thisEmployeeId">Delete
                     </button>
 
-            </div>
+                </div>
             </form>
 
         </div>

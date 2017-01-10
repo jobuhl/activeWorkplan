@@ -83,49 +83,63 @@ class EmpController extends Controller
     public function delete(Request $request)
     {
 
+
         $employee = Employee::find($request['thisEmployeeId']);
 
-        dd($employee);
 
         $contracts = DB::table('contract')
             ->select('contract.*')
-            ->join('employees', 'employees.contract_id', '=', 'contract.id')
-            ->where('emloyees.id', $employee->get()[0]->id);
+            ->where('contract.id', $employee->get()[0]->contract_id);
+
+//        dd($contracts);
+
 
         $roles = DB::table('role')
             ->select('role.*')
             ->join('contract', 'contract.role_id', '=', 'role.id')
             ->join('employees', 'employees.contract_id', '=', 'contract.id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('emloyees.id', $employee->get()[0]->id);
+            ->where('employees.id', $employee->get()[0]->id);
 
         $timeEvent = DB::table('time_event')
             ->select('time_event.*')
             ->join('employees', 'employees.id', '=', 'time_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('emloyees.id', $employee->get()[0]->id);
+            ->where('employees.id', $employee->get()[0]->id);
 
         $alldayEvent = DB::table('allday_event')
             ->select('allday_event.*')
             ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('emloyees.id', $employee->get()[0]->id);
+            ->where('employees.id', $employee->get()[0]->id);
 
         $worktimFix = DB::table('worktime_fix')
             ->select('worktime_fix.*')
             ->join('employees', 'employees.id', '=', 'worktime_fix.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('emloyees.id', $employee->get()[0]->id);
+            ->where('employees.id', $employee->get()[0]->id);
 
         $company = DB::table('company')
             ->where('company.admin_id', Auth::user()->id)
             ->get()[0];
 
 
-
         $allRetailStores = DB::table('retail_store')
             ->where('retail_store.company_id', $company->id)
             ->get();
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=0');
+
+        $alldayEvent->delete();
+        $timeEvent->delete();
+        $worktimFix->delete();
+        $employee->delete();
+        $contracts->delete();
+        $roles->delete();
+
+
+
+        DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         return redirect('/admin/employer-planning/' . $allRetailStores[0]->id . '/' . $request['thisDate']);
 
@@ -138,7 +152,7 @@ class EmpController extends Controller
 
         $employee = Employee::find($request['thisEmployeeId']);
 
-
+        dd($employee);
 
         $contract = DB::table('contract')
             ->join('employees', 'employees.contract_id', '=', 'contract.id')
