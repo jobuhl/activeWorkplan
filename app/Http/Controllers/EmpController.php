@@ -117,6 +117,17 @@ class EmpController extends Controller
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('emloyees.id', $employee->get()[0]->id);
 
+        $company = DB::table('company')
+            ->where('company.admin_id', Auth::user()->id)
+            ->get()[0];
+
+
+
+        $allRetailStores = DB::table('retail_store')
+            ->where('retail_store.company_id', $company->id)
+            ->get();
+
+        return redirect('/admin/employer-planning/' . $allRetailStores[0]->id . '/' . $request['thisDate']);
 
     }
 
@@ -126,6 +137,7 @@ class EmpController extends Controller
 
 
         $employee = Employee::find($request['thisEmployeeId']);
+
 
 
         $contract = DB::table('contract')
@@ -153,6 +165,7 @@ class EmpController extends Controller
             ->update(array(
                 'name' => $request['role'],
             ));
+
 
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
 
