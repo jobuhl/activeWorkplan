@@ -95,7 +95,7 @@
                                              ondragstart="drag(event)">
                                             <p>{{ $oneAlldayEvent->name }}</p>
 
-
+                                        {{--</div>--}}
                                             <div>
                                                 <select class="select-change-event" name="category">
                                                     @foreach($category as $cat)
