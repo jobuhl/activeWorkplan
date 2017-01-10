@@ -93,10 +93,14 @@
     text-align: center;
 }
 
+
+
+/* ---------------------SIGN IN/UP HEAD -------------------*/
 .signin-head1,
 .signin-head2{
     padding-bottom: 15px;
     margin-bottom: 0px;
+    text-align: center;
 }
 
 .signin-head1 {
@@ -126,6 +130,10 @@
     background-color: var(--main-mainsection-lower-header-color);
     color: black;
 }
+/* ---------------------SIGN IN/UP HEAD ENDE -------------------*/
+
+
+
 
 /*Mobile divice ansicht*/
 @media(max-width:767px){
