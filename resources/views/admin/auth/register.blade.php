@@ -14,12 +14,12 @@
                 <br>
 
                 <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
-                <div class="modal-sub">
+                <div class="modal-sub-sign-up">
 
                     <p class="col-xs-3 signin-head1" onclick="nextStep(1)">Employee</p>
                     <p class="col-xs-3 signin-head2" onclick="nextStep(2)">Admin</p>
-                    <p class="col-xs-3 signin-head3" onclick="nextStep(3)">Company</p>
-                    <p class="col-xs-3 signin-head4" onclick="nextStep(6)">Store</p>
+                    <p class="col-xs-3 signin-head2" onclick="nextStep(3)">Company</p>
+                    <p class="col-xs-3 signin-head2" onclick="nextStep(4)">Store</p>
 
                 </div>
 
@@ -39,13 +39,11 @@
                     <!-- Basic-->
                     <div id="basic">
                         <!-- email-->
+                        <br>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email"
+                            <div class="col-xs-12">
+                                <input id="email" type="email" class="form-control" name="email" placeholder="E-Mail"
                                        value="{{ old('email') }}">
-
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -57,11 +55,9 @@
 
                         <!-- password1-->
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
-
+                            <div class="col-xs-12">
+                                <input id="password" type="password" class="form-control" name="password"
+                                       placeholder="Password">
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -73,10 +69,10 @@
 
                         <!-- password2-->
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
-                            <div class="col-md-6">
+                            <div class="col-xs-12">
                                 <input id="password-confirm" type="password" class="form-control"
+                                       placeholder="Confirm Password"
                                        name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
@@ -88,20 +84,15 @@
                         </div>
                         <!-- password1 ende-->
 
-
-
                     </div>
 
                     <!-- User-->
                     <div id="user">
-
+                        <br>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="col-md-6">
+                            <div class="col-xs-12">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
-                                       autofocus>
-
+                                       autofocus placeholder="Surname">
                                 @if ($errors->has('name'))
                                     <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
@@ -109,18 +100,15 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="forename" class="col-md-4 control-label">Forename</label>
-
-                            <div class="col-md-6">
+                            <div class="col-xs-12">
                                 <input id="forename" type="text" class="form-control" name="forename"
+                                       placeholder="Forename"
                                        value="{{ old('name') }}" autofocus>
-
                                 @if ($errors->has('name'))
                                     <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
                             </div>
                         </div>
-
 
 
                     </div>

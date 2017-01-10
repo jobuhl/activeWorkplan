@@ -16,10 +16,10 @@
 
                 <br>
 
-                <div class="modal-sub">
+                <div class="modal-sub-sign-in">
 
-                    <p class="col-xs-6 signin-head1" onclick="nextStep(4)">Employee</p>
-                    <p class="col-xs-6 signin-head2" onclick="nextStep(5)">Admin</p>
+                    <p class="col-xs-6 signin-head1" onclick="nextStep(5)">Employee</p>
+                    <p class="col-xs-6 signin-head2" onclick="nextStep(6)">Admin</p>
 
                 </div>
 

@@ -4,26 +4,29 @@
 
 function nextStep(step) {
 
-    /*zweiter schritt vom Sign up*/
+    /* ----------------- SIGN UP ADMIN ------------------- */
     if (step == 1) {
         $("#basic").css("display", "block");
         $(".footer1").css("display", "block");
-        $('.modal-sub .signin-head1').removeClass('signin-head2').addClass('signin-head1');
 
         $("#user").css("display", "none");
         $(".footer2").css("display", "none");
-        $('.modal-sub .signin-head2').removeClass('signin-head1').addClass('signin-head2');
 
         $("#company").css("display", "none");
         $(".footer3").css("display", "none");
-        $('.modal-sub .signin-head3').removeClass('signin-head1').addClass('signin-head2');
 
         $("#store").css("display", "none");
         $(".footer4").css("display", "none");
-        $('.modal-sub .signin-head4').removeClass('signin-head1').addClass('signin-head2');
+
+        // Change Classes
+        $('.modal-sub-sign-up p:nth-child(1)').removeClass('signin-head2').addClass('signin-head1');
+        $('.modal-sub-sign-up p:nth-child(2)').removeClass('signin-head1').addClass('signin-head2');
+        $('.modal-sub-sign-up p:nth-child(3)').removeClass('signin-head1').addClass('signin-head2');
+        $('.modal-sub-sign-up p:nth-child(4)').removeClass('signin-head1').addClass('signin-head2');
+
+
 
     }
-
 
     if (step == 2) {
         $("#basic").css("display", "none");
@@ -38,9 +41,14 @@ function nextStep(step) {
         $("#store").css("display", "none");
         $(".footer4").css("display", "none");
 
+        // Change Classes
+        $('.modal-sub-sign-up p:nth-child(2)').removeClass('signin-head2').addClass('signin-head1');
+        $('.modal-sub-sign-up p:nth-child(1)').removeClass('signin-head1').addClass('signin-head2');
+        $('.modal-sub-sign-up p:nth-child(3)').removeClass('signin-head1').addClass('signin-head2');
+        $('.modal-sub-sign-up p:nth-child(4)').removeClass('signin-head1').addClass('signin-head2');
+
     }
 
-    /*dritter schritt vom Sign up*/
     if (step == 3) {
         $("#basic").css("display", "none");
         $(".footer1").css("display", "none");
@@ -55,9 +63,15 @@ function nextStep(step) {
         $(".footer4").css("display", "none");
 
         $("#myBar").css("width", "100%");
+
+        // Change Classes
+        $('.modal-sub-sign-up p:nth-child(3)').removeClass('signin-head2').addClass('signin-head1');
+        $('.modal-sub-sign-up p:nth-child(1)').removeClass('signin-head1').addClass('signin-head2');
+        $('.modal-sub-sign-up p:nth-child(2)').removeClass('signin-head1').addClass('signin-head2');
+        $('.modal-sub-sign-up p:nth-child(4)').removeClass('signin-head1').addClass('signin-head2');
     }
 
-    if (step == 6) {
+    if (step == 4) {
         $("#basic").css("display", "none");
         $(".footer1").css("display", "none");
 
@@ -71,28 +85,36 @@ function nextStep(step) {
         $(".footer4").css("display", "block");
 
         $("#myBar").css("width", "100%");
+
+
+        // Change Classes
+        $('.modal-sub-sign-up p:nth-child(4)').removeClass('signin-head2').addClass('signin-head1');
+        $('.modal-sub-sign-up p:nth-child(1)').removeClass('signin-head1').addClass('signin-head2');
+        $('.modal-sub-sign-up p:nth-child(2)').removeClass('signin-head1').addClass('signin-head2');
+        $('.modal-sub-sign-up p:nth-child(3)').removeClass('signin-head1').addClass('signin-head2');
+
     }
 
 
-    /*emp*/
-    if (step == 4) {
+    /* ----------------- SIGN IN EMP + ADMIN ------------------- */
+    if (step == 5) {
         $("#modal-body-emp").css("display", "block");
         $("#modal-body-admin").css("display", "none");
 
-        // Chamge Classes
-        $('.modal-sub p:first-child').removeClass('signin-head2').addClass('signin-head1');
-        $('.modal-sub p:last-child').removeClass('signin-head1').addClass('signin-head2');
+        // Change Classes
+        $('.modal-sub-sign-in p:first-child').removeClass('signin-head2').addClass('signin-head1');
+        $('.modal-sub-sign-in p:last-child').removeClass('signin-head1').addClass('signin-head2');
 
     }
 
     /*admin*/
-    if (step == 5) {
+    if (step == 6) {
         $("#modal-body-emp").css("display", "none");
         $("#modal-body-admin").css("display", "block");
 
         // Change Classes
-        $('.modal-sub p:first-child').removeClass('signin-head1').addClass('signin-head2');
-        $('.modal-sub p:last-child').removeClass('signin-head2').addClass('signin-head1');
+        $('.modal-sub-sign-in p:first-child').removeClass('signin-head1').addClass('signin-head2');
+        $('.modal-sub-sign-in p:last-child').removeClass('signin-head2').addClass('signin-head1');
     }
 
 };
