@@ -19,6 +19,8 @@
 
 
             </div>
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/deleteEmp') }}">
+                {{ csrf_field() }}
             <div class="modal-body">
                 <h5 class="select-ueberschrift">Do you really want to delete {{ $thisEmployee->forename }} {{ $thisEmployee->surname}}</h5>
                 <!-- Modal footer-->
@@ -27,13 +29,13 @@
 
             </div>
             <div class="modal-footer">
-                <form>
+
                     <button class="form-control  delete-button" type="submit">
                         Delete
                     </button>
-                </form>
-            </div>
 
+            </div>
+            </form>
 
         </div>
 
