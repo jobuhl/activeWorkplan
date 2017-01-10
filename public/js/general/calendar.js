@@ -30,9 +30,39 @@ function drop(ev, date) {
 }
 
 function openChangeAlldayModal(divEventId) {
-    var date = $("#" + divEventId + " > input:nth-child(1)").val();
-    var category = $("#" + divEventId + " > p").text();
 
-    $("#button-change-allday-event").click()
-    $("#select-js-on-change option:first-child").text(category);
+    //Daten aus dem Event auslesen
+    var date = $("#div-allday" + divEventId + " > input:nth-child(1)").val();
+    var category = $("#div-allday" + divEventId + " > p").text();
+
+    // change modal oeffnen
+    $("#button-change-allday-event").click();
+
+    // uebertragen der daten in das change-modal
+    $("#select-js-on-change-allday option:first-child").text(category);
+    $("#input-js-on-change-allday").val(date);
+
+    // um beim submit im Controller auf die id zugreifen zu können
+    $("#event-id-allday").val(divEventId);
+}
+
+function openChangeTimeModal(divEventId) {
+
+    //Daten aus dem Event auslesen
+    var date = $("#div-time" + divEventId + " > input").val();
+    var category = $("#div-time" + divEventId + " > p:nth-child(1)").text();
+    var from = $("#div-time" + divEventId + " > p:nth-child(2)").text();
+    var to = $("#div-time" + divEventId + " > p:nth-child(3)").text();
+
+    // change modal oeffnen
+    $("#button-change-time-event").click();
+
+    // uebertragen der daten in das change-modal
+    $("#select-js-on-change-time option:first-child").text(category);
+    $("#input-js-on-change-time-date").val(date);
+    $("#input-js-on-change-time-from").val(from);
+    $("#input-js-on-change-time-to").val(to);
+
+    // um beim submit im Controller auf die id zugreifen zu können
+    $("#event-id-time").val(divEventId);
 }

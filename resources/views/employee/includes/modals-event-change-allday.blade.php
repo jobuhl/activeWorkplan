@@ -1,5 +1,5 @@
-<!-- Button der Event aendert -->
-<div id="change-button-event" class="modal fade" role="dialog">
+<!-- Button der Allday Event aendert -->
+<div id="change-button-event-allday" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
         <!-- Modal content-->
@@ -11,7 +11,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 <!-- Überschrift -->
-                <h2 class="modal-ueberschrift">Change Event</h2>
+                <h2 class="modal-ueberschrift">Change Allday Event</h2>
                 <br>
 
                 <form type="form" method="POST" action="{{ url('/employee/alldayEventChange') }}"> {{ csrf_field() }}
@@ -20,15 +20,12 @@
                     <div class="modal-body change-event-modal">
 
                         <!-- Zeile 1 -->
-                        <article class="row">
-                            <h2 style="display: none">fakeheading</h2>
-
+                        <div class="row">
                             <!-- links -->
-                            <aside class="col-xs-12 col-sm-4"></aside>
-
+                            <aside class="col-xs-12 col-sm-4 aside-left-add">Category</aside>
                             <!-- rechts -->
                             <aside class="col-xs-12 col-sm-8 aside-right">
-                                <p><select id="select-js-on-change"
+                                <p><select id="select-js-on-change-allday"
                                            class="selectpicker form-control to-right modal-input space-cap"
                                            name="category" type="text">
                                         <option>this-category-wird-ueberschrieben</option>
@@ -37,33 +34,27 @@
                                         @endforeach
                                     </select></p>
                             </aside>
-
-                        </article>
+                        </div>
 
                         <!-- Zeile 2 -->
-                        <article class="row">
-                            <h2 style="display: none">fakeheading</h2>
-
+                        <div class="row">
                             <!-- links -->
                             <aside class="col-xs-12 col-sm-4 aside-left-add">Time</aside>
-
                             <!-- rechts -->
                             <aside class="col-xs-12 col-sm-8 aside-right">
-                                <p><input class="datepicker inputmodal form-control space-cap" type="date" name="date"
+                                <p><input id="input-js-on-change-allday" class="datepicker inputmodal form-control space-cap" type="date" name="date"
                                           placeholder="Date"/></p>
                             </aside>
-
-                        </article>
+                        </div>
 
                     </div>
 
                     <!-- Modal footer-->
                     <div>
-                        <button type="submit" class="form-control to-right add-button"
-                                data-toggle="modal"
+                        <input id="event-id-allday" style="display: none;" name="thisEventId" value=""/>
+                        <button type="submit" class="form-control to-right modal-change-button"
                                 name="thisDate"
-                                value="{{ $week[0]->format('d-m-Y') }}"
-                                data-target="#add-button-store">Add
+                                value="{{ $week[0]->format('d-m-Y') }}">Change
                         </button>
                     </div>
 

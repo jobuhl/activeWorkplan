@@ -66,7 +66,7 @@
             <tr class="week-days">
                 <td></td>
                 @for ($i = 0; $i < 7; $i++)
-                    @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                    @if((new DateTime())->format('d-m-Y') == $week[$i]->format('d-m-Y'))
                         <td class="today">
                     @else
                         <td>
@@ -81,13 +81,13 @@
             <tr class="all-day">
                 <td>Allday</td>
                 @for ($i = 0; $i < 7; $i++)
-                    @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                    @if((new DateTime())->format('d-m-Y') == $week[$i]->format('d-m-Y'))
                         <td class="today">
                     @else
                         <td ondrop="drop(event,{{ $week[$i]->format('d-m-Y') }})" ondragover="allowDrop(event)">
                             @endif
                             @foreach($manyAlldayEvent as $oneAlldayEvent)
-                                @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y'))
+                                @if( (new DateTime($oneAlldayEvent->date))->format('d-m-Y') == $week[$i]->format('d-m-Y'))
                                     <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
                                          onclick="openEventDropdown('allday' + {{ $oneAlldayEvent->id }} + '')"
                                          draggable="true"
@@ -96,27 +96,14 @@
                                         <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
                                         <p>{{ $oneAlldayEvent->name }}</p>
 
-                                        {{--</div>--}}
-                                        {{--<div>--}}
-                                        {{--<select class="select-change-event" name="category">--}}
-                                        {{--@foreach($category as $cat)--}}
-                                        {{--<option>{{ $cat->name }}</option>--}}
-                                        {{--@endforeach--}}
-                                        {{--</select>--}}
-
-                                        {{--<input class="datepicker input-change-event inputmodal form-control space-cap"--}}
-                                        {{--type="date" name="date"--}}
-                                        {{--placeholder="Date"/>--}}
-                                        {{--</div>--}}
-
                                         <div id="allday{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
 
-                                            <button onclick="openChangeAlldayModal('div-allday' + '{{ $oneAlldayEvent->id }}')"
+                                            <button onclick="openChangeAlldayModal({{ $oneAlldayEvent->id }})"
                                                     class="change-event-button">⇄
                                             </button>
 
                                             <button id="button-change-allday-event" style="display: none;"
-                                                    data-toggle="modal" data-target="#change-button-event">⇄
+                                                    data-toggle="modal" data-target="#change-button-event-allday">⇄
                                             </button>
 
                                             <form method="POST"
@@ -142,24 +129,34 @@
             <tr class="time-events">
                 <td>Time-Events</td>
                 @for ($i = 0; $i < 7; $i++)
-                    @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                    @if((new DateTime())->format('d-m-Y') == $week[$i]->format('d-m-Y'))
                         <td class="today">
                     @else
                         <td>
                             @endif
                             @foreach($manyTimeEvent as $oneTimeEvent)
-                                @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y') )
+                                @if( (new DateTime($oneTimeEvent->date))->format('d-m-Y') == $week[$i]->format('d-m-Y') )
+
                                     <div class="drop-btn one-time-event {{ $oneTimeEvent->color }}"
                                          onclick="openEventDropdown('time' + {{ $oneTimeEvent->id }} + '')"
-                                         draggable="true">
+                                         draggable="true"
+                                         id="div-time{{ $oneTimeEvent->id }}"
+                                         ondragstart="drag(event)">
                                         <p>{{ $oneTimeEvent->name }}</p>
                                         <p>{{ $oneTimeEvent->from }}</p>
                                         <p>{{ $oneTimeEvent->to }}</p>
-                                        <div id="time{{ $oneTimeEvent->id }}"
-                                             class="event-dropdown-content">
-                                            <form>
-                                                <button class="change-event-button">⇄</button>
-                                            </form>
+                                        <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
+
+                                        <div id="time{{ $oneTimeEvent->id }}" class="event-dropdown-content">
+
+                                            <button onclick="openChangeTimeModal({{ $oneTimeEvent->id }})"
+                                                    class="change-event-button">⇄
+                                            </button>
+
+                                            <button id="button-change-time-event" style="display: none;"
+                                                    data-toggle="modal" data-target="#change-button-event-time">⇄
+                                            </button>
+
                                             <form method="POST"
                                                   action="{{ url('/employee/timeEventDelete') }}"> {{ csrf_field() }}
                                                 <input style="display: none;" name="thisDate"
@@ -180,7 +177,7 @@
             <tr class="add-buttons">
                 <td></td>
                 @for ($i = 0; $i < 7; $i++)
-                    @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                    @if((new DateTime())->format('d-m-Y') == $week[$i]->format('d-m-Y'))
                         <td class="today">
                     @else
                         <td>
@@ -193,7 +190,8 @@
     </section>
 
     @include('employee.includes.modals-event-add')
-    @include('employee.includes.modals-event-change')
+    @include('employee.includes.modals-event-change-allday')
+    @include('employee.includes.modals-event-change-time')
 
 @endsection
 

@@ -69,11 +69,9 @@ class EmpController extends Controller
 
         Employee::where('employees.id', $employee->id)
             ->update(array(
-
                 'forename' => $request['forename'],
                 'name' => $request['name'],
                 'email' => $request['email'],
-
             ));
 
         return redirect('/employee/employee-account/' . $request['thisDate']);

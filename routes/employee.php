@@ -83,6 +83,8 @@ Route::post('/changeEmp', 'EmpController@update');
 
 Route::post('/alldayEventCreate', 'EventController@addAlldayEvent');
 Route::post('/timeEventCreate', 'EventController@addTimeEvent');
+Route::post('/alldayEventChange', 'EventController@changeAlldayEvent');
+Route::post('/timeEventChange', 'EventController@changeTimeEvent');
 Route::post('/alldayEventDelete', 'EventController@deleteAlldayEvent');
 Route::post('/timeEventDelete', 'EventController@deleteTimeEvent');
 

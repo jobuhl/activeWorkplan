@@ -10,7 +10,7 @@
             <h2 style="display: none">fakeheading</h2>
 
             <!-- links -->
-            <aside class="col-xs-12 col-sm-4"></aside>
+            <aside class="col-xs-12 col-sm-4 aside-left-add">Category</aside>
 
             <!-- rechts -->
             <aside class="col-xs-12 col-sm-8 aside-right">
@@ -42,10 +42,8 @@
     <!-- Modal footer-->
     <div>
         <button type="submit" class="form-control to-right add-button"
-                data-toggle="modal"
                 name="thisDate"
-                value="{{ $week[0]->format('d-m-Y') }}"
-                data-target="#add-button-store">Add
+                value="{{ $week[0]->format('d-m-Y') }}">Add
         </button>
     </div>
 
