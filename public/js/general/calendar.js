@@ -1,4 +1,3 @@
-
 $(".datepicker").datepicker();
 
 function openEventDropdown(eventId) {
@@ -28,4 +27,12 @@ function drop(ev, date) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     ev.target.appendChild(document.getElementById(data));
+}
+
+function openChangeAlldayModal(divEventId) {
+    var date = $("#" + divEventId + " > input:nth-child(1)").val();
+    var category = $("#" + divEventId + " > p").text();
+
+    $("#button-change-allday-event").click()
+    $("#select-js-on-change option:first-child").text(category);
 }

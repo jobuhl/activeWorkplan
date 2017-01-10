@@ -75,61 +75,68 @@
                         @endfor
             </tr>
 
-            <form name="changeDraggedAlldayEvent" method="POST"
-                  action="{{ url('/employee/changeDraggedAlldayEvent') }}"> {{ csrf_field() }}
+            {{--<form name="changeDraggedAlldayEvent" method="POST"--}}
+            {{--action="{{ url('/employee/changeDraggedAlldayEvent') }}"> {{ csrf_field() }}--}}
 
-                <tr class="all-day">
-                    <td>Allday</td>
-                    @for ($i = 0; $i < 7; $i++)
-                        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
-                            <td class="today">
-                        @else
-                            <td ondrop="drop(event,{{ $week[$i]->format('d-m-Y') }})" ondragover="allowDrop(event)">
-                                @endif
-                                @foreach($manyAlldayEvent as $oneAlldayEvent)
-                                    @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y'))
-                                        <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
-                                             onclick="openEventDropdown('allday' + {{ $oneAlldayEvent->id }} + '')"
-                                             draggable="true"
-                                             id="div-allday{{ $oneAlldayEvent->id }}"
-                                             ondragstart="drag(event)">
-                                            <p>{{ $oneAlldayEvent->name }}</p>
+            <tr class="all-day">
+                <td>Allday</td>
+                @for ($i = 0; $i < 7; $i++)
+                    @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                        <td class="today">
+                    @else
+                        <td ondrop="drop(event,{{ $week[$i]->format('d-m-Y') }})" ondragover="allowDrop(event)">
+                            @endif
+                            @foreach($manyAlldayEvent as $oneAlldayEvent)
+                                @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y'))
+                                    <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
+                                         onclick="openEventDropdown('allday' + {{ $oneAlldayEvent->id }} + '')"
+                                         draggable="true"
+                                         id="div-allday{{ $oneAlldayEvent->id }}"
+                                         ondragstart="drag(event)">
+                                        <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
+                                        <p>{{ $oneAlldayEvent->name }}</p>
 
                                         {{--</div>--}}
-                                            <div>
-                                                <select class="select-change-event" name="category">
-                                                    @foreach($category as $cat)
-                                                        <option>{{ $cat->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                        {{--<div>--}}
+                                        {{--<select class="select-change-event" name="category">--}}
+                                        {{--@foreach($category as $cat)--}}
+                                        {{--<option>{{ $cat->name }}</option>--}}
+                                        {{--@endforeach--}}
+                                        {{--</select>--}}
 
-                                                <input class="datepicker input-change-event inputmodal form-control space-cap"
-                                                       type="date" name="date"
-                                                       placeholder="Date"/>
-                                            </div>
+                                        {{--<input class="datepicker input-change-event inputmodal form-control space-cap"--}}
+                                        {{--type="date" name="date"--}}
+                                        {{--placeholder="Date"/>--}}
+                                        {{--</div>--}}
 
-                                            <div id="allday{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
-                                                <form>
-                                                    <button class="change-event-button">⇄</button>
-                                                </form>
-                                                <form method="POST"
-                                                      action="{{ url('/employee/alldayEventDelete') }}"> {{ csrf_field() }}
-                                                    <input style="display: none;" name="thisDate"
-                                                           value="{{ $week[0]->format('d-m-Y') }}"/>
-                                                    <button class="delete-event-button" name="eventId"
-                                                            value="{{ $oneAlldayEvent->id }}">-
-                                                    </button>
-                                                </form>
-                                            </div>
+                                        <div id="allday{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
+
+                                            <button onclick="openChangeAlldayModal('div-allday' + '{{ $oneAlldayEvent->id }}')"
+                                                    class="change-event-button">⇄
+                                            </button>
+
+                                            <button id="button-change-allday-event" style="display: none;"
+                                                    data-toggle="modal" data-target="#change-button-event">⇄
+                                            </button>
+
+                                            <form method="POST"
+                                                  action="{{ url('/employee/alldayEventDelete') }}"> {{ csrf_field() }}
+                                                <input style="display: none;" name="thisDate"
+                                                       value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                <button class="delete-event-button" name="eventId"
+                                                        value="{{ $oneAlldayEvent->id }}">-
+                                                </button>
+                                            </form>
                                         </div>
+                                    </div>
 
 
-                                    @endif
-                                @endforeach
-                            </td>
-                            @endfor
-                </tr>
-            </form>
+                                @endif
+                            @endforeach
+                        </td>
+                        @endfor
+            </tr>
+            {{--</form>--}}
 
 
             <tr class="time-events">
@@ -184,6 +191,7 @@
         </table>
 
         @include('employee.includes.modals-event-add')
+        @include('employee.includes.modals-event-change')
     </section>
 @endsection
 

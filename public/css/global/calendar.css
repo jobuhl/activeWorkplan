@@ -241,7 +241,7 @@
 /* --------------------------- CLICK EVENT CHANGE DELETE --------------------------- */
 
 .event-dropdown-content {
-    display: block; /* nur zum test */
+    display: none;
     z-index: 5;
     padding: 5px;
     margin: 0 2px 0 2px;
