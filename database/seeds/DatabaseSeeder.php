@@ -334,7 +334,7 @@ class DatabaseSeeder extends Seeder
             'contract_id' => $contract4->id
         ));
 
-        $employee1 = Employee::create(array(
+        $employee5 = Employee::create(array(
             'forename' => 'Fabian',
             'name' => 'Gustav',
             'email' => 'fabian.gustav@web.de',
@@ -343,7 +343,7 @@ class DatabaseSeeder extends Seeder
             'contract_id' => $contract5->id
         ));
 
-        $employee2 = Employee::create(array(
+        $employee6 = Employee::create(array(
             'forename' => 'Hans',
             'name' => 'Mustafa',
             'email' => 'hans.mustafa@web.de',
@@ -352,7 +352,7 @@ class DatabaseSeeder extends Seeder
             'contract_id' => $contract6->id
         ));
 
-        $employee3 = Employee::create(array(
+        $employee7 = Employee::create(array(
             'forename' => 'Olaf',
             'name' => 'Maier',
             'email' => 'olaf.maier@web.de',
@@ -361,7 +361,7 @@ class DatabaseSeeder extends Seeder
             'contract_id' => $contract7->id
         ));
 
-        $employee4 = Employee::create(array(
+        $employee8 = Employee::create(array(
             'forename' => 'Maria',
             'name' => 'Müller',
             'email' => 'emp2@web.de',
@@ -418,7 +418,7 @@ class DatabaseSeeder extends Seeder
             'color' => 'dark-green'
         ));
 
-        $category6 = Category::create(array(
+        $category7 = Category::create(array(
             'name' => 'Private',
             'color' => 'grey'
         ));
@@ -434,47 +434,106 @@ class DatabaseSeeder extends Seeder
         {
             /* ---------------------- Time Event -------------------------- */
 
-            $worktimePreferred1 = TimeEvent::create(array(
-                'date' => date('2017-01-03'),
-                'from' => '8:00',
-                'to' => '20:00',
-                'employee_id' => $employee1->id,
-                'category_id' => $category1->id
-            ));
 
-            $worktimePreferred2 = TimeEvent::create(array(
-                'date' => date('2017-01-04'),
-                'from' => '8:00',
-                'to' => '14:00',
-                'employee_id' => $employee1->id,
-                'category_id' => $category1->id
-            ));
+            $minutes = array("00","15","30","45");
 
-            $worktimePreferred2 = TimeEvent::create(array(
-                'date' => date('2017-01-04'),
-                'from' => '15:00',
-                'to' => '20:00',
-                'employee_id' => $employee1->id,
-                'category_id' => $category4->id
-            ));
+            for($i = -10; $i < 10; $i++) {
 
-            $worktimePreferred4 = TimeEvent::create(array(
-                'date' => date('2017-01-05'),
-                'from' => '8:00',
-                'to' => '22:00',
-                'employee_id' => $employee1->id,
-                'category_id' => $category1->id
-            ));
+                do {
+                    $from = rand(8,22);
+                    $to = rand(8,22);
+                } while($from > $to);
+
+                TimeEvent::create(array(
+                    'date' => date((new DateTime())->modify($i . ' days')->format('d-m-Y')),
+                    'from' => $from . ':' . $minutes[rand(1,4)],
+                    'to' => $to . ':' . $minutes[rand(1,4)],
+                    'employee_id' => $employee1->id,
+                    'category_id' => rand(1,7),
+                ));
+            }
+
+//            $timeEvent2 = TimeEvent::create(array(
+//                'date' => date((new TimeDate())->modify('+1 days')->format('d-m-Y')),
+//                'from' => '8:00',
+//                'to' => '14:00',
+//                'employee_id' => $employee1->id,
+//                'category_id' => $category1->id
+//            ));
+//
+//            $timeEvent3 = TimeEvent::create(array(
+//                'date' => date((new TimeDate())->modify('+1 days')->format('d-m-Y')),
+//                'from' => '15:30',
+//                'to' => '20:00',
+//                'employee_id' => $employee1->id,
+//                'category_id' => $category4->id
+//            ));
+//
+//            $timeEvent4 = TimeEvent::create(array(
+//                'date' => date((new TimeDate())->modify('+2 days')->format('d-m-Y')),
+//                'from' => '8:00',
+//                'to' => '22:00',
+//                'employee_id' => $employee1->id,
+//                'category_id' => $category1->id
+//            ));
+//
+//            $timeEvent5 = TimeEvent::create(array(
+//                'date' => date((new TimeDate())->modify('+3 days')->format('d-m-Y')),
+//                'from' => '10:30',
+//                'to' => '14:00',
+//                'employee_id' => $employee1->id,
+//                'category_id' => $category2->id
+//            ));
+//
+//            $timeEvent6 = TimeEvent::create(array(
+//                'date' => date((new TimeDate())->modify('+3 days')->format('d-m-Y')),
+//                'from' => '12:00',
+//                'to' => '17:30',
+//                'employee_id' => $employee1->id,
+//                'category_id' => $category1->id
+//            ));
+//
+//            $timeEvent7 = TimeEvent::create(array(
+//                'date' => date((new TimeDate())->modify('+4 days')->format('d-m-Y')),
+//                'from' => '12:00',
+//                'to' => '17:30',
+//                'employee_id' => $employee1->id,
+//                'category_id' => $category1->id
+//            ));
+//
+//            $timeEvent8 = TimeEvent::create(array(
+//                'date' => date((new TimeDate())->modify('+5 days')->format('d-m-Y')),
+//                'from' => '12:00',
+//                'to' => '14:00',
+//                'employee_id' => $employee1->id,
+//                'category_id' => $category6->id
+//            ));
+//
+//            $timeEvent9 = TimeEvent::create(array(
+//                'date' => date((new TimeDate())->modify('+6 days')->format('d-m-Y')),
+//                'from' => '18:00',
+//                'to' => '22:00',
+//                'employee_id' => $employee1->id,
+//                'category_id' => $category7->id
+//            ));
+//
+//            $timeEvent10 = TimeEvent::create(array(
+//                'date' => date((new TimeDate())->modify('+7 days')->format('d-m-Y')),
+//                'from' => '16:00',
+//                'to' => '20:00',
+//                'employee_id' => $employee1->id,
+//                'category_id' => $category7->id
+//            ));
 
             /* ---------------------- Allday Event -------------------------- */
 
-            $alldayFix1 = AlldayEvent::create(array(
+            $alldayEvent1 = AlldayEvent::create(array(
                 'date' => date('2017-01-06'),
                 'employee_id' => $employee1->id,
                 'category_id' => $category2->id
             ));
 
-            $alldayFix2 = AlldayEvent::create(array(
+            $alldayEvent2 = AlldayEvent::create(array(
                 'date' => date('2017-01-07'),
                 'employee_id' => $employee1->id,
                 'category_id' => $category2->id
@@ -516,94 +575,8 @@ class DatabaseSeeder extends Seeder
             ));
 
 
-        }
 
 
-
-        {
-
-            /* ---------------------- Time Event -------------------------- */
-
-            $worktimePreferred1 = TimeEvent::create(array(
-                'date' => date('2017-01-03'),
-                'from' => '8:00',
-                'to' => '20:00',
-                'employee_id' => $employee3->id,
-                'category_id' => $category1->id
-            ));
-
-            $worktimePreferred2 = TimeEvent::create(array(
-                'date' => date('2017-01-04'),
-                'from' => '8:00',
-                'to' => '14:00',
-                'employee_id' => $employee3->id,
-                'category_id' => $category1->id
-            ));
-
-            $worktimePreferred2 = TimeEvent::create(array(
-                'date' => date('2017-01-04'),
-                'from' => '15:00',
-                'to' => '20:00',
-                'employee_id' => $employee3->id,
-                'category_id' => $category4->id
-            ));
-
-            $worktimePreferred4 = TimeEvent::create(array(
-                'date' => date('2017-01-05'),
-                'from' => '8:00',
-                'to' => '22:00',
-                'employee_id' => $employee3->id,
-                'category_id' => $category1->id
-            ));
-
-            /* ---------------------- Allday Event -------------------------- */
-
-            $alldayFix1 = AlldayEvent::create(array(
-                'date' => date('2017-01-06'),
-                'employee_id' => $employee3->id,
-                'category_id' => $category2->id
-            ));
-
-            $alldayFix2 = AlldayEvent::create(array(
-                'date' => date('2017-01-07'),
-                'employee_id' => $employee3->id,
-                'category_id' => $category2->id
-            ));
-
-
-            /* ---------------------- Worktime Fix -------------------------- */
-
-            $worktimeFix = WorktimeFix::create(array(
-                'date' => date('2017-01-03'),
-                'from' => '8:00',
-                'to' => '10:00',
-                'employee_id' => $employee3->id,
-                'category_id' => $category1->id
-            ));
-
-            $worktimeFix = WorktimeFix::create(array(
-                'date' => date('2017-01-03'),
-                'from' => '16:00',
-                'to' => '20:00',
-                'employee_id' => $employee3->id,
-                'category_id' => $category1->id
-            ));
-
-            $worktimeFix = WorktimeFix::create(array(
-                'date' => date('2017-01-04'),
-                'from' => '8:00',
-                'to' => '12:00',
-                'employee_id' => $employee3->id,
-                'category_id' => $category1->id
-            ));
-
-            $worktimeFix = WorktimeFix::create(array(
-                'date' => date('2017-01-05'),
-                'from' => '17:00',
-                'to' => '21:30',
-                'employee_id' => $employee3->id,
-                'category_id' => $category1->id
-            ));
 
         }
 

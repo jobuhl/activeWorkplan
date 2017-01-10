@@ -1,5 +1,7 @@
+// Event Datum auswählen (JavaScript-Funktion)
 $(".datepicker").datepicker();
 
+// on click auf ein Event werden die options button darunter angezeigt
 function openEventDropdown(eventId) {
     var buttons = $("#" + eventId);
     if (buttons.is(':hidden')) {
@@ -14,7 +16,7 @@ function openEventDropdown(eventId) {
     }
 }
 
-
+// Drag and Drop
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -29,6 +31,7 @@ function drop(ev, date) {
     ev.target.appendChild(document.getElementById(data));
 }
 
+// Allday-Event change
 function openChangeAlldayModal(divEventId) {
 
     //Daten aus dem Event auslesen
@@ -46,6 +49,7 @@ function openChangeAlldayModal(divEventId) {
     $("#event-id-allday").val(divEventId);
 }
 
+// Time-Event change
 function openChangeTimeModal(divEventId) {
 
     //Daten aus dem Event auslesen
