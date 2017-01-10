@@ -8,6 +8,7 @@ use App\City;
 use App\Address;
 use App\Company;
 
+use App\RetailStore;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -48,12 +49,12 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array $data
+     * @param  array $request
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validator(array $request)
     {
-        return Validator::make($data, [
+        return Validator::make($request, [
             'name' => 'required|max:255',
             'forename' => 'required|max:255',
             'email' => 'required|email|max:255|unique:admins',
@@ -64,43 +65,67 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array $data
+     * @param  array $request
      * @return Admin
      */
-    protected function create(array $data)
+    protected function create(array $request)
     {
 
 
         $admin = Admin::create([
-            'name' => $data['name'],
-            'forename' => $data['forename'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name' => $request['name'],
+            'forename' => $request['forename'],
+            'email' => $request['email'],
+            'password' => bcrypt($request['password']),
         ]);
 
         // Datensatz nur erstellen, wenn noch nicht vorhanden
         $country = Country::firstOrCreate(array(
-            'name' => $data['country']
+            'name' => $request['country']
         ));
 
         $city = City::firstOrCreate(array(
-            'name' => $data['city'],
+            'name' => $request['city'],
             'country_id' => $country->id
         ));
 
         // Adresse wird immer erstellt, falls Company umzieht -> einfacher zu warten
         $address = Address::create(array(
-            'street' => $data['street'],
-            'street_nr' => $data['street_nr'],
-            'postcode' => $data['postcode'],
+            'street' => $request['street'],
+            'street_nr' => $request['street_nr'],
+            'postcode' => $request['postcode'],
             'city_id' => $city->id
         ));
 
-        Company::create(array(
-            'name' => $data['company-name'],
+        $company = Company::create(array(
+            'name' => $request['company-name'],
             'admin_id' => $admin->id,
             'address_id' => $address->id
         ));
+
+        $country2 = Country::firstOrCreate(array(
+            'name' => $request['country2']
+        ));
+
+        $city2 = City::firstOrCreate(array(
+            'name' => $request['city2'],
+            'country_id' => $country2->id
+        ));
+
+        $address2 = Address::create(array(
+            'street' => $request['street2'],
+            'street_nr' => $request['street_nr2'],
+            'postcode' => $request['postcode2'],
+            'city_id' => $city2->id
+        ));
+
+        $store = RetailStore::create(array(
+            'name' => $request['store-name'],
+            'company_id' => $company->id,
+            'address_id' => $address2->id
+        ));
+
+
 
         return $admin;
     }

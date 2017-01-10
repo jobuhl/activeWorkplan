@@ -14,13 +14,14 @@
                 <br>
 
                 <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
-                <nav>
-                    <ul class="signup-menu">
-                        <li>Basic</li>
-                        <li>User</li>
-                        <li>Company</li>
-                    </ul>
-                </nav>
+                <div class="modal-sub">
+
+                    <p class="col-xs-3 signin-head1" onclick="nextStep(1)">Employee</p>
+                    <p class="col-xs-3 signin-head2" onclick="nextStep(2)">Admin</p>
+                    <p class="col-xs-3 signin-head3" onclick="nextStep(3)">Company</p>
+                    <p class="col-xs-3 signin-head4" onclick="nextStep(6)">Store</p>
+
+                </div>
 
                 <div id="myProgress">
                     <div id="myBar"></div>
@@ -130,42 +131,36 @@
                         <p><input class="form-control" type="email" name="company-name" placeholder="Company name"></p>
 
                         <h3>Company Headquarter Adress</h3>
-                        <p><input class="form-control" type="email" name="street" placeholder="Street"></p>
-                        <p><input class="form-control" type="email" name="street_nr" placeholder="Street Nr."></p>
-                        <p><input class="form-control" type="email" name="postcode" placeholder="Postcode"></p>
-                        <p><input class="form-control" type="email" name="city" placeholder="City"></p>
-                        <p><input class="form-control" type="email" name="country" placeholder="Country"></p>
+                        <p><input class="form-control" type="text" name="street" placeholder="Street"></p>
+                        <p><input class="form-control" type="text" name="street_nr" placeholder="Street Nr."></p>
+                        <p><input class="form-control" type="text" name="postcode" placeholder="Postcode"></p>
+                        <p><input class="form-control" type="text" name="city" placeholder="City"></p>
+                        <p><input class="form-control" type="text" name="country" placeholder="Country"></p>
+
+
+                    </div>
+
+                    <!-- Retail Store-->
+                    <div id="store">
+                        <h3>Store Details</h3>
+                        <p><input class="form-control" type="email" name="store-name" placeholder="Store name"></p>
+
+                        <h3>Store Adress</h3>
+                        <p><input class="form-control" type="text" name="street2" placeholder="Street"></p>
+                        <p><input class="form-control" type="text" name="street_nr2" placeholder="Street Nr."></p>
+                        <p><input class="form-control" type="text" name="postcode2" placeholder="Postcode"></p>
+                        <p><input class="form-control" type="text" name="city2" placeholder="City"></p>
+                        <p><input class="form-control" type="text" name="country2" placeholder="Country"></p>
 
 
                     </div>
                 </div>
-                <div class="modal-footer footer1">
+                <div class="modal-footer footer4">
+                    <div class="col-xs-6">
+
+                    </div>
                     <div class="col-xs-12">
-                        <button type="button" class="form-control to-right next-button" ONCLICK="nextStep(2)">
-                            Next
-                        </button>
-                    </div>
-                </div>
-                <div class="modal-footer footer2">
-                    <div class="col-xs-6">
-                        <button class=" form-control to-right next-button" type="button" ONCLICK="nextStep(1)">
-                            Back
-                        </button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button class=" form-control to-right next-button" type="button" ONCLICK="nextStep(3)">
-                            Next
-                        </button>
-                    </div>
-                </div>
-                <div class="modal-footer footer3">
-                    <div class="col-xs-6">
-                        <button id="back-button" class="form-control to-right next-button" type="button"
-                                ONCLICK="nextStep(2)">Back
-                        </button>
-                    </div>
-                    <div class="col-xs-6">
-                        <button id="back-button" class="form-control to-right next-button" type="submit">
+                        <button id="back-button" class="form-control to-right add-button" type="submit">
                             SignUp
                         </button>
 

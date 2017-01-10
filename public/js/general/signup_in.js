@@ -8,14 +8,19 @@ function nextStep(step) {
     if (step == 1) {
         $("#basic").css("display", "block");
         $(".footer1").css("display", "block");
+        $('.modal-sub .signin-head1').removeClass('signin-head2').addClass('signin-head1');
 
         $("#user").css("display", "none");
         $(".footer2").css("display", "none");
+        $('.modal-sub .signin-head2').removeClass('signin-head1').addClass('signin-head2');
 
         $("#company").css("display", "none");
         $(".footer3").css("display", "none");
+        $('.modal-sub .signin-head3').removeClass('signin-head1').addClass('signin-head2');
 
-        $("#myBar").css("width", "35%");
+        $("#store").css("display", "none");
+        $(".footer4").css("display", "none");
+        $('.modal-sub .signin-head4').removeClass('signin-head1').addClass('signin-head2');
 
     }
 
@@ -30,7 +35,9 @@ function nextStep(step) {
         $("#company").css("display", "none");
         $(".footer3").css("display", "none");
 
-        $("#myBar").css("width", "70%");
+        $("#store").css("display", "none");
+        $(".footer4").css("display", "none");
+
     }
 
     /*dritter schritt vom Sign up*/
@@ -43,6 +50,25 @@ function nextStep(step) {
 
         $("#company").css("display", "block");
         $(".footer3").css("display", "block");
+
+        $("#store").css("display", "none");
+        $(".footer4").css("display", "none");
+
+        $("#myBar").css("width", "100%");
+    }
+
+    if (step == 6) {
+        $("#basic").css("display", "none");
+        $(".footer1").css("display", "none");
+
+        $("#user").css("display", "none");
+        $(".footer2").css("display", "none");
+
+        $("#company").css("display", "none");
+        $(".footer3").css("display", "none");
+
+        $("#store").css("display", "block");
+        $(".footer4").css("display", "block");
 
         $("#myBar").css("width", "100%");
     }
