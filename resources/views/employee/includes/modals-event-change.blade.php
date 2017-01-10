@@ -28,10 +28,11 @@
 
                             <!-- rechts -->
                             <aside class="col-xs-12 col-sm-8 aside-right">
-                                <p><select id="select-js-on-change" class="selectpicker form-control to-right modal-input space-cap"
+                                <p><select id="select-js-on-change"
+                                           class="selectpicker form-control to-right modal-input space-cap"
                                            name="category" type="text">
-
-                                    @foreach($category as $cat )
+                                        <option>this-category-wird-ueberschrieben</option>
+                                        @foreach($category as $cat )
                                             <option>{{ $cat->name }}</option>
                                         @endforeach
                                     </select></p>

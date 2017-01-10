@@ -82,17 +82,11 @@ class EmpController extends Controller
 //Admin löscht user
     public function delete(Request $request)
     {
-
-
         $employee = Employee::find($request['thisEmployeeId']);
-
 
         $contracts = DB::table('contract')
             ->select('contract.*')
             ->where('contract.id', $employee->get()[0]->contract_id);
-
-//        dd($contracts);
-
 
         $roles = DB::table('role')
             ->select('role.*')
@@ -137,8 +131,6 @@ class EmpController extends Controller
         $contracts->delete();
         $roles->delete();
 
-
-
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
         return redirect('/admin/employer-planning/' . $allRetailStores[0]->id . '/' . $request['thisDate']);
@@ -148,11 +140,7 @@ class EmpController extends Controller
 //Admin ändert User
     public function change(Request $request)
     {
-
-
         $employee = Employee::find($request['thisEmployeeId']);
-
-        dd($employee);
 
         $contract = DB::table('contract')
             ->join('employees', 'employees.contract_id', '=', 'contract.id')

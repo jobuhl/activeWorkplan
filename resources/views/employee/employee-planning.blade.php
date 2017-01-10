@@ -190,9 +190,11 @@
             </tr>
         </table>
 
-        @include('employee.includes.modals-event-add')
-        @include('employee.includes.modals-event-change')
     </section>
+
+    @include('employee.includes.modals-event-add')
+    @include('employee.includes.modals-event-change')
+
 @endsection
 
 @section('js')

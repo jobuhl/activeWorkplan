@@ -26,7 +26,7 @@
                 <p><input class="form-control to-right modal-input" id="email" type="email" placeholder="Email"></p>
                 <p><input class="form-control to-right modal-input" id="password1" type="text" placeholder="Password"></p>
                 <p><input class="form-control to-right modal-input" id="password2" type="password"
-                          placeholder=" Confirm Password"></p>
+                          placeholder="Confirm Password"></p>
 
                 <button class=" form-control add-button" type="button" data-toggle="modal" data-target="#signupbutton"
                         onclick="signupPicture()">Sign up
