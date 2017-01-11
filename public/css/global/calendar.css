@@ -205,14 +205,15 @@
 .red p,
 .orange p,
 .dark-green p,
-.grey p {
+.grey p,
+.light-green p,
+.yellow p {
     color: var(--main-text-white);
 }
 
-.yellow p,
-.light-green p {
-    color: var(--main-text-black);
-}
+/*.yellow p {*/
+    /*color: var(--main-text-black);*/
+/*}*/
 
 .blue {
     background-color: cornflowerblue;
@@ -231,7 +232,7 @@
 }
 
 .yellow {
-    background-color: yellow;
+    background-color: #F2D600;
 }
 .light-green {
     background-color: yellowgreen;
