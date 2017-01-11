@@ -36,6 +36,13 @@ function allRetailStoresOfCompany($companyId)
         ->get();
 }
 
+function amountOfRetailStoresOfCompany($companyId)
+{
+    return DB::table('retail_store')
+        ->where('retail_store.company_id', $companyId)
+        ->count();
+}
+
 function oneAddress($addressId)
 {
     return DB::table('address')

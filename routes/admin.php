@@ -25,7 +25,6 @@ Route::get('/employer-account/{date}', function ($urlDate) {
 })->name('home');
 
 
-
 /* --------------------------- FORMULAR ------------------------------- */
 
 Route::post('/storeCreate', 'StoreController@create');
@@ -36,6 +35,9 @@ Route::post('/deleteEmp', 'EmpController@delete');
 
 Route::post('/changeAdmin', 'AdminController@update');
 Route::post('/deleteAdmin', 'AdminController@delete');
+
+Route::post('/changeStore', 'StoreController@change');
+Route::post('/deleteStore', 'StoreController@delete');
 
 /* ---------------------------- FOOTER -------------------------------- */
 
@@ -76,7 +78,8 @@ function authUser()
     $users[] = Auth::guard('admin')->user();
 }
 
-function admOverview($urlDate) {
+function admOverview($urlDate)
+{
     authUser();
 
     $company = thisCompany();
@@ -86,44 +89,68 @@ function admOverview($urlDate) {
     $manyTimeEvent = allTimeEventOfCompany($company->id);
     $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id);
+    $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
     $week = getWeekArray($urlDate);
 
-    return view('admin.home')
-        ->with('allRetailStores', $allRetailStores)
-        ->with('allEmployees', $allEmployees)
-        ->with('manyTimeEvent', $manyTimeEvent)
-        ->with('manyWorktimeEvent', $manyWorktimeEvent)
-        ->with('manyAlldayEvent', $manyAlldayEvent)
-        ->with('week', $week);
+    if ($amountOfRetailStores == 0) {
+        return view('admin.home')
+            ->with('amountOfRetailStores', $amountOfRetailStores)
+            ->with('week', $week);
+    } else {
+        return view('admin.home')
+            ->with('allRetailStores', $allRetailStores)
+            ->with('allEmployees', $allEmployees)
+            ->with('manyTimeEvent', $manyTimeEvent)
+            ->with('manyWorktimeEvent', $manyWorktimeEvent)
+            ->with('manyAlldayEvent', $manyAlldayEvent)
+            ->with('amountOfRetailStores', $amountOfRetailStores)
+            ->with('week', $week);
+    }
 }
 
-function admPlanning($thisRetailStoreId, $urlDate) {
+function admPlanning($thisRetailStoreId, $urlDate)
+{
     authUser();
 
     $company = thisCompany();
-
-    $allRetailStores = allRetailStoresOfCompany($company->id);
-    $thisRetailStore = thisRetailStore($thisRetailStoreId);
-    $allEmployees = allEmployeesOfCompany($company->id);
-
-    $manyTimeEvent = allTimeEventOfCompany($company->id);
-    $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
-    $manyAlldayEvent = allAlldayEventOfCompany($company->id);
-
+    $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
     $week = getWeekArray($urlDate);
 
-    return view('admin.employer-planning')
-        ->with('allRetailStores', $allRetailStores)
-        ->with('thisRetailStore', $thisRetailStore)
-        ->with('allEmployees', $allEmployees)
-        ->with('manyTimeEvent', $manyTimeEvent)
-        ->with('manyWorktimeEvent', $manyWorktimeEvent)
-        ->with('manyAlldayEvent', $manyAlldayEvent)
-        ->with('week', $week);
+    if ($amountOfRetailStores == 0) {
+
+        return view('admin.employer-planning')
+            ->with('amountOfRetailStores', $amountOfRetailStores)
+            ->with('week', $week);
+    } else {
+
+
+        $allRetailStores = allRetailStoresOfCompany($company->id);
+        $thisRetailStore = thisRetailStore($thisRetailStoreId);
+        $allEmployees = allEmployeesOfCompany($company->id);
+        $addressRetailStore = oneAddress($thisRetailStore->address_id);
+
+        $manyTimeEvent = allTimeEventOfCompany($company->id);
+        $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
+        $manyAlldayEvent = allAlldayEventOfCompany($company->id);
+
+        return view('admin.employer-planning')
+            ->with('allRetailStores', $allRetailStores)
+            ->with('thisRetailStore', $thisRetailStore)
+            ->with('allEmployees', $allEmployees)
+            ->with('manyTimeEvent', $manyTimeEvent)
+            ->with('manyWorktimeEvent', $manyWorktimeEvent)
+            ->with('manyAlldayEvent', $manyAlldayEvent)
+            ->with('addressRetailStore', $addressRetailStore)
+            ->with('amountOfRetailStores', $amountOfRetailStores)
+            ->with('week', $week);
+    }
+
+
 }
 
-function admPlanningSingle($employeeId, $urlDate) {
+function admPlanningSingle($employeeId, $urlDate)
+{
     authUser();
 
     $company = thisCompany();
@@ -132,6 +159,7 @@ function admPlanningSingle($employeeId, $urlDate) {
     $thisEmployee = oneEmployee($employeeId);
     $address = oneAddress($thisEmployee->retail_store_id);
     $thisRetailStore = thisRetailStore($thisEmployee->retail_store_id);
+    $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
     $manyTimeEvent = allTimeEventOfCompany($company->id);
     $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
@@ -139,33 +167,53 @@ function admPlanningSingle($employeeId, $urlDate) {
 
     $week = getWeekArray($urlDate);
 
-    return view('admin.employer-planning-single-employee')
-        ->with('allRetailStores', $allRetailStores)
-        ->with('thisRetailStore', $thisRetailStore)
-        ->with('allEmployees', $allEmployees)
-        ->with('thisEmployee', $thisEmployee)
-        ->with('company', $company)
-        ->with('address', $address)
-        ->with('manyTimeEvent', $manyTimeEvent)
-        ->with('manyWorktimeEvent', $manyWorktimeEvent)
-        ->with('manyAlldayEvent', $manyAlldayEvent)
-        ->with('week', $week);
+    if ($amountOfRetailStores == 0) {
+        return view('admin.employer-planning-single-employee')
+            ->with('amountOfRetailStores', $amountOfRetailStores)
+            ->with('week', $week);
+    } else {
+        return view('admin.employer-planning-single-employee')
+            ->with('allRetailStores', $allRetailStores)
+            ->with('thisRetailStore', $thisRetailStore)
+            ->with('allEmployees', $allEmployees)
+            ->with('thisEmployee', $thisEmployee)
+            ->with('company', $company)
+            ->with('address', $address)
+            ->with('manyTimeEvent', $manyTimeEvent)
+            ->with('manyWorktimeEvent', $manyWorktimeEvent)
+            ->with('manyAlldayEvent', $manyAlldayEvent)
+            ->with('amountOfRetailStores', $amountOfRetailStores)
+            ->with('week', $week);
+    }
+
 }
 
-function admAccount($urlDate) {
+function admAccount($urlDate)
+{
     authUser();
 
     $company = thisCompany();
     $allRetailStores = allRetailStoresOfCompany($company->id);
     $admin = thisAdmin();
     $address = oneAddress($company->id);
+    $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
     $week = getWeekArray($urlDate);
 
-    return view('admin.employer-account')
-        ->with('company', $company)
-        ->with('admin', $admin)
-        ->with('address', $address)
-        ->with('allRetailStores', $allRetailStores)
-        ->with('week', $week);
+    if ($amountOfRetailStores == 0) {
+        return view('admin.employer-account')
+            ->with('company', $company)
+            ->with('admin', $admin)
+            ->with('address', $address)
+            ->with('amountOfRetailStores', $amountOfRetailStores)
+            ->with('week', $week);
+    } else {
+        return view('admin.employer-account')
+            ->with('company', $company)
+            ->with('admin', $admin)
+            ->with('address', $address)
+            ->with('allRetailStores', $allRetailStores)
+            ->with('amountOfRetailStores', $amountOfRetailStores)
+            ->with('week', $week);
+    }
 }

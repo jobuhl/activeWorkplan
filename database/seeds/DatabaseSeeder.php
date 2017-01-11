@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
             'name' => $surname,
             'email' => $email,
             'password' => bcrypt('123456'),
-            'retail_store_id' => rand(1, $amountOfStores - 1),
+            'retail_store_id' => rand(1, $amountOfStores),
             'contract_id' => $thisContract->id
         ));
     }
@@ -152,7 +152,7 @@ class DatabaseSeeder extends Seeder
 
         RetailStore::create(array(
             'name' => $thisStoreAddress->name . ' ' . $thisStoreAddress->street,
-            'company_id' => rand(1, $amountOfCompanys - 1),
+            'company_id' => rand(1, $amountOfCompanys),
             'address_id' => $storeAddress->id
         ));
     }

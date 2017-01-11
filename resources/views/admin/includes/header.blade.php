@@ -13,11 +13,22 @@
             <a href="javascript:void(0);" onclick="toggleMakeResponsive()">&#9776;</a>
         </li>
     </ul>
-
     <ul class="right-list" id="id-right">
-        <li><a id="employer-overview" href="{{ url('/admin/employer-overview') . '/' . $week[0]->format('d-m-Y') }}">Overview</a></li>
-        <li><a id="employer-planning" href=" {{ url('/admin/employer-planning') . '/' . $allRetailStores[0]->id . '/' . $week[0]->format('d-m-Y') }}">Planning</a></li>
-        <li><a id="employer-account" href="{{ url('/admin/employer-account') . '/' . $week[0]->format('d-m-Y') }}"> {{ Auth::user()->name }}</a></li>
+        <li><a id="employer-overview" href="{{ url('/admin/employer-overview') . '/' . $week[0]->format('d-m-Y') }}">Overview</a>
+        </li>
+
+        @if ($amountOfRetailStores == 0)
+            <li><a id="employer-planning"
+                   href=" {{ url('/admin/employer-planning') . '/0/' . $week[0]->format('d-m-Y') }}">Planning</a>
+            </li>
+        @else
+            <li><a id="employer-planning"
+                   href=" {{ url('/admin/employer-planning') . '/' . $allRetailStores[0]->id . '/' . $week[0]->format('d-m-Y') }}">Planning</a>
+            </li>
+        @endif
+        <li><a id="employer-account"
+               href="{{ url('/admin/employer-account') . '/' . $week[0]->format('d-m-Y') }}"> {{ Auth::user()->name }}</a>
+        </li>
         <li><a href="{{ url('/admin/logout') }}"
                onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">
