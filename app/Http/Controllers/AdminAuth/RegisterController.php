@@ -59,7 +59,12 @@ class RegisterController extends Controller
             'forename' => 'required|max:255',
             'email' => 'required|email|max:255|unique:admins',
             'password' => 'required|min:6|confirmed',
-            'company-name' => 'required',
+            'company-name' => 'required|max:255',
+            'street' => 'required|max:255',
+            'city' => 'required|max:255',
+            'country' => 'required|max:255',
+            'store-name' => 'required|max:255',
+
 
         ]);
     }
