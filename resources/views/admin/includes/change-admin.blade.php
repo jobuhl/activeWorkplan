@@ -61,12 +61,22 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-sm-8 col-xs-12  aside-right}">
+                        <aside class="col-sm-8 col-xs-12  aside-right">
                             <input class="inputmodal form-control  modal-input space-cap" type="text" name="name"
                                    value="{{ $admin->name }}">
                         </aside>
 
                     </div>
+
+                <div class="form-group{{ $errors->has('street') ? ' has-error' : '' }}">
+                    <div class="col-xs-12">
+                        <input class="form-control" type="text" name="street" placeholder="test"
+                               value="{{ old('street') }}" autofocus>
+                        @if ($errors->has('street'))
+                            <span class="help-block"><strong>{{ $errors->first('street') }}</strong></span>
+                        @endif
+                    </div>
+                </div>
 
                     <!-- Zeile 4 -->
                     <div class="row modal-person">

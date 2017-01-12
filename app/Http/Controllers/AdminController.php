@@ -16,18 +16,16 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
-
-
     public function update(Request $request)
     {
 
 
-        //funktioniert
-        $messages =['name'=> 'Fick dich'];
-
-        $this->validate($request, [
-            'name' => 'required|max:255|'
-        ]);
+//        //funktioniert
+//        $messages =['name'=> 'Fick dich'];
+//
+//        $this->validate($request, [
+//            'name' => 'required|max:255|'
+//        ]);
 
         $admin = Admin::find(Auth::user()->id);
 

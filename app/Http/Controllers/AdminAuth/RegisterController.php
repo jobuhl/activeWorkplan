@@ -61,6 +61,8 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
             'company-name' => 'required|max:255',
             'street' => 'required|max:255',
+            'nr' => 'required|max:255',
+            'postcode' => 'required|max:255',
             'city' => 'required|max:255',
             'country' => 'required|max:255',
             'store-name' => 'required|max:255',

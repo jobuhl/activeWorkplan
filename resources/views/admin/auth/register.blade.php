@@ -139,8 +139,25 @@
                         </div>
 
                         {{--Integer valiedierung--}}
-                        <p><input class="form-control" type="text" name="street_nr" placeholder="Street Nr."></p>
-                        <p><input class="form-control" type="text" name="postcode" placeholder="Postcode"></p>
+                        <div class="form-group{{ $errors->has('nr') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="nr" placeholder="Street Nr."
+                                       value="{{ old('nr') }}" autofocus>
+                                @if ($errors->has('nr'))
+                                    <span class="help-block"><strong>{{ $errors->first('nr') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('postcode') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="postcode2" placeholder="Postcode"
+                                       value="{{ old('postcode') }}" autofocus>
+                                @if ($errors->has('postcode'))
+                                    <span class="help-block"><strong>{{ $errors->first('postcode') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
                         {{----}}
 
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
@@ -180,6 +197,8 @@
                         </div>
 
                         <h3>Store Adress</h3>
+
+
                         <div class="form-group{{ $errors->has('street') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="street2" placeholder="Street"
@@ -190,9 +209,25 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('nr') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="nr" placeholder="Street Nr."
+                                       value="{{ old('nr') }}" autofocus>
+                                @if ($errors->has('nr'))
+                                    <span class="help-block"><strong>{{ $errors->first('nr') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
 
-                        <p><input class="form-control" type="text" name="street_nr2" placeholder="Street Nr."></p>
-                        <p><input class="form-control" type="text" name="postcode2" placeholder="Postcode"></p>
+                        <div class="form-group{{ $errors->has('postcode') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="postcode2" placeholder="Postcode"
+                                       value="{{ old('postcode') }}" autofocus>
+                                @if ($errors->has('postcode'))
+                                    <span class="help-block"><strong>{{ $errors->first('postcode') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
@@ -203,6 +238,8 @@
                                 @endif
                             </div>
                         </div>
+
+
 
                         <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
