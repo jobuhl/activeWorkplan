@@ -99,13 +99,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('forename') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input id="forename" type="text" class="form-control" name="forename"
                                        placeholder="Forename"
-                                       value="{{ old('name') }}" autofocus>
-                                @if ($errors->has('name'))
-                                    <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
+                                       value="{{ old('forename') }}" autofocus>
+                                @if ($errors->has('forename'))
+                                    <span class="help-block"><strong>{{ $errors->first('forename') }}</strong></span>
                                 @endif
                             </div>
                         </div>
@@ -116,6 +116,18 @@
                     <!-- Company-->
                     <div id="company">
                         <h3>Company Details</h3>
+
+                        <div class="form-group{{ $errors->has('company-name') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="email" name="company-name" placeholder="Company name"
+                                       value="{{ old('company-name') }}" autofocus>
+                                @if ($errors->has('company-name'))
+                                    <span class="help-block"><strong>{{ $errors->first('company-name') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <p><input class="form-control" type="email" name="company-name" placeholder="Company name"></p>
 
                         <h3>Company Headquarter Adress</h3>

@@ -61,7 +61,7 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-sm-8 col-xs-12  aside-right">
+                        <aside class="col-sm-8 col-xs-12  aside-right}">
                             <input class="inputmodal form-control  modal-input space-cap" type="text" name="name"
                                    value="{{ $admin->name }}">
                         </aside>
