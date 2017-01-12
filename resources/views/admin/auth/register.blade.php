@@ -127,15 +127,41 @@
                             </div>
                         </div>
 
-
-                        <p><input class="form-control" type="email" name="company-name" placeholder="Company name"></p>
-
                         <h3>Company Headquarter Adress</h3>
-                        <p><input class="form-control" type="text" name="street" placeholder="Street"></p>
+                        <div class="form-group{{ $errors->has('street') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="street" placeholder="Street"
+                                       value="{{ old('street') }}" autofocus>
+                                @if ($errors->has('street'))
+                                    <span class="help-block"><strong>{{ $errors->first('street') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
+
+                        {{--Integer valiedierung--}}
                         <p><input class="form-control" type="text" name="street_nr" placeholder="Street Nr."></p>
                         <p><input class="form-control" type="text" name="postcode" placeholder="Postcode"></p>
-                        <p><input class="form-control" type="text" name="city" placeholder="City"></p>
-                        <p><input class="form-control" type="text" name="country" placeholder="Country"></p>
+                        {{----}}
+
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="city" placeholder="City"
+                                       value="{{ old('city') }}" autofocus>
+                                @if ($errors->has('city'))
+                                    <span class="help-block"><strong>{{ $errors->first('city') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="country" placeholder="Country"
+                                       value="{{ old('country') }}" autofocus>
+                                @if ($errors->has('country'))
+                                    <span class="help-block"><strong>{{ $errors->first('country') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
 
 
                     </div>
@@ -143,15 +169,50 @@
                     <!-- Retail Store-->
                     <div id="store">
                         <h3>Store Details</h3>
-                        <p><input class="form-control" type="email" name="store-name" placeholder="Store name"></p>
+                        <div class="form-group{{ $errors->has('store-name') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="email" name="store-name" placeholder="Store name"
+                                       value="{{ old('store-name') }}" autofocus>
+                                @if ($errors->has('store-name'))
+                                    <span class="help-block"><strong>{{ $errors->first('store-name') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
 
                         <h3>Store Adress</h3>
-                        <p><input class="form-control" type="text" name="street2" placeholder="Street"></p>
+                        <div class="form-group{{ $errors->has('street') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="street2" placeholder="Street"
+                                       value="{{ old('street') }}" autofocus>
+                                @if ($errors->has('street'))
+                                    <span class="help-block"><strong>{{ $errors->first('street') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
+
+
                         <p><input class="form-control" type="text" name="street_nr2" placeholder="Street Nr."></p>
                         <p><input class="form-control" type="text" name="postcode2" placeholder="Postcode"></p>
-                        <p><input class="form-control" type="text" name="city2" placeholder="City"></p>
-                        <p><input class="form-control" type="text" name="country2" placeholder="Country"></p>
 
+                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="city2" placeholder="City"
+                                       value="{{ old('city') }}" autofocus>
+                                @if ($errors->has('city'))
+                                    <span class="help-block"><strong>{{ $errors->first('city') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+                            <div class="col-xs-12">
+                                <input class="form-control" type="text" name="country2" placeholder="Country"
+                                       value="{{ old('country') }}" autofocus>
+                                @if ($errors->has('country'))
+                                    <span class="help-block"><strong>{{ $errors->first('country') }}</strong></span>
+                                @endif
+                            </div>
+                        </div>
 
                     </div>
                 </div>
