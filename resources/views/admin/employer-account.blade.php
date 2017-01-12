@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td>{{ $admin->password }}</td>
+                        <td>******</td>
                     </tr>
 
                     <tr class="table-space">

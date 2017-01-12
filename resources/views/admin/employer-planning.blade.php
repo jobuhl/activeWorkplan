@@ -23,6 +23,25 @@
 
             <aside class="col-xs-12 col-sm-9 my-right-side">
 
+                <select id="select-emp" class="form-control to-right modal-input space-cap selectpicker col-xs-12"
+                        data-live-search="true"
+                        name="select-emp" onchange="javascript:location.href = this.value;">
+                    <option style="display: none;">Search...</option>
+                    @foreach($allRetailStores as $retailStore)
+                        <optgroup style="border: none; ">
+                        <option style="background-color: #F1F1F1; padding-left: 10px" value="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</option>
+                            @foreach($allEmployees as $employee)
+                                @if($employee->retail_store_id == $retailStore->id)
+
+                                    <option style="padding-left: 30px;" value="{{ url('/admin/employer-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</option>
+
+                                @endif
+                            @endforeach
+
+                        </optgroup>
+                    @endforeach
+                </select>
+
                 <div><h2>{{ $thisRetailStore->name }}</h2>
                     <button class="form-control to-right modal-change-button" data-toggle="modal"
                             data-target="#change-store">change

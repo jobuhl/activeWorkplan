@@ -41,7 +41,7 @@
                         <aside class="col-xs-12 col-sm-8 aside-right">
                             <p><input class="form-control to-right modal-input space-cap"
                                       type="password"
-                                      value="{{ $thisEmployee->surname }}"></p>
+                                      value="******" name="password"></p>
                         </aside>
 
                     </div>
