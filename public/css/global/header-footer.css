@@ -1,4 +1,3 @@
-
 /* ---------------------------- VARIABLE / REST---------------------------- */
 
 /* Variablen Deklaration: fuer ALLE Dateien zugreifbar */
@@ -189,4 +188,19 @@ footer a:focus {
     ul.right-list.responsive li a {
         border-top: 1px solid var(--main-dropdown-border-color); /* Dropdown Trennlinien */
     }
+}
+
+
+/* ---------------------------- Falls JavaScript nicht aktiviert (im head) ---------------------------- */
+
+.no-script-message {
+    background-color: var(--main-red-button);
+    color: white;
+    margin: 0;
+    padding: 10px;
+    z-index: 100;
+    width: 100%;
+    position: fixed;
+    top: 60px;
+    font-size: 12pt;
 }

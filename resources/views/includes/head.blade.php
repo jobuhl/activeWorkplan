@@ -15,6 +15,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/general/dataprotection.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
 
+    <noscript>
+        <p class="no-script-message">
+            This Website requires JavaScript. Please make sure to activate JavaScript in your Browser.
+        </p>
+    </noscript>
+
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),

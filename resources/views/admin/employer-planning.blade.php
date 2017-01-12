@@ -23,17 +23,70 @@
 
             <aside class="col-xs-12 col-sm-9 my-right-side">
 
+
+                <form method="get">
+                    <label>Store Name:</label>
+                    <input type="text" class="store-search" name="storeSearch"
+                           autofocus onfocus="this.value = this.value;" autocomplete="off"
+                           onkeyup="ajaxStores(this.value)"/>
+                </form>
+                @if(isset($selectedStores))
+                    @foreach($selectedStores as $selectedStore)
+                        <a>{{ $selectedStore->name }}</a>
+                    @endforeach
+                @endif
+                <div id="storeList"></div>
+
+                <script>
+                    //                    function ajaxStores(storeSearch) {
+                    //                        alert('hahah');
+                    //                        $.get( "/admin/ajaxStoreList?storeSearch=" + storeSearch, function(data) {
+                    //                            var lines = data.split(";");
+                    //                            $.each(lines, function(i,stores) {
+                    //                                var link = "<a>" + stores + "</a><BR>";
+                    //                                $(link).appendTo("#storeList");
+                    //                            });
+                    //                        })
+                    //                        $("#storeList").load("/admin/ajaxStoreList?storeSearch=" + storeSearch);
+                    //                    };
+
+//                    function ajaxStores($storeChars) {
+//                        $.get("/admin/ajaxStoreList", function () {
+//                            console.log('name');
+//                        });
+//
+//                    }
+
+                    function ajaxStores($storeChars) {
+                        e.preventDefault();
+                        var store = $('#storeSearch').val();
+                        $.ajax({
+                            type: "POST",
+                            url: '/admin/ajaxStoreList',
+                            data: {store: store},
+                            success: function (msg) {
+                                $("#storeList").append("<li>" + msg + "</li>");
+                            }
+                        });
+                    }
+
+
+                </script>
+
+
                 <select id="select-emp" class="form-control to-right modal-input space-cap selectpicker col-xs-12"
-                        data-live-search="true"
+                        data - live - search="true"
                         name="select-emp" onchange="javascript:location.href = this.value;">
-                    <option style="display: none;">Search...</option>
+                    <option style="display: none;"> Search...</option>
                     @foreach($allRetailStores as $retailStore)
-                        <optgroup style="border: none; ">
-                        <option style="background-color: #F1F1F1; padding-left: 10px" value="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</option>
+                        <optgroup style=" border: none; ">
+                            <option style="background-color: #F1F1F1; padding-left: 10px"
+                                    value="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</option>
                             @foreach($allEmployees as $employee)
                                 @if($employee->retail_store_id == $retailStore->id)
 
-                                    <option style="padding-left: 30px;" value="{{ url('/admin/employer-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</option>
+                                    <option style="padding-left: 30px;"
+                                            value="{{ url('/admin/employer-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</option>
 
                                 @endif
                             @endforeach

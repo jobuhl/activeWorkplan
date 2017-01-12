@@ -39,6 +39,35 @@ Route::post('/deleteAdmin', 'AdminController@delete');
 Route::post('/changeStore', 'StoreController@change');
 Route::post('/deleteStore', 'StoreController@delete');
 
+
+//Route::get('/ajaxStoreList?storeSearch={storeSearch}', function($storeSearch) {
+//    echo "ajaxroutes error";
+//    dd('routes ajax');
+//    $selectedStores = DB::table('retail_store')
+//        ->where('retail_store.name', 'like', '%' . $storeSearch . '%')
+//        ->orderby('retail_store.name', 'asc')
+//        ->get();
+//    $html = "";
+//    foreach($selectedStores as $selectedStore) {
+//        $html += "<a>" . $selectedStore->name . "</a>";
+//    }
+//    return $html;
+
+//    return view('/admin/employer-planning/1')
+//    ->with('selectedStores', $selectedStores);
+//});
+
+Route::get('/ajaxStoreList', function ($storeSearch) {
+//    $selectedStores = DB::table('retail_store')
+//        ->where('retail_store.name', 'like', '%' . $storeSearch . '%')
+//        ->orderby('retail_store.name', 'asc')
+//        ->get();
+
+
+    return App\Response::json(['store' => 'this is a text']);
+});
+
+
 /* ---------------------------- FOOTER -------------------------------- */
 
 Route::get('/contact/{date}', function ($urlDate) {

@@ -249,9 +249,9 @@ class DatabaseSeeder extends Seeder
                         $time = array(
                             rand(8, 17),
                             rand(14, 22),
-                            rand(8, 10),
-                            rand(10, 15),
-                            rand(15, 18),
+                            rand(8, 11),
+                            rand(11, 15),
+                            rand(16, 18),
                             rand(18, 22)
                         );
                     } while ($time[0] > $time[1] || $time[2] > $time[3] || $time[4] > $time[5]);
