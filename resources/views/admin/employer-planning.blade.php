@@ -24,58 +24,60 @@
             <aside class="col-xs-12 col-sm-9 my-right-side">
 
 
-                <form method="get">
-                    <label>Store Name:</label>
-                    <input type="text" class="store-search" name="storeSearch"
-                           autofocus onfocus="this.value = this.value;" autocomplete="off"
-                           onkeyup="ajaxStores(this.value)"/>
-                </form>
-                @if(isset($selectedStores))
-                    @foreach($selectedStores as $selectedStore)
-                        <a>{{ $selectedStore->name }}</a>
-                    @endforeach
-                @endif
-                <div id="storeList"></div>
+            {{--<form method="get">--}}
+            {{--<label>Store Name:</label>--}}
+            {{--<input type="text" class="store-search" name="storeSearch"--}}
+            {{--autofocus onfocus="this.value = this.value;" autocomplete="off"--}}
+            {{--onkeyup="ajaxStores(this.value)"/>--}}
+            {{--</form>--}}
+            {{--<div id="storeList"></div>--}}
 
-                <script>
-                    //                    function ajaxStores(storeSearch) {
-                    //                        alert('hahah');
-                    //                        $.get( "/admin/ajaxStoreList?storeSearch=" + storeSearch, function(data) {
-                    //                            var lines = data.split(";");
-                    //                            $.each(lines, function(i,stores) {
-                    //                                var link = "<a>" + stores + "</a><BR>";
-                    //                                $(link).appendTo("#storeList");
-                    //                            });
-                    //                        })
-                    //                        $("#storeList").load("/admin/ajaxStoreList?storeSearch=" + storeSearch);
-                    //                    };
 
-//                    function ajaxStores($storeChars) {
-//                        $.get("/admin/ajaxStoreList", function () {
-//                            console.log('name');
-//                        });
-//
-//                    }
 
-                    function ajaxStores($storeChars) {
-                        e.preventDefault();
-                        var store = $('#storeSearch').val();
-                        $.ajax({
-                            type: "POST",
-                            url: '/admin/ajaxStoreList',
-                            data: {store: store},
-                            success: function (msg) {
-                                $("#storeList").append("<li>" + msg + "</li>");
+            <!----------------------->
+
+                <input id="search-all" onclick="ajaxGetStores('')" onkeyup="ajaxGetStores(this.value)" placeholder="Search..."/>
+                <div class="search-result">Hier kommen gleich die Jsons rein</div>
+
+                <!-- Hier JSON-Daten laden -->
+                <script type="text/javascript">
+                    function ajaxGetStores($characters) {
+                        $.ajax(
+                            {
+                                type: "POST",
+                                url: "http://localhost:8888/activeWorkplan/public/admin/daten?typing=" + $characters,
+                                dataType: "json",
+                                success: function (json) {
+                                    var a = "<ul>";
+                                    $.each(json.store, function () {
+                                        var thisStoreId = this['id'];
+                                        a += "<li><a>" + this['name'] + "</a>";
+
+                                        $.each(json.emp, function () {
+                                            a += "<ul>";
+                                            if(this['retail_store_id'] == thisStoreId) {
+                                                a += "<li><a>" + this['surname'] + " " + this['forename'] + "</a></li>";
+                                            }
+                                            a += "</ul>";
+                                        });
+
+                                        a += "</li>";
+
+                                    });
+                                    a += "</ul>";
+                                    $(".search-result").html(a);
+                                }
                             }
-                        });
+                        );
                     }
-
 
                 </script>
 
+                <!----------------------------->
+
 
                 <select id="select-emp" class="form-control to-right modal-input space-cap selectpicker col-xs-12"
-                        data - live - search="true"
+                        data - live - search="true" data-live-search="true"
                         name="select-emp" onchange="javascript:location.href = this.value;">
                     <option style="display: none;"> Search...</option>
                     @foreach($allRetailStores as $retailStore)
