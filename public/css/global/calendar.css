@@ -269,6 +269,10 @@
     background-color: var(--main-red-button);
 }
 
+.event-dropdown-content .add-event-button {
+    background-color: var(--main-green-button);
+}
+
 .drop-btn .select-change-event,
 .drop-btn .input-change-event {
     background-color: rgba(255, 255, 255, 0.5);
@@ -287,7 +291,6 @@
 .drop-btn .input-change-event:-moz-tree-cell-text { /* WebKit browsers */
     line-height: 1.7em;
 }
-
 
 
 
@@ -333,18 +336,16 @@
     cursor: pointer;
 }
 
-.event-dropdown-content .change-event-button:hover {
-    background-color: var(--main-highlight-color);
-    cursor: pointer;
-}
+.event-dropdown-content .add-event-button:hover,
+.event-dropdown-content .change-event-button:hover,
 .event-dropdown-content .delete-event-button:hover {
     background-color: var(--main-highlight-color);
     cursor: pointer;
 }
-.event-dropdown-content .change-event-button:active {
-    background-color: var(--main-active-color);
-    cursor: pointer;
-}
+
+
+.event-dropdown-content .add-event-button:active,
+.event-dropdown-content .change-event-button:active,
 .event-dropdown-content .delete-event-button:active {
     background-color: var(--main-active-color);
     cursor: pointer;

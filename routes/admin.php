@@ -39,8 +39,36 @@ Route::post('/deleteAdmin', 'AdminController@delete');
 Route::post('/changeStore', 'StoreController@change');
 Route::post('/deleteStore', 'StoreController@delete');
 
+Route::post('/addWorktimeFix', 'EventController@addWorktimeFixEvent');
+Route::post('/deleteWorktimeFix', 'EventController@deleteWorktimeFixEvent');
+Route::post('/changeWorktimeFix', 'EventController@changeWorktimeFixEvent');
 
-Route::post('/daten?typing={character}', 'AjaxSearchStoresController@getStoreEmp');
+
+
+
+
+
+//Route::post('/daten/{characters?}', 'AjaxSearchStoresController@getStoreEmp');
+
+Route::post('/daten/{characters?}', function($characters) {
+    $store = DB::table('retail_store')
+        ->select('retail_store.*')
+        ->join('company', 'company.id', '=', 'retail_store.company_id')
+        ->where('company.admin_id', 1)
+//        ->where('retail_store.name', 'like', '%' . $characters . '%')
+        ->get();
+
+    $emp = DB::table('employees as e')
+        ->select('e.name as surname', 'e.forename', 'e.retail_store_id')
+        ->join('retail_store', 'e.retail_store_id', '=', 'retail_store.id')
+        ->join('company', 'company.id', '=', 'retail_store.company_id')
+        ->where('company.admin_id', 1)
+//        ->where('employees.name', 'like', '%' . $characters . '%')
+        ->get();
+
+    return response()->json(["store" => $store, "emp" => $emp]);
+});
+
 
 
 

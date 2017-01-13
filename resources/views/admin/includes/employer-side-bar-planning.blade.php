@@ -1,28 +1,6 @@
 <section class="fake-body sidebarPHP">
-    <ul class="upper-list">
-        <li><a>Preferences</a>
-            <ul>
-                <li><input class="input-sidebar" type="text" placeholder="Search Store..."></li>
-                <li class="a-changes">
-                    <a>Store</a>
-                    <a data-toggle="modal" data-target="#add-button-store">+</a>
-                    <a data-toggle="modal" data-target="#change-button-store">⇄</a>
-                    <a data-toggle="modal" data-target="#delete-button-store">-</a>
-                </li>
-                <li class="a-changes">
-                    <a>Employee</a>
-                    <a data-toggle="modal" data-target="#add-button-emp">+</a>
-                    <a data-toggle="modal" data-target="#change-button-emp">⇄</a>
-                    <a data-toggle="modal" data-target="#delete-button-emp">-</a>
-                </li>
 
-                <!-- zum löschen -->
-                <li class="a-changes">
-                    <a  data-toggle="modal" data-target="#test">-</a>
-                </li>
-            </ul>
-        </li>
-    </ul>
+    <p class="middle-bold">All Stores</p>
 
     <ul class="lower-list">
 

@@ -4,3 +4,8 @@
 .glyphicon-print {
     color: var(--main-text-white);
 }
+
+.middle-bold {
+    font-weight: bold;
+    text-align: center;
+}
