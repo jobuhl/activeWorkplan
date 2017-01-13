@@ -34,6 +34,8 @@ Route::post('/changeEmp', 'EmpController@change');
 Route::post('/deleteEmp', 'EmpController@delete');
 
 Route::post('/changeAdmin', 'AdminController@update');
+Route::post('/changeEmailAdmin', 'AdminController@update_email');
+Route::post('/changePasswordAdmin', 'AdminController@update_password');
 Route::post('/deleteAdmin', 'AdminController@delete');
 
 Route::post('/changeStore', 'StoreController@change');

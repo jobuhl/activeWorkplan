@@ -10,24 +10,34 @@ use DB;
 use Auth;
 use App\Admin;
 use Validator;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
 
-    public function update(Request $request)
+
+    protected function update(Request $request)
     {
+        $this->validate($request, [
 
 
-//        //funktioniert
-//        $messages =['name'=> 'Fick dich'];
+            'name' => 'required|max:255|',
+            'forename' => 'required|max:255|',
 //
-//        $this->validate($request, [
-//            'name' => 'required|max:255|'
-//        ]);
+            'company_name' => 'required|max:255',
+            'street' => 'required|max:255',
+            'street_nr' => 'required|max:255',
+            'postcode' => 'required|max:255',
+            'city' => 'required|max:255',
+            'country' => 'required|max:255',
+
+
+        ]);
+
 
         $admin = Admin::find(Auth::user()->id);
+
 
         $company = DB::table('company')
             ->where('company.admin_id', $admin->id)
@@ -60,7 +70,6 @@ class AdminController extends Controller
             ->update(array(
                 'forename' => $request['forename'],
                 'name' => $request['name'],
-                'email' => $request['email'],
             ))[0];
 
         Company::where('company.id', $company->id)
@@ -73,7 +82,49 @@ class AdminController extends Controller
         return redirect('/admin/employer-account/' . $request['thisDate']);
     }
 
-    public function delete(Request $request)
+    protected function update_email(Request $request)
+    {
+
+        $admin = Admin::find(Auth::user()->id);
+
+        $this->validate($request, [
+
+            'email' => 'required|email|max:255|unique:admins',
+
+        ]);
+
+
+        Admin::where('admins.id', $admin->id)
+            ->update(array(
+                'email' => $request['email'],
+            ))[0];
+
+        return redirect('/admin/employer-account/' . $request['thisDate']);
+
+    }
+
+    protected function update_password(Request $request)
+    {
+
+//        $admin = Admin::find(Auth::user()->id);
+//
+//        if (Hash::check('old-password', $admin->password)) {
+//            dd($admin);
+//        }
+//        dd('hahaha');
+//        if ($admin->password == ($request['old-password'])) {
+//            dd($admin);
+//            Admin::where('admins.id', $admin->id)
+//                ->update(array(
+//                    'password' => $request['password'],
+//                ));
+//        }
+//
+//        return redirect('/admin/employer-account/' . $request['thisDate']);
+
+    }
+
+    protected function delete(Request $request)
     {
         $admin = Admin::find(Auth::user()->id);
 
@@ -151,5 +202,6 @@ class AdminController extends Controller
 
         return redirect('/');
     }
+
 
 }
