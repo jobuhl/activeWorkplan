@@ -1,5 +1,6 @@
 /* --------------------- NAVIGATION ---------------------------- */
 
+
 /* Small header zur Navigation über den Kalender in Overview und planning Ordner Employer */
 .calendar-navigation {
     background: var(--main-small-header-color);
@@ -271,25 +272,6 @@
 
 .event-dropdown-content .add-event-button {
     background-color: var(--main-green-button);
-}
-
-.drop-btn .select-change-event,
-.drop-btn .input-change-event {
-    background-color: rgba(255, 255, 255, 0.5);
-    border: none;
-    border-radius: 0px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    height: 25px;
-    display: inline-block;
-    width: 100%;
-    margin: 0 0 2px 0;
-    padding: 0 0 0 5px;
-}
-
-.drop-btn .input-change-event::-webkit-input-placeholder,
-.drop-btn .input-change-event:-moz-tree-cell-text { /* WebKit browsers */
-    line-height: 1.7em;
 }
 
 

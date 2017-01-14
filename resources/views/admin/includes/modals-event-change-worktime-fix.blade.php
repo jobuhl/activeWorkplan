@@ -77,8 +77,7 @@
                         <input style="display: none;" name="thisRetailStoreId" value="{{ $thisRetailStore->id }}">
                         <input style="display: none;" id="input-js-on-change-worktime-fix-event-id-admin" name="thisEventId" value="">
                         <button type="submit" class="form-control to-right modal-change-button"
-                                name="thisDate"
-                                value="{{ $week[0]->format('d-m-Y') }}">Change
+                                name="thisDate" value="{{ $week[0]->format('d-m-Y') }}">Change
                         </button>
                     </div>
 

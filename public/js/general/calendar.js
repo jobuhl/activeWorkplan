@@ -107,7 +107,6 @@ function openChangeWorktimeFixModal(divEventId) {
     var employeeId = $("#div-worktime-fix-admin" + divEventId + " .this-emp-id").val();
     var eventId = $("#div-worktime-fix-admin" + divEventId + " .this-event-id").val();
 
-    // alert(date + " " + category + " " + from + " " + to + " " + employeeId);
 
     // change modal oeffnen
     $("#button-change-worktime-fix-event-admin").click();

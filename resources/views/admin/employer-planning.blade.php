@@ -331,15 +331,6 @@
                                             @foreach($manyWorktimeEvent as $oneWorktimeEvent)
                                                 @if( (new DateTime($oneWorktimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
                                                 && $oneWorktimeEvent->employee_id == $employee->id)
-                                                    {{--<div class="one-time-event {{ $oneWorktimeEvent->color }}"--}}
-                                                    {{--draggable="true">--}}
-                                                    {{--<p>{{ $oneWorktimeEvent->name }}</p>--}}
-                                                    {{--<p>{{ $oneWorktimeEvent->from }}</p>--}}
-                                                    {{--<p>{{ $oneWorktimeEvent->to }}</p>--}}
-                                                    {{--</div>--}}
-
-
-
 
                                                     <div class="drop-btn one-time-event {{ $oneWorktimeEvent->color }}"
                                                          onclick="openEventDropdown('worktime-fix-admin' + {{ $oneWorktimeEvent->id }} + '')"

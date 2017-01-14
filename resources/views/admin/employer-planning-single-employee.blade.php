@@ -110,15 +110,15 @@
                                         && $oneAlldayEvent->employee_id == $thisEmployee->id)
 
                                             <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
-                                                 onclick="openEventDropdown('allday-admin' + {{ $oneAlldayEvent->id }} + '')"
+                                                 onclick="openEventDropdown('allday-admin-single' + {{ $oneAlldayEvent->id }} + '')"
                                                  draggable="true"
-                                                 id="div-allday-admin{{ $oneAlldayEvent->id }}">
+                                                 id="allday-admin{{ $oneAlldayEvent->id }}">
                                                 <p>{{ $oneAlldayEvent->name }}</p>
 
 
                                                 <!------------------- VACATION ACCEPT ----------------------->
                                                 @if ( $oneAlldayEvent->name == "Vacation")
-                                                    <div id="allday-admin{{ $oneAlldayEvent->id }}"
+                                                    <div id="allday-admin-single{{ $oneAlldayEvent->id }}"
                                                          class="event-dropdown-content">
                                                         <button class="add-event-button">OK
                                                         </button>
@@ -155,7 +155,7 @@
                                             && $oneTimeEvent->employee_id == $thisEmployee->id )
 
                                             <div class="drop-btn one-time-event {{ $oneTimeEvent->color }}"
-                                                 onclick="openEventDropdown('time-admin' + {{ $oneTimeEvent->id }} + '')"
+                                                 onclick="openEventDropdown('time-admin-single' + {{ $oneTimeEvent->id }} + '')"
                                                  draggable="true"
                                                  id="div-time-admin{{ $oneTimeEvent->id }}"
                                                  ondragstart="drag(event)">
@@ -168,7 +168,7 @@
 
                                                 @if ( $oneTimeEvent->name == "Work" || $oneTimeEvent->name == "Vacation")
 
-                                                    <div id="time-admin{{ $oneTimeEvent->id }}"
+                                                    <div id="time-admin-single{{ $oneTimeEvent->id }}"
                                                          class="event-dropdown-content">
                                                         @if ( $oneTimeEvent->name == "Work")
                                                             <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})"
@@ -414,6 +414,10 @@
         </div>
     @endif
 
+    @include('admin.includes.modals-event-add-worktime-fix')
+    @include('admin.includes.modals-event-change-worktime-fix')
+
+
 @endsection
 
 @include('admin.includes.change-emp')
@@ -421,6 +425,7 @@
 
 @section('js')
     <script src="{{asset('js/general/side-bar.js')}}"></script>
+    <script src="{{asset('js/general/calendar.js')}}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
 @endsection

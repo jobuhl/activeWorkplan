@@ -44,6 +44,7 @@
     -webkit-box-sizing: border-box; /* größe wird von außen nach innen gesetzt */
     -moz-box-sizing: border-box; /* das gleiche fuer aeltere browser */
     font-family: "Helvetica Neue";
+    font-size: 14px;
     color: var(--main-text-black);
 }
 

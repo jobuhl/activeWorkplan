@@ -1,8 +1,10 @@
 <section class="fake-body sidebarPHP">
 
-    <p class="middle-bold">All Stores</p>
+    <br>
+    <p class="middle-bold">Stores</p>
 
     <ul class="lower-list">
+
 
         @foreach($allRetailStores as $retailStore)
             <li class="arrow-down">
