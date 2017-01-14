@@ -23,59 +23,52 @@
 
             <aside class="col-xs-12 col-sm-9 my-right-side">
 
+                <!----------Search AJAX klappt noch nicht------------->
 
-                <form method="get">
-                    <label>Store Name:</label>
-                    <input type="text" class="store-search" name="storeSearch"
-                           autofocus onfocus="this.value = this.value;" autocomplete="off"
-                           onkeyup="ajaxStores(this.value)"/>
-                </form>
-                @if(isset($selectedStores))
-                    @foreach($selectedStores as $selectedStore)
-                        <a>{{ $selectedStore->name }}</a>
-                    @endforeach
-                @endif
-                <div id="storeList"></div>
+                {{--<input id="search-all" onclick="ajaxGetStores('')" placeholder="Search..."/>--}}
+                {{--<div class="search-result">Hier kommen gleich die Jsons rein</div>--}}
 
-                <script>
-                    //                    function ajaxStores(storeSearch) {
-                    //                        alert('hahah');
-                    //                        $.get( "/admin/ajaxStoreList?storeSearch=" + storeSearch, function(data) {
-                    //                            var lines = data.split(";");
-                    //                            $.each(lines, function(i,stores) {
-                    //                                var link = "<a>" + stores + "</a><BR>";
-                    //                                $(link).appendTo("#storeList");
-                    //                            });
-                    //                        })
-                    //                        $("#storeList").load("/admin/ajaxStoreList?storeSearch=" + storeSearch);
-                    //                    };
+                {{--<!-- Hier JSON-Daten laden -->--}}
+                {{--<script type="text/javascript">--}}
+                    {{--function ajaxGetStores($characters) {--}}
+                        {{--$.ajax(--}}
+                            {{--{--}}
+                                {{--type: "POST",--}}
+{{--//                                url: "http://localhost:8888/activeWorkplan/public/admin/daten/" + $characters,--}}
+                                {{--url: "{{ url('/admin/daten') }}",//+ "/" + $characters,--}}
 
-//                    function ajaxStores($storeChars) {
-//                        $.get("/admin/ajaxStoreList", function () {
-//                            console.log('name');
-//                        });
-//
-//                    }
+                                {{--dataType: "json",--}}
+                                {{--success: function (json) {--}}
+                                    {{--var a = "<ul>";--}}
+                                    {{--$.each(json.store, function () {--}}
+                                        {{--var thisStoreId = this['id'];--}}
+                                        {{--a += "<li><a>" + this['name'] + "</a>";--}}
 
-                    function ajaxStores($storeChars) {
-                        e.preventDefault();
-                        var store = $('#storeSearch').val();
-                        $.ajax({
-                            type: "POST",
-                            url: '/admin/ajaxStoreList',
-                            data: {store: store},
-                            success: function (msg) {
-                                $("#storeList").append("<li>" + msg + "</li>");
-                            }
-                        });
-                    }
+                                        {{--$.each(json.emp, function () {--}}
+                                            {{--a += "<ul>";--}}
+                                            {{--if (this['retail_store_id'] == thisStoreId) {--}}
+                                                {{--a += "<li><a>" + this['surname'] + " " + this['forename'] + "</a></li>";--}}
+                                            {{--}--}}
+                                            {{--a += "</ul>";--}}
+                                        {{--});--}}
 
+                                        {{--a += "</li>";--}}
 
-                </script>
+                                    {{--});--}}
+                                    {{--a += "</ul>";--}}
+                                    {{--$(".search-result").html(a);--}}
+                                {{--}--}}
+                            {{--}--}}
+                        {{--);--}}
+                    {{--}--}}
+
+                {{--</script>--}}
+
+                <!----------------------------->
 
 
                 <select id="select-emp" class="form-control to-right modal-input space-cap selectpicker col-xs-12"
-                        data - live - search="true"
+                        data - live - search="true" data-live-search="true"
                         name="select-emp" onchange="javascript:location.href = this.value;">
                     <option style="display: none;"> Search...</option>
                     @foreach($allRetailStores as $retailStore)
@@ -184,12 +177,28 @@
                                                 @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
                                                 && $oneAlldayEvent->employee_id == $employee->id)
 
-                                                    <div class="one-allday-event {{ $oneAlldayEvent->color }}"
-                                                         draggable="true">
+                                                    <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
+                                                         onclick="openEventDropdown('allday-admin' + {{ $oneAlldayEvent->id }} + '')"
+                                                         draggable="true"
+                                                         id="div-allday-admin{{ $oneAlldayEvent->id }}">
                                                         <p>{{ $oneAlldayEvent->name }}</p>
+
+
+                                                        <!------------------- VACATION ACCEPT ----------------------->
+                                                        @if ( $oneAlldayEvent->name == "Vacation")
+                                                            <div id="allday-admin{{ $oneAlldayEvent->id }}"
+                                                                 class="event-dropdown-content">
+                                                                <button class="add-event-button">OK
+                                                                </button>
+                                                            </div>
+                                                        @endif
+
+
                                                     </div>
                                                 @endif
                                             @endforeach
+
+
                                         </td>
                                         @endfor
                             </tr>
@@ -210,16 +219,52 @@
 
                                         <!------------------- TIME EVENT ----------------------->
                                             @foreach($manyTimeEvent as $oneTimeEvent)
-                                                @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
-                                                && $oneTimeEvent->employee_id == $employee->id)
-                                                    <div class="one-time-event {{ $oneTimeEvent->color }}"
-                                                         draggable="true">
+                                                @if( (new DateTime($oneTimeEvent->date))->format('d-m-Y') == $week[$i]->format('d-m-Y')
+                                                    && $oneTimeEvent->employee_id == $employee->id )
+
+                                                    <div class="drop-btn one-time-event {{ $oneTimeEvent->color }}"
+                                                         onclick="openEventDropdown('time-admin' + {{ $oneTimeEvent->id }} + '')"
+                                                         draggable="true"
+                                                         id="div-time-admin{{ $oneTimeEvent->id }}"
+                                                         ondragstart="drag(event)">
                                                         <p>{{ $oneTimeEvent->name }}</p>
                                                         <p>{{ $oneTimeEvent->from }}</p>
                                                         <p>{{ $oneTimeEvent->to }}</p>
+                                                        <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
+                                                        <input style="display: none;" class="this-emp-id"
+                                                               value="{{ $employee->id }}">
+
+                                                        @if ( $oneTimeEvent->name == "Work" || $oneTimeEvent->name == "Vacation")
+
+                                                            <div id="time-admin{{ $oneTimeEvent->id }}"
+                                                                 class="event-dropdown-content">
+                                                                @if ( $oneTimeEvent->name == "Work")
+                                                                    <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})"
+                                                                            class="add-event-button">+
+                                                                    </button>
+
+                                                                    <button id="button-add-worktime-fix-event-admin"
+                                                                            style="display: none;"
+                                                                            data-toggle="modal"
+                                                                            data-target="#change-button-event-time-admin">
+                                                                        ⇄
+                                                                    </button>
+                                                                @endif
+                                                                @if ( $oneTimeEvent->name == "Vacation")
+
+                                                                    <button id="button-accept-vacation-admin"
+                                                                            class="add-event-button">OK
+                                                                    </button>
+                                                                @endif
+                                                            </div>
+                                                        @endif
+
                                                     </div>
+
                                                 @endif
                                             @endforeach
+
+
                                         </td>
                                         @endfor
                             </tr>
@@ -280,12 +325,62 @@
                                             @foreach($manyWorktimeEvent as $oneWorktimeEvent)
                                                 @if( (new DateTime($oneWorktimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
                                                 && $oneWorktimeEvent->employee_id == $employee->id)
-                                                    <div class="one-time-event {{ $oneWorktimeEvent->color }}"
-                                                         draggable="true">
+                                                    {{--<div class="one-time-event {{ $oneWorktimeEvent->color }}"--}}
+                                                    {{--draggable="true">--}}
+                                                    {{--<p>{{ $oneWorktimeEvent->name }}</p>--}}
+                                                    {{--<p>{{ $oneWorktimeEvent->from }}</p>--}}
+                                                    {{--<p>{{ $oneWorktimeEvent->to }}</p>--}}
+                                                    {{--</div>--}}
+
+
+
+
+                                                    <div class="drop-btn one-time-event {{ $oneWorktimeEvent->color }}"
+                                                         onclick="openEventDropdown('worktime-fix-admin' + {{ $oneWorktimeEvent->id }} + '')"
+                                                         draggable="true"
+                                                         id="div-worktime-fix-admin{{ $oneWorktimeEvent->id }}"
+                                                         ondragstart="drag(event)">
                                                         <p>{{ $oneWorktimeEvent->name }}</p>
                                                         <p>{{ $oneWorktimeEvent->from }}</p>
                                                         <p>{{ $oneWorktimeEvent->to }}</p>
+                                                        <input value="{{ $oneWorktimeEvent->date }}"
+                                                               style="display: none"/>
+                                                        <input style="display: none;" class="this-emp-id"
+                                                               value="{{ $employee->id }}">
+                                                        <input style="display: none;" class="this-event-id"
+                                                               value="{{ $oneWorktimeEvent->id }}">
+
+                                                        <div id="worktime-fix-admin{{ $oneWorktimeEvent->id }}"
+                                                             class="event-dropdown-content">
+
+                                                            <button onclick="openChangeWorktimeFixModal({{ $oneWorktimeEvent->id }})"
+                                                                    class="change-event-button">⇄
+                                                            </button>
+
+                                                            <button id="button-change-worktime-fix-event-admin"
+                                                                    style="display: none;"
+                                                                    data-toggle="modal"
+                                                                    data-target="#change-button-event-worktime-fix-admin">
+                                                                ⇄
+                                                            </button>
+
+                                                            <form method="POST"
+                                                                  action="{{ url('/admin/deleteWorktimeFix') }}"> {{ csrf_field() }}
+                                                                <input style="display: none;" name="thisRetailStoreId"
+                                                                       value="{{ $thisRetailStore->id }}"/>
+                                                                <input style="display: none;" name="thisDate"
+                                                                       value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                                <button class="delete-event-button" name="eventId"
+                                                                        value="{{ $oneWorktimeEvent->id }}">-
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     </div>
+
+
+
+
+
                                                 @endif
                                             @endforeach
                                         </td>
@@ -359,6 +454,8 @@
 
         @include('admin.includes.change-store')
         @include('admin.includes.delete-store')
+        @include('admin.includes.modals-event-add-worktime-fix')
+        @include('admin.includes.modals-event-change-worktime-fix')
 
     @endif
 @endsection
@@ -366,6 +463,7 @@
 
 @section('js')
     <script src="{{asset('js/general/side-bar.js')}}"></script>
+    <script src="{{asset('js/general/calendar.js')}}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
 @endsection
