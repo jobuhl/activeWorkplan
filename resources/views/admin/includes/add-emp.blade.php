@@ -24,20 +24,18 @@
                 <div class="modal-body">
 
 
-                    <!-- Zeile 1  -->
 
-                    <!-- Zeile 2 password Change button -->
-
-                    <div class="row {{ $errors->has('password') ? ' has-error' : '' }}">
+                    <!-- Zeile 1 password1 -->
+                    <div class="row">
 
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
                             Password
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('password') ? ' has-error' : '' }}">
                             <p><input id="password" type="password" class="form-control" name="password"
                                       placeholder="password..."></p>
 
@@ -50,30 +48,30 @@
 
                     </div>
 
-                    <div class="row {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-
+                    <!-- Zeile 2 password2 -->
+                    <div class="row ">
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
-
                         </aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="password-confirm" type="password" class="form-control"
-                                      name="password_confirmation" placeholder="confirm password..."></p>
+                            <p><input id="password" type="password" class="form-control" name="password"
+                                      placeholder="confirm password..."></p>
 
-                            @if ($errors->has('password_confirmation'))
+                            @if ($errors->has('password'))
                                 <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                        <strong>{{ $errors->first('password') }}</strong>
                                     </span>
                             @endif
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 3 -->
-                    <div class="row {{ $errors->has('name') ? ' has-error' : '' }}">
+
+                    <!-- Zeile 3 name-->
+                    <div class="row ">
 
 
                         <!-- links -->
@@ -82,9 +80,8 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="name" type="text" class="form-control" name="name" placeholder="surename"
-                                      value="{{ old('name') }}" autofocus>
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('name') ? ' has-error' : '' }}">
+                            <p><input id="name" type="text" class="form-control" name="name" placeholder="surename" value="{{ old('name') }}">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -95,8 +92,8 @@
 
                     </div>
 
-                    <!-- Zeile 4 -->
-                    <div class="row{{ $errors->has('name') ? ' has-error' : '' }}">
+                    <!-- Zeile 4 forename-->
+                    <div class="row">
 
 
                         <!-- links -->
@@ -105,21 +102,21 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('forename') ? ' has-error' : '' }}">
                             <p><input id="forename" type="text" class="form-control" name="forename"
-                                      placeholder="forename" value="{{ old('name') }}" autofocus>
+                                      placeholder="forename" value="{{ old('forename') }}">
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('forename'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->first('forename') }}</strong>
                                     </span>
                                 @endif</p>
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 5 -->
-                    <div class="row{{ $errors->has('email') ? ' has-error' : '' }}">
+                    <!-- Zeile 5 email-->
+                    <div class="row">
 
 
                         <!-- links -->
@@ -128,8 +125,8 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="email" type="email" class="form-control" name="email" placeholder="e-mail"
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('email') ? ' has-error' : '' }}">
+                            <p><input id="email" type="email" class="form-control" name="email" placeholder="E-Mail"
                                       value="{{ old('email') }}">
 
                                 @if ($errors->has('email'))
@@ -141,6 +138,7 @@
 
                     </div>
 
+                    <!-- Zeile 6 store-->
                     <div class="row">
 
 
@@ -164,10 +162,9 @@
 
                     </div>
 
-
-                    <!-- Zeile 6 -->
+                    <!-- Zeile 6 contract-->
                     <div class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -193,7 +190,7 @@
 
                     <!-- Zeile 7 -->
                     <div class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -201,18 +198,23 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text" name="roleid"
-                                      placeholder="Role"></p>
 
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('roleid') ? ' has-error' : '' }}">
+                            <p><input id="roleid" type="text" class="form-control" name="roleid"
+                                      placeholder="Role" value="{{ old('roleid') }}">
 
+                                @if ($errors->has('roleid'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('roleid') }}</strong>
+                                    </span>
+                                @endif</p>
                         </aside>
 
                     </div>
 
                     <!-- Zeile 8 -->
                     <div class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -235,7 +237,7 @@
 
                     <!-- Zeile 9 -->
                     <div class="row">
-                        <h2 style="display: none">fakeheading</h2>
+                       
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -243,10 +245,15 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      name="working_hours"
-                                      placeholder="Agreement working hours"></p>
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('working_hours') ? ' has-error' : '' }}">
+                            <p><input id="working_hours" type="text" class="form-control" name="working_hours"
+                                      placeholder="Working Hours" value="{{ old('working_hours') }}">
+
+                                @if ($errors->has('working_hours'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('working_hours') }}</strong>
+                                    </span>
+                                @endif</p>
                         </aside>
 
                     </div>

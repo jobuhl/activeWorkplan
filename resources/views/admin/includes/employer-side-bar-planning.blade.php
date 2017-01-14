@@ -1,5 +1,7 @@
 <section class="fake-body sidebarPHP">
 
+
+
     <br>
     <p class="middle-bold">Stores</p>
 
@@ -26,7 +28,17 @@
     <br>
 
     <section>
+        <button class="form-control set-right add-button space-to-top-bottom" type="submit"
+                data-toggle="modal"
+                data-target="#add-button-emp" >
+            Emp
+        </button>
 
+        <button class="form-control set-right add-button space-to-top-bottom" type="submit"
+                data-toggle="modal"
+                data-target="add-button-store">
+            Store
+        </button>
     </section>
 
     @include('admin.includes.add-store')

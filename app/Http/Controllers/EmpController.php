@@ -33,6 +33,19 @@ class EmpController extends Controller
 //Admin legt user an
     public function create(Request $request)
     {
+
+        $this->validate($request, [
+
+
+            'password' => 'required|min:6|confirmed',
+            'name' => 'required|max:255|',
+            'forename' => 'required|max:255|',
+            'email' => 'required|email|max:255|unique:employees',
+            'roleid' => 'required|max:255|',
+            'working_hours' => 'required|max:255|',
+
+        ]);
+
         $retailStore = DB::table('retail_store')
             ->where('retail_store.name', $request['retail_store_name'])
             ->get()[0];
@@ -185,7 +198,6 @@ class EmpController extends Controller
             ->update(array(
                 'forename' => $request['forename'],
                 'name' => $request['name'],
-//                'email' => $request['email'],
                 'retail_store_id' => $request['retail_store_value']
             ));
 
