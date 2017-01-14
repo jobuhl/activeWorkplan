@@ -28,43 +28,54 @@
                 <div class="modal-body">
 
 
-                    <!-- Zeile 2 password Change button -->
+                    <!-- Zeile 1 password Change button -->
                     <div class="row">
 
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4  aside-left-add">
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
                             Password
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap"
-                                      type="password"
-                                      value="******" name="password"></p>
+                        <aside class="col-sm-8 col-xs-12  aside-right">
+                            <button type="button" class="form-control  modal-change-button space-line yellow"
+                                    data-dismiss="modal"
+                                    data-toggle="modal"
+                                    data-target="#change-password">Change Password
+                            </button>
                         </aside>
 
                     </div>
 
+                    <div class="placeholder-mobil col-xs-12">
+                        <hr class="hr-line">
+                    </div>
 
-                    <!-- Zeile 3 -->
+
+                    <!-- Zeile 2 Surname -->
                     <div class="row">
 
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
                             Employee
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      value="{{ $thisEmployee->surname }}" name="name"></p>
+
+                        <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('name') ? ' has-error' : '' }}">
+                            <input class="inputmodal form-control  modal-input space-cap" type="text" name="name"
+                                   placeholder="Name"
+                                   value="{{ $thisEmployee->surname }}">
+                            @if ($errors->has('name'))
+                                <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
+                            @endif
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 4 -->
+                    <!-- Zeile 3 Forename -->
                     <div class="row">
 
 
@@ -74,14 +85,18 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      value="{{ $thisEmployee->forename }}" name="forename"></p>
+
+                        <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('forename') ? ' has-error' : '' }}">
+                            <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" name="forename"
+                                   placeholder="Forename" value="{{ $thisEmployee->forename }}">
+                            @if ($errors->has('forename'))
+                                <span class="help-block"><strong>{{ $errors->first('forename') }}</strong></span>
+                            @endif
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 5 -->
+                    <!-- Zeile Email -->
                     <div class="row">
 
 
@@ -91,25 +106,34 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      value="{{ $thisEmployee->email }}" name="email"></p>
+                        {{--<aside class="col-xs-12 col-sm-8 aside-right">--}}
+                            {{--<p><input class="form-control to-right modal-input space-cap" type="text"--}}
+                                      {{--value="{{ $thisEmployee->email }}" name="email"></p>--}}
+                        {{--</aside>--}}
+                        <aside class="col-sm-8 col-xs-12  aside-right">
+                            <button type="button" class="form-control  modal-change-button space-line yellow"
+                                    data-dismiss="modal"
+                                    data-toggle="modal"
+                                    data-target="#change-email">Change Password
+                            </button>
                         </aside>
-
                     </div>
 
-                    <!-- Zeile 6 -->
+                    <div class="placeholder-mobil col-xs-12">
+                        <hr class="hr-line">
+                    </div>
+                    <!-- Zeile 6 Agreement -->
                     <div class="row">
 
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
                             Contract
                         </aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap"
+                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner"
                                        name="agreement">
                                     <option>unlimited</option>
                                     <option>limited</option>
@@ -119,7 +143,7 @@
 
                     </div>
 
-                    <!-- Zeile 7-->
+                    <!-- Zeile 7 Role -->
                     <div class="row">
 
 
@@ -129,15 +153,18 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="form-control to-right modal-input space-cap" type="text"
-                                      value="{{ $thisEmployee->role }}" name="role"></p>
-
+                        <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('role') ? ' has-error' : '' }}">
+                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="role"
+                                   placeholder="Role" value="{{ $thisEmployee->role }}">
+                            @if ($errors->has('role'))
+                                <span class="help-block"><strong>{{ $errors->first('role') }}</strong></span>
+                            @endif
                         </aside>
+
 
                     </div>
 
-                    <!-- Zeile 8 -->
+                    <!-- Zeile 8 Classification -->
                     <div class="row">
 
 
@@ -148,7 +175,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap"
+                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner"
                                        name="classification">
                                     <option>Fulltime</option>
                                     <option>Halftime</option>
@@ -159,7 +186,7 @@
 
                     </div>
 
-                    <!-- Zeile 9 -->
+                    <!-- Zeile 9 hours -->
                     <div class="row">
 
 
@@ -169,22 +196,28 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="selectpicker form-control to-right modal-input space-cap"
-                                      value="{{ $thisEmployee->working_hours}}" name="working_hours">
-
-                            </p>
+                        <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('working_hours') ? ' has-error' : '' }}">
+                            <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" name="working_hours"
+                                   placeholder="Working hours" value="{{ $thisEmployee->working_hours }}">
+                            @if ($errors->has('working_hours'))
+                                <span class="help-block"><strong>{{ $errors->first('working_hours') }}</strong></span>
+                            @endif
                         </aside>
+
 
 
                     </div>
 
-                    <!-- Zeile 10 -->
+                    <div class="placeholder-mobil col-xs-12">
+                        <hr class="hr-line">
+                    </div>
+
+                    <!-- Zeile 10 Company-->
                     <div class="row">
 
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
                             Company
                         </aside>
 
@@ -195,20 +228,20 @@
 
                     </div>
 
-                    <!-- Zeile 11 -->
+                    <!-- Zeile 11 RetailStore-->
                     <div class="row">
 
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
+                        <aside class="col-xs-12 col-sm-4 ">
 
                         </aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap" type="text"
-                                       name="retail_store_name">
-                                    <option>{{ $thisRetailStore->name }}</option>
+                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner" type="text"
+                                       name="retail_store_value">
+                                    <option value="{{ $thisRetailStore->id}}">{{ $thisRetailStore->name }}</option>
                                     @foreach($allRetailStores as $retailStore)
                                         @if($retailStore->name != $thisRetailStore->name)
                                             <option value="{{$retailStore->id}}">{{ $retailStore->name }}</option>

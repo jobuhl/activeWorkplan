@@ -26,9 +26,9 @@
 
                 <div class="modal-body">
 
-                    <!-- Zeile 2 password Change button -->
+                    <!-- Zeile 1 Store Name -->
                     <div class="row">
-                      
+
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4">
@@ -36,33 +36,51 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control" type="text" value="{{ $thisRetailStore->name }}" name="store_name"></p>
+
+                        <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('store_name') ? ' has-error' : '' }}">
+                            <input class="inputmodal form-control  modal-input space-cap" type="text" name="store_name"
+                                   placeholder="Store Name"
+                                   value="{{ $thisRetailStore->name }}">
+                            @if ($errors->has('store_name'))
+                                <span class="help-block"><strong>{{ $errors->first('store_name') }}</strong></span>
+                            @endif
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 3 -->
+                    <div class="placeholder-mobil col-xs-12">
+                        <hr class="hr-line">
+                    </div>
+
+                    <!-- Zeile 2 Street + Street-Nr -->
                     <div class="row">
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-                            Adress
+                        <aside class="col-sm-4 col-xs-12  aside-left space-cap">
+                            Address
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-9 col-sm-6 aside-right">
-                            <p><input class="inputmodal form-control" type="text" value="{{ $addressRetailStore->street }}" name="street"></p>
+                        <aside class="col-xs-9 col-sm-6 aside-right {{ $errors->has('street') ? ' has-error' : '' }}">
+                            <input class="inputmodal form-control  modal-input space-cap" type="text"
+                                   value="{{ $addressRetailStore->street }}" name="street" placeholder="Street">
+                            @if ($errors->has('street'))
+                                <span class="help-block"><strong>{{ $errors->first('street') }}</strong></span>
+                            @endif
                         </aside>
 
-                        <!-- rechts -->
-                        <aside class="col-xs-3 col-sm-2 ">
-                            <p><input class="inputmodal form-control" type="text" value="{{ $addressRetailStore->street_nr }}" name="nr"></p>
+                        <!-- rechts 2-->
+                        <aside class="col-xs-3 col-sm-2 {{ $errors->has('nr') ? ' has-error' : '' }}">
+                            <input class="inputmodal form-control  modal-input space-cap" type="text"
+                                   value="{{ $addressRetailStore->street_nr }}" name="nr" placeholder="Street Nr.">
+                            @if ($errors->has('nr'))
+                                <span class="help-block"><strong>{{ $errors->first('nr') }}</strong></span>
+                            @endif
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 6 -->
+                    <!-- Zeile 3 Postcode -->
                     <div class="row">
 
                         <!-- links -->
@@ -71,15 +89,20 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control" type="text" value="{{ $addressRetailStore->postcode }}" name="postcode"></p>
+                        <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('postcode') ? ' has-error' : '' }}">
+                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
+                                   name="postcode" placeholder="Postcode"
+                                   value="{{ $addressRetailStore->postcode }}">
+                            @if ($errors->has('postcode'))
+                                <span class="help-block"><strong>{{ $errors->first('postcode') }}</strong></span>
+                            @endif
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 7 -->
+                    <!-- Zeile 4 -->
                     <div class="row">
-                      
+
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4">
@@ -87,15 +110,20 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control" type="text" value="{{ $addressRetailStore->city }}" name="city"></p>
+                        <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('city') ? ' has-error' : '' }}">
+                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
+                                   name="city" placeholder="City"
+                                   value="{{ $addressRetailStore->city }}">
+                            @if ($errors->has('city'))
+                                <span class="help-block"><strong>{{ $errors->first('city') }}</strong></span>
+                            @endif
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 8 -->
+                    <!-- Zeile 5 -->
                     <div class="row">
-                      
+
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4">
@@ -103,24 +131,27 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control" type="text" value="{{ $addressRetailStore->country }}" name="country"></p>
+                        <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('country') ? ' has-error' : '' }}">
+                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
+                                   name="country" placeholder="Country"
+                                   value="{{ $addressRetailStore->country }}">
+                            @if ($errors->has('country'))
+                                <span class="help-block"><strong>{{ $errors->first('country') }}</strong></span>
+                            @endif
                         </aside>
 
                     </div>
 
 
-
-
-
-            </div>
-            <!-- Modal footer-->
-            <div class="modal-footer">
-                <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                <button class="form-control to-right modal-change-button" type="submit" value="{{ $thisRetailStore->id }}" name="thisRetailStoreId">
-                    Change
-                </button>
-            </div>
+                </div>
+                <!-- Modal footer-->
+                <div class="modal-footer">
+                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                    <button class="form-control to-right modal-change-button" type="submit"
+                            value="{{ $thisRetailStore->id }}" name="thisRetailStoreId">
+                        Change
+                    </button>
+                </div>
             </form>
 
         </div>

@@ -16,18 +16,6 @@ use Illuminate\Http\Request;
 class StoreController extends Controller
 {
 
-    protected function validator(array $request)
-    {
-        return Validator::make($request, [
-            'country' => 'required|max:255',
-            'city' => 'required|max:255',
-            'street' => 'required|max:255',
-            'street_nr' => 'required|max:255', //integer?nein!
-            'postcode' => 'required|max:255',  //integer?nein!
-            'name' => 'required|max:255',
-        ]);
-    }
-
     // Admin erstellt Reatil Store
     public function create(Request $request)
     {
@@ -67,6 +55,18 @@ class StoreController extends Controller
     public function change(Request $request)
     {
 
+        $this->validate($request, [
+
+
+            'store_name' => 'required|max:255|',
+            'street' => 'required|max:255|',
+            'postcode' => 'required|max:255|',
+            'city' => 'required|max:255|',
+            'nr' => 'required|max:255|',
+            'country' => 'required|max:255|',
+
+
+        ]);
 
         $store = RetailStore::find($request['thisRetailStoreId']);
 

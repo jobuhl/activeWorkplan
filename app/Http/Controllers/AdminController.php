@@ -24,7 +24,6 @@ class AdminController extends Controller
 
             'name' => 'required|max:255|',
             'forename' => 'required|max:255|',
-//
             'company_name' => 'required|max:255',
             'street' => 'required|max:255',
             'street_nr' => 'required|max:255',

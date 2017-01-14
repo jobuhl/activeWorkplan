@@ -140,6 +140,18 @@ class EmpController extends Controller
     {
         $employee = Employee::find($request['thisEmployeeId']);
 
+        $this->validate($request, [
+
+
+            'name' => 'required|max:255|',
+            'forename' => 'required|max:255|',
+            'role' => 'required|max:255|',
+            'working_hours' => 'required|max:255|',
+
+
+
+        ]);
+
         $contract = DB::table('contract')
             ->join('employees', 'employees.contract_id', '=', 'contract.id')
             ->where('employees.id', $employee->id)
@@ -149,8 +161,8 @@ class EmpController extends Controller
             ->update(array(
                 'forename' => $request['forename'],
                 'name' => $request['name'],
-                'email' => $request['email'],
-                'retail_store_id' => $request['retail_store_name']
+//                'email' => $request['email'],
+              'retail_store_id' => $request['retail_store_value']
             ));
 
         Contract::where('contract.id', $employee->contract_id)

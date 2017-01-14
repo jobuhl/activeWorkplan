@@ -50,7 +50,7 @@
                         <hr class="hr-line">
                     </div>
 
-                    <!-- Zeile 3 -->
+                    <!-- Zeile 3 Name-->
                     <div class="row">
 
 
@@ -63,8 +63,7 @@
 
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('name') ? ' has-error' : '' }}">
                             <input class="inputmodal form-control  modal-input space-cap" type="text" name="name"
-                                   name="street"
-                                   value="{{ $admin->name }}">
+                                   placeholder="Name" value="{{ $admin->name }}">
                             @if ($errors->has('name'))
                                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                             @endif
@@ -73,7 +72,7 @@
                     </div>
 
 
-                    <!-- Zeile 4 -->
+                    <!-- Zeile 4 Forename-->
                     <div class="row modal-person">
 
 
@@ -84,8 +83,8 @@
 
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('forename') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap" type="text" name="forename"
-                                   name="street"
+                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
+                                   name="forename" placeholder="Forename"
                                    value="{{ $admin->forename }}">
                             @if ($errors->has('forename'))
                                 <span class="help-block"><strong>{{ $errors->first('forename') }}</strong></span>
@@ -94,29 +93,24 @@
 
                     </div>
 
-                    <!-- Zeile 5 -->
+                    <!-- Zeile 5 Email Button-->
                     <div class="row">
 
 
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-cap-bottom">
+                        <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
                             E-Mail
                         </aside>
 
                         <!-- rechts -->
 
-                        <aside class="col-sm-8 col-xs-12  aside-right">
-                            <button type="button" class="form-control  modal-change-button space-line yellow"
+                        <aside class="col-sm-8 col-xs-12  aside-right ">
+                            <button type="button" class="space-cap form-control  modal-change-button space-line yellow "
                                     data-dismiss="modal"
                                     data-toggle="modal"
                                     data-target="#change-email">Change Email
                             </button>
                         </aside>
-                        {{--<aside class="col-sm-8 col-xs-12  aside-right">--}}
-                            {{--<input class="inputmodal form-control  modal-input space-cap-bottom" type="text"--}}
-                                   {{--name="email"--}}
-                                   {{--value="{{ $admin->email }}">--}}
-                        {{--</aside>--}}
 
                     </div>
 
@@ -125,7 +119,7 @@
                     </div>
 
 
-                    <!-- Zeile 6 -->
+                    <!-- Zeile 6 Company-Name-->
                     <div class="row ">
 
 
@@ -138,8 +132,7 @@
 
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('company_name') ? ' has-error' : '' }}">
                             <input class="inputmodal form-control  modal-input space-cap" type="text"
-                                   name="company_name"
-                                   value="{{ $company->name }}">
+                                   name="company_name" placeholder="Company name" value="{{ $company->name }}">
                             @if ($errors->has('company_name'))
                                 <span class="help-block"><strong>{{ $errors->first('company_name') }}</strong></span>
                             @endif
@@ -147,7 +140,7 @@
 
                     </div>
 
-                    <!-- Zeile 7 -->
+                    <!-- Zeile 7 Street-->
                     <div class="row">
 
 
@@ -159,8 +152,7 @@
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('street') ? ' has-error' : '' }}">
                             <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                   name="street"
-                                   value="{{ $address->street }}" autofocus>
+                                   name="street" placeholder="Street" value="{{ $address->street }}" autofocus>
                             @if ($errors->has('street'))
                                 <span class="help-block"><strong>{{ $errors->first('street') }}</strong></span>
                             @endif
@@ -169,21 +161,20 @@
                     </div>
 
 
-                    <!-- Zeile 8 -->
+                    <!-- Zeile 8 Street-Nr -->
                     <div class="row">
 
 
                         <!-- links -->
                         <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
-                            Street Nr,
+                            Street Nr.
                         </aside>
 
                         <!-- rechts -->
 
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('street_nr') ? ' has-error' : '' }}">
                             <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                   name="street_nr"
-                                   value="{{ $address->street_nr }}">
+                                   name="street_nr" placeholder="Street Nr." value="{{ $address->street_nr }}">
                             @if ($errors->has('street_nr'))
                                 <span class="help-block"><strong>{{ $errors->first('street_nr') }}</strong></span>
                             @endif
@@ -192,7 +183,7 @@
 
                     </div>
 
-                    <!-- Zeile 9 -->
+                    <!-- Zeile 9 Postcode -->
                     <div class="row">
 
 
@@ -205,8 +196,7 @@
 
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('postcode') ? ' has-error' : '' }}">
                             <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                   name="postcode"
-                                   value="{{ $address->postcode }}">
+                                   name="postcode" placeholder="Postcode" value="{{ $address->postcode }}">
                             @if ($errors->has('postcode'))
                                 <span class="help-block"><strong>{{ $errors->first('postcode') }}</strong></span>
                             @endif
@@ -214,7 +204,7 @@
 
                     </div>
 
-                    <!-- Zeile 10 -->
+                    <!-- Zeile 10 City -->
                     <div class="row ">
 
 
@@ -230,7 +220,7 @@
 
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('city') ? ' has-error' : '' }}">
                             <input class=" inputmodal form-control  modal-input " type="text" name="city"
-                                   value="{{ $address->city }}">
+                                   value="{{ $address->city }}" placeholder="City">
                             @if ($errors->has('city'))
                                 <span class="help-block"><strong>{{ $errors->first('city') }}</strong></span>
                             @endif
@@ -238,7 +228,7 @@
 
                     </div>
 
-                    <!-- Zeile 11 -->
+                    <!-- Zeile 11 Country-->
                     <div class="row ">
 
 
@@ -255,8 +245,7 @@
 
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('country') ? ' has-error' : '' }}">
                             <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                   name="country"
-                                   value="{{ $address->country }}">
+                                   name="country" placeholder="Country" value="{{ $address->country }}">
                             @if ($errors->has('country'))
                                 <span class="help-block"><strong>{{ $errors->first('country') }}</strong></span>
                             @endif
@@ -306,28 +295,28 @@
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changePasswordAdmin') }}">
             {{ csrf_field() }}
             <!-- Body-->
-            <div class="modal-body">
+                <div class="modal-body">
 
-                <input class="inputmodal form-control space-cap-inner" type="password"
-                       placeholder="Old password" name="old-password">
+                    <input class="inputmodal form-control space-cap-inner" type="password"
+                           placeholder="Old password" name="old-password">
 
-                <input class="inputmodal form-control space-cap-inner " type="password"
-                       placeholder="New password" name="password">
+                    <input class="inputmodal form-control space-cap-inner " type="password"
+                           placeholder="New password" name="password">
 
-                <input class="inputmodal form-control space-cap-inner " type="password"
-                       placeholder="Confirm new password" name="password">
+                    <input class="inputmodal form-control space-cap-inner " type="password"
+                           placeholder="Confirm new password" name="password">
 
 
-            </div>
+                </div>
 
-            <!-- Modal footer-->
-            <div class="modal-footer">
+                <!-- Modal footer-->
+                <div class="modal-footer">
 
-                <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                <button type="submit" class="form-control  modal-change-button space-line yellow"
-                >Change Password
-                </button>
-            </div>
+                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                    <button type="submit" class="form-control  modal-change-button space-line yellow"
+                    >Change Password
+                    </button>
+                </div>
 
             </form>
         </div>
@@ -355,19 +344,17 @@
             {{ csrf_field() }}
 
             <!-- Body-->
-                <div class="modal-body {{ $errors->has('company_name') ? ' has-error' : '' }}">
+                <div class="modal-body {{ $errors->has('email') ? ' has-error' : '' }}">
 
 
-
-<div class="{{ $errors->has('email') ? ' has-error' : '' }}">
-    <input class="inputmodal form-control  modal-input space-cap-bottom" type="text"
-           name="email"
-           value="{{ $admin->email }}">
-    @if ($errors->has('email'))
-        <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
-    @endif
-</div>
-
+                    <div class="{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input class="inputmodal form-control  modal-input space-cap-bottom" type="text"
+                               name="email"
+                               value="{{ $admin->email }}">
+                        @if ($errors->has('email'))
+                            <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
+                        @endif
+                    </div>
 
 
                 </div>
