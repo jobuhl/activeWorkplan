@@ -26,7 +26,7 @@
                 <!-- Basic-->
                 <div class="modal-body">
 
-                    <!-- Zeile 2 password Change button -->
+                    <!-- Zeile 1 Company Name -->
                     <div class="row">
                        
 
@@ -36,25 +36,35 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control" type="text" name="name" placeholder="Store Name">
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('name') ? ' has-error' : '' }}">
+                            <input class=" inputmodal form-control space-cap" type="text" name="name" placeholder="Store Name">
+
+                            @if ($errors->has('name'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                            @endif
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 3 -->
-                    <div class="row{{ $errors->has('street') ? ' has-error' : '' }}">
+                    <div class="placeholder-mobil col-xs-12">
+                        <hr class="hr-line">
+                    </div>
+
+                    <!-- Zeile 2 Street -->
+                    <div class="row">
                        
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
                             Address
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class=" inputmodal form-control space-cap" type="text" name="street" placeholder="Street">
-                            </p>
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('street') ? ' has-error' : '' }}">
+                            <input class=" inputmodal form-control space-cap" type="text" name="street" placeholder="Street">
+
                             @if ($errors->has('street'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('street') }}</strong>
@@ -64,7 +74,7 @@
 
                     </div>
 
-                    <!-- Zeile 4 -->
+                    <!-- Zeile 3 Street Nr -->
                     <div class="row">
                        
 
@@ -74,15 +84,19 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control space-cap" type="text"
-                                      name="street_nr" placeholder="Street Nr.">
-                            </p>
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('street_nr') ? ' has-error' : '' }}">
+                            <input class=" inputmodal form-control space-cap" type="text" name="street_nr" placeholder="Street Nr.">
+
+                            @if ($errors->has('street_nr'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('street_nr') }}</strong>
+                                    </span>
+                            @endif
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 5 -->
+                    <!-- Zeile 4 Postcode -->
                     <div class="row">
                        
 
@@ -92,14 +106,19 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control space-cap" type="text" name="postcode" placeholder="Postcode">
-                            </p>
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('postcode') ? ' has-error' : '' }}">
+                            <input class=" inputmodal form-control space-cap" type="text" name="postcode" placeholder="Postcode">
+
+                            @if ($errors->has('postcode'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('postcode') }}</strong>
+                                    </span>
+                            @endif
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 6 -->
+                    <!-- Zeile 5 City-->
                     <div class="row">
                        
 
@@ -109,13 +128,20 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input class="inputmodal form-control space-cap" type="text" name="city" placeholder="City"></p>
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('city') ? ' has-error' : '' }}">
+                            <input class=" inputmodal form-control space-cap" type="text" name="city" placeholder="City">
+
+                            @if ($errors->has('city'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('city') }}</strong>
+                                    </span>
+                            @endif
                         </aside>
+
 
                     </div>
 
-                    <!-- Zeile 7 -->
+                    <!-- Zeile 6 Country-->
                     <div class="row">
                        
 
@@ -125,11 +151,14 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p>
-                                <input class="inputmodal modal-input form-control space-cap" type="text"
-                                       name="country" placeholder="Country">
-                            </p>
+                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('country') ? ' has-error' : '' }}">
+                            <input class=" inputmodal form-control space-cap" type="text" name="country" placeholder="Country">
+
+                            @if ($errors->has('country'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('country') }}</strong>
+                                    </span>
+                            @endif
                         </aside>
 
                     </div>

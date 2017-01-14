@@ -23,12 +23,12 @@ class StoreController extends Controller
         $this->validate($request, [
 
 
-//            'store_name' => 'required|max:255|',
+              'name' => 'required|max:255|',
               'street' => 'required|max:255|',
-//            'postcode' => 'required|max:255|',
-//            'city' => 'required|max:255|',
-//            'nr' => 'required|max:255|',
-//            'country' => 'required|max:255|',
+              'postcode' => 'required|max:255|',
+              'city' => 'required|max:255|',
+              'street_nr' => 'required|max:255|',
+              'country' => 'required|max:255|',
 
 
         ]);

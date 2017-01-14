@@ -54,34 +54,59 @@
 
 
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-cap">
+                        <aside class="col-sm-4 col-xs-12  aside-left ">
                             Surname
                         </aside>
 
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right">
-                            <input class="inputmodal form-control  modal-input space-cap" type="text" name="name"
-                                   value="{{ $thisEmployee->surname }}">
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <div class="col-xs-12">
+                                    <input type="text" class="inputmodal form-control  space-cap-inner" name="name"
+                                           placeholder="Name"  value="{{ $thisEmployee->surname }}">
+                                    @if ($errors->has('name'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                         </aside>
 
+
+
                     </div>
+
+
 
                     <!-- Zeile 4 -->
                     <div class="row modal-person">
 
 
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-cap-inner">
+                        <aside class="col-sm-4 col-xs-12  aside-left ">
                             Forename
                         </aside>
 
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right">
-                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                   name="forename"
-                                   value="{{ $thisEmployee->forename }}">
+                            <div class="form-group{{ $errors->has('forename') ? ' has-error' : '' }}">
+                                <div class="col-xs-12">
+                                    <input type="text" class="inputmodal form-control  space-cap-inner" name="forename"
+                                           placeholder="Forename"   value="{{ $thisEmployee->forename }}">
+                                    @if ($errors->has('forename'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('forename') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
                         </aside>
 
+                    </div>
+
+                    <div class="placeholder-mobil col-xs-12">
+                        <hr class="hr-line">
                     </div>
 
                     <!-- Zeile 5 -->

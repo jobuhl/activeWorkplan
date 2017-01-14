@@ -20,16 +20,6 @@ use Illuminate\Http\Request;
 class EmpController extends Controller
 {
 
-    protected function validator(array $request)
-    {
-        return Validator::make($request, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:employees',
-            'password' => 'required|min:6|confirmed',
-        ]);
-    }
-
-
 //Admin legt user an
     public function create(Request $request)
     {
@@ -80,12 +70,17 @@ class EmpController extends Controller
     {
         $employee = Employee::find(Auth::user()->id);
 
+        $this->validate($request, [
+
+            'forename' => 'required|max:255|',
+            'name' => 'required|max:255|',
+
+        ]);
 
         Employee::where('employees.id', $employee->id)
             ->update(array(
                 'forename' => $request['forename'],
                 'name' => $request['name'],
-                'email' => $request['email'],
             ));
 
         return redirect('/employee/employee-account/' . $request['thisDate']);
