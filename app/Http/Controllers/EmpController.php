@@ -78,6 +78,30 @@ class EmpController extends Controller
         return redirect('/employee/employee-account/' . $request['thisDate']);
     }
 
+    public function updatePassword(Request $request){
+        $employee = Employee::find(Auth::user()->id);
+
+
+        Employee::where('employees.id', $employee->id)
+            ->update(array(
+
+            ));
+
+        return redirect('/employee/employee-account/' . $request['thisDate']);
+    }
+
+    public function updateEmail(Request $request){
+        $employee = Employee::find(Auth::user()->id);
+
+
+        Employee::where('employees.id', $employee->id)
+            ->update(array(
+                'email' => $request['email'],
+            ));
+
+        return redirect('/employee/employee-account/' . $request['thisDate']);
+    }
+
 //Admin löscht user
     public function delete(Request $request)
     {

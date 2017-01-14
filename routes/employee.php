@@ -81,6 +81,9 @@ Route::get('/employee-account/{date}', function ($urlDate) {
 
 Route::post('/changeEmp', 'EmpController@update');
 
+Route::post('/changeEmpPassword', 'EmpController@updatePassword');
+Route::post('/changeEmpEmail', 'EmpController@updateEmail');
+
 Route::post('/alldayEventCreate', 'EventController@addAlldayEvent');
 Route::post('/timeEventCreate', 'EventController@addTimeEvent');
 Route::post('/alldayEventChange', 'EventController@changeAlldayEvent');
