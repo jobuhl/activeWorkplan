@@ -114,7 +114,7 @@
                             <button type="button" class="form-control  modal-change-button space-line yellow"
                                     data-dismiss="modal"
                                     data-toggle="modal"
-                                    data-target="#change-email">Change Password
+                                    data-target="#change-email">Change Email
                             </button>
                         </aside>
                     </div>
@@ -267,4 +267,103 @@
 
 
     </div>
+</div>
+
+<!-- changebutton für das Password-Pop-Up im Pop-Up -->
+{{--<div id="change-password" class="modal fade" role="dialog">--}}
+    {{--<div class="modal-dialog">--}}
+
+        {{--<!-- Modal content-->--}}
+        {{--<div class="modal-content">--}}
+
+            {{--<div class="modal-header">--}}
+
+                {{--<!-- Close Button oben rechts im Header -->--}}
+                {{--<button type="button" class="close" data-dismiss="modal"--}}
+                {{-->&times;</button>--}}
+
+                {{--<!-- Überschrift -->--}}
+                {{--<h2 class="modal-ueberschrift">Change Password</h2>--}}
+            {{--</div>--}}
+
+            {{--<form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changePasswordAdmin') }}">--}}
+            {{--{{ csrf_field() }}--}}
+            {{--<!-- Body-->--}}
+                {{--<div class="modal-body">--}}
+
+                    {{--<input class="inputmodal form-control space-cap-inner" type="password"--}}
+                           {{--placeholder="Old password" name="old-password">--}}
+
+                    {{--<input class="inputmodal form-control space-cap-inner " type="password"--}}
+                           {{--placeholder="New password" name="password">--}}
+
+                    {{--<input class="inputmodal form-control space-cap-inner " type="password"--}}
+                           {{--placeholder="Confirm new password" name="password">--}}
+
+
+                {{--</div>--}}
+
+                {{--<!-- Modal footer-->--}}
+                {{--<div class="modal-footer">--}}
+
+                    {{--<input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>--}}
+                    {{--<button type="submit" class="form-control  modal-change-button space-line yellow"--}}
+                    {{-->Change Password--}}
+                    {{--</button>--}}
+                {{--</div>--}}
+
+            {{--</form>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+
+{{--</div>--}}
+
+
+<div id="change-email" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <!-- Close Button oben rechts im Header -->
+                <button type="button" class="close" data-dismiss="modal"
+                >&times;</button>
+
+                <!-- Überschrift -->
+                <h2 class="modal-ueberschrift">Change E-Mail</h2>
+            </div>
+
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changeEmailEmp') }}">
+            {{ csrf_field() }}
+
+            <!-- Body-->
+                <div class="modal-body {{ $errors->has('email') ? ' has-error' : '' }}">
+
+
+                    <div class="{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input class="inputmodal form-control  modal-input space-cap-bottom" type="text"
+                               name="email"
+                               value="{{ $thisEmployee->email }}">
+                        @if ($errors->has('email'))
+                            <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
+                        @endif
+                    </div>
+
+
+                </div>
+
+                <!-- Modal footer-->
+                <div class="modal-footer">
+
+                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                    <button type="submit" class="form-control  modal-change-button space-line yellow"
+                    >Change Email
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>

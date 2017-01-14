@@ -137,46 +137,74 @@ class EmpController extends Controller
 
 //Admin ändert User
     public function change(Request $request)
+{
+    $employee = Employee::find($request['thisEmployeeId']);
+
+    $this->validate($request, [
+
+
+        'name' => 'required|max:255|',
+        'forename' => 'required|max:255|',
+        'role' => 'required|max:255|',
+        'working_hours' => 'required|max:255|',
+
+
+
+    ]);
+
+    $contract = DB::table('contract')
+        ->join('employees', 'employees.contract_id', '=', 'contract.id')
+        ->where('employees.id', $employee->id)
+        ->get();
+
+    Employee::where('employees.id', $employee->id)
+        ->update(array(
+            'forename' => $request['forename'],
+            'name' => $request['name'],
+//                'email' => $request['email'],
+            'retail_store_id' => $request['retail_store_value']
+        ));
+
+    Contract::where('contract.id', $employee->contract_id)
+        ->update(array(
+            'period_of_agreement' => $request['agreement'],
+            'classification' => $request['classification'],
+            'working_hours' => $request['working_hours']
+        ));
+
+
+    Role::where('role.id', $contract[0]->role_id)
+        ->update(array(
+            'name' => $request['role'],
+        ));
+
+
+    return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
+
+
+}
+
+    public function changeEmail(Request $request)
     {
-        $employee = Employee::find($request['thisEmployeeId']);
+
+
+
+        $employee = $request->email;
+
+        dd($request);
 
         $this->validate($request, [
 
-
-            'name' => 'required|max:255|',
-            'forename' => 'required|max:255|',
-            'role' => 'required|max:255|',
-            'working_hours' => 'required|max:255|',
-
-
+            'email' => 'required|email|max:255|unique:admins',
 
         ]);
 
-        $contract = DB::table('contract')
-            ->join('employees', 'employees.contract_id', '=', 'contract.id')
-            ->where('employees.id', $employee->id)
-            ->get();
 
-        Employee::where('employees.id', $employee->id)
+        Employee::where('employee.id', $employee->id)
             ->update(array(
-                'forename' => $request['forename'],
-                'name' => $request['name'],
-//                'email' => $request['email'],
-              'retail_store_id' => $request['retail_store_value']
-            ));
+                'email' => $request['email'],
+            ))[0];
 
-        Contract::where('contract.id', $employee->contract_id)
-            ->update(array(
-                'period_of_agreement' => $request['agreement'],
-                'classification' => $request['classification'],
-                'working_hours' => $request['working_hours']
-            ));
-
-
-        Role::where('role.id', $contract[0]->role_id)
-            ->update(array(
-                'name' => $request['role'],
-            ));
 
 
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
