@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/side-bar.css')}}">
+
 @endsection
 
 @section('content')
@@ -25,48 +26,49 @@
 
                 <!----------Search AJAX klappt noch nicht------------->
 
-                {{--<input id="search-all" onclick="ajaxGetStores('')" placeholder="Search..."/>--}}
-                {{--<div class="search-result">Hier kommen gleich die Jsons rein</div>--}}
+            {{--<input id="search-all" onclick="ajaxGetStores('')" placeholder="Search..."/>--}}
+            {{--<div class="search-result">Hier kommen gleich die Jsons rein</div>--}}
 
-                {{--<!-- Hier JSON-Daten laden -->--}}
-                {{--<script type="text/javascript">--}}
-                    {{--function ajaxGetStores($characters) {--}}
-                        {{--$.ajax(--}}
-                            {{--{--}}
-                                {{--type: "POST",--}}
-{{--//                                url: "http://localhost:8888/activeWorkplan/public/admin/daten/" + $characters,--}}
-                                {{--url: "{{ url('/admin/daten') }}",//+ "/" + $characters,--}}
+            {{--<!-- Hier JSON-Daten laden -->--}}
+            {{--<script type="text/javascript">--}}
+            {{--function ajaxGetStores($characters) {--}}
+            {{--$.ajax(--}}
+            {{--{--}}
+            {{--type: "POST",--}}
+            {{--//                                url: "http://localhost:8888/activeWorkplan/public/admin/daten/" + $characters,--}}
+            {{--url: "{{ url('/admin/daten') }}",//+ "/" + $characters,--}}
 
-                                {{--dataType: "json",--}}
-                                {{--success: function (json) {--}}
-                                    {{--var a = "<ul>";--}}
-                                    {{--$.each(json.store, function () {--}}
-                                        {{--var thisStoreId = this['id'];--}}
-                                        {{--a += "<li><a>" + this['name'] + "</a>";--}}
+            {{--dataType: "json",--}}
+            {{--success: function (json) {--}}
+            {{--var a = "<ul>";--}}
+            {{--$.each(json.store, function () {--}}
+            {{--var thisStoreId = this['id'];--}}
+            {{--a += "<li><a>" + this['name'] + "</a>";--}}
 
-                                        {{--$.each(json.emp, function () {--}}
-                                            {{--a += "<ul>";--}}
-                                            {{--if (this['retail_store_id'] == thisStoreId) {--}}
-                                                {{--a += "<li><a>" + this['surname'] + " " + this['forename'] + "</a></li>";--}}
-                                            {{--}--}}
-                                            {{--a += "</ul>";--}}
-                                        {{--});--}}
+            {{--$.each(json.emp, function () {--}}
+            {{--a += "<ul>";--}}
+            {{--if (this['retail_store_id'] == thisStoreId) {--}}
+            {{--a += "<li><a>" + this['surname'] + " " + this['forename'] + "</a></li>";--}}
+            {{--}--}}
+            {{--a += "</ul>";--}}
+            {{--});--}}
 
-                                        {{--a += "</li>";--}}
+            {{--a += "</li>";--}}
 
-                                    {{--});--}}
-                                    {{--a += "</ul>";--}}
-                                    {{--$(".search-result").html(a);--}}
-                                {{--}--}}
-                            {{--}--}}
-                        {{--);--}}
-                    {{--}--}}
+            {{--});--}}
+            {{--a += "</ul>";--}}
+            {{--$(".search-result").html(a);--}}
+            {{--}--}}
+            {{--}--}}
+            {{--);--}}
+            {{--}--}}
 
-                {{--</script>--}}
+            {{--</script>--}}
 
-                <!----------------------------->
+            <!----------------------------->
 
 
+                <!------------------------ SEARCH FIELD -------------------------------->
                 <select id="select-emp" class="form-control to-right modal-input space-cap selectpicker col-xs-12"
                         data - live - search="true" data-live-search="true"
                         name="select-emp" onchange="javascript:location.href = this.value;">
@@ -94,6 +96,8 @@
                     </button>
                 </div>
 
+
+                <!------------------------ NAIGATION -------------------------------->
                 <nav class="calendar-navigation">
                     <div class="calendar-navigation-padding">
 
@@ -121,9 +125,10 @@
                     </div>
 
                 </nav>
-
                 <br>
 
+
+                <!------------------------ PROPOSAL -------------------------------->
                 <div class="table-head-store">
                     <p class="table-head-a">Individual proposals of Employees</p>
                 </div>
@@ -271,9 +276,10 @@
                         @endif
                     @endforeach
                 </table>
-
                 <br>
 
+
+                <!------------------------ WORKTIME FIX -------------------------------->
                 <div class="table-head-store">
                     <p class="table-head-a">Final Workplan</p>
                 </div>
@@ -391,6 +397,8 @@
                 </table>
                 <br>
 
+
+                <!------------------------ EMPLOYEE PER HOUR -------------------------------->
                 <div class="table-head-store">
                     <p class="table-head-a">Amount of Employees per time frame</p>
                 </div>
@@ -440,8 +448,8 @@
                         </tr>
                     @endfor
                 </table>
-
                 <br>
+
 
                 <button class="form-control delete-button" data-toggle="modal" type="submit"
                         data-target="#delete-store">delete

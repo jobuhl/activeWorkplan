@@ -25,9 +25,12 @@
 
                 <h2>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</h2>
 
+
+                <!------------------------ NAIGATION -------------------------------->
                 <nav class="calendar-navigation">
                     <div class="calendar-navigation-padding">
-                        <div class="navigation-today">
+
+                        <div class="col-xs-6 navigation-today">
                             <form method="GET"
                                   action="{{ url('/admin/employer-single') . '/' . $thisEmployee->id . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                                 <button type="submit"><</button>
@@ -42,82 +45,281 @@
                             </form>
                         </div>
 
-                        <p>01. - 07. Jan. 2018</p>
+                        <div class="col-xs-6 calendar-navigation-p">
+                            <p>
+                                {{ $week[0]->format('d. - ') }}
+                                {{ $week[6]->format('d. M. Y') }}
+                            </p>
+                        </div>
                     </div>
 
                 </nav>
-
-
                 <br>
 
+
+                <!------------------------ PROPOSAL -------------------------------->
                 <div class="table-head-store">
-                    <p class="table-head-a">Individual proposals of Employees</p>
+                    <p class="table-head-a">Proposals</p>
                 </div>
-                <table class="table-calendar table-week-listed-single">
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th>01.01</th>
-                        <th>02.01</th>
-                        <th>03.01</th>
-                        <th>04.01</th>
-                        <th>05.01</th>
-                        <th>06.01</th>
-                        <th>07.01</th>
+                <table class="calendar-days-all-emp">
+                    <tr class="week-date">
+                        <td></td>
+
+                        <!------------------- DATE ----------------------->
+                        @for ($i = 0; $i < 7; $i++)
+                            <td>
+                                {{ $week[$i]->format('d.m.') }}
+                            </td>
+                        @endfor
                     </tr>
 
 
-                    <tr>
-                        <th>Employees</th>
-                        <th>Time</th>
-                        <th>Mo</th>
-                        <th>Tu</th>
-                        <th>We</th>
-                        <th>Th</th>
-                        <th>Fr</th>
-                        <th>Sa</th>
-                        <th>Su</th>
+                    <tr class="week-days">
+                        <td>Employees</td>
+
+
+                        <!------------------- WEEKDAY ----------------------->
+                        @for ($i = 0; $i < 7; $i++)
+                            @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                                <td class="today">
+                            @else
+                                <td>
+                                    @endif
+                                    {{ $week[$i]->format('D') }}</td>
+                                @endfor
                     </tr>
 
-                    <tr>
+                    <!------------------- EMPLOYEE ROW ----------------------->
+                    <tr class="all-day">
+
                         <td>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
-                        <td>All-day</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    @for ($i = 0; $i < 7; $i++)
+
+
+                        <!------------------- IF TODAY ----------------------->
+                            @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                                <td class="today">
+                            @else
+                                <td>
+                                @endif
+
+
+                                <!------------------- ALLDAY EVENT ----------------------->
+                                    @foreach($manyAlldayEvent as $oneAlldayEvent)
+                                        @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                                        && $oneAlldayEvent->employee_id == $thisEmployee->id)
+
+                                            <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
+                                                 onclick="openEventDropdown('allday-admin' + {{ $oneAlldayEvent->id }} + '')"
+                                                 draggable="true"
+                                                 id="div-allday-admin{{ $oneAlldayEvent->id }}">
+                                                <p>{{ $oneAlldayEvent->name }}</p>
+
+
+                                                <!------------------- VACATION ACCEPT ----------------------->
+                                                @if ( $oneAlldayEvent->name == "Vacation")
+                                                    <div id="allday-admin{{ $oneAlldayEvent->id }}"
+                                                         class="event-dropdown-content">
+                                                        <button class="add-event-button">OK
+                                                        </button>
+                                                    </div>
+                                                @endif
+
+
+                                            </div>
+                                        @endif
+                                    @endforeach
+
+
+                                </td>
+                                @endfor
                     </tr>
 
-                    <tr>
+                    <tr class="time-events">
                         <td></td>
-                        <td>start</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>end</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
 
+                    @for ($i = 0; $i < 7; $i++)
+
+
+                        <!------------------- IF TODAY ----------------------->
+                            @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                                <td class="today">
+                            @else
+                                <td>
+                                @endif
+
+
+                                <!------------------- TIME EVENT ----------------------->
+                                    @foreach($manyTimeEvent as $oneTimeEvent)
+                                        @if( (new DateTime($oneTimeEvent->date))->format('d-m-Y') == $week[$i]->format('d-m-Y')
+                                            && $oneTimeEvent->employee_id == $thisEmployee->id )
+
+                                            <div class="drop-btn one-time-event {{ $oneTimeEvent->color }}"
+                                                 onclick="openEventDropdown('time-admin' + {{ $oneTimeEvent->id }} + '')"
+                                                 draggable="true"
+                                                 id="div-time-admin{{ $oneTimeEvent->id }}"
+                                                 ondragstart="drag(event)">
+                                                <p>{{ $oneTimeEvent->name }}</p>
+                                                <p>{{ $oneTimeEvent->from }}</p>
+                                                <p>{{ $oneTimeEvent->to }}</p>
+                                                <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
+                                                <input style="display: none;" class="this-emp-id"
+                                                       value="{{ $thisEmployee->id }}">
+
+                                                @if ( $oneTimeEvent->name == "Work" || $oneTimeEvent->name == "Vacation")
+
+                                                    <div id="time-admin{{ $oneTimeEvent->id }}"
+                                                         class="event-dropdown-content">
+                                                        @if ( $oneTimeEvent->name == "Work")
+                                                            <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})"
+                                                                    class="add-event-button">+
+                                                            </button>
+
+                                                            <button id="button-add-worktime-fix-event-admin"
+                                                                    style="display: none;"
+                                                                    data-toggle="modal"
+                                                                    data-target="#change-button-event-time-admin">
+                                                                ⇄
+                                                            </button>
+                                                        @endif
+                                                        @if ( $oneTimeEvent->name == "Vacation")
+
+                                                            <button id="button-accept-vacation-admin"
+                                                                    class="add-event-button">OK
+                                                            </button>
+                                                        @endif
+                                                    </div>
+                                                @endif
+
+                                            </div>
+
+                                        @endif
+                                    @endforeach
+
+
+                                </td>
+                                @endfor
+                    </tr>
                 </table>
-
                 <br>
 
+
+                <!------------------------ WORKTIME FIX -------------------------------->
+                <div class="table-head-store">
+                    <p class="table-head-a">Final Workplan</p>
+                </div>
+                <table class="calendar-days-all-emp">
+                    <tr class="week-date">
+                        <td></td>
+
+                        <!------------------- DATE ----------------------->
+                        @for ($i = 0; $i < 7; $i++)
+                            <td>
+                                {{ $week[$i]->format('d.m.') }}
+                            </td>
+                        @endfor
+                    </tr>
+
+
+                    <tr class="week-days">
+                        <td>Employee</td>
+
+
+                        <!------------------- WEEKDAY ----------------------->
+                        @for ($i = 0; $i < 7; $i++)
+                            @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                                <td class="today">
+                            @else
+                                <td>
+                                    @endif
+                                    {{ $week[$i]->format('D') }}</td>
+                                @endfor
+                    </tr>
+
+                    <!------------------- EMPLOYEE ROW ----------------------->
+                    <tr class="time-events">
+                        <td>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
+                    @for ($i = 0; $i < 7; $i++)
+
+
+                        <!------------------- IF TODAY ----------------------->
+                            @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+                                <td class="today">
+                            @else
+                                <td>
+                                @endif
+
+
+                                <!------------------- WORKTIME EVENT ----------------------->
+                                    @foreach($manyWorktimeEvent as $oneWorktimeEvent)
+                                        @if( (new DateTime($oneWorktimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                                        && $oneWorktimeEvent->employee_id == $thisEmployee->id)
+                                            {{--<div class="one-time-event {{ $oneWorktimeEvent->color }}"--}}
+                                            {{--draggable="true">--}}
+                                            {{--<p>{{ $oneWorktimeEvent->name }}</p>--}}
+                                            {{--<p>{{ $oneWorktimeEvent->from }}</p>--}}
+                                            {{--<p>{{ $oneWorktimeEvent->to }}</p>--}}
+                                            {{--</div>--}}
+
+
+
+
+                                            <div class="drop-btn one-time-event {{ $oneWorktimeEvent->color }}"
+                                                 onclick="openEventDropdown('worktime-fix-admin' + {{ $oneWorktimeEvent->id }} + '')"
+                                                 draggable="true"
+                                                 id="div-worktime-fix-admin{{ $oneWorktimeEvent->id }}"
+                                                 ondragstart="drag(event)">
+                                                <p>{{ $oneWorktimeEvent->name }}</p>
+                                                <p>{{ $oneWorktimeEvent->from }}</p>
+                                                <p>{{ $oneWorktimeEvent->to }}</p>
+                                                <input value="{{ $oneWorktimeEvent->date }}"
+                                                       style="display: none"/>
+                                                <input style="display: none;" class="this-emp-id"
+                                                       value="{{ $thisEmployee->id }}">
+                                                <input style="display: none;" class="this-event-id"
+                                                       value="{{ $oneWorktimeEvent->id }}">
+
+                                                <div id="worktime-fix-admin{{ $oneWorktimeEvent->id }}"
+                                                     class="event-dropdown-content">
+
+                                                    <button onclick="openChangeWorktimeFixModal({{ $oneWorktimeEvent->id }})"
+                                                            class="change-event-button">⇄
+                                                    </button>
+
+                                                    <button id="button-change-worktime-fix-event-admin"
+                                                            style="display: none;"
+                                                            data-toggle="modal"
+                                                            data-target="#change-button-event-worktime-fix-admin">
+                                                        ⇄
+                                                    </button>
+
+                                                    <form method="POST"
+                                                          action="{{ url('/admin/deleteWorktimeFix') }}"> {{ csrf_field() }}
+                                                        <input style="display: none;" name="thisRetailStoreId"
+                                                               value="{{ $thisRetailStore->id }}"/>
+                                                        <input style="display: none;" name="thisDate"
+                                                               value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                        <button class="delete-event-button" name="eventId"
+                                                                value="{{ $oneWorktimeEvent->id }}">-
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                        @endif
+                                    @endforeach
+                                </td>
+                                @endfor
+                    </tr>
+                </table>
+                <br>
+
+
+                <!------------------------ ACCOUNT DETAILS -------------------------------->
                 <button class="form-control set-right modal-change-button space-to-top-bottom" type="submit"
                         data-toggle="modal" data-target="#change" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
                     Change

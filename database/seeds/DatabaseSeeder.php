@@ -44,6 +44,7 @@ class DatabaseSeeder extends Seeder
     public function addEmployee($forename, $surname)
     {
         $amountOfStores = DB::table('retail_store')->count();
+        echo $amountOfStores;
 
         // Contract
         $workingHours = rand(2,9) * 5;
