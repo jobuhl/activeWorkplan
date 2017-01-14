@@ -24,7 +24,6 @@
                 <div class="modal-body">
 
 
-
                     <!-- Zeile 1 password1 -->
                     <div class="row">
 
@@ -57,31 +56,35 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="password" type="password" class="form-control" name="password"
+                            <p><input id="password" type="password" class="form-control" name="password_confirmation"
                                       placeholder="confirm password..."></p>
 
-                            @if ($errors->has('password'))
+                            @if ($errors->has('password_confirmation'))
                                 <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
                                     </span>
                             @endif
                         </aside>
 
                     </div>
 
+                    <div class="placeholder-mobil col-xs-12">
+                        <hr class="hr-line">
+                    </div>
 
                     <!-- Zeile 3 name-->
                     <div class="row ">
 
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
                             Employee
                         </aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('name') ? ' has-error' : '' }}">
-                            <p><input id="name" type="text" class="form-control" name="name" placeholder="surename" value="{{ old('name') }}">
+                            <p><input id="name" type="text" class="form-control" name="name" placeholder="surename"
+                                      value="{{ old('name') }}">
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -138,12 +141,16 @@
 
                     </div>
 
+                    <div class="placeholder-mobil col-xs-12">
+                        <hr class="hr-line">
+                    </div>
+
                     <!-- Zeile 6 store-->
                     <div class="row">
 
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
                             Store
                         </aside>
 
@@ -162,12 +169,16 @@
 
                     </div>
 
+                    <div class="placeholder-mobil col-xs-12">
+                        <hr class="hr-line">
+                    </div>
+
                     <!-- Zeile 6 contract-->
                     <div class="row">
-                       
+
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
                             Contract
                         </aside>
 
@@ -190,7 +201,7 @@
 
                     <!-- Zeile 7 -->
                     <div class="row">
-                       
+
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -214,7 +225,7 @@
 
                     <!-- Zeile 8 -->
                     <div class="row">
-                       
+
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
@@ -237,7 +248,7 @@
 
                     <!-- Zeile 9 -->
                     <div class="row">
-                       
+
 
                         <!-- links -->
                         <aside class="col-xs-12 col-sm-4 aside-left-add">
