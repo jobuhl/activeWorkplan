@@ -10,7 +10,7 @@ use App\Company;
 
 use App\RetailStore;
 use Validator;
-use Illuminate\Support\Facades\Hash;
+use Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;

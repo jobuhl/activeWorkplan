@@ -112,7 +112,6 @@
                         {{--</aside>--}}
                         <aside class="col-sm-8 col-xs-12  aside-right">
                             <button type="button" class="form-control  modal-change-button space-line yellow"
-                                    value="{{ $thisEmployee->id }}" name="thisEmployeeId"
                                     data-dismiss="modal"
                                     data-toggle="modal"
                                     data-target="#change-email">Change Email
@@ -271,53 +270,74 @@
 </div>
 
 <!-- changebutton für das Password-Pop-Up im Pop-Up -->
-{{--<div id="change-password" class="modal fade" role="dialog">--}}
-    {{--<div class="modal-dialog">--}}
+<div id="change-password" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-        {{--<!-- Modal content-->--}}
-        {{--<div class="modal-content">--}}
+        <!-- Modal content-->
+        <div class="modal-content">
 
-            {{--<div class="modal-header">--}}
+            <div class="modal-header">
 
-                {{--<!-- Close Button oben rechts im Header -->--}}
-                {{--<button type="button" class="close" data-dismiss="modal"--}}
-                {{-->&times;</button>--}}
+                <!-- Close Button oben rechts im Header -->
+                <button type="button" class="close" data-dismiss="modal"
+                >&times;</button>
 
-                {{--<!-- Überschrift -->--}}
-                {{--<h2 class="modal-ueberschrift">Change Password</h2>--}}
-            {{--</div>--}}
+                <!-- Überschrift -->
+                <h2 class="modal-ueberschrift">Change Password</h2>
+            </div>
 
-            {{--<form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changePasswordAdmin') }}">--}}
-            {{--{{ csrf_field() }}--}}
-            {{--<!-- Body-->--}}
-                {{--<div class="modal-body">--}}
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changePasswordEmp') }}">
+            {{ csrf_field() }}
+            <!-- Body-->
+                <div class="modal-body">
 
-                    {{--<input class="inputmodal form-control space-cap-inner" type="password"--}}
-                           {{--placeholder="Old password" name="old-password">--}}
+                    <!-- password1-->
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="col-xs-12">
+                            <input id="password" type="password" class="form-control" name="password"
+                                   placeholder="Password">
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+                    <!-- password1 ende-->
 
-                    {{--<input class="inputmodal form-control space-cap-inner " type="password"--}}
-                           {{--placeholder="New password" name="password">--}}
+                    <!-- password2-->
+                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 
-                    {{--<input class="inputmodal form-control space-cap-inner " type="password"--}}
-                           {{--placeholder="Confirm new password" name="password">--}}
+                        <div class="col-xs-12">
+                            <input id="password-confirm" type="password" class="form-control"
+                                   placeholder="Confirm Password"
+                                   name="password_confirmation">
 
+                            @if ($errors->has('password_confirmation'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+                    <!-- password1 ende-->
+                </div>
 
-                {{--</div>--}}
+                <!-- Modal footer-->
+                <div class="modal-footer">
 
-                {{--<!-- Modal footer-->--}}
-                {{--<div class="modal-footer">--}}
+                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                    <button type="submit" class="form-control  modal-change-button space-line yellow"
+                            value="{{ $thisEmployee->id }}" name="thisEmployeeId"
+                    >Change Password
+                    </button>
+                </div>
 
-                    {{--<input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>--}}
-                    {{--<button type="submit" class="form-control  modal-change-button space-line yellow"--}}
-                    {{-->Change Password--}}
-                    {{--</button>--}}
-                {{--</div>--}}
+            </form>
+        </div>
+    </div>
 
-            {{--</form>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
-{{--</div>--}}
+</div>
 
 
 <div id="change-email" class="modal fade" role="dialog">
@@ -360,6 +380,7 @@
 
                     <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                     <button type="submit" class="form-control  modal-change-button space-line yellow"
+                            value="{{ $thisEmployee->id }}" name="thisEmployeeId"
                     >Change Email
                     </button>
                 </div>

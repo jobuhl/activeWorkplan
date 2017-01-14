@@ -32,6 +32,8 @@ Route::post('/storeCreate', 'StoreController@create');
 Route::post('/addEmp', 'EmpController@create');
 Route::post('/changeEmp', 'EmpController@change');
 Route::post('/changeEmailEmp', 'EmpController@changeEmail');
+Route::post('/changePasswordEmp', 'EmpController@changePassword');
+
 
 
 Route::post('/deleteEmp', 'EmpController@delete');
