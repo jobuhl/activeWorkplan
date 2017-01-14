@@ -26,23 +26,6 @@
                 <!-- Basic-->
                 <div class="modal-body">
 
-                    <!-- Zeile 1 -->
-                    <div class="row">
-                       
-
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-                            Store ID
-                        </aside>
-
-                        <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p class=" inputmodal form-control">0005</p>
-                        </aside>
-
-                    </div>
-
-
                     <!-- Zeile 2 password Change button -->
                     <div class="row">
                        

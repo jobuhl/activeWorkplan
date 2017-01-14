@@ -36,7 +36,7 @@
 
         <button class="form-control set-right add-button space-to-top-bottom" type="submit"
                 data-toggle="modal"
-                data-target="add-button-store">
+                data-target="#add-button-store">
             Store
         </button>
     </section>
