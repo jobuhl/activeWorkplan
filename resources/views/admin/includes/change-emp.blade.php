@@ -112,6 +112,7 @@
                         {{--</aside>--}}
                         <aside class="col-sm-8 col-xs-12  aside-right">
                             <button type="button" class="form-control  modal-change-button space-line yellow"
+                                    value="{{ $thisEmployee->id }}" name="thisEmployeeId"
                                     data-dismiss="modal"
                                     data-toggle="modal"
                                     data-target="#change-email">Change Email

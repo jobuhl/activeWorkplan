@@ -189,7 +189,7 @@ class EmpController extends Controller
 
 
 
-        $employee = $request->email;
+        $employee = Employee::find($request['']);
 
         dd($request);
 
