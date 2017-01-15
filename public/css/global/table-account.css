@@ -72,3 +72,25 @@ zu definieren, sowie eine generelle css für die jeweiligen Klassen
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+@media screen and (max-width: 768px) {
+
+    .button-show{
+        display: none;
+    }
+
+    .button-hide{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .button-show{
+        display: block;
+    }
+
+    .button-hide{
+        display: none;
+    }
+}

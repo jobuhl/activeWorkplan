@@ -336,3 +336,29 @@
     background-color: var(--main-active-color);
     cursor: pointer;
 }
+
+.space_emp{
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+
+    .button-show{
+        display: none;
+    }
+
+    .button-hide{
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .button-show{
+        display: block;
+    }
+
+    .button-hide{
+        display: none;
+    }
+}

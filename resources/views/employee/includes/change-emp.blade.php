@@ -8,7 +8,7 @@
             <div class="modal-header">
 
                 <!--Close Button oben rechts im Header-->
-                <button type="button" class="close" data - dismiss="modal"
+                <button type="button" class="close" data-dismiss="modal"
                 >&times;</button>
 
                 <!--Überschrift -->
