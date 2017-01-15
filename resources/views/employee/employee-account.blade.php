@@ -14,11 +14,12 @@
             <div class="row-col-12">
                 <h2 class="modal-ueberschrift">User Details</h2>
 
+                <div class="col-xs-12 col-sm-6 space-cap">
                 <button class="form-control to-right modal-change-button " type="submit" data-toggle="modal"
                         data-target="#change-button">
                     Change
                 </button>
-
+                </div>
 
                 <table class="table-account">
                     <tr>

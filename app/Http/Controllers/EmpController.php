@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Company;
-use App\RetailStore;
+
 use DB;
 use Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,7 +11,7 @@ use App\Employee;
 use App\Role;
 use App\Contract;
 use Validator;
-use DateTime;
+
 
 
 use Illuminate\Http\Request;

@@ -16,8 +16,8 @@
                 <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
                 <div class="modal-sub-sign-up">
 
-                    <p class="col-xs-3 signin-head1" onclick="nextStep(1)">Employee</p>
-                    <p class="col-xs-3 signin-head2" onclick="nextStep(2)">Admin</p>
+                    <p class="col-xs-3 signin-head1" onclick="nextStep(1)">Account</p>
+                    <p class="col-xs-3 signin-head2" onclick="nextStep(2)">Private</p>
                     <p class="col-xs-3 signin-head2" onclick="nextStep(3)">Company</p>
                     <p class="col-xs-3 signin-head2" onclick="nextStep(4)">Store</p>
 
