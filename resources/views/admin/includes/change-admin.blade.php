@@ -297,11 +297,50 @@
             <!-- Body-->
                 <div class="modal-body">
 
-                    <input class="inputmodal form-control space-cap-inner" type="password"
-                           placeholder="Old password" name="old-password">
+                    {{--<input class="inputmodal form-control space-cap-inner" type="password"--}}
+                           {{--placeholder="Old password" name="old-password">--}}
 
-                    <input class="inputmodal form-control space-cap-inner " type="password"
-                           placeholder="New password" name="password">
+                    <div class="form-group{{ $errors->has('old-password') ? ' has-error' : '' }}">
+                        <div class="col-xs-12">
+                            <input class="inputmodal form-control space-cap-inner" type="password"
+                                   placeholder="Old password" name="old-password">
+                            @if ($errors->has('old-password'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('old-password') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <!-- password1-->
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="col-xs-12">
+                            <input id="password" type="password" class="form-control" name="password"
+                                   placeholder="Password">
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+                    <!-- password1 ende-->
+
+                    <!-- password2-->
+                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+
+                        <div class="col-xs-12">
+                            <input id="password-confirm" type="password" class="form-control"
+                                   placeholder="Confirm Password"
+                                   name="password_confirmation">
+
+                            @if ($errors->has('password_confirmation'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
 
                 </div>
 

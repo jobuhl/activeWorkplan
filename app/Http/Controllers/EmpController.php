@@ -88,15 +88,28 @@ class EmpController extends Controller
 
     public function updatePassword(Request $request){
 
-        $employee = Employee::find(Auth::user()->id);
+
+        $this->validate($request, [
+
+            'old-password' => 'required',
+            'password' => 'required|min:6|confirmed',
+
+        ]);
 
 
-        Employee::where('employees.id', $employee->id)
-            ->update(array(
+
+        if (Hash::check($request['old-password'], Auth::user()->password)) {
+            $user = Employee::find(Auth::user()->id);
+
+
+            Employee::where('employees.id', $user->id)
+                ->update(array(
+                    'password' => Hash::make($request['password']),
+                ));
 
 
 
-            ));
+        }
 
         return redirect('/employee/employee-account/' . $request['thisDate']);
     }

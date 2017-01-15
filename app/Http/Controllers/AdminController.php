@@ -106,6 +106,12 @@ class AdminController extends Controller
     protected function update_password(Request $request)
     {
 
+        $this->validate($request, [
+
+            'old-password' => 'required',
+            'password' => 'required|min:6|confirmed',
+
+        ]);
 
         if (Hash::check($request['old-password'], Auth::user()->password)) {
 

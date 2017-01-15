@@ -164,11 +164,25 @@
                 <!-- Überschrift -->
                 <h2 class="modal-ueberschrift">Change Password</h2>
             </div>
-
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/employee/changeEmpPassword') }}">
             {{ csrf_field() }}
             <!-- Body-->
                 <div class="modal-body">
+
+                    {{--<input class="inputmodal form-control space-cap-inner" type="password"--}}
+                    {{--placeholder="Old password" name="old-password">--}}
+
+                    <div class="form-group{{ $errors->has('old-password') ? ' has-error' : '' }}">
+                        <div class="col-xs-12">
+                            <input class="inputmodal form-control space-cap-inner" type="password"
+                                   placeholder="Old password" name="old-password">
+                            @if ($errors->has('old-password'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('old-password') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
 
                     <!-- password1-->
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
@@ -199,7 +213,7 @@
                             @endif
                         </div>
                     </div>
-                    <!-- password1 ende-->
+
                 </div>
 
                 <!-- Modal footer-->
@@ -207,12 +221,12 @@
 
                     <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                     <button type="submit" class="form-control  modal-change-button space-line yellow"
-                            value="{{ $thisEmployee->id }}" name="thisEmployeeId"
                     >Change Password
                     </button>
                 </div>
 
             </form>
+
         </div>
     </div>
 
