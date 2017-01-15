@@ -11,6 +11,11 @@
     --main-small-header-color: #F1F1F1;
     --main-mainsection-lower-header-color: gainsboro;
 
+    /* final workplan */
+    --main-final-workplan: #D3F3FF;
+    --main-final-workplan-today: #B3EEFF;
+    --main-final-workplan-button: #94B5C6;
+
     /* border */
     --main-border-color: #A6A6A6;
     --main-input-border-color: lightgrey;

@@ -57,10 +57,18 @@
     color: var(--main-text-white); /* Text-Farbe */
 }
 
+.final-workplan .navigation-today button {
+    background-color: var(--main-final-workplan-button);
+}
+
 .emp-planning .calendar-navigation {
     background: var(--main-small-header-color);
     height: 40px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
     padding: 7px 0 7px 0; /* Abstand wegen Button oben und unten */
+}
+
+.final-workplan .calendar-navigation {
+    background-color: var(--main-final-workplan);
 }
 
 .calendar-navigation-p {
@@ -142,11 +150,16 @@
 }
 
 .calendar-days-all-emp .week-days,
-.calendar-days-all-emp .all-day td:not(:first-child),
+.calendar-days-all-emp .all-day td:not(:first-child):not(.no-border-bottom),
 .calendar-days-all-emp .time-events {
     border-bottom: 1px solid var(--main-border-color);
     height: 28px; /* damit zeile nicht kleiner, wenn kein allday event drin ist */
 }
+
+.calendar-days-all-emp .all-day {
+    border-top: 1px solid var(--main-border-color);
+}
+
 
 .calendar-days-all-emp .time-events,
 .calendar-days-all-emp .all-day {
@@ -169,6 +182,10 @@
 
 .today {
     background-color: var(--main-today-color);
+}
+
+.final-workplan .today {
+    background-color: var(--main-final-workplan-today);
 }
 
 
@@ -338,6 +355,30 @@
     margin-top: 20px;
 }
 
+.space-bottom {
+    margin-bottom: 10px;
+}
+
+.mobile-button button{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.mobile-button div:nth-child(2) {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.mobile-button {
+    background: var(--main-small-header-color);
+    height: 48px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
+    padding: 7px 0 7px 0;
+}
+
+.final-workplan .mobile-button {
+    background: var(--main-final-workplan);
+}
+
 @media screen and (max-width: 768px) {
 
     .button-show{
@@ -349,11 +390,17 @@
     }
 
     .set-size{
-        font-size: 150%;
+        font-size: 120%;
     }
 
     .float-right{
         float: right;
+    }
+
+    .calendar-days-one-emp .all-day td:nth-child(2),
+    .calendar-days-one-emp .time-events td:nth-child(2),
+    .calendar-days-one-emp .add-buttons td:nth-child(2) {
+        border-left: none;
     }
 
 }
@@ -362,10 +409,7 @@
 
     .button-show{
         display: block;
-
     }
-
-
 
     .button-hide{
         display: none;
@@ -374,4 +418,10 @@
 
 .header{
     text-align:center;
+    margin-top: 0px;
+}
+
+/* button an rechter seite */
+.set-right-buttom {
+    width: 100px;
 }

@@ -3,31 +3,51 @@
 
     <section>
         <div class="col-lg-6 col-sm-12 col-xs-6 left-button-side-bar">
-            <button class="form-control set-right add-button space-to-top-bottom" type="submit"
-                    data-toggle="modal"
-                    data-target="#add-button-emp">
-                Employee Add
+            <button class="form-control add-button" type="submit" data-toggle="modal" data-target="#add-button-emp">
+                Add Employee
             </button>
         </div>
 
         <div class="col-lg-6 col-sm-12 col-xs-6 right-button-side-bar">
-            <button class="col-xs-6 form-control set-right add-button space-to-top-bottom" type="submit"
-                    data-toggle="modal"
-                    data-target="#add-button-store">
-                Store Add
+            <button class="col-xs-6 form-control add-button" type="submit" data-toggle="modal" data-target="#add-button-store">
+                Add Store
             </button>
         </div>
     </section>
 
 
+    <!------------------------ SEARCH FIELD -------------------------------->
+    <select id="select-emp" class="form-control modal-input selectpicker col-xs-6"
+            data-live-search="true"
+            name="select-emp" onchange="location.href = this.value;">
+        <option style="display: none;"> Search...</option>
+        @foreach($allRetailStores as $retailStore)
+            <optgroup style=" border: none; ">
+                <option style="background-color: #F1F1F1; padding-left: 10px"
+                        value="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</option>
+                @foreach($allEmployees as $employee)
+                    @if($employee->retail_store_id == $retailStore->id)
+
+                        <option style="padding-left: 30px;"
+                                value="{{ url('/admin/employer-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</option>
+
+                    @endif
+                @endforeach
+
+            </optgroup>
+        @endforeach
+    </select>
+
+
+
+    <!------------------------ LIST STORE -------------------------------->
     <ul class="lower-list">
 
         <li><a class="middle-bold">Stores</a></li>
-
         @foreach($allRetailStores as $retailStore)
             <li class="arrow-down">
                 <a href="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</a>
-                <a style="padding: 13.5px;" class="glyphicon glyphicon-chevron-down"></a>
+                <a>⋁</a>
                 <ul>
                     @foreach($allEmployees as $employee)
                         @if($employee->retail_store_id == $retailStore->id)

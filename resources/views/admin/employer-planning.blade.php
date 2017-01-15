@@ -11,16 +11,10 @@
     @if($amountOfRetailStores != 0)
 
         <div class="fake-body container">
-
-
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar">
-
-
                 @include('admin.includes.employer-side-bar-planning')
-
             </aside>
-
 
             <aside class="col-xs-12 col-sm-9 my-right-side">
 
@@ -68,65 +62,36 @@
             <!----------------------------->
 
 
-                <!------------------------ SEARCH FIELD -------------------------------->
-                <select id="select-emp" class="form-control modal-input selectpicker col-xs-12"
-                        data-live-search="true"
-                        name="select-emp" onchange="javascript:location.href = this.value;">
-                    <option style="display: none;"> Search...</option>
-                    @foreach($allRetailStores as $retailStore)
-                        <optgroup style=" border: none; ">
-                            <option style="background-color: #F1F1F1; padding-left: 10px"
-                                    value="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</option>
-                            @foreach($allEmployees as $employee)
-                                @if($employee->retail_store_id == $retailStore->id)
-
-                                    <option style="padding-left: 30px;"
-                                            value="{{ url('/admin/employer-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</option>
-
-                                @endif
-                            @endforeach
-
-                        </optgroup>
-                    @endforeach
-                </select>
-
-
-
                 <!-- Überschrift -->
                 <h2 class="header">{{ $thisRetailStore->name }}</h2>
 
-                <div class="space_emp col-xs-12"></div>
 
-                <button class="form-control to-right modal-change-button" data-toggle="modal"
-                        data-target="#change-store">change
-                </button>
+                <button class="form-control modal-change-button space-bottom" data-toggle="modal" data-target="#change-store">Change</button>
+                {{--<div class="space_emp col-xs-12"></div>--}}
 
-                <div class="space_emp col-xs-12 button-hide"></div>
 
-                <div class="col-xs-12 navigation-today button-hide">
+
+                {{--<div class="space_emp col-xs-12 button-hide" style="background-color: inherit;"></div>--}}
+
+                <div class="navigation-today mobile-button button-hide">
                     <div class="col-xs-4">
-                        <form method="GET"
-                              action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET" action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button class="set-size float-right" type="submit"><</button>
                         </form>
                     </div>
 
                     <div class="col-xs-4">
-                        <form method="GET"
-                              action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET" action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button class="set-size" type="submit">Today</button>
                         </form>
                     </div>
 
                     <div class="col-xs-4">
-                        <form method="GET"
-                              action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET" action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button class="set-size float-right" type="submit">></button>
                         </form>
                     </div>
                 </div>
-
-                <div class=" col-xs-12 space_emp"></div>
 
 
                 <!------------------------ NAIGATION -------------------------------->
@@ -157,11 +122,10 @@
                     </div>
 
                 </nav>
-                <br>
 
 
                 <!------------------------ PROPOSAL -------------------------------->
-                <div class="table-head-store">
+                <div class="table-head-store space_emp">
                     <p class="table-head-a">Individual proposals of Employees</p>
                 </div>
                 <table class="calendar-days-all-emp">
@@ -198,8 +162,7 @@
 
                             <tr class="button-hide">
                                 <td>{{ $employee->surname }} </td>
-
-                                <td>&nbsp;{{ $employee->forename }}</td>
+                                <td class="no-border-bottom">&nbsp;{{ $employee->forename }}</td>
                             </tr>
 
                             <tr class="all-day ">
@@ -395,7 +358,7 @@
 
                         <!------------------- DATE ----------------------->
                         @for ($i = 0; $i < 7; $i++)
-                            <td >
+                            <td>
                                 {{ $week[$i]->format('d.m.') }}
                             </td>
                         @endfor
@@ -421,9 +384,10 @@
                     @foreach($allEmployees as $employee)
                         @if($employee->retail_store_id == $thisRetailStore->id)
 
-                            <tr class="all-day button-hide">
+                            <tr class="button-hide">
 
-                                <td>{{ $employee->surname }}</td> <td>&nbsp;{{ $employee->forename }}</td>
+                                <td>{{ $employee->surname }}</td>
+                                <td class="no-border-bottom">&nbsp;{{ $employee->forename }}</td>
                             </tr>
 
                             <tr class="all-day">
@@ -718,7 +682,7 @@
 
 
                 <button class="form-control delete-button" data-toggle="modal" type="submit"
-                        data-target="#delete-store">delete
+                        data-target="#delete-store">Delete
                 </button>
             </aside>
 

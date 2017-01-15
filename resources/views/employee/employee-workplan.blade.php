@@ -4,16 +4,18 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/employee/modal-event.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
+
 @endsection
 
 @section('content')
 
-    <div class="fake-body container emp-planning">
+    <div class="fake-body container emp-planning final-workplan">
         <h2 class=" col-xs-12 header">Fix Workplan</h2>
 
         <div class="space_emp col-xs-12"></div>
 
-        <div class="col-xs-12 navigation-today button-hide">
+        <!------------------- MOBILE NAVIGATION ----------------------->
+        <div class="col-xs-12 navigation-today mobile-button button-hide">
             <div class="col-xs-4">
                 <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button class="set-size float-right" type="submit"><</button>
@@ -33,10 +35,9 @@
             </div>
         </div>
 
-        <div class="space_emp col-xs-12 button-hide"></div>
 
+        <!------------------- DESKTOP NAVIGATION ----------------------->
         <aside id="aside-overview" class="col-xs-12 calendar-navigation button-show">
-
             <div class="col-xs-6 navigation-today">
                 <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button type="submit"><</button>

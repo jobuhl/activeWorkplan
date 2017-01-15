@@ -52,7 +52,7 @@
                         <hr class="hr-line">
                     </div>
 
-                    <!-- Zeile 2 Street -->
+                    <!-- Zeile 2 Street + Street Nr-->
                     <div class="row">
                        
 
@@ -62,7 +62,7 @@
                         </aside>
 
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('street') ? ' has-error' : '' }}">
+                        <aside class="col-xs-9 col-sm-6 aside-right {{ $errors->has('street') ? ' has-error' : '' }}">
                             <input class=" inputmodal form-control space-cap" type="text" name="street" placeholder="Street">
 
                             @if ($errors->has('street'))
@@ -72,19 +72,8 @@
                             @endif
                         </aside>
 
-                    </div>
-
-                    <!-- Zeile 3 Street Nr -->
-                    <div class="row">
-                       
-
-                        <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
-
-                        </aside>
-
                         <!-- rechts -->
-                        <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('street_nr') ? ' has-error' : '' }}">
+                        <aside class="col-xs-3 col-sm-2 {{ $errors->has('street_nr') ? ' has-error' : '' }}">
                             <input class=" inputmodal form-control space-cap" type="text" name="street_nr" placeholder="Street Nr.">
 
                             @if ($errors->has('street_nr'))
@@ -96,7 +85,7 @@
 
                     </div>
 
-                    <!-- Zeile 4 Postcode -->
+                    <!-- Zeile 3 Postcode -->
                     <div class="row">
                        
 
@@ -141,7 +130,7 @@
 
                     </div>
 
-                    <!-- Zeile 6 Country-->
+                    <!-- Zeile 4 Country-->
                     <div class="row">
                        
 

@@ -5,10 +5,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/employee/modal-event.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
 
-    <style>
 
-
-    </style>
 
 @endsection
 
@@ -16,13 +13,12 @@
 
     <div class="fake-body container emp-planning">
 
-        {{--<div class="space_emp col-xs-12"></div>--}}
 
         <h2 class=" col-xs-12 header">Proposals</h2>
 
-        {{--<div class="space_emp col-xs-12"></div>--}}
+        <div class="space_emp col-xs-12"></div>
 
-        <div class="col-xs-12 navigation-today button-hide">
+        <div class="col-xs-12 navigation-today mobile-button button-hide">
             <div class="col-xs-4">
                 <form method="GET" action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button class="set-size float-right" type="submit"><</button>
@@ -41,8 +37,6 @@
                 </form>
             </div>
         </div>
-
-        <div class="col-xs-12 space_emp"></div>
 
 
         <aside id="aside-overview" class="col-xs-12 calendar-navigation button-show">

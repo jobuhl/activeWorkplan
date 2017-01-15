@@ -9,23 +9,24 @@
 @section('content')
 
     @if($amountOfRetailStores != 0)
-        <div class="fake-body container">
+        <div class="fake-body container final-workplan">
             <h2 style="display: none">fakeheading</h2>
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar overview">
 
-                <div class="row headline" draggable="true">
-                    <aside class="col-xs-2 middle-bold"></aside>
-                    <aside class="col-xs-8 middle-bold"><p>Stores</p></aside>
-                    <aside class="col-xs-2 middle-bold">
-                        <p class="glyphicon glyphicon-chevron-down"></p>
-                    </aside>
-                </div>
+                {{--<div class="row headline" draggable="true">--}}
+                    {{--<aside class="col-xs-2 middle-bold"></aside>--}}
+                    {{--<aside class="col-xs-8 middle-bold"><p>Stores</p></aside>--}}
+                    {{--<aside class="col-xs-2 middle-bold">--}}
+                        {{--<p class="glyphicon glyphicon-chevron-down"></p>--}}
+                    {{--</aside>--}}
+                {{--</div>--}}
 
                 <ul>
+                    <li><a class="middle-bold">Stores</a></li>
                     <li><input class="input-sidebar" type="text" placeholder="Search Store..."></li>
                     @foreach($allRetailStores as $retailStore)
-                        <li><a>{{ $retailStore->id }} {{ $retailStore->name }}</a></li>
+                        <li><a>{{ $retailStore->name }}</a></li>
                     @endforeach
                 </ul>
                 <br>
@@ -34,26 +35,41 @@
 
             <aside id="aside-overview" class="col-xs-12 col-sm-9 my-right-side overview list">
 
-                <div class="row current-selected-store">
-                    <aside class="col-xs-2 middle-bold"><p>❮</p></aside>
-                    <aside class="col-xs-8 middle-bold"><p>Current Store</p></aside>
-                    <aside class="col-xs-2 middle-bold"><p>❯</p></aside>
+                <!-- Überschrift -->
+                <h2 class="header">Final Workplans</h2>
+
+                <div class="navigation-today mobile-button button-hide">
+                    <div class="col-xs-4">
+                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button class="set-size float-right" type="submit"><</button>
+                        </form>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button class="set-size" type="submit">Today</button>
+                        </form>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button class="set-size float-right" type="submit">></button>
+                        </form>
+                    </div>
                 </div>
-                <nav class="calendar-navigation">
+
+                <nav class="calendar-navigation button-show">
 
                     <div class="col-xs-4 navigation-today">
-                        <form method="GET"
-                              action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit"><</button>
                         </form>
 
-                        <form method="GET"
-                              action="{{ url('/admin/employer-overview') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit">Today</button>
                         </form>
 
-                        <form method="GET"
-                              action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit">></button>
                         </form>
                     </div>
@@ -70,8 +86,8 @@
                         </p>
                     </div>
                 </nav>
-                <br class="br-under-navigation">
 
+                <br>
 
                 @foreach($allRetailStores as $retailStore)
 
