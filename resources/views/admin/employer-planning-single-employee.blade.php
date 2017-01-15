@@ -11,13 +11,9 @@
     @if($amountOfRetailStores != 0)
 
         <div class="fake-body container">
-
-
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar">
-
                 @include('admin.includes.employer-side-bar-planning')
-
             </aside>
 
 
@@ -29,18 +25,14 @@
                 <!------------------------ NAIGATION -------------------------------->
                 <nav class="calendar-navigation">
                     <div class="calendar-navigation-padding">
-
                         <div class="col-xs-6 navigation-today">
-                            <form method="GET"
-                                  action="{{ url('/admin/employer-single') . '/' . $thisEmployee->id . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <form method="GET" action="{{ url('/admin/employer-single') . '/' . $thisEmployee->id . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                                 <button type="submit"><</button>
                             </form>
-                            <form method="GET"
-                                  action="{{ url('/admin/employer-single') . '/' . $thisEmployee->id . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <form method="GET" action="{{ url('/admin/employer-single') . '/' . $thisEmployee->id . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
                                 <button type="submit">Today</button>
                             </form>
-                            <form method="GET"
-                                  action="{{ url('/admin/employer-single') . '/' . $thisEmployee->id . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <form method="GET" action="{{ url('/admin/employer-single') . '/' . $thisEmployee->id . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                                 <button type="submit">></button>
                             </form>
                         </div>
@@ -89,19 +81,17 @@
                                 @endfor
                     </tr>
 
+
                     <!------------------- EMPLOYEE ROW ----------------------->
                     <tr class="all-day">
-
                         <td>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
                     @for ($i = 0; $i < 7; $i++)
 
 
                         <!------------------- IF TODAY ----------------------->
                             @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
-                                <td class="today">
-                            @else
-                                <td>
-                                @endif
+                                <td class="today">@else
+                                <td>@endif
 
 
                                 <!------------------- ALLDAY EVENT ----------------------->
@@ -261,10 +251,8 @@
                         <!------------------- WEEKDAY ----------------------->
                         @for ($i = 0; $i < 7; $i++)
                             @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
-                                <td class="today">
-                            @else
-                                <td>
-                                    @endif
+                                <td class="today">@else
+                                <td>@endif
                                     {{ $week[$i]->format('D') }}</td>
                                 @endfor
                     </tr>
@@ -277,10 +265,8 @@
 
                         <!------------------- IF TODAY ----------------------->
                             @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
-                                <td class="today">
-                            @else
-                                <td>
-                                @endif
+                                <td class="today">@else
+                                <td>@endif
 
 
                                 <!------------------- WORKTIME EVENT ----------------------->
@@ -297,36 +283,23 @@
                                                 <p>{{ $oneWorktimeEvent->name }}</p>
                                                 <p>{{ $oneWorktimeEvent->from }}</p>
                                                 <p>{{ $oneWorktimeEvent->to }}</p>
-                                                <input value="{{ $oneWorktimeEvent->date }}"
-                                                       style="display: none"/>
-                                                <input style="display: none;" class="this-emp-id"
-                                                       value="{{ $thisEmployee->id }}">
-                                                <input style="display: none;" class="this-event-id"
-                                                       value="{{ $oneWorktimeEvent->id }}">
 
-                                                <div id="worktime-fix-admin{{ $oneWorktimeEvent->id }}"
-                                                     class="event-dropdown-content">
+                                                <input value="{{ $oneWorktimeEvent->date }}" style="display: none"/>
+                                                <input style="display: none;" class="this-emp-id" value="{{ $thisEmployee->id }}">
+                                                <input style="display: none;" class="this-event-id" value="{{ $oneWorktimeEvent->id }}">
 
-                                                    <button onclick="openChangeWorktimeFixModal({{ $oneWorktimeEvent->id }})"
-                                                            class="change-event-button">⇄
-                                                    </button>
+                                                <div id="worktime-fix-admin{{ $oneWorktimeEvent->id }}" class="event-dropdown-content">
 
-                                                    <button id="button-change-worktime-fix-event-admin"
-                                                            style="display: none;"
-                                                            data-toggle="modal"
-                                                            data-target="#change-button-event-worktime-fix-admin">
+                                                    <button onclick="openChangeWorktimeFixModal({{ $oneWorktimeEvent->id }})" class="change-event-button">⇄</button>
+
+                                                    <button id="button-change-worktime-fix-event-admin" style="display: none;" data-toggle="modal" data-target="#change-button-event-worktime-fix-admin">
                                                         ⇄
                                                     </button>
 
-                                                    <form method="POST"
-                                                          action="{{ url('/admin/deleteWorktimeFix') }}"> {{ csrf_field() }}
-                                                        <input style="display: none;" name="thisRetailStoreId"
-                                                               value="{{ $thisRetailStore->id }}"/>
-                                                        <input style="display: none;" name="thisDate"
-                                                               value="{{ $week[0]->format('d-m-Y') }}"/>
-                                                        <button class="delete-event-button" name="eventId"
-                                                                value="{{ $oneWorktimeEvent->id }}">-
-                                                        </button>
+                                                    <form method="POST" action="{{ url('/admin/deleteWorktimeFix') }}"> {{ csrf_field() }}
+                                                        <input style="display: none;" name="thisRetailStoreId" value="{{ $thisRetailStore->id }}"/>
+                                                        <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                        <button class="delete-event-button" name="eventId" value="{{ $oneWorktimeEvent->id }}">-</button>
                                                     </form>
                                                 </div>
                                             </div>

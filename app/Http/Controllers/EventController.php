@@ -242,5 +242,42 @@ class EventController extends Controller
         return redirect($request['thisUrl'] . $thisView->id . '/' . $request['thisDate']);
     }
 
+    // Admin accepts an Allday Event (Vacation / Illness)
+    function notAcceptAlldayEvent(Request $request)
+    {
+        if($request['thisUrl'] == '/admin/employer-single/') {
+            $thisView = Employee::find($request['thisViewId']);
+        } else {
+            $thisView = RetailStore::find($request['thisViewId']);
+        }
+        $eventId = $request['eventId'];
+
+        AlldayEvent::where('allday_event.id', $eventId)
+            ->update(array(
+                'accepted' => false,
+            ));
+        return redirect($request['thisUrl'] . $thisView->id . '/' . $request['thisDate']);
+    }
+
+    // Admin accepts a Time Event (Vacation / Illness)
+    function notAcceptTimeEvent(Request $request)
+    {
+        if($request['thisUrl'] == '/admin/employer-single/') {
+            $thisView = Employee::find($request['thisViewId']);
+        } else {
+            $thisView = RetailStore::find($request['thisViewId']);
+        }
+
+        $eventId = $request['eventId'];
+
+        TimeEvent::where('time_event.id', $eventId)
+            ->update(array(
+                'accepted' => false,
+            ));
+
+
+        return redirect($request['thisUrl'] . $thisView->id . '/' . $request['thisDate']);
+    }
+
 
 }

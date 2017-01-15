@@ -53,7 +53,8 @@ Route::post('/changeWorktimeFix', 'EventController@changeWorktimeFixEvent');
 Route::post('/acceptTimeEvent', 'EventController@acceptTimeEvent');
 Route::post('/acceptAlldayEvent', 'EventController@acceptAlldayEvent');
 
-
+Route::post('/notAcceptTimeEvent', 'EventController@notAcceptTimeEvent');
+Route::post('/notAcceptAlldayEvent', 'EventController@notAcceptAlldayEvent');
 
 
 
