@@ -70,7 +70,7 @@
 
                 <!------------------------ SEARCH FIELD -------------------------------->
                 <select id="select-emp" class="form-control modal-input selectpicker col-xs-12"
-                        data - live - search="true" data-live-search="true"
+                        data-live-search="true"
                         name="select-emp" onchange="javascript:location.href = this.value;">
                     <option style="display: none;"> Search...</option>
                     @foreach($allRetailStores as $retailStore)
@@ -90,15 +90,46 @@
                     @endforeach
                 </select>
 
-                <div><h2>{{ $thisRetailStore->name }}</h2>
-                    <button class="form-control to-right modal-change-button" data-toggle="modal"
-                            data-target="#change-store">change
-                    </button>
+
+                <!-- Überschrift -->
+                <h2 class="header">{{ $thisRetailStore->name }}</h2>
+
+                <div class="space_emp col-xs-12"></div>
+
+                <button class="form-control to-right modal-change-button" data-toggle="modal"
+                        data-target="#change-store">change
+                </button>
+
+                <div class="space_emp col-xs-12 button-hide"></div>
+
+                <div class="col-xs-12 navigation-today button-hide">
+                    <div class="col-xs-4">
+                        <form method="GET"
+                              action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button class="set-size float-right" type="submit"><</button>
+                        </form>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <form method="GET"
+                              action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button class="set-size" type="submit">Today</button>
+                        </form>
+                    </div>
+
+                    <div class="col-xs-4">
+                        <form method="GET"
+                              action="{{ url('/admin/employer-planning') . '/' . $thisRetailStore->id . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                            <button class="set-size float-right" type="submit">></button>
+                        </form>
+                    </div>
                 </div>
+
+                <div class=" col-xs-12 space_emp"></div>
 
 
                 <!------------------------ NAIGATION -------------------------------->
-                <nav class="calendar-navigation">
+                <nav class="calendar-navigation button-show">
                     <div class="calendar-navigation-padding">
 
                         <div class="col-xs-6 navigation-today">
@@ -134,7 +165,7 @@
                 </div>
                 <table class="calendar-days-all-emp">
                     <tr class="week-date">
-                        <td></td>
+                        <td class="button-show"></td>
 
                         <!------------------- DATE ----------------------->
                         @for ($i = 0; $i < 7; $i++)
@@ -146,7 +177,7 @@
 
 
                     <tr class="week-days">
-                        <td>Employees</td>
+                        <td class="button-show">Employees</td>
 
 
                         <!------------------- WEEKDAY ----------------------->
@@ -163,9 +194,16 @@
                     <!------------------- EMPLOYEE ROW ----------------------->
                     @foreach($allEmployees as $employee)
                         @if($employee->retail_store_id == $thisRetailStore->id)
-                            <tr class="all-day">
 
-                                <td>{{ $employee->surname }} {{ $employee->forename }}</td>
+                            <tr class="button-hide">
+                                <td>{{ $employee->surname }} </td>
+
+                                <td>&nbsp;{{ $employee->forename }}</td>
+                            </tr>
+
+                            <tr class="all-day ">
+
+                                <td class="button-show">{{ $employee->surname }} {{ $employee->forename }}</td>
                             @for ($i = 0; $i < 7; $i++)
 
 
@@ -182,34 +220,51 @@
 
                                                     <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
                                                          onclick="openEventDropdown('allday-admin' + {{ $oneAlldayEvent->id }} + '')"
-                                                         draggable="true" id="div-allday-admin{{ $oneAlldayEvent->id }}">
+                                                         draggable="true"
+                                                         id="div-allday-admin{{ $oneAlldayEvent->id }}">
                                                         <p>{{ $oneAlldayEvent->name }}</p>
                                                         @if ( ($oneAlldayEvent->name == 'Vacation' || $oneAlldayEvent->name == 'Illness' ) && $oneAlldayEvent->accepted == 1)
                                                             <p class="event-accepted">accepted</p>
                                                         @endif
 
-                                                        <!------------------- VACATION ILLNESS ACCEPT ----------------------->
+                                                    <!------------------- VACATION ILLNESS ACCEPT ----------------------->
                                                         @if ( ($oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness" ) && $oneAlldayEvent->accepted == 0)
-                                                            <div id="allday-admin{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
-                                                                <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
-                                                                    <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
-                                                                    <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                                    <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
-                                                                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                                                                    <button class="add-event-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
+                                                            <div id="allday-admin{{ $oneAlldayEvent->id }}"
+                                                                 class="event-dropdown-content">
+                                                                <form method="POST"
+                                                                      action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
+                                                                    <input value="{{ $oneAlldayEvent->date }}"
+                                                                           style="display: none"/>
+                                                                    <input style="display: none;" name="thisViewId"
+                                                                           value="{{ $thisRetailStore->id }}"/>
+                                                                    <input style="display: none;" name="thisUrl"
+                                                                           value="/admin/employer-planning/"/>
+                                                                    <input style="display: none;" name="thisDate"
+                                                                           value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                                    <button class="add-event-button" name="eventId"
+                                                                            value="{{ $oneAlldayEvent->id }}">OK
+                                                                    </button>
                                                                 </form>
                                                             </div>
                                                         @endif
 
                                                     <!------------------- VACATION ILLNESS NOT-ACCEPT ----------------------->
                                                         @if ( ($oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness" ) && $oneAlldayEvent->accepted == 1)
-                                                            <div id="allday-admin{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
-                                                                <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
-                                                                    <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
-                                                                    <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                                    <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
-                                                                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                                                                    <button class="delete-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
+                                                            <div id="allday-admin{{ $oneAlldayEvent->id }}"
+                                                                 class="event-dropdown-content">
+                                                                <form method="POST"
+                                                                      action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
+                                                                    <input value="{{ $oneAlldayEvent->date }}"
+                                                                           style="display: none"/>
+                                                                    <input style="display: none;" name="thisViewId"
+                                                                           value="{{ $thisRetailStore->id }}"/>
+                                                                    <input style="display: none;" name="thisUrl"
+                                                                           value="/admin/employer-planning/"/>
+                                                                    <input style="display: none;" name="thisDate"
+                                                                           value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                                    <button class="delete-button" name="eventId"
+                                                                            value="{{ $oneAlldayEvent->id }}">-
+                                                                    </button>
                                                                 </form>
                                                             </div>
                                                         @endif
@@ -225,7 +280,7 @@
                             </tr>
 
                             <tr class="time-events">
-                                <td></td>
+                                <td class="button-show"></td>
 
                             @for ($i = 0; $i < 7; $i++)
 
@@ -243,7 +298,8 @@
 
                                                     <div class="drop-btn one-time-event {{ $oneTimeEvent->color }}"
                                                          onclick="openEventDropdown('time-admin' + {{ $oneTimeEvent->id }} + '')"
-                                                         draggable="true" id="div-time-admin{{ $oneTimeEvent->id }}" ondragstart="drag(event)">
+                                                         draggable="true" id="div-time-admin{{ $oneTimeEvent->id }}"
+                                                         ondragstart="drag(event)">
                                                         <p>{{ $oneTimeEvent->name }}</p>
                                                         <p>{{ $oneTimeEvent->from }}</p>
                                                         <p>{{ $oneTimeEvent->to }}</p>
@@ -252,16 +308,22 @@
                                                         @endif
 
                                                         <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                                                        <input style="display: none;" class="this-emp-id" value="{{ $employee->id }}">
+                                                        <input style="display: none;" class="this-emp-id"
+                                                               value="{{ $employee->id }}">
 
                                                         @if ( $oneTimeEvent->name == "Work"  || $oneTimeEvent->name ==  "Vacation"  || $oneTimeEvent->name == "Illness")
-                                                            <div id="time-admin{{ $oneTimeEvent->id }}" class="event-dropdown-content">
+                                                            <div id="time-admin{{ $oneTimeEvent->id }}"
+                                                                 class="event-dropdown-content">
 
                                                                 <!------------------- PUT TO WORKTIME FIX ----------------------->
 
                                                                 @if ( $oneTimeEvent->name == "Work")
-                                                                    <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})" class="add-event-button">+</button>
-                                                                    <button id="button-add-worktime-fix-event-admin" style="display: none;" data-toggle="modal" data-target="#change-button-event-time-admin">
+                                                                    <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})"
+                                                                            class="add-event-button">+
+                                                                    </button>
+                                                                    <button id="button-add-worktime-fix-event-admin"
+                                                                            style="display: none;" data-toggle="modal"
+                                                                            data-target="#change-button-event-time-admin">
                                                                         ⇄
                                                                     </button>
                                                                 @endif
@@ -269,24 +331,38 @@
 
                                                             <!------------------- VACATION ILLNESS ACCEPT ----------------------->
                                                                 @if ( ($oneTimeEvent->name == "Vacation" || $oneTimeEvent->name == "Illness" ) && $oneTimeEvent->accepted == 0)
-                                                                    <form method="POST" action="{{ url('admin/acceptTimeEvent') }}"> {{ csrf_field() }}
-                                                                        <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                                                                        <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                                        <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
-                                                                        <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                                                                        <button class="add-event-button" name="eventId" value="{{ $oneTimeEvent->id }}">OK</button>
+                                                                    <form method="POST"
+                                                                          action="{{ url('admin/acceptTimeEvent') }}"> {{ csrf_field() }}
+                                                                        <input value="{{ $oneTimeEvent->date }}"
+                                                                               style="display: none"/>
+                                                                        <input style="display: none;" name="thisViewId"
+                                                                               value="{{ $thisRetailStore->id }}"/>
+                                                                        <input style="display: none;" name="thisUrl"
+                                                                               value="/admin/employer-planning/"/>
+                                                                        <input style="display: none;" name="thisDate"
+                                                                               value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                                        <button class="add-event-button" name="eventId"
+                                                                                value="{{ $oneTimeEvent->id }}">OK
+                                                                        </button>
                                                                     </form>
                                                                 @endif
 
 
                                                             <!------------------- VACATION ILLNESS NOT-ACCEPT ----------------------->
                                                                 @if ( ($oneTimeEvent->name == "Vacation" || $oneTimeEvent->name == "Illness" ) && $oneTimeEvent->accepted == 1)
-                                                                    <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
-                                                                        <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                                                                        <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                                        <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
-                                                                        <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                                                                        <button class="delete-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
+                                                                    <form method="POST"
+                                                                          action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
+                                                                        <input value="{{ $oneTimeEvent->date }}"
+                                                                               style="display: none"/>
+                                                                        <input style="display: none;" name="thisViewId"
+                                                                               value="{{ $thisRetailStore->id }}"/>
+                                                                        <input style="display: none;" name="thisUrl"
+                                                                               value="/admin/employer-planning/"/>
+                                                                        <input style="display: none;" name="thisDate"
+                                                                               value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                                        <button class="delete-button" name="eventId"
+                                                                                value="{{ $oneTimeEvent->id }}">-
+                                                                        </button>
                                                                     </form>
                                                                 @endif
 
@@ -314,11 +390,11 @@
                 </div>
                 <table class="calendar-days-all-emp">
                     <tr class="week-date">
-                        <td></td>
+                        <td class="button-show"></td>
 
                         <!------------------- DATE ----------------------->
                         @for ($i = 0; $i < 7; $i++)
-                            <td>
+                            <td >
                                 {{ $week[$i]->format('d.m.') }}
                             </td>
                         @endfor
@@ -326,7 +402,7 @@
 
 
                     <tr class="week-days">
-                        <td>Employees</td>
+                        <td class="button-show">Employees</td>
 
 
                         <!------------------- WEEKDAY ----------------------->
@@ -344,10 +420,14 @@
                     @foreach($allEmployees as $employee)
                         @if($employee->retail_store_id == $thisRetailStore->id)
 
+                            <tr class="all-day button-hide">
+
+                                <td>{{ $employee->surname }}</td> <td>&nbsp;{{ $employee->forename }}</td>
+                            </tr>
 
                             <tr class="all-day">
 
-                                <td>{{ $employee->surname }} {{ $employee->forename }}</td>
+                                <td class="button-show">{{ $employee->surname }} {{ $employee->forename }}</td>
                             @for ($i = 0; $i < 7; $i++)
 
 
@@ -365,7 +445,8 @@
 
                                                     <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
                                                          onclick="openEventDropdown('allday-admin-final' + {{ $oneAlldayEvent->id }} + '')"
-                                                         draggable="true" id="div-allday-admin{{ $oneAlldayEvent->id }}">
+                                                         draggable="true"
+                                                         id="div-allday-admin{{ $oneAlldayEvent->id }}">
                                                         <p>{{ $oneAlldayEvent->name }}</p>
                                                         @if ( ($oneAlldayEvent->name == 'Vacation' || $oneAlldayEvent->name == 'Illness' ) && $oneAlldayEvent->accepted == 1)
                                                             <p class="event-accepted">accepted</p>
@@ -373,26 +454,42 @@
 
                                                     <!------------------- VACATION ILLNESS ACCEPT ----------------------->
                                                         @if ( ($oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness" ) && $oneAlldayEvent->accepted == 0)
-                                                            <div id="allday-admin-final{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
-                                                                <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
-                                                                    <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
-                                                                    <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                                    <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
-                                                                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                                                                    <button class="add-event-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
+                                                            <div id="allday-admin-final{{ $oneAlldayEvent->id }}"
+                                                                 class="event-dropdown-content">
+                                                                <form method="POST"
+                                                                      action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
+                                                                    <input value="{{ $oneAlldayEvent->date }}"
+                                                                           style="display: none"/>
+                                                                    <input style="display: none;" name="thisViewId"
+                                                                           value="{{ $thisRetailStore->id }}"/>
+                                                                    <input style="display: none;" name="thisUrl"
+                                                                           value="/admin/employer-planning/"/>
+                                                                    <input style="display: none;" name="thisDate"
+                                                                           value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                                    <button class="add-event-button" name="eventId"
+                                                                            value="{{ $oneAlldayEvent->id }}">OK
+                                                                    </button>
                                                                 </form>
                                                             </div>
                                                         @endif
 
                                                     <!------------------- VACATION ILLNESS NOT-ACCEPT ----------------------->
                                                         @if ( ($oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness" ) && $oneAlldayEvent->accepted == 1)
-                                                            <div id="allday-admin-final{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
-                                                                <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
-                                                                    <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
-                                                                    <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                                    <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
-                                                                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                                                                    <button class="delete-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
+                                                            <div id="allday-admin-final{{ $oneAlldayEvent->id }}"
+                                                                 class="event-dropdown-content">
+                                                                <form method="POST"
+                                                                      action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
+                                                                    <input value="{{ $oneAlldayEvent->date }}"
+                                                                           style="display: none"/>
+                                                                    <input style="display: none;" name="thisViewId"
+                                                                           value="{{ $thisRetailStore->id }}"/>
+                                                                    <input style="display: none;" name="thisUrl"
+                                                                           value="/admin/employer-planning/"/>
+                                                                    <input style="display: none;" name="thisDate"
+                                                                           value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                                    <button class="delete-button" name="eventId"
+                                                                            value="{{ $oneAlldayEvent->id }}">-
+                                                                    </button>
                                                                 </form>
                                                             </div>
                                                         @endif
@@ -410,7 +507,7 @@
 
 
                             <tr class="time-events">
-                                <td></td>
+                                <td class="button-show"></td>
                             @for ($i = 0; $i < 7; $i++)
 
 
@@ -480,7 +577,8 @@
 
                                                     <div class="drop-btn one-time-event {{ $oneTimeEvent->color }}"
                                                          onclick="openEventDropdown('time-admin-final' + {{ $oneTimeEvent->id }} + '')"
-                                                         draggable="true" id="div-time-admin{{ $oneTimeEvent->id }}" ondragstart="drag(event)">
+                                                         draggable="true" id="div-time-admin{{ $oneTimeEvent->id }}"
+                                                         ondragstart="drag(event)">
                                                         <p>{{ $oneTimeEvent->name }}</p>
                                                         <p>{{ $oneTimeEvent->from }}</p>
                                                         <p>{{ $oneTimeEvent->to }}</p>
@@ -489,16 +587,22 @@
                                                         @endif
 
                                                         <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                                                        <input style="display: none;" class="this-emp-id" value="{{ $employee->id }}">
+                                                        <input style="display: none;" class="this-emp-id"
+                                                               value="{{ $employee->id }}">
 
                                                         @if ( $oneTimeEvent->name == "Work"  || $oneTimeEvent->name ==  "Vacation"  || $oneTimeEvent->name == "Illness")
-                                                            <div id="time-admin-final{{ $oneTimeEvent->id }}" class="event-dropdown-content">
+                                                            <div id="time-admin-final{{ $oneTimeEvent->id }}"
+                                                                 class="event-dropdown-content">
 
                                                                 <!------------------- PUT TO WORKTIME FIX ----------------------->
 
                                                                 @if ( $oneTimeEvent->name == "Work")
-                                                                    <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})" class="add-event-button">+</button>
-                                                                    <button id="button-add-worktime-fix-event-admin" style="display: none;" data-toggle="modal" data-target="#change-button-event-time-admin">
+                                                                    <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})"
+                                                                            class="add-event-button">+
+                                                                    </button>
+                                                                    <button id="button-add-worktime-fix-event-admin"
+                                                                            style="display: none;" data-toggle="modal"
+                                                                            data-target="#change-button-event-time-admin">
                                                                         ⇄
                                                                     </button>
                                                                 @endif
@@ -506,24 +610,38 @@
 
                                                             <!------------------- VACATION ILLNESS ACCEPT ----------------------->
                                                                 @if ( ($oneTimeEvent->name == "Vacation" || $oneTimeEvent->name == "Illness" ) && $oneTimeEvent->accepted == 0)
-                                                                    <form method="POST" action="{{ url('admin/acceptTimeEvent') }}"> {{ csrf_field() }}
-                                                                        <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                                                                        <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                                        <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
-                                                                        <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                                                                        <button class="add-event-button" name="eventId" value="{{ $oneTimeEvent->id }}">OK</button>
+                                                                    <form method="POST"
+                                                                          action="{{ url('admin/acceptTimeEvent') }}"> {{ csrf_field() }}
+                                                                        <input value="{{ $oneTimeEvent->date }}"
+                                                                               style="display: none"/>
+                                                                        <input style="display: none;" name="thisViewId"
+                                                                               value="{{ $thisRetailStore->id }}"/>
+                                                                        <input style="display: none;" name="thisUrl"
+                                                                               value="/admin/employer-planning/"/>
+                                                                        <input style="display: none;" name="thisDate"
+                                                                               value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                                        <button class="add-event-button" name="eventId"
+                                                                                value="{{ $oneTimeEvent->id }}">OK
+                                                                        </button>
                                                                     </form>
                                                                 @endif
 
 
                                                             <!------------------- VACATION ILLNESS NOT-ACCEPT ----------------------->
                                                                 @if ( ($oneTimeEvent->name == "Vacation" || $oneTimeEvent->name == "Illness" ) && $oneTimeEvent->accepted == 1)
-                                                                    <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
-                                                                        <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                                                                        <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                                        <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
-                                                                        <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                                                                        <button class="delete-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
+                                                                    <form method="POST"
+                                                                          action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
+                                                                        <input value="{{ $oneTimeEvent->date }}"
+                                                                               style="display: none"/>
+                                                                        <input style="display: none;" name="thisViewId"
+                                                                               value="{{ $thisRetailStore->id }}"/>
+                                                                        <input style="display: none;" name="thisUrl"
+                                                                               value="/admin/employer-planning/"/>
+                                                                        <input style="display: none;" name="thisDate"
+                                                                               value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                                        <button class="delete-button" name="eventId"
+                                                                                value="{{ $oneTimeEvent->id }}">-
+                                                                        </button>
                                                                     </form>
                                                                 @endif
 
@@ -534,7 +652,6 @@
 
                                                 @endif
                                             @endforeach
-
 
 
                                         </td>
