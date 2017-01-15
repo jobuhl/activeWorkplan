@@ -33,6 +33,8 @@
             </div>
         </div>
 
+        <div class="space_emp col-xs-12 button-hide"></div>
+
         <aside id="aside-overview" class="col-xs-12 calendar-navigation button-show">
 
             <div class="col-xs-4 navigation-today">
@@ -137,7 +139,12 @@
                         @endfor
             </tr>
         </table>
+
+        <div class="space_emp col-xs-12"></div>
+
     </div>
+
+
 @endsection
 
 @section('js')

@@ -18,6 +18,10 @@
 
         <div class="space_emp col-xs-12"></div>
 
+        <h2 class=" col-xs-12 header">Costum Workplan</h2>
+
+        <div class="space_emp col-xs-12"></div>
+
         <div class="col-xs-12 navigation-today button-hide">
             <div class="col-xs-4">
                 <form method="GET"
@@ -204,6 +208,8 @@
                         @endfor
             </tr>
         </table>
+
+        <div class="space_emp col-xs-12"></div>
 
     </div>
 
