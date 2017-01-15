@@ -381,7 +381,7 @@
                 <br>
 
 
-                <!------------------------ ACCOUNT DETAILS -------------------------------->
+                <!------------------------- ACCOUNT DETAILS -------------------------------->
                 <button class="form-control set-right modal-change-button space-to-top-bottom" type="submit"
                         data-toggle="modal" data-target="#change" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
                     Change
