@@ -12,7 +12,7 @@
     float: right;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .navigation-today {
         padding-left: 0;
     }

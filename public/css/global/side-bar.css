@@ -153,7 +153,7 @@
 
 @media screen and (min-width: 1200px) {
     .left-button-side-bar {
-        padding: 0 2px wpx 0;
+        padding: 0 2px 2px 0;
     }
 
     .right-button-side-bar {
@@ -161,7 +161,7 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .left-button-side-bar {
         padding: 0 2px 2px 0;
     }
