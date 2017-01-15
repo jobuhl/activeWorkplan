@@ -26,7 +26,7 @@
             <h2 style="display: none">fakeheading</h2>
 
             <article class="col-xs-12 subheader">
-                <h3>Send us an email or just say Hello!</h3>
+                <h2>Send us an email or just say Hello!</h2>
             </article>
 
             <!--  links -->
@@ -52,7 +52,7 @@
             <aside class=" test col-sm-9 col-xs-12 setheightright">
                 <textarea class="form-control sendtextfeld" type="text" placeholder="Message...." ></textarea>
                 <p></p>
-                <button class="form-control buttonbottom" type="submit">Send</button>
+                <button class="form-control buttonbottom add-button" type="submit">Send</button>
             </aside>
 
         </section>
