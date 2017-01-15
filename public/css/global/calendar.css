@@ -350,15 +350,31 @@
     .button-hide{
         display: block;
     }
+
+    .set-size{
+        font-size: 150%;
+    }
+
+    .float-right{
+        float: right;
+    }
+
 }
 
 @media screen and (min-width: 768px) {
 
     .button-show{
         display: block;
+
     }
+
+
 
     .button-hide{
         display: none;
     }
+}
+
+.header{
+    text-align:center;
 }

@@ -8,10 +8,32 @@
 
 @section('content')
 
-    <section class="fake-body container emp-planning">
-        <h2>Fix Workplan</h2>
+    <div class="fake-body container emp-planning">
+        <h2 class=" col-xs-12 header">Fix Workplan</h2>
 
-        <aside id="aside-overview" class="col-xs-12 calendar-navigation">
+        <div class="space_emp col-xs-12"></div>
+
+        <div class="col-xs-12 navigation-today button-hide">
+            <div class="col-xs-4">
+                <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                    <button class="set-size float-right" type="submit"><</button>
+                </form>
+            </div>
+
+            <div class="col-xs-4">
+                <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                    <button class="set-size" type="submit">Today</button>
+                </form>
+            </div>
+
+            <div class="col-xs-4">
+                <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                    <button class="set-size float-right" type="submit">></button>
+                </form>
+            </div>
+        </div>
+
+        <aside id="aside-overview" class="col-xs-12 calendar-navigation button-show">
 
             <div class="col-xs-4 navigation-today">
                 <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
@@ -36,14 +58,14 @@
 
         <table class="calendar-days-one-emp">
             <tr class="week-date">
-                <td></td>
+                <td class="button-show"></td>
                 @for ($i = 0; $i < 7; $i++)
                     <td>
                         {{ $week[$i]->format('d.m.') }}</td>
                 @endfor
             </tr>
-            <tr class="week-days">
-                <td></td>
+            <tr class="week-days ">
+                <td class="button-show"></td>
                 @for ($i = 0; $i < 7; $i++)
                     @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                         <td class="today">
@@ -55,7 +77,7 @@
             </tr>
 
             <tr class="all-day">
-                <td>Allday</td>
+                <td class="button-show">Allday</td>
                 @for ($i = 0; $i < 7; $i++)
                     @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                         <td class="today">
@@ -74,7 +96,7 @@
             </tr>
 
             <tr class="time-events">
-                <td>Time-Events</td>
+                <td class="button-show">Time-Events</td>
                 @for ($i = 0; $i < 7; $i++)
                     @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                         <td class="today">
@@ -104,7 +126,7 @@
             </tr>
 
             <tr class="add-buttons">
-                <td></td>
+                <td class="button-show"></td>
                 @for ($i = 0; $i < 7; $i++)
                     @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                         <td class="today">
@@ -115,7 +137,7 @@
                         @endfor
             </tr>
         </table>
-    </section>
+    </div>
 @endsection
 
 @section('js')
