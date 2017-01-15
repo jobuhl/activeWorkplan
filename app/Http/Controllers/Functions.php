@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 class Functions extends Controller
 {
 
-
     function thisCompany()
     {
         return DB::table('company')
@@ -41,6 +40,13 @@ class Functions extends Controller
         return DB::table('retail_store')
             ->where('retail_store.company_id', $companyId)
             ->get();
+    }
+
+    function amountOfRetailStoresOfCompany($companyId)
+    {
+        return DB::table('retail_store')
+            ->where('retail_store.company_id', $companyId)
+            ->count();
     }
 
     function oneAddress($addressId)
@@ -79,36 +85,45 @@ class Functions extends Controller
             ->get();
     }
 
-    function timeEventOfEmployee($employeeId)
+    function timeEventOfEmployee($employeeId, $week)
     {
         return DB::table('time_event')
+            ->where('time_event.date', '>=', $week[0])
+            ->where('time_event.date', '<=', $week[6])
             ->join('category', 'category.id', '=', 'time_event.category_id')
             ->where('time_event.employee_id', $employeeId)
             ->select('time_event.id as id', 'date', 'from', 'to', 'color', 'category.name as name')
             ->get();
     }
 
-    function worktimeFixOfEmployee($employeeId)
+    function worktimeFixOfEmployee($employeeId, $week)
     {
         return DB::table('worktime_fix')
+            ->where('worktime_fix.date', '>=', $week[0])
+            ->where('worktime_fix.date', '<=', $week[6])
             ->join('category', 'category.id', '=', 'worktime_fix.category_id')
             ->where('worktime_fix.employee_id', $employeeId)
             ->select('worktime_fix.id as id', 'date', 'from', 'to', 'color', 'category.name as name')
             ->get();
     }
 
-    function alldayEventOfEmployee($employeeId)
+    function alldayEventOfEmployee($employeeId, $week)
     {
+
         return DB::table('allday_event')
+            ->where('allday_event.date', '>=', $week[0])
+            ->where('allday_event.date', '<=', $week[6])
             ->join('category', 'category.id', '=', 'allday_event.category_id')
             ->where('allday_event.employee_id', $employeeId)
             ->select('allday_event.id as id', 'date', 'color', 'category.name as name')
             ->get();
     }
 
-    function allTimeEventOfCompany($companyId)
+    function allTimeEventOfCompany($companyId, $week)
     {
         return DB::table('time_event')
+            ->where('time_event.date', '>=', $week[0])
+            ->where('time_event.date', '<=', $week[6])
             ->join('category', 'category.id', '=', 'time_event.category_id')
             ->join('employees', 'employees.id', '=', 'time_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
@@ -117,9 +132,11 @@ class Functions extends Controller
             ->get();
     }
 
-    function allWorktimeFixOfCompany($companyId)
+    function allWorktimeFixOfCompany($companyId, $week)
     {
         return DB::table('worktime_fix')
+            ->where('worktime_fix.date', '>=', $week[0])
+            ->where('worktime_fix.date', '<=', $week[6])
             ->join('category', 'category.id', '=', 'worktime_fix.category_id')
             ->join('employees', 'employees.id', '=', 'worktime_fix.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
@@ -128,9 +145,11 @@ class Functions extends Controller
             ->get();
     }
 
-    function allAlldayEventOfCompany($companyId)
+    function allAlldayEventOfCompany($companyId, $week)
     {
         return DB::table('allday_event')
+            ->where('allday_event.date', '>=', $week[0])
+            ->where('allday_event.date', '<=', $week[6])
             ->join('category', 'category.id', '=', 'allday_event.category_id')
             ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
@@ -161,6 +180,7 @@ class Functions extends Controller
             clone $monday->add(new DateInterval('P1D'))
         );
     }
+
 
 
 

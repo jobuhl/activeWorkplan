@@ -17,11 +17,12 @@ Route::get('/employee-workplan/{date}', function ($urlDate) {
 
     $thisEmployee = oneEmployee(Auth::user()->id);
 
-    $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
-    $manyWorktimeEvent = worktimeFixOfEmployee($thisEmployee->id);
-    $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
-
     $week = getWeekArray($urlDate);
+
+    $manyTimeEvent = timeEventOfEmployee($thisEmployee->id, $week);
+    $manyWorktimeEvent = worktimeFixOfEmployee($thisEmployee->id, $week);
+    $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id, $week);
+
 
     return view('employee.employee-workplan')
         ->with('manyTimeEvent', $manyTimeEvent)
@@ -40,11 +41,13 @@ Route::get('/employee-planning/{date}', function ($urlDate) {
 
     $category = allCategory();
 
-    $thisEmployee = oneEmployee(Auth::user()->id);
-    $manyTimeEvent = timeEventOfEmployee($thisEmployee->id);
-    $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id);
-
     $week = getWeekArray($urlDate);
+
+    $thisEmployee = oneEmployee(Auth::user()->id);
+    $manyTimeEvent = timeEventOfEmployee($thisEmployee->id, $week);
+    $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id, $week);
+
+
 
     return view('employee.employee-planning')
         ->with('manyTimeEvent', $manyTimeEvent)

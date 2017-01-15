@@ -126,12 +126,14 @@ function admOverview($urlDate)
     $allRetailStores = allRetailStoresOfCompany($company->id);
     $allEmployees = allEmployeesOfCompany($company->id);
 
-    $manyTimeEvent = allTimeEventOfCompany($company->id);
-    $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
-    $manyAlldayEvent = allAlldayEventOfCompany($company->id);
+    $week = getWeekArray($urlDate);
+
+    $manyTimeEvent = allTimeEventOfCompany($company->id, $week);
+    $manyWorktimeEvent = allWorktimeFixOfCompany($company->id, $week);
+    $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
-    $week = getWeekArray($urlDate);
+
 
     if ($amountOfRetailStores == 0) {
         return view('admin.home')
@@ -170,9 +172,9 @@ function admPlanning($thisRetailStoreId, $urlDate)
         $allEmployees = allEmployeesOfCompany($company->id);
         $addressRetailStore = oneAddress($thisRetailStore->address_id);
 
-        $manyTimeEvent = allTimeEventOfCompany($company->id);
-        $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
-        $manyAlldayEvent = allAlldayEventOfCompany($company->id);
+        $manyTimeEvent = allTimeEventOfCompany($company->id, $week);
+        $manyWorktimeEvent = allWorktimeFixOfCompany($company->id, $week);
+        $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
 
         return view('admin.employer-planning')
             ->with('allRetailStores', $allRetailStores)
@@ -201,11 +203,13 @@ function admPlanningSingle($employeeId, $urlDate)
     $thisRetailStore = thisRetailStore($thisEmployee->retail_store_id);
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
-    $manyTimeEvent = allTimeEventOfCompany($company->id);
-    $manyWorktimeEvent = allWorktimeFixOfCompany($company->id);
-    $manyAlldayEvent = allAlldayEventOfCompany($company->id);
-
     $week = getWeekArray($urlDate);
+
+    $manyTimeEvent = allTimeEventOfCompany($company->id, $week);
+    $manyWorktimeEvent = allWorktimeFixOfCompany($company->id, $week);
+    $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
+
+
 
     if ($amountOfRetailStores == 0) {
         return view('admin.employer-planning-single-employee')
