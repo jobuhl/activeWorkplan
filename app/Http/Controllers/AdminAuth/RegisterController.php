@@ -10,7 +10,6 @@ use App\Company;
 
 use App\RetailStore;
 use Validator;
-use Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
@@ -62,8 +61,8 @@ class RegisterController extends Controller
             'password' => 'required|min:6|confirmed',
             'company-name' => 'required|max:255',
             'street' => 'required|max:255',
-            'nr' => 'required|max:255',
-            'postcode' => 'required|max:255',
+            'street_nr' => 'required|max:255',
+//            'postcode' => 'required|max:255',
             'city' => 'required|max:255',
             'country' => 'required|max:255',
             'store-name' => 'required|max:255',
@@ -87,7 +86,7 @@ class RegisterController extends Controller
             'name' => $request['name'],
             'forename' => $request['forename'],
             'email' => $request['email'],
-            'password' => Hash::make($request['password']),
+            'password' => bcrypt($request['password']),
         ]);
 
         // Datensatz nur erstellen, wenn noch nicht vorhanden

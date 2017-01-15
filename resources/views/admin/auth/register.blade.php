@@ -16,8 +16,8 @@
                 <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
                 <div class="modal-sub-sign-up">
 
-                    <p class="col-xs-3 signin-head1" onclick="nextStep(1)">Account</p>
-                    <p class="col-xs-3 signin-head2" onclick="nextStep(2)">Private</p>
+                    <p class="col-xs-3 signin-head1" onclick="nextStep(1)">Basic</p>
+                    <p class="col-xs-3 signin-head2" onclick="nextStep(2)">User</p>
                     <p class="col-xs-3 signin-head2" onclick="nextStep(3)">Company</p>
                     <p class="col-xs-3 signin-head2" onclick="nextStep(4)">Store</p>
 
@@ -138,20 +138,19 @@
                             </div>
                         </div>
 
-                        {{--Integer valiedierung--}}
-                        <div class="form-group{{ $errors->has('nr') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('street_nr') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" name="nr" placeholder="Street Nr."
-                                       value="{{ old('nr') }}" autofocus>
-                                @if ($errors->has('nr'))
-                                    <span class="help-block"><strong>{{ $errors->first('nr') }}</strong></span>
+                                <input class="form-control" type="text" name="street_nr" placeholder="Street Nr."
+                                       value="{{ old('street_nr') }}" autofocus>
+                                @if ($errors->has('street_nr'))
+                                    <span class="help-block"><strong>{{ $errors->first('street_nr') }}</strong></span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('postcode') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" name="postcode2" placeholder="Postcode"
+                                <input class="form-control" type="text" name="postcode" placeholder="Postcode"
                                        value="{{ old('postcode') }}" autofocus>
                                 @if ($errors->has('postcode'))
                                     <span class="help-block"><strong>{{ $errors->first('postcode') }}</strong></span>
@@ -209,44 +208,44 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('nr') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('street_nr2') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
-                                <input class="form-control" type="text" name="nr" placeholder="Street Nr."
-                                       value="{{ old('nr') }}" autofocus>
-                                @if ($errors->has('nr'))
-                                    <span class="help-block"><strong>{{ $errors->first('nr') }}</strong></span>
+                                <input class="form-control" type="text" name="street_nr2" placeholder="Street Nr."
+                                       value="{{ old('street_nr2') }}" autofocus>
+                                @if ($errors->has('street_nr2'))
+                                    <span class="help-block"><strong>{{ $errors->first('street_nr2') }}</strong></span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('postcode') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('postcode2') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="postcode2" placeholder="Postcode"
-                                       value="{{ old('postcode') }}" autofocus>
-                                @if ($errors->has('postcode'))
-                                    <span class="help-block"><strong>{{ $errors->first('postcode') }}</strong></span>
+                                       value="{{ old('postcode2') }}" autofocus>
+                                @if ($errors->has('postcode2'))
+                                    <span class="help-block"><strong>{{ $errors->first('postcode2') }}</strong></span>
                                 @endif
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('city2') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="city2" placeholder="City"
-                                       value="{{ old('city') }}" autofocus>
-                                @if ($errors->has('city'))
-                                    <span class="help-block"><strong>{{ $errors->first('city') }}</strong></span>
+                                       value="{{ old('city2') }}" autofocus>
+                                @if ($errors->has('city2'))
+                                    <span class="help-block"><strong>{{ $errors->first('city2') }}</strong></span>
                                 @endif
                             </div>
                         </div>
 
 
 
-                        <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
+                        <div class="form-group{{ $errors->has('country2') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="country2" placeholder="Country"
-                                       value="{{ old('country') }}" autofocus>
-                                @if ($errors->has('country'))
-                                    <span class="help-block"><strong>{{ $errors->first('country') }}</strong></span>
+                                       value="{{ old('country2') }}" autofocus>
+                                @if ($errors->has('country2'))
+                                    <span class="help-block"><strong>{{ $errors->first('country2') }}</strong></span>
                                 @endif
                             </div>
                         </div>

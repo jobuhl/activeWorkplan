@@ -29,7 +29,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-
     public $redirectTo = '/admin/home';
 
     /**
