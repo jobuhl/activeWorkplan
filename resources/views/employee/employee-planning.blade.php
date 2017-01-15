@@ -14,10 +14,41 @@
 
 @section('content')
 
-    <section class="fake-body container emp-planning">
-        <h2>Proposal working time</h2>
+    <div class="fake-body container emp-planning">
 
-        <aside id="aside-overview" class="col-xs-12 calendar-navigation">
+        <div class="space_emp"></div>
+
+        <div class="col-xs-12 navigation-today button-hide">
+            <div class="col-xs-4">
+            <form method="GET"
+                  action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                <button type="submit"><</button>
+            </form>
+            </div>
+
+            <div class="col-xs-4">
+            <form method="GET"
+                  action="{{ url('/employee/employee-planning') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                <button type="submit">Today</button>
+            </form>
+            </div>
+
+            <div class="col-xs-4">
+            <form method="GET"
+                  action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                <button type="submit">></button>
+            </form>
+            </div>
+
+            <div class="col-xs-12">
+                <p>
+                    {{ $week[0]->format('d. - ') }}
+                    {{ $week[6]->format('d. M. Y') }}
+                </p>
+            </div>
+        </div>
+
+        <aside id="aside-overview" class="col-xs-12 calendar-navigation button-show">
 
             <div class="col-xs-4 navigation-today">
                 <form method="GET"
@@ -43,28 +74,19 @@
                 </p>
             </div>
 
-            <div class="col-xs-4 print-email">
-                <button onclick="sendEmail()">
-                    <span class="glyphicon glyphicon-envelope"></span> E-Mail
-                </button>
-                <button onclick="printing()">
-                    <span class="glyphicon glyphicon-print"></span> Print
-                </button>
-            </div>
-
             <br>
         </aside>
 
         <table class="calendar-days-one-emp">
             <tr class="week-date">
-                <td></td>
+                <td class="button-show"></td>
                 @for ($i = 0; $i < 7; $i++)
                     <td>
                         {{ $week[$i]->format('d.m.') }}</td>
                 @endfor
             </tr>
             <tr class="week-days">
-                <td></td>
+                <td class="button-show"></td>
                 @for ($i = 0; $i < 7; $i++)
                     @if((new DateTime())->format('d-m-Y') == $week[$i]->format('d-m-Y'))
                         <td class="today">
@@ -79,12 +101,12 @@
             {{--action="{{ url('/employee/changeDraggedAlldayEvent') }}"> {{ csrf_field() }}--}}
 
             <tr class="all-day">
-                <td>Allday</td>
+                <td class="button-show">Allday</td>
                 @for ($i = 0; $i < 7; $i++)
                     @if((new DateTime())->format('d-m-Y') == $week[$i]->format('d-m-Y'))
                         <td class="today">
                     @else
-                        <td ondrop="drop(event,{{ $week[$i]->format('d-m-Y') }})" ondragover="allowDrop(event)">
+                        <td ondrop="drop(event{{ $week[$i]->format('d-m-Y') }})" ondragover="allowDrop(event)">
                             @endif
                             @foreach($manyAlldayEvent as $oneAlldayEvent)
                                 @if( (new DateTime($oneAlldayEvent->date))->format('d-m-Y') == $week[$i]->format('d-m-Y'))
@@ -127,7 +149,7 @@
 
 
             <tr class="time-events">
-                <td>Time-Events</td>
+                <td class="button-show">Time-Events</td>
                 @for ($i = 0; $i < 7; $i++)
                     @if((new DateTime())->format('d-m-Y') == $week[$i]->format('d-m-Y'))
                         <td class="today">
@@ -175,7 +197,7 @@
             </tr>
 
             <tr class="add-buttons">
-                <td></td>
+                <td class="button-show"></td>
                 @for ($i = 0; $i < 7; $i++)
                     @if((new DateTime())->format('d-m-Y') == $week[$i]->format('d-m-Y'))
                         <td class="today">
@@ -187,7 +209,7 @@
             </tr>
         </table>
 
-    </section>
+    </div>
 
     @include('employee.includes.modals-event-add')
     @include('employee.includes.modals-event-change-allday')

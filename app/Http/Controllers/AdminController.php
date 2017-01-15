@@ -117,7 +117,6 @@ class AdminController extends Controller
 
             $admin = Admin::find(Auth::user()->id);
 
-            dd('hi');
             Admin::where('admins.id', $admin->id)
                 ->update(array(
                     'password' => Hash::make($request['password']),

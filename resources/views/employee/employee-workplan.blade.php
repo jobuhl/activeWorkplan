@@ -31,16 +31,6 @@
                     {{ $week[6]->format('d. M. Y') }}
                 </p>
             </div>
-
-            <div class="col-xs-4 print-email">
-                <button onclick="sendEmail()">
-                    <span class="glyphicon glyphicon-envelope"></span> E-Mail
-                </button>
-                <button onclick="printing()">
-                    <span class="glyphicon glyphicon-print"></span> Print
-                </button>
-            </div>
-
             <br>
         </aside>
 

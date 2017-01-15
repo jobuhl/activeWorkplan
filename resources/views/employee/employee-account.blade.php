@@ -7,19 +7,26 @@
 @section('content')
 
     <!-- body -->
-    <section class="fake-body container">
-       
-        <section class="container">
-           
-            <div class="row-col-12">
-                <h2 class="modal-ueberschrift">User Details</h2>
+    <div class="fake-body container">
 
-                <div class="col-xs-12 col-sm-6 space-cap">
-                <button class="form-control to-right modal-change-button " type="submit" data-toggle="modal"
-                        data-target="#change-button">
-                    Change
-                </button>
+        <div class="container">
+
+            <div class="row-col-12">
+
+                <div class="set-right button-show">
+                    <button class="form-control  yellow my-account-button" type="submit" data-toggle="modal"
+                            data-target="#change-button">
+                        Change
+                    </button>
                 </div>
+
+                <div class="button-hide">
+                    <button class="form-control yellow my-account-button" type="submit" data-toggle="modal"
+                            data-target="#change-button">
+                        Change
+                    </button>
+                </div>
+
 
                 <table class="table-account">
                     <tr>
@@ -64,8 +71,9 @@
                     </tr>
                     <tr>
                         <td>Address of Retail Store</td>
-                        <td>{{ $address->street }} {{ $address->street_nr }}
-                            , {{ $address->postcode }} {{ $address->city }}, {{ $address->country }}
+                        <td><p>{{ $address->street }} {{ $address->street_nr }}</p>
+                            {{ $address->postcode }} {{ $address->city }}
+                               {{ $address->country }}
                         </td>
                     </tr>
                     <tr>
@@ -78,9 +86,10 @@
 
             </div>
 
+            <div class="space-cap"></div>
 
-        </section>
-    </section>
+        </div>
+    </div>
 
 
     @include('employee.includes.change-emp')
