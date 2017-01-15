@@ -61,6 +61,8 @@
                     <div class="col-xs-4">
                         <h4>Workplans</h4>
                     </div>
+
+
                     <div class="col-xs-4 calendar-navigation-p">
                         <p>
                             {{ $week[0]->format('d. - ') }}
@@ -75,7 +77,9 @@
 
 
                     <table class="calendar-days-all-emp">
-
+                        <div class="print-email table-head-store">
+                            <a class="table-head-a">{{ $retailStore->id }} {{ $retailStore->name }}</a>
+                        </div>
 
                         <!------------------- DATE ----------------------->
                         <tr class="week-date">
