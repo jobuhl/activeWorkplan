@@ -49,18 +49,12 @@
     display: inline;
 }
 /* Allgemeine Button-Anpassungen */
-.navigation-today button,
-.print-email >  button {
+.navigation-today button {
     background-color: var(--main-middle-dark-color);
     border: none;
     border-radius: 3px;
     padding: 3px 7px 3px 7px;
     color: var(--main-text-white); /* Text-Farbe */
-}
-
-.glyphicon-envelope,
-.glyphicon-print {
-    color: var(--main-text-white);
 }
 
 .emp-planning .calendar-navigation {
@@ -72,9 +66,9 @@
 .calendar-navigation-p {
     text-align: center;
 }
-.print-email > button {
-    float: right; /* rechts am Rand haltend */
-    margin-left: 5px; /* Abstand zwischen Print und email button **/
+
+.to-right {
+    float: right;
 }
 
 
@@ -336,6 +330,9 @@
     background-color: var(--main-active-color);
     cursor: pointer;
 }
+
+
+/* --------------------------- DESIGN MOBILE DEVICE --------------------------- */
 
 .space_emp{
     margin-top: 20px;

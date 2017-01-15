@@ -13,6 +13,9 @@
 
             <div class="row-col-12">
 
+                <h2 class="col-xs-12 header">Account Details</h2>
+
+
                 <div class="set-right button-show">
                     <button class="form-control  yellow my-account-button" type="submit" data-toggle="modal"
                             data-target="#change-button">

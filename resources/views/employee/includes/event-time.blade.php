@@ -25,7 +25,7 @@
             <aside class="col-xs-12 col-sm-4 aside-left-add">Time</aside>
             <!-- rechts -->
             <aside class="col-xs-12 col-sm-8 aside-right">
-                <p><input class="datepicker inputmodal form-control space-cap" type="date" name="date"
+                <p><input class="get-date-from-button-emp datepicker inputmodal form-control space-cap" type="date" name="date"
                           placeholder="Date"/></p>
             </aside>
         </div>

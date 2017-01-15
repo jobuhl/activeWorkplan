@@ -94,3 +94,8 @@ zu definieren, sowie eine generelle css für die jeweiligen Klassen
         display: none;
     }
 }
+
+
+.header{
+    text-align:center;
+}

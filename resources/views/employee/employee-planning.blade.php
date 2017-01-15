@@ -16,41 +16,38 @@
 
     <div class="fake-body container emp-planning">
 
-        <div class="space_emp col-xs-12"></div>
+        {{--<div class="space_emp col-xs-12"></div>--}}
 
-        <h2 class=" col-xs-12 header">Costum Workplan</h2>
+        <h2 class=" col-xs-12 header">Proposals</h2>
 
-        <div class="space_emp col-xs-12"></div>
+        {{--<div class="space_emp col-xs-12"></div>--}}
 
         <div class="col-xs-12 navigation-today button-hide">
             <div class="col-xs-4">
-                <form method="GET"
-                      action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                <form method="GET" action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button class="set-size float-right" type="submit"><</button>
                 </form>
             </div>
 
             <div class="col-xs-4">
-                <form method="GET"
-                      action="{{ url('/employee/employee-planning') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                <form method="GET" action="{{ url('/employee/employee-planning') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button class="set-size" type="submit">Today</button>
                 </form>
             </div>
 
             <div class="col-xs-4">
-                <form method="GET"
-                      action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                <form method="GET" action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button class="set-size float-right" type="submit">></button>
                 </form>
             </div>
         </div>
 
-        <div class=" col-xs-12 space_emp"></div>
+        <div class="col-xs-12 space_emp"></div>
 
 
         <aside id="aside-overview" class="col-xs-12 calendar-navigation button-show">
 
-            <div class="col-xs-4 navigation-today">
+            <div class="col-xs-6 navigation-today">
                 <form method="GET"
                       action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button type="submit"><</button>
@@ -67,14 +64,12 @@
                 </form>
             </div>
 
-            <div class="col-xs-4">
-                <p>
+            <div class="col-xs-6">
+                <p class="to-right">
                     {{ $week[0]->format('d. - ') }}
                     {{ $week[6]->format('d. M. Y') }}
                 </p>
             </div>
-
-            <br>
         </aside>
 
         <table class="calendar-days-one-emp">
@@ -97,9 +92,6 @@
                         @endfor
             </tr>
 
-            {{--<form name="changeDraggedAlldayEvent" method="POST"--}}
-            {{--action="{{ url('/employee/changeDraggedAlldayEvent') }}"> {{ csrf_field() }}--}}
-
             <tr class="all-day">
                 <td class="button-show">Allday</td>
                 @for ($i = 0; $i < 7; $i++)
@@ -117,6 +109,9 @@
                                          ondragstart="drag(event)">
                                         <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
                                         <p>{{ $oneAlldayEvent->name }}</p>
+                                        @if ( ($oneAlldayEvent->name == 'Vacation' || $oneAlldayEvent->name == 'Illness' ) && $oneAlldayEvent->accepted == 1)
+                                            <p class="event-accepted">accepted</p>
+                                        @endif
 
                                         <div id="allday{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
 
@@ -145,7 +140,6 @@
                         </td>
                         @endfor
             </tr>
-            {{--</form>--}}
 
 
             <tr class="time-events">
@@ -167,6 +161,10 @@
                                         <p>{{ $oneTimeEvent->name }}</p>
                                         <p>{{ $oneTimeEvent->from }}</p>
                                         <p>{{ $oneTimeEvent->to }}</p>
+                                        @if ( ($oneTimeEvent->name == 'Vacation' || $oneTimeEvent->name == 'Illness' ) && $oneTimeEvent->accepted == 1)
+                                            <p class="event-accepted">accepted</p>
+                                        @endif
+
                                         <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
 
                                         <div id="time{{ $oneTimeEvent->id }}" class="event-dropdown-content">
@@ -204,9 +202,11 @@
                     @else
                         <td>
                             @endif
-                            <a class="round-button" data-toggle="modal" data-target="#add-button-event">+</a></td>
+                            <a class="round-button" onclick="openAddEventModal('{{ $week[$i]->format('m/d/Y') }}')" >+</a>
+                        </td>
                         @endfor
             </tr>
+            <button id="emp-button-add-event"  data-toggle="modal" data-target="#add-button-event" style="display: none;"></button>
         </table>
 
         <div class="space_emp col-xs-12"></div>

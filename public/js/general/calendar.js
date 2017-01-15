@@ -121,3 +121,13 @@ function openChangeWorktimeFixModal(divEventId) {
     $("#input-js-on-change-worktime-fix-employee-id-admin").val(employeeId);
     $("#input-js-on-change-worktime-fix-event-id-admin").val(eventId);
 }
+
+// Round-Button Employee-Planning Add Store
+function openAddEventModal(date) {
+
+    // change modal oeffnen
+    $("#emp-button-add-event").click();
+
+    // uebertragen der daten in das change-modal
+    $(".get-date-from-button-emp").val(date);
+}
