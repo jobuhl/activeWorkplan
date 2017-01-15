@@ -39,6 +39,10 @@
     .overview.list .br-under-navigation {
         display: none;
     }
+
+    .lower-list {
+        display: none;
+    }
 }
 
 /* Ueberschrift im small header */
@@ -149,21 +153,21 @@
 
 @media screen and (min-width: 1200px) {
     .left-button-side-bar {
-        padding: 0 2px 0 0;
+        padding: 0 2px wpx 0;
     }
 
     .right-button-side-bar {
-        padding: 0 0 0 2px;
+        padding: 0 0 2px 2px;
     }
 }
 
 @media screen and (max-width: 768px) {
     .left-button-side-bar {
-        padding: 0 2px 0 0;
+        padding: 0 2px 2px 0;
     }
 
     .right-button-side-bar {
-        padding: 0 0 0 2px;
+        padding: 0 0 2px 2px;
     }
 }
 

@@ -19,19 +19,14 @@
         </div>
     </section>
 
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <p class="middle-bold">Stores</p>
 
     <ul class="lower-list">
 
+        <li><a class="middle-bold">Stores</a></li>
 
         @foreach($allRetailStores as $retailStore)
             <li class="arrow-down">
-                <a href="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->id }} {{ $retailStore->name }}</a>
+                <a href="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</a>
                 <a style="padding: 13.5px;" class="glyphicon glyphicon-chevron-down"></a>
                 <ul>
                     @foreach($allEmployees as $employee)
