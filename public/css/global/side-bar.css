@@ -139,46 +139,32 @@
 }
 
 
-/* ----------------------- A-CHANGES IN SUB-MENU ------------------------ */
 
-.side-bar .a-changes a {
-    float: left;
+/* ----------------------- BUTTON ADD STORE / EMPLOYEE ----------------------- */
+.left-button-side-bar,
+.right-button-side-bar {
+    padding: 0 0 2px 0;
+
 }
 
-.side-bar .a-changes a:first-child {
-    width: 49%;
+@media screen and (min-width: 1200px) {
+    .left-button-side-bar {
+        padding: 0 2px 0 0;
+    }
+
+    .right-button-side-bar {
+        padding: 0 0 0 2px;
+    }
 }
 
-.side-bar .a-changes a:not(:first-child) {
-    width: 17%;
-    text-align: center;
-    border-left: 1px solid var(--main-border-color);
-    cursor: pointer;
-    color: var(--main-text-white);
-}
+@media screen and (max-width: 768px) {
+    .left-button-side-bar {
+        padding: 0 2px 0 0;
+    }
 
-.side-bar .a-changes a:nth-child(2) {
-    background-color: var(--main-green-button);
-}
-
-.side-bar .a-changes a:nth-child(3) {
-    background-color: var(--main-yellow-button);
-}
-
-.side-bar .a-changes a:nth-child(4) {
-    background-color: var(--main-red-button);
-}
-
-/* on HOVER */
-.side-bar .a-changes a:not(:first-child):hover {
-    opacity: 0.9;
-    cursor: pointer;
-}
-
-/* on ACTIVE */
-.side-bar .a-changes a:not(:first-child):active {
-    opacity: 0.8;
-    cursor: pointer;
+    .right-button-side-bar {
+        padding: 0 0 0 2px;
+    }
 }
 
 /* ----------------------- STORES ARROWS DOWN ----------------------- */

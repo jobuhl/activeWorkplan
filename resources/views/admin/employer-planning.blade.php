@@ -69,7 +69,7 @@
 
 
                 <!------------------------ SEARCH FIELD -------------------------------->
-                <select id="select-emp" class="form-control to-right modal-input space-cap selectpicker col-xs-12"
+                <select id="select-emp" class="form-control modal-input selectpicker col-xs-12"
                         data - live - search="true" data-live-search="true"
                         name="select-emp" onchange="javascript:location.href = this.value;">
                     <option style="display: none;"> Search...</option>

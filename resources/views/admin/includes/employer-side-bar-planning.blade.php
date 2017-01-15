@@ -1,8 +1,29 @@
 <section class="fake-body sidebarPHP">
 
 
+    <section>
+        <div class="col-lg-6 col-sm-12 col-xs-6 left-button-side-bar">
+            <button class="form-control set-right add-button space-to-top-bottom" type="submit"
+                    data-toggle="modal"
+                    data-target="#add-button-emp">
+                Employee Add
+            </button>
+        </div>
+
+        <div class="col-lg-6 col-sm-12 col-xs-6 right-button-side-bar">
+            <button class="col-xs-6 form-control set-right add-button space-to-top-bottom" type="submit"
+                    data-toggle="modal"
+                    data-target="#add-button-store">
+                Store Add
+            </button>
+        </div>
+    </section>
 
     <br>
+    <br>
+    <br>
+    <br>
+
     <p class="middle-bold">Stores</p>
 
     <ul class="lower-list">
@@ -27,19 +48,6 @@
 
     <br>
 
-    <section>
-        <button class="form-control set-right add-button space-to-top-bottom" type="submit"
-                data-toggle="modal"
-                data-target="#add-button-emp" >
-            Emp
-        </button>
-
-        <button class="form-control set-right add-button space-to-top-bottom" type="submit"
-                data-toggle="modal"
-                data-target="#add-button-store">
-            Store
-        </button>
-    </section>
 
     @include('admin.includes.add-store')
     @include('includes.employer-modals-employee')
