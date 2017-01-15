@@ -62,11 +62,15 @@ class RegisterController extends Controller
             'company-name' => 'required|max:255',
             'street' => 'required|max:255',
             'street_nr' => 'required|max:255',
-//            'postcode' => 'required|max:255',
+            'postcode' => 'required|max:255',
             'city' => 'required|max:255',
             'country' => 'required|max:255',
             'store-name' => 'required|max:255',
-
+            'street2' => 'required|max:255',
+            'street_nr2' => 'required|max:255',
+            'postcode2' => 'required|max:255',
+            'city2' => 'required|max:255',
+            'country2' => 'required|max:255',
 
         ]);
     }
