@@ -9,7 +9,7 @@
 @section('content')
 
     @if($amountOfRetailStores != 0)
-        <section class="fake-body container">
+        <div class="fake-body container">
             <h2 style="display: none">fakeheading</h2>
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar overview">
@@ -42,15 +42,18 @@
                 <nav class="calendar-navigation">
 
                     <div class="col-xs-4 navigation-today">
-                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET"
+                              action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit"><</button>
                         </form>
 
-                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET"
+                              action="{{ url('/admin/employer-overview') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit">Today</button>
                         </form>
 
-                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET"
+                              action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit">></button>
                         </form>
                     </div>
@@ -69,22 +72,14 @@
 
 
                 @foreach($allRetailStores as $retailStore)
-                    <div class="print-email table-head-store">
-                        <a class="table-head-a">{{ $retailStore->id }} {{ $retailStore->name }}</a>
-                        <button onclick="sendEmail()">
-                            <span class="glyphicon glyphicon-envelope"></span> E-Mail
-                        </button>
-                        <button onclick="printing()">
-                            <span class="glyphicon glyphicon-print"></span> Print
-                        </button>
-                    </div>
+
 
                     <table class="calendar-days-all-emp">
 
 
                         <!------------------- DATE ----------------------->
                         <tr class="week-date">
-                            <td></td>
+                            <td class="button-show"></td>
                             @for ($i = 0; $i < 7; $i++)
                                 <td>
                                     {{ $week[$i]->format('d.m.') }}
@@ -95,7 +90,7 @@
 
                         <!------------------- WEEKDAY ----------------------->
                         <tr class="week-days">
-                            <td>Employees</td>
+                            <td class="button-show">Employees</td>
                         @for ($i = 0; $i < 7; $i++)
 
 
@@ -113,8 +108,14 @@
                         <!------------------- EMPLOYEE ROW ----------------------->
                         @foreach($allEmployees as $employee)
                             @if($employee->retail_store_id == $retailStore->id)
-                                <tr class="all-day">
-                                    <td>{{ $employee->surname }} {{ $employee->forename }}</td>
+                                <tr class="button-hide">
+                                    <td>{{ $employee->surname }} </td>
+
+                                    <td>&nbsp;{{ $employee->forename }}</td>
+                                </tr>
+
+                                <tr class="all-day ">
+                                    <td class="button-show">{{ $employee->surname }} {{ $employee->forename }}</td>
                                 @for ($i = 0; $i < 7; $i++)
 
 
@@ -132,8 +133,8 @@
                                                     && (( $oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness") && $oneAlldayEvent->accepted == 1)
                                                     && $oneAlldayEvent->employee_id == $employee->id)
                                                         <div class="one-allday-event {{ $oneAlldayEvent->color }}"
-                                                        draggable="true">
-                                                        <p>{{ $oneAlldayEvent->name }}</p>
+                                                             draggable="true">
+                                                            <p>{{ $oneAlldayEvent->name }}</p>
                                                         </div>
                                                     @endif
                                                 @endforeach
@@ -145,7 +146,7 @@
 
                                 <!------------------- TIME EVENT ----------------------->
                                 <tr class="time-events">
-                                    <td></td>
+                                    <td class="button-show"></td>
                                     @for ($i = 0; $i < 7; $i++)
                                         @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                             <td class="today">
@@ -188,7 +189,7 @@
 
             </aside>
 
-        </section>
+        </div>
     @endif
 @endsection
 

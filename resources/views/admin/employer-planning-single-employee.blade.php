@@ -55,7 +55,7 @@
                 </div>
                 <table class="calendar-days-all-emp">
                     <tr class="week-date">
-                        <td></td>
+                        <td class="button-show"></td>
 
                         <!------------------- DATE ----------------------->
                         @for ($i = 0; $i < 7; $i++)
@@ -67,7 +67,7 @@
 
 
                     <tr class="week-days">
-                        <td>Employees</td>
+                        <td class="button-show">Employees</td>
 
 
                         <!------------------- WEEKDAY ----------------------->
@@ -84,7 +84,7 @@
 
                     <!------------------- EMPLOYEE ROW ----------------------->
                     <tr class="all-day">
-                        <td>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
+                        <td class="button-show">{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
                     @for ($i = 0; $i < 7; $i++)
 
 
@@ -146,7 +146,7 @@
                     </tr>
 
                     <tr class="time-events">
-                        <td></td>
+                        <td class="button-show"></td>
 
                     @for ($i = 0; $i < 7; $i++)
 
@@ -233,11 +233,11 @@
                 </div>
                 <table class="calendar-days-all-emp">
                     <tr class="week-date">
-                        <td></td>
+                        <td class="button-show"></td>
 
                         <!------------------- DATE ----------------------->
                         @for ($i = 0; $i < 7; $i++)
-                            <td>
+                            <td >
                                 {{ $week[$i]->format('d.m.') }}
                             </td>
                         @endfor
@@ -245,7 +245,7 @@
 
 
                     <tr class="week-days">
-                        <td>Employee</td>
+                        <td class="button-show">Employee</td>
 
 
                         <!------------------- WEEKDAY ----------------------->
@@ -261,7 +261,7 @@
 
                     <tr class="all-day">
 
-                        <td>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
+                        <td class="button-show">{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
                     @for ($i = 0; $i < 7; $i++)
 
 
@@ -323,7 +323,7 @@
 
                     <!------------------- EMPLOYEE ROW ----------------------->
                     <tr class="time-events">
-                        <td></td>
+                        <td class="button-show"></td>
                     @for ($i = 0; $i < 7; $i++)
 
 
