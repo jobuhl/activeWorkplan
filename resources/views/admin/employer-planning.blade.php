@@ -91,6 +91,7 @@
                 </select>
 
 
+
                 <!-- Überschrift -->
                 <h2 class="header">{{ $thisRetailStore->name }}</h2>
 
@@ -720,6 +721,8 @@
                         data-target="#delete-store">delete
                 </button>
             </aside>
+
+            <div class=" col-xs-12 space_emp"></div>
 
         </div>
 
