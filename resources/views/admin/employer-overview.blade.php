@@ -42,18 +42,15 @@
                 <nav class="calendar-navigation">
 
                     <div class="col-xs-4 navigation-today">
-                        <form method="GET"
-                              action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit"><</button>
                         </form>
 
-                        <form method="GET"
-                              action="{{ url('/admin/employer-overview') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit">Today</button>
                         </form>
 
-                        <form method="GET"
-                              action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
+                        <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit">></button>
                         </form>
                     </div>
@@ -83,6 +80,9 @@
                     </div>
 
                     <table class="calendar-days-all-emp">
+
+
+                        <!------------------- DATE ----------------------->
                         <tr class="week-date">
                             <td></td>
                             @for ($i = 0; $i < 7; $i++)
@@ -93,9 +93,13 @@
                         </tr>
 
 
+                        <!------------------- WEEKDAY ----------------------->
                         <tr class="week-days">
                             <td>Employees</td>
-                            @for ($i = 0; $i < 7; $i++)
+                        @for ($i = 0; $i < 7; $i++)
+
+
+                            <!------------------- IF TODAY ----------------------->
                                 @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                     <td class="today">
                                 @else
@@ -105,29 +109,41 @@
                                     @endfor
                         </tr>
 
+
+                        <!------------------- EMPLOYEE ROW ----------------------->
                         @foreach($allEmployees as $employee)
                             @if($employee->retail_store_id == $retailStore->id)
                                 <tr class="all-day">
                                     <td>{{ $employee->surname }} {{ $employee->forename }}</td>
-                                    @for ($i = 0; $i < 7; $i++)
+                                @for ($i = 0; $i < 7; $i++)
+
+
+                                    <!------------------- IF TODAY ----------------------->
                                         @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                             <td class="today">
                                         @else
                                             <td>
-                                                @endif
+                                            @endif
+
+
+                                            <!------------------- ALLDAY EVENT ----------------------->
                                                 @foreach($manyAlldayEvent as $oneAlldayEvent)
                                                     @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                                                    && (( $oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness") && $oneAlldayEvent->accepted == 1)
                                                     && $oneAlldayEvent->employee_id == $employee->id)
                                                         <div class="one-allday-event {{ $oneAlldayEvent->color }}"
-                                                             draggable="true">
-                                                            <p>{{ $oneAlldayEvent->name }}</p>
+                                                        draggable="true">
+                                                        <p>{{ $oneAlldayEvent->name }}</p>
                                                         </div>
                                                     @endif
                                                 @endforeach
+
                                             </td>
                                             @endfor
                                 </tr>
 
+
+                                <!------------------- TIME EVENT ----------------------->
                                 <tr class="time-events">
                                     <td></td>
                                     @for ($i = 0; $i < 7; $i++)
@@ -147,8 +163,11 @@
                                                         </div>
                                                     @endif
                                                 @endforeach
+
+
                                                 @foreach($manyTimeEvent as $oneTimeEvent)
-                                                    @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y') && $oneTimeEvent->name != 'Work'
+                                                    @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                                                    && (( $oneTimeEvent->name == "Vacation" || $oneTimeEvent->name == "Illness") && $oneTimeEvent->accepted == 1)
                                                     && $oneTimeEvent->employee_id == $employee->id)
                                                         <div class="one-time-event {{ $oneTimeEvent->color }}"
                                                              draggable="true">
