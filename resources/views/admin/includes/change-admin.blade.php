@@ -303,10 +303,6 @@
                     <input class="inputmodal form-control space-cap-inner " type="password"
                            placeholder="New password" name="password">
 
-                    <input class="inputmodal form-control space-cap-inner " type="password"
-                           placeholder="Confirm new password" name="password">
-
-
                 </div>
 
                 <!-- Modal footer-->

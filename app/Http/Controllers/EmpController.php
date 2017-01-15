@@ -87,11 +87,14 @@ class EmpController extends Controller
     }
 
     public function updatePassword(Request $request){
+
         $employee = Employee::find(Auth::user()->id);
 
 
         Employee::where('employees.id', $employee->id)
             ->update(array(
+
+
 
             ));
 

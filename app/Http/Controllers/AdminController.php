@@ -78,6 +78,7 @@ class AdminController extends Controller
                 'admin_id' => $admin->id
             ));
 
+
         return redirect('/admin/employer-account/' . $request['thisDate']);
     }
 
@@ -105,21 +106,23 @@ class AdminController extends Controller
     protected function update_password(Request $request)
     {
 
-//        $admin = Admin::find(Auth::user()->id);
-//
-//        if (Hash::check('old-password', $admin->password)) {
-//            dd($admin);
-//        }
-//        dd('hahaha');
-//        if ($admin->password == ($request['old-password'])) {
-//            dd($admin);
-//            Admin::where('admins.id', $admin->id)
-//                ->update(array(
-//                    'password' => $request['password'],
-//                ));
-//        }
-//
-//        return redirect('/admin/employer-account/' . $request['thisDate']);
+
+        if (Hash::check($request['old-password'], Auth::user()->password)) {
+
+            $admin = Admin::find(Auth::user()->id);
+
+            dd('hi');
+            Admin::where('admins.id', $admin->id)
+                ->update(array(
+                    'password' => Hash::make($request['password']),
+                ));
+
+
+
+        }
+
+
+        return redirect('/admin/employer-account/' . $request['thisDate']);
 
     }
 
