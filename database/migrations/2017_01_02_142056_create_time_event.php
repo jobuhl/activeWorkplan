@@ -18,6 +18,7 @@ class CreateTimeEvent extends Migration
         $table->date('date');
         $table->string('from');
         $table->string('to');
+        $table->boolean('accepted');
 
         $table->integer('employee_id')->unsigned();
         $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');

@@ -50,6 +50,10 @@ Route::post('/addWorktimeFix', 'EventController@addWorktimeFixEvent');
 Route::post('/deleteWorktimeFix', 'EventController@deleteWorktimeFixEvent');
 Route::post('/changeWorktimeFix', 'EventController@changeWorktimeFixEvent');
 
+Route::post('/acceptTimeEvent', 'EventController@acceptTimeEvent');
+Route::post('/acceptAlldayEvent', 'EventController@acceptAlldayEvent');
+
+
 
 
 

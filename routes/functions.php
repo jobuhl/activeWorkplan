@@ -86,7 +86,7 @@ function timeEventOfEmployee($employeeId, $week)
         ->where('time_event.date', '<=', $week[6])
         ->join('category', 'category.id', '=', 'time_event.category_id')
         ->where('time_event.employee_id', $employeeId)
-        ->select('time_event.id as id', 'date', 'from', 'to', 'color', 'category.name as name')
+        ->select('time_event.id as id', 'date', 'from', 'to', 'color', 'category.name as name', 'accepted')
         ->get();
 }
 
@@ -109,7 +109,7 @@ function alldayEventOfEmployee($employeeId, $week)
         ->where('allday_event.date', '<=', $week[6])
         ->join('category', 'category.id', '=', 'allday_event.category_id')
         ->where('allday_event.employee_id', $employeeId)
-        ->select('allday_event.id as id', 'date', 'color', 'category.name as name')
+        ->select('allday_event.id as id', 'date', 'color', 'category.name as name', 'accepted')
         ->get();
 }
 
@@ -122,7 +122,7 @@ function allTimeEventOfCompany($companyId, $week)
         ->join('employees', 'employees.id', '=', 'time_event.employee_id')
         ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
         ->where('retail_store.company_id', $companyId)
-        ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color')
+        ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color', 'accepted')
         ->get();
 }
 
@@ -148,7 +148,7 @@ function allAlldayEventOfCompany($companyId, $week)
         ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
         ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
         ->where('retail_store.company_id', $companyId)
-        ->select('allday_event.id as id', 'category.name as name', 'date', 'employee_id','color')
+        ->select('allday_event.id as id', 'category.name as name', 'date', 'employee_id','color', 'accepted')
         ->get();
 }
 

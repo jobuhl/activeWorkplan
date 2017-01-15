@@ -16,6 +16,7 @@ class CreateAlldayEvent extends Migration
     Schema::create('allday_event', function (Blueprint $table) {
         $table->increments('id');
         $table->date('date');
+        $table->boolean('accepted');
 
         $table->integer('employee_id')->unsigned();
         $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');

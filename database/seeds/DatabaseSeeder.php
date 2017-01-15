@@ -238,6 +238,7 @@ class DatabaseSeeder extends Seeder
                 if (($day + rand(-3, 3)) % rand(2, 5) == 0) {
                     AlldayEvent::create(array(
                         'date' => (new DateTime())->modify($day . ' days'),
+                        'accepted' => false,
                         'employee_id' => $emp->id,
                         'category_id' => rand(2, 7),
                     ));
@@ -282,6 +283,7 @@ class DatabaseSeeder extends Seeder
                             'date' => (new DateTime())->modify($day . ' days'),
                             'from' => $time[$i] . ':' . $min[rand(0, 3)],
                             'to' => $time[$i + 1] . ':' . $min[rand(0, 3)],
+                            'accepted' => false,
                             'employee_id' => $emp->id,
                             'category_id' => $cat,
                         ));

@@ -8,5 +8,5 @@ class TimeEvent extends Model
 {
     protected $table = 'time_event';
 
-    protected $fillable = ['id', 'date', 'from', 'to', 'employee_id', 'category_id'];
+    protected $fillable = ['id', 'date', 'from', 'to', 'employee_id', 'category_id', 'accepted'];
 }
