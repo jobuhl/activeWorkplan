@@ -236,7 +236,7 @@ class DatabaseSeeder extends Seeder
         $this->addEmployee('Steffen', 'Rahm');
 
 
-        /* ---------------------- Time Event -------------------------- */
+        /* ----------------------- Time Event -------------------------- */
 
         $allEmployees = DB::table('employees')
             ->get();
