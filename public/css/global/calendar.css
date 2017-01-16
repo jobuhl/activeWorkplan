@@ -443,7 +443,10 @@
     margin-top: 0px;
 }
 
-/* button an rechter seite */
-.set-right-buttom {
-    width: 100px;
+@media screen and (min-width: 768px) {
+    /* button an rechter seite */
+    .set-right-buttom {
+        width: 100px;
+        float: right;
+    }
 }

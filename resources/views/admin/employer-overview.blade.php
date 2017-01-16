@@ -60,7 +60,7 @@
 
                 <nav class="calendar-navigation button-show">
 
-                    <div class="col-xs-4 navigation-today">
+                    <div class="col-xs-6 navigation-today">
                         <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit"><</button>
                         </form>
@@ -74,12 +74,8 @@
                         </form>
                     </div>
 
-                    <div class="col-xs-4">
-                        <h4>Workplans</h4>
-                    </div>
 
-
-                    <div class="col-xs-4 calendar-navigation-p">
+                    <div class="col-xs-6 calendar-navigation-p">
                         <p>
                             {{ $week[0]->format('d. - ') }}
                             {{ $week[6]->format('d. M. Y') }}

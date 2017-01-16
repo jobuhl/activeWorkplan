@@ -64,6 +64,8 @@
     <br>
 
 
+    {{--@include('includes.employer-searchbar-employee')--}}
+    {{--@include('includes.employer-searchbar-store')--}}
     @include('admin.includes.add-store')
     @include('includes.employer-modals-employee')
     @include('admin.includes.add-emp')

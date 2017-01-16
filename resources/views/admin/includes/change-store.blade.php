@@ -72,7 +72,7 @@
                         <!-- rechts 2-->
                         <aside class="col-xs-3 col-sm-2 {{ $errors->has('nr') ? ' has-error' : '' }}">
                             <input class="inputmodal form-control  modal-input space-cap" type="text"
-                                   value="{{ $addressRetailStore->street_nr }}" name="nr" placeholder="Street Nr.">
+                                   value="{{ $addressRetailStore->street_nr }}" name="nr" placeholder="Nr.">
                             @if ($errors->has('nr'))
                                 <span class="help-block"><strong>{{ $errors->first('nr') }}</strong></span>
                             @endif

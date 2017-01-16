@@ -80,6 +80,11 @@
      color: var(--main-text-black);
  }
 
+.side-bar li:first-child a {
+    border-top: none;
+
+}
+
 /* Current Store nicht anzeigen, wenn bildsfhrim breit */
 @media screen and (min-width: 768px) {
     .list .current-selected-store {

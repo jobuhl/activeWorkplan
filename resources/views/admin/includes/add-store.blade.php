@@ -71,10 +71,8 @@
                                     </span>
                             @endif
                         </aside>
-
-                        <!-- rechts -->
                         <aside class="col-xs-3 col-sm-2 {{ $errors->has('street_nr') ? ' has-error' : '' }}">
-                            <input class=" inputmodal form-control space-cap" type="text" name="street_nr" placeholder="Street Nr.">
+                            <input class=" inputmodal form-control space-cap" type="text" name="street_nr" placeholder="Nr.">
 
                             @if ($errors->has('street_nr'))
                                 <span class="help-block">
