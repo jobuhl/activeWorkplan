@@ -1,9 +1,6 @@
 @extends('general.layout.general-start')
 
-
-
 @section('css')
-    <!-- wird dies überhaupt angewandt?-->
     <link rel="stylesheet" type="text/css" href="{{asset('css/general/index.css')}}">
 @endsection
 
@@ -237,6 +234,4 @@
             <aside class="col-md-2"></aside>
         </div>
     </div>
-
-
 @endsection

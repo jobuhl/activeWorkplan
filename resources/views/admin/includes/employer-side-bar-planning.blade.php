@@ -63,11 +63,8 @@
 
     <br>
 
-
-    {{--@include('includes.employer-searchbar-employee')--}}
-    {{--@include('includes.employer-searchbar-store')--}}
     @include('admin.includes.add-store')
-    @include('includes.employer-modals-employee')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
     @include('admin.includes.add-emp')
 
 
