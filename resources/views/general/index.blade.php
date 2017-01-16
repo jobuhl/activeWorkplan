@@ -10,8 +10,6 @@
 @section('content')
     <!-- Body -->
 
-
-
     <div class="backgroundheadindex">
 
         <aside class="col-xs-12 col-sm-6 index-image-aside my-hidden-small">

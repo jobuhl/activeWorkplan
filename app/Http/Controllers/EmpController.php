@@ -71,8 +71,8 @@ class EmpController extends Controller
 
         $this->validate($request, [
 
-            'forename' => 'required|max:255|',
-            'name' => 'required|max:255|',
+            'forename' => 'required|max:255',
+            'name' => 'required|max:255',
 
         ]);
 
@@ -81,6 +81,8 @@ class EmpController extends Controller
                 'forename' => $request['forename'],
                 'name' => $request['name'],
             ));
+
+        $request->session()->flash('status', 'Task was successful!');
 
         return redirect('/employee/employee-account/' . $request['thisDate']);
     }

@@ -1,3 +1,6 @@
+
+
+
 <div class="modal-body">
     <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/login') }}">
         {{ csrf_field() }}
@@ -55,7 +58,4 @@
         </div>
     </form>
 </div>
-
-
-
 
