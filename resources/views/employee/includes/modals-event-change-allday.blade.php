@@ -63,7 +63,3 @@
         </div>
     </div>
 </div>
-
-@section('js')
-    <script type="text/javascript" src="{{ asset('/js/employee/event.js') }}"></script>
-@endsection

@@ -75,7 +75,7 @@
         </section>
     </section>
 
-@include('admin.includes.change-admin')
+    @include('admin.includes.change-admin')
     @include('admin.includes.delete-admin')
 
 

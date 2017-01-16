@@ -13,15 +13,6 @@
             <h2 style="display: none">fakeheading</h2>
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar overview">
-
-                {{--<div class="row headline" draggable="true">--}}
-                    {{--<aside class="col-xs-2 middle-bold"></aside>--}}
-                    {{--<aside class="col-xs-8 middle-bold"><p>Stores</p></aside>--}}
-                    {{--<aside class="col-xs-2 middle-bold">--}}
-                        {{--<p class="glyphicon glyphicon-chevron-down"></p>--}}
-                    {{--</aside>--}}
-                {{--</div>--}}
-
                 <ul>
                     <li><a class="middle-bold">Stores</a></li>
                     <li><input class="input-sidebar" type="text" placeholder="Search Store..."></li>

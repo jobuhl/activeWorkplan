@@ -4,7 +4,6 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/employee/modal-event.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
-
 @endsection
 
 @section('content')
@@ -160,5 +159,7 @@
 
 @section('js')
     <script type="text/javascript" src="{{ asset('/js/employee/workplan.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/employee/event.js') }}"></script>
+
 
 @endsection

@@ -22,9 +22,6 @@
 
                 <br>
 
-                <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
-
-
                 <!-- JavaScript Methoden in SignUp.Js-->
                 <div class="modal-body">
                     <div id="modal-body-event-allday">
@@ -42,7 +39,3 @@
 
     </div>
 </div>
-
-@section('js')
-    <script type="text/javascript" src="{{ asset('/js/employee/event.js') }}"></script>
-@endsection

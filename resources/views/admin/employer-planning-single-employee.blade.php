@@ -478,12 +478,12 @@
 
     @include('admin.includes.modals-event-add-worktime-fix')
     @include('admin.includes.modals-event-change-worktime-fix')
-
+    @include('admin.includes.change-emp')
+    @include('admin.includes.delete-emp')
 
 @endsection
 
-@include('admin.includes.change-emp')
-@include('admin.includes.delete-emp')
+
 
 @section('js')
     <script src="{{asset('js/general/side-bar.js')}}"></script>
