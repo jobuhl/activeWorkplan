@@ -12,8 +12,8 @@ Route::get('/employer-overview/{date}', function ($urlDate) {
     return admOverview($urlDate);
 })->name('home');
 
-Route::get('employer-planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
-    return admPlanning($thisRetailStoreId, $urlDate);
+Route::get('employer-planning/{id}/{date}/{check?}', function ($thisRetailStoreId, $urlDate, $check) {
+    return admPlanning($thisRetailStoreId, $urlDate, $check);
 })->name('home');
 
 Route::get('/employer-single/{id}/{date}', function ($employeeId, $urlDate) {
@@ -165,9 +165,13 @@ function admOverview($urlDate)
     }
 }
 
-function admPlanning($thisRetailStoreId, $urlDate)
+function admPlanning($thisRetailStoreId, $urlDate, $check)
 {
     authUser();
+
+    if ($check == null || $check == 0) {
+        $check = 0;
+    }
 
     $company = thisCompany();
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
@@ -199,7 +203,8 @@ function admPlanning($thisRetailStoreId, $urlDate)
             ->with('manyAlldayEvent', $manyAlldayEvent)
             ->with('addressRetailStore', $addressRetailStore)
             ->with('amountOfRetailStores', $amountOfRetailStores)
-            ->with('week', $week);
+            ->with('week', $week)
+            ->with('check', $check);
     }
 
 

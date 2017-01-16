@@ -10,7 +10,42 @@
 
     @if($amountOfRetailStores != 0)
 
+        @if (count($errors) > 0)
+
+            <div class="alert alert-danger">
+
+                <ul>
+                    @foreach($errors -> all() as $error)
+                        <li style="margin-left: 10px">{{$error}}</li>
+                    @endforeach
+
+                </ul>
+            </div>
+        @endif
+
+            @if ($check == 1)
+
+                <div class="alert alert-danger">
+
+                    <ul>
+                        @foreach($errors -> all() as $error)
+                            <li style="margin-left: 10px">{{$error}}</li>
+                        @endforeach
+
+                    </ul>
+                </div>
+            @endif
+
+
+        <div>{{$check}}</div>
         <div class="fake-body container">
+
+
+
+
+
+
+
             <div class="row">
                 <br>
                 <aside class="col-xs-12 col-sm-3 side-bar">

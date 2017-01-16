@@ -62,7 +62,7 @@ class StoreController extends Controller
             'address_id' => $newAddress->id
         ));
 
-        return redirect('/admin/employer-planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
+        return redirect('/admin/employer-planning/' . $thisRetailStore->id . '/' . $request['thisDate'] . '/' . 1);
     }
 
     public function change(Request $request)
@@ -122,7 +122,7 @@ class StoreController extends Controller
             ->where('retail_store.company_id', $company->id)
             ->get();
 
-        return redirect('/admin/employer-planning/' . $store->id . '/' . $request['thisDate']);
+        return redirect('/admin/employer-planning/' . $store->id . '/' . $request['thisDate'])->with('check','1');
 
     }
 
