@@ -15,20 +15,32 @@
             </div>
 
             <!-- Body-->
+            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/deleteAdmin') }}">
+                {{ csrf_field() }}
             <div class="modal-body">
                <h5  class="select-ueberschrift"> Do you really want to delete all accounts of your company?</h5>
+
+                <div class=" form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
+                        <input id="password" type="password" class="form-control" name="password"
+                               placeholder="Password">
+                        @if ($errors->has('password'))
+                            <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                        @endif
+                </div>
             </div>
 
             <div class="modal-footer">
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/deleteAdmin') }}">
-                    {{ csrf_field() }}
+                <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                     <button class="form-control  delete-button modal-bottom" type="submit">
                         Delete
                     </button>
-                </form>
+
             </div>
             <!-- Modal footer-->
-
+            </form>
         </div>
     </div>
 

@@ -23,21 +23,6 @@
             </div>
         @endif
 
-            @if ($check == 1)
-
-                <div class="alert alert-danger">
-
-                    <ul>
-                        @foreach($errors -> all() as $error)
-                            <li style="margin-left: 10px">{{$error}}</li>
-                        @endforeach
-
-                    </ul>
-                </div>
-            @endif
-
-
-        <div>{{$check}}</div>
         <div class="fake-body container">
 
 
