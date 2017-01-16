@@ -34,7 +34,7 @@
     /* active / focus */
     --main-focus-color: #CFE8FD;
     --main-highlight-color: #00A9FF;
-    --main-active-color: #0C8EE8; /* weil noch nicht funktioniert */
+    --main-active-color: #0C8EE8;
     --main-today-color: #FFDDDA; /* in wochen-kalender */
 
     /* red / yellow / green */

@@ -21,8 +21,7 @@
     overflow-x: auto;
     overflow-y: hidden;
 
-    padding: 0;
-    margin: 0;
+    margin: 0 5px 0 5px;
 
     white-space: nowrap;
     text-align: center;
@@ -37,12 +36,26 @@
     width: 1%;
     max-width: 90px;
     height: 40px;
+    padding-top: 10px;
+    border-radius: 5px;
 }
 
 /*actives Item*/
 #custom_carousel .controls li.active {
-    border-bottom: 0.1px solid var(--main-border-color);
+    background-color: var(--main-mainsection-lower-header-color);
 }
+
+#custom_carousel .controls li:hover {
+    cursor: pointer;
+    background: var(--main-highlight-color);
+}
+
+#custom_carousel .controls li:active {
+    cursor: pointer;
+    background: var(--main-active-color);
+}
+
+
 
 .features h5 {
     margin-top: 40px;
@@ -67,6 +80,7 @@
     width: 100%;
     margin-top: 30px;
     margin-bottom: 30px;
+    max-width: 100%;
 }
 
 .features .carousel img {
@@ -83,23 +97,35 @@
     background-color: var(--main-article-color);
 }
 
-@media screen and (max-width: 768px) {
-    .features article {
-        padding: 0 40px 0 40px;
+.row {
+    margin: 0;
+}
+
+@media screen and (min-width: 992px) {
+    .features .row {
+        padding: 0 150px 0 150px;
     }
 }
 
+
 @media screen and (min-width: 768px) {
-    .features article {
+    .features .row {
         padding: 0 100px 0 100px;
     }
 }
 
-@media screen and (min-width: 992px) {
-    .features article {
-        padding: 0 150px 0 150px;
+@media screen and (max-width: 767px) {
+    .features .row {
+        padding: 0 40px 0 40px;
     }
+
+    .display-none-heading {
+        display: none;
+    }
+
 }
+
+
 
 
 

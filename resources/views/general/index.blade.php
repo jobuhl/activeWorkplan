@@ -22,14 +22,11 @@
         <aside class="col-xs-12 col-sm-6 index-image-aside">
             <form class="my-center">
                 <h4 class="my-horizontal-center">Sign up</h4>
-                <p><input class="form-control to-right modal-input" id="email" type="email" placeholder="Email"></p>
-                <p><input class="form-control to-right modal-input" id="password1" type="text" placeholder="Password"></p>
-                <p><input class="form-control to-right modal-input" id="password2" type="password"
-                          placeholder="Confirm Password"></p>
-
-                <button class=" form-control add-button" type="button" data-toggle="modal" data-target="#signupbutton"
-                        onclick="signupPicture()">Sign up
-                </button>
+                <p><input class="form-control to-right modal-input" id="sign-up-email" type="email" placeholder="Email"></p>
+                <p><input class="form-control to-right modal-input" id="sign-up-password1" type="password" placeholder="Password"></p>
+                <p><input class="form-control to-right modal-input" id="sign-up-password2" type="password" placeholder="Confirm Password"></p>
+                <button class="form-control add-button" type="button" onclick="signupPicture()" data-toggle="modal" data-target="#signupbutton">Sign up</button>
+                <button id="oped-modal-step-2" style="display: none"  onclick="nextStep(2)"></button>
             </form>
         </aside>
     </div>

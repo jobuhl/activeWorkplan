@@ -117,19 +117,16 @@ function nextStep(step) {
         $('.modal-sub-sign-in p:last-child').removeClass('signin-head2').addClass('signin-head1');
     }
 
-};
-
-
+}
 function signupPicture() {
 
-    var email = document.getElementById("email").value;
-    var pw1 = document.getElementById("password1").value;
-    var pw2 = document.getElementById("password2").value;
+    var email = document.getElementById("sign-up-email").value;
+    var pw1 = document.getElementById("sign-up-password1").value;
+    var pw2 = document.getElementById("sign-up-password2").value;
 
+    nextStep(1);
 
-    document.getElementById("email1").value = email;
-    document.getElementById("passw1").value = pw1;
-    document.getElementById("passw2").value = pw2;
-
-    nextStep(2);
+    document.getElementById("email").value = email;
+    document.getElementById("password").value = pw1;
+    document.getElementById("password-confirm").value = pw2;
 }

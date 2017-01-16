@@ -48,28 +48,28 @@ Route::get('/home', 'HomeController@index');
 
 // ------------------------ general ------------------------
 Route::get('/', function () {
-    return redirect('/index');
+    return redirect('/general/index');
 });
 
-Route::get('/index', function () {
+Route::get('/general/index', function () {
     return view('general.index');
 });
 
-Route::get('/feature', function () {
+Route::get('/general/feature', function () {
     return view('general.feature');
 });
 
 
 // ------------------------ Footer ------------------------
-Route::get('/contact', function () {
+Route::get('/general/contact', function () {
     return view('general.contact');
 });
 
-Route::get('/impressum', function () {
+Route::get('/general/impressum', function () {
     return view('general.impressum');
 });
 
-Route::get('/protection', function () {
+Route::get('/general/protection', function () {
     return view('general.protection');
 });
 
