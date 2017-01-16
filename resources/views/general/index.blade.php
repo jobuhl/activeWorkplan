@@ -12,8 +12,7 @@
 
 
 
-    <section class="backgroundheadindex">
-        <h2 style="display: none">fakeheading</h2>
+    <div class="backgroundheadindex">
 
         <aside class="col-xs-12 col-sm-6 index-image-aside my-hidden-small">
             <img class="my-center index-image-logo" src="{{asset('img/imagelogo.gif')}}" alt="Bild">
@@ -33,17 +32,14 @@
                 </button>
             </form>
         </aside>
-    </section>
+    </div>
 
 
     <!-- section2 -->
-    <section> <!-- class="container" wegen grauen boxen abstand entfernt -->
-        <h2 style="display: none">fakeheading</h2>
+    <div class="fake-body"> <!-- class="container" wegen grauen boxen abstand entfernt -->
 
         <!-- Reihe 1 -->
-        <article class="row">
-            <h2 style="display: none">fakeheading</h2>
-
+        <div class="row article">
             <!-- wenn middle breite: Quasi abstand links -->
             <aside class="col-md-2"></aside>
 
@@ -67,11 +63,11 @@
 
             <!-- wenn middle breite: Quasi abstand rechts -->
             <aside class="col-md-2"></aside>
-        </article>
+        </div>
 
         <!-- Reihe 2 -->
-        <article class="row grey">
-            <h2 style="display: none">fakeheading</h2>
+        <div class="row grey article">
+
 
             <!-- rechts / oben; push damit colum nach oben geht -->
             <aside class="col-sm-6 col-sm-push-6">
@@ -89,11 +85,11 @@
             <aside class="col-sm-6 col-sm-pull-6">
                 <img class="bodyimage" src="{{asset('img/workplan.png')}}" alt="Bild">
             </aside>
-        </article>
+        </div>
 
         <!-- Reihe 3 -->
-        <article class="row">
-            <h2 style="display: none">fakeheading</h2>
+        <div class="row article">
+
             <!--  Links -->
             <aside class="col-sm-6">
                 <h4>Vergangenheit, Gegenwart und Zukunft</h4>
@@ -113,11 +109,11 @@
             <aside class="col-sm-6">
                 <img class="bodyimage" src="{{asset('img/month.png')}}" alt="Bild">
             </aside>
-        </article>
+        </div>
 
         <!-- Reihe 4 -->
-        <article class="row grey">
-            <h2 style="display: none">fakeheading</h2>
+        <div class="row grey article">
+
             <aside class="col-sm-6 col-sm-push-6">
                 <h4>Selbsteinteilung der Arbeitszeit</h4>
                 <p>Wegen jedem privaten Termin dem Chef hinterherrennen gehört der Vergangenheit an. Einfach selbst die
@@ -133,11 +129,11 @@
             <aside class="col-sm-6 col-sm-pull-6">
                 <img class="bodyimage" src="{{asset('img/planning.png')}}" alt="Bild">
             </aside>
-        </article>
+        </div>
 
         <!-- Reihe 5 -->
-        <article class="row">
-            <h2 style="display: none">fakeheading</h2>
+        <div class="row article">
+
             <!--  Links -->
             <aside class="col-sm-6">
                 <h4>Flexibel und Transparent</h4>
@@ -156,11 +152,11 @@
             <aside class="col-sm-6">
                 <img class="bodyimage" src="{{asset('img/overview.png')}}" alt="Bild">
             </aside>
-        </article>
+        </div>
 
         <!-- Reihe 6 -->
-        <article class="row grey">
-            <h2 style="display: none">fakeheading</h2>
+        <div class="row grey article">
+
             <aside class="col-sm-6 col-sm-push-6">
                 <h4>Mobil oder Desktop</h4>
                 <p>Sie haben keinen PC oder Laptop zu Hause? Kein Problem, denn activeWorkplan lässt sich auch von Ihrem
@@ -173,11 +169,11 @@
             <aside class="col-sm-6 col-sm-pull-6">
                 <img class="bodyimage" src="{{asset('img/mobil.png')}}" alt="Bild">
             </aside>
-        </article>
+        </div>
 
         <!-- Reihe 7 -->
-        <article class="row">
-            <h2 style="display: none">fakeheading</h2>
+        <div class="row article">
+
             <!--  Links -->
             <aside class="col-sm-6">
                 <h4>Überstunden? Nein, Danke!
@@ -194,11 +190,11 @@
             <aside class="col-sm-6">
                 <img class="bodyimage" src="{{asset('img/seminar.png')}}" alt="Bild">
             </aside>
-        </article>
+        </div>
 
         <!-- Reihe 8 -->
-        <article class="row grey">
-            <h2 style="display: none">fakeheading</h2>
+        <div class="row grey article">
+
             <!-- links -->
             <aside class="col-sm-6 col-sm-push-6">
                 <h4>Registrierung leicht gemacht!
@@ -215,11 +211,11 @@
             <aside class="col-sm-6 col-sm-pull-6">
                 <img class="bodyimage" src="{{asset('img/sign-up.png')}}" alt="Bild">
             </aside>
-        </article>
+        </div>
 
         <!-- Reihe 9 -->
-        <article class="row">
-            <h2 style="display: none">fakeheading</h2>
+        <div class="row article">
+
 
             <!-- wenn middle breite: Quasi abstand links -->
             <aside class="col-md-2"></aside>
@@ -234,20 +230,18 @@
                     Funktionsumfang und alles ohne Zahlungsangaben.
                 </p>
 
-                <aside class="col-xs-4"></aside>
-                <aside class="col-xs-4 ">
+                <aside class="col-xs-12 col-sm-4 col-sm-offset-4">
                     <button class="form-control to-right add-button" type="button" data-toggle="modal"
                             data-target="#signupbutton" onclick="nextStep(1)">Kostenlos registrieren
                     </button>
                 </aside>
-                <aside class="col-xs-4"></aside>
 
             </aside>
 
             <!-- wenn middle breite: Quasi abstand rechts -->
             <aside class="col-md-2"></aside>
-        </article>
-    </section>
+        </div>
+    </div>
 
 
 @endsection

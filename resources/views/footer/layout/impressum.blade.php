@@ -6,19 +6,19 @@
 @section('content')
 
     <!-- Der eigentliche Content -->
-    <section class="fake-body impressum">
-        <h2 style="display: none">fakeheading</h2>
+    <div class="fake-body impressum">
 
         <div class="col-xs-12 mainsection">
-            <article>
+            <article class="main-article">
                 <aside>
                     <img src="{{asset('img/impressum.gif')}}" alt="Bild">
                 </aside>
-                <aside>
+                <aside class="display-none-heading">
                     <h2>Impressum</h2>
                 </aside>
             </article>
         </div>
+
         <div class="container">
             <article class=" col-sx-12">
                 <h2 style="display: none">fakeheading</h2>
@@ -142,5 +142,5 @@
                 <p> </p>
             </article>
         </div>
-    </section>
+    </div>
 @endsection

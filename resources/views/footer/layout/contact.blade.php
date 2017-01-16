@@ -5,25 +5,21 @@
 
 @section('content')
 
-    <section class="fake-body contact">
-        <h2 style="display: none">fakeheading</h2>
+    <div class="fake-body contact">
 
         <!-- oben -->
         <section class="col-xs-12 mainsection">
-            <h2 style="display: none">fakeheading</h2>
-            <article>
-                <h2 style="display: none">fakeheading</h2>
+            <div class="main-article">
                 <aside>
                     <img src="{{asset('img/contact.gif')}}" alt="Bild">
                 </aside>
-                <aside>
+                <aside class="display-none-heading">
                     <h2>Contact</h2>
                 </aside>
-            </article>
+            </div>
         </section>
 
-        <section class="container">
-            <h2 style="display: none">fakeheading</h2>
+        <div class="container">
 
             <article class="col-xs-12 subheader">
                 <h2>Send us an email or just say Hello!</h2>
@@ -55,9 +51,9 @@
                 <button class="form-control buttonbottom add-button" type="submit">Send</button>
             </aside>
 
-        </section>
+        </div>
 
-    </section>
+    </div>
 @endsection
 
 @section('js')

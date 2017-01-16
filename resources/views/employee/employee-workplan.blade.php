@@ -10,6 +10,9 @@
 @section('content')
 
     <div class="fake-body container emp-planning final-workplan">
+
+        <div class="space_emp col-xs-12"></div>
+
         <h2 class=" col-xs-12 header">Fix Workplan</h2>
 
         <div class="space_emp col-xs-12"></div>

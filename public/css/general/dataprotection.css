@@ -1,8 +1,8 @@
-.dataprotection p{
+.dataprotection p {
     text-align: justify; /* Blocksatz */
 }
 
-.dataprotection hr{
+.dataprotection hr {
     border: 0.1px solid var(--main-border-color); /* Trennlinie zwischen den Abschnitten */
 }
 
@@ -10,4 +10,11 @@
 .data-protection-list {
     padding-left: 50px;
 }
+
+@media screen and (max-width: 767px) {
+    .display-none-heading {
+        display: none;
+    }
+}
+
 

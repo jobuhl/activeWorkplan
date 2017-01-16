@@ -1,4 +1,4 @@
-body {
+.fake-body {
     text-align: justify; /* Blocksatz */
 }
 
@@ -45,10 +45,8 @@ body {
     background-color: var(--main-header-color);
 }
 
-
-
 /*Innenabstand aller Article Boxen unterhalb vom Bild*/
-article {
+.article {
     padding: 30px 50px 30px 50px;
 }
 
@@ -71,10 +69,19 @@ article {
     .my-hidden-small {
         display: none;
     }
+
+    /*Innenabstand aller Article Boxen unterhalb vom Bild*/
+    .article {
+        padding: 25px 5px 25px 5px;
+    }
 }
 
 @media (min-width: 768px) {
     .my-hidden-big {
         display: none
     }
+}
+
+.row {
+    margin: 0;
 }

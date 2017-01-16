@@ -8,21 +8,18 @@
 
 
     <!-- Der eigentliche Content -->
-    <section class="fake-body  dataprotection">
+    <div class="fake-body dataprotection">
 
-        <div class="col-xs-12 mainsection ">
-            <h2 style="display: none">fakeheading</h2>
-            <article>
-                <h2 style="display: none">fakeheading</h2>
+        <div class="col-xs-12 mainsection">
+            <div class="main-article">
                 <aside>
                     <img src="{{asset('img/dataprotection.gif')}}" alt="Bild">
                 </aside>
-                <aside>
+                <aside class="display-none-heading">
                     <h2>Data protection</h2>
                 </aside>
-            </article>
+            </div>
         </div>
-        <h2 style="display: none">fakeheading</h2>
 
         <div class="container">
         <!-- Zeile 1 Content -->
@@ -492,6 +489,6 @@
         </article>
         </div>
 
-    </section>
+    </div>
 
 @endsection

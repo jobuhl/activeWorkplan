@@ -202,12 +202,21 @@
     margin: 2px;/* damit event abstand zur week-day border hat */
     border-radius: 5px;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .one-time-event p,
 .one-allday-event p {
     margin: 2px; /* damit linie im event nicht komplett durchgezogen */
 }
+
+@media screen and (max-width: 767px) {
+    .one-time-event p,
+    .one-allday-event p {
+        font-size: 11px;
+    }
+}
+
 
 .one-time-event p:first-child {
     border-bottom: 1px solid white;
@@ -264,12 +273,23 @@
     margin: 0 2px 0 2px;
 }
 
+/* Options Button */
 .event-dropdown-content button {
     color: white;
     border-radius: 40px;
     border: 2px solid white;
     width: 38px;
     height: 38px;
+}
+
+
+@media screen and (max-width: 767px) {
+
+    .event-dropdown-content button {
+        width: 30px;
+        height: 30px;
+        margin-bottom: 2px;
+    }
 }
 
 .event-dropdown-content button,
@@ -296,13 +316,15 @@
 /* --------------------------- HOVER ACTIVE --------------------------- */
 
 .calendar-navigation button:hover,
-.table-head-store button:hover {
+.table-head-store button:hover,
+.mobile-button button:hover {
     background-color: var(--main-highlight-color);
     cursor: pointer;
 }
 
 .calendar-navigation button:active,
-.table-head-store button:active {
+.table-head-store button:active,
+.mobile-button button:active{
     background-color: var(--main-active-color);
     cursor: pointer;
 }

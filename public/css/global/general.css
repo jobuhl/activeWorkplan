@@ -4,7 +4,7 @@
     background-color: var(--main-mainsection-lower-header-color);
 }
 
-.mainsection article {
+.mainsection .main-article {
     width: 60%; /* muss leider fix festgelegt werden */
     height: 100px;
     margin: auto;
@@ -16,7 +16,7 @@
     display: table; /* passt die Hoehe an Inhalt an */
 }
 
-.mainsection article aside {
+.mainsection .main-article aside {
     float: left;
     width: 50%;
 }
@@ -46,5 +46,12 @@
 h1 , h2, h3 {
     text-align: center;
     font-weight: normal;
+}
+
+@media screen and (max-width: 767px) {
+    .container {
+        margin: 0;
+        padding: 0;
+    }
 }
 

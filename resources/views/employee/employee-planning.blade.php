@@ -13,6 +13,7 @@
 
     <div class="fake-body container emp-planning">
 
+        <div class="space_emp col-xs-12"></div>
 
         <h2 class=" col-xs-12 header">Proposals</h2>
 
