@@ -42,14 +42,6 @@
                 </button>
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-xs-12 right">
-                <a class="btn btn-link" href="{{ url('/admin/password/reset') }}">
-                    Forgot Your Password?
-                </a>
-            </div>
-        </div>
     </form>
 </div>
 
