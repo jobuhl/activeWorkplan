@@ -128,6 +128,7 @@ class EmpController extends Controller
                 'email' => $request['email'],
             ));
 
+
         flash('E-Mail change successful', 'success');
         return redirect('/employee/employee-account/' . $request['thisDate']);
     }
@@ -175,6 +176,8 @@ class EmpController extends Controller
             ->where('retail_store.company_id', $company->id)
             ->get();
 
+        $emp = clone $employee;
+
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
 
         $alldayEvent->delete();
@@ -187,7 +190,7 @@ class EmpController extends Controller
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
 
-        flash('Store delete successful', 'success');
+        flash('Delete of ' . $emp->name . ' was successful', 'success');
         return redirect('/admin/employer-planning/' . $allRetailStores[0]->id . '/' . $request['thisDate']);
 
     }
@@ -234,7 +237,8 @@ class EmpController extends Controller
             ));
 
 
-        flash('Employee change successful', 'success');
+        $emp = clone $employee;
+        flash('Change of ' . $emp->name . ' was successful', 'success');
 
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
 
@@ -259,7 +263,9 @@ class EmpController extends Controller
                 'email' => $request['email'],
             ))[0];
 
-        flash('E-Mail change successful', 'success');
+        $emp = clone $employee;
+
+        flash('Change E-Mail of ' . $emp->name . ' was successful', 'success');
 
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
 
@@ -284,8 +290,8 @@ class EmpController extends Controller
                 'password' => Hash::make($request['password']),
             ))[0];
 
-
-        flash('Password change successful', 'success');
+        $emp = clone $employee;
+        flash('Change Passsword of ' . $emp->name . ' was successful', 'success');
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
 
 

@@ -1,30 +1,7 @@
 @extends('admin.layout.employer-start')
 
 @section('css')
-
-    <style type="text/css">
-
-        .fake-body {
-            margin: auto;
-            display: table;
-            height: 400px;
-            overflow: hidden;
-        }
-
-        .horizontal {
-            display: table-cell;
-            vertical-align: middle;
-            margin: auto;
-        }
-
-        h2 {
-            text-align: center;
-            font-weight: 500;
-            font-family: Helvetica;
-            color: var(--main-text-black);
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{asset('css/employer/no-store.css')}}">
 @endsection
 
 @section('content')
@@ -49,6 +26,7 @@
 
         </section>
 
+        @include('admin.includes.add-store')
     </div>
 
 @endsection

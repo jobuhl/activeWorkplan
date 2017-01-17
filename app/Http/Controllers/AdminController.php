@@ -78,7 +78,6 @@ class AdminController extends Controller
                 'admin_id' => $admin->id
             ));
 
-//        session()->flash('status', 'Task was successful!');
         flash('Change successful', 'success');
         return redirect('/admin/employer-account/' . $request['thisDate']);
     }
