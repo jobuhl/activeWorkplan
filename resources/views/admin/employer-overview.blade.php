@@ -21,8 +21,83 @@
                     @endforeach
                 </ul>
                 <br>
-            </aside>
 
+
+                <!----------Search AJAX klappt noch nicht------------->
+
+                <input id="search-all" onclick="ajaxGetStores()" placeholder="Search..."/>
+                <div class="search-result">Hier kommen gleich die Jsons rein</div>
+                <input type="text" name="sample_search" id="sample_search" onkeyup="search_func(this.value);">
+
+                <!-- Hier JSON-Daten laden -->
+                <script type="text/javascript">
+
+                    var searchRequest = null;
+
+                    $(function () {
+                        var minlength = 1;
+
+                        $("#sample_search").keyup(function () {
+//                            var that = this;
+                            var value = $(this).val();
+
+                            if (value.length >= minlength) {
+                                $.ajax({
+                                        type: "GET",
+                                        url: "{{ url('/admin/daten') }}",
+                                        data: {
+                                            'search_keyword': value
+                                        },
+                                    dataType: "text",
+                                    success: function (msg) {
+                                        //we need to check if the value is the same
+//                                        if (value == $(that).val()) {
+                                            //Receiving the result of search here
+                                            $(".search-result").html("<p>hahahahaha</p>");
+//                                        }
+                                    }
+                                });
+                            }
+                        });
+                    });
+
+
+                    function ajaxGetStores() {
+                        $.ajax(
+                            {
+                                type: "POST",
+                                url: "{{ url('/admin/daten') }}",
+                                dataType: "json",
+                                success: function (json) {
+                                    var a = "<ul>";
+                                    $.each(json.store, function () {
+                                        var thisStoreId = this['id'];
+                                        a += "<li><a>" + this['name'] + "</a>";
+
+                                        $.each(json.emp, function () {
+                                            a += "<ul>";
+                                            if (this['retail_store_id'] == thisStoreId) {
+                                                a += "<li><a>" + this['surname'] + " " + this['forename'] + "</a></li>";
+                                            }
+                                            a += "</ul>";
+                                        });
+
+                                        a += "</li>";
+
+                                    });
+                                    a += "</ul>";
+                                    $(".search-result").html(a);
+                                }
+                            }
+                        );
+                    }
+
+                </script>
+
+                <!----------------------------->
+
+
+            </aside>
 
             <aside id="aside-overview" class="col-xs-12 col-sm-9 my-right-side overview list">
 

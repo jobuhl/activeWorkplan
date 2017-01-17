@@ -62,7 +62,7 @@ Route::post('/notAcceptAlldayEvent', 'EventController@notAcceptAlldayEvent');
 
 //Route::post('/daten/{characters?}', 'AjaxSearchStoresController@getStoreEmp');
 
-Route::post('/daten/{characters?}', function($characters) {
+Route::get('/daten', function() {
     $store = DB::table('retail_store')
         ->select('retail_store.*')
         ->join('company', 'company.id', '=', 'retail_store.company_id')

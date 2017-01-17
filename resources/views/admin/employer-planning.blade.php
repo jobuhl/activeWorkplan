@@ -62,49 +62,6 @@
 
                 <aside class="col-xs-12 col-sm-9 my-right-side">
 
-                    <!----------Search AJAX klappt noch nicht------------->
-
-                {{--<input id="search-all" onclick="ajaxGetStores('')" placeholder="Search..."/>--}}
-                {{--<div class="search-result">Hier kommen gleich die Jsons rein</div>--}}
-
-                {{--<!-- Hier JSON-Daten laden -->--}}
-                {{--<script type="text/javascript">--}}
-                {{--function ajaxGetStores($characters) {--}}
-                {{--$.ajax(--}}
-                {{--{--}}
-                {{--type: "POST",--}}
-                {{--//                                url: "http://localhost:8888/activeWorkplan/public/admin/daten/" + $characters,--}}
-                {{--url: "{{ url('/admin/daten') }}",//+ "/" + $characters,--}}
-
-                {{--dataType: "json",--}}
-                {{--success: function (json) {--}}
-                {{--var a = "<ul>";--}}
-                {{--$.each(json.store, function () {--}}
-                {{--var thisStoreId = this['id'];--}}
-                {{--a += "<li><a>" + this['name'] + "</a>";--}}
-
-                {{--$.each(json.emp, function () {--}}
-                {{--a += "<ul>";--}}
-                {{--if (this['retail_store_id'] == thisStoreId) {--}}
-                {{--a += "<li><a>" + this['surname'] + " " + this['forename'] + "</a></li>";--}}
-                {{--}--}}
-                {{--a += "</ul>";--}}
-                {{--});--}}
-
-                {{--a += "</li>";--}}
-
-                {{--});--}}
-                {{--a += "</ul>";--}}
-                {{--$(".search-result").html(a);--}}
-                {{--}--}}
-                {{--}--}}
-                {{--);--}}
-                {{--}--}}
-
-                {{--</script>--}}
-
-                <!----------------------------->
-
 
                     <!-- Überschrift -->
                     <h2 class="header">{{ $thisRetailStore->name }}</h2>
