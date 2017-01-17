@@ -25,12 +25,71 @@
 
                 <!----------Search AJAX klappt noch nicht------------->
 
-                <input id="search-all" onclick="ajaxGetStores()" placeholder="Search..."/>
-                <div class="search-result">Hier kommen gleich die Jsons rein</div>
-                <input type="text" name="sample_search" id="sample_search" onkeyup="search_func(this.value);">
+                {{--<input id="search-all" onclick="ajaxGetStores()" placeholder="Search..."/>--}}
+                {{--<div class="search-result">Hier kommen gleich die Jsons rein</div>--}}
+                {{--<input type="text" name="sample_search" id="sample_search" onclick="search_func(this.value);">--}}
+
+
+
+
+
+                {{--<div id="msg">hi</div>--}}
+                {{--<input type="text" name="field" onclick="hallo()" id="field23"/>--}}
+
+
+
+                {{--<p><b>Start typing a name in the input field below:</b></p>--}}
+                {{--<form>--}}
+                    {{--First name: <input type="text" onkeyup="showHint(this.value)">--}}
+                {{--</form>--}}
+                {{--<p>Suggestisons: <span id="txtHint"></span>--}}
+
+
+
 
                 <!-- Hier JSON-Daten laden -->
                 <script type="text/javascript">
+
+
+
+                    function showHint(str) {
+//                        if (str.length == 0) {
+//                            document.getElementById("txtHint").innerHTML = "";
+//                            return;
+//                        } else {
+                        alert($(this).val());
+                            var xmlhttp = new XMLHttpRequest();
+                            xmlhttp.onreadystatechange = function() {
+                                if (this.readyState == 4 && this.status == 200) {
+
+                                    $("#txtHint").innerHTML = this.responseText;
+                                }
+                            };
+                            xmlhttp.open("GET", "/admin/daten?q=" + str, true);
+                            xmlhttp.send();
+//                        }
+                    }
+
+
+
+
+
+
+
+                        function hallo() {
+//                            var isTyping = $('#field23').val();
+//                            var data = 'result=' + isTyping;
+
+                            $.ajax({
+                                type: 'GET',
+                                url: "/admin/daten",
+                                dataType: "json",
+                                success: function (json) {
+                                    $('#msg').html('<p>HI</p>');
+                                }
+                            });
+                        }
+
 
                     var searchRequest = null;
 
@@ -43,17 +102,17 @@
 
                             if (value.length >= minlength) {
                                 $.ajax({
-                                        type: "GET",
-                                        url: "{{ url('/admin/daten') }}",
-                                        data: {
-                                            'search_keyword': value
-                                        },
+                                    type: "GET",
+                                    url: "{{ url('/admin/daten') }}",
+                                    data: {
+                                        'search_keyword': value
+                                    },
                                     dataType: "text",
                                     success: function (msg) {
                                         //we need to check if the value is the same
 //                                        if (value == $(that).val()) {
-                                            //Receiving the result of search here
-                                            $(".search-result").html("<p>hahahahaha</p>");
+                                        //Receiving the result of search here
+                                        $(".search-result").html("<p>hahahahaha</p>");
 //                                        }
                                     }
                                 });

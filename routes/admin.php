@@ -35,7 +35,6 @@ Route::post('/changeEmailEmp', 'EmpController@changeEmail');
 Route::post('/changePasswordEmp', 'EmpController@changePassword');
 
 
-
 Route::post('/deleteEmp', 'EmpController@delete');
 
 Route::post('/changeAdmin', 'AdminController@update');
@@ -57,31 +56,29 @@ Route::post('/notAcceptTimeEvent', 'EventController@notAcceptTimeEvent');
 Route::post('/notAcceptAlldayEvent', 'EventController@notAcceptAlldayEvent');
 
 
-
-
-
 //Route::post('/daten/{characters?}', 'AjaxSearchStoresController@getStoreEmp');
 
-Route::get('/daten', function() {
-    $store = DB::table('retail_store')
-        ->select('retail_store.*')
-        ->join('company', 'company.id', '=', 'retail_store.company_id')
-        ->where('company.admin_id', 1)
-//        ->where('retail_store.name', 'like', '%' . $characters . '%')
-        ->get();
+Route::get('/daten?q={q}', function () {
 
-    $emp = DB::table('employees as e')
-        ->select('e.name as surname', 'e.forename', 'e.retail_store_id')
-        ->join('retail_store', 'e.retail_store_id', '=', 'retail_store.id')
-        ->join('company', 'company.id', '=', 'retail_store.company_id')
-        ->where('company.admin_id', 1)
-//        ->where('employees.name', 'like', '%' . $characters . '%')
-        ->get();
 
-    return response()->json(["store" => $store, "emp" => $emp]);
+//    $store = DB::table('retail_store')
+//        ->select('retail_store.*')
+//        ->join('company', 'company.id', '=', 'retail_store.company_id')
+//        ->where('company.admin_id', 1)
+////        ->where('retail_store.name', 'like', '%' . $characters . '%')
+//        ->get();
+//
+//    $emp = DB::table('employees as e')
+//        ->select('e.name as surname', 'e.forename', 'e.retail_store_id')
+//        ->join('retail_store', 'e.retail_store_id', '=', 'retail_store.id')
+//        ->join('company', 'company.id', '=', 'retail_store.company_id')
+//        ->where('company.admin_id', 1)
+////        ->where('employees.name', 'like', '%' . $characters . '%')
+//        ->get();
+
+//    return response()->json(["store" => $store, "emp" => $emp]);
+    return response()->json(["store" => "ersterStore", "emp" => "ersterEmp"]);
 });
-
-
 
 
 /* ---------------------------- FOOTER -------------------------------- */
@@ -225,7 +222,6 @@ function admPlanningSingle($employeeId, $urlDate)
     $manyTimeEvent = allTimeEventOfCompany($company->id, $week);
     $manyWorktimeEvent = allWorktimeFixOfCompany($company->id, $week);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
-
 
 
     if ($amountOfRetailStores == 0) {

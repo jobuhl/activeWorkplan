@@ -48,13 +48,6 @@
 
         <div class="fake-body container">
 
-
-
-
-
-
-
-            <div class="row">
                 <br>
                 <aside class="col-xs-12 col-sm-3 side-bar">
                     @include('admin.includes.employer-side-bar-planning')
@@ -683,7 +676,6 @@
 
                 <div class=" col-xs-12 space_emp"></div>
 
-            </div>
         </div>
 
 
