@@ -61,7 +61,7 @@ class EmpController extends Controller
             'contract_id' => $contracts->id,
         ]);
 
-        flash('Employee successful added', 'success');
+        flash('Employee added', 'success');
         return redirect('/admin/employer-single/' . $thisEmployee->id . '/' . $request['thisDate']);
     }
 
@@ -85,6 +85,7 @@ class EmpController extends Controller
             ));
 
         $request->session()->flash('status', 'Task was successful!');
+
         flash('Change successful', 'success');
         return redirect('/employee/employee-account/' . $request['thisDate']);
     }
@@ -110,10 +111,11 @@ class EmpController extends Controller
                     'password' => Hash::make($request['password']),
                 ));
 
-            flash('Change successful', 'success');
+            flash('Password change successful', 'success');
             return redirect('/employee/employee-account/' . $request['thisDate']);
         }
 
+        flash('Wrong password', 'danger');
         return redirect('/employee/employee-account/' . $request['thisDate']);
     }
 
@@ -126,6 +128,7 @@ class EmpController extends Controller
                 'email' => $request['email'],
             ));
 
+        flash('E-Mail change successful', 'success');
         return redirect('/employee/employee-account/' . $request['thisDate']);
     }
 
@@ -183,6 +186,8 @@ class EmpController extends Controller
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
+
+        flash('Store delete successful', 'success');
         return redirect('/admin/employer-planning/' . $allRetailStores[0]->id . '/' . $request['thisDate']);
 
     }
@@ -229,6 +234,8 @@ class EmpController extends Controller
             ));
 
 
+        flash('Employee change successful', 'success');
+
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
 
 
@@ -252,6 +259,7 @@ class EmpController extends Controller
                 'email' => $request['email'],
             ))[0];
 
+        flash('E-Mail change successful', 'success');
 
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
 
@@ -277,6 +285,7 @@ class EmpController extends Controller
             ))[0];
 
 
+        flash('Password change successful', 'success');
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
 
 

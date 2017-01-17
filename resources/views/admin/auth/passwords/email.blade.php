@@ -1,4 +1,4 @@
-@extends('admin.layout.auth')
+@extends('general.layout.general-start')
 
 <!-- Main Content -->
 @section('content')
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/password/email') }}">
+                    {{--<form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/password/email') }}">--}}
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -33,12 +33,12 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button class="form-control next-button">
                                     Send Password Reset Link
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    {{--</form>--}}
                 </div>
             </div>
         </div>
