@@ -147,10 +147,11 @@ function admOverview($urlDate)
     $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
-
-
+    // Wenn keine Stores vorhanden sind
     if ($amountOfRetailStores == 0) {
-        return view('admin.home')
+
+        // Special Seite oeffnen, auf der man einen Store anlegen kann
+        return view('admin.employer-nostore')
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     } else {
@@ -173,9 +174,11 @@ function admPlanning($thisRetailStoreId, $urlDate)
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
     $week = getWeekArray($urlDate);
 
+    // Wenn keine Stores vorhanden sind
     if ($amountOfRetailStores == 0) {
 
-        return view('admin.employer-planning')
+        // Special Seite oeffnen, auf der man einen Store anlegen kann
+        return view('admin.employer-nostore')
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     } else {
