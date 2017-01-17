@@ -21,7 +21,7 @@
                 <p><input class="form-control to-right modal-input" id="sign-up-password1" type="password" placeholder="Password"></p>
                 <p><input class="form-control to-right modal-input" id="sign-up-password2" type="password" placeholder="Confirm Password"></p>
                 <button class="form-control add-button" type="button" onclick="signupPicture()" data-toggle="modal" data-target="#signupbutton">Sign up</button>
-                <button id="oped-modal-step-2" style="display: none"  onclick="nextStep(2)"></button>
+                <button id="oped-modal-step-2" style="display: none" onclick="nextStep(2)"></button>
             </form>
         </aside>
     </div>
@@ -234,4 +234,16 @@
             <aside class="col-md-2"></aside>
         </div>
     </div>
+@endsection
+
+@section('js')
+
+    <script>
+        @if (count($errors) > 0)
+            $(function () {
+                $('#click-header-sign-up').click();
+            });
+        @endif
+    </script>
+
 @endsection

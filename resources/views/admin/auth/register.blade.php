@@ -1,5 +1,4 @@
 @if (count($errors) > 0)
-
     <div class="alert alert-danger">
 
         <ul>
@@ -252,7 +251,6 @@
                         </div>
 
 
-
                         <div class="form-group{{ $errors->has('country2') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="country2" placeholder="Country"
@@ -270,7 +268,7 @@
 
                     </div>
                     <div class="col-xs-12">
-                        <button id="back-button" class="form-control to-right add-button" type="submit">
+                        <button id="back-button" class="form-control to-right add-button" type="submit" onclick="document.getElementById('this-button-try').click();">
                             SignUp
                         </button>
 

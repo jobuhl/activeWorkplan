@@ -11,7 +11,6 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/header-footer.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/general/signup.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
 
     <noscript>
@@ -21,7 +20,7 @@
     </noscript>
 
     <script>
-        window.Laravel =;;;;;;; <?php echo json_encode([
+        window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
 
