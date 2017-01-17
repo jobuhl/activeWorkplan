@@ -33,14 +33,14 @@
 
             <!-- JavaScript Methoden in SignUp.Js-->
 
-                <div id="modal-body-admin">
-                    {{--@include('admin.auth.login')--}}
-                </div>
-
-                <div id="modal-body-emp">
-                    {{--@include('employee.auth.login')--}}
-                </div>
+            <div id="modal-body-admin">
+                @include('admin.auth.login')
             </div>
+
+            <div id="modal-body-emp">
+                @include('employee.auth.login')
+            </div>
+        </div>
     </div>
 </div>
 
