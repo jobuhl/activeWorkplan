@@ -8,6 +8,7 @@
 
     <section class="fake-body">
 
+        {{-- Meldung für den Fall das ein Error Auftritt --}}
         @if (count($errors) > 0)
 
             <div class="alert alert-danger">
@@ -21,6 +22,15 @@
             </div>
         @endif
 
+
+        {{-- Meldung für den Fall das Erfolgreich geändert wurde --}}
+    @if (session()->has('flash_notification.message'))
+            <div class="alert alert-{{ session('flash_notification.level') }}">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                {!! session('flash_notification.message') !!}
+            </div>
+        @endif
 
         <section class="container">
 

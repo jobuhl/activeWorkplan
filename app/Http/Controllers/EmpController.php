@@ -33,6 +33,7 @@ class EmpController extends Controller
             'roleid' => 'required|max:255|',
             'working_hours' => 'required|max:255|',
 
+
         ]);
 
         $retailStore = DB::table('retail_store')
@@ -60,6 +61,7 @@ class EmpController extends Controller
             'contract_id' => $contracts->id,
         ]);
 
+        flash('Employee successful added', 'success');
         return redirect('/admin/employer-single/' . $thisEmployee->id . '/' . $request['thisDate']);
     }
 
@@ -83,7 +85,7 @@ class EmpController extends Controller
             ));
 
         $request->session()->flash('status', 'Task was successful!');
-
+        flash('Change successful', 'success');
         return redirect('/employee/employee-account/' . $request['thisDate']);
     }
 
@@ -108,8 +110,8 @@ class EmpController extends Controller
                     'password' => Hash::make($request['password']),
                 ));
 
-
-
+            flash('Change successful', 'success');
+            return redirect('/employee/employee-account/' . $request['thisDate']);
         }
 
         return redirect('/employee/employee-account/' . $request['thisDate']);

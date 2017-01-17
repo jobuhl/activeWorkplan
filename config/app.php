@@ -168,6 +168,8 @@ return [
          */
         //
 
+        Laracasts\Flash\FlashServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
