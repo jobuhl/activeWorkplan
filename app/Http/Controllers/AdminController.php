@@ -78,7 +78,8 @@ class AdminController extends Controller
                 'admin_id' => $admin->id
             ));
 
-
+//        session()->flash('status', 'Task was successful!');
+        flash('Change successful', 'success');
         return redirect('/admin/employer-account/' . $request['thisDate']);
     }
 
@@ -99,6 +100,7 @@ class AdminController extends Controller
                 'email' => $request['email'],
             ))[0];
 
+        flash('Change successful', 'success');
         return redirect('/admin/employer-account/' . $request['thisDate']);
 
     }
@@ -127,6 +129,7 @@ class AdminController extends Controller
         }
 
 
+        flash('Change successful', 'success');
         return redirect('/admin/employer-account/' . $request['thisDate']);
 
     }
@@ -216,10 +219,12 @@ class AdminController extends Controller
             $addressRetailStores->delete();
             DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
+            flash('Delete successful', 'success');
             return redirect('/');
 
         }else{
 
+            flash('Wrong password', 'danger');
             return redirect('/admin/employer-account/' . $request['thisDate']);
         }
     }

@@ -153,7 +153,7 @@
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('street') ? ' has-error' : '' }}">
                             <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                   name="street" placeholder="Street" value="{{ $address->street }}" autofocus>
+                                   name="street" placeholder="Street" value="{{ $address->street }}">
                             @if ($errors->has('street'))
                                 <span class="help-block"><strong>{{ $errors->first('street') }}</strong></span>
                             @endif

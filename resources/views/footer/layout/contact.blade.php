@@ -48,7 +48,7 @@
             <aside class=" test col-sm-9 col-xs-12 setheightright">
                 <textarea class="form-control sendtextfeld" type="text" placeholder="Message...." ></textarea>
                 <p></p>
-                <button class="form-control buttonbottom add-button" type="submit">Send</button>
+                <button class="form-control buttonbottom add-button"  onclick="alert('Missing SMTP-Server');">Send</button>
             </aside>
 
         </div>

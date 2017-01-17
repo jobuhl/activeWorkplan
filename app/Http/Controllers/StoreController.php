@@ -62,6 +62,8 @@ class StoreController extends Controller
             'address_id' => $newAddress->id
         ));
 
+
+        flash('Store added', 'success');
         return redirect('/admin/employer-planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
     }
 
@@ -121,6 +123,8 @@ class StoreController extends Controller
         $allRetailStores = DB::table('retail_store')
             ->where('retail_store.company_id', $company->id)
             ->get();
+
+        flash('Change successful', 'success');
 
         return redirect('/admin/employer-planning/' . $store->id . '/' . $request['thisDate']);
 
@@ -211,7 +215,7 @@ class StoreController extends Controller
             ->get();
 
 
-
+        flash('Store delete successful', 'success');
         return redirect('/admin/employer-planning/' . ($amountOfRetailStores == 0 ? '0' : $allRetailStores[0]->id) . '/' . $request['thisDate']);
 
     }

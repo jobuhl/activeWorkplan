@@ -8,6 +8,7 @@
 
     <section class="fake-body">
 
+        {{-- Meldung für den Fall das ein Error Auftritt --}}
         @if (count($errors) > 0)
 
             <div class="alert alert-danger">
@@ -22,12 +23,26 @@
         @endif
 
 
+        {{-- Meldung für den Fall das Erfolgreich geändert wurde --}}
+    @if (session()->has('flash_notification.message'))
+            <div class="alert alert-{{ session('flash_notification.level') }}">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+                {!! session('flash_notification.message') !!}
+            </div>
+        @endif
+
         <section class="container">
 
             <div class="row -col-12">
                 <h2 class="modal-ueberschrift">Admin Details</h2>
 
-                <button class="form-control set-right yellow my-account-button" type="submit" data-toggle="modal"
+                <button class="form-control yellow my-account-button button-hide" type="submit" data-toggle="modal"
+                        data-target="#change-button">
+                    Change
+                </button>
+
+                <button class="form-control set-right yellow my-account-button button-show" type="submit" data-toggle="modal"
                         data-target="#change-button">
                     Change
                 </button>
@@ -79,7 +94,11 @@
                 </table>
 
 
-                <button class="form-control set-right red my-account-button" data-toggle="modal"
+                <button class="form-control set-right red my-account-button button-show" data-toggle="modal"
+                        data-target="#delete-button-admin">Delete
+                </button>
+
+                <button class="form-control red my-account-button button-hide" data-toggle="modal"
                         data-target="#delete-button-admin">Delete
                 </button>
 
