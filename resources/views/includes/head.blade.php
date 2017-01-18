@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/header-footer.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/general/signup.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
 
     <noscript>
@@ -20,21 +21,8 @@
     </noscript>
 
     <script>
-        window.Laravel = <?php echo json_encode([
+        window.Laravel =;;;;;;; <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
 
     </script>
-
-    <!-- Start Cookie Plugin -->
-    <script type="text/javascript">
-        window.cookieconsent_options = {
-            message: 'Diese Website nutzt Cookies, um bestmögliche Funktionalität bieten zu können.',
-            dismiss: 'Ok, verstanden',
-            learnMore: 'Mehr Infos',
-            link: '{{ url('/general/protection') }}',
-            theme: 'dark-top'
-        };
-    </script>
-    <script type="text/javascript" src="//s3.amazonaws.com/valao-cloud/cookie-hinweis/script.js"></script>
-    <!-- Ende Cookie Plugin -->

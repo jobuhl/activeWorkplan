@@ -31,7 +31,7 @@ class EmpController extends Controller
             'forename' => 'required|max:255|',
             'email' => 'required|email|max:255|unique:employees',
             'roleid' => 'required|max:255|',
-            'working_hours' => 'required|max:255|',
+            'working_hours' => 'required|integer|max:255|',
 
 
         ]);
@@ -128,7 +128,6 @@ class EmpController extends Controller
                 'email' => $request['email'],
             ));
 
-
         flash('E-Mail change successful', 'success');
         return redirect('/employee/employee-account/' . $request['thisDate']);
     }
@@ -176,8 +175,6 @@ class EmpController extends Controller
             ->where('retail_store.company_id', $company->id)
             ->get();
 
-        $emp = clone $employee;
-
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
 
         $alldayEvent->delete();
@@ -190,7 +187,7 @@ class EmpController extends Controller
         DB::statement('SET FOREIGN_KEY_CHECKS=1');
 
 
-        flash('Delete of ' . $emp->name . ' was successful', 'success');
+        flash('Store delete successful', 'success');
         return redirect('/admin/employer-planning/' . $allRetailStores[0]->id . '/' . $request['thisDate']);
 
     }
@@ -237,8 +234,7 @@ class EmpController extends Controller
             ));
 
 
-        $emp = clone $employee;
-        flash('Change of ' . $emp->name . ' was successful', 'success');
+        flash('Employee change successful', 'success');
 
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
 
@@ -263,9 +259,7 @@ class EmpController extends Controller
                 'email' => $request['email'],
             ))[0];
 
-        $emp = clone $employee;
-
-        flash('Change E-Mail of ' . $emp->name . ' was successful', 'success');
+        flash('E-Mail change successful', 'success');
 
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
 
@@ -290,8 +284,8 @@ class EmpController extends Controller
                 'password' => Hash::make($request['password']),
             ))[0];
 
-        $emp = clone $employee;
-        flash('Change Passsword of ' . $emp->name . ' was successful', 'success');
+
+        flash('Password change successful', 'success');
         return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
 
 

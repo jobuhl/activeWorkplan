@@ -71,11 +71,11 @@
 
                     <tr>
                         <td>Telefon</td>
-                        <td>+ 49 7531 206-0</td>
+                        <td>07771/91977090</td>
                     </tr>
                     <tr>
                         <td>E-Mail</td>
-                        <td>kontakt@htwg-konstanz.de</td>
+                        <td>jobuhl@htwg-konstanz.de</td>
                     </tr>
                 </table>
             </aside>

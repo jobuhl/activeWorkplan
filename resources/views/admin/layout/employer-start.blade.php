@@ -1,28 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        @include('includes.head')
+<head>
+    @include('includes.head')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @yield('css')
+</head>
 
-        @yield('css')
-    </head>
+
+<body>
+@include('admin.includes.header')
+
+@yield('content')
+
+@include('admin.includes.footer')
+</body>
+
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="{{ asset('/js/general/header-footer.js') }}"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script>
+
+    $(document).ready(function () {
+        $("#button").keyup(function () {
+            $.ajax({
+
+//                auskommentieren
+                type: "POST",
+                url: "ausführen.php",
+                data: dataString,
+                success: function () {
+
+                }
+            }
+// das funktioniert
+//                $("#div1").html($("#button").val()),
 
 
-    <body>
-        @include('admin.includes.header')
+            )
+            ;
+        });
+    });
 
-        @yield('content')
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-        @include('admin.includes.footer')
-    </body>
+</script>
 
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="{{ asset('/js/general/header-footer.js') }}"></script>
-
-    @yield('js')
+@yield('js')
 
 </html>

@@ -9,11 +9,19 @@
         </div>
 
         <div class="col-lg-6 col-sm-12 col-xs-6 right-button-side-bar">
-            <button class="col-xs-6 form-control add-button" type="submit" data-toggle="modal" data-target="#add-button-store">
+            <button class="col-xs-6 form-control add-button" type="submit" data-toggle="modal"
+                    data-target="#add-button-store">
                 Add Store
             </button>
         </div>
     </section>
+
+    <!------------------------ Ajax FIELD -------------------------------->
+
+
+    <div ><h2>Let jQuery AJAX Change This Text</h2></div>
+    <input id="button">Get External Content</input>
+    <div id="div1"></div>
 
 
     <!------------------------ SEARCH FIELD -------------------------------->
@@ -37,7 +45,6 @@
             </optgroup>
         @endforeach
     </select>
-
 
 
     <!------------------------ LIST STORE -------------------------------->
@@ -64,8 +71,12 @@
     <br>
 
     @include('admin.includes.add-store')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">
     @include('admin.includes.add-emp')
 
 
 </section>
+
+
+</script>
