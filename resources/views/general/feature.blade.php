@@ -30,17 +30,14 @@
             <article class="row">
                 <h5>Interaktion</h5>
                 <h3>Einsatzplan-Gestaltung mal anders</h3>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd
-                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-                    consetetur sadipscing
-                    elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                    voluptua. At vero
-                    eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                    est Lorem ipsum
-                    dolor sit amet.</p>
+                <p>Mit activeWorkplan sind die Zeiten vorbei wo Stift und Papier benötigt wird um das
+                    Arbeitszeitmanagement zu
+                    bewältigen. Durch einfache und intuitive Anwendung ist es den Angestellten und dem Arbeitgeber
+                    möglich ausgewählte Events
+                    dem wochenweise dargestellten Kalender hinzuzufügen und somit ein gegenseitigen Austausch von
+                    Wunschterminen, Urlaubsplanung und
+                    Krankheitstagen zu ermöglichen.
+                </p>
                 <img src="{{asset('img/features/full_week.png')}}" alt="Bild">
             </article>
             <br>
@@ -58,14 +55,14 @@
                     <img style="margin: 0; padding: 0;" src="{{asset('img/features/events1.png')}}" alt="Bild">
                 </div>
 
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                    invidunt
-                    ut
-                    labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-                    rebum.
-                    Stet clita kasd
-                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <p>activeWorkplan verteilt die Verantwortung der Einsatzplangestaltung auf alle beteiligten Schultern
+                    die daraus entstehende Flexibilität kommt dem Arbeitgeber aber vor allem auch dem Arbeitnehmer
+                    entgegen.
+                    Vorbei sind die Zeiten wo man ständig dem Arbeitsplaner wegen wichtigen Terminen erst bescheid geben
+                    muss.
+                    Termine eintragen und auf die Bestätigigung der Arbeitszeiten durch den Planer warten, die der
+                    Arbeitnehmer über Workplan einsehen kann.
+                </p>
             </article>
             <br>
 
@@ -73,17 +70,10 @@
             <article class="row">
                 <h5>Kalender</h5>
                 <h3>Vergangenheit, Gegenwart und Zukunft</h3>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd
-                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-                    consetetur sadipscing
-                    elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                    voluptua. At vero
-                    eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-                    est Lorem ipsum
-                    dolor sit amet.</p>
+                <p>active Workplan liefert ihnen von Haus aus eine Kontrolle ihrer vergangenen, gegenwärtigen sowie Zukünftigen Arbeitszeiten, Urlaube sowie
+                   Krankheitstage, da diese langfristig gespeichert bleiben.
+
+                </p>
 
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2">
                     <img src="{{asset('img/features/change_event.png')}}" alt="Bild">
