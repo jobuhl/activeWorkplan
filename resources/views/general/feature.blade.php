@@ -45,8 +45,32 @@
             </article>
             <br>
 
-            <!-- zweite Zeile Carousel -->
+            <!-- zweite Zeile -->
             <article class="row grey">
+                <h5>Verantwortung</h5>
+                <h3>Selbsteinteilung der Arbeitszeit</h3>
+
+                <div class="col-sm-6 col-xs-12" style="margin: 0; padding: 0;">
+                    <img style="margin: 0; padding: 0;" src="{{asset('img/features/events2.png')}}" alt="Bild">
+                </div>
+
+                <div class="col-sm-6 col-xs-12" style="margin: 0; padding: 3px 0 20px 0;">
+                    <img style="margin: 0; padding: 0;" src="{{asset('img/features/events1.png')}}" alt="Bild">
+                </div>
+
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                    invidunt
+                    ut
+                    labore et dolore
+                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
+                    rebum.
+                    Stet clita kasd
+                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+            </article>
+            <br>
+
+            <!-- dritte Zeile -->
+            <article class="row">
                 <h5>Kalender</h5>
                 <h3>Vergangenheit, Gegenwart und Zukunft</h3>
                 <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
@@ -61,149 +85,13 @@
                     est Lorem ipsum
                     dolor sit amet.</p>
 
-                <div id="custom_carousel" class="carousel slide" data-ride="carousel" data-interval="2500">
-                    <!-- Wrapper for slides -->
-                    <!--  Elemente -->
-                    <div class="carousel-inner">
-
-                        <!-- Item 1 -->
-                        <div class="item active">
-                            <aside class="col-xs-12">
-                                <img src="{{asset('img/week.png')}}" alt="Bild">
-                            </aside>
-
-                            <aside class="col-xs-12">
-                                <h3>Wochenansicht</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut
-                                    labore et dolore
-                                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                                    et ea rebum.
-                                    Stet clita kasd
-                                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                            </aside>
-                        </div>
-
-                        <!-- Item 2 -->
-                        <div class="item">
-                            <aside class="col-xs-12">
-                                <img src="{{asset('img/month.png')}}" alt="Bild">
-                            </aside>
-
-                            <aside class="col-xs-12">
-                                <h3>Monatsansicht</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut
-                                    labore et dolore
-                                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                                    et ea rebum.
-                                    Stet clita kasd
-                                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                            </aside>
-                        </div>
-
-                        <!-- Item 3 -->
-                        <div class="item">
-                            <aside class="col-xs-12">
-                                <img src="{{asset('img/navigation.png')}}" alt="Bild">
-                            </aside>
-                            <aside class="col-xs-12">
-                                <h3>Vor und zurück navigieren</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut
-                                    labore et dolore
-                                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                                    et ea rebum.
-                                    Stet clita kasd
-                                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                            </aside>
-                        </div>
-
-                        <!-- Item 4 -->
-                        <div class="item">
-                            <aside class="col-xs-12">
-                                <img src="{{asset('img/navigation.png')}}" alt="Bild">
-                            </aside>
-                            <aside class="col-xs-12">
-                                <h3>zum heutigen Tag springen</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut
-                                    labore et dolore
-                                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                                    et ea rebum.
-                                    Stet clita kasd
-                                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                            </aside>
-                        </div>
-
-                        <!-- Item 5 -->
-                        <div class="item">
-                            <aside class="col-xs-12">
-                                <img src="{{asset('img/print.png')}}" alt="Bild">
-                            </aside>
-                            <aside class="col-xs-12">
-                                <h3>Arbeitsplan ausdrucken</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut
-                                    labore et dolore
-                                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                                    et ea rebum.
-                                    Stet clita kasd
-                                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                            </aside>
-                        </div>
-
-                        <!-- Item 6 -->
-                        <div class="item">
-                            <aside class="col-xs-12">
-                                <img src="{{asset('img/mail.png')}}" alt="Bild">
-
-                            </aside>
-                            <aside class="col-xs-12">
-                                <h3>Arbeitsplan per Email</h3>
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-                                    tempor invidunt ut
-                                    labore et dolore
-                                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores
-                                    et ea rebum.
-                                    Stet clita kasd
-                                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                            </aside>
-                        </div>
-
-                    </div>
-                    <!-- End Carousel Inner -->
-
-                    <div class="controls">
-                        <ul class="nav">
-                            <li data-target="#custom_carousel" data-slide-to="0" class="active">Week</li>
-                            <li data-target="#custom_carousel" data-slide-to="1">Month</li>
-                            <li data-target="#custom_carousel" data-slide-to="2">Navigate</li>
-                            <li data-target="#custom_carousel" data-slide-to="3">Today</li>
-                            <li data-target="#custom_carousel" data-slide-to="4">Print</li>
-                            <li data-target="#custom_carousel" data-slide-to="5">E-Mail</li>
-                        </ul>
-                    </div>
+                <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+                    <img src="{{asset('img/features/change_event.png')}}" alt="Bild">
                 </div>
-                <!-- End Carousel -->
-            </article>
 
-            <br>
-            <!-- dritte Zeile -->
-            <article class="row">
-                <h5>Verantwortung</h5>
-                <h3>Selbsteinteilung der Arbeitszeit</h3>
-                <img src="{{asset('img/workplan.png')}}" alt="Bild">
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-                    invidunt
-                    ut
-                    labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea
-                    rebum.
-                    Stet clita kasd
-                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
             </article>
             <br>
+
 
             <!-- vierte Zeile -->
             <article class="row grey">
@@ -213,24 +101,21 @@
                     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
                     Stet clita kasd
                     gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <img src="{{asset('img/index/store_grey.png')}}" alt="Bild">
             </article>
             <br>
+
 
             <!-- fünfte Zeile -->
             <article class="row">
                 <h2 style="display: none">fakeheading</h2>
-                <aside class="col-sm-6 col-xs-12">
-                    <h3>Krankmeldung einreichen</h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut
-                        labore et dolore
-                        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                        Stet clita kasd
-                        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                </aside>
-                <aside class="col-sm-6 col-xs-12">
-                    <img src="{{asset('img/events.png')}}" alt="Bild">
-                </aside>
+                <h3>Krankmeldung einreichen</h3>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
+                    ut
+                    labore et dolore
+                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                    Stet clita kasd
+                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
             </article>
             <br>
 
@@ -242,7 +127,7 @@
                     magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
                     Stet clita kasd
                     gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                <img src="{{asset('img/seminar.png')}}" alt="Bild">
+                <img src="{{asset('img/features/employee_proposals.png')}}" alt="Bild">
             </article>
             <br>
 
@@ -266,35 +151,6 @@
                         magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
                         Stet clita kasd
                         gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                </aside>
-            </article>
-            <br>
-
-            <!-- achte Zeile -->
-            <article class="row grey">
-                <h2 style="display: none">fakeheading</h2>
-                <h3> Anonymisierte Darstellung der belegeten Zeitintervallen </h3>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                    ut
-                    labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd
-                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-            </article>
-
-            <article class="row">
-                <h2 style="display: none">fakeheading</h2>
-                <aside class="col-xs-12 col-sm-6">
-                    <h3> Benötigte Personalzahl für Zeitintervalle </h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut
-                        labore et dolore
-                        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                        Stet clita kasd
-                        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-                </aside>
-                <aside class="col-xs-12 col-sm-6">
-                    <img src="{{asset('img/amount.png')}}" alt="Bild">
                 </aside>
             </article>
             <br>
