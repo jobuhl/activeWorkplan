@@ -71,7 +71,7 @@
                 <h5>Kalender</h5>
                 <h3>Vergangenheit, Gegenwart und Zukunft</h3>
                 <p>active Workplan liefert ihnen von Haus aus eine Kontrolle ihrer vergangenen, gegenwärtigen sowie Zukünftigen Arbeitszeiten, Urlaube sowie
-                   Krankheitstage, da diese langfristig gespeichert bleiben.
+                    Krankheitstage, da diese langfristig gespeichert bleiben.
 
                 </p>
 
@@ -124,23 +124,34 @@
             <!-- siebte Zeile -->
             <article class="row">
                 <h5>Flexibel und Transparent</h5>
+                <h3>Retail Stores und Mitarbeiter hinzufügen</h3>
                 <aside class="col-xs-12 col-sm-6">
-                    <h3>private </h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut
-                        labore et dolore
-                        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                        Stet clita kasd
-                        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    <p>
+                        Bereits bei der Step-by-Step Registrierung eines Unternehmer-Accounts werden Sie aufgefordert einen ersten Retail Store anzulegen.
+                        Da das Ziel dieser Applikation die Konzentration auf den wesentlichen Content ist,
+                        wird der Fokus vor allem die verschiedenen dynamisch - und in Echtzeit - erstellten Events gelegt.
+                        Zu Beginn müssen daher zu allererst die zum Unternehmen gehörenden Stores, sowie die Mitarbeiter der Applikation hinzugefügt werden.
+                        Jeder Retail Store bekommt einen Namen zugewiesen und eine Addresse, die vorallem für die Mitarbeiter wichtig sein wird.
+                        Diese sehen die zu ihrem Store gehörende Addresse.
+                    </p>
+                    <p>
+                        Mitarbeiter bekommen neben den benötogten Grundinformationen und einer eindeutig identifizierbaren Email auch einen Store zugewiesen,
+                        und haben bestimmte Vertragsdetails. Diese beinhalten zum Beispiel, ob der Vertrag befristet ist, eine Rolle, sowie die Beschäftigungsart.
+                        Studenten bekommen selbstverständlich andere Verträge als Vollzeitangestellte und arbeiten dementsprechend auch weniger.
+                        Alle Details können natürlich nach Belieben zu jeder Zeit verändert werden.
+                    </p>
+                    <img src="{{asset('img/features/add_store.png')}}" alt="Bild">
                 </aside>
                 <aside class="col-xs-12 col-sm-6">
-                    <h3>Wie arbeitet die Belegschaft? </h3>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                        ut
-                        labore et dolore
-                        magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                        Stet clita kasd
-                        gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    {{--<h3>Store hinzufügen</h3>--}}
+                    {{--<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt--}}
+                        {{--ut--}}
+                        {{--labore et dolore--}}
+                        {{--magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.--}}
+                        {{--Stet clita kasd--}}
+                        {{--gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>--}}
+                    <img src="{{asset('img/features/add_employee.png')}}" alt="Bild">
+
                 </aside>
             </article>
             <br>
