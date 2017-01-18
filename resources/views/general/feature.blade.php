@@ -70,7 +70,8 @@
             <article class="row">
                 <h5>Kalender</h5>
                 <h3>Vergangenheit, Gegenwart und Zukunft</h3>
-                <p>active Workplan liefert ihnen von Haus aus eine Kontrolle ihrer vergangenen, gegenwärtigen sowie Zukünftigen Arbeitszeiten, Urlaube sowie
+                <p>active Workplan liefert ihnen von Haus aus eine Kontrolle ihrer vergangenen, gegenwärtigen sowie
+                    Zukünftigen Arbeitszeiten, Urlaube sowie
                     Krankheitstage, da diese langfristig gespeichert bleiben.
 
                 </p>
@@ -86,11 +87,16 @@
             <!-- vierte Zeile -->
             <article class="row grey">
                 <h3>Arbeitsvorschläge eintragen</h3>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd
-                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <p>
+                    Arbeitnehmer reichen Arbeitsvorschläge ein, der Planer sieht jeden Vorschlag in einer gesonderten
+                    View
+                    und kann diese Vorschläge akzeptieren und somit in den terminierten Arbeitsplan direkt übertagen.
+                    Jeder akzeptierte
+                    Event wird den jeweiligen Angestellten angezeigt und erhält somit umgehend ein Feedback über seine
+                    gewünschten Arbeitszeiten.
+
+
+                </p>
                 <img src="{{asset('img/index/store_grey.png')}}" alt="Bild">
             </article>
             <br>
@@ -100,23 +106,29 @@
             <article class="row">
                 <h2 style="display: none">fakeheading</h2>
                 <h3>Krankmeldung einreichen</h3>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
-                    ut
-                    labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd
-                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <p>Nicht nur die Arbeitszeiten sind ein wichtiger Teil der Planung, auch Krankheitsfälle müssen
+                    berücksichtigen
+                    werden. Bei activeWorkplan ist es möglich, dass Arbeitnehmer Krankmeldungen einreichen die widerum
+                    vom Einsatzplaner
+                    bestätigt werden müssen. Somit ist beiden Parteien umgehend bekannt wie lange ein Ausfall gehen wird
+                    ohne eine
+                    unübersichtliche Zettelwirtschaft führen zu müssen.
+
+
+                </p>
             </article>
             <br>
 
             <!-- sechste Zeile -->
             <article class="row grey">
                 <h3>Seminare, Schulung, Studium</h3>
-                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                    labore et dolore
-                    magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-                    Stet clita kasd
-                    gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                <p> Nicht nur Krankheits- und Urlaubstage sorgen dafür das ein Angestellter nicht bei der Arbeit
+                    erscheinen kann,
+                    auch berufliche Seminare sowie Schulungen können dafür sorgen das man an bestimmten Tagen nicht
+                    anwesend ist. Mit activeWorkplan
+                    lässt sich dies durch einfach zu erstellende Events frühzeitig Eintragen um somit den Planer zu
+                    entlasten.
+                </p>
                 <img src="{{asset('img/features/employee_proposals.png')}}" alt="Bild">
             </article>
             <br>
@@ -134,24 +146,18 @@
                         Jeder Retail Store bekommt einen Namen zugewiesen und eine Addresse, die vorallem für die Mitarbeiter wichtig sein wird.
                         Diese sehen die zu ihrem Store gehörende Addresse.
                     </p>
+
+                    <img src="{{asset('img/features/add_store.png')}}" alt="Bild">
+                </aside>
+                <aside class="col-xs-12 col-sm-6">
+
+                    <img src="{{asset('img/features/add_employee.png')}}" alt="Bild">
                     <p>
                         Mitarbeiter bekommen neben den benötogten Grundinformationen und einer eindeutig identifizierbaren Email auch einen Store zugewiesen,
                         und haben bestimmte Vertragsdetails. Diese beinhalten zum Beispiel, ob der Vertrag befristet ist, eine Rolle, sowie die Beschäftigungsart.
                         Studenten bekommen selbstverständlich andere Verträge als Vollzeitangestellte und arbeiten dementsprechend auch weniger.
                         Alle Details können natürlich nach Belieben zu jeder Zeit verändert werden.
                     </p>
-                    <img src="{{asset('img/features/add_store.png')}}" alt="Bild">
-                </aside>
-                <aside class="col-xs-12 col-sm-6">
-                    {{--<h3>Store hinzufügen</h3>--}}
-                    {{--<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt--}}
-                        {{--ut--}}
-                        {{--labore et dolore--}}
-                        {{--magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.--}}
-                        {{--Stet clita kasd--}}
-                        {{--gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>--}}
-                    <img src="{{asset('img/features/add_employee.png')}}" alt="Bild">
-
                 </aside>
             </article>
             <br>
