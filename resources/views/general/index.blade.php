@@ -75,7 +75,7 @@
 
             <!-- links / unten; Pull damit colum nach oben geht-->
             <aside class="col-sm-6 col-sm-pull-6">
-                <img class="bodyimage" src="{{asset('img/workplan.png')}}" alt="Bild">
+                <img class="bodyimage" src="{{asset('img/index/store_grey.png')}}" alt="Bild">
             </aside>
         </div>
 
@@ -99,7 +99,7 @@
 
             <!-- rechts -->
             <aside class="col-sm-6">
-                <img class="bodyimage" src="{{asset('img/month.png')}}" alt="Bild">
+                <img class="bodyimage" src="{{asset('img/index/navigation_vor_zurueck_white.png')}}" alt="Bild">
             </aside>
         </div>
 
@@ -119,7 +119,7 @@
             </aside>
 
             <aside class="col-sm-6 col-sm-pull-6">
-                <img class="bodyimage" src="{{asset('img/planning.png')}}" alt="Bild">
+                <img class="bodyimage" src="{{asset('img/index/overview_grey.png')}}" alt="Bild">
             </aside>
         </div>
 
@@ -142,7 +142,7 @@
 
             <!-- rechts -->
             <aside class="col-sm-6">
-                <img class="bodyimage" src="{{asset('img/overview.png')}}" alt="Bild">
+                <img class="bodyimage" src="{{asset('img/index/store_search_white.png')}}" alt="Bild">
             </aside>
         </div>
 
@@ -159,7 +159,7 @@
             </aside>
 
             <aside class="col-sm-6 col-sm-pull-6">
-                <img class="bodyimage" src="{{asset('img/mobil.png')}}" alt="Bild">
+                <img class="bodyimage" src="{{asset('img/index/mobil_oder_desktop_grey.png')}}" alt="Bild">
             </aside>
         </div>
 
@@ -180,7 +180,7 @@
 
             <!-- rechts -->
             <aside class="col-sm-6">
-                <img class="bodyimage" src="{{asset('img/seminar.png')}}" alt="Bild">
+                <img class="bodyimage" src="{{asset('img/index/employee_details_white.png')}}" alt="Bild">
             </aside>
         </div>
 
@@ -201,7 +201,7 @@
 
             <!--  rechts -->
             <aside class="col-sm-6 col-sm-pull-6">
-                <img class="bodyimage" src="{{asset('img/sign-up.png')}}" alt="Bild">
+                <img class="bodyimage" src="{{asset('img/index/sign_up.png')}}" alt="Bild">
             </aside>
         </div>
 

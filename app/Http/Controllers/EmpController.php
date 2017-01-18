@@ -31,7 +31,7 @@ class EmpController extends Controller
             'forename' => 'required|max:255|',
             'email' => 'required|email|max:255|unique:employees',
             'roleid' => 'required|max:255|',
-            'working_hours' => 'required|max:255|',
+            'working_hours' => 'required|integer|max:255|',
 
 
         ]);
@@ -206,7 +206,7 @@ class EmpController extends Controller
             'name' => 'required|max:255|',
             'forename' => 'required|max:255|',
             'role' => 'required|max:255|',
-            'working_hours' => 'required|max:255|',
+            'working_hours' => 'required|integer|max:255|',
 
 
         ]);

@@ -41,7 +41,7 @@
                     eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
                     est Lorem ipsum
                     dolor sit amet.</p>
-                <img src="{{asset('img/month.png')}}" alt="Bild">
+                <img src="{{asset('img/features/full_week.png')}}" alt="Bild">
             </article>
             <br>
 

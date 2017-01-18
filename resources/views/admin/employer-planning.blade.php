@@ -50,55 +50,55 @@
 
 
 
-            <input type="search" name="search" onkeyup="hallo()" id="search">
-            <div id="here">haha</div>
+                       {{--<input type="search" name="search" onkeyup="hallo()" id="search">--}}
+            {{--<div id="here">haha</div>--}}
 
 
 
-{{----}}
-            <div class="form-group">
-                <input onkeyup="up()" type="text" id="search-input" class="form-control" placeholder="Search">
-            </div>
+            {{----}}
+            {{--<div class="form-group">--}}
+                {{--<input onkeyup="up()" type="text" id="search-input" class="form-control" placeholder="Search">--}}
+            {{--</div>--}}
 
-            <div id="search-results">
-
-
-
-            </div>
-
-            <script>
+            {{--<div id="search-results">--}}
 
 
-                    function hallo() {
-//                        $('#here').show();
-                        var x = $(this).val();
-                        alert(x);
-                        $.ajax( {
-                            type: 'GET',
-                            url:'http://localhost:8888/activeWorkplan/public/admin/executeSearch',
-                            data: 'q=' + x,
-                            success: function(data) {
-                                $('#here').html(data);
-                            }
-                        });
 
-                    }
+            {{--</div>--}}
+
+            {{--<script>--}}
 
 
-                function up() {
+                    {{--function hallo() {--}}
+{{--//                        $('#here').show();--}}
+                        {{--var x = $(this).val();--}}
+                        {{--alert(x);--}}
+                        {{--$.ajax( {--}}
+                            {{--type: 'GET',--}}
+                            {{--url:'http://localhost:8888/activeWorkplan/public/admin/executeSearch',--}}
+                            {{--data: 'q=' + x,--}}
+                            {{--success: function(data) {--}}
+                                {{--$('#here').html(data);--}}
+                            {{--}--}}
+                        {{--});--}}
 
-                    var keywords = $('#search-input').val();
+                    {{--}--}}
 
 
-                    if(keywords.length > 0){
-                        $.post('http://localhost:8888/activeWorkplan/public/admin/executeSearch', {keywords: keywords}, function(){
-                            $('#search-results').html(markup);
-                        });
-                    }
+                {{--function up() {--}}
 
-                }
+                    {{--var keywords = $('#search-input').val();--}}
 
-            </script>
+
+                    {{--if(keywords.length > 0){--}}
+                        {{--$.post('http://localhost:8888/activeWorkplan/public/admin/executeSearch', {keywords: keywords}, function(){--}}
+                            {{--$('#search-results').html(markup);--}}
+                        {{--});--}}
+                    {{--}--}}
+
+                {{--}--}}
+
+            {{--</script>--}}
 
             {{----}}
 
