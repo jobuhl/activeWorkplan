@@ -24,6 +24,7 @@
     margin-right: auto; /* fuer Bild */
 }
 
+
 .my-center {
     width:50%; /* muss leider fix festgelegt werden */
     margin: auto;
@@ -33,6 +34,11 @@
     bottom: 0;
     right: 0;
     display: table; /* passt die Hoehe an Inhalt an */
+}
+
+
+.width-80 {
+    width: 80%;
 }
 
 .index-under-image-logo {
@@ -65,7 +71,7 @@
 }
 
 /* 768px entspricht Bootstrap small-size (sm) */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .my-hidden-small {
         display: none;
     }

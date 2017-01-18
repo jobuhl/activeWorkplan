@@ -15,7 +15,7 @@
 
 
         <aside class="col-xs-12 col-sm-6 index-image-aside">
-            <form class="my-center">
+            <form class="my-center width-80">
                 <h4 class="my-horizontal-center">Sign up</h4>
                 <p><input class="form-control to-right modal-input" id="sign-up-email" type="email" placeholder="Email"></p>
                 <p><input class="form-control to-right modal-input" id="sign-up-password1" type="password" placeholder="Password"></p>
