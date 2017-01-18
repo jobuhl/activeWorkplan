@@ -21,7 +21,7 @@
                 <p><input class="form-control to-right modal-input" id="sign-up-password1" type="password" placeholder="Password"></p>
                 <p><input class="form-control to-right modal-input" id="sign-up-password2" type="password" placeholder="Confirm Password"></p>
                 <button class="form-control add-button" type="button" onclick="signupPicture()" data-toggle="modal" data-target="#signupbutton">Sign up</button>
-                <button id="oped-modal-step-2" style="display: none"  onclick="nextStep(2)"></button>
+                <button id="oped-modal-step-2" style="display: none" onclick="nextStep(2)"></button>
             </form>
         </aside>
     </div>
@@ -38,13 +38,11 @@
             <aside class="col-xs-12 col-md-8">
                 <br>
                 <p>
-                    Haben Sie als Arbeitgeber keine Lust mehr stundenlang am Einsatzplan zu feilen, nur um ihn zig mal
-                    umwerfen
-                    zu
-                    müssen? Weil immer wieder ein Mitarbeiter mit einem neuen Termin ankommt, der berücksichtigt werden
-                    soll?
+                    Haben Sie als Arbeitgeber keine Lust mehr stundenlang am Einsatzplan zu feilen, nur um ihn zig mal umwerfen zu
+                    müssen? Weil immer wieder ein Mitarbeiter mit einem neuen Termin ankommt, der berücksichtigt werden soll?
                     Überlassen Sie die Arbeit doch Ihren Mitarbeitern!
-                    Sie übernehmen die Rolle des Administrators und greifen nur bei Bedarf ein.
+                    Sie übernehmen die Rolle des Administrators, erstellen den endgültogen Arbeitsplan,
+                    müssen sich jedoch keine Sorgen mehr um stressige änderungen der vorgeschlagenen Arbeitszeiten mehr machen.
                     Wie das geht?
                 </p>
                 <p>
@@ -64,12 +62,12 @@
             <!-- rechts / oben; push damit colum nach oben geht -->
             <aside class="col-sm-6 col-sm-push-6">
                 <h4>Einsatzplangestaltung mal anders</h4>
-                <p>Bei activeWorkplan liegt das Arbeitszeitmanagement nicht nur bei dem Arbeitgeber. Wir bieten für
-                    jeden
-                    Angestellten eine leichte, intuitive und ansprechende Möglichkeit sich aktiv am Arbeitsplan zu
-                    beteiligen.
+                <p>Bei activeWorkplan liegt das Arbeitszeitmanagement nicht nur bei dem Arbeitgeber. Wir bieten für jeden
+                    Angestellten eine leichte, intuitive und ansprechende Möglichkeit sich aktiv am Arbeitsplan zu beteiligen.
+                    Jeder Mitarbeiter kann bei der Erstellung eines Events zwischen verschiedenen vordefinierten Kategorien wählen.
+                    Dazu gehören vorgeschlagene Arbeitszeiten, Seminare, eingeplante Zeit um für sein Studium zu lernen und mehr.
+                    Bei Krankheit und Urlaub müssen Sie als Arbeitsgeber die Events sogar genehmigen bzw. bestätigen.
                 </p>
-                <p>Kalender</p>
                 <a href="feature">Get more information</a>
             </aside>
 
@@ -87,13 +85,9 @@
                 <h4>Vergangenheit, Gegenwart und Zukunft</h4>
                 <p>Arbeitszeiten und Termine auf Schmierzettel aufschreiben, die man sowieso verliert? Nicht mit
                     activeWorkplan. Wir bieten einen elektronischen Kalender, der sämtliche eingetragenen Arbeitszeiten
-                    speichert. Diese sind bis zu einem Jahr rückwirkend einsehbar. Zudem können Sie sich den
-                    wöchentlichen
-                    Arbeitsplan einfach per E-Mail zuschicken und/oder ausdrucken.
+                    speichert. Diese sind bis zu einem Jahr rückwirkend einsehbar. Sie als Arbeitsgeber haben selbstverständlich
+                    die kompletten Kalender der Mitarbeiter sowie die fertigen Einsatzpläne zugriffsbereit.
                 </p>
-                <p>Kalender, Wochenansicht, Monatsansicht, Vor und zurück navigieren, zum heutigen Tag springen,
-                    Arbeitsplan
-                    ausdrucken, Arbeitsplan per Email</p>
                 <a href="feature">Get more information</a>
             </aside>
 
@@ -109,12 +103,9 @@
             <aside class="col-sm-6 col-sm-push-6">
                 <h4>Selbsteinteilung der Arbeitszeit</h4>
                 <p>Wegen jedem privaten Termin dem Chef hinterherrennen gehört der Vergangenheit an. Einfach selbst die
-                    gewünschten Arbeitszeiten oder Fehlzeiten in Ihrem Terminplan rechtzeitig eintragen und schon sind
-                    sie
+                    gewünschten Arbeitszeiten oder Fehlzeiten in Ihrem Terminplan rechtzeitig eintragen und schon sind sie
                     ihrem organisierten Alltag einen Schritt näher.
                 </p>
-                <p>Arbeitsvorschläge eintragen, Urlaub beantragen, Krankmeldung, Seminare, Schulung, private Termine,
-                    Studium (Arbeitgeber kann weitere Event-Typen hinzufügen)</p>
                 <a href="feature">Get more information</a>
             </aside>
 
@@ -130,13 +121,10 @@
             <aside class="col-sm-6">
                 <h4>Flexibel und Transparent</h4>
                 <p>Vorbei sind die Zeiten in denen man in einem starren Planungssystem ohne Mitspracherecht sein
-                    Arbeitsleben fristet. Durch aktive Teilnahme des gesamten Teams am Planungsprozess, verteilt sich
-                    die
-                    Erstellung des Einsatzplanes auf alle Mitarbeiter. Das gesamte Team arbeitet zusammen an einem für
-                    alle
+                    Arbeitsleben fristet. Durch aktive Teilnahme des gesamten Teams am Planungsprozess, verteilt sich die
+                    Erstellung des Einsatzplanes auf alle Mitarbeiter. Das gesamte Team arbeitet zusammen an einem für alle
                     fairen und optimalen Arbeitsplan.
                 </p>
-                <p>auf oberen verlinken Selbsteinteilung de Arbeitszeit</p>
                 <a href="feature">Get more information</a>
             </aside>
 
@@ -154,7 +142,6 @@
                 <p>Sie haben keinen PC oder Laptop zu Hause? Kein Problem, denn activeWorkplan lässt sich auch von Ihrem
                     Smartphone oder Tablet bedienen. Wo immer sie sind und genau dann, wenn Sie es brauchen.
                 </p>
-                <p>Optimierte Darstellung für Smartphone, Tablet und PC</p>
                 <a href="feature">Get more information</a>
             </aside>
 
@@ -168,12 +155,13 @@
 
             <!--  Links -->
             <aside class="col-sm-6">
-                <h4>Überstunden? Nein, Danke!
+                <h4>Alles bis ins Detail.
                 </h4>
-                <p>Wer kennt das nicht? Zwei Kollegen im Urlaub, die Grippe setzt zwei andere außer Gefecht und Sie
-                    müssen
-                    mal wieder dran glauben und einspringen? activeWorkplan meldet Ihnen, falls Ihre vertraglich
-                    vereinbarten Wochenstunden erreicht sind.
+                <p>Sie haben nicht nur die Möglichkeit die Mitarbeiter zu den einzelnen Stores hinzuzufügen,
+                    sondern können zusätzlich auch Vertragsinformationen hinter dem Account des Bediensteten festlegen.
+                    Komfortabel lässt sich jede Einstellung nach belieben ändern. Beispielsweise darf ein Mitarbeiter ab sofort
+                    an die Kasse und bekommt dadurch eine neue Rolle zugewiesen. Mit dieser kann er bei der Einsatzplanung
+                    unter neuen Aspekten berücksichtigt werden.
                 </p>
                 <a href="feature">Get more information</a>
             </aside>
@@ -191,8 +179,7 @@
             <aside class="col-sm-6 col-sm-push-6">
                 <h4>Registrierung leicht gemacht!
                 </h4>
-                <p>Bei aktiveWorkplan genügt es, wenn sich der Planer registriert. Danach ist es für diesen durch
-                    einfache
+                <p>Bei aktiveWorkplan genügt es, wenn sich der Planer registriert. Danach ist es für diesen durch einfache
                     und intuitive Bedienung möglich, beliebig viele Mitarbeiter und Filialen zu registieren, ohne
                     dass diese einen Finger rühren müssen.
                 </p>
@@ -208,16 +195,11 @@
         <!-- Reihe 9 -->
         <div class="row article">
 
-
-            <!-- wenn middle breite: Quasi abstand links -->
-            <aside class="col-md-2"></aside>
-
-            <aside class="col-xs-12 col-md-8">
+            <aside class="col-xs-12 col-md-8 col-md-offset-2">
                 <h4 class="my-horizontal-center">Haben wir Sie überzeugt?
                 </h4>
-                <p class="my-horizontal-center"> Dann legen Sie los und sparen eine Menge Zeit und Nerven! Jetzt
-                    kostenlos
-                    registrieren. Schnell Angaben
+                <p class="my-horizontal-center">
+                    Dann legen Sie los und sparen eine Menge Zeit und Nerven! Jetzt kostenlos registrieren. Schnell Angaben
                     zum Unternehmen ausfüllen, Mitarbeiter und Geschäftsstellen hinzufügen und los geht's. Voller
                     Funktionsumfang und alles ohne Zahlungsangaben.
                 </p>
