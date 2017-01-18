@@ -48,6 +48,60 @@
 
         <div class="fake-body container">
 
+
+
+            <input type="search" name="search" onkeyup="hallo()" id="search">
+            <div id="here">haha</div>
+
+
+
+{{----}}
+            <div class="form-group">
+                <input onkeyup="up()" type="text" id="search-input" class="form-control" placeholder="Search">
+            </div>
+
+            <div id="search-results">
+
+
+
+            </div>
+
+            <script>
+
+
+                    function hallo() {
+//                        $('#here').show();
+                        var x = $(this).val();
+                        alert(x);
+                        $.ajax( {
+                            type: 'GET',
+                            url:'http://localhost:8888/activeWorkplan/public/admin/executeSearch',
+                            data: 'q=' + x,
+                            success: function(data) {
+                                $('#here').html(data);
+                            }
+                        });
+
+                    }
+
+
+                function up() {
+
+                    var keywords = $('#search-input').val();
+
+
+                    if(keywords.length > 0){
+                        $.post('http://localhost:8888/activeWorkplan/public/admin/executeSearch', {keywords: keywords}, function(){
+                            $('#search-results').html(markup);
+                        });
+                    }
+
+                }
+
+            </script>
+
+            {{----}}
+
                 <br>
                 <aside class="col-xs-12 col-sm-3 side-bar">
                     @include('admin.includes.employer-side-bar-planning')

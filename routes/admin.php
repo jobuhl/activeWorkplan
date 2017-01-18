@@ -58,7 +58,12 @@ Route::post('/notAcceptAlldayEvent', 'EventController@notAcceptAlldayEvent');
 
 //Route::post('/daten/{characters?}', 'AjaxSearchStoresController@getStoreEmp');
 
-Route::get('/daten?q={q}', function () {
+
+Route::post('/executeSearch', 'SearchController@executeSearch');
+
+
+
+Route::post('/daten', function () {
 
 
 //    $store = DB::table('retail_store')
