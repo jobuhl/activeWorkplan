@@ -62,8 +62,8 @@ class StoreController extends Controller
             'address_id' => $newAddress->id
         ));
 
-        $retailStore2 = clone $thisRetailStore;
-        flash('Add of Store ' . $retailStore2->name . ' was successful', 'success');
+
+        flash('Store added', 'success');
         return redirect('/admin/employer-planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
     }
 
@@ -124,9 +124,7 @@ class StoreController extends Controller
             ->where('retail_store.company_id', $company->id)
             ->get();
 
-        $retailStore2 = clone $store;
-
-        flash('Change of Store ' . $retailStore2->name . ' was successful', 'success');
+        flash('Change successful', 'success');
 
         return redirect('/admin/employer-planning/' . $store->id . '/' . $request['thisDate']);
 
@@ -191,8 +189,6 @@ class StoreController extends Controller
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.company_id', $store->get()[0]->id);
 
-        $retailStore2 = clone $retailStore;
-
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         $alldayEvent->delete();
         $timeEvent->delete();
@@ -219,7 +215,7 @@ class StoreController extends Controller
             ->get();
 
 
-        flash('Delete of Store ' . $retailStore2->name . ' was successful', 'success');
+        flash('Store delete successful', 'success');
         return redirect('/admin/employer-planning/' . ($amountOfRetailStores == 0 ? '0' : $allRetailStores[0]->id) . '/' . $request['thisDate']);
 
     }

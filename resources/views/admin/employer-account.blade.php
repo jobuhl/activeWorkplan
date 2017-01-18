@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="fake-body container">
+    <section class="fake-body">
 
         {{-- Meldung für den Fall das ein Error Auftritt --}}
         @if (count($errors) > 0)
@@ -32,7 +32,9 @@
             </div>
         @endif
 
+        <section class="container">
 
+            <div class="row -col-12">
                 <h2 class="modal-ueberschrift">Admin Details</h2>
 
                 <button class="form-control yellow my-account-button button-hide" type="submit" data-toggle="modal"
@@ -101,8 +103,10 @@
                 </button>
 
 
+            </div>
 
-        </div>
+        </section>
+    </section>
 
     @include('admin.includes.change-admin')
     @include('admin.includes.delete-admin')

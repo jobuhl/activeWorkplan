@@ -1,32 +1,15 @@
-@extends('admin.layout.employer-start')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('css/employer/no-store.css')}}">
-@endsection
+<head>
 
-@section('content')
-
-    <div class="fake-body">
-
-        <section class="container horizontal">
-
-            <div class="row">
-
-                <h2 class="modal-ueberschrift">At the moment your Company has no Stores.</h2>
-                <br>
-                <br>
-                <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-                    <button class="form-control add-button" type="submit" data-toggle="modal" data-target="#add-button-store">
-                        Add Store
-                    </button>
-                </div>
-
-            </div>
+</head>
 
 
-        </section>
+<body>
+    <p> no store</p>
 
-        @include('admin.includes.add-store')
-    </div>
+</body>
 
-@endsection
+
+</html>
