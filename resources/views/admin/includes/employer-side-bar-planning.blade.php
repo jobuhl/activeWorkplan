@@ -42,7 +42,7 @@
 
 
     <!-- +++++++++++++++++ LIST STORE ++++++++++++++++ -->
-    <ul class="lower-list">
+    <ul class="lower-list hide-mobil">
 
         <li><a class="middle-bold">Stores</a></li>
         @foreach($allRetailStores as $retailStore)

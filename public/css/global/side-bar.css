@@ -4,11 +4,10 @@
     padding: 0;
 }
 
+/* Trennlinie zwischen Side-bar und aside-right */
 .side-bar {
     padding-right: 20px; /* Abstand zwischen Beiden spalten und Trennlinie */
 }
-
-/* Trennlinie zwischen Side-bar und aside-right */
 .my-right-side {
     padding-left: 20px; /* Abstand zwischen Beiden spalten und Trennlinie */
 }
@@ -22,16 +21,8 @@
     }
 
     /* Auflistung der Stores nicht anzeigen */
-    .overview.side-bar > ul {
+    .overview.side-bar .hide-mobil {
         display: none;
-    }
-
-    /* ueberschrift aller Stores in Overview */
-    .side-bar .headline,
-    .list .current-selected-store,
-    .side-bar .headline {
-        background: var(--main-small-header-color);
-        border-bottom: 2px solid white;
     }
 
     /* zwischen-freiraum */
@@ -74,8 +65,7 @@
      margin: 0;
      text-decoration: none;
      color: var(--main-text-black);
- }
-
+}
 
 .side-bar li:first-child a {
     border-top: none;
@@ -90,21 +80,6 @@
     border-bottom: 1px solid var(--main-border-color);
 }
 
-/* Current Store nicht anzeigen, wenn bildsfhrim breit */
-@media screen and (min-width: 768px) {
-    /*.list .current-selected-store {*/
-        /*display: none;*/
-    /*}*/
-
-    .overview.side-bar > ul {
-        display: block;
-    }
-
-    /*.side-bar .headline aside:nth-child(3) {*/
-        /*display: none;*/
-    /*}*/
-}
-
 /* Sub-Menu wichtig muss hierarchisch aufgeschrieben bleiben*/
 .side-bar li ul li {
     padding-left: 20px;
@@ -115,50 +90,17 @@
     display: none;
 }
 
-/* Wenn Cursor ueber dem Element */
-.side-bar .headline:hover,
-.side-bar a:hover,
-.current-selected-store aside:nth-child(2n+1):hover p {
-    background-color: var(--main-highlight-color); /* Variable in header-footer.css deklariert */
-    color: var(--main-text-white); /* text-farbe */
-    cursor: pointer;
-}
-
-/* auch die asides auf der seite sollen weissen text bekommen */
-.side-bar .headline:hover aside p {
-    color: var(--main-text-white); /* text-farbe */
-}
-
-/* Wenn Search-Feld angeklickt */
-.side-bar .input-sidebar:focus {
-    outline: none;
-    background: var(--main-focus-color);
-}
-
 /* Unterer teil der Liste wegen ueberlappung */
 .lower-list {
     float: left;
     width: 100%;
 }
 
-/*.current-selected-store,*/
-/*.headline {*/
-    /*padding: 0;*/
-    /*margin: 0;*/
-/*}*/
-/*.current-selected-store aside p,*/
-/*.headline aside p {*/
-    /*padding: 10px 0 10px 0px;*/
-    /*margin: 0;*/
-/*}*/
-
-
 
 /* ----------------------- BUTTON ADD STORE / EMPLOYEE ----------------------- */
 .left-button-side-bar,
 .right-button-side-bar {
     padding: 0 0 2px 0;
-
 }
 
 @media screen and (min-width: 1200px) {
@@ -197,4 +139,27 @@
 
 .lower-list {
     border-bottom: 1px solid var(--main-border-color);
+}
+
+
+
+/* ----------------------- FOCUS HOVER ----------------------- */
+
+/* Wenn Search-Feld angeklickt */
+.side-bar .input-sidebar:focus {
+    outline: none;
+    background: var(--main-focus-color);
+}
+
+/* Wenn Cursor ueber dem Element */
+.side-bar .headline:hover,
+.side-bar a:hover {
+    background-color: var(--main-highlight-color); /* Variable in header-footer.css deklariert */
+    color: var(--main-text-white); /* text-farbe */
+    cursor: pointer;
+}
+
+/* auch die asides auf der seite sollen weissen text bekommen */
+.side-bar .headline:hover aside p {
+    color: var(--main-text-white); /* text-farbe */
 }

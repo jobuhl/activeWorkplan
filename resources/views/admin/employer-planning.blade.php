@@ -279,7 +279,7 @@
                                                                         <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})"
                                                                                 class="add-event-button">+
                                                                         </button>
-                                                                        <button id="button-add-worktime-fix-event-admin"
+                                                                        <button id="button-add-worktime-fix-event-admin{{ $oneTimeEvent->id }}"
                                                                                 style="display: none;" data-toggle="modal"
                                                                                 data-target="#change-button-event-time-admin">
                                                                             ⇄
@@ -510,7 +510,7 @@
                                                                         class="change-event-button">⇄
                                                                 </button>
 
-                                                                <button id="button-change-worktime-fix-event-admin"
+                                                                <button id="button-change-worktime-fix-event-admin{{ $oneWorktimeEvent->id }}"
                                                                         style="display: none;"
                                                                         data-toggle="modal"
                                                                         data-target="#change-button-event-worktime-fix-admin">
@@ -564,7 +564,7 @@
                                                                         <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})"
                                                                                 class="add-event-button">+
                                                                         </button>
-                                                                        <button id="button-add-worktime-fix-event-admin"
+                                                                        <button id="button-add-worktime-fix-event-admin{{ $oneTimeEvent->id }}"
                                                                                 style="display: none;" data-toggle="modal"
                                                                                 data-target="#change-button-event-time-admin">
                                                                             ⇄

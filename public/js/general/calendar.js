@@ -84,7 +84,7 @@ function openAddTimeModalAdmin(divEventId) {
     var employeeId = $("#div-time-admin" + divEventId + " .this-emp-id").val();
 
     // change modal oeffnen
-    $("#button-add-worktime-fix-event-admin").click();
+    $("#button-add-worktime-fix-event-admin" + divEventId).click();
 
     // uebertragen der daten in das change-modal
     $("#select-js-on-add-worktime-fix-admin option:first-child").text(category);
@@ -109,7 +109,7 @@ function openChangeWorktimeFixModal(divEventId) {
 
 
     // change modal oeffnen
-    $("#button-change-worktime-fix-event-admin").click();
+    $("#button-change-worktime-fix-event-admin" + divEventId).click();
 
     // uebertragen der daten in das change-modal
     $("#select-js-on-change-worktime-fix-admin option:first-child").text(category);
