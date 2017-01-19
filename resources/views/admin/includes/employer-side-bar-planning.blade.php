@@ -16,13 +16,6 @@
         </div>
     </section>
 
-    <!------------------------ Ajax FIELD -------------------------------->
-
-
-    <div ><h2>Let jQuery AJAX Change This Text</h2></div>
-    <input id="button">Get External Content</input>
-    <div id="div1"></div>
-
     <!------------------------ SEARCH FIELD -------------------------------->
     <select id="select-emp" class="form-control modal-input selectpicker col-xs-6"
             data-live-search="true"

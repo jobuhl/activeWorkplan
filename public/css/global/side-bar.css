@@ -62,10 +62,6 @@
     background: none;
 }
 
-.glyphicon-chevron-down {
-    color: black;
-}
-
 /*.side-bar p */
 .side-bar .input-sidebar,
 .side-bar a,
@@ -80,9 +76,17 @@
      color: var(--main-text-black);
  }
 
+
 .side-bar li:first-child a {
     border-top: none;
+}
 
+.search-list-request {
+    margin: 0;
+    padding: 0;
+}
+.search-list-request li:last-child {
+    border-bottom: 1px solid var(--main-border-color);
 }
 
 /* Current Store nicht anzeigen, wenn bildsfhrim breit */

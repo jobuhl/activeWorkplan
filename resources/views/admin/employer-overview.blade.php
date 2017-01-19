@@ -13,13 +13,23 @@
             <h2 style="display: none">fakeheading</h2>
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar overview">
-                <ul>
+
+                <!------------------------ Ajax FIELD -------------------------------->
+                <ul class="search-list-request">
                     <li><a class="middle-bold">Stores</a></li>
-                    <li><input class="input-sidebar" type="text" placeholder="Search Store..."></li>
-                    @foreach($allRetailStores as $retailStore)
-                        <li><a>{{ $retailStore->name }}</a></li>
-                    @endforeach
+                    <!-- Suche mit AJAX -->
+                    <li><input id="search-store-overview" class="input-sidebar" type="text" placeholder="Search Store..."></li>
                 </ul>
+
+                <!-- dieses div wird ueber AJAX befuellt -->
+                <div id="search-store-response-overview">
+                    <ul class="search-list-response">
+                        <!-- Am Anfang werden alle Stores reingeladen -->
+                        @foreach($allRetailStores as $retailStore)
+                            <li><a>{{ $retailStore->name }}</a></li>
+                        @endforeach
+                    </ul>
+                </div>
                 <br>
             </aside>
 
@@ -29,6 +39,7 @@
                 <!-- Überschrift -->
                 <h2 class="header">Final Workplans</h2>
 
+                <!-- MOBIL Navigation Back Today Next Week -->
                 <div class="navigation-today mobile-button button-hide">
                     <div class="col-xs-4">
                         <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
@@ -49,8 +60,8 @@
                     </div>
                 </div>
 
+                <!-- DESKTOP Navigation Back Today Next Week -->
                 <nav class="calendar-navigation button-show">
-
                     <div class="col-xs-6 navigation-today">
                         <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
                             <button type="submit"><</button>
@@ -65,7 +76,7 @@
                         </form>
                     </div>
 
-
+                    <!-- Datum der Woche -->
                     <div class="col-xs-6 calendar-navigation-p">
                         <p>
                             {{ $week[0]->format('d. - ') }}
@@ -76,6 +87,9 @@
 
                 <br>
 
+
+                <div id="overview-get-search-store-tables">
+                <!-- Fuer jeden Retail Store eine Tabelle mit Finalen Einsatzplaenen -->
                 @foreach($allRetailStores as $retailStore)
 
 
@@ -193,6 +207,8 @@
                     </table>
                     <br>
                 @endforeach
+
+                </div>
 
             </aside>
 
