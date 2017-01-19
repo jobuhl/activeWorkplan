@@ -18,7 +18,7 @@
                 <!--Übersicht der Navigation die bei Vorschritt markiert weden-->
 
             </div>
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/employee/changeEmp') }}">
+            <form class="form-horizontal" method="POST" action="{{ url('/employee/changeEmp') }}">
             {{ csrf_field() }}
             <!--Modal body-->
                 <!--Basic-->
@@ -164,7 +164,7 @@
                 <!-- Überschrift -->
                 <h2 class="modal-ueberschrift">Change Password</h2>
             </div>
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/employee/changeEmpPassword') }}">
+            <form class="form-horizontal" method="POST" action="{{ url('/employee/changeEmpPassword') }}">
             {{ csrf_field() }}
             <!-- Body-->
                 <div class="modal-body">
@@ -249,7 +249,7 @@
                 <h2 class="modal-ueberschrift">Change E-Mail</h2>
             </div>
 
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/employee/changeEmpEmail') }}">
+            <form class="form-horizontal" method="POST" action="{{ url('/employee/changeEmpEmail') }}">
             {{ csrf_field() }}
 
             <!-- Body-->
