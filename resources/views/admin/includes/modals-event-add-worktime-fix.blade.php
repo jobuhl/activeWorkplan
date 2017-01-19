@@ -41,7 +41,7 @@
                             <aside class="col-xs-12 col-sm-8 aside-right">
                                 <p><input id="input-js-on-add-worktime-fix-date-admin"
                                           class="datepicker inputmodal form-control space-cap" type="date" name="date"
-                                          placeholder="Date"/></p>
+                                         /></p>
                             </aside>
                         </div>
 

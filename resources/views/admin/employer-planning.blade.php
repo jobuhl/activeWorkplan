@@ -179,7 +179,7 @@
                                                         <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
                                                              onclick="openEventDropdown('allday-admin' + {{ $oneAlldayEvent->id }} + '')"
                                                              draggable="true"
-                                                             id="div-allday-admin{{ $oneAlldayEvent->id }}">
+                                                             id="div-allday-admin-proposal{{ $oneAlldayEvent->id }}">
                                                             <p>{{ $oneAlldayEvent->name }}</p>
                                                             @if ( ($oneAlldayEvent->name == 'Vacation' || $oneAlldayEvent->name == 'Illness' ) && $oneAlldayEvent->accepted == 1)
                                                                 <p class="event-accepted">accepted</p>

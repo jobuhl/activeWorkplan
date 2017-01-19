@@ -239,7 +239,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner" type="text"
+                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner"
                                        name="retail_store_value">
                                     <option value="{{ $thisRetailStore->id}}">{{ $thisRetailStore->name }}</option>
                                     @foreach($allRetailStores as $retailStore)
