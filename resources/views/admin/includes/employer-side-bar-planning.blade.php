@@ -1,4 +1,4 @@
-<section class="fake-body sidebarPHP">
+<div class="fake-body sidebarPHP">
 
 
     <div>
@@ -23,7 +23,7 @@
             name="select-emp" onchange="location.href = this.value;">
         <option style="display: none;"> Search...</option>
         @foreach($allRetailStores as $retailStore)
-            <optgroup style=" border: none; ">
+            <optgroup style=" border: none; "><label>
                 <option style="background-color: #F1F1F1; padding-left: 10px"
                         value="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</option>
                 @foreach($allEmployees as $employee)
@@ -34,7 +34,7 @@
 
                     @endif
                 @endforeach
-
+                </label>
             </optgroup>
         @endforeach
     </select>
@@ -69,7 +69,7 @@
     @include('admin.includes.add-emp')
 
 
-</section>
+</div>
 
 
-</script>
+<
