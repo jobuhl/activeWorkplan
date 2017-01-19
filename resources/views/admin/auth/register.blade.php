@@ -54,7 +54,7 @@
 
             <!-- Modal body-->
 
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/register') }}">
+            <form class="form-horizontal" method="POST" action="{{ url('/admin/register') }}">
                 {{ csrf_field() }}
 
                 <div class="modal-body">
@@ -66,7 +66,7 @@
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input id="email" type="email" class="form-control" name="email" placeholder="E-Mail"
-                                       value="{{ old('email') }}">
+                                       value="{{ old('email') }}" autofocus>
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -95,8 +95,7 @@
 
                             <div class="col-xs-12">
                                 <input id="password-confirm" type="password" class="form-control"
-                                       placeholder="Confirm Password"
-                                       name="password_confirmation">
+                                       placeholder="Confirm Password" name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -114,8 +113,7 @@
                         <br>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"
-                                       autofocus placeholder="Surname">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Surname">
                                 @if ($errors->has('name'))
                                     <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
@@ -125,8 +123,7 @@
                         <div class="form-group{{ $errors->has('forename') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input id="forename" type="text" class="form-control" name="forename"
-                                       placeholder="Forename"
-                                       value="{{ old('forename') }}" autofocus>
+                                       placeholder="Forename" value="{{ old('forename') }}">
                                 @if ($errors->has('forename'))
                                     <span class="help-block"><strong>{{ $errors->first('forename') }}</strong></span>
                                 @endif
@@ -143,7 +140,7 @@
                         <div class="form-group{{ $errors->has('company-name') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="email" name="company-name" placeholder="Company name"
-                                       value="{{ old('company-name') }}" autofocus>
+                                       value="{{ old('company-name') }}">
                                 @if ($errors->has('company-name'))
                                     <span class="help-block"><strong>{{ $errors->first('company-name') }}</strong></span>
                                 @endif
@@ -154,7 +151,7 @@
                         <div class="form-group{{ $errors->has('street') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="street" placeholder="Street"
-                                       value="{{ old('street') }}" autofocus>
+                                       value="{{ old('street') }}">
                                 @if ($errors->has('street'))
                                     <span class="help-block"><strong>{{ $errors->first('street') }}</strong></span>
                                 @endif
@@ -164,7 +161,7 @@
                         <div class="form-group{{ $errors->has('street_nr') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="street_nr" placeholder="Street Nr."
-                                       value="{{ old('street_nr') }}" autofocus>
+                                       value="{{ old('street_nr') }}">
                                 @if ($errors->has('street_nr'))
                                     <span class="help-block"><strong>{{ $errors->first('street_nr') }}</strong></span>
                                 @endif
@@ -174,7 +171,7 @@
                         <div class="form-group{{ $errors->has('postcode') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="postcode" placeholder="Postcode"
-                                       value="{{ old('postcode') }}" autofocus>
+                                       value="{{ old('postcode') }}">
                                 @if ($errors->has('postcode'))
                                     <span class="help-block"><strong>{{ $errors->first('postcode') }}</strong></span>
                                 @endif
@@ -185,7 +182,7 @@
                         <div class="form-group{{ $errors->has('city') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="city" placeholder="City"
-                                       value="{{ old('city') }}" autofocus>
+                                       value="{{ old('city') }}">
                                 @if ($errors->has('city'))
                                     <span class="help-block"><strong>{{ $errors->first('city') }}</strong></span>
                                 @endif
@@ -195,7 +192,7 @@
                         <div class="form-group{{ $errors->has('country') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="country" placeholder="Country"
-                                       value="{{ old('country') }}" autofocus>
+                                       value="{{ old('country') }}">
                                 @if ($errors->has('country'))
                                     <span class="help-block"><strong>{{ $errors->first('country') }}</strong></span>
                                 @endif
@@ -211,7 +208,7 @@
                         <div class="form-group{{ $errors->has('store-name') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="email" name="store-name" placeholder="Store name"
-                                       value="{{ old('store-name') }}" autofocus>
+                                       value="{{ old('store-name') }}">
                                 @if ($errors->has('store-name'))
                                     <span class="help-block"><strong>{{ $errors->first('store-name') }}</strong></span>
                                 @endif
@@ -224,7 +221,7 @@
                         <div class="form-group{{ $errors->has('street') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="street2" placeholder="Street"
-                                       value="{{ old('street') }}" autofocus>
+                                       value="{{ old('street') }}">
                                 @if ($errors->has('street'))
                                     <span class="help-block"><strong>{{ $errors->first('street') }}</strong></span>
                                 @endif
@@ -234,7 +231,7 @@
                         <div class="form-group{{ $errors->has('street_nr2') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="street_nr2" placeholder="Street Nr."
-                                       value="{{ old('street_nr2') }}" autofocus>
+                                       value="{{ old('street_nr2') }}">
                                 @if ($errors->has('street_nr2'))
                                     <span class="help-block"><strong>{{ $errors->first('street_nr2') }}</strong></span>
                                 @endif
@@ -244,7 +241,7 @@
                         <div class="form-group{{ $errors->has('postcode2') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="postcode2" placeholder="Postcode"
-                                       value="{{ old('postcode2') }}" autofocus>
+                                       value="{{ old('postcode2') }}">
                                 @if ($errors->has('postcode2'))
                                     <span class="help-block"><strong>{{ $errors->first('postcode2') }}</strong></span>
                                 @endif
@@ -254,7 +251,7 @@
                         <div class="form-group{{ $errors->has('city2') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="city2" placeholder="City"
-                                       value="{{ old('city2') }}" autofocus>
+                                       value="{{ old('city2') }}">
                                 @if ($errors->has('city2'))
                                     <span class="help-block"><strong>{{ $errors->first('city2') }}</strong></span>
                                 @endif
@@ -266,7 +263,7 @@
                         <div class="form-group{{ $errors->has('country2') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
                                 <input class="form-control" type="text" name="country2" placeholder="Country"
-                                       value="{{ old('country2') }}" autofocus>
+                                       value="{{ old('country2') }}">
                                 @if ($errors->has('country2'))
                                     <span class="help-block"><strong>{{ $errors->first('country2') }}</strong></span>
                                 @endif

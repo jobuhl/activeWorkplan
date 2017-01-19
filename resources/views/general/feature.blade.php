@@ -66,7 +66,7 @@
             </article>
             <br>
 
-            <!-- dritte Zeile --->
+            <!-- dritte Zeile -->
             <article class="row">
                 <h5>Kalender</h5>
                 <h3>Vergangenheit, Gegenwart und Zukunft</h3>

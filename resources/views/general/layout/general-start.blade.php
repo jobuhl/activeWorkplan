@@ -11,6 +11,12 @@
     <body>
         @include('general.includes.header')
 
+        <noscript>
+            <p class="no-script-message">
+                This Website requires JavaScript. Please make sure to activate JavaScript in your Browser.
+            </p>
+        </noscript>
+
         @include('admin.auth.register')
         @include('general.signin-modal')
 
@@ -20,7 +26,7 @@
 
     </body>
     <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
 
