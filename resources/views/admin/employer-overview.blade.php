@@ -92,11 +92,11 @@
                     <!-- Fuer jeden Retail Store eine Tabelle mit Finalen Einsatzplaenen -->
                     @foreach($allRetailStores as $retailStore)
 
-
+                        <div id="table-overview{{ $retailStore->id }}" class="print-email table-head-store">
+                            <a class="table-head-a">{{ $retailStore->name }}</a>
+                        </div>
                         <table class="calendar-days-all-emp">
-                            <div id="table-overview{{ $retailStore->id }}" class="print-email table-head-store">
-                                <a class="table-head-a">{{ $retailStore->name }}</a>
-                            </div>
+
 
                             <!--++++++++++++++++++++++++ DATE ++++++++++++++++++++++++-->
                             <tr class="week-date">
@@ -130,9 +130,14 @@
                             @foreach($allEmployees as $employee)
                                 @if($employee->retail_store_id == $retailStore->id)
                                     <tr class="button-hide">
+                                        <td class="button-show"></td>
                                         <td>{{ $employee->surname }} </td>
-
-                                        <td>&nbsp;{{ $employee->forename }}</td>
+                                        <td class="no-border-bottom">&nbsp;{{ $employee->forename }}</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
 
                                     <tr class="all-day ">
