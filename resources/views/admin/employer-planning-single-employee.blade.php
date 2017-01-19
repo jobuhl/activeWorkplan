@@ -45,7 +45,7 @@
                 <h2>{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</h2>
 
 
-                <!------------------------ NAIGATION -------------------------------->
+               <!-- ++++++++++++++++++++----- NAIGATION ---------++++++++++++++++++ -->
                 <nav class="calendar-navigation">
                     <div class="calendar-navigation-padding">
                         <div class="col-xs-6 navigation-today">
@@ -72,7 +72,7 @@
                 <br>
 
 
-                <!------------------------ PROPOSAL -------------------------------->
+                <!-- ++++++++++++++++++++ PROPOSAL +++++++++++++++++++ -->
                 <div class="table-head-store">
                     <p class="table-head-a">Proposals</p>
                 </div>
@@ -80,7 +80,7 @@
                     <tr class="week-date">
                         <td class="button-show"></td>
 
-                        <!------------------- DATE ----------------------->
+                        <!-- ++++++++++++++++++++ DATE ++++++++++++++++++ -->
                         @for ($i = 0; $i < 7; $i++)
                             <td>
                                 {{ $week[$i]->format('d.m.') }}
@@ -93,7 +93,7 @@
                         <td class="button-show">Employees</td>
 
 
-                        <!------------------- WEEKDAY ----------------------->
+                       <!-- ++++++++++++++++++++ WEEKDAY ++++++++++++++++++ -->
                         @for ($i = 0; $i < 7; $i++)
                             @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                 <td class="today">
@@ -105,19 +105,19 @@
                     </tr>
 
 
-                    <!------------------- EMPLOYEE ROW ----------------------->
+                   <!-- ++++++++++++++++++++ EMPLOYEE ROW ++++++++++++++++++ -->
                     <tr class="all-day">
                         <td class="button-show">{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
                     @for ($i = 0; $i < 7; $i++)
 
 
-                        <!------------------- IF TODAY ----------------------->
+                       <!-- ++++++++++++++++++++ IF TODAY ++++++++++++++++++ -->
                             @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                 <td class="today">@else
                                 <td>@endif
 
 
-                                <!------------------- ALLDAY EVENT ----------------------->
+                               <!-- ++++++++++++++++++++ ALLDAY EVENT ++++++++++++++++++ -->
                                     @foreach($manyAlldayEvent as $oneAlldayEvent)
                                         @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
                                         && $oneAlldayEvent->employee_id == $thisEmployee->id)
@@ -132,7 +132,7 @@
                                                 @endif
 
 
-                                            <!------------------- VACATION ILLNESS ACCEPT ----------------------->
+                                           <!-- ++++++++++++++++++++ VACATION ILLNESS ACCEPT ++++++++++++++++++ -->
                                                 @if ( ($oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness" ) && $oneAlldayEvent->accepted == 0)
                                                     <div id="allday-admin-single{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
                                                         <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
@@ -145,7 +145,7 @@
                                                     </div>
                                                 @endif
 
-                                            <!------------------- VACATION ILLNESS NOT-ACCEPT ----------------------->
+                                           <!-- ++++++++++++++++++++ VACATION ILLNESS NOT-ACCEPT ++++++++++++++++++ -->
                                                 @if ( ($oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness" ) && $oneAlldayEvent->accepted == 1)
                                                     <div id="allday-admin-single{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
                                                         <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
@@ -174,13 +174,13 @@
                     @for ($i = 0; $i < 7; $i++)
 
 
-                        <!------------------- IF TODAY ----------------------->
+                       <!-- ++++++++++++++++++++ IF TODAY ++++++++++++++++++ -->
                             @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                 <td class="today"> @else
                                 <td> @endif
 
 
-                                <!------------------- TIME EVENT ----------------------->
+                               <!-- ++++++++++++++++++++ TIME EVENT ++++++++++++++++++ -->
                                     @foreach($manyTimeEvent as $oneTimeEvent)
                                         @if( (new DateTime($oneTimeEvent->date))->format('d-m-Y') == $week[$i]->format('d-m-Y')
                                             && $oneTimeEvent->employee_id == $thisEmployee->id )
@@ -202,7 +202,7 @@
                                                     <div id="time-admin-single{{ $oneTimeEvent->id }}" class="event-dropdown-content">
 
 
-                                                        <!------------------- PUT TO WORKTIME FIX ----------------------->
+                                                       <!-- ++++++++++++++++++++ PUT TO WORKTIME FIX ++++++++++++++++++ -->
                                                         @if ( $oneTimeEvent->name == "Work")
                                                             <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})" class="add-event-button">+</button>
                                                             <button id="button-add-worktime-fix-event-admin" style="display: none;" data-toggle="modal" data-target="#change-button-event-time-admin">
@@ -211,7 +211,7 @@
                                                         @endif
 
 
-                                                    <!------------------- VACATION ILLNESS ACCEPT ----------------------->
+                                                   <!-- ++++++++++++++++++++ VACATION ILLNESS ACCEPT ++++++++++++++++++ -->
                                                         @if ( ($oneTimeEvent->name == "Vacation" || $oneTimeEvent->name == "Illness" ) && $oneTimeEvent->accepted == 0)
                                                             <form method="POST" action="{{ url('admin/acceptTimeEvent') }}"> {{ csrf_field() }}
                                                                 <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
@@ -223,7 +223,7 @@
                                                         @endif
 
 
-                                                    <!------------------- VACATION ILLNESS NOT-ACCEPT ----------------------->
+                                                   <!-- ++++++++++++++++++++ VACATION ILLNESS NOT-ACCEPT ++++++++++++++++++ -->
                                                         @if ( ($oneTimeEvent->name == "Vacation" || $oneTimeEvent->name == "Illness" ) && $oneTimeEvent->accepted == 1)
                                                             <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
                                                                 <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
@@ -250,7 +250,7 @@
                 <br>
 
 
-                <!------------------------ WORKTIME FIX -------------------------------->
+               <!-- ++++++++++++++++++++ WORKTIME FIX ++++++++++++++++++ -->
                 <div class="table-head-store">
                     <p class="table-head-a">Final Workplan</p>
                 </div>
@@ -258,7 +258,7 @@
                     <tr class="week-date">
                         <td class="button-show"></td>
 
-                        <!------------------- DATE ----------------------->
+                       <!-- ++++++++++++++++++++ DATE ++++++++++++++++++ -->
                         @for ($i = 0; $i < 7; $i++)
                             <td >
                                 {{ $week[$i]->format('d.m.') }}
@@ -271,7 +271,7 @@
                         <td class="button-show">Employee</td>
 
 
-                        <!------------------- WEEKDAY ----------------------->
+                       <!-- ++++++++++++++++++++ WEEKDAY ++++++++++++++++++ -->
                         @for ($i = 0; $i < 7; $i++)
                             @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                 <td class="today">@else
@@ -288,13 +288,13 @@
                     @for ($i = 0; $i < 7; $i++)
 
 
-                        <!------------------- IF TODAY ----------------------->
+                       <!-- ++++++++++++++++++++ IF TODAY ++++++++++++++++++ -->
                             @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                 <td class="today">@else
                                 <td>@endif
 
 
-                                <!------------------- ALLDAY EVENT ----------------------->
+                               <!-- ++++++++++++++++++++ ALLDAY EVENT ++++++++++++++++++ -->
                                     @foreach($manyAlldayEvent as $oneAlldayEvent)
                                         @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
                                             && (( $oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness") && $oneAlldayEvent->accepted == 1)
@@ -308,7 +308,7 @@
                                                     <p class="event-accepted">accepted</p>
                                                 @endif
 
-                                            <!------------------- VACATION ILLNESS ACCEPT ----------------------->
+                                           <!-- ++++++++++++++++++++ VACATION ILLNESS ACCEPT ++++++++++++++++++ -->
                                                 @if ( ($oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness" ) && $oneAlldayEvent->accepted == 0)
                                                     <div id="allday-admin-final{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
                                                         <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
@@ -321,7 +321,7 @@
                                                     </div>
                                                 @endif
 
-                                            <!------------------- VACATION ILLNESS NOT-ACCEPT ----------------------->
+                                           <!-- ++++++++++++++++++++ VACATION ILLNESS NOT-ACCEPT ++++++++++++++++++ -->
                                                 @if ( ($oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness" ) && $oneAlldayEvent->accepted == 1)
                                                     <div id="allday-admin-final{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
                                                         <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
@@ -344,19 +344,19 @@
                                 @endfor
                     </tr>
 
-                    <!------------------- EMPLOYEE ROW ----------------------->
+                   <!-- ++++++++++++++++++++ EMPLOYEE ROW ++++++++++++++++++ -->
                     <tr class="time-events">
                         <td class="button-show"></td>
                     @for ($i = 0; $i < 7; $i++)
 
 
-                        <!------------------- IF TODAY ----------------------->
+                       <!-- ++++++++++++++++++++ IF TODAY ++++++++++++++++++ -->
                             @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                 <td class="today">@else
                                 <td>@endif
 
 
-                                <!------------------- WORKTIME EVENT ----------------------->
+                               <!-- ++++++++++++++++++++ WORKTIME EVENT ++++++++++++++++++ -->
                                     @foreach($manyWorktimeEvent as $oneWorktimeEvent)
                                         @if( (new DateTime($oneWorktimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
                                         && $oneWorktimeEvent->employee_id == $thisEmployee->id)
@@ -404,7 +404,7 @@
                 <br>
 
 
-                <!------------------------- ACCOUNT DETAILS -------------------------------->
+               <!-- ++++++++++++++++++++ ACCOUNT DETAILS ++++++++++++++++++ -->
                 <button class="form-control set-right modal-change-button space-to-top-bottom" type="submit"
                         data-toggle="modal" data-target="#change" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
                     Change

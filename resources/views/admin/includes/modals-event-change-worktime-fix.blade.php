@@ -14,7 +14,7 @@
                 <h2 class="modal-ueberschrift">Change Fix Worktime Event</h2>
                 <br>
 
-                <form type="form" method="POST" action="{{ url('/admin/changeWorktimeFix') }}"> {{ csrf_field() }}
+                <form  method="POST" action="{{ url('/admin/changeWorktimeFix') }}"> {{ csrf_field() }}
 
                 <!-- Modal body-->
                     <div class="modal-body change-event-modal">

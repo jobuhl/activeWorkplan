@@ -21,7 +21,7 @@
 
             <!-- Modal body-->
             <!-- Basic-->
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changeStore') }}">
+            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changeStore') }}">
                 {{ csrf_field() }}
 
                 <div class="modal-body">

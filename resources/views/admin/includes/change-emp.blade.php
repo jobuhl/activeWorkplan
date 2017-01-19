@@ -22,7 +22,7 @@
 
             <!-- Modal body-->
             <!-- Basic-->
-            <form class="form-horizontal" role="form" method="POST"
+            <form class="form-horizontal"  method="POST"
                   action="{{ url('/admin/changeEmp') }}">
                 {{ csrf_field() }}
                 <div class="modal-body">
@@ -286,7 +286,7 @@
                 <h2 class="modal-ueberschrift">Change Password</h2>
             </div>
 
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changePasswordEmp') }}">
+            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changePasswordEmp') }}">
             {{ csrf_field() }}
             <!-- Body-->
                 <div class="modal-body">
@@ -356,7 +356,7 @@
                 <h2 class="modal-ueberschrift">Change E-Mail</h2>
             </div>
 
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changeEmailEmp') }}">
+            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changeEmailEmp') }}">
             {{ csrf_field() }}
 
             <!-- Body-->

@@ -1,7 +1,7 @@
 <section class="fake-body sidebarPHP">
 
 
-    <section>
+    <div>
         <div class="col-lg-6 col-sm-12 col-xs-6 left-button-side-bar">
             <button class="form-control add-button" type="submit" data-toggle="modal" data-target="#add-button-emp">
                 Add Employee
@@ -14,16 +14,8 @@
                 Add Store
             </button>
         </div>
-    </section>
+    </div>
 
-    <!-- +++++++++++++++++ Ajax FIELD ++++++++++++++++ -->
-
-
-
-    <input id="button">Get External Content</input>
-
-
-    <div id="div1"></div>
 
     <!-- +++++++++++++++++ SEARCH FIELD ++++++++++++++++ -->
     <select id="select-emp" class="form-control modal-input selectpicker col-xs-6"

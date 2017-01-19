@@ -22,7 +22,7 @@
 
             <!-- Modal footer-->
             <div class="modal-footer">
-                <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/deleteStore') }}"> {{ csrf_field() }}
+                <form class="form-horizontal"  method="POST" action="{{ url('/admin/deleteStore') }}"> {{ csrf_field() }}
                     <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                     <button class="form-control to-right delete-button" type="submit" value="{{ $thisRetailStore->id }}" name="thisRetailStoreId">
                         Delete

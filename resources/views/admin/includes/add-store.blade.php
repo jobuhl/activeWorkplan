@@ -19,7 +19,7 @@
                 <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
 
             </div>
-            <form type="form" method="POST" action="{{ url('/admin/storeCreate') }}">
+            <form  method="POST" action="{{ url('/admin/storeCreate') }}">
             {{ csrf_field() }}
 
                 <!-- Modal body-->

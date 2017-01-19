@@ -17,7 +17,7 @@
                 <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
 
             </div>
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/addEmp') }}">
+            <form class="form-horizontal"  method="POST" action="{{ url('/admin/addEmp') }}">
             {{ csrf_field() }}
             <!-- Modal body-->
                 <!-- Basic-->
