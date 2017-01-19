@@ -23,8 +23,8 @@
             name="select-emp" onchange="location.href = this.value;">
         <option style="display: none;"> Search...</option>
         @foreach($allRetailStores as $retailStore)
-            <optgroup style=" border: none; "><label>
-                <option style="background-color: #F1F1F1; padding-left: 10px"
+             <optgroup label="" style=" border: none; ">
+                 <option style="background-color: #F1F1F1; padding-left: 10px"
                         value="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</option>
                 @foreach($allEmployees as $employee)
                     @if($employee->retail_store_id == $retailStore->id)
@@ -34,8 +34,9 @@
 
                     @endif
                 @endforeach
-                </label>
+
             </optgroup>
+
         @endforeach
     </select>
 
