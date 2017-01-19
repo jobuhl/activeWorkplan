@@ -22,7 +22,7 @@
 
             <!-- Modal body-->
             <!-- Basic-->
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changeAdmin') }}">
+            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changeAdmin') }}">
                 {{ csrf_field() }}
                 <div class="modal-body">
 
@@ -293,7 +293,7 @@
                 <h2 class="modal-ueberschrift">Change Password</h2>
             </div>
 
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changePasswordAdmin') }}">
+            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changePasswordAdmin') }}">
             {{ csrf_field() }}
             <!-- Body-->
                 <div class="modal-body">
@@ -316,7 +316,7 @@
                     <!-- password1-->
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <div class="col-xs-12">
-                            <input id="password" type="password" class="form-control" name="password"
+                            <input  type="password" class="form-control" name="password"
                                    placeholder="Password">
                             @if ($errors->has('password'))
                                 <span class="help-block">
@@ -376,7 +376,7 @@
                 <h2 class="modal-ueberschrift">Change E-Mail</h2>
             </div>
 
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/changeEmailAdmin') }}">
+            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changeEmailAdmin') }}">
             {{ csrf_field() }}
 
             <!-- Body-->

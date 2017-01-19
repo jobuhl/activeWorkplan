@@ -32,7 +32,7 @@
             </div>
         @endif
 
-        <section class="container">
+        <div class="container">
 
             <div class="row -col-12">
                 <h2 class="modal-ueberschrift">Admin Details</h2>
@@ -105,7 +105,7 @@
 
             </div>
 
-        </section>
+        </div>
     </section>
 
     @include('admin.includes.change-admin')

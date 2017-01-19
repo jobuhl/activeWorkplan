@@ -15,7 +15,7 @@
             </div>
 
             <!-- Body-->
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/deleteAdmin') }}">
+            <form class="form-horizontal" method="POST" action="{{ url('/admin/deleteAdmin') }}">
                 {{ csrf_field() }}
             <div class="modal-body">
                <h5  class="select-ueberschrift"> Do you really want to delete all accounts of your company?</h5>
