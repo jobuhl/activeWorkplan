@@ -35,7 +35,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('password') ? ' has-error' : '' }}">
-                            <p><input id="password" type="password" class="form-control" name="password"
+                            <p><input type="password" class="form-control" name="password"
                                       placeholder="password..."></p>
 
                             @if ($errors->has('password'))
@@ -56,7 +56,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input id="password" type="password" class="form-control" name="password_confirmation"
+                            <p><input type="password" class="form-control" name="password_confirmation"
                                       placeholder="confirm password..."></p>
 
                             @if ($errors->has('password_confirmation'))

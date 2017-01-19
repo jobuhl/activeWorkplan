@@ -294,7 +294,7 @@
                     <!-- password1-->
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <div class="col-xs-12">
-                            <input id="password" type="password" class="form-control" name="password"
+                            <input type="password" class="form-control" name="password"
                                    placeholder="Password">
                             @if ($errors->has('password'))
                                 <span class="help-block">
