@@ -26,7 +26,7 @@
                     <ul class="search-list-response">
                         <!-- Am Anfang werden alle Stores reingeladen -->
                         @foreach($allRetailStores as $retailStore)
-                            <li><a>{{ $retailStore->name }}</a></li>
+                            <li><a href="{{ url('/admin/employer-overview') . '/'  . (clone $week[0])->format('d-m-Y') .  '#table-overview' . $retailStore->id }}">{{ $retailStore->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -93,7 +93,7 @@
                 @foreach($allRetailStores as $retailStore)
 
 
-                    <table class="calendar-days-all-emp">
+                    <table id="table-overview{{ $retailStore->id }}" class="calendar-days-all-emp">
                         <div class="print-email table-head-store">
                             <a class="table-head-a">{{ $retailStore->id }} {{ $retailStore->name }}</a>
                         </div>
