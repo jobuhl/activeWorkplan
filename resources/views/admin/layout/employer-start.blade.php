@@ -49,13 +49,15 @@
                 data: {'inputValue': inputValue },
                 dataType: "json",
                 success: function (response) {
-//                    if (response == null) {
-//
-//                    }
-                    $.each(response.store, function () {
-                        html += "<li><a>" + this['name'] + "</a></li>";
-                    });
-                    $("#search-store-response-overview").html(html);
+                    if (response != "") {
+                        $("#search-store-response-overview").html("<li><a>No matches found.</a></li>");
+                    } else {
+                        $.each(response.store, function () {
+                            html += "<li><a>" + this['name'] + "</a></li>";
+                        });
+                        $("#search-store-response-overview").html(html);
+                    }
+
 
 
 
