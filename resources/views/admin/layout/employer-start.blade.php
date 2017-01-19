@@ -50,7 +50,7 @@
                 data: {'inputValue': inputValue },
                 dataType: "json",
                 success: function (response) {
-                    if (response != "") {
+                    if (response == "") {
                         $("#search-store-response-overview").html("<li><a>No matches found.</a></li>");
                     } else {
                         $.each(response.store, function () {

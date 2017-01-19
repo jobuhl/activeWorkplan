@@ -1,4 +1,4 @@
-<form type="form" method="POST" action="{{ url('/employee/timeEventCreate') }}">
+<form method="POST" action="{{ url('/employee/timeEventCreate') }}">
 {{ csrf_field() }}
 
 <!-- Modal body-->
@@ -11,7 +11,7 @@
             <aside class="col-xs-12 col-sm-4 aside-left-add">Category</aside>
             <!-- rechts -->
             <aside class="col-xs-12 col-sm-8 aside-right">
-                <p><select class="selectpicker form-control to-right modal-input space-cap" name="category" type="text">
+                <p><select class="selectpicker form-control to-right modal-input space-cap" name="category">
                         @foreach($category as $cat)
                             <option>{{ $cat->name }}</option>
                         @endforeach
@@ -26,7 +26,7 @@
             <!-- rechts -->
             <aside class="col-xs-12 col-sm-8 aside-right">
                 <p><input class="get-date-from-button-emp datepicker inputmodal form-control space-cap" type="date" name="date"
-                          placeholder="Date"/></p>
+                          /></p>
             </aside>
         </div>
 

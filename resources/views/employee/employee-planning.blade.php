@@ -42,7 +42,7 @@
         <div class="col-xs-12 navigation-today mobile-button button-hide">
             <div class="col-xs-4">
                 <form method="GET" action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                    <button class="set-size float-right" type="submit"><</button>
+                    <button class="set-size float-right" type="submit">&lt;</button>
                 </form>
             </div>
 
@@ -54,7 +54,7 @@
 
             <div class="col-xs-4">
                 <form method="GET" action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                    <button class="set-size float-right" type="submit">></button>
+                    <button class="set-size float-right" type="submit">&gt;</button>
                 </form>
             </div>
         </div>
@@ -65,7 +65,7 @@
             <div class="col-xs-6 navigation-today">
                 <form method="GET"
                       action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                    <button type="submit"><</button>
+                    <button type="submit">&lt;</button>
                 </form>
 
                 <form method="GET"
@@ -75,7 +75,7 @@
 
                 <form method="GET"
                       action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                    <button type="submit">></button>
+                    <button type="submit">&gt;</button>
                 </form>
             </div>
 
@@ -134,7 +134,7 @@
                                                     class="change-event-button">⇄
                                             </button>
 
-                                            <button id="button-change-allday-event" style="display: none;"
+                                            <button id="button-change-allday-event{{ $oneAlldayEvent->id }}" style="display: none;"
                                                     data-toggle="modal" data-target="#change-button-event-allday">⇄
                                             </button>
 
@@ -188,7 +188,7 @@
                                                     class="change-event-button">⇄
                                             </button>
 
-                                            <button id="button-change-time-event" style="display: none;"
+                                            <button id="button-change-time-event{{ $oneTimeEvent->id }}" style="display: none;"
                                                     data-toggle="modal" data-target="#change-button-event-time">⇄
                                             </button>
 
@@ -221,9 +221,11 @@
                         </td>
                         @endfor
             </tr>
-            <button id="emp-button-add-event"  data-toggle="modal" data-target="#add-button-event" style="display: none;"></button>
+
         </table>
 
+
+            <button id="emp-button-add-event1"  data-toggle="modal" data-target="#add-button-event" style="display: none;"></button>
         <div class="space_emp col-xs-12"></div>
 
     </div>

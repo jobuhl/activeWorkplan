@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
     <head>
         @include('includes.head')
@@ -24,19 +24,16 @@
 
         @include('general.includes.footer')
 
+        <!-- JQuery -->
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/general/general-mainsection.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/employer/modal_add_change_delete.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/general/signup_in.js') }}"></script>
+        @yield('js')
+        <script type="text/javascript" src="{{ asset('/js/general/header-footer.js') }}"></script>
     </body>
-    <!-- JQuery -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
-
-    <script type="text/javascript" src="{{ asset('/js/general/general-mainsection.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/employer/modal_add_change_delete.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/general/signup_in.js') }}"></script>
-
-    @yield('js')
-
-    <script type="text/javascript" src="{{ asset('/js/general/header-footer.js') }}"></script>
 
 
 </html>

@@ -9,14 +9,14 @@
     <div class="fake-body impressum">
 
         <div class="col-xs-12 mainsection">
-            <article class="main-article">
+            <div class="main-article">
                 <aside>
                     <img src="{{asset('img/impressum.gif')}}" alt="Bild">
                 </aside>
                 <aside class="display-none-heading">
                     <h2>Impressum</h2>
                 </aside>
-            </article>
+            </div>
         </div>
 
         <div class="container">

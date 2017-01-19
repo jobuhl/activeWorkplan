@@ -16,11 +16,11 @@
 
         <div class="space_emp col-xs-12"></div>
 
-        <!------------------- MOBILE NAVIGATION ----------------------->
+        <!-- MOBILE NAVIGATION -->
         <div class="col-xs-12 navigation-today mobile-button button-hide">
             <div class="col-xs-4">
                 <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                    <button class="set-size float-right" type="submit"><</button>
+                    <button class="set-size float-right" type="submit">&lt;</button>
                 </form>
             </div>
 
@@ -32,23 +32,23 @@
 
             <div class="col-xs-4">
                 <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                    <button class="set-size float-right" type="submit">></button>
+                    <button class="set-size float-right" type="submit">&gt;</button>
                 </form>
             </div>
         </div>
 
 
-        <!------------------- DESKTOP NAVIGATION ----------------------->
+        <!-- DESKTOP NAVIGATION -->
         <aside id="aside-overview" class="col-xs-12 calendar-navigation button-show">
             <div class="col-xs-6 navigation-today">
                 <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                    <button type="submit"><</button>
+                    <button type="submit">&lt;</button>
                 </form>
                 <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
                     <button type="submit">Today</button>
                 </form>
                 <form method="GET" action="{{ url('/employee/employee-workplan') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                    <button type="submit">></button>
+                    <button type="submit">&gt;</button>
                 </form>
             </div>
 
@@ -88,7 +88,7 @@
                     @else
                         <td>
                             @endif
-                            <!------------------- ALLDAY EVENT ----------------------->
+                            <!-- ALLDAY EVENT -->
                                 @foreach($manyAlldayEvent as $oneAlldayEvent)
                                     @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
                                     && (( $oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness") && $oneAlldayEvent->accepted == 1) )

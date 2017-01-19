@@ -46,9 +46,6 @@
 
                 </div>
 
-                <div id="myProgress">
-                    <div id="myBar"></div>
-                </div>
 
             </div>
 
@@ -65,8 +62,8 @@
                         <br>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
-                                <input id="email" type="email" class="form-control" name="email" placeholder="E-Mail"
-                                       value="{{ old('email') }}" autofocus>
+                                <input type="email" class="form-control" name="email" placeholder="E-Mail"
+                                       value="{{ old('email') }}" >
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -79,7 +76,7 @@
                         <!-- password1-->
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
-                                <input id="password" type="password" class="form-control" name="password"
+                                <input type="password" class="form-control" name="password"
                                        placeholder="Password">
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -94,7 +91,7 @@
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 
                             <div class="col-xs-12">
-                                <input id="password-confirm" type="password" class="form-control"
+                                <input type="password" class="form-control"
                                        placeholder="Confirm Password" name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
@@ -113,7 +110,7 @@
                         <br>
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Surname">
+                                <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Surname">
                                 @if ($errors->has('name'))
                                     <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                                 @endif
@@ -122,7 +119,7 @@
 
                         <div class="form-group{{ $errors->has('forename') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
-                                <input id="forename" type="text" class="form-control" name="forename"
+                                <input type="text" class="form-control" name="forename"
                                        placeholder="Forename" value="{{ old('forename') }}">
                                 @if ($errors->has('forename'))
                                     <span class="help-block"><strong>{{ $errors->first('forename') }}</strong></span>

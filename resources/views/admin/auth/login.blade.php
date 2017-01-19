@@ -5,7 +5,7 @@
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 
             <div class="col-xs-12">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail" autofocus>
+                <input  type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail" autofocus>
 
                 @if ($errors->has('email'))
                     <span class="help-block">
@@ -18,7 +18,7 @@
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
             <div class="col-xs-12">
-                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                <input type="password" class="form-control" name="password" placeholder="Password">
 
                 @if ($errors->has('password'))
                     <span class="help-block">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
     <head>
 
@@ -25,20 +25,22 @@
 
         @include('employee.includes.footer')
 
+
+        <!-- JQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- fuer DatePicker -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <script type="text/javascript" src="{{ asset('/js/general/header-footer.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('/js/general/calendar.js') }}"></script>
+
+        @yield('js')
     </body>
 
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- fuer DatePicker -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="{{ asset('/js/general/header-footer.js') }}"></script>
-
-    <script type="text/javascript" src="{{ asset('/js/general/calendar.js') }}"></script>
-
-    @yield('js')
 
 
 </html>

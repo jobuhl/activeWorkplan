@@ -8,7 +8,7 @@
     <div class="fake-body contact">
 
         <!-- oben -->
-        <section class="col-xs-12 mainsection">
+        <div class="col-xs-12 mainsection">
             <div class="main-article">
                 <aside>
                     <img src="{{asset('img/contact.gif')}}" alt="Bild">
@@ -17,7 +17,7 @@
                     <h2>Contact</h2>
                 </aside>
             </div>
-        </section>
+        </div>
 
         <div class="container">
 
@@ -46,7 +46,7 @@
 
             <!-- rechts -->
             <aside class=" test col-sm-9 col-xs-12 setheightright">
-                <textarea class="form-control sendtextfeld" type="text" placeholder="Message...." ></textarea>
+                <textarea class="form-control sendtextfeld" placeholder="Message...." ></textarea>
                 <p></p>
                 <button class="form-control buttonbottom add-button"  onclick="alert('Missing SMTP-Server');">Send</button>
             </aside>

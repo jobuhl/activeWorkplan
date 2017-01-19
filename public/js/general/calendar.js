@@ -39,7 +39,7 @@ function openChangeAlldayModal(divEventId) {
     var category = $("#div-allday" + divEventId + " > p").text();
 
     // change modal oeffnen
-    $("#button-change-allday-event").click();
+    $("#button-change-allday-event" + divEventId).click();
 
     // uebertragen der daten in das change-modal
     $("#select-js-on-change-allday option:first-child").text(category);
@@ -59,7 +59,7 @@ function openChangeTimeModal(divEventId) {
     var to = $("#div-time" + divEventId + " > p:nth-child(3)").text();
 
     // change modal oeffnen
-    $("#button-change-time-event").click();
+    $("#button-change-time-event"+divEventId).click();
 
     // uebertragen der daten in das change-modal
     $("#select-js-on-change-time option:first-child").text(category);
@@ -126,7 +126,7 @@ function openChangeWorktimeFixModal(divEventId) {
 function openAddEventModal(date) {
 
     // change modal oeffnen
-    $("#emp-button-add-event").click();
+    $("#emp-button-add-event1").click();
 
     // uebertragen der daten in das change-modal
     $(".get-date-from-button-emp").val(date);
