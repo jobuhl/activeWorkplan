@@ -43,8 +43,3 @@
     </div>
 
 </div>
-
-
-</aside>
-
-</div>
