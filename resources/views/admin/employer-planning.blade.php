@@ -628,56 +628,56 @@
 
 
                     <!-- +++++++++++++++ EMPLOYEE PER HOUR ++++++++++++++++++++ -->
-                    <div class="table-head-store">
-                        <p class="table-head-a">Amount of Employees per time frame</p>
-                    </div>
-                    <table class="calendar-days-all-emp">
-                        <tr class="week-date">
-                            <td></td>
+                    {{--<div class="table-head-store">--}}
+                        {{--<p class="table-head-a">Amount of Employees per time frame</p>--}}
+                    {{--</div>--}}
+                    {{--<table class="calendar-days-all-emp">--}}
+                        {{--<tr class="week-date">--}}
+                            {{--<td></td>--}}
 
-                            <!-- +++++++++++++++ DATE +++++++++++++++ -->
-                            @for ($i = 0; $i < 7; $i++)
-                                <td>
-                                    {{ $week[$i]->format('d.m.') }}
-                                </td>
-                            @endfor
-                        </tr>
-
-
-                        <tr class="week-days">
-                            <td></td>
+                            {{--<!-- +++++++++++++++ DATE +++++++++++++++ -->--}}
+                            {{--@for ($i = 0; $i < 7; $i++)--}}
+                                {{--<td>--}}
+                                    {{--{{ $week[$i]->format('d.m.') }}--}}
+                                {{--</td>--}}
+                            {{--@endfor--}}
+                        {{--</tr>--}}
 
 
-                            <!-- +++++++++++++++ WEEKDAY +++++++++++++++ -->
-                            @for ($i = 0; $i < 7; $i++)
-                                @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
-                                    <td class="today">
-                                @else
-                                    <td>
-                                        @endif
-                                        {{ $week[$i]->format('D') }}</td>
-                                    @endfor
-                        </tr>
-
-                        <!-- +++++++++++++++ TIME ROW +++++++++++++++ -->
-                        @for ($i = 0; $i < 17; $i++)
-                            <tr class="time-events">
-                                <td>{{ $i+6  }}:00</td>
-                            @for ($f = 0; $f < 7; $f++)
+                        {{--<tr class="week-days">--}}
+                            {{--<td></td>--}}
 
 
-                                <!-- +++++++++++++++ IF TODAY +++++++++++++++ -->
-                                    @if((new DateTime())->format('d m Y') == $week[$f]->format('d m Y'))
-                                        <td class="today">
-                                    @else
-                                        <td>
-                                            @endif
-                                        </td>
-                                        @endfor
-                            </tr>
-                        @endfor
-                    </table>
-                    <br>
+                            {{--<!-- +++++++++++++++ WEEKDAY +++++++++++++++ -->--}}
+                            {{--@for ($i = 0; $i < 7; $i++)--}}
+                                {{--@if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))--}}
+                                    {{--<td class="today">--}}
+                                {{--@else--}}
+                                    {{--<td>--}}
+                                        {{--@endif--}}
+                                        {{--{{ $week[$i]->format('D') }}</td>--}}
+                                    {{--@endfor--}}
+                        {{--</tr>--}}
+
+                        {{--<!-- +++++++++++++++ TIME ROW +++++++++++++++ -->--}}
+                        {{--@for ($i = 0; $i < 17; $i++)--}}
+                            {{--<tr class="time-events">--}}
+                                {{--<td>{{ $i+6  }}:00</td>--}}
+                            {{--@for ($f = 0; $f < 7; $f++)--}}
+
+
+                                {{--<!-- +++++++++++++++ IF TODAY +++++++++++++++ -->--}}
+                                    {{--@if((new DateTime())->format('d m Y') == $week[$f]->format('d m Y'))--}}
+                                        {{--<td class="today">--}}
+                                    {{--@else--}}
+                                        {{--<td>--}}
+                                            {{--@endif--}}
+                                        {{--</td>--}}
+                                        {{--@endfor--}}
+                            {{--</tr>--}}
+                        {{--@endfor--}}
+                    {{--</table>--}}
+                    {{--<br>--}}
 
 
                     <button class="set-right-buttom form-control delete-button" data-toggle="modal" type="submit"

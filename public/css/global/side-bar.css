@@ -59,7 +59,7 @@
 /* Search-Feld */
 .side-bar .input-sidebar{
     border: 0;
-    background: none;
+    background: var(--main-small-header-color);
 }
 
 /*.side-bar p */
@@ -85,23 +85,24 @@
     margin: 0;
     padding: 0;
 }
+
 .search-list-request li:last-child {
     border-bottom: 1px solid var(--main-border-color);
 }
 
 /* Current Store nicht anzeigen, wenn bildsfhrim breit */
 @media screen and (min-width: 768px) {
-    .list .current-selected-store {
-        display: none;
-    }
+    /*.list .current-selected-store {*/
+        /*display: none;*/
+    /*}*/
 
     .overview.side-bar > ul {
         display: block;
     }
 
-    .side-bar .headline aside:nth-child(3) {
-        display: none;
-    }
+    /*.side-bar .headline aside:nth-child(3) {*/
+        /*display: none;*/
+    /*}*/
 }
 
 /* Sub-Menu wichtig muss hierarchisch aufgeschrieben bleiben*/
@@ -140,16 +141,16 @@
     width: 100%;
 }
 
-.current-selected-store,
-.headline {
-    padding: 0;
-    margin: 0;
-}
-.current-selected-store aside p,
-.headline aside p {
-    padding: 10px 0 10px 0px;
-    margin: 0;
-}
+/*.current-selected-store,*/
+/*.headline {*/
+    /*padding: 0;*/
+    /*margin: 0;*/
+/*}*/
+/*.current-selected-store aside p,*/
+/*.headline aside p {*/
+    /*padding: 10px 0 10px 0px;*/
+    /*margin: 0;*/
+/*}*/
 
 
 
@@ -162,7 +163,7 @@
 
 @media screen and (min-width: 1200px) {
     .left-button-side-bar {
-        padding: 0 2px px 0;
+        padding: 0 2px 0 0;
     }
 
     .right-button-side-bar {

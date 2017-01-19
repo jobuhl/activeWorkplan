@@ -57,18 +57,10 @@
     color: var(--main-text-white); /* Text-Farbe */
 }
 
-.final-workplan .navigation-today button {
-    background-color: var(--main-final-workplan-button);
-}
-
 .emp-planning .calendar-navigation {
     background: var(--main-small-header-color);
     height: 40px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
     padding: 7px 0 7px 0; /* Abstand wegen Button oben und unten */
-}
-
-.final-workplan .calendar-navigation {
-    background-color: var(--main-final-workplan);
 }
 
 .calendar-navigation-p {
@@ -183,10 +175,6 @@
 
 .today {
     background-color: var(--main-today-color);
-}
-
-.final-workplan .today {
-    background-color: var(--main-final-workplan-today);
 }
 
 
@@ -397,11 +385,6 @@
     height: 48px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
     padding: 7px 0 7px 0;
 }
-
-.final-workplan .mobile-button {
-    background: var(--main-final-workplan);
-}
-
 @media screen and (max-width: 768px) {
 
     .button-show{
