@@ -149,8 +149,14 @@
                             @if($employee->retail_store_id == $thisRetailStore->id)
 
                                 <tr class="button-hide">
+                                    <td class="button-show"></td>
                                     <td>{{ $employee->surname }} </td>
                                     <td class="no-border-bottom">&nbsp;{{ $employee->forename }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
 
                                 <tr class="all-day ">
@@ -373,9 +379,14 @@
                             @if($employee->retail_store_id == $thisRetailStore->id)
 
                                 <tr class="button-hide">
-
-                                    <td>{{ $employee->surname }}</td>
+                                    <td class="button-show"></td>
+                                    <td>{{ $employee->surname }} </td>
                                     <td class="no-border-bottom">&nbsp;{{ $employee->forename }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
 
                                 <tr class="all-day">
