@@ -43,7 +43,7 @@
                 <div class="navigation-today mobile-button button-hide">
                     <div class="col-xs-4">
                         <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                            <button class="set-size float-right" type="submit"><</button>
+                            <button class="set-size float-right" type="submit">&lt;</button>
                         </form>
                     </div>
 
@@ -55,7 +55,7 @@
 
                     <div class="col-xs-4">
                         <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                            <button class="set-size float-right" type="submit">></button>
+                            <button class="set-size float-right" type="submit">&gt;</button>
                         </form>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                 <nav class="calendar-navigation button-show">
                     <div class="col-xs-6 navigation-today">
                         <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                            <button type="submit"><</button>
+                            <button type="submit">&lt;</button>
                         </form>
 
                         <form method="GET" action="{{ url('/admin/employer-overview') . '/' . (new DateTime())->format('d-m-Y') }}"> {{ csrf_field() }}
@@ -72,7 +72,7 @@
                         </form>
 
                         <form method="GET" action="{{ url('/admin/employer-overview') . '/' . ((clone $week[0])->modify('+7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                            <button type="submit">></button>
+                            <button type="submit">&gt;</button>
                         </form>
                     </div>
 

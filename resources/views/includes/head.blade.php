@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
 
     <script>
-        window.Laravel =;;;;;;;;; <?php echo json_encode([
+        window.Laravel =;;; <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
 
