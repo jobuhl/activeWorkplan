@@ -16,7 +16,7 @@
         </div>
     </section>
 
-    <!------------------------ Ajax FIELD -------------------------------->
+    <!-- +++++++++++++++++ Ajax FIELD ++++++++++++++++ -->
 
 
 
@@ -25,7 +25,7 @@
 
     <div id="div1"></div>
 
-    <!------------------------ SEARCH FIELD -------------------------------->
+    <!-- +++++++++++++++++ SEARCH FIELD ++++++++++++++++ -->
     <select id="select-emp" class="form-control modal-input selectpicker col-xs-6"
             data-live-search="true"
             name="select-emp" onchange="location.href = this.value;">
@@ -48,7 +48,7 @@
     </select>
 
 
-    <!------------------------ LIST STORE -------------------------------->
+    <!-- +++++++++++++++++ LIST STORE ++++++++++++++++ -->
     <ul class="lower-list">
 
         <li><a class="middle-bold">Stores</a></li>
