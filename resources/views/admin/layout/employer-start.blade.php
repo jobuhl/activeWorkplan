@@ -70,7 +70,7 @@
 
 
 
-                    {{--$.each(response.store, function () {--}}
+                    {{--$.each(response.store, function () {-test-}}
                         {{--tableHtml += "<table class='calendar-days-all-emp'>";--}}
                         {{--tableHtml += "<div class='print-email table-head-store'>";--}}
                         {{--tableHtml += "<a class='table-head-a'>{{ $retailStore->id }} {{ $retailStore->name }}</a>";--}}
