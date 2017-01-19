@@ -40,6 +40,7 @@
                 }
             });
 
+            <!-- AJAX -->
             var inputValue = $("#search-store-overview").val();
             var html = "<ul>";
             var tableHtml = "";
