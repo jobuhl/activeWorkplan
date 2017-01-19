@@ -50,36 +50,41 @@
                 data: {'inputValue': inputValue },
                 dataType: "json",
                 success: function (response) {
-                    $.each(response.store, function () {
-                        html += "<li><a >" + this['name'] + "</a></li>";
-                    });
-                    $("#search-store-response-overview").html(html);
+                    if (response == "") {
+                        $("#search-store-response-overview").html("<li><a>No matches found.</a></li>");
+                    } else {
+                        $.each(response.store, function () {
+                            html += "<li><a>" + this['name'] + "</a></li>";
+                        });
+                        $("#search-store-response-overview").html(html);
+                    }
+
+
+
+
+
+
+
+
+
+
+
 
                     {{--$.each(response.store, function () {--}}
                         {{--tableHtml += "<table class='calendar-days-all-emp'>";--}}
                         {{--tableHtml += "<div class='print-email table-head-store'>";--}}
-                        {{--tableHtml += "<a class='table-head-a'>" + this['name'] + "</a>";--}}
+                        {{--tableHtml += "<a class='table-head-a'>{{ $retailStore->id }} {{ $retailStore->name }}</a>";--}}
                         {{--tableHtml += "</div>";--}}
 
+                        {{--tableHtml += "<!------------------- DATE ----------------------->";--}}
                         {{--tableHtml += "<tr class='week-date'>";--}}
                         {{--tableHtml += "<td class='button-show'></td>";--}}
+
                         {{--for (var i = 0; i < 7; i++) {--}}
-                            {{--tableHtml += "<td>" + {{(new DateTime())->format('d.m.')}} + "</td>"--}}
+                            {{--tableHtml += "<td>{{ $week[$i]->format('d.m.') }}</td>";--}}
                         {{--}--}}
                         {{--tableHtml += "</tr>";--}}
-
-                        {{--tableHtml += "</table>";--}}
                     {{--});--}}
-//                    $('#overview-get-search-store-tables').html(tableHtml);
-
-
-
-
-
-
-
-
-
 
 
 
