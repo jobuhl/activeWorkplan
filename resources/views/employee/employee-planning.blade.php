@@ -42,7 +42,7 @@
         <div class="col-xs-12 navigation-today mobile-button button-hide">
             <div class="col-xs-4">
                 <form method="GET" action="{{ url('/employee/employee-planning') . '/' . ((clone $week[0])->modify('-7 days'))->format('d-m-Y') }}"> {{ csrf_field() }}
-                    <button class="set-size float-right" type="submit">&lt;</button>
+                    <button class="set-size float-right" type="submit">&lt</button>
                 </form>
             </div>
 

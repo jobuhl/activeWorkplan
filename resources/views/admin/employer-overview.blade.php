@@ -14,7 +14,7 @@
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar overview">
 
-                <!-- +++++++++++++++++++ Ajax FIELD  +++++++++++++++++++ -->
+                <!-- +++++++++++++++++++ Ajax FIELD ++++++++++++++++++++++++ -->
                 <ul class="search-list-request">
                     <li><a class="middle-bold">Stores</a></li>
                     <!-- Suche mit AJAX -->
@@ -93,12 +93,12 @@
                 @foreach($allRetailStores as $retailStore)
 
 
-                    <table id="table-overview{{ $retailStore->id }}" class="calendar-days-all-emp">
-                        <div class="print-email table-head-store">
-                            <a class="table-head-a">{{ $retailStore->id }} {{ $retailStore->name }}</a>
+                    <table class="calendar-days-all-emp">
+                        <div id="table-overview{{ $retailStore->id }}" class="print-email table-head-store">
+                            <a class="table-head-a">{{ $retailStore->name }}</a>
                         </div>
 
-                        <!-- +++++++++++++++++++ DATE +++++++++++++++++++ -->
+                        <!--++++++++++++++++++++++++ DATE ++++++++++++++++++++++++-->
                         <tr class="week-date">
                             <td class="button-show"></td>
                             @for ($i = 0; $i < 7; $i++)
@@ -109,13 +109,13 @@
                         </tr>
 
 
-                        <!-- +++++++++++++++++++ WEEKDAY +++++++++++++++++++ -->
+                        <!--++++++++++++++++++++++++ WEEKDAY ++++++++++++++++++++++++-->
                         <tr class="week-days">
                             <td class="button-show">Employees</td>
                         @for ($i = 0; $i < 7; $i++)
 
 
-                            <!-- +++++++++++++++++++ IF TODAY +++++++++++++++++++ -->
+                            <!--++++++++++++++++++++++++ IF TODAY ++++++++++++++++++++++++-->
                                 @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                     <td class="today">
                                 @else
@@ -126,7 +126,7 @@
                         </tr>
 
 
-                        <!-- +++++++++++++++++++ EMPLOYEE ROW +++++++++++++++++++ -->
+                        <!--++++++++++++++++++++++++ EMPLOYEE ROW ++++++++++++++++++++++++-->
                         @foreach($allEmployees as $employee)
                             @if($employee->retail_store_id == $retailStore->id)
                                 <tr class="button-hide">
@@ -140,7 +140,7 @@
                                 @for ($i = 0; $i < 7; $i++)
 
 
-                                    <!-- +++++++++++++++++++ IF TODAY +++++++++++++++++++ -->
+                                    <!--++++++++++++++++++++++++ IF TODAY ++++++++++++++++++++++++-->
                                         @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
                                             <td class="today">
                                         @else
@@ -148,7 +148,7 @@
                                             @endif
 
 
-                                            <!-- +++++++++++++++++++ ALLDAY EVENT +++++++++++++++++++ -->
+                                            <!--++++++++++++++++++++++++ ALLDAY EVENT ++++++++++++++++++++++++-->
                                                 @foreach($manyAlldayEvent as $oneAlldayEvent)
                                                     @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
                                                     && (( $oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness") && $oneAlldayEvent->accepted == 1)
@@ -165,7 +165,7 @@
                                 </tr>
 
 
-                                <!-- +++++++++++++++++++ TIME EVENT +++++++++++++++++++ -->
+                                <!--++++++++++++++++++++++++ TIME EVENT ++++++++++++++++++++++++-->
                                 <tr class="time-events">
                                     <td class="button-show"></td>
                                     @for ($i = 0; $i < 7; $i++)

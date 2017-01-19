@@ -26,13 +26,13 @@
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    @yield('js')
-
     <script type="text/javascript" src="{{ asset('/js/general/header-footer.js') }}"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
     <script>
         $(document).ready(function () {
+            <!-- Admin Overview Search Stores -->
             $("#search-store-overview").keyup(function () {
                 $.ajaxSetup({
                     headers: {
@@ -43,7 +43,6 @@
                 <!-- AJAX -->
                 var inputValue = $("#search-store-overview").val();
                 var html = "<ul>";
-                var tableHtml = "";
                 $.ajax({
                     type: "POST",
                     url: "{{ url('/admin/searchOverview') }}",
@@ -54,6 +53,7 @@
                         $.each(response.store, function () {
                             html += "<li><a href='" + url + "#table-overview" + this['id'] + "'>" + this['name'] + "</a></li>";
                         });
+                        html += "</ul>";
                         $("#search-store-response-overview").html(html);
 
                     }
@@ -62,6 +62,7 @@
         });
     </script>
 
+    @yield('js')
 
 </body>
 
