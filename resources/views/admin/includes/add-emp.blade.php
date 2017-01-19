@@ -156,7 +156,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap" type="text"
+                            <p><select class="selectpicker form-control to-right modal-input space-cap"
                                        name="retail_store_name">
 
                                     @foreach($allRetailStores as $retailStore)
@@ -184,7 +184,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap" type="text"
+                            <p><select class="selectpicker form-control to-right modal-input space-cap"
                                        name="period_of_agreement"
                                 >
                                     <option>limited</option>
@@ -233,9 +233,9 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap" type="text"
+                            <p><select class="selectpicker form-control to-right modal-input space-cap"
                                        name="classification"
-                                       placeholder="Classification">
+                                     >
                                     <option>Fulltime</option>
                                     <option>Halftime</option>
                                     <option>Parttime</option>
