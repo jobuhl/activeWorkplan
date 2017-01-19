@@ -27,7 +27,7 @@
                             <aside class="col-xs-12 col-sm-8 aside-right">
                                 <p><select id="select-js-on-change-time"
                                            class="selectpicker form-control to-right modal-input space-cap"
-                                           name="category" type="text">
+                                           name="category">
                                         <option>this-category-wird-ueberschrieben</option>
                                         @foreach($category as $cat )
                                             <option>{{ $cat->name }}</option>
@@ -43,7 +43,7 @@
                             <!-- rechts -->
                             <aside class="col-xs-12 col-sm-8 aside-right">
                                 <p><input id="input-js-on-change-time-date" class="datepicker inputmodal form-control space-cap" type="date" name="date"
-                                          placeholder="Date"/></p>
+                                          /></p>
                             </aside>
                         </div>
 
