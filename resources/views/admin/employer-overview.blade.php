@@ -14,7 +14,7 @@
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar overview">
 
-                <!-- ++++++++++++++++++++ Ajax FIELD ++++++++++++++++++++++++ -->
+                <!-- +++++++++++++++++++++ Ajax FIELD ++++++++++++++++++++++++ -->
                 <ul class="search-list-request">
                     <li><a class="middle-bold">Stores</a></li>
                     <!-- Suche mit AJAX -->
