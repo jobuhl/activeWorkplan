@@ -17,6 +17,8 @@
             </p>
         </noscript>
 
+
+
         @include('admin.auth.register')
         @include('general.signin-modal')
 
