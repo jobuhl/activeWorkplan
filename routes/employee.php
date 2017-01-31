@@ -28,6 +28,7 @@ Route::get('/employee-workplan/{date}', function ($urlDate) {
         ->with('manyTimeEvent', $manyTimeEvent)
         ->with('manyWorktimeEvent', $manyWorktimeEvent)
         ->with('manyAlldayEvent', $manyAlldayEvent)
+        ->with('thisEmployee',$thisEmployee)
         ->with('week', $week);
 })->name('home');
 

@@ -75,10 +75,7 @@
                     <div>
                         <input style="display: none;" id="input-js-on-add-worktime-fix-employee-id-admin" name="thisEmployeeId" value="">
                         <input style="display: none;" name="thisRetailStoreId" value="{{ $thisRetailStore->id }}">
-                        <button type="submit" class="form-control to-right add-button"
-                                name="thisDate"
-                                value="{{ $week[0]->format('d-m-Y') }}">Add
-                        </button>
+                        <button type="submit" class="form-control to-right add-button" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}">Add</button>
                     </div>
 
                 </form>

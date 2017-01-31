@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 class Functions extends Controller
 {
 
+
+
     function thisCompany()
     {
         return DB::table('company')
@@ -92,7 +94,7 @@ class Functions extends Controller
             ->where('time_event.date', '<=', $week[6])
             ->join('category', 'category.id', '=', 'time_event.category_id')
             ->where('time_event.employee_id', $employeeId)
-            ->select('time_event.id as id', 'date', 'from', 'to', 'color', 'category.name as name')
+            ->select('time_event.id as id', 'date', 'from', 'to', 'color', 'category.name as name', 'employee_id', 'accepted')
             ->get();
     }
 
@@ -103,7 +105,7 @@ class Functions extends Controller
             ->where('worktime_fix.date', '<=', $week[6])
             ->join('category', 'category.id', '=', 'worktime_fix.category_id')
             ->where('worktime_fix.employee_id', $employeeId)
-            ->select('worktime_fix.id as id', 'date', 'from', 'to', 'color', 'category.name as name')
+            ->select('worktime_fix.id as id', 'date', 'from', 'to', 'color', 'employee_id', 'category.name as name')
             ->get();
     }
 
@@ -115,7 +117,7 @@ class Functions extends Controller
             ->where('allday_event.date', '<=', $week[6])
             ->join('category', 'category.id', '=', 'allday_event.category_id')
             ->where('allday_event.employee_id', $employeeId)
-            ->select('allday_event.id as id', 'date', 'color', 'category.name as name')
+            ->select('allday_event.id as id', 'date', 'color', 'category.name as name', 'employee_id', 'accepted')
             ->get();
     }
 
@@ -128,7 +130,7 @@ class Functions extends Controller
             ->join('employees', 'employees.id', '=', 'time_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.company_id', $companyId)
-            ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color')
+            ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color', 'accepted')
             ->get();
     }
 
@@ -154,7 +156,7 @@ class Functions extends Controller
             ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.company_id', $companyId)
-            ->select('allday_event.id as id', 'category.name as name', 'date', 'employee_id','color')
+            ->select('allday_event.id as id', 'category.name as name', 'date', 'employee_id','color', 'accepted')
             ->get();
     }
 
@@ -180,8 +182,6 @@ class Functions extends Controller
             clone $monday->add(new DateInterval('P1D'))
         );
     }
-
-
 
 
 

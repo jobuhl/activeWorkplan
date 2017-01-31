@@ -131,3 +131,19 @@ function openAddEventModal(date) {
     // uebertragen der daten in das change-modal
     $(".get-date-from-button-emp").val(date);
 }
+
+
+
+
+/* ------------------------------- AJAX ----------------------------------- */
+
+// Delete Event
+function deleteEventAJAX(divPrefix, eventId, routesURL) {
+    var thisEvent = $("#" + divPrefix + eventId);
+
+    // zuerst einfach ausblenden
+    thisEvent.hide();
+
+    // danach mit AJAX in der datenbank loeschen
+    thisEvent.load(routesURL + '?eventId=' + eventId);
+}

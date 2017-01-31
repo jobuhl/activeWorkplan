@@ -44,6 +44,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('/deleteAlldayEventAJAX/{eventId?}', 'EventController@deleteAlldayEventAJAX');
+Route::get('/deleteTimeEventAJAX/{eventId?}', 'EventController@deleteTimeEventAJAX');
+Route::get('/deleteWorktimeEventAJAX/{eventId?}', 'EventController@deleteWorktimeEventAJAX');
+
 
 
 // ------------------------ general ------------------------

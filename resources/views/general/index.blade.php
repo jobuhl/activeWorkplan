@@ -217,4 +217,42 @@
             <aside class="col-md-2"></aside>
         </div>
     </div>
+
+    <div class="row">
+
+        <div style="float: left; margin: 10px;">
+
+            <div class="fb-like" data-href="https://www.apple.com"
+                 data-width="100" data-layout="button" data-action="like"
+                 data-size="small" data-show-faces="true"
+                 data-share="true">
+            </div>
+            <!-- facebook -->
+            <script>
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v2.8";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+            </script>
+        </div>
+
+        <div style="float: left; margin: 12px;">
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.apple.com" data-text="Apple">Tweet</a>
+            <script>!function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                    if (!d.getElementById(id)) {
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = p + '://platform.twitter.com/widgets.js';
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }
+                }(document, 'script', 'twitter-wjs');</script>
+        </div>
+
+    </div>
+
 @endsection

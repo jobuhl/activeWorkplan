@@ -1,3 +1,3 @@
 @extends('admin.layout.employer-start')
 
-@include('footer.layout.contact')
+@include('includes.footer.contact')

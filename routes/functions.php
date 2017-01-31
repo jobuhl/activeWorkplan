@@ -86,7 +86,7 @@ function timeEventOfEmployee($employeeId, $week)
         ->where('time_event.date', '<=', $week[6])
         ->join('category', 'category.id', '=', 'time_event.category_id')
         ->where('time_event.employee_id', $employeeId)
-        ->select('time_event.id as id', 'date', 'from', 'to', 'color', 'category.name as name', 'accepted')
+        ->select('time_event.id as id', 'date', 'from', 'to', 'color', 'category.name as name', 'employee_id', 'accepted')
         ->get();
 }
 
@@ -97,7 +97,7 @@ function worktimeFixOfEmployee($employeeId, $week)
         ->where('worktime_fix.date', '<=', $week[6])
         ->join('category', 'category.id', '=', 'worktime_fix.category_id')
         ->where('worktime_fix.employee_id', $employeeId)
-        ->select('worktime_fix.id as id', 'date', 'from', 'to', 'color', 'category.name as name')
+        ->select('worktime_fix.id as id', 'date', 'from', 'to', 'color', 'employee_id', 'category.name as name')
         ->get();
 }
 
@@ -109,7 +109,7 @@ function alldayEventOfEmployee($employeeId, $week)
         ->where('allday_event.date', '<=', $week[6])
         ->join('category', 'category.id', '=', 'allday_event.category_id')
         ->where('allday_event.employee_id', $employeeId)
-        ->select('allday_event.id as id', 'date', 'color', 'category.name as name', 'accepted')
+        ->select('allday_event.id as id', 'date', 'color', 'category.name as name', 'employee_id', 'accepted')
         ->get();
 }
 

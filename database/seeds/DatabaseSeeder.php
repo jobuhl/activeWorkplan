@@ -249,7 +249,7 @@ class DatabaseSeeder extends Seeder
         foreach ($allEmployees as $emp) {
 
             // 20 tage vor und zurück
-            for ($day = -14; $day < 28; $day++) {
+            for ($day = -5; $day < 10; $day++) {
 
                 // Seltener Allday-Event
                 if (($day + rand(-3, 3)) % rand(2, 5) == 0) {

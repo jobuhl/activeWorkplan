@@ -1,3 +1,3 @@
 @extends('employee.layout.employee-start')
 
-@include('footer.layout.impressum')
+@include('includes.footer.impressum')

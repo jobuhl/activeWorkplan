@@ -56,13 +56,6 @@ Route::post('/notAcceptTimeEvent', 'EventController@notAcceptTimeEvent');
 Route::post('/notAcceptAlldayEvent', 'EventController@notAcceptAlldayEvent');
 
 
-//Route::post('/search', 'SearchController@executeSearch');
-//
-//Route::post('/search', function () {
-//        $character = Request::input('inputValue');
-//    return response()->json(["store" => $character]);
-//});
-
 Route::post('/searchOverview', function () {
     $character = Request::input('inputValue');
     $company = thisCompany();
@@ -87,28 +80,6 @@ Route::post('/searchOverview', function () {
 });
 
 
-
-Route::post('/daten', function () {
-
-
-//    $store = DB::table('retail_store')
-//        ->select('retail_store.*')
-//        ->join('company', 'company.id', '=', 'retail_store.company_id')
-//        ->where('company.admin_id', 1)
-////        ->where('retail_store.name', 'like', '%' . $characters . '%')
-//        ->get();
-//
-//    $emp = DB::table('employees as e')
-//        ->select('e.name as surname', 'e.forename', 'e.retail_store_id')
-//        ->join('retail_store', 'e.retail_store_id', '=', 'retail_store.id')
-//        ->join('company', 'company.id', '=', 'retail_store.company_id')
-//        ->where('company.admin_id', 1)
-////        ->where('employees.name', 'like', '%' . $characters . '%')
-//        ->get();
-
-//    return response()->json(["store" => $store, "emp" => $emp]);
-    return response()->json(["store" => "ersterStore", "emp" => "ersterEmp"]);
-});
 
 
 /* ---------------------------- FOOTER -------------------------------- */

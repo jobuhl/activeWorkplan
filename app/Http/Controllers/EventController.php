@@ -280,4 +280,34 @@ class EventController extends Controller
     }
 
 
+    /* ---------------------------- AJAX -------------------------------- */
+
+    function deleteAlldayEventAJAX() {
+
+        DB::table('allday_event')
+            ->where('allday_event.id', $_GET['eventId'])
+            ->delete();
+        return response("");
+    }
+
+    function deleteTimeEventAJAX() {
+
+        DB::table('time_event')
+            ->where('time_event.id', $_GET['eventId'])
+            ->delete();
+        return response("");
+    }
+
+    function deleteWorktimeEventAJAX() {
+
+        DB::table('worktime_fix')
+            ->where('worktime_fix.id', $_GET['eventId'])
+            ->delete();
+        return response("");
+    }
+
+
+
+
+
 }
