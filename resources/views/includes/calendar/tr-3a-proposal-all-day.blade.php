@@ -25,47 +25,74 @@
 
 
             <!-- +++++++++++++++ ALL ALL-DAY EVENT +++++++++++++++ -->
-                @foreach($manyAlldayEvent as $oneAlldayEvent)
-                    @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
-                    && $oneAlldayEvent->employee_id == $thisEmployee->id)
+            @foreach($manyAlldayEvent as $oneAlldayEvent)
+                @if( (new DateTime($oneAlldayEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                && $oneAlldayEvent->employee_id == $thisEmployee->id)
 
 
-                        <!-- +++++++++++++++ ONE ALL-DAY EVENT +++++++++++++++ -->
-                            <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
+                    <!-- +++++++++++++++ ONE ALL-DAY EVENT +++++++++++++++ -->
+                        <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
                              onclick="openEventDropdown('allday-admin' + {{ $oneAlldayEvent->id }} + '')"
                              draggable="true"
                              id="div-allday-admin-proposal{{ $oneAlldayEvent->id }}">
                             <p>{{ $oneAlldayEvent->name }}</p>
+
+                            <!-- +++++++++++++++ ACCEPTED LABEL +++++++++++++++ -->
                             @if ( ($oneAlldayEvent->name == ('Vacation' || 'Illness' )) && $oneAlldayEvent->accepted == 1)
                                 <p class="event-accepted">accepted</p>
                             @endif
 
 
-                        <!-- +++++++++++++++ VACATION ILLNESS ACCEPT +++++++++++++++ -->
-                            @if ( ($oneAlldayEvent->name ==  "Vacation" || $oneAlldayEvent->name =="Illness" ) && $oneAlldayEvent->accepted == 0)
-                                <div id="allday-admin{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
-                                    <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
-                                        <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
-                                        <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                        <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
-                                        <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                                        <button class="add-event-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
-                                    </form>
-                                </div>
+
+                        <!-- If calendar in Admin Planning or Single -->
+                            @if( strpos(url()->current(),'/employer-planning') || strpos(url()->current(),'/employer-single'))
+
+                            <!-- +++++++++++++++ OPTIONS VACATION ILLNESS ACCEPT +++++++++++++++ -->
+                                @if ( ($oneAlldayEvent->name ==  "Vacation" || $oneAlldayEvent->name =="Illness" ) && $oneAlldayEvent->accepted == 0)
+                                    <div id="allday-admin{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
+                                        <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
+                                            <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
+                                            <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
+                                            <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
+                                            <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                                            <button class="add-event-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
+                                        </form>
+                                    </div>
+                                @endif
+
+
+                            <!-- +++++++++++++++ OPTIONS VACATION ILLNESS NOT-ACCEPT +++++++++++++++ -->
+                                @if ( ($oneAlldayEvent->name ==  "Vacation" || $oneAlldayEvent->name =="Illness" ) && $oneAlldayEvent->accepted == 1)
+                                    <div id="allday-admin{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
+                                        <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
+                                            <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
+                                            <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
+                                            <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
+                                            <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                                            <button class="delete-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
+                                        </form>
+                                    </div>
+                                @endif
+
                             @endif
 
 
-                        <!-- +++++++++++++++ VACATION ILLNESS NOT-ACCEPT +++++++++++++++ -->
-                            @if ( ($oneAlldayEvent->name ==  "Vacation" || $oneAlldayEvent->name =="Illness" ) && $oneAlldayEvent->accepted == 1)
+                        <!-- If calendar in Employee Planning -->
+                            @if( strpos(url()->current(),'/employee-planning') )
+
+                            <!-- +++++++++++++++ OPTIONS CHANGE DELETE +++++++++++++++ -->
                                 <div id="allday-admin{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
-                                    <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
-                                        <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
-                                        <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                        <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
-                                        <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
-                                        <button class="delete-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
-                                    </form>
+
+                                    <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
+
+                                    <button onclick="openChangeAlldayModal({{ $oneAlldayEvent->id }})" class="change-event-button">⇄</button>
+                                    <button id="button-change-allday-event{{ $oneAlldayEvent->id }}" style="display: none;" data-toggle="modal" data-target="#change-button-event-allday">⇄</button>
+
+                                    <!-- JS Aufruf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
+                                    <button class="delete-event-button" onclick="deleteEventAJAX('div-allday', '{{ $oneAlldayEvent->id }}', '{{ url('/deleteAlldayEventAJAX') }}' )">-</button>
+
                                 </div>
+
                             @endif
 
 

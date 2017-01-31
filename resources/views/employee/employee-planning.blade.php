@@ -36,7 +36,7 @@
         <div class="space_emp col-xs-12"></div>
 
 
-        {{--Überschrift--}}
+        <!-- Ueberschrift -->
         <h2 class=" col-xs-12 header">Proposals</h2>
 
         <div class="space_emp col-xs-12"></div>
@@ -48,6 +48,7 @@
             @include('includes.calendar.tr-1-week-date')
             @include('includes.calendar.tr-2-week-days')
 
+{{--            @include('includes.calendar.tr-3a-proposal-all-day')--}}
             <tr class="all-day">
                 <td class="button-show">Allday</td>
             @for ($i = 0; $i < 7; $i++)
@@ -75,14 +76,13 @@
                                         <!-- anzeigen von "accepted"-Events -->
                                         @if ( ($oneAlldayEvent->name == ('Vacation' || 'Illness' )) && $oneAlldayEvent->accepted == 1)
                                             <p class="event-accepted">accepted</p>
-                                    @endif
+                                        @endif
 
                                     <!-- Option Buttons -->
                                         <div id="allday{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
 
                                             <button onclick="openChangeAlldayModal({{ $oneAlldayEvent->id }})" class="change-event-button">⇄</button>
-                                            <button id="button-change-allday-event{{ $oneAlldayEvent->id }}" style="display: none;" data-toggle="modal" data-target="#change-button-event-allday">⇄
-                                            </button>
+                                            <button id="button-change-allday-event{{ $oneAlldayEvent->id }}" style="display: none;" data-toggle="modal" data-target="#change-button-event-allday">⇄</button>
 
                                             <!-- JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
                                             <button class="delete-event-button" onclick="deleteEventAJAX('div-allday', '{{ $oneAlldayEvent->id }}', '{{ url('/deleteAlldayEventAJAX') }}' )">-</button>
@@ -144,18 +144,8 @@
                         @endfor
             </tr>
 
-            <tr class="add-buttons">
-                <td class="button-show"></td>
-                @for ($i = 0; $i < 7; $i++)
-                    @if((new DateTime())->format('d-m-Y') == $week[$i]->format('d-m-Y'))
-                        <td class="today">
-                    @else
-                        <td>
-                            @endif
-                            <a class="round-button" onclick="openAddEventModal('{{ $week[$i]->format('m/d/Y') }}')">+</a>
-                        </td>
-                        @endfor
-            </tr>
+            @include('includes.calendar.tr-5-add-buttons')
+
 
         </table>
 

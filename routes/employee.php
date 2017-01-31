@@ -54,6 +54,7 @@ Route::get('/employee-planning/{date}', function ($urlDate) {
         ->with('manyTimeEvent', $manyTimeEvent)
         ->with('manyAlldayEvent', $manyAlldayEvent)
         ->with('category', $category)
+        ->with('thisEmployee',$thisEmployee)
         ->with('week', $week);
 })->name('home');
 

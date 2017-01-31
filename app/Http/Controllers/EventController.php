@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\TimeEvent;
-use App\WorktimeFix;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
 use DateTime;
+use App\TimeEvent;
+use App\WorktimeFix;
 use App\AlldayEvent;
 use App\RetailStore;
 use App\Employee;
@@ -108,33 +108,6 @@ class EventController extends Controller
         return redirect('/employee/employee-planning/' . $request['thisDate']);
     }
 
-
-    // Employee deletes an Allday Event
-    function deleteAlldayEvent(Request $request)
-    {
-
-        $eventId = $request['eventId'];
-
-        DB::table('allday_event')
-            ->where('allday_event.id', $eventId)
-            ->delete();
-
-        return redirect('/employee/employee-planning/' . $request['thisDate']);
-    }
-
-    // Employee deletes a Time Event
-    function deleteTimeEvent(Request $request)
-    {
-
-        $eventId = $request['eventId'];
-
-        DB::table('time_event')
-            ->where('time_event.id', $eventId)
-            ->delete();
-
-        return redirect('/employee/employee-planning/' . $request['thisDate']);
-    }
-
     /* ---------------------------- ADMIN -------------------------------- */
 
     // Admin adds a Worktime Fix Event
@@ -158,21 +131,6 @@ class EventController extends Controller
             'category_id' => $category->id,
             'employee_id' => $thisEmployee->id
         ));
-
-        return redirect('/admin/employer-planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
-    }
-
-    // Admin deletes a Worktime Fix Event
-    function deleteWorktimeFixEvent(Request $request)
-    {
-        $thisRetailStore = RetailStore::find($request['thisRetailStoreId']);
-
-        $eventId = $request['eventId'];
-
-        DB::table('worktime_fix')
-            ->where('worktime_fix.id', $eventId)
-            ->delete();
-
 
         return redirect('/admin/employer-planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
     }
@@ -283,26 +241,17 @@ class EventController extends Controller
     /* ---------------------------- AJAX -------------------------------- */
 
     function deleteAlldayEventAJAX() {
-
-        DB::table('allday_event')
-            ->where('allday_event.id', $_GET['eventId'])
-            ->delete();
+        AlldayEvent::find($_GET['eventId'])->delete();
         return response("");
     }
 
     function deleteTimeEventAJAX() {
-
-        DB::table('time_event')
-            ->where('time_event.id', $_GET['eventId'])
-            ->delete();
+        TimeEvent::find($_GET['eventId'])->delete();
         return response("");
     }
 
     function deleteWorktimeEventAJAX() {
-
-        DB::table('worktime_fix')
-            ->where('worktime_fix.id', $_GET['eventId'])
-            ->delete();
+        WorktimeFix::find($_GET['eventId'])->delete();
         return response("");
     }
 
