@@ -1,4 +1,4 @@
-@extends('employee.layout.employee-start')
+@extends('employee.layout.start')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-account.css')}}">

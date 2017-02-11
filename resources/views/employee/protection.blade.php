@@ -1,3 +1,3 @@
-@extends('employee.layout.employee-start')
+@extends('employee.layout.start')
 
 @include('includes.footer.protection')

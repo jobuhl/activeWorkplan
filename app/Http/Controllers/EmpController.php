@@ -62,7 +62,7 @@ class EmpController extends Controller
         ]);
 
         flash('Employee added', 'success');
-        return redirect('/admin/employer-single/' . $thisEmployee->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning-single/' . $thisEmployee->id . '/' . $request['thisDate']);
     }
 
 
@@ -87,7 +87,7 @@ class EmpController extends Controller
         $request->session()->flash('status', 'Task was successful!');
 
         flash('Change successful', 'success');
-        return redirect('/employee/employee-account/' . $request['thisDate']);
+        return redirect('/employee/account/' . $request['thisDate']);
     }
 
     public function updatePassword(Request $request){
@@ -112,11 +112,11 @@ class EmpController extends Controller
                 ));
 
             flash('Password change successful', 'success');
-            return redirect('/employee/employee-account/' . $request['thisDate']);
+            return redirect('/employee/account/' . $request['thisDate']);
         }
 
         flash('Wrong password', 'danger');
-        return redirect('/employee/employee-account/' . $request['thisDate']);
+        return redirect('/employee/account/' . $request['thisDate']);
     }
 
     public function updateEmail(Request $request){
@@ -129,7 +129,7 @@ class EmpController extends Controller
             ));
 
         flash('E-Mail change successful', 'success');
-        return redirect('/employee/employee-account/' . $request['thisDate']);
+        return redirect('/employee/account/' . $request['thisDate']);
     }
 
 //Admin löscht user
@@ -188,7 +188,7 @@ class EmpController extends Controller
 
 
         flash('Store delete successful', 'success');
-        return redirect('/admin/employer-planning/' . $allRetailStores[0]->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning/' . $allRetailStores[0]->id . '/' . $request['thisDate']);
 
     }
 
@@ -236,7 +236,7 @@ class EmpController extends Controller
 
         flash('Employee change successful', 'success');
 
-        return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning-single/' . $employee->id . '/' . $request['thisDate']);
 
 
     }
@@ -261,7 +261,7 @@ class EmpController extends Controller
 
         flash('E-Mail change successful', 'success');
 
-        return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning-single/' . $employee->id . '/' . $request['thisDate']);
 
 
     }
@@ -286,7 +286,7 @@ class EmpController extends Controller
 
 
         flash('Password change successful', 'success');
-        return redirect('/admin/employer-single/' . $employee->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning-single/' . $employee->id . '/' . $request['thisDate']);
 
 
     }

@@ -1,7 +1,7 @@
 <header>
     <ul class="left-list" id="id-left">
         <li class="nav-image">
-            <a href="{{ url('/employee/employee-workplan') . '/' . $week[0]->format('d-m-Y') }}">
+            <a href="{{ url('/employee/workplan') . '/' . $week[0]->format('d-m-Y') }}">
                 <img class="nav-logo" src="{{asset('img/imagelogo.gif')}}" alt="Logo">
             </a>
         </li>
@@ -13,9 +13,9 @@
         </li>
     </ul>
     <ul class="right-list" id="id-right">
-        <li><a id="employee-workplan" href="{{ url('/employee/employee-workplan') . '/' . $week[0]->format('d-m-Y') }}">Workplan</a></li>
-        <li><a id="employee-planning" href="{{ url('/employee/employee-planning') . '/' . $week[0]->format('d-m-Y') }}">Planning</a></li>
-        <li><a id="employee-account" href="{{ url('/employee/employee-account') . '/' . $week[0]->format('d-m-Y') }}">{{ Auth::user()->name }}</a></li>
+        <li><a id="workplan" href="{{ url('/employee/workplan') . '/' . $week[0]->format('d-m-Y') }}">Workplan</a></li>
+        <li><a id="planning" href="{{ url('/employee/planning') . '/' . $week[0]->format('d-m-Y') }}">Planning</a></li>
+        <li><a id="account" href="{{ url('/employee/account') . '/' . $week[0]->format('d-m-Y') }}">{{ Auth::user()->name }}</a></li>
         <li><a href="{{ url('/employee/logout') }}"
                onclick="event.preventDefault();
                document.getElementById('logout-form').submit();">

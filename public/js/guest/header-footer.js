@@ -9,10 +9,9 @@ function highlightTab() {
     /* Regular Expression Literale mit Slashes, Gruppierung und Alles durch Gruppe 1 ersetzen */
     var tabId = url.replace(/.+(guest|admin|employee)\/([a-zA-Z_-]+).*/ , "$2");
 
-
     /* Sonderfall, da die Mitarbeiter Seite im gleichen Tab wie Planning ist */
-    if(tabId == "employer-single") {
-        tabId = "employer-planning";
+    if(tabId == "planning-single") {
+        tabId = "planning";
     }
 
     /* da die header Listen-IDs gleich benannt sind wie die dateien, kann ich diese exakt ansprechen */

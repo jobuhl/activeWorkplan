@@ -64,7 +64,7 @@ class StoreController extends Controller
 
 
         flash('Store added', 'success');
-        return redirect('/admin/employer-planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
     }
 
     public function change(Request $request)
@@ -126,7 +126,7 @@ class StoreController extends Controller
 
         flash('Change successful', 'success');
 
-        return redirect('/admin/employer-planning/' . $store->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning/' . $store->id . '/' . $request['thisDate']);
 
     }
 
@@ -216,7 +216,7 @@ class StoreController extends Controller
 
 
         flash('Store delete successful', 'success');
-        return redirect('/admin/employer-planning/' . ($amountOfRetailStores == 0 ? '0' : $allRetailStores[0]->id) . '/' . $request['thisDate']);
+        return redirect('/admin/planning/' . ($amountOfRetailStores == 0 ? '0' : $allRetailStores[0]->id) . '/' . $request['thisDate']);
 
     }
 }

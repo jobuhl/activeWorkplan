@@ -5,22 +5,22 @@ include('functions.php');
 /* --------------------------- LINK ------------------------------- */
 
 Route::get('/home', function () {
-    return redirect('/admin/employer-overview/' . (new DateTime())->format('d-m-Y'));
+    return redirect('/admin/overview/' . (new DateTime())->format('d-m-Y'));
 })->name('home');
 
-Route::get('/employer-overview/{date}', function ($urlDate) {
+Route::get('/overview/{date}', function ($urlDate) {
     return admOverview($urlDate);
 })->name('home');
 
-Route::get('employer-planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
+Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
     return admPlanning($thisRetailStoreId, $urlDate);
 })->name('home');
 
-Route::get('/employer-single/{id}/{date}', function ($employeeId, $urlDate) {
+Route::get('/planning-single/{id}/{date}', function ($employeeId, $urlDate) {
     return admPlanningSingle($employeeId, $urlDate);
 })->name('employer-planning');
 
-Route::get('/employer-account/{date}', function ($urlDate) {
+Route::get('/account/{date}', function ($urlDate) {
     return admAccount($urlDate);
 })->name('home');
 
@@ -66,15 +66,6 @@ Route::post('/searchOverview', function () {
     ->where('company.id', $company->id)
     ->where('retail_store.name', 'like', '%' . $character . '%')
     ->get();
-
-//    $emp = DB::table('employees as e')
-//        ->select('e.name as surname', 'e.forename', 'e.retail_store_id')
-//        ->join('retail_store', 'e.retail_store_id', '=', 'retail_store.id')
-//        ->join('company', 'company.id', '=', 'retail_store.company_id')
-//        ->where('company.admin_id', 1)
-//        ->where('employees.name', 'like', '%' . $characters . '%')
-//        ->get();
-//    return response()->json(["store" => $store, "emp" => $emp]);
 
     return response()->json(["store" => $store]);
 });
@@ -149,7 +140,7 @@ function admOverview($urlDate)
     if ($amountOfRetailStores == 0) {
 
         // Special Seite oeffnen, auf der man einen Store anlegen kann
-        return view('admin.employer-nostore')
+        return view('admin.nostore')
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     } else {
@@ -176,7 +167,7 @@ function admPlanning($thisRetailStoreId, $urlDate)
     if ($amountOfRetailStores == 0) {
 
         // Special Seite oeffnen, auf der man einen Store anlegen kann
-        return view('admin.employer-nostore')
+        return view('admin.nostore')
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     } else {
@@ -191,7 +182,7 @@ function admPlanning($thisRetailStoreId, $urlDate)
         $manyWorktimeEvent = allWorktimeFixOfCompany($company->id, $week);
         $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
 
-        return view('admin.employer-planning')
+        return view('admin.planning')
             ->with('allRetailStores', $allRetailStores)
             ->with('thisRetailStore', $thisRetailStore)
             ->with('allEmployees', $allEmployees)
@@ -226,11 +217,11 @@ function admPlanningSingle($employeeId, $urlDate)
 
 
     if ($amountOfRetailStores == 0) {
-        return view('admin.employer-planning-single-employee')
+        return view('admin.planning-single')
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     } else {
-        return view('admin.employer-planning-single-employee')
+        return view('admin.planning-single')
             ->with('allRetailStores', $allRetailStores)
             ->with('thisRetailStore', $thisRetailStore)
             ->with('allEmployees', $allEmployees)
@@ -259,14 +250,14 @@ function admAccount($urlDate)
     $week = getWeekArray($urlDate);
 
     if ($amountOfRetailStores == 0) {
-        return view('admin.employer-account')
+        return view('admin.account')
             ->with('company', $company)
             ->with('admin', $admin)
             ->with('address', $address)
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     } else {
-        return view('admin.employer-account')
+        return view('admin.account')
             ->with('company', $company)
             ->with('admin', $admin)
             ->with('address', $address)

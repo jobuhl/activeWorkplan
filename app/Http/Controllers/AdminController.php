@@ -80,7 +80,7 @@ class AdminController extends Controller
 
 //        session()->flash('status', 'Task was successful!');
         flash('Change successful', 'success');
-        return redirect('/admin/employer-account/' . $request['thisDate']);
+        return redirect('/admin/account/' . $request['thisDate']);
     }
 
     protected function update_email(Request $request)
@@ -101,7 +101,7 @@ class AdminController extends Controller
             ))[0];
 
         flash('Change successful', 'success');
-        return redirect('/admin/employer-account/' . $request['thisDate']);
+        return redirect('/admin/account/' . $request['thisDate']);
 
     }
 
@@ -130,7 +130,7 @@ class AdminController extends Controller
 
 
         flash('Change successful', 'success');
-        return redirect('/admin/employer-account/' . $request['thisDate']);
+        return redirect('/admin/account/' . $request['thisDate']);
 
     }
 
@@ -225,7 +225,7 @@ class AdminController extends Controller
         }else{
 
             flash('Wrong password', 'danger');
-            return redirect('/admin/employer-account/' . $request['thisDate']);
+            return redirect('/admin/account/' . $request['thisDate']);
         }
     }
 

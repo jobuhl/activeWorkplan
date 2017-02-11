@@ -25,12 +25,12 @@
         @foreach($allRetailStores as $retailStore)
              <optgroup label="" style=" border: none; ">
                  <option style="background-color: #F1F1F1; padding-left: 10px"
-                        value="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</option>
+                        value="{{ url('/admin/planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</option>
                 @foreach($allEmployees as $employee)
                     @if($employee->retail_store_id == $retailStore->id)
 
                         <option style="padding-left: 30px;"
-                                value="{{ url('/admin/employer-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</option>
+                                value="{{ url('/admin/planning-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</option>
 
                     @endif
                 @endforeach
@@ -47,13 +47,13 @@
         <li><a class="middle-bold">Stores</a></li>
         @foreach($allRetailStores as $retailStore)
             <li class="arrow-down">
-                <a href="{{ url('/admin/employer-planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</a>
+                <a href="{{ url('/admin/planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</a>
                 <a>⋁</a>
                 <ul>
                     @foreach($allEmployees as $employee)
                         @if($employee->retail_store_id == $retailStore->id)
                             <li>
-                                <a href="{{ url('/admin/employer-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</a>
+                                <a href="{{ url('/admin/planning-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</a>
                             </li>
                         @endif
                     @endforeach

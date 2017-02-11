@@ -36,7 +36,7 @@ class EventController extends Controller
 
         ));
 
-        return redirect('/employee/employee-planning/' . $request['thisDate']);
+        return redirect('/employee/planning/' . $request['thisDate']);
     }
 
     // Employee adds a Time Event
@@ -60,7 +60,7 @@ class EventController extends Controller
             'employee_id' => $thisEmployee->id
         ));
 
-        return redirect('/employee/employee-planning/' . $request['thisDate']);
+        return redirect('/employee/planning/' . $request['thisDate']);
     }
 
     // Employee changes an Allday Event
@@ -79,7 +79,7 @@ class EventController extends Controller
                 'date' => date($newDate),
                 'category_id' => $category->id,
             ));
-        return redirect('/employee/employee-planning/' . $request['thisDate']);
+        return redirect('/employee/planning/' . $request['thisDate']);
     }
 
     // Employee changes a Time Event
@@ -105,7 +105,7 @@ class EventController extends Controller
                 'employee_id' => $thisEmployee->id
             ));
 
-        return redirect('/employee/employee-planning/' . $request['thisDate']);
+        return redirect('/employee/planning/' . $request['thisDate']);
     }
 
     /* ---------------------------- ADMIN -------------------------------- */
@@ -132,7 +132,7 @@ class EventController extends Controller
             'employee_id' => $thisEmployee->id
         ));
 
-        return redirect('/admin/employer-planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
     }
 
     // Admin changes a Worktime Fix Event
@@ -160,13 +160,13 @@ class EventController extends Controller
                 'employee_id' => $thisEmployee->id
             ));
 
-        return redirect('/admin/employer-planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
     }
 
     // Admin accepts an Allday Event (Vacation / Illness)
     function acceptAlldayEvent(Request $request)
     {
-        if($request['thisUrl'] == '/admin/employer-single/') {
+        if($request['thisUrl'] == '/admin/planning-single/') {
             $thisView = Employee::find($request['thisViewId']);
         } else {
             $thisView = RetailStore::find($request['thisViewId']);
@@ -183,7 +183,7 @@ class EventController extends Controller
     // Admin accepts a Time Event (Vacation / Illness)
     function acceptTimeEvent(Request $request)
     {
-        if($request['thisUrl'] == '/admin/employer-single/') {
+        if($request['thisUrl'] == '/admin/planning-single/') {
             $thisView = Employee::find($request['thisViewId']);
         } else {
             $thisView = RetailStore::find($request['thisViewId']);
@@ -203,7 +203,7 @@ class EventController extends Controller
     // Admin accepts an Allday Event (Vacation / Illness)
     function notAcceptAlldayEvent(Request $request)
     {
-        if($request['thisUrl'] == '/admin/employer-single/') {
+        if($request['thisUrl'] == '/admin/planning-single/') {
             $thisView = Employee::find($request['thisViewId']);
         } else {
             $thisView = RetailStore::find($request['thisViewId']);
@@ -220,7 +220,7 @@ class EventController extends Controller
     // Admin accepts a Time Event (Vacation / Illness)
     function notAcceptTimeEvent(Request $request)
     {
-        if($request['thisUrl'] == '/admin/employer-single/') {
+        if($request['thisUrl'] == '/admin/planning-single/') {
             $thisView = Employee::find($request['thisViewId']);
         } else {
             $thisView = RetailStore::find($request['thisViewId']);

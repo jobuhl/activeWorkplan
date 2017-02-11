@@ -6,11 +6,11 @@ Route::get('/home', function () {
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
 
-    return redirect('/employee/employee-workplan/' . (new DateTime())->format('d-m-Y'));
+    return redirect('/employee/workplan/' . (new DateTime())->format('d-m-Y'));
 })->name('home');
 
 
-Route::get('/employee-workplan/{date}', function ($urlDate) {
+Route::get('/workplan/{date}', function ($urlDate) {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
@@ -24,7 +24,7 @@ Route::get('/employee-workplan/{date}', function ($urlDate) {
     $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id, $week);
 
 
-    return view('employee.employee-workplan')
+    return view('employee.workplan')
         ->with('manyTimeEvent', $manyTimeEvent)
         ->with('manyWorktimeEvent', $manyWorktimeEvent)
         ->with('manyAlldayEvent', $manyAlldayEvent)
@@ -35,7 +35,7 @@ Route::get('/employee-workplan/{date}', function ($urlDate) {
 
 /* --------------------------- PLANNING ------------------------------- */
 
-Route::get('/employee-planning/{date}', function ($urlDate) {
+Route::get('/planning/{date}', function ($urlDate) {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
@@ -50,7 +50,7 @@ Route::get('/employee-planning/{date}', function ($urlDate) {
 
 
 
-    return view('employee.employee-planning')
+    return view('employee.planning')
         ->with('manyTimeEvent', $manyTimeEvent)
         ->with('manyAlldayEvent', $manyAlldayEvent)
         ->with('category', $category)
@@ -61,7 +61,7 @@ Route::get('/employee-planning/{date}', function ($urlDate) {
 
 /* --------------------------- ACCOUNT ------------------------------- */
 
-Route::get('/employee-account/{date}', function ($urlDate) {
+Route::get('/account/{date}', function ($urlDate) {
     $users[] = Auth::user();
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
@@ -73,7 +73,7 @@ Route::get('/employee-account/{date}', function ($urlDate) {
 
     $week = getWeekArray($urlDate);
 
-    return view('employee.employee-account')
+    return view('employee.account')
         ->with('thisEmployee', $thisEmployee)
         ->with('company', $company)
         ->with('thisRetailStore', $thisRetailStore)

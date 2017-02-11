@@ -39,7 +39,7 @@
 
 
                             <!-- If calendar in Admin Planning or Single -->
-                            @if( strpos(url()->current(),'/employer-planning') || strpos(url()->current(),'/employer-single'))
+                            @if( strpos(url()->current(),'/admin/planning') || strpos(url()->current(),'/admin/planning-single'))
 
 
                             <!-- +++++++++++++++ OPTIONS  +++++++++++++++ -->
@@ -60,7 +60,7 @@
                                             <form method="POST" action="{{ url('admin/acceptTimeEvent') }}"> {{ csrf_field() }}
                                                 <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
                                                 <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
+                                                <input style="display: none;" name="thisUrl" value="/admin/planning/"/>
                                                 <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                                                 <button class="add-event-button" name="eventId" value="{{ $oneTimeEvent->id }}">OK</button>
                                             </form>
@@ -72,7 +72,7 @@
                                             <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
                                                 <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
                                                 <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
+                                                <input style="display: none;" name="thisUrl" value="/admin/planning/"/>
                                                 <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                                                 <button class="delete-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
                                             </form>
@@ -85,7 +85,7 @@
 
 
                         <!-- If calendar in Employee Planning -->
-                            @if( strpos(url()->current(),'/employee-planning') )
+                            @if( strpos(url()->current(),'/employee/planning') )
 
 
 

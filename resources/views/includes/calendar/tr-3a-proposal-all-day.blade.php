@@ -45,7 +45,7 @@
 
 
                         <!-- If calendar in Admin Planning or Single -->
-                            @if( strpos(url()->current(),'/employer-planning') || strpos(url()->current(),'/employer-single'))
+                            @if( strpos(url()->current(),'/admin/planning') || strpos(url()->current(),'/admin/planning-single'))
 
                             <!-- +++++++++++++++ OPTIONS VACATION ILLNESS ACCEPT +++++++++++++++ -->
                                 @if ( ($oneAlldayEvent->name ==  "Vacation" || $oneAlldayEvent->name =="Illness" ) && $oneAlldayEvent->accepted == 0)
@@ -53,7 +53,7 @@
                                         <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
                                             <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
                                             <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                            <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
+                                            <input style="display: none;" name="thisUrl" value="/admin/planning/"/>
                                             <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                                             <button class="add-event-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
                                         </form>
@@ -67,7 +67,7 @@
                                         <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
                                             <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
                                             <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                            <input style="display: none;" name="thisUrl" value="/admin/employer-planning/"/>
+                                            <input style="display: none;" name="thisUrl" value="/admin/planning/"/>
                                             <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
                                             <button class="delete-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
                                         </form>
@@ -78,7 +78,7 @@
 
 
                         <!-- If calendar in Employee Planning -->
-                            @if( strpos(url()->current(),'/employee-planning') )
+                            @if( strpos(url()->current(),'/employee/planning') )
 
                             <!-- +++++++++++++++ OPTIONS CHANGE DELETE +++++++++++++++ -->
                                 <div id="allday-admin{{ $oneAlldayEvent->id }}" class="event-dropdown-content">

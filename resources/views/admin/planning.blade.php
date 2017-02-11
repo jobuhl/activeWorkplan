@@ -50,7 +50,7 @@
 
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar">
-                @include('admin.includes.employer-side-bar-planning')
+                @include('admin.includes.side-bar')
             </aside>
 
             <aside class="col-xs-12 col-sm-9 my-right-side">
