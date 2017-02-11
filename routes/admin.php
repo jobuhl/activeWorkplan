@@ -81,7 +81,7 @@ Route::get('/contact/{date}', function ($urlDate) {
     $allRetailStores = allRetailStoresOfCompany($company->id);
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
-    return view('admin.contact')
+    return view('admin.footer.contact')
         ->with('week', $week)
         ->with('amountOfRetailStores', $amountOfRetailStores)
         ->with('allRetailStores', $allRetailStores);
@@ -93,7 +93,7 @@ Route::get('/impressum/{date}', function ($urlDate) {
     $allRetailStores = allRetailStoresOfCompany($company->id);
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
-    return view('admin.impressum')
+    return view('admin.footer.impressum')
         ->with('week', $week)
         ->with('amountOfRetailStores', $amountOfRetailStores)
         ->with('allRetailStores', $allRetailStores);
@@ -105,7 +105,7 @@ Route::get('/protection/{date}', function ($urlDate) {
     $allRetailStores = allRetailStoresOfCompany($company->id);
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
-    return view('admin.protection')
+    return view('admin.footer.protection')
         ->with('week', $week)
         ->with('amountOfRetailStores', $amountOfRetailStores)
         ->with('allRetailStores', $allRetailStores);

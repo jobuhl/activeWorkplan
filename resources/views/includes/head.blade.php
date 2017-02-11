@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/header-footer.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/general/signup.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/guest/signup.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
 
     <script>

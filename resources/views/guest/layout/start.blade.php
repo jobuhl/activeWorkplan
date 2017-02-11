@@ -20,7 +20,7 @@
 
 
         @include('admin.auth.register')
-        @include('guest.signin-modal')
+        @include('guest.includes.signin-modal')
 
         @yield('content')
 

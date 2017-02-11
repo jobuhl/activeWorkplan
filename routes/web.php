@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::group(['prefix' => 'admin'], function () {
   Route::get('/login', 'AdminAuth\LoginController@showLoginForm');
   Route::post('/login', 'AdminAuth\LoginController@login');
@@ -66,15 +62,15 @@ Route::get('/guest/feature', function () {
 
 // ------------------------ Footer ------------------------
 Route::get('/guest/contact', function () {
-    return view('guest.contact');
+    return view('guest.footer.contact');
 });
 
 Route::get('/guest/impressum', function () {
-    return view('guest.impressum');
+    return view('guest.footer.impressum');
 });
 
 Route::get('/guest/protection', function () {
-    return view('guest.protection');
+    return view('guest.footer.protection');
 });
 
 

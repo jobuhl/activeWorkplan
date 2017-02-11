@@ -103,19 +103,19 @@ Route::post('/timeEventDelete', 'EventController@deleteTimeEvent');
 
 Route::get('/contact/{date}', function ($urlDate) {
     $week = getWeekArray($urlDate);
-    return view('employee.contact')
+    return view('employee.footer.contact')
         ->with('week', $week);
 });
 
 Route::get('/impressum/{date}', function ($urlDate) {
     $week = getWeekArray($urlDate);
-    return view('employee.impressum')
+    return view('employee.footer.impressum')
         ->with('week', $week);
 });
 
 Route::get('/protection/{date}', function ($urlDate) {
     $week = getWeekArray($urlDate);
-    return view('employee.protection')
+    return view('employee.footer.protection')
         ->with('week', $week);
 });
 

@@ -3,7 +3,7 @@
     <ul class="left-list" id="id-left">
         <li class="nav-image">
             <a href="{{ url('/admin/overview') . '/' . $week[0]->format('d-m-Y') }}">
-                <img class="nav-logo" src="{{asset('img/imagelogo.gif')}}" alt="Logo">
+                <img class="nav-logo" src="{{asset('/img/logo.gif')}}" alt="Logo">
             </a>
         </li>
         <li class="nav-placeholder">

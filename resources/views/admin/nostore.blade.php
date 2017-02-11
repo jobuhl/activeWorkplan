@@ -1,4 +1,4 @@
-@extends('admin.layout.employer-start')
+@extends('admin.layout.start')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/employer/no-store.css')}}">

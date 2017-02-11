@@ -11,7 +11,7 @@
         <div class="col-xs-12 mainsection">
             <div class="main-article">
                 <aside>
-                    <img src="{{asset('img/contact.gif')}}" alt="Bild">
+                    <img src="{{asset('img/guest/contact.gif')}}" alt="Bild">
                 </aside>
                 <aside class="display-none-heading">
                     <h2>Contact</h2>

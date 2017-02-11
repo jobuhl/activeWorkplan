@@ -13,7 +13,7 @@
         <div class="col-xs-12 mainsection">
             <div class="main-article">
                 <aside>
-                    <img src="{{asset('img/dataprotection.gif')}}" alt="Bild">
+                    <img src="{{asset('img/guest/protection.gif')}}" alt="Bild">
                 </aside>
                 <aside class="display-none-heading">
                     <h2>Data protection</h2>

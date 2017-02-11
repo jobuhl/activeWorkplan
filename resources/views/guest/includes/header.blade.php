@@ -2,7 +2,7 @@
     <ul class="left-list" id="id-left">
         <li class="nav-image">
             <a href="{{ url('/guest/index') }}">
-                <img class="nav-logo" src="{{asset('img/imagelogo.gif')}}" alt="Logo">
+                <img class="nav-logo" src="{{asset('/img/logo.gif')}}" alt="Logo">
             </a>
         </li>
         <li class="nav-placeholder">
