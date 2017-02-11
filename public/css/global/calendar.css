@@ -271,7 +271,7 @@
     height: 38px;
 }
 
-
+/* Option Button kleiner */
 @media screen and (max-width: 767px) {
 
     .event-dropdown-content button {
@@ -286,14 +286,17 @@
     display: inline-block;
 }
 
+/* Option Buttons yellow */
 .event-dropdown-content .change-event-button {
     background-color: var(--main-yellow-button);
 }
 
+/* Option Buttons red */
 .event-dropdown-content .delete-event-button {
     background-color: var(--main-red-button);
 }
 
+/* Option Buttons green */
 .event-dropdown-content .add-event-button {
     background-color: var(--main-green-button);
 }

@@ -18,7 +18,7 @@ Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
 
 Route::get('/planning-single/{id}/{date}', function ($employeeId, $urlDate) {
     return admPlanningSingle($employeeId, $urlDate);
-})->name('employer-planning');
+})->name('home');
 
 Route::get('/account/{date}', function ($urlDate) {
     return admAccount($urlDate);

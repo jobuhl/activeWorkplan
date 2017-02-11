@@ -30,7 +30,6 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/guest/general-mainsection.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('/js/employer/modal_add_change_delete.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/guest/signup_in.js') }}"></script>
         @yield('js')
         <script type="text/javascript" src="{{ asset('/js/guest/header-footer.js') }}"></script>

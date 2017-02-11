@@ -131,8 +131,8 @@
 
 
 @section('js')
-    <script src="{{ asset('js/guest/side-bar.js') }}"></script>
-    <script src="{{asset('js/general/calendar.js')}}"></script>
+    <script src="{{ asset('/js/guest/side-bar.js') }}"></script>
+    <script src="{{ asset('/js/guest/calendar.js')}}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
 @endsection

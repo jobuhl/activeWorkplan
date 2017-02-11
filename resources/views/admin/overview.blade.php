@@ -2,7 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/side-bar.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/employer/overview.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/admin/overview.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/calendar.css')}}">
 @endsection
 
@@ -26,7 +26,7 @@
                     <ul class="search-list-response hide-mobil">
                         <!-- Am Anfang werden alle Stores reingeladen -->
                         @foreach($allRetailStores as $retailStore)
-                            <li><a href="{{ url('/admin/employer-overview') . '/'  . (clone $week[0])->format('d-m-Y') .  '#table-overview' . $retailStore->id }}">{{ $retailStore->name }}</a></li>
+                            <li><a href="{{ url('/admin/overview') . '/'  . (clone $week[0])->format('d-m-Y') .  '#table-overview' . $retailStore->id }}">{{ $retailStore->name }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -49,7 +49,7 @@
                     <!-- Fuer jeden Retail Store eine Tabelle mit Finalen Einsatzplaenen -->
                     @foreach($allRetailStores as $retailStore)
 
-                        <div id="table-overview{{ $retailStore->id }}" class="print-email table-head-store">
+                        <div id="table-overview{{ $retailStore->id }}" class="table-head-store">
                             <a class="table-head-a">{{ $retailStore->name }}</a>
                         </div>
                         <table class="calendar-days-all-emp">
@@ -80,7 +80,7 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/employer/overview.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/admin/overview.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/guest/side-bar.js') }}"></script>
 
 @endsection
