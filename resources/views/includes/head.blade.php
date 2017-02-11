@@ -27,7 +27,7 @@
             message: 'Diese Website nutzt Cookies, um bestmögliche Funktionalität bieten zu können.',
             dismiss: 'Ok, verstanden',
             learnMore: 'Mehr Infos',
-            link: '{{ url('/general/protection') }}',
+            link: '{{ url('/guest/protection') }}',
             theme: 'dark-top'
         };
     </script>

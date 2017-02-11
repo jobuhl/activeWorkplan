@@ -5,7 +5,7 @@
 
     <!-- Bootstrap / jQuery Imports -->
     <?php
-    include '../php_version/php/general/links-general.php';
+    include '../php_version/php/guest/links-guest.php';
     ?>
 
     <title>Title</title>
@@ -16,7 +16,7 @@
 
         window.onload = function () {
             mobileSidebar();
-        }
+        };;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
         window.onresize = function () {
             mobileSidebar();
         };

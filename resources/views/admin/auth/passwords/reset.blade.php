@@ -1,4 +1,4 @@
-@extends('general.layout.general-start')
+@extends('guest.layout.general-start')
 
 @section('content')
 <div class="container">

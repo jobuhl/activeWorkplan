@@ -1,3 +1,3 @@
-@include('general.index')
+@include('guest.index')
 
 

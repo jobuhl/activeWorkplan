@@ -1,4 +1,4 @@
-@extends('general.layout.general-start')
+@extends('guest.layout.general-start')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/general/index.css')}}">

@@ -7,7 +7,7 @@ function highlightTab() {
     var url = window.location.pathname;
 
     /* Regular Expression Literale mit Slashes, Gruppierung und Alles durch Gruppe 1 ersetzen */
-    var tabId = url.replace(/.+(general|admin|employee)\/([a-zA-Z_-]+).*/ , "$2");
+    var tabId = url.replace(/.+(guest|admin|employee)\/([a-zA-Z_-]+).*/ , "$2");
 
 
     /* Sonderfall, da die Mitarbeiter Seite im gleichen Tab wie Planning ist */

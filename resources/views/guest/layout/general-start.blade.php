@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        @include('general.includes.header')
+        @include('guest.includes.header')
 
         <noscript>
             <p class="no-script-message">
@@ -20,16 +20,16 @@
 
 
         @include('admin.auth.register')
-        @include('general.signin-modal')
+        @include('guest.signin-modal')
 
         @yield('content')
 
-        @include('general.includes.footer')
+        @include('guest.includes.footer')
 
         <!-- JQuery -->
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('/js/general/general-mainsection.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('guest') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/employer/modal_add_change_delete.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/general/signup_in.js') }}"></script>
         @yield('js')

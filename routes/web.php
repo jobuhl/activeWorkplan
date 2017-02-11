@@ -50,31 +50,31 @@ Route::get('/deleteWorktimeEventAJAX/{eventId?}', 'EventController@deleteWorktim
 
 
 
-// ------------------------ general ------------------------
+// ------------------------ guest ------------------------
 Route::get('/', function () {
-    return redirect('/general/index');
+    return redirect('/guest/index');
 });
 
-Route::get('/general/index', function () {
-    return view('general.index');
+Route::get('/guest/index', function () {
+    return view('guest.index');
 });
 
-Route::get('/general/feature', function () {
-    return view('general.feature');
+Route::get('/guest/feature', function () {
+    return view('guest.feature');
 });
 
 
 // ------------------------ Footer ------------------------
-Route::get('/general/contact', function () {
-    return view('general.contact');
+Route::get('/guest/contact', function () {
+    return view('guest.contact');
 });
 
-Route::get('/general/impressum', function () {
-    return view('general.impressum');
+Route::get('/guest/impressum', function () {
+    return view('guest.impressum');
 });
 
-Route::get('/general/protection', function () {
-    return view('general.protection');
+Route::get('/guest/protection', function () {
+    return view('guest.protection');
 });
 
 
