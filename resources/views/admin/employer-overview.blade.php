@@ -81,6 +81,6 @@
 
 @section('js')
     <script type="text/javascript" src="{{ asset('/js/employer/overview.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/general/side-bar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/guest/side-bar.js') }}"></script>
 
 @endsection

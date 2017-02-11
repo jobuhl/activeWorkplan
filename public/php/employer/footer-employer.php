@@ -23,4 +23,4 @@ include '../general/links-general.php';
 
 <!-- JavaScript für alle Employer Classen -->
 <!-- Header wird erst im Footer geladen, da sonst die Hoehe des fake-body nicht berechnet werden kann und aus performace gruenden -->
-<script src="../../js/general/header-footer.js"></script>
+<script src="../../js/guest/header-footer.js"></script>

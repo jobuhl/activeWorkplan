@@ -323,10 +323,10 @@ include 'footer-general.php';
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="../../css/guest/features.css">
-<link rel="stylesheet" type="text/css" href="../../css/global/general.css">
+<link rel="stylesheet" type="text/css" href="../../css/guest/general.css">
 
 <!-- JavaScript -->
-<script src="../../js/general/features.js"></script>
+<script src="../../js/guest/features.js"></script>
 
 </body>
 

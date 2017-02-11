@@ -507,7 +507,7 @@ include 'footer-general.php';
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="../../css/guest/dataprotection.css">
-<link rel="stylesheet" type="text/css" href="../../css/global/general.css">
+<link rel="stylesheet" type="text/css" href="../../css/guest/general.css">
 
 </body>
 

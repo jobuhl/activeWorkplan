@@ -956,7 +956,7 @@ include '../employer/footer-employer.php';
 <link rel="stylesheet" type="text/css" href="../../css/employer/overview.css">
 
 <!-- JavaScript -->
-<script src="../../js/general/side-bar.js"></script>
+<script src="../../js/guest/side-bar.js"></script>
 <script src="../../js/employer/overview.js"></script>
 <script src="../../js/employee/workplan.js"></script>
 

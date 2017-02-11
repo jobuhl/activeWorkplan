@@ -10,4 +10,4 @@
 
     <!-- JavaScript -->
     <script src="../../js/employer/modal_add_change_delete.js"></script>
-    <script src="../../js/general/modal.js"></script>
+    <script src="../../js/guest/modal.js"></script>

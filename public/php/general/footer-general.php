@@ -24,6 +24,6 @@ include '../general/links-general.php';
 
 <!-- JavaScript -->
 <!-- Header -footer.js wird erst im Footer geladen, da sonst die Hoehe des fake-body nicht berechnet werden kann und aus performace gruenden -->
-<script src="../../js/general/header-footer.js"></script>
-<script src="../../js/general/signup_in.js"></script>
-<script src="../../js/general/general-mainsection.js"></script>
+<script src="../../js/guest/header-footer.js"></script>
+<script src="../../js/guest/signup_in.js"></script>
+<script src="../../js/guest/general-mainsection.js"></script>

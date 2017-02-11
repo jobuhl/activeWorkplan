@@ -23,4 +23,4 @@ include '../general/links-general.php';
 <link rel="stylesheet" type="text/css" href="../../css/global/modal.css">
 
 <!-- JavaScript -->
-<script src="../../js/general/header-footer.js"></script>
+<script src="../../js/guest/header-footer.js"></script>

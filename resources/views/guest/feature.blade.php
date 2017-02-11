@@ -1,7 +1,7 @@
 @extends('guest.layout.start')
 
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('css/global/general.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/guest/general.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/guest/features.css')}}">
 @endsection
 
@@ -167,5 +167,5 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('js/general/features.js')}}"></script>
+    <script src="{{asset('/js/guest/features.js')}}"></script>
 @endsection

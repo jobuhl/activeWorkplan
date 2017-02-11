@@ -74,7 +74,7 @@ include '../general/links-general.php';
 
 
 <!-- Kopie, weil Calendar.js Dateien die Datei überschrieben haben -->
-<script src="../../js/general/header-footer.js"></script>
+<script src="../../js/guest/header-footer.js"></script>
 
 </body>
 

@@ -675,7 +675,7 @@ include '../employer/footer-employer.php';
 
 <!-- JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
-<script src="../../js/general/side-bar.js"></script>
+<script src="../../js/guest/side-bar.js"></script>
 
 </body>
 

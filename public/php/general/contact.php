@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <!-- CSS , Extra am Anfang, weil sonst Bild zu gross und Footer nicht am Boden -->
-    <link rel="stylesheet" type="text/css" href="../../css/global/general.css">
+    <link rel="stylesheet" type="text/css" href="../../css/guest/general.css">
     <link rel="stylesheet" type="text/css" href="../../css/guest/contact.css">
 
     <!-- Page name -->
@@ -81,7 +81,7 @@ include 'footer-general.php';
 ?>
 
 <!-- JavaScript -->
-<script src="../../js/general/contact.js"></script>
+<script src="../../js/guest/contact.js"></script>
 
 </body>
 
