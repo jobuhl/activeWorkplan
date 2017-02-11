@@ -3,7 +3,7 @@
 <head>
     <!-- CSS , Extra am Anfang, weil sonst Bild zu gross und Footer nicht am Boden -->
     <link rel="stylesheet" type="text/css" href="../../css/global/general.css">
-    <link rel="stylesheet" type="text/css" href="../../css/general/contact.css">
+    <link rel="stylesheet" type="text/css" href="../../css/guest/contact.css">
 
     <!-- Page name -->
     <title>activeWorkplan/Contact</title>

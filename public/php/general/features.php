@@ -322,7 +322,7 @@ include 'footer-general.php';
 ?>
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../../css/general/features.css">
+<link rel="stylesheet" type="text/css" href="../../css/guest/features.css">
 <link rel="stylesheet" type="text/css" href="../../css/global/general.css">
 
 <!-- JavaScript -->

@@ -1,4 +1,4 @@
-@extends('guest.layout.general-start')
+@extends('guest.layout.start')
 
 <!-- Main Content -->
 @section('content')

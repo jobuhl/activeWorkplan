@@ -1,8 +1,8 @@
-@extends('guest.layout.general-start')
+@extends('guest.layout.start')
 
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/general.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/general/features.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/guest/features.css')}}">
 @endsection
 
 @section('content')

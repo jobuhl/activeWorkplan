@@ -1,6 +1,6 @@
 @section('css')
 <link rel="stylesheet" type="text/css"  href="{{asset('css/global/general.css')}}">
-<link rel="stylesheet" type="text/css"  href="{{asset('css/general/contact.css')}}">
+<link rel="stylesheet" type="text/css"  href="{{asset('css/guest/contact.css')}}">
 @endsection
 
 @section('content')

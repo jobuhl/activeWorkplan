@@ -1,5 +1,5 @@
 @section('css')
-    <link rel="stylesheet" type="text/css" href="{{asset('css/general/impressum.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/guest/impressum.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/general.css')}}">
 @endsection
 

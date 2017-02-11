@@ -19,7 +19,7 @@ include '../general/links-general.php';
 
 <!-- CSS -->
 <link rel="stylesheet" type="text/css" href="../../css/global/header-footer.css">
-<link rel="stylesheet" type="text/css" href="../../css/general/signup.css">
+<link rel="stylesheet" type="text/css" href="../../css/guest/signup.css">
 <link rel="stylesheet" type="text/css" href="../../css/global/modal.css">
 
 <!-- JavaScript -->

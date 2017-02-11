@@ -1,3 +1,3 @@
-@extends('guest.layout.general-start')
+@extends('guest.layout.start')
 
 @include('includes.footer.impressum')

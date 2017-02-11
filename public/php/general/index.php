@@ -248,7 +248,7 @@ include 'footer-general.php';
 
 
 <!-- CSS -->
-<link rel="stylesheet" type="text/css" href="../../css/general/index.css">
+<link rel="stylesheet" type="text/css" href="../../css/guest/index.css">
 
 </body>
 

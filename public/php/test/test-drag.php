@@ -4,7 +4,7 @@
 
     <!-- Bootstrap / jQuery Imports -->
     <?php
-    include '../php_version/php/general/links-general.php';
+    include '../php_version/php/guest/links-guest.php';
     ?>
 
     <link rel="stylesheet" type="text/css" href="test-table-calendar.css">
