@@ -205,3 +205,74 @@ footer a:focus {
     top: 60px;
     font-size: 12pt;
 }
+
+
+/* ---------------------------- INPUT form-control ---------------------------- */
+
+.form-control {
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+input.form-control:focus {
+    background-color: var(--main-small-header-color);
+    border: 1px solid var(--main-highlight-color);
+    box-shadow: none;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.form-control:hover {
+    box-shadow: none;
+    text-decoration: none;
+}
+
+button.form-control,
+button.form-control:focus,
+button.form-control:hover,
+a.form-control,
+a.form-control:focus,
+a.form-control:hover {
+    box-shadow: none;
+    border: none;
+    color: white;
+    text-align: center;
+}
+
+/* ---------------------- CHECKBOX Sign In ---------------------- */
+@media screen and (max-width: 767px) {
+    .my-checkbox {
+        padding-bottom: 10px;
+    }
+}
+
+.my-checkbox label {
+    display: block;
+    height: 36px;
+    border-radius: 20px;
+    padding: 6px 12px;
+    font-weight: normal;
+    color: white;
+    text-align: center;
+    transition: all .3s ease;
+    cursor: pointer;
+    background: var(--main-red-button);
+}
+
+.my-checkbox input {
+    left: 40px;
+    z-index: 1;
+    cursor: pointer;
+    display: none;
+}
+
+.my-checkbox input:checked + label {
+    background: var(--main-green-button);
+}
+
+.space-just-bottom {
+    margin-bottom: 15px;
+}

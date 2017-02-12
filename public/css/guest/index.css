@@ -24,9 +24,8 @@
     margin-right: auto; /* fuer Bild */
 }
 
-
 .my-center {
-    width:50%; /* muss leider fix festgelegt werden */
+    width: 50%; /* muss leider fix festgelegt werden */
     margin: auto;
     position: absolute;
     top: 0;
@@ -35,7 +34,6 @@
     right: 0;
     display: table; /* passt die Hoehe an Inhalt an */
 }
-
 
 .width-80 {
     width: 80%;
@@ -47,7 +45,7 @@
 
 .index-image-logo {
     padding: 5%;
-    border-radius: 15px;
+    border-radius: 20px;
     background-color: var(--main-header-color);
 }
 
@@ -88,6 +86,24 @@
     }
 }
 
+/* damit kein abstand rechts und links */
 .row {
     margin: 0;
+}
+
+/* get more information button on index site */
+.more-info-button {
+    text-align: center;
+    width: 80px;
+    margin: 20px auto 20px auto;
+}
+
+.more-info-button:hover {
+    color: white;
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+.more-info-button:active {
+    opacity: 0.8;
 }

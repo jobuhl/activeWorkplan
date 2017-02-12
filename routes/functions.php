@@ -1,6 +1,5 @@
 <?php
 
-
 function thisCompany()
 {
     return DB::table('company')

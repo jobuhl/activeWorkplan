@@ -38,6 +38,7 @@
 
             <aside class="col-xs-12 col-md-8">
                 <br>
+
                 <p>
                     Haben Sie als Arbeitgeber keine Lust mehr stundenlang am Einsatzplan zu feilen, nur um ihn zig mal umwerfen zu
                     müssen? Weil immer wieder ein Mitarbeiter mit einem neuen Termin ankommt, der berücksichtigt werden soll?
@@ -69,7 +70,7 @@
                     Dazu gehören vorgeschlagene Arbeitszeiten, Seminare, eingeplante Zeit um für sein Studium zu lernen und mehr.
                     Bei Krankheit und Urlaub müssen Sie als Arbeitsgeber die Events sogar genehmigen bzw. bestätigen.
                 </p>
-                <a href="feature">Get more information</a>
+                <a class="form-control next-button more-info-button" href="feature">More</a>
             </aside>
 
             <!-- links / unten; Pull damit colum nach oben geht-->
@@ -89,7 +90,7 @@
                     speichert. Diese sind bis zu einem Jahr rückwirkend einsehbar. Sie als Arbeitsgeber haben selbstverständlich
                     die kompletten Kalender der Mitarbeiter sowie die fertigen Einsatzpläne zugriffsbereit.
                 </p>
-                <a href="feature">Get more information</a>
+                <a class="form-control next-button more-info-button" href="feature">More</a>
             </aside>
 
             <!-- rechts -->
@@ -107,7 +108,7 @@
                     gewünschten Arbeitszeiten oder Fehlzeiten in Ihrem Terminplan rechtzeitig eintragen und schon sind sie
                     ihrem organisierten Alltag einen Schritt näher.
                 </p>
-                <a href="feature">Get more information</a>
+                <a class="form-control next-button more-info-button" href="feature">More</a>
             </aside>
 
             <aside class="col-sm-6 col-sm-pull-6">
@@ -126,7 +127,7 @@
                     Erstellung des Einsatzplanes auf alle Mitarbeiter. Das gesamte Team arbeitet zusammen an einem für alle
                     fairen und optimalen Arbeitsplan.
                 </p>
-                <a href="feature">Get more information</a>
+                <a class="form-control next-button more-info-button" href="feature">More</a>
             </aside>
 
             <!-- rechts -->
@@ -143,7 +144,7 @@
                 <p>Sie haben keinen PC oder Laptop zu Hause? Kein Problem, denn activeWorkplan lässt sich auch von Ihrem
                     Smartphone oder Tablet bedienen. Wo immer sie sind und genau dann, wenn Sie es brauchen.
                 </p>
-                <a href="feature">Get more information</a>
+                <a class="form-control next-button more-info-button" href="feature">More</a>
             </aside>
 
             <aside class="col-sm-6 col-sm-pull-6">
@@ -164,7 +165,7 @@
                     an die Kasse und bekommt dadurch eine neue Rolle zugewiesen. Mit dieser kann er bei der Einsatzplanung
                     unter neuen Aspekten berücksichtigt werden.
                 </p>
-                <a href="feature">Get more information</a>
+                <a class="form-control next-button more-info-button" href="feature">More</a>
             </aside>
 
             <!-- rechts -->
@@ -184,7 +185,7 @@
                     und intuitive Bedienung möglich, beliebig viele Mitarbeiter und Filialen zu registieren, ohne
                     dass diese einen Finger rühren müssen.
                 </p>
-                <a href="feature">Get more information</a>
+                <a class="form-control next-button more-info-button" href="feature">More</a>
             </aside>
 
             <!--  rechts -->
@@ -229,7 +230,7 @@
             </div>
             <!-- facebook -->
             <script>
-                (function(d, s, id) {
+                (function (d, s, id) {
                     var js, fjs = d.getElementsByTagName(s)[0];
                     if (d.getElementById(id)) return;
                     js = d.createElement(s);

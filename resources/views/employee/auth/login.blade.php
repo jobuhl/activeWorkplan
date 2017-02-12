@@ -26,21 +26,21 @@
         </div>
 
         <div class="form-group">
-            <div class="col-xs-12">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="remember"> Remember Me
-                    </label>
+            <div class="col-xs-12 col-sm-8">
+                <button type="submit" class="form-control add-button space-just-bottom">Login</button>
+            </div>
+
+            <div class="col-xs-12 col-sm-4">
+                <!-- hier war einmal ein div mit der kasse "checkbox" drum herum-->
+                {{--<label>--}}
+                    {{--<input type="checkbox" name="remember"> Remember Me--}}
+                {{--</label>--}}
+                <div class="my-checkbox">
+                    <input type="checkbox" id="checkbox-emp-input" name="remember" />
+                    <label for="checkbox-emp-input">Remember Me</label>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-xs-12">
-                <button type="submit" class="form-control add-button">
-                    Login
-                </button>
-            </div>
         </div>
     </form>
 </div>

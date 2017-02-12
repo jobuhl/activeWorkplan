@@ -6,23 +6,7 @@ include('functions.php');
 
 Route::get('/home', function () {
     return redirect('/admin/overview/' . (new DateTime())->format('d-m-Y'));
-})->name('home');
-
-Route::get('/overview/{date}', function ($urlDate) {
-    return admOverview($urlDate);
-})->name('home');
-
-Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
-    return admPlanning($thisRetailStoreId, $urlDate);
-})->name('home');
-
-Route::get('/planning-single/{id}/{date}', function ($employeeId, $urlDate) {
-    return admPlanningSingle($employeeId, $urlDate);
-})->name('home');
-
-Route::get('/account/{date}', function ($urlDate) {
-    return admAccount($urlDate);
-})->name('home');
+});
 
 
 /* --------------------------- FORMULAR ------------------------------- */
@@ -121,8 +105,7 @@ function authUser()
     $users[] = Auth::guard('admin')->user();
 }
 
-function admOverview($urlDate)
-{
+Route::get('/overview/{date}', function ($urlDate) {
     authUser();
 
     $company = thisCompany();
@@ -153,10 +136,9 @@ function admOverview($urlDate)
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     }
-}
+})->name('home');
 
-function admPlanning($thisRetailStoreId, $urlDate)
-{
+Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
     authUser();
 
     $company = thisCompany();
@@ -195,10 +177,9 @@ function admPlanning($thisRetailStoreId, $urlDate)
     }
 
 
-}
+})->name('home');
 
-function admPlanningSingle($employeeId, $urlDate)
-{
+Route::get('/planning-single/{id}/{date}', function ($employeeId, $urlDate) {
     authUser();
 
     $company = thisCompany();
@@ -234,11 +215,9 @@ function admPlanningSingle($employeeId, $urlDate)
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     }
+})->name('home');
 
-}
-
-function admAccount($urlDate)
-{
+Route::get('/account/{date}', function ($urlDate) {
     authUser();
 
     $company = thisCompany();
@@ -265,4 +244,4 @@ function admAccount($urlDate)
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     }
-}
+})->name('home');
