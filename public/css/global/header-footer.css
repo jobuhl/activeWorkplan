@@ -4,48 +4,43 @@
 :root {
 
     /* background */
-    --main-header-color: #686868;
-    --main-article-color: #FAFAFA;
-    --main-middle-dark-color: #BFBFBF;
-    --main-table-background: #FCFCFC;
-    --main-small-header-color: #F1F1F1;
-    --main-mainsection-lower-header-color: gainsboro;
+    --grey-00-darkest: #686868;
+    --grey-10: #868686;
+    --grey-20: #BFBFBF;
+    --grey-30: #DCDCDC;
+    --grey-40: #DDDDDD;
+    --grey-50: #FAFAFA;
+    --grey-60: #F1F1F1;
+    --grey-70: #FCFCFC;
 
-    /* border */
-    --main-border-color: #A6A6A6;
-    --main-input-border-color: lightgrey;
-    --main-dropdown-border-color: lightgrey;
+    --grey-border: #A6A6A6;
+    --grey-border-dropdown: #D3D3D3;
 
     /* text */
-    --main-mainsection-lower-header-text-color: #686868;
-    --main-playeholder-color: grey;
-    --main-text-black: black;
-    --main-text-white: white;
-
-    /* pop-up */
-    --main-pop-up-progress-bar: #ddd;
-    --main-pop-up-progress-bar-behind: #868686;
+    --text-guest-header: #686868;
+    --text-black: #000000;
+    --text-white: #FFFFFF;
 
     /* active / focus */
-    --main-focus-color: #CFE8FD;
-    --main-highlight-color: #00A9FF;
-    --main-active-color: #0C8EE8;
-    --main-today-color: #FFDDDA; /* in wochen-kalender */
+    --blue-focus: #CFE8FD;
+    --blue-highlight: #00A9FF;
+    --blue-active: #0C8EE8;
+    --red-light-today: #FFDDDA; /* in wochen-kalender */
 
     /* red / yellow / green */
-    --main-red-button: #FF5702;
-    --main-yellow-button: #FFC400;
-    --main-green-button: #9CE159;
+    --button-red: #FF5702;
+    --button-yellow: #FFC400;
+    --button-green: #9CE159;
 }
 
 * {
     margin: 0;
     padding: 0;
-    -webkit-box-sizing: border-box; /* größe wird von außen nach innen gesetzt */
+    -webkit-box-sizing: border-box; /* groesse wird von außen nach innen gesetzt */
     -moz-box-sizing: border-box; /* das gleiche fuer aeltere browser */
     font-family: "Helvetica Neue";
     font-size: 14px;
-    color: var(--main-text-black);
+    color: var(--text-black);
 }
 
 body {
@@ -70,7 +65,7 @@ header {
 header,
 footer {
     width: 100%;
-    background-color: var(--main-header-color);
+    background-color: var(--grey-00-darkest);
     height: 60px;
     z-index: 200; /* damit immer oberste Ebene (JS Calendar war sonst manchmal höher) */
 }
@@ -90,7 +85,7 @@ footer ul {
 header li,
 footer li {
     list-style-type: none;
-    background-color: var(--main-header-color);
+    background-color: var(--grey-00-darkest);
     height: 60px;
     display: inline-block; /* in einer reihe */
     float: left; /* bloecke auf gleicher Hoehe */
@@ -107,7 +102,7 @@ header a,
 footer a,
 li.nav-placeholder {
     display: block;
-    color: var(--main-text-white); /* text farbe */
+    color: var(--text-white); /* text farbe */
     text-align: center;
     text-decoration: none; /* nicht als Link anzeigen */
     font-size: 15px;
@@ -124,12 +119,12 @@ footer a {
 
 header a.myActive,
 footer a.myActive {
-    background-color: var(--main-active-color); /* Wenn aktiver Tab */
+    background-color: var(--blue-active); /* Wenn aktiver Tab */
 }
 
 header li:not(.nav-placeholder) a:hover,
 footer a:hover {
-    background: var(--main-highlight-color); /* Wenn Mauszeiger drauf */
+    background: var(--blue-highlight); /* Wenn Mauszeiger drauf */
 }
 
 /* wegen Bootstrap */
@@ -141,7 +136,7 @@ header a.myActive,
 footer a.myActive,
 header a:focus,
 footer a:focus {
-    color: var(--main-text-white); /* Text-farbe: Wegen Bootstrap */
+    color: var(--text-white); /* Text-farbe: Wegen Bootstrap */
     text-decoration: none; /* Nicht als link anzeigen: Wegen Bootstrap */
     outline: none;
     font-weight: normal;
@@ -187,7 +182,7 @@ footer a:focus {
     }
 
     ul.right-list.responsive li a {
-        border-top: 1px solid var(--main-dropdown-border-color); /* Dropdown Trennlinien */
+        border-top: 1px solid var(--grey-border-dropdown); /* Dropdown Trennlinien */
     }
 }
 
@@ -195,7 +190,7 @@ footer a:focus {
 /* ---------------------------- Falls JavaScript nicht aktiviert (im head) ---------------------------- */
 
 .no-script-message {
-    background-color: var(--main-red-button);
+    background-color: var(--button-red);
     color: white;
     margin: 0;
     padding: 10px;
@@ -215,8 +210,8 @@ footer a:focus {
 }
 
 input.form-control:focus {
-    background-color: var(--main-small-header-color);
-    border: 1px solid var(--main-highlight-color);
+    background-color: var(--grey-60);
+    border: 1px solid var(--blue-highlight);
     box-shadow: none;
 }
 
@@ -259,7 +254,7 @@ a.form-control:hover {
     text-align: center;
     transition: all .3s ease;
     cursor: pointer;
-    background: var(--main-red-button);
+    background: var(--button-red);
 }
 
 .my-checkbox input {
@@ -270,7 +265,7 @@ a.form-control:hover {
 }
 
 .my-checkbox input:checked + label {
-    background: var(--main-green-button);
+    background: var(--button-green);
 }
 
 .space-just-bottom {

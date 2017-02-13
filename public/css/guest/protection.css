@@ -3,7 +3,7 @@
 }
 
 .dataprotection hr {
-    border: 0.1px solid var(--main-border-color); /* Trennlinie zwischen den Abschnitten */
+    border: 0.1px solid var(--grey-border); /* Trennlinie zwischen den Abschnitten */
 }
 
 /* ul */

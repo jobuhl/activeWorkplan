@@ -46,7 +46,7 @@
 .index-image-logo {
     padding: 5%;
     border-radius: 20px;
-    background-color: var(--main-header-color);
+    background-color: var(--grey-00-darkest);
 }
 
 /*Innenabstand aller Article Boxen unterhalb vom Bild*/
@@ -55,7 +55,7 @@
 }
 
 .grey {
-    background-color: var(--main-article-color); /* Farbabhebung jedes zweiten Artikels */
+    background-color: var(--grey-50); /* Farbabhebung jedes zweiten Artikels */
 }
 
 /* Bilder der Article */

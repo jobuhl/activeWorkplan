@@ -6,17 +6,17 @@
 
 /* bootstrap erweiterte Klasse */
 .my-account-button {
-    color: var(--main-text-black);
+    color: var(--text-black);
     margin-left: 10px; /* Abstand zur Tabelle */
 }
 
 /* Wenn mauszeiger drüber */
 .my-account-button:hover {
-    background-color: var(--main-header-color);
+    background-color: var(--grey-00-darkest);
 }
 
 .my-account-button:active {
-    background-color: var(--main-highlight-color);
+    background-color: var(--blue-highlight);
 }
 
 /* button an rechter seite */

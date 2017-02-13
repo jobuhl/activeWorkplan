@@ -6,25 +6,25 @@
 
 .table-account td {
     padding: 5px;
-    border-bottom: 1px solid var(--main-border-color); /* nach jeder zeile duenner rand */
+    border-bottom: 1px solid var(--grey-border); /* nach jeder zeile duenner rand */
 }
 
 /* oberste zeile */
 .table-account tr:first-child td {
-    border-top: 1px solid var(--main-border-color); /* ausnahme oben mit Rand */
+    border-top: 1px solid var(--grey-border); /* ausnahme oben mit Rand */
 }
 
 /* die erste spalte */
 .table-account tr td:first-child {
     text-align: right; /* text rechtsbuendig */
     width: 30%;
-    border-right: 1px solid var(--main-border-color);
+    border-right: 1px solid var(--grey-border);
 }
 
 /* tabellen zwischen-zeile: farbe / Hoehe */
 .table-space {
     height: 10px;
-    background: var(--main-small-header-color);
+    background: var(--grey-60);
 }
 /* tabellen Zwischen-zeile: keine inneren Rahmen */
 .table-account .table-space td:first-child {
@@ -35,17 +35,17 @@
 
 /* bootstrap erweiterte Klasse */
 .my-account-button {
-    color: var(--main-text-white);
+    color: var(--text-white);
     margin: 15px 0 15px 0; /* Abstand zur Tabelle */
 }
 
 /* Wenn mauszeiger drüber */
 .my-account-button:hover {
-    background-color: var(--main-header-color);
+    background-color: var(--grey-00-darkest);
 }
 
 .my-account-button:active {
-    background-color: var(--main-highlight-color);
+    background-color: var(--blue-highlight);
 }
 
 /* button an rechter seite */
@@ -56,11 +56,11 @@
 
 /* button color */
 .red {
-    background-color: var(--main-red-button);
+    background-color: var(--button-red);
 }
 
 .yellow {
-    background-color: var(--main-yellow-button);
+    background-color: var(--button-yellow);
 }
 
 .space-to-top-bottom{

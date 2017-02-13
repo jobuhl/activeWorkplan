@@ -1,7 +1,7 @@
 /* mainsection ist der graue obere Bereich auf den general Seiten */
 .mainsection {
     height: 200px;
-    background-color: var(--main-mainsection-lower-header-color);
+    background-color: var(--grey-30);
 }
 
 .mainsection .main-article {
@@ -23,7 +23,7 @@
 
 .mainsection h2 {
     float: left;
-    color: var(--main-mainsection-lower-header-text-color);
+    color: var(--text-guest-header);
     font-size: 30pt;
     font-weight: normal;
     padding-left: 10px;

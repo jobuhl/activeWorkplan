@@ -50,7 +50,7 @@
 /* Search-Feld */
 .side-bar .input-sidebar{
     border: 0;
-    background: var(--main-small-header-color);
+    background: var(--grey-60);
 }
 
 /*.side-bar p */
@@ -60,11 +60,11 @@
 .headline {
      width: 100%;
      display: block;
-     border-top: 1px solid var(--main-border-color);
+     border-top: 1px solid var(--grey-border);
      padding: 10px 0 10px 5px;
      margin: 0;
      text-decoration: none;
-     color: var(--main-text-black);
+     color: var(--text-black);
 }
 
 .side-bar li:first-child a {
@@ -77,7 +77,7 @@
 }
 
 .search-list-request li:last-child {
-    border-bottom: 1px solid var(--main-border-color);
+    border-bottom: 1px solid var(--grey-border);
 }
 
 /* Sub-Menu wichtig muss hierarchisch aufgeschrieben bleiben*/
@@ -138,7 +138,7 @@
 }
 
 .lower-list {
-    border-bottom: 1px solid var(--main-border-color);
+    border-bottom: 1px solid var(--grey-border);
 }
 
 
@@ -148,18 +148,18 @@
 /* Wenn Search-Feld angeklickt */
 .side-bar .input-sidebar:focus {
     outline: none;
-    background: var(--main-focus-color);
+    background: var(--blue-focus);
 }
 
 /* Wenn Cursor ueber dem Element */
 .side-bar .headline:hover,
 .side-bar a:hover {
-    background-color: var(--main-highlight-color); /* Variable in header-footer.css deklariert */
-    color: var(--main-text-white); /* text-farbe */
+    background-color: var(--blue-highlight); /* Variable in header-footer.css deklariert */
+    color: var(--text-white); /* text-farbe */
     cursor: pointer;
 }
 
 /* auch die asides auf der seite sollen weissen text bekommen */
 .side-bar .headline:hover aside p {
-    color: var(--main-text-white); /* text-farbe */
+    color: var(--text-white); /* text-farbe */
 }

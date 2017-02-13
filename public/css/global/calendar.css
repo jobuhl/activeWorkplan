@@ -3,7 +3,7 @@
 
 /* Small header zur Navigation über den Kalender in Overview und planning Ordner Employer */
 .calendar-navigation {
-    background: var(--main-small-header-color);
+    background: var(--grey-60);
     height: 42px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
     padding: 7px 0 7px 0; /* Abstand wegen Button oben und unten */
 }
@@ -26,7 +26,7 @@
 
 .table-head-store {
     width: 100%;
-    background-color: var(--main-small-header-color);
+    background-color: var(--grey-60);
     padding: 10px 0 10px 10px;
     margin: 0; /* weil drunter sonst Abstand */
     min-height: 45px;
@@ -36,7 +36,7 @@
     font-weight: bold;
     font-size: 13pt;
     text-decoration: none;
-    color: var(--main-text-black);
+    color: var(--text-black);
     float: left;
 }
 
@@ -50,15 +50,15 @@
 }
 /* Allgemeine Button-Anpassungen */
 .navigation-today button {
-    background-color: var(--main-middle-dark-color);
+    background-color: var(--grey-20);
     border: none;
     border-radius: 3px;
     padding: 3px 7px 3px 7px;
-    color: var(--main-text-white); /* Text-Farbe */
+    color: var(--text-white); /* Text-Farbe */
 }
 
 .emp-planning .calendar-navigation {
-    background: var(--main-small-header-color);
+    background: var(--grey-60);
     height: 40px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
     padding: 7px 0 7px 0; /* Abstand wegen Button oben und unten */
 }
@@ -75,7 +75,7 @@
 /* --------------------------- TABLE EMPLOYEE -------------------------------- */
 
 .calendar-days-one-emp{
-    background-color: var(--main-table-background);
+    background-color: var(--grey-70);
     width: 100%;
     table-layout: fixed;
 }
@@ -89,11 +89,11 @@
 }
 
 .calendar-days-one-emp .week-days {
-    border-bottom: 1px solid var(--main-border-color);
+    border-bottom: 1px solid var(--grey-border);
 }
 
 .calendar-days-one-emp .all-day {
-    border-bottom: 2px solid var(--main-border-color);
+    border-bottom: 2px solid var(--grey-border);
     height: 28px; /* damit zeile nicht kleiner, wenn kein allday event drin ist */
     vertical-align: top; /* events (elemente) oben ausrichten */
 }
@@ -105,12 +105,12 @@
 
 .calendar-days-one-emp .add-buttons {
     height: 40px;
-    border-bottom: 1px solid var(--main-border-color);
+    border-bottom: 1px solid var(--grey-border);
 }
 .calendar-days-one-emp .all-day td:not(:first-child),
 .calendar-days-one-emp .time-events td:not(:first-child),
 .calendar-days-one-emp .add-buttons td:not(:first-child) {
-    border-left: 1px solid var(--main-border-color);
+    border-left: 1px solid var(--grey-border);
 }
 
 /* Samstag Sonntag Hintergrund */
@@ -120,12 +120,12 @@
 .calendar-days-one-emp .time-events td:nth-child(8),
 .calendar-days-one-emp .add-buttons td:nth-child(7),
 .calendar-days-one-emp .add-buttons td:nth-child(8) {
-    background-color: var(--main-small-header-color);
+    background-color: var(--grey-60);
 }
 
 .round-button {
-    background-color: var(--main-green-button);
-    color: var(--main-text-white);
+    background-color: var(--button-green);
+    color: var(--text-white);
     border-radius: 15px;
     padding: 4px 8px 5px 8px;
 }
@@ -133,7 +133,7 @@
 /* ---------------------------- TABLE ADMIN ------------------------------ */
 
 .calendar-days-all-emp {
-    background-color: var(--main-table-background);
+    background-color: var(--grey-70);
     width: 100%;
     table-layout: fixed;
 }
@@ -145,12 +145,12 @@
 .calendar-days-all-emp .week-days,
 .calendar-days-all-emp .all-day td:not(:first-child):not(.no-border-bottom),
 .calendar-days-all-emp .time-events {
-    border-bottom: 1px solid var(--main-border-color);
+    border-bottom: 1px solid var(--grey-border);
     height: 28px; /* damit zeile nicht kleiner, wenn kein allday event drin ist */
 }
 
 .calendar-days-all-emp .all-day {
-    border-top: 1px solid var(--main-border-color);
+    border-top: 1px solid var(--grey-border);
 }
 
 
@@ -162,7 +162,7 @@
 .calendar-days-all-emp .all-day td:not(:nth-child(1)):not(:nth-child(2)),
 .calendar-days-all-emp .time-events td:not(:nth-child(1)):not(:nth-child(2)),
 .calendar-days-all-emp .add-buttons td:not(:nth-child(1)):not(:nth-child(2)) {
-    border-left: 1px solid var(--main-border-color);
+    border-left: 1px solid var(--grey-border);
 }
 
 /* Samstag Sonntag Hintergrund */
@@ -170,11 +170,11 @@
 .calendar-days-all-emp .all-day td:nth-child(8),
 .calendar-days-all-emp .time-events td:nth-child(7),
 .calendar-days-all-emp .time-events td:nth-child(8) {
-    background-color: var(--main-small-header-color);
+    background-color: var(--grey-60);
 }
 
 .today {
-    background-color: var(--main-today-color);
+    background-color: var(--red-light-today);
 }
 
 
@@ -222,7 +222,7 @@
 .grey p,
 .light-green p,
 .yellow p {
-    color: var(--main-text-white);
+    color: var(--text-white);
 }
 
 /*.yellow p {*/
@@ -288,17 +288,17 @@
 
 /* Option Buttons yellow */
 .event-dropdown-content .change-event-button {
-    background-color: var(--main-yellow-button);
+    background-color: var(--button-yellow);
 }
 
 /* Option Buttons red */
 .event-dropdown-content .delete-event-button {
-    background-color: var(--main-red-button);
+    background-color: var(--button-red);
 }
 
 /* Option Buttons green */
 .event-dropdown-content .add-event-button {
-    background-color: var(--main-green-button);
+    background-color: var(--button-green);
 }
 
 
@@ -310,28 +310,28 @@
 .calendar-navigation button:hover,
 .table-head-store button:hover,
 .mobile-button button:hover {
-    background-color: var(--main-highlight-color);
+    background-color: var(--blue-highlight);
     cursor: pointer;
 }
 
 .calendar-navigation button:active,
 .table-head-store button:active,
 .mobile-button button:active{
-    background-color: var(--main-active-color);
+    background-color: var(--blue-active);
     cursor: pointer;
 }
 
 .round-button:hover {
     text-decoration: none;
     color: white;
-    background-color: var(--main-highlight-color);
+    background-color: var(--blue-highlight);
     cursor: pointer;
 }
 
 .round-button:active {
     text-decoration: none;
     color: white;
-    background-color: var(--main-active-color);
+    background-color: var(--blue-active);
     cursor: pointer;
 }
 
@@ -350,7 +350,7 @@
 .event-dropdown-content .add-event-button:hover,
 .event-dropdown-content .change-event-button:hover,
 .event-dropdown-content .delete-event-button:hover {
-    background-color: var(--main-highlight-color);
+    background-color: var(--blue-highlight);
     cursor: pointer;
 }
 
@@ -358,7 +358,7 @@
 .event-dropdown-content .add-event-button:active,
 .event-dropdown-content .change-event-button:active,
 .event-dropdown-content .delete-event-button:active {
-    background-color: var(--main-active-color);
+    background-color: var(--blue-active);
     cursor: pointer;
 }
 
@@ -384,7 +384,7 @@
 }
 
 .mobile-button {
-    background: var(--main-small-header-color);
+    background: var(--grey-60);
     height: 48px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
     padding: 7px 0 7px 0;
 }

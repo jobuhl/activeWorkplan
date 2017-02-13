@@ -9,7 +9,7 @@
 
 /* Trennlinie zwischen Side-bar und aside-right */
 .my-right-side {
-    border-left: 1px solid var(--main-border-color);
+    border-left: 1px solid var(--grey-border);
 }
 
 
@@ -29,8 +29,8 @@
 .side-bar input {
     width: 100%;
     display: block;
-    border-bottom: 1px solid var(--main-border-color);
+    border-bottom: 1px solid var(--grey-border);
     margin: 0;
     text-decoration: none;
-    color: var(--main-text-black);
+    color: var(--text-black);
 }

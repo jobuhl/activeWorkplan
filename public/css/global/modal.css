@@ -8,7 +8,7 @@
 .modal-change-button{
     margin: 0;
     width: 100%;
-    background: var(--main-yellow-button);
+    background: var(--button-yellow);
     color: white;
 }
 
@@ -33,11 +33,11 @@
 }
 
 .aside-right-delete{
-    border-left: solid 1px var(--main-border-color);
+    border-left: solid 1px var(--grey-border);
 }
 
 .aside-right{
-    border-left: solid 1px var(--main-border-color);
+    border-left: solid 1px var(--grey-border);
 }
 
 
@@ -67,17 +67,17 @@
 }
 
 .add-button{
-    background-color: var(--main-green-button);
+    background-color: var(--button-green);
     color: white;
 }
 
 .next-button{
-    background-color: var(--main-highlight-color);
+    background-color: var(--blue-highlight);
     color: white;
 }
 
 .delete-button{
-    background-color: var(--main-red-button);
+    background-color: var(--button-red);
     color: white;
 }
 
@@ -106,20 +106,20 @@
 .signin-head1 {
     color: black;
     font-weight: bold;
-    border-bottom: 5px solid var(--main-pop-up-progress-bar-behind);
+    border-bottom: 5px solid var(--grey-10);
 }
 
 .signin-head2 {
-    color: var(--main-pop-up-progress-bar);
+    color: var(--grey-40);
     font-weight: normal;
-    border-bottom: 5px solid var(--main-pop-up-progress-bar);
+    border-bottom: 5px solid var(--grey-40);
 }
 
 
 /* on HOVER */
 .signin-head1:hover,
 .signin-head2:hover {
-    background-color: var(--main-small-header-color);
+    background-color: var(--grey-60);
     color: black;
     cursor: pointer;
 }
@@ -127,7 +127,7 @@
 /* on ACTIVE */
 .signin-head1:active,
 .signin-head2:active {
-    background-color: var(--main-mainsection-lower-header-color);
+    background-color: var(--grey-30);
     color: black;
 }
 /* ---------------------SIGN IN/UP HEAD ENDE -------------------*/
@@ -163,7 +163,7 @@
     /*linie zwischen den Kapitel*/
     .hr-line{
         height: 5px;
-        background-color: var(--main-border-color);
+        background-color: var(--grey-border);
         margin-left: 30%;
         margin-right: 30%;
     }
