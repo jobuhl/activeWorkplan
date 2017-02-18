@@ -14,27 +14,22 @@
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar overview">
 
+                <p class="hide-mobil middle-bold">Stores</p>
 
+                <input id="side-bar-search" class="form-control" onclick="showSubList(this.value)" onkeyup="searchStoreEmp(this.value)" placeholder="Search..."/>
 
-                <!-- +++++++++++++++++++++ AJAX FIELD ++++++++++++++++++++++++ -->
-                <ul class="search-list-request">
-                    <li><a class="middle-bold">Stores</a></li>
-                    <!-- Suche mit AJAX -->
-                    <li><input id="search-store-overview" class="input-sidebar" type="text" placeholder="Search Store..."></li>
-                </ul>
+                <div id="lower-list">
 
-                <!-- dieses div wird ueber AJAX befuellt -->
-                <div id="search-store-response-overview">
-                    <ul class="search-list-response hide-mobil">
-                        <!-- Am Anfang werden alle Stores reingeladen -->
-                        @foreach($allRetailStores as $retailStore)
-                            <li><a href="{{ url('/admin/overview') . '/'  . (clone $week[0])->format('d-m-Y') .  '#table-overview' . $retailStore->id }}">{{ $retailStore->name }}</a></li>
-                        @endforeach
-                    </ul>
+                    @foreach($allRetailStores as $retailStore)
+                        <div class="each-element">
+
+                            <div class="up-element form-control hide-mobil" draggable="true">
+                                <a class="overview-element element-text form-control" href="{{ url('/admin/overview') . '/'  . (clone $week[0])->format('d-m-Y') .  '#table-overview' . $retailStore->id }}">{{ $retailStore->name }}</a>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-                <br>
             </aside>
-
 
             <aside id="aside-overview" class="col-xs-12 col-sm-9 my-right-side overview list">
 
@@ -72,11 +67,11 @@
                                 @endif
                             @endforeach
                         </table>
-                        <br>
                     @endforeach
 
             </aside>
 
+            <div class=" col-xs-12 space_emp"></div>
         </div>
     @endif
 @endsection

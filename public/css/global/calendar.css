@@ -174,7 +174,7 @@
 }
 
 .today {
-    background-color: var(--red-light-today);
+    background-color: var(--red-light-today) !important;
 }
 
 

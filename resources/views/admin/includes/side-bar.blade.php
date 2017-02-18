@@ -2,25 +2,24 @@
 
     <p class="hide-mobil middle-bold">Stores</p>
 
-
     <div>
-        <div class="col-lg-6 col-sm-12 col-xs-6 left-button-side-bar">
+        <div class="col-xs-6 left-button-side-bar">
             <button class="form-control add-button" type="submit" data-toggle="modal" data-target="#add-button-emp">
-                Add Employee
+                + <img style="height: 15px; margin-bottom: 2px;" src="{{asset('/img/emp_white.gif')}}" alt="Bild" draggable="false">
             </button>
+
         </div>
 
-        <div class="col-lg-6 col-sm-12 col-xs-6 right-button-side-bar">
-            <button class="col-xs-6 form-control add-button" type="submit" data-toggle="modal"
-                    data-target="#add-button-store">
-                Add Store
+        <div class="col-xs-6 right-button-side-bar">
+            <button class="form-control add-button" type="submit" data-toggle="modal" data-target="#add-button-store">
+                + <img style="height: 15px; margin-bottom: 2px;" src="{{asset('/img/shop_white.gif')}}" alt="Bild" draggable="false">
             </button>
         </div>
     </div>
 
     <br>
-    <!-- +++++++++++++++++ LIST STORE ++++++++++++++++ -->
 
+    <!-- +++++++++++++++++ LIST STORE ++++++++++++++++ -->
     <input id="side-bar-search" class="form-control" onclick="showSubList(this.value)" onkeyup="searchStoreEmp(this.value)" placeholder="Search..."/>
 
     <div id="lower-list">

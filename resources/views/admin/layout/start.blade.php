@@ -30,38 +30,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            <!-- Admin Overview Search Stores -->
-            $("#search-store-overview").keyup(function () {
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-
-                <!-- AJAX -->
-                var inputValue = $("#search-store-overview").val();
-                var html = "<ul>";
-                $.ajax({
-                    type: "POST",
-                    url: "{{ url('/admin/searchOverview') }}",
-                    data: {'inputValue': inputValue },
-                    dataType: "json",
-                    success: function (response) {
-                        var url = window.location.pathname;
-                        $.each(response.store, function () {
-                            html += "<li><a href='" + url + "#table-overview" + this['id'] + "'>" + this['name'] + "</a></li>";
-                        });
-                        html += "</ul>";
-                        $("#search-store-response-overview").html(html);
-
-                    }
-                });
-            });
-        });
-    </script>
-
     @yield('js')
 
 </body>

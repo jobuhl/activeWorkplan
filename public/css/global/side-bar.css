@@ -36,49 +36,11 @@
     }
 }
 
-
-
-
 /* Ueberschrift im small header */
 .middle-bold {
     font-weight: bold;
     text-align: center;
 }
-
-
-
-/*!* Search-Feld *!*/
-/*.side-bar .input-sidebar{*/
-/*border: 0;*/
-/*background: var(--grey-60);*/
-/*}*/
-
-/*.side-bar p */
-/*.side-bar .input-sidebar,*/
-/*.side-bar .up-element,*/
-/*.headline {*/
-/*width: 100%;*/
-/*display: block;*/
-/*padding: 10px 0 10px 5px;*/
-/*margin-top: 2px;*/
-/*border: 1px solid var(--grey-border);*/
-/*border-radius: 20px;*/
-/*text-decoration: none;*/
-/*color: var(--text-black);*/
-/*}*/
-
-
-/*.search-list-request {*/
-/*margin: 0;*/
-/*padding: 0;*/
-/*}*/
-
-/*.search-list-request li:last-child {*/
-/*border-bottom: 1px solid var(--grey-border);*/
-/*}*/
-
-
-
 
 
 /* ----------------------- BUTTON ADD STORE / EMPLOYEE ----------------------- */
@@ -87,25 +49,10 @@
     padding: 0 0 2px 0;
 }
 
-@media screen and (min-width: 1200px) {
-    .left-button-side-bar {
-        padding: 0 2px 0 0;
-    }
-
-    .right-button-side-bar {
-        padding: 0 0 2px 2px;
-    }
+.left-button-side-bar {
+    padding-right: 2px;
 }
 
-@media screen and (max-width: 767px) {
-    .left-button-side-bar {
-        padding: 0 2px 2px 0;
-    }
-
-    .right-button-side-bar {
-        padding: 0 0 2px 2px;
-    }
-}
 
 /* ----------------------- STORE AUFLISTUNG ----------------------- */
 
@@ -119,6 +66,7 @@
     display: flex;
 }
 
+/* innere Elemente von up-element */
 .element-text,
 .element-arrow {
     background-color: transparent; /* form-control-ausschalten */
@@ -127,13 +75,19 @@
     float: left; /* elemente nebeneinander */
     color: black !important; /* schrift */
     text-align: left !important; /* linksbuending */
-
 }
 
+/* store name nur 80 prozent breite */
 .element-text {
     width: 80%;
 }
 
+/* falls in overview (dort keine unterlisten -> keine arrows) -> 100 prozent breite */
+.overview-element.element-text {
+    width: 100%;
+}
+
+/* Pfeile fuer Unterliste oeffnen */
 .element-arrow {
     width: 20%;
     border-left: 1px solid var(--grey-40) !important;
@@ -154,6 +108,7 @@
     margin: 0 10px 0 10px; /* links und rechts abstand */
 }
 
+/* text der unterlisten-elemente */
 .side-bar .sub-element li a {
     width: 100%;
     display: block;
@@ -179,22 +134,29 @@
 
 /* wenn element aktueller Store */
 .up-element.current-store {
-    background-color: var(--grey-45);
+    background-color: var(--grey-45); /* dunklere farbe */
 }
 .up-element.current-store .element-text,
 .up-element.current-store .element-arrow {
-    font-weight: 500;
+    font-weight: 500; /* dicke schrift */
 }
 .up-element.current-store .element-arrow {
-    border-left: 1px solid white !important;
+    border-left: 1px solid white !important; /* linie zwischen storename und pfeil */
 }
 
 
 /* Wenn Cursor ueber dem Element */
 .element-text:hover,
 .element-arrow:hover,
-.side-bar .sub-element li a:hover {
+.element-sub-text:hover {
     background-color: var(--blue-highlight); /* Variable in header-footer.css deklariert */
     color: var(--text-white) !important; /* text-farbe */
     cursor: pointer;
+}
+
+/* Wenn Cursor ueber dem Element */
+.element-text:active,
+.element-arrow:active,
+.element-sub-text:active {
+    background-color: var(--blue-active); /* Variable in header-footer.css deklariert */
 }
