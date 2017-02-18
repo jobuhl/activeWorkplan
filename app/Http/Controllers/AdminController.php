@@ -78,7 +78,6 @@ class AdminController extends Controller
                 'admin_id' => $admin->id
             ));
 
-//        session()->flash('status', 'Task was successful!');
         flash('Change successful', 'success');
         return redirect('/admin/account/' . $request['thisDate']);
     }
@@ -109,10 +108,8 @@ class AdminController extends Controller
     {
 
         $this->validate($request, [
-
             'old-password' => 'required',
             'password' => 'required|min:6|confirmed',
-
         ]);
 
         if (Hash::check($request['old-password'], Auth::user()->password)) {
@@ -123,11 +120,7 @@ class AdminController extends Controller
                 ->update(array(
                     'password' => Hash::make($request['password']),
                 ));
-
-
-
         }
-
 
         flash('Change successful', 'success');
         return redirect('/admin/account/' . $request['thisDate']);
@@ -138,9 +131,7 @@ class AdminController extends Controller
     {
 
         $this->validate($request, [
-
             'password' => 'required',
-
         ]);
 
         if (Hash::check($request['password'], Auth::user()->password)) {

@@ -29,17 +29,13 @@
     .hide-mobil {
         display: none;
     }
-
-    /* zwischen-freiraum */
-    .overview.side-bar br {
-        display: none;
-    }
 }
 
 /* Ueberschrift im small header */
 .middle-bold {
     font-weight: bold;
     text-align: center;
+    padding: 5px 0 6px 0;
 }
 
 

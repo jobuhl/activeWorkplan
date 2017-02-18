@@ -39,15 +39,6 @@
     margin: 15px 0 15px 0; /* Abstand zur Tabelle */
 }
 
-/* Wenn mauszeiger drüber */
-.my-account-button:hover {
-    background-color: var(--grey-00-darkest);
-}
-
-.my-account-button:active {
-    background-color: var(--blue-highlight);
-}
-
 /* button an rechter seite */
 .set-right {
     width: 100px;

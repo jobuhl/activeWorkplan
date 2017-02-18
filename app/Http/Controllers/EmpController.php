@@ -198,14 +198,10 @@ class EmpController extends Controller
         $employee = Employee::find($request['thisEmployeeId']);
 
         $this->validate($request, [
-
-
             'name' => 'required|max:255|',
             'forename' => 'required|max:255|',
             'role' => 'required|max:255|',
             'working_hours' => 'required|integer|max:255|',
-
-
         ]);
 
         $contract = DB::table('contract')
@@ -226,7 +222,6 @@ class EmpController extends Controller
                 'classification' => $request['classification'],
                 'working_hours' => $request['working_hours']
             ));
-
 
         Role::where('role.id', $contract[0]->role_id)
             ->update(array(

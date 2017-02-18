@@ -46,7 +46,7 @@
                     </div>
 
                     <!-- Unterliste Employee Elemente -->
-                    <ul class="sub-element hide-mobil ">
+                    <ul class="sub-element hide-mobil">
                         @foreach($allEmployees as $employee)
                             @if($employee->retail_store_id == $retailStore->id)
                                 <li>

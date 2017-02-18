@@ -10,9 +10,11 @@ function openEventDropdown(eventId) {
         $(".drop-btn div").hide();
         $(".drop-btn div").css('border-top', '1px solid white');
         buttons.show();
+        fixFooter();
     } else {
         buttons.hide();
         $(".drop-btn div").css('border-top', 'none');
+        fixFooter();
     }
 }
 

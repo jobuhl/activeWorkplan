@@ -18,7 +18,7 @@ class CreateTriggerCityCountry extends Migration
         AFTER DELETE
         ON `address` FOR EACH ROW
             BEGIN
-                IF 0 = (SELECT count(OLD.city_id) FROM address WHERE address.city_id = OLD.city_id)
+                IF 0 = (SELECT count(*) FROM address WHERE address.city_id = OLD.city_id)
                 THEN
                     DELETE FROM city WHERE city.id = OLD.city_id;
                 END IF;

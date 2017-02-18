@@ -139,7 +139,7 @@ class StoreController extends Controller
         $addressRetailStore = DB::table('address')
             ->select('address.*')
             ->join('retail_store', 'retail_store.address_id', '=', 'address.id')
-            ->where('retail_store.address_id', $retailStore->get()[0]->address_id);
+            ->where('retail_store.id', $retailStore->get()[0]->id);
 
         $employeePerHour = DB::table('employee_per_hour')
             ->select('employee_per_hour.*')
@@ -149,38 +149,38 @@ class StoreController extends Controller
         $employees = DB::table('employees')
             ->select('employees.*')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('retail_store.company_id', $retailStore->get()[0]->id);
+            ->where('retail_store.id', $retailStore->get()[0]->id);
 
         $contracts = DB::table('contract')
             ->select('contract.*')
             ->join('employees', 'employees.contract_id', '=', 'contract.id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('retail_store.company_id', $retailStore->get()[0]->id);
+            ->where('retail_store.id', $retailStore->get()[0]->id);
 
         $roles = DB::table('role')
             ->select('role.*')
             ->join('contract', 'contract.role_id', '=', 'role.id')
             ->join('employees', 'employees.contract_id', '=', 'contract.id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('retail_store.company_id', $retailStore->get()[0]->id);
+            ->where('retail_store.id', $retailStore->get()[0]->id);
 
         $timeEvent = DB::table('time_event')
             ->select('time_event.*')
             ->join('employees', 'employees.id', '=', 'time_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('retail_store.company_id', $retailStore->get()[0]->id);
+            ->where('retail_store.id', $retailStore->get()[0]->id);
 
         $alldayEvent = DB::table('allday_event')
             ->select('allday_event.*')
             ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('retail_store.company_id', $retailStore->get()[0]->id);
+            ->where('retail_store.id', $retailStore->get()[0]->id);
 
         $worktimeFix = DB::table('worktime_fix')
             ->select('worktime_fix.*')
             ->join('employees', 'employees.id', '=', 'worktime_fix.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('retail_store.company_id', $retailStore->get()[0]->id);
+            ->where('retail_store.id', $retailStore->get()[0]->id);
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         $alldayEvent->delete();
