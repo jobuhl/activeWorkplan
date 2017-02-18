@@ -91,6 +91,7 @@ jQuery.expr[':'].contains = function(a, i, m) {
 function showSubList(search) {
     if (search == "") {
         $(".sub-element").show();
+        $(".element-arrow").text("⋀");
     }
 }
 
@@ -101,5 +102,6 @@ $(document).mouseup(function (e) {
     if (!$(".side-bar-search, .element-arrow").is(e.target)) {
 
         $(".sub-element").hide();
+        $(".element-arrow").text("⋁");
     }
 });
