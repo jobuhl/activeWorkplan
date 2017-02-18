@@ -40,10 +40,6 @@ Route::post('/notAcceptTimeEvent', 'EventController@notAcceptTimeEvent');
 Route::post('/notAcceptAlldayEvent', 'EventController@notAcceptAlldayEvent');
 
 
-/* AJAX */
-Route::get('/searchStoreEmp/', 'AjaxSearchStoresController@getStoreEmp2');
-
-
 Route::post('/searchOverview', function () {
     $character = Request::input('inputValue');
     $company = thisCompany();

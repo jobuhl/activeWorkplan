@@ -44,18 +44,62 @@ $('.each-element').click(function () {
 
         /* zeigt die Unterliste an */
         $(this).children("ul").show();
+        $(this).find("a.element-arrow").text("⋀");
     } else {
 
         /* verstecke die Unterliste */
         $(this).children("ul").hide();
+        $(this).find("a.element-arrow").text("⋁");
     }
 });
 
-/* ------------------------------- AJAX ----------------------------------- */
 
-// Delete Event
-function searchStoreEmp(storeUrl, week, requestUrl, search) {
-    var targetDiv = $("#lower-list");
-    // mit AJAX in der datenbank loeschen
-    targetDiv.load(requestUrl + '?search=' + search + '&week=' + week + '&storeUrl=' + storeUrl);
+/* JavaScript Filter */
+function searchStoreEmp(search) {
+
+    var list = $(".each-element");
+    if (search != "") {
+
+        /* Wenn Store nicht dabei -> ausblenden */
+        $(list).find(".element-text:not(:Contains(" + search + "))").parent().hide();
+
+        /* Wenn Store gefunden -> anzeigen */
+        $(list).find(".element-text:Contains(" + search + ")").parent().show();
+
+        /* Wenn Employee nicht dabei -> ausblenden */
+        $(list).find(".element-sub-text:not(:Contains(" + search + "))").parent().hide();
+
+        /* Wenn Employee gefunden -> anzeigen + Store anzeigen */
+        $(list).find(".element-sub-text:Contains(" + search + ")").parent().show();
+        $(list).find(".element-sub-text:Contains(" + search + ")").parent().parent().siblings().show();
+
+    } else {
+
+        /* Alle anzeigen */
+        $(list).find(".element-sub-text, .element-text").parent().show();
+    }
+
 }
+
+// :contains von jQuery ueberschreiben, damit CASE-INSENSITIV
+jQuery.expr[':'].contains = function(a, i, m) {
+    return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+};
+
+
+/* Show Sub-List wenn in search-feld geklickt */
+function showSubList(search) {
+    if (search == "") {
+        $(".sub-element").show();
+    }
+}
+
+
+/* Hide Sub-List wenn nicht in search-feld geklickt */
+$(document).mouseup(function (e) {
+
+    if (!$(".side-bar-search, .element-arrow").is(e.target)) {
+
+        $(".sub-element").hide();
+    }
+});
