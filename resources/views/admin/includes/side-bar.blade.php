@@ -23,8 +23,8 @@
             name="select-emp" onchange="location.href = this.value;">
         <option style="display: none;"> Search...</option>
         @foreach($allRetailStores as $retailStore)
-             <optgroup label="" style=" border: none; ">
-                 <option style="background-color: #F1F1F1; padding-left: 10px"
+            <optgroup label="" style=" border: none; ">
+                <option style="background-color: #F1F1F1; padding-left: 10px"
                         value="{{ url('/admin/planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</option>
                 @foreach($allEmployees as $employee)
                     @if($employee->retail_store_id == $retailStore->id)
@@ -42,25 +42,35 @@
 
 
     <!-- +++++++++++++++++ LIST STORE ++++++++++++++++ -->
-    <ul class="lower-list hide-mobil">
+    <div class="hide-mobil">
+        <p class="middle-bold">Stores</p>
+        <input class="form-control" onkeyup="searchStoreEmp('{{ url('/admin/planning') }}', '{{ $week[0]->format('d-m-Y')  }}', '{{ url('/admin/searchStoreEmp') }}', this.value)" placeholder="Serach Store..."/>
 
-        <li><a class="middle-bold">Stores</a></li>
+        <div id="lower-list">
+
         @foreach($allRetailStores as $retailStore)
-            <li class="arrow-down">
-                <a href="{{ url('/admin/planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</a>
-                <a>⋁</a>
-                <ul>
-                    @foreach($allEmployees as $employee)
-                        @if($employee->retail_store_id == $retailStore->id)
-                            <li>
-                                <a href="{{ url('/admin/planning-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</a>
-                            </li>
-                        @endif
-                    @endforeach
-                </ul>
-            </li>
-        @endforeach
-    </ul>
+                <div class="each-element">
+
+                    <div class="up-element form-control @if ($thisRetailStore->name == $retailStore->name) current-store @endif" draggable="true">
+                        <a class="element-text form-control" href="{{ url('/admin/planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</a>
+                        <a class="element-arrow form-control">⋁</a>
+                    </div>
+
+                    <ul class="sub-element">
+                        @foreach($allEmployees as $employee)
+                            @if($employee->retail_store_id == $retailStore->id)
+                                <li>
+                                    <a href="{{ url('/admin/planning-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </div>
+            @endforeach
+        </div>
+
+    </div>
+
 
     <br>
 
@@ -70,3 +80,6 @@
 
 
 </div>
+
+
+

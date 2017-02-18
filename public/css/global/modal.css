@@ -119,7 +119,7 @@
 /* on HOVER */
 .signin-head1:hover,
 .signin-head2:hover {
-    background-color: var(--grey-60);
+    background-color: var(--grey-50);
     color: black;
     cursor: pointer;
 }

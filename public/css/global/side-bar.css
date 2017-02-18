@@ -1,3 +1,6 @@
+
+/* ----------------------- SEITEN AUFTEILUNG ----------------------- */
+
 .my-right-side,
 .side-bar {
     margin: 0;
@@ -8,11 +11,13 @@
 .side-bar {
     padding-right: 20px; /* Abstand zwischen Beiden spalten und Trennlinie */
 }
+
+/* Trennlinie zwischen Side-bar und aside-right */
 .my-right-side {
     padding-left: 20px; /* Abstand zwischen Beiden spalten und Trennlinie */
 }
 
-
+/* in mobiler sicht */
 @media screen and (max-width: 767px) {
     .side-bar,
     .my-right-side {
@@ -21,20 +26,18 @@
     }
 
     /* Auflistung der Stores nicht anzeigen */
-    .overview.side-bar .hide-mobil {
+    .hide-mobil {
         display: none;
     }
 
     /* zwischen-freiraum */
-    .overview.side-bar br,
-    .overview.list .br-under-navigation {
-        display: none;
-    }
-
-    .lower-list {
+    .overview.side-bar br {
         display: none;
     }
 }
+
+
+
 
 /* Ueberschrift im small header */
 .middle-bold {
@@ -42,59 +45,40 @@
     text-align: center;
 }
 
-.side-bar li {
-    list-style: none; /* damit keine punkte */
-    cursor: pointer;
-}
 
-/* Search-Feld */
-.side-bar .input-sidebar{
-    border: 0;
-    background: var(--grey-60);
-}
+
+/*!* Search-Feld *!*/
+/*.side-bar .input-sidebar{*/
+/*border: 0;*/
+/*background: var(--grey-60);*/
+/*}*/
 
 /*.side-bar p */
-.side-bar .input-sidebar,
-.side-bar a,
-.current-selected-store,
-.headline {
-     width: 100%;
-     display: block;
-     border-top: 1px solid var(--grey-border);
-     padding: 10px 0 10px 5px;
-     margin: 0;
-     text-decoration: none;
-     color: var(--text-black);
-}
+/*.side-bar .input-sidebar,*/
+/*.side-bar .up-element,*/
+/*.headline {*/
+/*width: 100%;*/
+/*display: block;*/
+/*padding: 10px 0 10px 5px;*/
+/*margin-top: 2px;*/
+/*border: 1px solid var(--grey-border);*/
+/*border-radius: 20px;*/
+/*text-decoration: none;*/
+/*color: var(--text-black);*/
+/*}*/
 
-.side-bar li:first-child a {
-    border-top: none;
-}
 
-.search-list-request {
-    margin: 0;
-    padding: 0;
-}
+/*.search-list-request {*/
+/*margin: 0;*/
+/*padding: 0;*/
+/*}*/
 
-.search-list-request li:last-child {
-    border-bottom: 1px solid var(--grey-border);
-}
+/*.search-list-request li:last-child {*/
+/*border-bottom: 1px solid var(--grey-border);*/
+/*}*/
 
-/* Sub-Menu wichtig muss hierarchisch aufgeschrieben bleiben*/
-.side-bar li ul li {
-    padding-left: 20px;
-}
 
-/* Fuer Employer grosse Sidebar */
-.lower-list li ul {
-    display: none;
-}
 
-/* Unterer teil der Liste wegen ueberlappung */
-.lower-list {
-    float: left;
-    width: 100%;
-}
 
 
 /* ----------------------- BUTTON ADD STORE / EMPLOYEE ----------------------- */
@@ -123,27 +107,68 @@
     }
 }
 
-/* ----------------------- STORES ARROWS DOWN ----------------------- */
-.arrow-down a{
-    float: left;
-    cursor: pointer;
+/* ----------------------- STORE AUFLISTUNG ----------------------- */
+
+.up-element {
+    margin: 2px 0 2px 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--grey-50);
+    height: auto;
+    border: none;
+    display: flex;
 }
 
-.arrow-down > a:first-child {
-    width: 83%;
+.element-text,
+.element-arrow {
+    background-color: transparent; /* form-control-ausschalten */
+    border-radius: 0; /* form-control-ausschalten */
+    height: auto; /* Element passt sich der hoehe des testes an */
+    float: left; /* elemente nebeneinander */
+    color: black !important; /* schrift */
+    text-align: left !important; /* linksbuending */
+
 }
 
-.arrow-down a:nth-child(2) {
-    width: 17%;
+.element-text {
+    width: 80%;
 }
 
-.lower-list {
-    border-bottom: 1px solid var(--grey-border);
+.element-arrow {
+    width: 20%;
+    border-left: 1px solid var(--grey-40) !important;
+    padding: auto;
 }
 
 
 
-/* ----------------------- FOCUS HOVER ----------------------- */
+/* ------------------------------- UNTERLISTE ----------------------------- */
+/* Unterliste initial ausblenden */
+.each-element .sub-element {
+    display: none;
+}
+
+/* Unterliste */
+.side-bar .sub-element li {
+    list-style: none; /* keine spiegel-punkte */
+    margin: 0 10px 0 10px; /* links und rechts abstand */
+}
+
+.side-bar .sub-element li a {
+    width: 100%;
+    display: block;
+    padding: 5px 0 5px 5px;
+    border-bottom: 1px solid var(--grey-40);
+    text-decoration: none;
+    color: var(--text-black);
+}
+
+.side-bar .sub-element li:last-child a {
+    border: none;
+}
+
+
+/* ----------------------- FOCUS CURRENT HOVER ----------------------- */
 
 /* Wenn Search-Feld angeklickt */
 .side-bar .input-sidebar:focus {
@@ -151,15 +176,25 @@
     background: var(--blue-focus);
 }
 
-/* Wenn Cursor ueber dem Element */
-.side-bar .headline:hover,
-.side-bar a:hover {
-    background-color: var(--blue-highlight); /* Variable in header-footer.css deklariert */
-    color: var(--text-white); /* text-farbe */
-    cursor: pointer;
+
+/* wenn element aktueller Store */
+.up-element.current-store {
+    background-color: var(--grey-45);
+}
+.up-element.current-store .element-text,
+.up-element.current-store .element-arrow {
+    font-weight: 500;
+}
+.up-element.current-store .element-arrow {
+    border-left: 1px solid white !important;
 }
 
-/* auch die asides auf der seite sollen weissen text bekommen */
-.side-bar .headline:hover aside p {
-    color: var(--text-white); /* text-farbe */
+
+/* Wenn Cursor ueber dem Element */
+.element-text:hover,
+.element-arrow:hover,
+.side-bar .sub-element li a:hover {
+    background-color: var(--blue-highlight); /* Variable in header-footer.css deklariert */
+    color: var(--text-white) !important; /* text-farbe */
+    cursor: pointer;
 }

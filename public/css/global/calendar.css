@@ -3,7 +3,7 @@
 
 /* Small header zur Navigation über den Kalender in Overview und planning Ordner Employer */
 .calendar-navigation {
-    background: var(--grey-60);
+    background: var(--grey-50);
     height: 42px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
     padding: 7px 0 7px 0; /* Abstand wegen Button oben und unten */
 }
@@ -26,7 +26,7 @@
 
 .table-head-store {
     width: 100%;
-    background-color: var(--grey-60);
+    background-color: var(--grey-50);
     padding: 10px 0 10px 10px;
     margin: 0; /* weil drunter sonst Abstand */
     min-height: 45px;
@@ -58,7 +58,7 @@
 }
 
 .emp-planning .calendar-navigation {
-    background: var(--grey-60);
+    background: var(--grey-50);
     height: 40px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
     padding: 7px 0 7px 0; /* Abstand wegen Button oben und unten */
 }
@@ -120,7 +120,7 @@
 .calendar-days-one-emp .time-events td:nth-child(8),
 .calendar-days-one-emp .add-buttons td:nth-child(7),
 .calendar-days-one-emp .add-buttons td:nth-child(8) {
-    background-color: var(--grey-60);
+    background-color: var(--grey-50);
 }
 
 .round-button {
@@ -170,7 +170,7 @@
 .calendar-days-all-emp .all-day td:nth-child(8),
 .calendar-days-all-emp .time-events td:nth-child(7),
 .calendar-days-all-emp .time-events td:nth-child(8) {
-    background-color: var(--grey-60);
+    background-color: var(--grey-50);
 }
 
 .today {
@@ -384,7 +384,7 @@
 }
 
 .mobile-button {
-    background: var(--grey-60);
+    background: var(--grey-50);
     height: 48px; /* leider fest einzustellen, sonst bleibt keine hoehe da... */
     padding: 7px 0 7px 0;
 }

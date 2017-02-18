@@ -39,7 +39,6 @@
 @endsection
 
 @section('js')
-    <script type="text/javascript" src="{{ asset('/js/employee/workplan.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/employee/event.js') }}"></script>
 
 

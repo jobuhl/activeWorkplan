@@ -1,12 +1,12 @@
 /* Wenn Seite neu geladen */
 window.onload = function () {
     /* Trennlinie nur berechnen */
-        sideBarBorder();
+    sideBarBorder();
 };
 
 /* Wenn Fenster vergroessert oder verkleinert wird */
 $('body')[0].onresize = function () {
-        sideBarBorder();
+    sideBarBorder();
 };
 
 function sideBarBorder() {
@@ -37,10 +37,10 @@ function sideBarBorder() {
 
 
 /* Wenn ein Listen-Element der Sidebar angeklickt wird */
-$('.lower-list li').click(function() {
+$('.each-element').click(function () {
 
     /* Falls die Unterliste (Mitarbeiternamen) versteckt sind */
-    if($(this).children("ul").is(':hidden')) {
+    if ($(this).children("ul").is(':hidden')) {
 
         /* zeigt die Unterliste an */
         $(this).children("ul").show();
@@ -50,3 +50,12 @@ $('.lower-list li').click(function() {
         $(this).children("ul").hide();
     }
 });
+
+/* ------------------------------- AJAX ----------------------------------- */
+
+// Delete Event
+function searchStoreEmp(storeUrl, week, requestUrl, search) {
+    var targetDiv = $("#lower-list");
+    // mit AJAX in der datenbank loeschen
+    targetDiv.load(requestUrl + '?search=' + search + '&week=' + week + '&storeUrl=' + storeUrl);
+}

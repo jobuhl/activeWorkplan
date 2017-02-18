@@ -4,19 +4,22 @@
         <!-- Modal content-->
         <div class="modal-content">
 
+            <!-- Modal header-->
+            <div class="modal-header">
+
+                <!-- Close Button oben rechts im Header -->
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <!-- Überschrift -->
+                <h2 class="modal-ueberschrift">Delete Store</h2>
+
+            </div>
+
             <!-- Basic-->
             <div class="modal-body">
-                <div class="modal-header">
 
-                    <!-- Close Button oben rechts im Header -->
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-
-                    <!-- Überschrift -->
-                    <h2 class="modal-ueberschrift">Delete Store</h2>
-                    <h5 class="select-ueberschrift">Do you really wish to delete the Store "{{ $thisRetailStore->name }}" ?</h5>
-                    <h5 class="select-ueberschrift">Attention! All Employees of the Store "{{ $thisRetailStore->name }}" will be deleted as well.</h5>
-                    <br>
-                </div>
+                <h5 class="select-ueberschrift">Do you really wish to delete the Store "{{ $thisRetailStore->name }}" ?</h5>
+                <h5 class="select-ueberschrift">Attention! All Employees of the Store "{{ $thisRetailStore->name }}" will be deleted as well.</h5>
 
             </div>
 

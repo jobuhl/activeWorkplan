@@ -24,7 +24,7 @@
 /* tabellen zwischen-zeile: farbe / Hoehe */
 .table-space {
     height: 10px;
-    background: var(--grey-60);
+    background: var(--grey-50);
 }
 /* tabellen Zwischen-zeile: keine inneren Rahmen */
 .table-account .table-space td:first-child {

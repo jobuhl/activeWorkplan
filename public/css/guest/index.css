@@ -55,7 +55,7 @@
 }
 
 .grey {
-    background-color: var(--grey-50); /* Farbabhebung jedes zweiten Artikels */
+    background-color: var(--grey-60); /* Farbabhebung jedes zweiten Artikels */
 }
 
 /* Bilder der Article */
