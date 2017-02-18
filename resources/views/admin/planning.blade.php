@@ -3,6 +3,8 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/calendar.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/side-bar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/global/table-account.css')}}">
+
 
 @endsection
 
@@ -55,21 +57,19 @@
 
             <aside class="col-xs-12 col-sm-9 my-right-side">
 
-
                 <!-- Überschrift -->
                 <h2 class="header">{{ $thisRetailStore->name }}</h2>
 
-                <button class="set-right-buttom form-control modal-change-button space-bottom" data-toggle="modal" data-target="#change-store">Change</button>
-
-
             @include('includes.calendar.navigation')
 
+                <div class="col-xs-12 space_emp"></div>
 
             <!-- +++++++++++++++ PROPOSAL ++++++++++++++++++++ -->
-                <div class="col-xs-12 table-head-store space_emp">
+                <div class="col-xs-12 table-head-store">
                     <p class="table-head-a">Individual proposals of Employees</p>
                 </div>
-                <table class="calendar-days-all-emp">
+
+                <table class="col-xs-12 calendar-days-all-emp">
 
                 @include('includes.calendar.tr-1-week-date')
                 @include('includes.calendar.tr-2-week-days')
@@ -84,14 +84,14 @@
                         @endif
                     @endforeach
                 </table>
-                <br>
 
+                <div class="col-xs-12 space_emp"></div>
 
                 <!-- +++++++++++++++ WORKTIME FIX ++++++++++++++++++++ -->
-                <div class="table-head-store">
+                <div class="col-xs-12 table-head-store">
                     <p class="table-head-a">Final Workplan</p>
                 </div>
-                <table class="calendar-days-all-emp">
+                <table class="col-xs-12 calendar-days-all-emp">
 
                 @include('includes.calendar.tr-1-week-date')
                 @include('includes.calendar.tr-2-week-days')
@@ -107,15 +107,40 @@
                         @endif
                     @endforeach
                 </table>
-                <br>
+
+                <div class="col-xs-12 space_emp"></div>
+
+                <!-- Change Button -->
+                <button class="set-right-buttom form-control modal-change-button" data-toggle="modal" data-target="#change-store">Change</button>
+
+                <div class="col-xs-12 space_emp"></div>
 
 
-                <button class="set-right-buttom form-control delete-button" data-toggle="modal" type="submit"
-                        data-target="#delete-store">Delete
-                </button>
+                <!-- Retail Store Details -->
+                <table class="col-xs-12 table-account">
+                    <tr>
+                        <td>Retail Store Name</td>
+                        <td>{{ $thisRetailStore->name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Retail Store Address</td>
+                        <td>{{ $addressRetailStore->street }} {{ $addressRetailStore->street_nr }}
+                            , {{ $addressRetailStore->postcode }} {{ $addressRetailStore->city }}, {{ $addressRetailStore->country }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Amount of Employees</td>
+                        <td>{{ $countEmployees }}</td>
+                    </tr>
+                </table>
+
+                <div class="col-xs-12 space_emp"></div>
+
+                <!-- Delete Button -->
+                <button class="set-right-buttom form-control delete-button" data-toggle="modal" type="submit" data-target="#delete-store">Delete</button>
             </aside>
 
-            <div class=" col-xs-12 space_emp"></div>
+            <div class="col-xs-12 space_emp"></div>
 
         </div>
 

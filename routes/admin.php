@@ -158,6 +158,7 @@ Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
         $allRetailStores = allRetailStoresOfCompany($company->id);
         $thisRetailStore = thisRetailStore($thisRetailStoreId);
         $allEmployees = allEmployeesOfCompany($company->id);
+        $countEmployees = countEmployees($thisRetailStore->id);
         $addressRetailStore = oneAddress($thisRetailStore->address_id);
 
         $manyTimeEvent = allTimeEventOfCompany($company->id, $week);
@@ -168,6 +169,7 @@ Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
             ->with('allRetailStores', $allRetailStores)
             ->with('thisRetailStore', $thisRetailStore)
             ->with('allEmployees', $allEmployees)
+            ->with('countEmployees', $countEmployees)
             ->with('manyTimeEvent', $manyTimeEvent)
             ->with('manyWorktimeEvent', $manyWorktimeEvent)
             ->with('manyAlldayEvent', $manyAlldayEvent)

@@ -155,8 +155,6 @@
 }
 
 /* Wenn Cursor ueber dem Element */
-.element-text:active,
-.element-arrow:active,
 .element-sub-text:active {
-    background-color: var(--blue-active); /* Variable in header-footer.css deklariert */
+    opacity: 0.8; /* Variable in header-footer.css deklariert */
 }

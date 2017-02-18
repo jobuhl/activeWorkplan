@@ -34,25 +34,27 @@
     @if($amountOfRetailStores != 0)
 
         <div class="fake-body container">
+
             <br>
             <aside class="col-xs-12 col-sm-3 side-bar">
                 @include('admin.includes.side-bar')
             </aside>
 
-
             <aside class="col-xs-12 col-sm-9 my-right-side">
 
+                <!-- Ueberschrift -->
                 <h2 class="header">{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</h2>
-
 
             @include('includes.calendar.navigation')
 
+                <div class="col-xs-12 space_emp"></div>
 
-            <!-- ++++++++++++++++++++ TABLE PROPOSAL +++++++++++++++++++ -->
-                <div class="col-xs-12 table-head-store space_emp">
+                <!-- ++++++++++++++++++++ TABLE PROPOSAL +++++++++++++++++++ -->
+                <div class="col-xs-12 table-head-store">
                     <p class="table-head-a">Proposals</p>
                 </div>
-                <table class="calendar-days-all-emp">
+
+                <table class="col-xs-12 calendar-days-all-emp">
 
                 @include('includes.calendar.tr-1-week-date')
                 @include('includes.calendar.tr-2-week-days')
@@ -62,14 +64,14 @@
                     @include('includes.calendar.tr-3b-proposal-time-events')
 
                 </table>
-                <br>
 
+                <div class="col-xs-12 space_emp"></div>
 
                 <!-- ++++++++++++++++++++ TABLE WORKTIME FIX ++++++++++++++++++ -->
-                <div class="table-head-store">
+                <div class="col-xs-12 table-head-store">
                     <p class="table-head-a">Final Workplan</p>
                 </div>
-                <table class="calendar-days-all-emp">
+                <table class="col-xs-12 calendar-days-all-emp">
 
                 @include('includes.calendar.tr-1-week-date')
                 @include('includes.calendar.tr-2-week-days')
@@ -79,18 +81,15 @@
                     @include('includes.calendar.tr-4b-final-time-events')
 
                 </table>
-                <br>
 
+                <div class="col-xs-12 space_emp"></div>
 
                 <!-- ++++++++++++++++++++ ACCOUNT DETAILS ++++++++++++++++++ -->
-                <button class="form-control set-right modal-change-button space-to-top-bottom" type="submit"
-                        data-toggle="modal" data-target="#change" value="{{ $thisEmployee->id }}"
-                        name="thisEmployeeId">
-                    Change
-                </button>
-                <br>
-                <br>
 
+                <!-- Change Button -->
+                <button class="form-control set-right modal-change-button space-to-top-bottom" type="submit" data-toggle="modal" data-target="#change" value="{{ $thisEmployee->id }}" name="thisEmployeeId">Change</button>
+
+                <div class="col-xs-12 space_emp"></div>
 
                 <table class="table-account">
                     <tr>
@@ -152,11 +151,11 @@
                         <td>{{ $company->name }}</td>
                     </tr>
                     <tr>
-                        <td>Retail Store</td>
-                        <td>{{ $thisRetailStore->name }} (id: {{ $thisRetailStore->id }})</td>
+                        <td>Retail Store Name</td>
+                        <td>{{ $thisRetailStore->name }}</td>
                     </tr>
                     <tr>
-                        <td>Address of Retail Store</td>
+                        <td>Retail Store Address</td>
                         <td>{{ $address->street }} {{ $address->street_nr }}
                             , {{ $address->postcode }} {{ $address->city }}, {{ $address->country }}
                         </td>
@@ -164,13 +163,13 @@
                     </tr>
                 </table>
 
-                <button class="form-control set-right delete-button space-to-top-bottom" type="submit"
-                        data-toggle="modal"
-                        data-target="#delete-emp" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
-                    Delete
-                </button>
-                <br>
-                <br>
+                <div class="col-xs-12 space_emp"></div>
+
+                <!-- Delete Button -->
+                <button class="form-control set-right delete-button space-to-top-bottom" type="submit" data-toggle="modal" data-target="#delete-emp" value="{{ $thisEmployee->id }}" name="thisEmployeeId">Delete</button>
+
+                <div class="col-xs-12 space_emp"></div>
+
 
 
             </aside>

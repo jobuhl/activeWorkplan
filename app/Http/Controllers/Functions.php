@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 class Functions extends Controller
 {
 
-
-
     function thisCompany()
     {
         return DB::table('company')
@@ -70,6 +68,14 @@ class Functions extends Controller
             ->get();
     }
 
+    function countEmployees($retailStoreId) {
+        return DB::table('employees')
+            ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
+            ->where('retail_store.id', $retailStoreId)
+            ->count();
+    }
+
+
     function oneEmployee($employeeId)
     {
         return DB::table('employees')
@@ -79,6 +85,7 @@ class Functions extends Controller
             ->select('employees.id', 'employees.name as surname', 'forename', 'email', 'password', 'role.name as role', 'period_of_agreement', 'working_hours', 'classification', 'retail_store_id')
             ->get()[0];
     }
+
 
     function employeePerHourOfRetailStore($retailStoreId)
     {

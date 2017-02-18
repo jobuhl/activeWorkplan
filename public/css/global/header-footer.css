@@ -226,6 +226,14 @@ input.form-control:focus {
     text-decoration: none;
 }
 
+:not(.index-button-width-background).form-control:hover {
+    opacity: 0.9;
+}
+
+:not(.index-button-width-background).form-control:active {
+    opacity: 0.8;
+}
+
 button.form-control,
 button.form-control:focus,
 button.form-control:hover,
