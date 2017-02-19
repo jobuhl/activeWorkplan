@@ -45,7 +45,7 @@
                 <!-- Ueberschrift -->
                 <h2 class="header">{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</h2>
 
-            @include('includes.calendar.navigation')
+                @include('includes.calendar.navigation')
 
                 <div class="col-xs-12 space_emp"></div>
 
@@ -62,7 +62,6 @@
                 <!-- ++++++++++++++++++++ EMPLOYEE ROW ++++++++++++++++++ -->
                     @include('includes.calendar.tr-3a-proposal-all-day')
                     @include('includes.calendar.tr-3b-proposal-time-events')
-
                 </table>
 
                 <div class="col-xs-12 space_emp"></div>
@@ -71,6 +70,7 @@
                 <div class="col-xs-12 table-head-store">
                     <p class="table-head-a">Final Workplan</p>
                 </div>
+
                 <table class="col-xs-12 calendar-days-all-emp">
 
                 @include('includes.calendar.tr-1-week-date')
@@ -79,18 +79,19 @@
                 <!-- ++++++++++++++++++++ EMPLOYEE ROW ++++++++++++++++++ -->
                     @include('includes.calendar.tr-4a-final-all-day')
                     @include('includes.calendar.tr-4b-final-time-events')
-
                 </table>
 
                 <div class="col-xs-12 space_emp"></div>
 
-                <!-- ++++++++++++++++++++ ACCOUNT DETAILS ++++++++++++++++++ -->
-
                 <!-- Change Button -->
-                <button class="form-control set-right modal-change-button space-to-top-bottom" type="submit" data-toggle="modal" data-target="#change" value="{{ $thisEmployee->id }}" name="thisEmployeeId">Change</button>
+                <button class="form-control set-right modal-change-button space-to-top-bottom" type="submit" data-toggle="modal" data-target="#change" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
+                    Change
+                </button>
 
                 <div class="col-xs-12 space_emp"></div>
 
+
+                <!-- +++++++++++++++ EMPLOYEE STORE DETAILS +++++++++++++++ -->
                 <table class="table-account">
                     <tr>
                         <td>Employer ID</td>
@@ -166,10 +167,11 @@
                 <div class="col-xs-12 space_emp"></div>
 
                 <!-- Delete Button -->
-                <button class="form-control set-right delete-button space-to-top-bottom" type="submit" data-toggle="modal" data-target="#delete-emp" value="{{ $thisEmployee->id }}" name="thisEmployeeId">Delete</button>
+                <button class="form-control set-right delete-button space-to-top-bottom" type="submit" data-toggle="modal" data-target="#delete-emp" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
+                    Delete
+                </button>
 
                 <div class="col-xs-12 space_emp"></div>
-
 
 
             </aside>
@@ -177,8 +179,13 @@
         </div>
     @endif
 
-    @include('admin.includes.modals-event-add-worktime-fix')
-    @include('admin.includes.modals-event-change-worktime-fix')
+
+    <!-- NEU -->
+    @include('includes.calendar.modal-change-time')
+
+
+    {{--@include('admin.includes.modals-event-add-worktime-fix')--}}
+    {{--@include('admin.includes.modals-event-change-worktime-fix')--}}
     @include('admin.includes.change-emp')
     @include('admin.includes.delete-emp')
 

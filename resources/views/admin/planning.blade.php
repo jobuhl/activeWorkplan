@@ -116,7 +116,7 @@
                 <div class="col-xs-12 space_emp"></div>
 
 
-                <!-- Retail Store Details -->
+                <!-- +++++++++++++++ RETAIL STORE DETAILS +++++++++++++++ -->
                 <table class="col-xs-12 table-account">
                     <tr>
                         <td>Retail Store Name</td>
@@ -144,12 +144,14 @@
 
         </div>
 
+        <!-- NEU -->
+        @include('includes.calendar.modal-change-time')
 
 
         @include('admin.includes.change-store')
         @include('admin.includes.delete-store')
-        @include('admin.includes.modals-event-add-worktime-fix')
-        @include('admin.includes.modals-event-change-worktime-fix')
+        {{--@include('admin.includes.modals-event-add-worktime-fix')--}}
+        {{--@include('admin.includes.modals-event-change-worktime-fix')--}}
 
     @endif
 @endsection

@@ -85,7 +85,6 @@ class EventController extends Controller
     // Employee changes a Time Event
     function changeTimeEvent(Request $request)
     {
-
         $thisEmployee = oneEmployee(Auth::user()->id);
 
         $category = DB::table('category')
@@ -113,11 +112,6 @@ class EventController extends Controller
     // Admin adds a Worktime Fix Event
     function addWorktimeFixEvent(Request $request)
     {
-        $thisRetailStore = RetailStore::find($request['thisRetailStoreId']);
-
-
-        $thisEmployee = oneEmployee($request['thisEmployeeId']);
-
         $category = DB::table('category')
             ->where('category.name', $request['category'])
             ->get()[0];
@@ -129,112 +123,71 @@ class EventController extends Controller
             'from' => $request['time-from'],
             'to' => $request['time-to'],
             'category_id' => $category->id,
-            'employee_id' => $thisEmployee->id
+            'employee_id' => $request['thisEmployeeId']
         ));
 
-        return redirect('/admin/planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
+        return redirect($request['thisUrl']);
     }
 
     // Admin changes a Worktime Fix Event
     function changeWorktimeFixEvent(Request $request)
     {
-        $thisRetailStore = RetailStore::find($request['thisRetailStoreId']);
-
-
-        $thisEmployee = oneEmployee($request['thisEmployeeId']);
-
         $category = DB::table('category')
             ->where('category.name', $request['category'])
             ->get()[0];
 
         $newDate = (new DateTime($request['date']))->format('Y-m-d');
 
-        $eventId = $request['thisEventId'];
-
-        WorktimeFix::where('worktime_fix.id', $eventId)
+        WorktimeFix::where('worktime_fix.id', $request['thisEventId'])
             ->update(array(
                 'date' => date($newDate),
                 'from' => $request['time-from'],
                 'to' => $request['time-to'],
                 'category_id' => $category->id,
-                'employee_id' => $thisEmployee->id
+                'employee_id' => $request['thisEmployeeId']
             ));
 
-        return redirect('/admin/planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
+        return redirect($request['thisUrl']);
     }
 
     // Admin accepts an Allday Event (Vacation / Illness)
     function acceptAlldayEvent(Request $request)
     {
-        if($request['thisUrl'] == '/admin/planning-single/') {
-            $thisView = Employee::find($request['thisViewId']);
-        } else {
-            $thisView = RetailStore::find($request['thisViewId']);
-        }
-        $eventId = $request['eventId'];
-
-        AlldayEvent::where('allday_event.id', $eventId)
+        AlldayEvent::where('allday_event.id', $request['eventId'])
             ->update(array(
                 'accepted' => true,
             ));
-        return redirect($request['thisUrl'] . $thisView->id . '/' . $request['thisDate']);
+        return redirect($request['thisUrl']);
     }
 
     // Admin accepts a Time Event (Vacation / Illness)
     function acceptTimeEvent(Request $request)
     {
-        if($request['thisUrl'] == '/admin/planning-single/') {
-            $thisView = Employee::find($request['thisViewId']);
-        } else {
-            $thisView = RetailStore::find($request['thisViewId']);
-        }
-
-        $eventId = $request['eventId'];
-
-        TimeEvent::where('time_event.id', $eventId)
+        TimeEvent::where('time_event.id', $request['eventId'])
             ->update(array(
                 'accepted' => true,
             ));
-
-
-        return redirect($request['thisUrl'] . $thisView->id . '/' . $request['thisDate']);
+        return redirect($request['thisUrl']);
     }
 
     // Admin accepts an Allday Event (Vacation / Illness)
     function notAcceptAlldayEvent(Request $request)
     {
-        if($request['thisUrl'] == '/admin/planning-single/') {
-            $thisView = Employee::find($request['thisViewId']);
-        } else {
-            $thisView = RetailStore::find($request['thisViewId']);
-        }
-        $eventId = $request['eventId'];
-
-        AlldayEvent::where('allday_event.id', $eventId)
+        AlldayEvent::where('allday_event.id', $request['eventId'])
             ->update(array(
                 'accepted' => false,
             ));
-        return redirect($request['thisUrl'] . $thisView->id . '/' . $request['thisDate']);
+        return redirect($request['thisUrl']);
     }
 
     // Admin accepts a Time Event (Vacation / Illness)
     function notAcceptTimeEvent(Request $request)
     {
-        if($request['thisUrl'] == '/admin/planning-single/') {
-            $thisView = Employee::find($request['thisViewId']);
-        } else {
-            $thisView = RetailStore::find($request['thisViewId']);
-        }
-
-        $eventId = $request['eventId'];
-
-        TimeEvent::where('time_event.id', $eventId)
+        TimeEvent::where('time_event.id', $request['eventId'])
             ->update(array(
                 'accepted' => false,
             ));
-
-
-        return redirect($request['thisUrl'] . $thisView->id . '/' . $request['thisDate']);
+        return redirect($request['thisUrl']);
     }
 
 

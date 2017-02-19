@@ -32,10 +32,10 @@
 
                     <!-- +++++++++++++++ ONE ALL-DAY EVENT +++++++++++++++ -->
                         <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"
-                             onclick="openEventDropdown('allday-admin' + {{ $oneAlldayEvent->id }} + '')"
+                             onclick="openEventOptions('options-proposal-allday-' + {{ $oneAlldayEvent->id }} + '')"
                              draggable="true"
-                             id="div-allday-admin-proposal{{ $oneAlldayEvent->id }}">
-                            <p>{{ $oneAlldayEvent->name }}</p>
+                             id="event-proposal-allday-{{ $oneAlldayEvent->id }}">
+                            <p class="event-category">{{ $oneAlldayEvent->name }}</p>
 
                             <!-- +++++++++++++++ ACCEPTED LABEL +++++++++++++++ -->
                             @if ( ($oneAlldayEvent->name == ('Vacation' || 'Illness' )) && $oneAlldayEvent->accepted == 1)
@@ -43,18 +43,17 @@
                             @endif
 
 
+                        <!-- +++++++++++++++ HIDDEN DATA +++++++++++++++ -->
+                            <p class="event-date-hidden" style="display: none">{{ $oneAlldayEvent->date }}</p>
 
-                        <!-- If calendar in Admin Planning or Single -->
-                            @if( strpos(url()->current(),'/admin/planning') || strpos(url()->current(),'/admin/planning-single'))
+                            <!-- If calendar in Admin Planning or Single -->
+                            @if( strpos(url()->current(),'/admin/planning'))
 
                             <!-- +++++++++++++++ OPTIONS VACATION ILLNESS ACCEPT +++++++++++++++ -->
                                 @if ( ($oneAlldayEvent->name ==  "Vacation" || $oneAlldayEvent->name =="Illness" ) && $oneAlldayEvent->accepted == 0)
-                                    <div id="allday-admin{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
+                                    <div class="event-dropdown-content options-proposal-allday-{{ $oneAlldayEvent->id }}">
                                         <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
-                                            <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
-                                            <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                            <input style="display: none;" name="thisUrl" value="/admin/planning/"/>
-                                            <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                                            @include('includes.calendar.thisUrlId')
                                             <button class="add-event-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
                                         </form>
                                     </div>
@@ -63,12 +62,9 @@
 
                             <!-- +++++++++++++++ OPTIONS VACATION ILLNESS NOT-ACCEPT +++++++++++++++ -->
                                 @if ( ($oneAlldayEvent->name ==  "Vacation" || $oneAlldayEvent->name =="Illness" ) && $oneAlldayEvent->accepted == 1)
-                                    <div id="allday-admin{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
+                                    <div class="event-dropdown-content options-proposal-allday-{{ $oneAlldayEvent->id }}">
                                         <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
-                                            <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
-                                            <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                            <input style="display: none;" name="thisUrl" value="/admin/planning/"/>
-                                            <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                                            @include('includes.calendar.thisUrlId')
                                             <button class="delete-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
                                         </form>
                                     </div>
@@ -81,15 +77,13 @@
                             @if( strpos(url()->current(),'/employee/planning') )
 
                             <!-- +++++++++++++++ OPTIONS CHANGE DELETE +++++++++++++++ -->
-                                <div id="allday-admin{{ $oneAlldayEvent->id }}" class="event-dropdown-content">
+                                <div class="event-dropdown-content options-proposal-allday-{{ $oneAlldayEvent->id }}">
 
-                                    <input value="{{ $oneAlldayEvent->date }}" style="display: none"/>
-
-                                    <button onclick="openChangeAlldayModal({{ $oneAlldayEvent->id }})" class="change-event-button">⇄</button>
-                                    <button id="button-change-allday-event{{ $oneAlldayEvent->id }}" style="display: none;" data-toggle="modal" data-target="#change-button-event-allday">⇄</button>
+                                    <button onclick="openModalChangeAllday('event-proposal-allday-', '{{ $oneAlldayEvent->id }}' )" class="change-event-button">⇄</button>
 
                                     <!-- JS Aufruf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
-                                    <button class="delete-event-button" onclick="deleteEventAJAX('div-allday', '{{ $oneAlldayEvent->id }}', '{{ url('/deleteAlldayEventAJAX') }}' )">-</button>
+                                    <button class="delete-event-button" onclick="deleteEventAJAX('event-proposal-allday', '{{ $oneAlldayEvent->id }}', '{{ url('/deleteAlldayEventAJAX') }}' )">-
+                                    </button>
 
                                 </div>
 

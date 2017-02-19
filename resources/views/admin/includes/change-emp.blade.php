@@ -22,9 +22,7 @@
 
             <!-- Modal body-->
             <!-- Basic-->
-            <form class="form-horizontal"  method="POST"
-                  action="{{ url('/admin/changeEmp') }}">
-                {{ csrf_field() }}
+            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changeEmp') }}"> {{ csrf_field() }}
                 <div class="modal-body">
 
 

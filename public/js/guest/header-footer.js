@@ -6,7 +6,7 @@ function highlightTab() {
     /* Pfadname der aktuellen Datei auslesen */
     var url = window.location.pathname;
 
-    /* Regular Expression Literale mit Slashes, Gruppierung und Alles durch Gruppe 1 ersetzen */
+    /* Regular Expression Literale mit Slashes, Gruppierung und Alles durch Gruppe 2 ersetzen */
     var tabId = url.replace(/.+(guest|admin|employee)\/([a-zA-Z_-]+).*/ , "$2");
 
     /* Sonderfall, da die Mitarbeiter Seite im gleichen Tab wie Planning ist */

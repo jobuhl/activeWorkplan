@@ -9,7 +9,7 @@
             @endif
             <!-- If calendar in Admin Planning or Single -->
                 @if( strpos(url()->current(),'/employee/planning'))
-                    <a class="round-button" onclick="openAddEventModal('{{ $week[$i]->format('m/d/Y') }}')">+</a>
+                    <a class="round-button" onclick="openModalAddEvent('{{ $week[$i]->format('d-m-Y') }}')">+</a>
                 @endif
             </td>
             @endfor

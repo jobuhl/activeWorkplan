@@ -19,12 +19,13 @@
 
                     <!-- +++++++++++++++ ONE TIME EVENT +++++++++++++++ -->
                         <div class="drop-btn one-time-event {{ $oneTimeEvent->color }}"
-                             onclick="openEventDropdown('time-admin' + {{ $oneTimeEvent->id }} + '')"
-                             draggable="true" id="div-time-admin{{ $oneTimeEvent->id }}"
+                             onclick="openEventOptions('options-proposal-time-' + {{ $oneTimeEvent->id }} + '')"
+                             draggable="true"
+                             id="event-proposal-time-{{ $oneTimeEvent->id }}"
                              ondragstart="drag(event)">
-                            <p>{{ $oneTimeEvent->name }}</p>
-                            <p>{{ $oneTimeEvent->from }}</p>
-                            <p>{{ $oneTimeEvent->to }}</p>
+                            <p class="event-category">{{ $oneTimeEvent->name }}</p>
+                            <p class="event-from">{{ $oneTimeEvent->from }}</p>
+                            <p class="event-to">{{ $oneTimeEvent->to }}</p>
 
 
                             <!-- +++++++++++++++ ACCEPTED LABEL +++++++++++++++ -->
@@ -34,34 +35,30 @@
 
 
                         <!-- +++++++++++++++ HIDDEN DATA  +++++++++++++++ -->
-                            <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                            <input style="display: none;" class="this-emp-id" value="{{ $thisEmployee->id }}">
+                            <p style="display: none;" class="event-date-hidden">{{ $oneTimeEvent->date }}</p>
+                            <p style="display: none;" class="event-employee-hidden">{{ $thisEmployee->id }}</p>
 
 
                             <!-- If calendar in Admin Planning or Single -->
-                            @if( strpos(url()->current(),'/admin/planning') || strpos(url()->current(),'/admin/planning-single'))
+                            @if( strpos(url()->current(),'/admin/planning'))
 
 
                             <!-- +++++++++++++++ OPTIONS  +++++++++++++++ -->
                                 @if ( $oneTimeEvent->name == "Work" || $oneTimeEvent->name == "Vacation" || $oneTimeEvent->name == "Illness")
-                                    <div id="time-admin{{ $oneTimeEvent->id }}" class="event-dropdown-content">
+                                    <div class="event-dropdown-content options-proposal-time-{{ $oneTimeEvent->id }}">
+
 
                                         <!-- +++++++++++++++ OPTIONS PUT TO WORKTIME FIX +++++++++++++++ -->
-                                        @if ( $oneTimeEvent->name == "Work")
-                                            <button onclick="openAddTimeModalAdmin({{ $oneTimeEvent->id }})" class="add-event-button">+</button>
-                                            <button id="button-add-worktime-fix-event-admin{{ $oneTimeEvent->id }}" style="display: none;" data-toggle="modal" data-target="#change-button-event-time-admin">
-                                                +
-                                            </button>
-                                        @endif
+                                    @if ( $oneTimeEvent->name == "Work")
+                                        <!-- Add Button -->
+                                            <button onclick="openModalChangeTime('event-proposal-time-', '{{ $oneTimeEvent->id }}' )" class="add-event-button">+</button>
+                                    @endif
 
 
                                     <!-- +++++++++++++++ OPTIONS VACATION ILLNESS ACCEPT +++++++++++++++ -->
                                         @if ( ($oneTimeEvent->name ==  "Vacation" || $oneTimeEvent->name =="Illness" ) && $oneTimeEvent->accepted == 0)
                                             <form method="POST" action="{{ url('admin/acceptTimeEvent') }}"> {{ csrf_field() }}
-                                                <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                                                <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                <input style="display: none;" name="thisUrl" value="/admin/planning/"/>
-                                                <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                @include('includes.calendar.thisUrlId')
                                                 <button class="add-event-button" name="eventId" value="{{ $oneTimeEvent->id }}">OK</button>
                                             </form>
                                         @endif
@@ -70,10 +67,7 @@
                                     <!-- +++++++++++++++ OPTIONS VACATION ILLNESS NOT-ACCEPT +++++++++++++++ -->
                                         @if ( ($oneTimeEvent->name ==  "Vacation" || $oneTimeEvent->name =="Illness" ) && $oneTimeEvent->accepted == 1)
                                             <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
-                                                <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                                                <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                <input style="display: none;" name="thisUrl" value="/admin/planning/"/>
-                                                <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                @include('includes.calendar.thisUrlId')
                                                 <button class="delete-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
                                             </form>
                                         @endif
@@ -87,8 +81,15 @@
                         <!-- If calendar in Employee Planning -->
                             @if( strpos(url()->current(),'/employee/planning') )
 
+                            <!-- +++++++++++++++ OPTIONS CHANGE DELETE +++++++++++++++ -->
+                                <div class="event-dropdown-content options-proposal-time-{{ $oneTimeEvent->id }}">
 
+                                    <!-- Change Button -->
+                                    <button onclick="openModalChangeTime('event-proposal-time-', '{{ $oneTimeEvent->id }}' )" class="change-event-button">⇄</button>
 
+                                    <!-- JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
+                                    <button class="delete-event-button" onclick="deleteEventAJAX('event-proposal-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteTimeEventAJAX') }}' )">-</button>
+                                </div>
                             @endif
 
                         </div>

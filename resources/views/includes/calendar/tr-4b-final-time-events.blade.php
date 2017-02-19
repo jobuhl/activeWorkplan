@@ -19,32 +19,32 @@
 
                     <!-- +++++++++++++++ ONE WORKTIME EVENT +++++++++++++++ -->
                         <div class="drop-btn one-time-event {{ $oneWorktimeEvent->color }}"
-                             onclick="openEventDropdown('worktime-fix-admin' + {{ $oneWorktimeEvent->id }} + '')"
+                             onclick="openEventOptions('options-final-time-' + {{ $oneWorktimeEvent->id }} + '')"
                              draggable="true"
-                             id="div-worktime-fix-admin{{ $oneWorktimeEvent->id }}"
+                             id="event-final-time-{{ $oneWorktimeEvent->id }}"
                              ondragstart="drag(event)">
-                            <p>{{ $oneWorktimeEvent->name }}</p>
-                            <p>{{ $oneWorktimeEvent->from }}</p>
-                            <p>{{ $oneWorktimeEvent->to }}</p>
+                            <p class="event-category">{{ $oneWorktimeEvent->name }}</p>
+                            <p class="event-from">{{ $oneWorktimeEvent->from }}</p>
+                            <p class="event-to">{{ $oneWorktimeEvent->to }}</p>
+
 
                             <!-- If calendar in Admin Planning or Single -->
-                        @if( strpos(url()->current(),'/admin/planning') || strpos(url()->current(),'/admin/planning-single'))
+                        @if( strpos(url()->current(),'/admin/planning'))
 
 
                             <!-- +++++++++++++++ HIDDEN DATA  +++++++++++++++ -->
-                                <input value="{{ $oneWorktimeEvent->date }}" style="display: none"/>
-                                <input style="display: none;" class="this-emp-id" value="{{ $thisEmployee->id }}">
-                                <input style="display: none;" class="this-event-id" value="{{ $oneWorktimeEvent->id }}">
+                                <p style="display: none;" class="event-date-hidden">{{ $oneWorktimeEvent->date }}</p>
+                                <p style="display: none;" class="event-employee-hidden">{{ $thisEmployee->id }}</p>
 
 
                                 <!-- +++++++++++++++ OPTIONS  +++++++++++++++ -->
-                                <div id="worktime-fix-admin{{ $oneWorktimeEvent->id }}" class="event-dropdown-content">
+                                <div class="event-dropdown-content options-final-time-{{ $oneWorktimeEvent->id }}">
 
-                                    <button onclick="openChangeWorktimeFixModal({{ $oneWorktimeEvent->id }})" class="change-event-button">⇄</button>
-                                    <button id="button-change-worktime-fix-event-admin{{ $oneWorktimeEvent->id }}" style="display: none;" data-toggle="modal" data-target="#change-button-event-worktime-fix-admin"></button>
+                                    <!-- Change Button -->
+                                    <button onclick="openModalChangeTime('event-final-time-', '{{ $oneWorktimeEvent->id }}' )" class="change-event-button">⇄</button>
 
                                     <!-- JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
-                                    <button class="delete-event-button" onclick="deleteEventAJAX('div-worktime-fix-admin', '{{ $oneWorktimeEvent->id }}', '{{ url('/deleteWorktimeEventAJAX') }}' )">
+                                    <button class="delete-event-button" onclick="deleteEventAJAX('event-final-time-', '{{ $oneWorktimeEvent->id }}', '{{ url('/deleteWorktimeEventAJAX') }}' )">
                                         -
                                     </button>
 
@@ -65,34 +65,26 @@
 
                     <!-- +++++++++++++++ ONE TIME EVENT +++++++++++++++ -->
                         <div class="drop-btn one-time-event {{ $oneTimeEvent->color }}"
-                             onclick="openEventDropdown('time-admin-final' + {{ $oneTimeEvent->id }} + '')"
-                             draggable="true" id="div-time-admin{{ $oneTimeEvent->id }}"
+                             onclick="openEventOptions('options-final-time-2-' + {{ $oneTimeEvent->id }} + '')"
+                             draggable="true"
+                             id="event-final-time-2-{{ $oneTimeEvent->id }}"
                              ondragstart="drag(event)">
-                            <p>{{ $oneTimeEvent->name }}</p>
-                            <p>{{ $oneTimeEvent->from }}</p>
-                            <p>{{ $oneTimeEvent->to }}</p>
+                            <p class="event-category">{{ $oneTimeEvent->name }}</p>
+                            <p class="event-from">{{ $oneTimeEvent->from }}</p>
+                            <p class="event-to">{{ $oneTimeEvent->to }}</p>
 
                             <!-- If calendar in Admin Planning or Single -->
                         @if( strpos(url()->current(),'/admin/planning') || strpos(url()->current(),'/admin/planning-single'))
 
-
-                            <!-- +++++++++++++++ HIDDEN DATA  +++++++++++++++ -->
-                                <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                                <input style="display: none;" class="this-emp-id" value="{{ $thisEmployee->id }}">
-
-
                                 <!-- +++++++++++++++ OPTIONS  +++++++++++++++ -->
                                 @if ( $oneTimeEvent->name == ( "Work"  || "Vacation"  || "Illness"))
-                                    <div id="time-admin-final{{ $oneTimeEvent->id }}" class="event-dropdown-content">
+                                    <div class="event-dropdown-content options-final-time-2-{{ $oneTimeEvent->id }}">
 
 
                                         <!-- +++++++++++++++ OPTIONS VACATION ILLNESS NOT-ACCEPT +++++++++++++++ -->
                                         @if ( ($oneTimeEvent->name == ("Vacation" || "Illness" )) && $oneTimeEvent->accepted == 1)
                                             <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
-                                                <input value="{{ $oneTimeEvent->date }}" style="display: none"/>
-                                                <input style="display: none;" name="thisViewId" value="{{ $thisRetailStore->id }}"/>
-                                                <input style="display: none;" name="thisUrl" value="/admin/planning/"/>
-                                                <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                                                @include('includes.calendar.thisUrlId')
                                                 <button class="delete-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
                                             </form>
                                         @endif
