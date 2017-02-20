@@ -249,7 +249,10 @@ class DatabaseSeeder extends Seeder
         foreach ($allEmployees as $emp) {
 
             // 20 tage vor und zurück
-            for ($day = -5; $day < 10; $day++) {
+            for ($day = -7; $day < 10; $day++) {
+
+
+                $DBdate = ((new DateTime())->modify($day . ' days'))->format('d-m-Y');
 
                 // Seltener Allday-Event
                 if (($day + rand(-3, 3)) % rand(2, 5) == 0) {
@@ -280,7 +283,7 @@ class DatabaseSeeder extends Seeder
 
                     // Create Allday Event
                     AlldayEvent::create(array(
-                        'date' => (new DateTime())->modify($day . ' days'),
+                        'date' => $DBdate,
                         'accepted' => $accepted,
                         'employee_id' => $emp->id,
                         'category_id' => $cat,
@@ -339,7 +342,7 @@ class DatabaseSeeder extends Seeder
 
                         // Create Time-Event
                         TimeEvent::create(array(
-                            'date' => (new DateTime())->modify($day . ' days'),
+                            'date' => $DBdate,
                             'from' => $time[$i] . ':' . $randomMinute1,
                             'to' => $time[$i + 1] . ':' . $randomMinute2,
                             'accepted' => $accepted,
@@ -353,7 +356,7 @@ class DatabaseSeeder extends Seeder
 
                             // Create Worktime Fix
                             WorktimeFix::create(array(
-                                'date' => (new DateTime())->modify($day . ' days'),
+                                'date' => $DBdate,
                                 'from' => $time[$i] . ':' . $randomMinute1,
                                 'to' => $time[$i + 1] . ':' . $randomMinute2,
                                 'employee_id' => $emp->id,

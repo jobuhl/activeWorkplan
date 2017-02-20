@@ -5,7 +5,7 @@
 
     @for ($i = 0; $i < 7; $i++)
         <td>
-            {{ $week[$i]->format('d.m.') }}
+            {{ (new DateTime($week[$i]))->format('d.m.') }}
         </td>
     @endfor
 </tr>

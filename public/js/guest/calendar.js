@@ -1,4 +1,4 @@
-// Event Datum auswählen (JavaScript-Funktion)
+// Event Datum auswählen (jQuery-Funktion)
 $(".datepicker").datepicker();
 
 // on click auf ein Event werden die options button darunter angezeigt
@@ -27,6 +27,65 @@ function openEventOptions(eventId) {
 }
 
 
+// Employee changes Time Event
+function openModalEvent(eventDivIdPrefix, eventId, modalId, tableDate) {
+
+    var event = $("#" + modalId);
+
+    // Absichtlich nur vor dem default ein break; gesetzt, damit alle cases durchlaufen werden koennen
+    switch (modalId) {
+
+        /** Employee change Time
+         *  Admin add final Time
+         *  Admin change finale Time */
+        case 'modal-change-time-event':
+
+            //Daten aus dem Event auslesen
+            var employee = $("#" + eventDivIdPrefix + eventId + " .event-employee-hidden").text();
+            var from = $("#" + eventDivIdPrefix + eventId + " .event-from").text();
+            var to = $("#" + eventDivIdPrefix + eventId + " .event-to").text();
+
+            // Uebertragen der daten in das change-modal
+            event.find(".from-overwrite").val(from);
+            event.find(".to-overwrite").val(to);
+
+            // um beim submit im Controller auf die id zugreifen zu können
+            event.find(".employee-overwrite").val(employee);
+
+        /** Employee change Allday */
+        case 'modal-change-allday-event':
+
+            //Daten aus dem Event auslesen
+            var date = $("#" + eventDivIdPrefix + eventId + " .event-date-hidden").text();
+            var category = $("#" + eventDivIdPrefix + eventId + " .event-category").text();
+
+            // Uebertragen der daten in das change-modal
+            event.find(".category-overwrite").text(category);
+
+            // um beim submit im Controller auf die id zugreifen zu können
+            event.find(".id-overwrite").val(eventId);
+
+        /** Employee add Allday
+         *  Employee Add Time */
+        case 'modal-add-event':
+            // date der Tabellenspalte aus dem Add-Button
+            if (modalId == 'modal-add-event') {
+                var date = tableDate;
+            }
+
+            // Uebertragen der daten in das change-modal
+            event.find(".date-overwrite").val(date);
+            break;
+
+        default:
+            alert('openModalEvent Error');
+    }
+
+    // change modal oeffnen
+    $("#open-" + modalId).click();
+}
+
+
 // Drag and Drop
 // function allowDrop(ev) {
 //     ev.preventDefault();
@@ -41,63 +100,6 @@ function openEventOptions(eventId) {
 //     var data = ev.dataTransfer.getData("text");
 //     ev.target.appendChild(document.getElementById(data));
 // }
-
-
-
-// Employee changes Allday Event
-function openModalChangeAllday(eventDivIdPrefix, eventId) {
-
-    //Daten aus dem Event auslesen
-    var date = $("#" + eventDivIdPrefix + eventId + " .event-date-hidden").text();
-    var category = $("#" + eventDivIdPrefix + eventId + " .event-category").text();
-
-    // change modal oeffnen
-    $("#open-modal-change-allday-event").click();
-
-    // uebertragen der daten in das change-modal
-    $("#modal-change-allday-event .category-overwrite").text(category);
-    $("#modal-change-allday-event .date-overwrite").val(date);
-
-    // um beim submit im Controller auf die id zugreifen zu können
-    $("#modal-change-allday-event .id-overwrite").val(eventId);
-}
-
-
-// Employee changes Time Event
-function openModalChangeTime(eventDivIdPrefix, eventId) {
-
-    //Daten aus dem Event auslesen
-    var employee = $("#" + eventDivIdPrefix + eventId + " .event-employee-hidden").text();
-    var date = $("#" + eventDivIdPrefix + eventId + " .event-date-hidden").text();
-    var category = $("#" + eventDivIdPrefix + eventId + " .event-category").text();
-    var from = $("#" + eventDivIdPrefix + eventId + " .event-from").text();
-    var to = $("#" + eventDivIdPrefix + eventId + " .event-to").text();
-
-    // change modal oeffnen
-    $("#open-modal-change-time-event").click();
-
-    // uebertragen der daten in das change-modal
-    $("#modal-change-time-event .category-overwrite").text(category);
-    $("#modal-change-time-event .date-overwrite").val(date);
-    $("#modal-change-time-event .from-overwrite").val(from);
-    $("#modal-change-time-event .to-overwrite").val(to);
-
-    // um beim submit im Controller auf die id zugreifen zu können
-    $("#modal-change-time-event .id-overwrite").val(eventId);
-    $("#modal-change-time-event .employee-overwrite").val(employee);
-}
-
-
-// Round-Button Employee-Planning Add Store
-function openModalAddEvent(date) {
-
-    // change modal oeffnen
-    $("#open-modal-add-event").click();
-
-    // uebertragen der daten in das change-modal
-    $("#modal-add-event .date-overwrite").val(date);
-}
-
 
 /* ------------------------------- AJAX ----------------------------------- */
 

@@ -37,11 +37,11 @@
 
 
                 <!-- If calendar in Admin Planning or Single -->
-                @if( strpos(url()->current(),'/admin/planning') || strpos(url()->current(),'/admin/planning-single'))
+                @if( strpos(url()->current(),'/admin/planning'))
 
                     <!-- Store-Elemente -->
                     <div class="up-element form-control hide-mobil @if ($thisRetailStore->name == $retailStore->name) current-store @endif" draggable="true">
-                        <a class="element-text form-control" href="{{ url('/admin/planning') . '/' . $retailStore->id . '/' . $week[0]->format('d-m-Y') }}">{{ $retailStore->name }}</a>
+                        <a class="element-text form-control" href="{{ url('/admin/planning') . '/' . $retailStore->id . '/' . $week[0] }}">{{ $retailStore->name }}</a>
                         <a class="element-arrow form-control">⋁</a>
                     </div>
 
@@ -50,7 +50,7 @@
                         @foreach($allEmployees as $employee)
                             @if($employee->retail_store_id == $retailStore->id)
                                 <li>
-                                    <a class="element-sub-text" href="{{ url('/admin/planning-single') . '/' . $employee->id . '/' . $week[0]->format('d-m-Y') }}">{{ $employee->surname }} {{ $employee->forename }}</a>
+                                    <a class="element-sub-text" href="{{ url('/admin/planning-single') . '/' . $employee->id . '/' . $week[0] }}">{{ $employee->surname }} {{ $employee->forename }}</a>
                                 </li>
                             @endif
                         @endforeach
@@ -63,7 +63,7 @@
 
                     <!-- Store-Elemente -->
                     <div class="up-element form-control hide-mobil" draggable="true">
-                        <a class="overview-element element-text form-control" href="{{ url('/admin/overview') . '/'  . (clone $week[0])->format('d-m-Y') .  '#table-overview' . $retailStore->id }}">{{ $retailStore->name }}</a>
+                        <a class="overview-element element-text form-control" href="{{ url('/admin/overview') . '/'  .  $week[0] .  '#table-overview' . $retailStore->id }}">{{ $retailStore->name }}</a>
                     </div>
                 @endif
             </div>

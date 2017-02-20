@@ -60,7 +60,7 @@
                 <div class="modal-footer">
 
                     <input class="id-overwrite" style="display: none;" name="thisEventId" value=""/>
-                    <button type="submit" class="form-control to-right modal-change-button" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}">Change</button>
+                    <button type="submit" class="form-control to-right modal-change-button" name="thisDate" value="{{ $week[0] }}">Change</button>
 
                 </div>
 

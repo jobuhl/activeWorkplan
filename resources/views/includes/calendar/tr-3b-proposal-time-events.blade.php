@@ -6,14 +6,14 @@
 
 
     <!-- +++++++++++++++ IF TODAY +++++++++++++++ -->
-        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+        @if((new DateTime())->format('d-m-Y') == $week[$i])
             <td class="today">@else
             <td>@endif
 
 
             <!-- +++++++++++++++ ALL TIME EVENT +++++++++++++++ -->
             @foreach($manyTimeEvent as $oneTimeEvent)
-                @if( (new DateTime($oneTimeEvent->date))->format('d-m-Y') == $week[$i]->format('d-m-Y')
+                @if( (new DateTime($oneTimeEvent->date))->format('d-m-Y') == $week[$i]
                     && $oneTimeEvent->employee_id == $thisEmployee->id )
 
 
@@ -85,7 +85,7 @@
                                 <div class="event-dropdown-content options-proposal-time-{{ $oneTimeEvent->id }}">
 
                                     <!-- Change Button -->
-                                    <button onclick="openModalChangeTime('event-proposal-time-', '{{ $oneTimeEvent->id }}' )" class="change-event-button">⇄</button>
+                                    <button onclick="openModalEvent('event-proposal-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event', 'NULL' )" class="change-event-button">⇄</button>
 
                                     <!-- JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
                                     <button class="delete-event-button" onclick="deleteEventAJAX('event-proposal-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteTimeEventAJAX') }}' )">-</button>

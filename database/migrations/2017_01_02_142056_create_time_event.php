@@ -15,7 +15,7 @@ class CreateTimeEvent extends Migration
 {
     Schema::create('time_event', function (Blueprint $table) {
         $table->increments('id');
-        $table->date('date');
+        $table->string('date');
         $table->string('from');
         $table->string('to');
         $table->boolean('accepted');

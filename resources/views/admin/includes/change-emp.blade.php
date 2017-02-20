@@ -254,7 +254,7 @@
                 </div>
                 <!-- Modal footer-->
                 <div class="modal-footer">
-                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                    <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
                     <button class="form-control to-right modal-change-button space-to-top-bottom" type="submit"
                             value="{{ $thisEmployee->id }}" name="thisEmployeeId">
                         Change
@@ -324,7 +324,7 @@
                 <!-- Modal footer-->
                 <div class="modal-footer">
 
-                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                    <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
                     <button type="submit" class="form-control  modal-change-button space-line yellow"
                             value="{{ $thisEmployee->id }}" name="thisEmployeeId"
                     >Change Password
@@ -376,7 +376,7 @@
                 <!-- Modal footer-->
                 <div class="modal-footer">
 
-                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                    <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
                     <button type="submit" class="form-control  modal-change-button space-line yellow"
                             value="{{ $thisEmployee->id }}" name="thisEmployeeId"
                     >Change Email

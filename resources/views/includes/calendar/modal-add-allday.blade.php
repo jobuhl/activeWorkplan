@@ -40,7 +40,7 @@
 
     <!-- Modal footer-->
     <div class="modal-footer">
-        <button type="submit" class="form-control to-right add-button" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}">Add</button>
+        <button type="submit" class="form-control to-right add-button" name="thisDate" value="{{ $week[0] }}">Add</button>
     </div>
 
 </form>

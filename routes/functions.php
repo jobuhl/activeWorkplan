@@ -173,12 +173,12 @@ function getWeekArray($urlDate) {
     $monday = clone $day->modify('-' . ($day->format('N') - 1) . ' days');
 
     return array(
-        clone $monday,
-        clone $monday->add(new DateInterval('P1D')),
-        clone $monday->add(new DateInterval('P1D')),
-        clone $monday->add(new DateInterval('P1D')),
-        clone $monday->add(new DateInterval('P1D')),
-        clone $monday->add(new DateInterval('P1D')),
-        clone $monday->add(new DateInterval('P1D'))
+        (clone $monday)->format('d-m-Y'),
+        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
+        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
+        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
+        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
+        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
+        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y')
     );
 }

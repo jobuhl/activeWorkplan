@@ -274,7 +274,7 @@
 
                 <div class="modal-footer">
                     <div class="col-xs-12">
-                        <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                        <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
                         <button type="submit" class="form-control to-right add-button">
                             Add
                         </button>

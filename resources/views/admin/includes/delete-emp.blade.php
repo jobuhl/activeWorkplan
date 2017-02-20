@@ -30,7 +30,7 @@
                 </div>
                 <div class="modal-footer">
 
-                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                    <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
                     <button class="form-control  delete-button" type="submit" value="{{ $thisEmployee->id }}"
                             name="thisEmployeeId">Delete
                     </button>

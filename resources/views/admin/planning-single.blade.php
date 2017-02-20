@@ -43,7 +43,7 @@
             <aside class="col-xs-12 col-sm-9 my-right-side">
 
                 <!-- Ueberschrift -->
-                <h2 class="header">{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</h2>
+                <h2 class="header highlight-sidebar">{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</h2>
 
                 @include('includes.calendar.navigation')
 
@@ -157,9 +157,7 @@
                     </tr>
                     <tr>
                         <td>Retail Store Address</td>
-                        <td>{{ $address->street }} {{ $address->street_nr }}
-                            , {{ $address->postcode }} {{ $address->city }}, {{ $address->country }}
-                        </td>
+                        <td>{{ $address->street . ' ' . $address->street_nr . ', ' . $address->postcode . ' ' . $address->city . ', ' . $address->country }}</td>
 
                     </tr>
                 </table>

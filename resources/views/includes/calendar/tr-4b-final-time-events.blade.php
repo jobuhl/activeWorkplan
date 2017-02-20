@@ -5,7 +5,7 @@
 
 
     <!-- +++++++++++++++ IF TODAY +++++++++++++++ -->
-        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+        @if((new DateTime())->format('d-m-Y') == $week[$i])
             <td class="today">
         @else
             <td>
@@ -13,7 +13,7 @@
 
             <!-- +++++++++++++++ ALL WORKTIME EVENT +++++++++++++++ -->
             @foreach($manyWorktimeEvent as $oneWorktimeEvent)
-                @if( (new DateTime($oneWorktimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                @if( (new DateTime($oneWorktimeEvent->date))->format('d-m-Y') == $week[$i]
                 && $oneWorktimeEvent->employee_id == $thisEmployee->id)
 
 
@@ -41,7 +41,7 @@
                                 <div class="event-dropdown-content options-final-time-{{ $oneWorktimeEvent->id }}">
 
                                     <!-- Change Button -->
-                                    <button onclick="openModalChangeTime('event-final-time-', '{{ $oneWorktimeEvent->id }}' )" class="change-event-button">⇄</button>
+                                    <button onclick="openModalEvent('event-final-time-', '{{ $oneWorktimeEvent->id }}', 'modal-change-time-event', 'NULL' )" class="change-event-button">⇄</button>
 
                                     <!-- JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
                                     <button class="delete-event-button" onclick="deleteEventAJAX('event-final-time-', '{{ $oneWorktimeEvent->id }}', '{{ url('/deleteWorktimeEventAJAX') }}' )">
@@ -59,7 +59,7 @@
 
             <!-- +++++++++++++++ ALL TIME EVENT +++++++++++++++ -->
             @foreach($manyTimeEvent as $oneTimeEvent)
-                @if( (new DateTime($oneTimeEvent->date))->format('d m Y') == $week[$i]->format('d m Y')
+                @if( (new DateTime($oneTimeEvent->date))->format('d-m-Y') == $week[$i]
                     && (( $oneTimeEvent->name == ("Vacation" || "Illness")) && $oneTimeEvent->accepted == 1)
                     && $oneTimeEvent->employee_id == $thisEmployee->id)
 
@@ -74,7 +74,7 @@
                             <p class="event-to">{{ $oneTimeEvent->to }}</p>
 
                             <!-- If calendar in Admin Planning or Single -->
-                        @if( strpos(url()->current(),'/admin/planning') || strpos(url()->current(),'/admin/planning-single'))
+                        @if( strpos(url()->current(),'/admin/planning'))
 
                                 <!-- +++++++++++++++ OPTIONS  +++++++++++++++ -->
                                 @if ( $oneTimeEvent->name == ( "Work"  || "Vacation"  || "Illness"))

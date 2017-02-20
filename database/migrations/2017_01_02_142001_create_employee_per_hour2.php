@@ -16,7 +16,7 @@ class CreateEmployeePerHour2 extends Migration
     Schema::create('employee_per_hour', function (Blueprint $table) {
         $table->increments('id');
         $table->integer('amount');
-        $table->date('date');
+        $table->string('date');
         $table->string('start');
         $table->string('end');
 

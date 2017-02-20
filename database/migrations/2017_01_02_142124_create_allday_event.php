@@ -15,7 +15,7 @@ class CreateAlldayEvent extends Migration
 {
     Schema::create('allday_event', function (Blueprint $table) {
         $table->increments('id');
-        $table->date('date');
+        $table->string('date');
         $table->boolean('accepted');
 
         $table->integer('employee_id')->unsigned();

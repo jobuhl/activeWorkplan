@@ -15,7 +15,7 @@ class CreateWorktimeFix2 extends Migration
 {
     Schema::create('worktime_fix', function (Blueprint $table) {
         $table->increments('id');
-        $table->date('date');
+        $table->string('date');
         $table->string('from');
         $table->string('to');
 

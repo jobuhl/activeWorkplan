@@ -146,7 +146,7 @@
                 </div>
                 <!-- Modal footer-->
                 <div class="modal-footer">
-                    <input style="display: none;" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}"/>
+                    <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
                     <button class="form-control to-right modal-change-button" type="submit"
                             value="{{ $thisRetailStore->id }}" name="thisRetailStoreId">
                         Change

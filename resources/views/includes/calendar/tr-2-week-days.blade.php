@@ -4,11 +4,11 @@
     <td class="button-show">Employee</td>
 
     @for ($i = 0; $i < 7; $i++)
-        @if((new DateTime())->format('d m Y') == $week[$i]->format('d m Y'))
+        @if((new DateTime())->format('d-m-Y') == $week[$i])
             <td class="today">
         @else
             <td>
                 @endif
-                {{ $week[$i]->format('D') }}</td>
+                {{ (new DateTime($week[$i]))->format('D') }}</td>
             @endfor
 </tr>

@@ -26,10 +26,10 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('Y-m-d');
+        $newDate = (new DateTime($request['date']))->format('d-m-Y');
 
         AlldayEvent::create(array(
-            'date' => date($newDate),
+            'date' => $newDate,
             'accepted' => false,
             'category_id' => $category->id,
             'employee_id' => $thisEmployee->id
@@ -49,10 +49,10 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('Y-m-d');
+        $newDate = (new DateTime($request['date']))->format('d-m-Y');
 
         TimeEvent::create(array(
-            'date' => date($newDate),
+            'date' => $newDate,
             'from' => $request['time-from'],
             'to' => $request['time-to'],
             'accepted' => false,
@@ -70,13 +70,13 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('Y-m-d');
+        $newDate = (new DateTime($request['date']))->format('d-m-Y');
 
         $eventId = $request['thisEventId'];
 
         AlldayEvent::where('allday_event.id', $eventId)
             ->update(array(
-                'date' => date($newDate),
+                'date' => $newDate,
                 'category_id' => $category->id,
             ));
         return redirect('/employee/planning/' . $request['thisDate']);
@@ -91,13 +91,13 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('Y-m-d');
+        $newDate = (new DateTime($request['date']))->format('d-m-Y');
 
         $eventId = $request['thisEventId'];
 
         TimeEvent::where('time_event.id', $eventId)
             ->update(array(
-                'date' => date($newDate),
+                'date' => $newDate,
                 'from' => $request['time-from'],
                 'to' => $request['time-to'],
                 'category_id' => $category->id,
@@ -116,10 +116,10 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('Y-m-d');
+        $newDate = (new DateTime($request['date']))->format('d-m-Y');
 
         WorktimeFix::create(array(
-            'date' => date($newDate),
+            'date' => $newDate,
             'from' => $request['time-from'],
             'to' => $request['time-to'],
             'category_id' => $category->id,
@@ -136,11 +136,11 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('Y-m-d');
+        $newDate = (new DateTime($request['date']))->format('d-m-Y');
 
         WorktimeFix::where('worktime_fix.id', $request['thisEventId'])
             ->update(array(
-                'date' => date($newDate),
+                'date' => $newDate,
                 'from' => $request['time-from'],
                 'to' => $request['time-to'],
                 'category_id' => $category->id,

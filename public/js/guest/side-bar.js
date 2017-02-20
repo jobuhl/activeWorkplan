@@ -2,6 +2,7 @@
 window.onload = function () {
     /* Trennlinie nur berechnen */
     sideBarBorder();
+    highlightEmployee();
 };
 
 /* Wenn Fenster vergroessert oder verkleinert wird */
@@ -78,13 +79,20 @@ function searchStoreEmp(search) {
         /* Alle anzeigen */
         $(list).find(".element-sub-text, .element-text").parent().show();
     }
-
 }
 
 // :contains von jQuery ueberschreiben, damit CASE-INSENSITIV
 jQuery.expr[':'].contains = function(a, i, m) {
     return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
 };
+
+function highlightEmployee() {
+    var employee = $(".highlight-sidebar").text();
+    if (employee != "") {
+        $(".each-element").find(".element-sub-text:Contains(" + employee + ")").parent().css('background-color', 'var(--grey-50)').css('font-weight', '500');
+        $(".each-element").find(".element-sub-text:Contains(" + employee + ")").parent().parent().show();
+    }
+}
 
 
 /* Show Sub-List wenn in search-feld geklickt */

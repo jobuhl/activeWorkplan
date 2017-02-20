@@ -91,18 +91,22 @@
 
                     <!-- important EventID wird reingeschrieben -->
                         <input style="display: none;" class="id-overwrite" name="thisEventId" value=""/>
-                        <button type="submit" class="form-control to-right modal-change-button" name="thisDate" value="{{ $week[0]->format('d-m-Y') }}">Change</button>
+                        <button type="submit" class="form-control to-right modal-change-button" name="thisDate" value="{{ $week[0] }}">Change</button>
                 @endif
 
                 @if( strpos(url()->current(),'/admin/planning'))
 
                     <!-- Wegen Controller redirect -->
                         @if( strpos(url()->current(),'/admin/planning/'))
-                            <input style="display: none;" name="thisUrl" value="/admin/planning/{{ $thisRetailStore->id }}/{{ $week[0]->format('d-m-Y') }}">
+                            <input style="display: none;" name="thisUrl" value="/admin/planning/{{ $thisRetailStore->id }}/{{ $week[0] }}">
                         @endif
                         @if( strpos(url()->current(),'/admin/planning-single/'))
-                            <input style="display: none;" name="thisUrl" value="/admin/planning-single/{{ $thisEmployee->id }}/{{ $week[0]->format('d-m-Y') }}">
+                            <input style="display: none;" name="thisUrl" value="/admin/planning-single/{{ $thisEmployee->id }}/{{ $week[0] }}">
                         @endif
+
+                    <!-- oder -->
+                        <input style="display: none;" name="thisUrl" value="/admin/planning-single/{{ url()->current() }}">
+
 
                         <input style="display: none;" class="id-overwrite" name="thisEventId" value=""/>
                         <input style="display: none;" class="employee-overwrite" name="thisEmployeeId" value=""/>
