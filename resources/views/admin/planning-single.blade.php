@@ -179,18 +179,11 @@
         </div>
     @endif
 
-
-    <!-- NEU -->
     @include('includes.calendar.modal-change-time')
-
-
-    {{--@include('admin.includes.modals-event-add-worktime-fix')--}}
-    {{--@include('admin.includes.modals-event-change-worktime-fix')--}}
     @include('admin.includes.change-emp')
     @include('admin.includes.delete-emp')
 
 @endsection
-
 
 
 @section('js')

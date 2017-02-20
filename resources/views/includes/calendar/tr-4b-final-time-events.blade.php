@@ -84,7 +84,7 @@
                                         <!-- +++++++++++++++ OPTIONS VACATION ILLNESS NOT-ACCEPT +++++++++++++++ -->
                                         @if ( ($oneTimeEvent->name == ("Vacation" || "Illness" )) && $oneTimeEvent->accepted == 1)
                                             <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
-                                                @include('includes.calendar.thisUrlId')
+                                                @include('includes.calendar.thisUrl')
                                                 <button class="delete-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
                                             </form>
                                         @endif

@@ -60,15 +60,9 @@
 
     </div>
 
-    <!-- NEU -->
+    @include('includes.calendar.modal-add')
     @include('includes.calendar.modal-change-allday')
     @include('includes.calendar.modal-change-time')
-
-
-
-    @include('includes.calendar.modal-add')
-    {{--@include('employee.includes.modals-event-change-allday')--}}
-    {{--@include('employee.includes.modals-event-change-time')--}}
 
 @endsection
 

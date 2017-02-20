@@ -144,14 +144,9 @@
 
         </div>
 
-        <!-- NEU -->
         @include('includes.calendar.modal-change-time')
-
-
         @include('admin.includes.change-store')
         @include('admin.includes.delete-store')
-        {{--@include('admin.includes.modals-event-add-worktime-fix')--}}
-        {{--@include('admin.includes.modals-event-change-worktime-fix')--}}
 
     @endif
 @endsection
