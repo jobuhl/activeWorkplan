@@ -14,7 +14,10 @@
 <!-- +++++++++++++++ ALL-DAY +++++++++++++++ -->
 <tr class="all-day">
 
-    <td class="button-show">{{ $thisEmployee->surname }} {{ $thisEmployee->forename }}</td>
+    <td class="button-show">
+        @if( strpos(url()->current(),'/admin/')) {{ $thisEmployee->surname . ' ' . $thisEmployee->forename }} @endif
+        @if( strpos(url()->current(),'/employee/')) Allday-Events @endif
+    </td>
 @for ($i = 0; $i < 7; $i++)
 
 

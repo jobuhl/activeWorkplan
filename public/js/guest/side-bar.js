@@ -71,8 +71,9 @@ function searchStoreEmp(search) {
         $(list).find(".element-sub-text:not(:Contains(" + search + "))").parent().hide();
 
         /* Wenn Employee gefunden -> anzeigen + Store anzeigen */
-        $(list).find(".element-sub-text:Contains(" + search + ")").parent().show();
-        $(list).find(".element-sub-text:Contains(" + search + ")").parent().parent().siblings().show();
+        var element = $(list).find(".element-sub-text:Contains(" + search + ")");
+        element.parent().show();
+        element.parent().parent().siblings().show();
 
     } else {
 
@@ -87,11 +88,22 @@ jQuery.expr[':'].contains = function(a, i, m) {
 };
 
 function highlightEmployee() {
+
+    // Planning-Single Header Ueberschruft
     var employee = $(".highlight-sidebar").text();
+
     if (employee != "") {
-        $(".each-element").find(".element-sub-text:Contains(" + employee + ")").parent().css('background-color', 'var(--grey-50)').css('font-weight', '500');
-        $(".each-element").find(".element-sub-text:Contains(" + employee + ")").parent().parent().show();
-    }
+
+        // Element finden
+        var element =  $(".each-element").find(".element-sub-text:Contains(" + employee + ")").parent();
+
+        // komplette Store-Unterliste anzeigen
+        element.parent().show();
+        element.parent().siblings().find(".element-arrow").text("⋀");
+
+        // Employee-Unterlisten-Element Hintegrundfarbe und Fett
+        element.css('background-color', 'var(--grey-50)').css('font-weight', '500');
+      }
 }
 
 

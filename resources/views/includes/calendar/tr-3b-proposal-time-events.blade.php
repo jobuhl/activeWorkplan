@@ -1,6 +1,8 @@
 <!-- +++++++++++++++ TIME EVENT +++++++++++++++ -->
 <tr class="time-events">
-    <td class="button-show"></td>
+    <td class="button-show">
+        @if( strpos(url()->current(),'/employee/')) Time-Events @endif
+    </td>
 
 @for ($i = 0; $i < 7; $i++)
 

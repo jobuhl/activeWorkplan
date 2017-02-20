@@ -101,7 +101,7 @@
 /* Unterliste */
 .side-bar .sub-element li {
     list-style: none; /* keine spiegel-punkte */
-    margin: 0 10px 0 10px; /* links und rechts abstand */
+    margin: 0 15px 0 15px; /* links und rechts abstand */
 }
 
 /* text der unterlisten-elemente */
