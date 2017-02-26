@@ -2,8 +2,7 @@
 <html lang="de">
 
     <head>
-        @include('includes.head')
-        <link rel='stylesheet' type='text/css' href="{{ asset('/css/global/button.css') }}"/>
+        @include('includes.head-css')
         @yield('css')
 
     </head>
@@ -25,14 +24,11 @@
         @yield('content')
 
         @include('guest.includes.footer')
-
-        <!-- JQuery -->
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script type="text/javascript" src="{{ asset('/js/app.js') }}"></script>
+        @include('includes.head-js')
         <script type="text/javascript" src="{{ asset('/js/guest/general-mainsection.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/guest/signup_in.js') }}"></script>
         @yield('js')
-        <script type="text/javascript" src="{{ asset('/js/global/header-footer.js') }}"></script>
+
     </body>
 
 

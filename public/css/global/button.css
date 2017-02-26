@@ -1,3 +1,6 @@
+/* --------------------------- COLORS ---------------------- */
+
+
 .green-button {
     background-color: var(--button-green);
 }
@@ -62,11 +65,15 @@ input.form-control:focus {
     text-decoration: none;
 }
 
-:not(.full-opacity).form-control:hover {
+button:not(.full-opacity).form-control:hover,
+a:not(.full-opacity).form-control:hover,
+.round-button:hover {
     opacity: 0.9;
 }
 
-:not(.full-opacity).form-control:active {
+button:not(.full-opacity).form-control:active,
+a:not(.full-opacity).form-control:active,
+.round-button:active {
     opacity: 0.8;
 }
 
@@ -81,3 +88,4 @@ a.form-control:hover {
     color: white;
     text-align: center;
 }
+

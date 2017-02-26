@@ -9,9 +9,16 @@
     <!-- Boostrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+    <!-- selectpicker -->
+    {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.min.css">--}}
+
+    <!-- datepicker -->
+    <link rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css'/>
+
+
     <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/header-footer.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('css/guest/signup.css')}}">
+    <link rel='stylesheet' type='text/css' href="{{ asset('/css/global/button.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('css/global/modal.css')}}">
 
     <script>

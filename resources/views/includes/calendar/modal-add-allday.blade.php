@@ -1,5 +1,4 @@
-<form method="POST" action="{{ url('/employee/alldayEventCreate') }}" id="modal-body-event-allday">
-{{ csrf_field() }}
+<form method="POST" action="{{ url('/employee/alldayEventCreate') }}" id="modal-body-event-allday"> {{ csrf_field() }}
 
 <!-- Modal body-->
     <div class="modal-body">
@@ -18,6 +17,7 @@
                         <option>{{ $cat->name }}</option>
                     @endforeach
                 </select>
+
             </aside>
 
         </article>
@@ -40,7 +40,7 @@
 
     <!-- Modal footer-->
     <div class="modal-footer">
-        <button type="submit" class="form-control to-right add-button" name="thisDate" value="{{ $week[0] }}">Add</button>
+        <button type="submit" class="form-control to-right green-button" name="thisDate" value="{{ $week[0] }}">Add</button>
     </div>
 
 </form>

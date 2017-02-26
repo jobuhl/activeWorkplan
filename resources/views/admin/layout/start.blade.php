@@ -2,8 +2,7 @@
 <html lang="de">
 
 <head>
-    @include('includes.head')
-    <link rel='stylesheet' type='text/css' href="{{ asset('/css/global/button.css') }}"/>
+    @include('includes.head-css')
     @yield('css')
 </head>
 
@@ -21,15 +20,7 @@
 
     @include('admin.includes.footer')
 
-    <!-- JQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript" src="{{ asset('/js/global/header-footer.js') }}"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
+    @include('includes.head-js')
     @yield('js')
 
 </body>

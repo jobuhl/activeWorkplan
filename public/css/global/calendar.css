@@ -120,10 +120,9 @@
 }
 
 .round-button {
-    background-color: var(--button-green);
-    color: var(--text-white);
     border-radius: 15px;
     padding: 4px 8px 5px 8px;
+    color: white;
 }
 
 /* ---------------------------- TABLE ADMIN ------------------------------ */
@@ -316,14 +315,12 @@
 .round-button:hover {
     text-decoration: none;
     color: white;
-    background-color: var(--blue-highlight);
     cursor: pointer;
 }
 
 .round-button:active {
     text-decoration: none;
     color: white;
-    background-color: var(--blue-active);
     cursor: pointer;
 }
 

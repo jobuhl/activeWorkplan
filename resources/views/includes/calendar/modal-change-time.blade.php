@@ -110,7 +110,7 @@
 
                         <input style="display: none;" class="id-overwrite" name="thisEventId" value=""/>
                         <input style="display: none;" class="employee-overwrite" name="thisEmployeeId" value=""/>
-                        <button type="submit" class="form-control to-right add-button">Add</button>
+                        <button type="submit" class="form-control to-right green-button">Add</button>
 
                     @endif
                 </div>

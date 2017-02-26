@@ -139,9 +139,9 @@ class DatabaseSeeder extends Seeder
         } elseif ($workingHours <= 25) {
             $classification = 'Student Employee';
         } elseif ($workingHours <= 35) {
-            $classification = 'Part-Time Employee';
+            $classification = 'Part Time';
         } elseif ($workingHours <= 25) {
-            $classification = 'Full-Time Employee';
+            $classification = 'Full Time';
         }
 
         $periodOfAgrArray = array('unlimitted', 'limitted');
