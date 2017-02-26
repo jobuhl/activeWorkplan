@@ -26,6 +26,7 @@
     height: 10px;
     background: var(--grey-50);
 }
+
 /* tabellen Zwischen-zeile: keine inneren Rahmen */
 .table-account .table-space td:first-child {
     border-right: none;
@@ -33,55 +34,11 @@
 
 /* ---------------------------------- BUTTON ---------------------------------- */
 
-/* bootstrap erweiterte Klasse */
-.my-account-button {
-    color: var(--text-white);
-    margin: 15px 0 15px 0; /* Abstand zur Tabelle */
-}
-
-/* button an rechter seite */
-.set-right {
-    width: 100px;
-    float: right;
-}
-
-/* button color */
-.red {
-    background-color: var(--button-red);
-}
-
-.yellow {
-    background-color: var(--button-yellow);
-}
-
-.space-to-top-bottom{
+.space-to-top-bottom {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-@media screen and (max-width: 768px) {
-
-    .button-show{
-        display: none;
-    }
-
-    .button-hide{
-        display: block;
-    }
-}
-
-@media screen and (min-width: 768px) {
-
-    .button-show{
-        display: block;
-    }
-
-    .button-hide{
-        display: none;
-    }
-}
-
-
-.header{
-    text-align:center;
+.header {
+    text-align: center;
 }

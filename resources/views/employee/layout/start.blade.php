@@ -7,6 +7,8 @@
 
         <link rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css'/>
         <link rel='stylesheet' type='text/css' href="{{ asset('/css/global/header-footer.css') }}"/>
+        <link rel='stylesheet' type='text/css' href="{{ asset('/css/global/button.css') }}"/>
+
         @yield('css')
 
     </head>
@@ -33,9 +35,7 @@
         <!-- Bootstrap JS -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <script type="text/javascript" src="{{ asset('/js/guest/header-footer.js') }}"></script>
-
-        <script type="text/javascript" src="{{ asset('/js/guest/calendar.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/global/header-footer.js') }}"></script>
 
         @yield('js')
     </body>

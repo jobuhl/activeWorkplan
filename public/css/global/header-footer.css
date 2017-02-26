@@ -26,12 +26,15 @@
     --blue-focus: #CFE8FD;
     --blue-highlight: #00A9FF;
     --blue-active: #0C8EE8;
-    --red-light-today: #FFDDDA; /* in wochen-kalender */
+    --red-active-today: #FFDDDA; /* in wochen-kalender */
 
-    /* red / yellow / green */
+    /* red / yellow / green / blue */
     --button-red: #FF5702;
     --button-yellow: #FFC400;
     --button-green: #9CE159;
+    --button-light-green: #DBFFC5;
+    --button-blue: #00A9FF;
+    --button-blue-light: #56CCFF;
 }
 
 * {
@@ -187,7 +190,6 @@ footer a:focus {
     }
 }
 
-
 /* ---------------------------- Falls JavaScript nicht aktiviert (im head) ---------------------------- */
 
 .no-script-message {
@@ -200,50 +202,6 @@ footer a:focus {
     position: fixed;
     top: 60px;
     font-size: 12pt;
-}
-
-
-/* ---------------------------- INPUT form-control ---------------------------- */
-
-.form-control {
-    border-radius: 20px;
-    box-shadow: none;
-}
-
-input.form-control:focus {
-    background-color: var(--grey-50);
-    border: 1px solid var(--blue-highlight);
-    box-shadow: none;
-}
-
-.form-control:focus {
-    box-shadow: none;
-    text-decoration: none;
-}
-
-.form-control:hover {
-    box-shadow: none;
-    text-decoration: none;
-}
-
-:not(.index-button-width-background).form-control:hover {
-    opacity: 0.9;
-}
-
-:not(.index-button-width-background).form-control:active {
-    opacity: 0.8;
-}
-
-button.form-control,
-button.form-control:focus,
-button.form-control:hover,
-a.form-control,
-a.form-control:focus,
-a.form-control:hover {
-    box-shadow: none;
-    border: none;
-    color: white;
-    text-align: center;
 }
 
 /* ---------------------- CHECKBOX Sign In ---------------------- */
@@ -259,11 +217,12 @@ a.form-control:hover {
     border-radius: 20px;
     padding: 6px 12px;
     font-weight: normal;
-    color: white;
+    color: darkgray;
     text-align: center;
     transition: all .3s ease;
     cursor: pointer;
-    background: var(--button-red);
+    background: transparent;
+    border: 1px solid var(--button-red);
 }
 
 .my-checkbox input {
@@ -274,7 +233,8 @@ a.form-control:hover {
 }
 
 .my-checkbox input:checked + label {
-    background: var(--button-green);
+    background: var(--button-light-green);
+    border: 1px solid var(--button-light-green);
 }
 
 .space-just-bottom {

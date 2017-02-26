@@ -9,8 +9,7 @@
             <div class="modal-header">
 
                 <!-- Close Button oben rechts im Header -->
-                <button type="button" class="close" data-dismiss="modal"
-                >&times;</button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 <!-- Überschrift -->
                 <h2 class="modal-ueberschrift">Change Employee</h2>
@@ -22,26 +21,18 @@
 
             <!-- Modal body-->
             <!-- Basic-->
-            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changeEmp') }}"> {{ csrf_field() }}
+            <form class="form-horizontal" method="POST" action="{{ url('/admin/changeEmp') }}"> {{ csrf_field() }}
                 <div class="modal-body">
-
 
                     <!-- Zeile 1 password Change button -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
-                            Password
-                        </aside>
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">Password</aside>
 
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right">
-                            <button type="button" class="form-control  modal-change-button space-line yellow"
-                                    data-dismiss="modal"
-                                    data-toggle="modal"
-                                    data-target="#change-password">Change Password
-                            </button>
+                            <button type="button" class="form-control yellow-button space-line" data-dismiss="modal" data-toggle="modal" data-target="#change-password">Change Password</button>
                         </aside>
 
                     </div>
@@ -54,18 +45,12 @@
                     <!-- Zeile 2 Surname -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
-                            Employee
-                        </aside>
+                        <aside class="col-sm-4 col-xs-12 aside-left space-line">Employee</aside>
 
                         <!-- rechts -->
-
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('name') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap" type="text" name="name"
-                                   placeholder="Name"
-                                   value="{{ $thisEmployee->surname }}">
+                            <input class="inputmodal form-control  modal-input space-cap" type="text" name="name" placeholder="Name" value="{{ $thisEmployee->surname }}">
                             @if ($errors->has('name'))
                                 <span class="help-block"><strong>{{ $errors->first('name') }}</strong></span>
                             @endif
@@ -76,17 +61,12 @@
                     <!-- Zeile 3 Forename -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4"></aside>
 
                         <!-- rechts -->
-
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('forename') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" name="forename"
-                                   placeholder="Forename" value="{{ $thisEmployee->forename }}">
+                            <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" name="forename" placeholder="Forename" value="{{ $thisEmployee->forename }}">
                             @if ($errors->has('forename'))
                                 <span class="help-block"><strong>{{ $errors->first('forename') }}</strong></span>
                             @endif
@@ -94,45 +74,31 @@
 
                     </div>
 
-                    <!-- Zeile Email -->
+                    <!-- Zeile 4 Email -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4"></aside>
 
                         <!-- rechts -->
-                        {{--<aside class="col-xs-12 col-sm-8 aside-right">--}}
-                            {{--<p><input class="form-control to-right modal-input space-cap" type="text"--}}
-                                      {{--value="{{ $thisEmployee->email }}" name="email"></p>--}}
-                        {{--</aside>--}}
                         <aside class="col-sm-8 col-xs-12  aside-right">
-                            <button type="button" class="form-control  modal-change-button space-line yellow"
-                                    data-dismiss="modal"
-                                    data-toggle="modal"
-                                    data-target="#change-email">Change Email
-                            </button>
+                            <button type="button" class="form-control yellow-button space-line" data-dismiss="modal" data-toggle="modal" data-target="#change-email">Change Email</button>
                         </aside>
                     </div>
 
                     <div class="placeholder-mobil col-xs-12">
                         <hr class="hr-line">
                     </div>
-                    <!-- Zeile 6 Agreement -->
+
+                    <!-- Zeile 5 Agreement -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
-                            Contract
-                        </aside>
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">Contract</aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner"
-                                       name="agreement">
+                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner" name="agreement">
                                     <option>unlimited</option>
                                     <option>limited</option>
                                 </select></p>
@@ -141,19 +107,15 @@
 
                     </div>
 
-                    <!-- Zeile 7 Role -->
+                    <!-- Zeile 6 Role -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4"></aside>
 
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('role') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="role"
-                                   placeholder="Role" value="{{ $thisEmployee->role }}">
+                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="role" placeholder="Role" value="{{ $thisEmployee->role }}">
                             @if ($errors->has('role'))
                                 <span class="help-block"><strong>{{ $errors->first('role') }}</strong></span>
                             @endif
@@ -162,47 +124,37 @@
 
                     </div>
 
-                    <!-- Zeile 8 Classification -->
+                    <!-- Zeile 7 Classification -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4"></aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner"
-                                       name="classification">
-                                    <option>Fulltime</option>
-                                    <option>Halftime</option>
-                                    <option>Parttime</option>
-                                    <option>Internship</option>
+                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner" name="classification">
+                                    <option>Full Time</option>
+                                    <option>Part Time</option>
+                                    <option>Student Employee</option>
+                                    <option>Temporary Help</option>
                                 </select></p>
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 9 hours -->
+                    <!-- Zeile 8 hours -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4"></aside>
 
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('working_hours') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" name="working_hours"
-                                   placeholder="Working hours" value="{{ $thisEmployee->working_hours }}">
+                            <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" name="working_hours" placeholder="Working hours" value="{{ $thisEmployee->working_hours }}">
                             @if ($errors->has('working_hours'))
                                 <span class="help-block"><strong>{{ $errors->first('working_hours') }}</strong></span>
                             @endif
                         </aside>
-
-
 
                     </div>
 
@@ -210,35 +162,28 @@
                         <hr class="hr-line">
                     </div>
 
-                    <!-- Zeile 10 Company-->
+                    <!-- Zeile 9 Company-->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
-                            Company
-                        </aside>
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">Company</aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p class="inputmodal form-control">HTWG</p>
+                            <p class="inputmodal form-control">{{ $company->name }}</p>
                         </aside>
 
                     </div>
 
-                    <!-- Zeile 11 RetailStore-->
+                    <!-- Zeile 10 RetailStore-->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 ">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4 "></aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner"
-                                       name="retail_store_value">
+                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner" name="retail_store_value">
                                     <option value="{{ $thisRetailStore->id}}">{{ $thisRetailStore->name }}</option>
                                     @foreach($allRetailStores as $retailStore)
                                         @if($retailStore->name != $thisRetailStore->name)
@@ -249,16 +194,12 @@
                         </aside>
 
                     </div>
-
-
                 </div>
+
                 <!-- Modal footer-->
                 <div class="modal-footer">
                     <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
-                    <button class="form-control to-right modal-change-button space-to-top-bottom" type="submit"
-                            value="{{ $thisEmployee->id }}" name="thisEmployeeId">
-                        Change
-                    </button>
+                    <button class="form-control set-right yellow-button" type="submit" value="{{ $thisEmployee->id }}" name="thisEmployeeId">Change</button>
                 </div>
             </form>
         </div>
@@ -277,23 +218,20 @@
             <div class="modal-header">
 
                 <!-- Close Button oben rechts im Header -->
-                <button type="button" class="close" data-dismiss="modal"
-                >&times;</button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 <!-- Überschrift -->
                 <h2 class="modal-ueberschrift">Change Password</h2>
             </div>
 
-            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changePasswordEmp') }}">
-            {{ csrf_field() }}
+            <form class="form-horizontal" method="POST" action="{{ url('/admin/changePasswordEmp') }}"> {{ csrf_field() }}
             <!-- Body-->
                 <div class="modal-body">
 
                     <!-- password1-->
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <div class="col-xs-12">
-                            <input type="password" class="form-control" name="password"
-                                   placeholder="Password">
+                            <input type="password" class="form-control" name="password" placeholder="Password">
                             @if ($errors->has('password'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -307,10 +245,7 @@
                     <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 
                         <div class="col-xs-12">
-                            <input id="password-confirm" type="password" class="form-control"
-                                   placeholder="Confirm Password"
-                                   name="password_confirmation">
-
+                            <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation">
                             @if ($errors->has('password_confirmation'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -325,10 +260,7 @@
                 <div class="modal-footer">
 
                     <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
-                    <button type="submit" class="form-control  modal-change-button space-line yellow"
-                            value="{{ $thisEmployee->id }}" name="thisEmployeeId"
-                    >Change Password
-                    </button>
+                    <button type="submit" class="form-control yellow-button space-line" value="{{ $thisEmployee->id }}" name="thisEmployeeId">Change Password</button>
                 </div>
 
             </form>
@@ -347,24 +279,19 @@
             <div class="modal-header">
 
                 <!-- Close Button oben rechts im Header -->
-                <button type="button" class="close" data-dismiss="modal"
-                >&times;</button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 <!-- Überschrift -->
                 <h2 class="modal-ueberschrift">Change E-Mail</h2>
             </div>
 
-            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changeEmailEmp') }}">
-            {{ csrf_field() }}
+            <form class="form-horizontal" method="POST" action="{{ url('/admin/changeEmailEmp') }}"> {{ csrf_field() }}
 
             <!-- Body-->
                 <div class="modal-body {{ $errors->has('email') ? ' has-error' : '' }}">
 
-
                     <div class="{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <input class="inputmodal form-control  modal-input space-cap-bottom" type="text"
-                               name="email"
-                               value="{{ $thisEmployee->email }}">
+                        <input class="inputmodal form-control  modal-input space-cap-bottom" type="text" name="email" value="{{ $thisEmployee->email }}">
                         @if ($errors->has('email'))
                             <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span>
                         @endif
@@ -375,12 +302,8 @@
 
                 <!-- Modal footer-->
                 <div class="modal-footer">
-
                     <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
-                    <button type="submit" class="form-control  modal-change-button space-line yellow"
-                            value="{{ $thisEmployee->id }}" name="thisEmployeeId"
-                    >Change Email
-                    </button>
+                    <button type="submit" class="form-control yellow-button space-line" value="{{ $thisEmployee->id }}" name="thisEmployeeId">Change Email</button>
                 </div>
             </form>
         </div>

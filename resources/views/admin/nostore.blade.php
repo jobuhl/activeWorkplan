@@ -13,12 +13,12 @@
             <div class="row">
 
                 <h2 class="modal-ueberschrift">At the moment your Company has no Stores.</h2>
+
                 <br>
                 <br>
+
                 <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-                    <button class="form-control add-button" type="submit" data-toggle="modal" data-target="#add-button-store">
-                        Add Store
-                    </button>
+                    <button class="form-control green-button" type="submit" data-toggle="modal" data-target="#add-button-store">Add Store</button>
                 </div>
 
             </div>

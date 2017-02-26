@@ -18,11 +18,10 @@
         <aside class="col-xs-12 col-sm-6 index-image-aside">
             <form class="my-center width-80">
                 <h4 class="my-horizontal-center">Sign up</h4>
-                <p><input class="form-control to-right modal-input" id="sign-up-email" type="email" placeholder="Email"></p>
-                <p><input class="form-control to-right modal-input" id="sign-up-password1" type="password" placeholder="Password"></p>
-                <p><input class="form-control to-right modal-input" id="sign-up-password2" type="password" placeholder="Confirm Password"></p>
-                <button class="index-button-width-background form-control add-button" type="button" onclick="signupPicture()" data-toggle="modal" data-target="#signupbutton">Sign up</button>
-                <button id="oped-modal-step-2" style="display: none" onclick="nextStep(2)"></button>
+                <p><input class="form-control to-right modal-input full-opacity" id="sign-up-email" type="email" placeholder="Email"></p>
+                <p><input class="form-control to-right modal-input full-opacity" id="sign-up-password1" type="password" placeholder="Password"></p>
+                <p><input class="form-control to-right modal-input full-opacity" id="sign-up-password2" type="password" placeholder="Confirm Password"></p>
+                <button class="form-control green-button full-opacity" type="button" onclick="signupPicture()" data-toggle="modal" data-target="#signupbutton">Sign up</button>
             </form>
         </aside>
     </div>
@@ -70,7 +69,7 @@
                     Dazu gehören vorgeschlagene Arbeitszeiten, Seminare, eingeplante Zeit um für sein Studium zu lernen und mehr.
                     Bei Krankheit und Urlaub müssen Sie als Arbeitsgeber die Events sogar genehmigen bzw. bestätigen.
                 </p>
-                <a class="form-control next-button more-info-button" href="feature">More</a>
+                <a class="form-control blue-button more-info-button" href="feature">More</a>
             </aside>
 
             <!-- links / unten; Pull damit colum nach oben geht-->
@@ -90,7 +89,7 @@
                     speichert. Diese sind bis zu einem Jahr rückwirkend einsehbar. Sie als Arbeitsgeber haben selbstverständlich
                     die kompletten Kalender der Mitarbeiter sowie die fertigen Einsatzpläne zugriffsbereit.
                 </p>
-                <a class="form-control next-button more-info-button" href="feature">More</a>
+                <a class="form-control blue-button more-info-button" href="feature">More</a>
             </aside>
 
             <!-- rechts -->
@@ -108,7 +107,7 @@
                     gewünschten Arbeitszeiten oder Fehlzeiten in Ihrem Terminplan rechtzeitig eintragen und schon sind sie
                     ihrem organisierten Alltag einen Schritt näher.
                 </p>
-                <a class="form-control next-button more-info-button" href="feature">More</a>
+                <a class="form-control blue-button more-info-button" href="feature">More</a>
             </aside>
 
             <aside class="col-sm-6 col-sm-pull-6">
@@ -127,7 +126,7 @@
                     Erstellung des Einsatzplanes auf alle Mitarbeiter. Das gesamte Team arbeitet zusammen an einem für alle
                     fairen und optimalen Arbeitsplan.
                 </p>
-                <a class="form-control next-button more-info-button" href="feature">More</a>
+                <a class="form-control blue-button more-info-button" href="feature">More</a>
             </aside>
 
             <!-- rechts -->
@@ -144,7 +143,7 @@
                 <p>Sie haben keinen PC oder Laptop zu Hause? Kein Problem, denn activeWorkplan lässt sich auch von Ihrem
                     Smartphone oder Tablet bedienen. Wo immer sie sind und genau dann, wenn Sie es brauchen.
                 </p>
-                <a class="form-control next-button more-info-button" href="feature">More</a>
+                <a class="form-control blue-button more-info-button" href="feature">More</a>
             </aside>
 
             <aside class="col-sm-6 col-sm-pull-6">
@@ -165,7 +164,7 @@
                     an die Kasse und bekommt dadurch eine neue Rolle zugewiesen. Mit dieser kann er bei der Einsatzplanung
                     unter neuen Aspekten berücksichtigt werden.
                 </p>
-                <a class="form-control next-button more-info-button" href="feature">More</a>
+                <a class="form-control blue-button more-info-button" href="feature">More</a>
             </aside>
 
             <!-- rechts -->
@@ -185,7 +184,7 @@
                     und intuitive Bedienung möglich, beliebig viele Mitarbeiter und Filialen zu registieren, ohne
                     dass diese einen Finger rühren müssen.
                 </p>
-                <a class="form-control next-button more-info-button" href="feature">More</a>
+                <a class="form-control blue-button more-info-button" href="feature">More</a>
             </aside>
 
             <!--  rechts -->
@@ -207,7 +206,7 @@
                 </p>
 
                 <aside class="col-xs-12 col-sm-4 col-sm-offset-4">
-                    <button class="form-control to-right add-button" type="button" data-toggle="modal"
+                    <button class="form-control to-right green-button" type="button" data-toggle="modal"
                             data-target="#signupbutton" onclick="nextStep(1)">Kostenlos registrieren
                     </button>
                 </aside>

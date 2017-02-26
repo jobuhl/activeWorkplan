@@ -8,8 +8,7 @@
             <div class="modal-header">
 
                 <!-- Close Button oben rechts im Header -->
-                <button type="button" class="close" data-dismiss="modal"
-                >&times;</button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 <!-- Überschrift -->
                 <h2 class="modal-ueberschrift">Change Store</h2>
@@ -21,26 +20,19 @@
 
             <!-- Modal body-->
             <!-- Basic-->
-            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changeStore') }}">
-                {{ csrf_field() }}
+            <form class="form-horizontal"  method="POST" action="{{ url('/admin/changeStore') }}"> {{ csrf_field() }}
 
                 <div class="modal-body">
 
                     <!-- Zeile 1 Store Name -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4 aside-left space-line">Store</aside>
 
                         <!-- rechts -->
-
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('store_name') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap" type="text" name="store_name"
-                                   placeholder="Store Name"
-                                   value="{{ $thisRetailStore->name }}">
+                            <input class="inputmodal form-control  modal-input space-cap" type="text" name="store_name" placeholder="Store Name" value="{{ $thisRetailStore->name }}">
                             @if ($errors->has('store_name'))
                                 <span class="help-block"><strong>{{ $errors->first('store_name') }}</strong></span>
                             @endif
@@ -56,14 +48,11 @@
                     <div class="row">
 
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-cap">
-                            Address
-                        </aside>
+                        <aside class="col-sm-4 col-xs-12  aside-left space-cap">Address</aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-9 col-sm-6 aside-right {{ $errors->has('street') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap" type="text"
-                                   value="{{ $addressRetailStore->street }}" name="street" placeholder="Street">
+                            <input class="inputmodal form-control  modal-input space-cap" type="text" value="{{ $addressRetailStore->street }}" name="street" placeholder="Street">
                             @if ($errors->has('street'))
                                 <span class="help-block"><strong>{{ $errors->first('street') }}</strong></span>
                             @endif
@@ -71,8 +60,7 @@
 
                         <!-- rechts 2-->
                         <aside class="col-xs-3 col-sm-2 {{ $errors->has('nr') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap" type="text"
-                                   value="{{ $addressRetailStore->street_nr }}" name="nr" placeholder="Nr.">
+                            <input class="inputmodal form-control  modal-input space-cap" type="text" value="{{ $addressRetailStore->street_nr }}" name="nr" placeholder="Nr.">
                             @if ($errors->has('nr'))
                                 <span class="help-block"><strong>{{ $errors->first('nr') }}</strong></span>
                             @endif
@@ -84,15 +72,11 @@
                     <div class="row">
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4"></aside>
 
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('postcode') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                   name="postcode" placeholder="Postcode"
-                                   value="{{ $addressRetailStore->postcode }}">
+                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="postcode" placeholder="Postcode" value="{{ $addressRetailStore->postcode }}">
                             @if ($errors->has('postcode'))
                                 <span class="help-block"><strong>{{ $errors->first('postcode') }}</strong></span>
                             @endif
@@ -103,17 +87,12 @@
                     <!-- Zeile 4 -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4"></aside>
 
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('city') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                   name="city" placeholder="City"
-                                   value="{{ $addressRetailStore->city }}">
+                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="city" placeholder="City" value="{{ $addressRetailStore->city }}">
                             @if ($errors->has('city'))
                                 <span class="help-block"><strong>{{ $errors->first('city') }}</strong></span>
                             @endif
@@ -124,17 +103,12 @@
                     <!-- Zeile 5 -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4"></aside>
 
                         <!-- rechts -->
                         <aside class="col-sm-8 col-xs-12  aside-right {{ $errors->has('country') ? ' has-error' : '' }}">
-                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text"
-                                   name="country" placeholder="Country"
-                                   value="{{ $addressRetailStore->country }}">
+                            <input class="inputmodal form-control  modal-input space-cap-inner" type="text" name="country" placeholder="Country" value="{{ $addressRetailStore->country }}">
                             @if ($errors->has('country'))
                                 <span class="help-block"><strong>{{ $errors->first('country') }}</strong></span>
                             @endif
@@ -147,10 +121,7 @@
                 <!-- Modal footer-->
                 <div class="modal-footer">
                     <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
-                    <button class="form-control to-right modal-change-button" type="submit"
-                            value="{{ $thisRetailStore->id }}" name="thisRetailStoreId">
-                        Change
-                    </button>
+                    <button class="form-control yellow-button" type="submit" value="{{ $thisRetailStore->id }}" name="thisRetailStoreId">Change</button>
                 </div>
             </form>
 

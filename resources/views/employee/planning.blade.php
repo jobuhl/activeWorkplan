@@ -68,4 +68,5 @@
 
 @section('js')
     <script type="text/javascript" src="{{ asset('/js/employee/event.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/global/calendar.js') }}"></script>
 @endsection

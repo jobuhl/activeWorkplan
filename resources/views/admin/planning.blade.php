@@ -111,7 +111,7 @@
                 <div class="col-xs-12 space_emp"></div>
 
                 <!-- Change Button -->
-                <button class="set-right-buttom form-control modal-change-button" data-toggle="modal" data-target="#change-store">Change</button>
+                <button class="set-right form-control yellow-button" data-toggle="modal" data-target="#change-store">Change</button>
 
                 <div class="col-xs-12 space_emp"></div>
 
@@ -124,8 +124,7 @@
                     </tr>
                     <tr>
                         <td>Retail Store Address</td>
-                        <td>{{ $addressRetailStore->street }} {{ $addressRetailStore->street_nr }}
-                            , {{ $addressRetailStore->postcode }} {{ $addressRetailStore->city }}, {{ $addressRetailStore->country }}
+                        <td>{{ $addressRetailStore->street . ' ' . $addressRetailStore->street_nr . ', ' . $addressRetailStore->postcode . ' ' . $addressRetailStore->city . ', ' . $addressRetailStore->country }}
                         </td>
                     </tr>
                     <tr>
@@ -137,7 +136,7 @@
                 <div class="col-xs-12 space_emp"></div>
 
                 <!-- Delete Button -->
-                <button class="set-right-buttom form-control delete-button" data-toggle="modal" type="submit" data-target="#delete-store">Delete</button>
+                <button class="set-right form-control red-button" data-toggle="modal" type="submit" data-target="#delete-store">Delete</button>
             </aside>
 
             <div class="col-xs-12 space_emp"></div>
@@ -153,8 +152,8 @@
 
 
 @section('js')
-    <script src="{{ asset('/js/guest/side-bar.js') }}"></script>
-    <script src="{{ asset('/js/guest/calendar.js')}}"></script>
+    <script src="{{ asset('/js/admin/side-bar.js') }}"></script>
+    <script src="{{ asset('/js/global/calendar.js')}}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
 @endsection

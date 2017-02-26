@@ -1,0 +1,83 @@
+.green-button {
+    background-color: var(--button-green);
+}
+
+.green-light-button {
+    background-color: var(--button-green);
+}
+
+.yellow-button {
+    background-color: var(--button-yellow);
+}
+
+.red-button {
+    background-color: var(--button-red);
+}
+
+.blue-button {
+    background-color: var(--button-blue);
+}
+
+.blue-light-button {
+    background-color: var(--button-blue-light);
+}
+
+/* --------------------------- CHANGE / DELETE BUTTON SET RIGHT ---------------------- */
+
+
+/* button an rechter seite */
+.set-right {
+    width: 100px;
+    float: right;
+}
+
+@media screen and (max-width: 767px) {
+
+    /* button volle breite */
+    .set-right {
+        width: 100%;
+    }
+}
+
+/* ---------------------------- INPUT form-control ---------------------------- */
+
+.form-control {
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+input.form-control:focus {
+    background-color: var(--grey-50);
+    border: 1px solid var(--blue-highlight);
+    box-shadow: none;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    text-decoration: none;
+}
+
+.form-control:hover {
+    box-shadow: none;
+    text-decoration: none;
+}
+
+:not(.full-opacity).form-control:hover {
+    opacity: 0.9;
+}
+
+:not(.full-opacity).form-control:active {
+    opacity: 0.8;
+}
+
+button.form-control,
+button.form-control:focus,
+button.form-control:hover,
+a.form-control,
+a.form-control:focus,
+a.form-control:hover {
+    box-shadow: none;
+    border: none;
+    color: white;
+    text-align: center;
+}

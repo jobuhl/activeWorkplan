@@ -12,18 +12,14 @@
             <a href="javascript:void(0);" onclick="toggleMakeResponsive()">&#9776;</a>
         </li>
     </ul>
+
     <ul class="right-list" id="id-right">
         <li><a id="workplan" href="{{ url('/employee/workplan') . '/' . $week[0] }}">Workplan</a></li>
         <li><a id="planning" href="{{ url('/employee/planning') . '/' . $week[0] }}">Planning</a></li>
         <li><a id="account" href="{{ url('/employee/account') . '/' . $week[0] }}">{{ Auth::user()->name }}</a></li>
-        <li><a href="{{ url('/employee/logout') }}"
-               onclick="event.preventDefault();
-               document.getElementById('logout-form').submit();">
-                Logout
-            </a>
+        <li><a href="{{ url('/employee/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
-            <form id="logout-form" action="{{ url('/employee/logout') }}" method="POST" style="display: none;"> {{ csrf_field() }}
-            </form>
+            <form id="logout-form" action="{{ url('/employee/logout') }}" method="POST" style="display: none;"> {{ csrf_field() }} </form>
         </li>
     </ul>
 </header>

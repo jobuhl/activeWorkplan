@@ -5,12 +5,12 @@
 
 
 /* Change Button im Change Menue*/
-.modal-change-button{
-    margin: 0;
-    width: 100%;
-    background: var(--button-yellow);
-    color: white;
-}
+/*.modal-change-button{*/
+    /*margin: 0;*/
+    /*width: 100%;*/
+    /*!*background: var(--button-yellow);*!*/
+    /*!*color: white;*!*/
+/*}*/
 
 /* Länge vom Feld im Change Menue*/
 .modal-input{
@@ -66,20 +66,20 @@
     margin-bottom: 10px;
 }
 
-.add-button{
-    background-color: var(--button-green);
-    color: white;
-}
+/*.add-button{*/
+    /*background-color: var(--button-green);*/
+    /*color: white;*/
+/*}*/
 
-.next-button{
-    background-color: var(--blue-highlight);
-    color: white;
-}
+/*.next-button{*/
+    /*background-color: var(--blue-highlight);*/
+    /*color: white;*/
+/*}*/
 
-.delete-button{
-    background-color: var(--button-red);
-    color: white;
-}
+/*.delete-button{*/
+    /*background-color: var(--button-red);*/
+    /*color: white;*/
+/*}*/
 
 .inputmodal{
     color:black;

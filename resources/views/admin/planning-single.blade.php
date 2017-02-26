@@ -84,7 +84,7 @@
                 <div class="col-xs-12 space_emp"></div>
 
                 <!-- Change Button -->
-                <button class="form-control set-right modal-change-button space-to-top-bottom" type="submit" data-toggle="modal" data-target="#change" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
+                <button class="form-control set-right yellow-button" type="submit" data-toggle="modal" data-target="#change" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
                     Change
                 </button>
 
@@ -165,14 +165,13 @@
                 <div class="col-xs-12 space_emp"></div>
 
                 <!-- Delete Button -->
-                <button class="form-control set-right delete-button space-to-top-bottom" type="submit" data-toggle="modal" data-target="#delete-emp" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
+                <button class="form-control set-right red-button" type="submit" data-toggle="modal" data-target="#delete-emp" value="{{ $thisEmployee->id }}" name="thisEmployeeId">
                     Delete
                 </button>
 
-                <div class="col-xs-12 space_emp"></div>
-
-
             </aside>
+
+            <div class="col-xs-12 space_emp"></div>
 
         </div>
     @endif
@@ -185,8 +184,8 @@
 
 
 @section('js')
-    <script src="{{asset('js/guest/side-bar.js')}}"></script>
-    <script src="{{asset('js/guest/calendar.js')}}"></script>
+    <script src="{{asset('js/admin/side-bar.js')}}"></script>
+    <script src="{{asset('js/global/calendar.js')}}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
 @endsection

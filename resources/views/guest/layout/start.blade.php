@@ -3,7 +3,7 @@
 
     <head>
         @include('includes.head')
-
+        <link rel='stylesheet' type='text/css' href="{{ asset('/css/global/button.css') }}"/>
         @yield('css')
 
     </head>
@@ -32,7 +32,7 @@
         <script type="text/javascript" src="{{ asset('/js/guest/general-mainsection.js') }}"></script>
         <script type="text/javascript" src="{{ asset('/js/guest/signup_in.js') }}"></script>
         @yield('js')
-        <script type="text/javascript" src="{{ asset('/js/guest/header-footer.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/js/global/header-footer.js') }}"></script>
     </body>
 
 

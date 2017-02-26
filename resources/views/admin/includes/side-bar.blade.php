@@ -9,7 +9,7 @@
         <div>
             <!-- Add Employee -->
             <div class="col-xs-6 left-button-side-bar">
-                <button class="form-control add-button" type="submit" data-toggle="modal" data-target="#add-button-emp">
+                <button class="form-control green-button" type="submit" data-toggle="modal" data-target="#add-button-emp">
                     + <img style="height: 15px; margin-bottom: 2px;" src="{{asset('/img/emp_white.gif')}}" alt="Bild" draggable="false">
                 </button>
 
@@ -17,7 +17,7 @@
 
             <!-- Add Store -->
             <div class="col-xs-6 right-button-side-bar">
-                <button class="form-control add-button" type="submit" data-toggle="modal" data-target="#add-button-store">
+                <button class="form-control green-button" type="submit" data-toggle="modal" data-target="#add-button-store">
                     + <img style="height: 15px; margin-bottom: 2px;" src="{{asset('/img/shop_white.gif')}}" alt="Bild" draggable="false">
                 </button>
             </div>

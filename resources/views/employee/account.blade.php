@@ -37,18 +37,8 @@
             <h2 class="col-xs-12 header">Account Details</h2>
 
 
-            <div class="set-right button-show">
-                <button class="form-control  yellow my-account-button" type="submit" data-toggle="modal"
-                        data-target="#change-button">
-                    Change
-                </button>
-            </div>
-
-            <div class="button-hide">
-                <button class="form-control yellow my-account-button" type="submit" data-toggle="modal"
-                        data-target="#change-button">
-                    Change
-                </button>
+            <div class="set-right">
+                <button class="form-control yellow-button space-to-top-bottom" type="submit" data-toggle="modal" data-target="#change-button">Change</button>
             </div>
 
 
@@ -116,6 +106,9 @@
 
 
     @include('employee.includes.change-emp')
+    @include('employee.includes.change-emp-password')
+    @include('employee.includes.change-emp-email')
+
 
 @endsection
 

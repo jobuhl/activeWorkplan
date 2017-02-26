@@ -1,16 +1,22 @@
 /* Beim Laden der Seite Footer ausrichten */
 window.onload = fixFooter(), highlightTab();
 
+// /* Diese Variante ist langsamer */
+// window.onload = function () {
+//     fixFooter();
+//     highlightTab();
+// };
+
 function highlightTab() {
 
     /* Pfadname der aktuellen Datei auslesen */
     var url = window.location.pathname;
 
     /* Regular Expression Literale mit Slashes, Gruppierung und Alles durch Gruppe 2 ersetzen */
-    var tabId = url.replace(/.+(guest|admin|employee)\/([a-zA-Z_-]+).*/ , "$2");
+    var tabId = url.replace(/.+(guest|admin|employee)\/([a-zA-Z_-]+).*/, "$2");
 
     /* Sonderfall, da die Mitarbeiter Seite im gleichen Tab wie Planning ist */
-    if(tabId == "planning-single") {
+    if (tabId == "planning-single") {
         tabId = "planning";
     }
 
@@ -51,7 +57,7 @@ function toggleMakeResponsive() {
     }
 }
 
-function getheaderHeight() {
+function getHeaderHeight() {
     var amountListElements = 0;
 
     if ($("#id-right")[0].className === "right-list responsive") {
@@ -69,7 +75,7 @@ function changeSectionUnderHeader(decision) {
 
     /* Hoehe der Section unterm Header vergroessern / verkleinern */
     if (decision == "down") {
-        $('.space-under-header')[0].style.height = (getheaderHeight() + 1) * 60 + "px";
+        $('.space-under-header')[0].style.height = (getHeaderHeight() + 1) * 60 + "px";
     } else {
         $('.space-under-header')[0].style.height = "60px";
     }
@@ -80,7 +86,9 @@ function changeSectionUnderHeader(decision) {
 
 function fixFooter() {
     /* Hoehe von Body und Window(Display) */
-    var bodyHeight = $(".fake-body").height() + getheaderHeight() + 120; /* 120 wegen header-hoehe plus footer-hoehe */
+    /* 120 wegen header-hoehe plus footer-hoehe */
+    var bodyHeight = $(".fake-body").height() + getHeaderHeight() + 120;
+
     var windowHeight = $(window).height();
     /*alert("fake-body: " + bodyHeight + "\nwindow     : " + windowHeight + "\nVielleicht Problem mit Bootstrap Klassen (col-xx-xx)");*/
 

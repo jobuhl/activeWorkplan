@@ -126,7 +126,7 @@ function signupPicture() {
 
     nextStep(1);
 
-    document.getElementById("email").value = email;
-    document.getElementById("password").value = pw1;
-    document.getElementById("password-confirm").value = pw2;
+    document.getElementById("overwrite-email").value = email;
+    document.getElementById("overwrite-pw1").value = pw1;
+    document.getElementById("overwrite-pw2").value = pw2;
 }

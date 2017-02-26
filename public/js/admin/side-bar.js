@@ -1,9 +1,11 @@
 /* Wenn Seite neu geladen */
-window.onload = function () {
-    /* Trennlinie nur berechnen */
-    sideBarBorder();
-    highlightEmployee();
-};
+window.onload = sideBarBorder(), highlightEmployee();
+
+// /* Diese Variante ist langsamer */
+// window.onload = function () {
+//     sideBarBorder();
+//     highlightEmployee();
+// };
 
 /* Wenn Fenster vergroessert oder verkleinert wird */
 $('body')[0].onresize = function () {

@@ -7,37 +7,28 @@
             <div class="modal-header">
 
                 <!-- Close Button oben rechts im Header -->
-                <button type="button" class="close" data-dismiss="modal"
-                >&times;</button>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
 
                 <!-- Überschrift -->
                 <h2 class="modal-ueberschrift">Add Employee</h2>
                 <br>
 
-                <!-- Übersicht der Navigation die bei Vorschritt markiert weden -->
-
             </div>
-            <form class="form-horizontal"  method="POST" action="{{ url('/admin/addEmp') }}">
-            {{ csrf_field() }}
+
+            <form class="form-horizontal" method="POST" action="{{ url('/admin/addEmp') }}"> {{ csrf_field() }}
             <!-- Modal body-->
                 <!-- Basic-->
                 <div class="modal-body">
 
-
                     <!-- Zeile 1 password1 -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
-                            Password
-                        </aside>
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">Password</aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('password') ? ' has-error' : '' }}">
-                            <p><input type="password" class="form-control" name="password"
-                                      placeholder="password..."></p>
-
+                            <p><input type="password" class="form-control" name="password" placeholder="password..."></p>
                             @if ($errors->has('password'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -51,14 +42,11 @@
                     <div class="row ">
 
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4 aside-left-add"></aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input type="password" class="form-control" name="password_confirmation"
-                                      placeholder="confirm password..."></p>
-
+                            <p><input type="password" class="form-control" name="password_confirmation" placeholder="confirm password..."></p>
                             @if ($errors->has('password_confirmation'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -75,17 +63,12 @@
                     <!-- Zeile 3 name-->
                     <div class="row ">
 
-
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
-                            Employee
-                        </aside>
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">Employee</aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('name') ? ' has-error' : '' }}">
-                            <p><input id="name" type="text" class="form-control" name="name" placeholder="surename"
-                                      value="{{ old('name') }}">
-
+                            <p><input id="name" type="text" class="form-control" name="name" placeholder="surename" value="{{ old('name') }}">
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -98,17 +81,12 @@
                     <!-- Zeile 4 forename-->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4 aside-left-add"></aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('forename') ? ' has-error' : '' }}">
-                            <p><input id="forename" type="text" class="form-control" name="forename"
-                                      placeholder="forename" value="{{ old('forename') }}">
-
+                            <p><input id="forename" type="text" class="form-control" name="forename" placeholder="forename" value="{{ old('forename') }}">
                                 @if ($errors->has('forename'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('forename') }}</strong>
@@ -121,17 +99,12 @@
                     <!-- Zeile 5 email-->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4 aside-left-add"></aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('email') ? ' has-error' : '' }}">
-                            <p><input id="email" type="email" class="form-control" name="email" placeholder="E-Mail"
-                                      value="{{ old('email') }}">
-
+                            <p><input id="email" type="email" class="form-control" name="email" placeholder="E-Mail" value="{{ old('email') }}">
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -148,23 +121,16 @@
                     <!-- Zeile 6 store-->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
-                            Store
-                        </aside>
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">Store</aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap"
-                                       name="retail_store_name">
-
+                            <p><select class="selectpicker form-control to-right modal-input space-cap" name="retail_store_name">
                                     @foreach($allRetailStores as $retailStore)
                                         <option>{{ $retailStore->name }}</option>
                                     @endforeach
                                 </select></p>
-
-
                         </aside>
 
                     </div>
@@ -176,25 +142,16 @@
                     <!-- Zeile 6 contract-->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-sm-4 col-xs-12  aside-left space-line">
-                            Contract
-                        </aside>
+                        <aside class="col-sm-4 col-xs-12  aside-left space-line">Contract</aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap"
-                                       name="period_of_agreement"
-                                >
+                            <p><select class="selectpicker form-control to-right modal-input space-cap" name="period_of_agreement">
                                     <option>limited</option>
                                     <option>unlimited</option>
-
                                 </select>
-
                             </p>
-
-
                         </aside>
 
                     </div>
@@ -202,18 +159,12 @@
                     <!-- Zeile 7 -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4 aside-left-add"></aside>
 
                         <!-- rechts -->
-
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('roleid') ? ' has-error' : '' }}">
-                            <p><input id="roleid" type="text" class="form-control" name="roleid"
-                                      placeholder="Role" value="{{ old('roleid') }}">
-
+                            <p><input id="roleid" type="text" class="form-control" name="roleid" placeholder="Role" value="{{ old('roleid') }}">
                                 @if ($errors->has('roleid'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('roleid') }}</strong>
@@ -233,13 +184,11 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap"
-                                       name="classification"
-                                     >
-                                    <option>Fulltime</option>
-                                    <option>Halftime</option>
-                                    <option>Parttime</option>
-                                    <option>Internship</option>
+                            <p><select class="selectpicker form-control to-right modal-input space-cap" name="classification">
+                                    <option>Full Time</option>
+                                    <option>Part Time</option>
+                                    <option>Student Employee</option>
+                                    <option>Temporary Help</option>
                                 </select>
                             </p>
                         </aside>
@@ -249,17 +198,12 @@
                     <!-- Zeile 9 -->
                     <div class="row">
 
-
                         <!-- links -->
-                        <aside class="col-xs-12 col-sm-4 aside-left-add">
-
-                        </aside>
+                        <aside class="col-xs-12 col-sm-4 aside-left-add"></aside>
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('working_hours') ? ' has-error' : '' }}">
-                            <p><input id="working_hours" type="text" class="form-control" name="working_hours"
-                                      placeholder="Working Hours" value="{{ old('working_hours') }}">
-
+                            <p><input id="working_hours" type="text" class="form-control" name="working_hours" placeholder="Working Hours" value="{{ old('working_hours') }}">
                                 @if ($errors->has('working_hours'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('working_hours') }}</strong>
@@ -273,12 +217,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <div class="col-xs-12">
-                        <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
-                        <button type="submit" class="form-control to-right add-button">
-                            Add
-                        </button>
-                    </div>
+                    <button type="submit" class="form-control green-button" name="thisDate" value="{{ $week[0] }}">Add</button>
                 </div>
             </form>
 

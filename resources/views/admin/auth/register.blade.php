@@ -51,8 +51,7 @@
 
             <!-- Modal body-->
 
-            <form class="form-horizontal" method="POST" action="{{ url('/admin/register') }}">
-                {{ csrf_field() }}
+            <form class="form-horizontal" method="POST" action="{{ url('/admin/register') }}"> {{ csrf_field() }}
 
                 <div class="modal-body">
 
@@ -62,8 +61,7 @@
                         <br>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
-                                <input type="email" class="form-control" name="email" placeholder="E-Mail"
-                                       value="{{ old('email') }}" >
+                                <input id="overwrite-email" type="email" class="form-control" name="email" placeholder="E-Mail" value="{{ old('email') }}" >
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -76,8 +74,7 @@
                         <!-- password1-->
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <div class="col-xs-12">
-                                <input type="password" class="form-control" name="password"
-                                       placeholder="Password">
+                                <input id="overwrite-pw1" type="password" class="form-control" name="password" placeholder="Password">
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -91,8 +88,7 @@
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
 
                             <div class="col-xs-12">
-                                <input type="password" class="form-control"
-                                       placeholder="Confirm Password" name="password_confirmation">
+                                <input id="overwrite-pw2" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -270,14 +266,10 @@
                     </div>
                 </div>
                 <div class="modal-footer footer4">
-                    <div class="col-xs-6">
-
-                    </div>
-                    <div class="col-xs-12">
-                        <button id="back-button" class="form-control to-right add-button" type="submit">
-                            SignUp
-                        </button>
-
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <button id="back-button" class="form-control green-button" type="submit">Sign Up</button>
+                        </div>
                     </div>
                 </div>
             </form>

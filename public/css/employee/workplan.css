@@ -4,26 +4,12 @@
     padding: 10px 0 10px 0;
 }
 
-/* bootstrap erweiterte Klasse */
-.my-account-button {
-    color: var(--text-black);
-    margin-left: 10px; /* Abstand zur Tabelle */
-}
 
-/* Wenn mauszeiger drüber */
-.my-account-button:hover {
-    background-color: var(--grey-00-darkest);
-}
-
-.my-account-button:active {
-    background-color: var(--blue-highlight);
-}
-
-/* button an rechter seite */
-.to-right {
-    width: 100px;
-    float: right;
-}
+/*!* button an rechter seite *!*/
+/*.to-right {*/
+    /*width: 100px;*/
+    /*float: right;*/
+/*}*/
 
 .space {
     height: 10px;

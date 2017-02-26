@@ -170,7 +170,7 @@
 }
 
 .today {
-    background-color: var(--red-light-today) !important;
+    background-color: var(--red-active-today) !important;
 }
 
 
@@ -420,12 +420,4 @@
 .header{
     text-align:center;
     margin-top: 0px;
-}
-
-@media screen and (min-width: 768px) {
-    /* button an rechter seite */
-    .set-right-buttom {
-        width: 100px;
-        float: right;
-    }
 }
