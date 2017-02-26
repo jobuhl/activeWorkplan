@@ -50,7 +50,7 @@
                                     <div class="event-dropdown-content options-final-allday-{{ $oneAlldayEvent->id }}">
                                         <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
                                             @include('includes.calendar.thisUrl')
-                                            <button class="add-event-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
+                                            <button class="green-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
                                         </form>
                                     </div>
                                 @endif
@@ -61,7 +61,7 @@
                                     <div class="event-dropdown-content options-final-allday-{{ $oneAlldayEvent->id }}">
                                         <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
                                             @include('includes.calendar.thisUrl')
-                                            <button class="delete-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
+                                            <button class="red-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
                                         </form>
                                     </div>
                                 @endif

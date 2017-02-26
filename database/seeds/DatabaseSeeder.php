@@ -41,14 +41,21 @@ class DatabaseSeeder extends Seeder
     public function addCategorys()
     {
         /* ORDER OF CATEGORY VERY IMPORTANT FOR SEEDS BECAUSE OF ID */
+        /** 1   = Work
+         *  2   = Work Final
+         *  3-4 = Illness / Vacation can get accepted
+         *  5-8 = Else
+         **/
+
         $categoryArray = array(
-            'Work' => 'blue',
-            'Vacation' => 'yellow',
-            'Illness' => 'red',
-            'Study' => 'orange',
-            'Training' => 'light-green',
-            'Seminar' => 'dark-green',
-            'Private' => 'grey'
+            'Work' => 'blue-event',
+            'Work Final' => 'blue-event',
+            'Illness' => 'red-event',
+            'Vacation' => 'yellow-event',
+            'Study' => 'orange-event',
+            'Training' => 'green-light-event',
+            'Seminar' => 'green-event',
+            'Private' => 'grey-event'
         );
 
         foreach ($categoryArray as $key => $value) {
@@ -248,8 +255,8 @@ class DatabaseSeeder extends Seeder
         // alle Employees
         foreach ($allEmployees as $emp) {
 
-            // 20 tage vor und zurück
-            for ($day = -7; $day < 10; $day++) {
+            // 7 tage vor und zurück
+            for ($day = -7; $day < 7; $day++) {
 
 
                 $DBdate = ((new DateTime())->modify($day . ' days'))->format('d-m-Y');
@@ -258,26 +265,21 @@ class DatabaseSeeder extends Seeder
                 if (($day + rand(-3, 3)) % rand(2, 5) == 0) {
 
                     // Category ID
-                    // Illness moeglich wenn in vergangenheit
+                    // wenn in vergangenheit
                     if ($day <= 1) {
-                        $cat = rand(2, 7);
+                        // Illness / Vacation / Else Categorys
+                        $cat = rand(3, 8);
                     } else {
-
-                        // Vacation Category
-                        if (rand(0,4) == 0) {
-                            $cat = 2;
-                        } else {
-                            // Rest Categorys
-                            $cat = rand(4, 7);
-                        }
+                        // Vacation / Else Category
+                        $cat = rand(4, 8);
                     }
 
 
                     // Normalerweise bei Events kein accepted
                     $accepted = false;
 
-                    // Bei Vacation und Illness manchmal schon akzeptiert
-                    if (($cat == 2 || $cat == 3) && rand(0, 1) == 0) {
+                    // Bei Illness und Vacation manchmal schon akzeptiert
+                    if (($cat == 3 || $cat == 4) && rand(0, 1) == 0) {
                         $accepted = true;
                     }
 
@@ -320,9 +322,9 @@ class DatabaseSeeder extends Seeder
 
                             // Krankheit (Category==3) nur wenn in vergangenheit
                             if ($day <= 1) {
-                                $cat = rand(3, 6);
+                                $cat = rand(4, 8);
                             } else {
-                                $cat = rand(4, 6);
+                                $cat = rand(3, 8);
                             }
                         } else {
                             $cat = 1;
@@ -335,8 +337,8 @@ class DatabaseSeeder extends Seeder
                         // Normalerweise bei Events kein accepted
                         $accepted = false;
 
-                        // Bei Vacation und Illness manchmal schon akzeptiert
-                        if (($cat == 2 || $cat == 3) && rand(0, 1) == 0) {
+                        // Bei Illness und Vacation manchmal schon akzeptiert
+                        if (($cat == 3 || $cat == 4) && rand(0, 1) == 0) {
                             $accepted = true;
                         }
 
@@ -351,16 +353,17 @@ class DatabaseSeeder extends Seeder
                         ));
 
 
-                        // Manchmal Worktime Fix Event
-                        if ($day <= $nextNextSunnday && $cat == 1 && (rand(0,1) == 0 || rand(0,2) == 0)) {
+                        // Manchmal Workt Final Event
+                        if ($day <= $nextNextSunnday && $cat == 1 && (rand(0, 1) == 0 || rand(0, 2) == 0)) {
 
-                            // Create Worktime Fix
-                            WorktimeFix::create(array(
+                            // Create TimeEvent
+                            TimeEvent::create(array(
                                 'date' => $DBdate,
                                 'from' => $time[$i] . ':' . $randomMinute1,
                                 'to' => $time[$i + 1] . ':' . $randomMinute2,
+                                'accepted' => $accepted,
                                 'employee_id' => $emp->id,
-                                'category_id' => 1,
+                                'category_id' => 2,
                             ));
                         }
 

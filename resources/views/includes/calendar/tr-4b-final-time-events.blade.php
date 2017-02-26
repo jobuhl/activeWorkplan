@@ -13,63 +13,19 @@
             <td>
             @endif
 
-            <!-- +++++++++++++++ ALL WORKTIME EVENT +++++++++++++++ -->
-            @foreach($manyWorktimeEvent as $oneWorktimeEvent)
-                @if( (new DateTime($oneWorktimeEvent->date))->format('d-m-Y') == $week[$i]
-                && $oneWorktimeEvent->employee_id == $thisEmployee->id)
-
-
-                    <!-- +++++++++++++++ ONE WORKTIME EVENT +++++++++++++++ -->
-                        <div class="drop-btn one-time-event {{ $oneWorktimeEvent->color }}"
-                             onclick="openEventOptions('options-final-time-' + {{ $oneWorktimeEvent->id }} + '')"
-                             draggable="true"
-                             id="event-final-time-{{ $oneWorktimeEvent->id }}"
-                             ondragstart="drag(event)">
-                            <p class="event-category">{{ $oneWorktimeEvent->name }}</p>
-                            <p class="event-from">{{ $oneWorktimeEvent->from }}</p>
-                            <p class="event-to">{{ $oneWorktimeEvent->to }}</p>
-
-
-                            <!-- If calendar in Admin Planning or Single -->
-                        @if( strpos(url()->current(),'/admin/planning'))
-
-
-                            <!-- +++++++++++++++ HIDDEN DATA  +++++++++++++++ -->
-                                <p style="display: none;" class="event-date-hidden">{{ $oneWorktimeEvent->date }}</p>
-                                <p style="display: none;" class="event-employee-hidden">{{ $thisEmployee->id }}</p>
-
-
-                                <!-- +++++++++++++++ OPTIONS  +++++++++++++++ -->
-                                <div class="event-dropdown-content options-final-time-{{ $oneWorktimeEvent->id }}">
-
-                                    <!-- Change Button -->
-                                    <button onclick="openModalEvent('event-final-time-', '{{ $oneWorktimeEvent->id }}', 'modal-change-time-event', 'NULL' )" class="change-event-button">⇄</button>
-
-                                    <!-- JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
-                                    <button class="delete-event-button" onclick="deleteEventAJAX('event-final-time-', '{{ $oneWorktimeEvent->id }}', '{{ url('/deleteWorktimeEventAJAX') }}' )">
-                                        -
-                                    </button>
-
-
-                                </div>
-
-                            @endif
-                        </div>
-                @endif
-            @endforeach
-
 
             <!-- +++++++++++++++ ALL TIME EVENT +++++++++++++++ -->
             @foreach($manyTimeEvent as $oneTimeEvent)
                 @if( (new DateTime($oneTimeEvent->date))->format('d-m-Y') == $week[$i]
-                    && (( $oneTimeEvent->name == ("Vacation" || "Illness")) && $oneTimeEvent->accepted == 1)
+                    && ($oneTimeEvent->name == 'Work Final' || (( $oneTimeEvent->name == ("Vacation" || "Illness")) && $oneTimeEvent->accepted == 1) )
+
                     && $oneTimeEvent->employee_id == $thisEmployee->id)
 
                     <!-- +++++++++++++++ ONE TIME EVENT +++++++++++++++ -->
                         <div class="drop-btn one-time-event {{ $oneTimeEvent->color }}"
-                             onclick="openEventOptions('options-final-time-2-' + {{ $oneTimeEvent->id }} + '')"
+                             onclick="openEventOptions('options-final-time-' + {{ $oneTimeEvent->id }} + '')"
                              draggable="true"
-                             id="event-final-time-2-{{ $oneTimeEvent->id }}"
+                             id="event-final-time-{{ $oneTimeEvent->id }}"
                              ondragstart="drag(event)">
                             <p class="event-category">{{ $oneTimeEvent->name }}</p>
                             <p class="event-from">{{ $oneTimeEvent->from }}</p>
@@ -78,21 +34,46 @@
                             <!-- If calendar in Admin Planning or Single -->
                         @if( strpos(url()->current(),'/admin/planning'))
 
-                                <!-- +++++++++++++++ OPTIONS  +++++++++++++++ -->
-                                @if ( $oneTimeEvent->name == ( "Work"  || "Vacation"  || "Illness"))
-                                    <div class="event-dropdown-content options-final-time-2-{{ $oneTimeEvent->id }}">
+                            <!-- +++++++++++++++ OPTIONS  +++++++++++++++ -->
+                                @if ( $oneTimeEvent->name == "Vacation"  || $oneTimeEvent->name == "Illness")
+                                    <div class="event-dropdown-content options-final-time-{{ $oneTimeEvent->id }}">
 
 
                                         <!-- +++++++++++++++ OPTIONS VACATION ILLNESS NOT-ACCEPT +++++++++++++++ -->
                                         @if ( ($oneTimeEvent->name == ("Vacation" || "Illness" )) && $oneTimeEvent->accepted == 1)
                                             <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
                                                 @include('includes.calendar.thisUrl')
-                                                <button class="delete-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
+                                                <button class="red-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
                                             </form>
                                         @endif
 
                                     </div>
                                 @endif
+
+                                @if ( $oneTimeEvent->name == "Work Final")
+
+                                <!-- +++++++++++++++ HIDDEN DATA  +++++++++++++++ -->
+                                    <p style="display: none;" class="event-date-hidden">{{ $oneTimeEvent->date }}</p>
+                                    <p style="display: none;" class="event-employee-hidden">{{ $thisEmployee->id }}</p>
+
+
+                                    <!-- +++++++++++++++ OPTIONS WORK FINAL CHANGE DELETE +++++++++++++++ -->
+                                    <div class="event-dropdown-content options-final-time-{{ $oneTimeEvent->id }}">
+
+                                        <!-- Change Button -->
+                                        <button onclick="openModalEvent('event-final-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event', 'NULL' )" class="yellow-button">⇄</button>
+
+                                        <!-- Delete-Button JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
+                                        <button class="red-button" onclick="deleteEventAJAX('event-final-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteWorktimeEventAJAX') }}' )">
+                                            -
+                                        </button>
+
+
+                                    </div>
+                                @endif
+
+
+
                             @endif
 
                         </div>

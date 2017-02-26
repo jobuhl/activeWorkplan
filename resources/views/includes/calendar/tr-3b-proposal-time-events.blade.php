@@ -16,6 +16,7 @@
             <!-- +++++++++++++++ ALL TIME EVENT +++++++++++++++ -->
             @foreach($manyTimeEvent as $oneTimeEvent)
                 @if( (new DateTime($oneTimeEvent->date))->format('d-m-Y') == $week[$i]
+                    && $oneTimeEvent->name != 'Work Final'
                     && $oneTimeEvent->employee_id == $thisEmployee->id )
 
 
@@ -53,7 +54,7 @@
                                         <!-- +++++++++++++++ OPTIONS PUT TO WORKTIME FIX +++++++++++++++ -->
                                     @if ( $oneTimeEvent->name == "Work")
                                         <!-- Add Button -->
-                                            <button onclick="openModalChangeTime('event-proposal-time-', '{{ $oneTimeEvent->id }}' )" class="add-event-button">+</button>
+                                            <button onclick="openModalChangeTime('event-proposal-time-', '{{ $oneTimeEvent->id }}' )" class="green-button">+</button>
                                     @endif
 
 
@@ -61,7 +62,7 @@
                                         @if ( ($oneTimeEvent->name ==  "Vacation" || $oneTimeEvent->name =="Illness" ) && $oneTimeEvent->accepted == 0)
                                             <form method="POST" action="{{ url('admin/acceptTimeEvent') }}"> {{ csrf_field() }}
                                                 @include('includes.calendar.thisUrl')
-                                                <button class="add-event-button" name="eventId" value="{{ $oneTimeEvent->id }}">OK</button>
+                                                <button class="green-button" name="eventId" value="{{ $oneTimeEvent->id }}">OK</button>
                                             </form>
                                         @endif
 
@@ -70,7 +71,7 @@
                                         @if ( ($oneTimeEvent->name ==  "Vacation" || $oneTimeEvent->name =="Illness" ) && $oneTimeEvent->accepted == 1)
                                             <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
                                                 @include('includes.calendar.thisUrl')
-                                                <button class="delete-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
+                                                <button class="red-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
                                             </form>
                                         @endif
 
@@ -87,10 +88,10 @@
                                 <div class="event-dropdown-content options-proposal-time-{{ $oneTimeEvent->id }}">
 
                                     <!-- Change Button -->
-                                    <button onclick="openModalEvent('event-proposal-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event', 'NULL' )" class="change-event-button">⇄</button>
+                                    <button onclick="openModalEvent('event-proposal-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event', 'NULL' )" class="yellow-button">⇄</button>
 
                                     <!-- JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
-                                    <button class="delete-event-button" onclick="deleteEventAJAX('event-proposal-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteTimeEventAJAX') }}' )">-</button>
+                                    <button class="red-button" onclick="deleteEventAJAX('event-proposal-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteTimeEventAJAX') }}' )">-</button>
                                 </div>
                             @endif
 

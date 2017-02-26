@@ -40,19 +40,19 @@ Route::post('/notAcceptTimeEvent', 'EventController@notAcceptTimeEvent');
 Route::post('/notAcceptAlldayEvent', 'EventController@notAcceptAlldayEvent');
 
 
-Route::post('/searchOverview', function () {
-    $character = Request::input('inputValue');
-    $company = thisCompany();
-
-    $store = DB::table('retail_store')
-    ->select('retail_store.*')
-    ->join('company', 'company.id', '=', 'retail_store.company_id')
-    ->where('company.id', $company->id)
-    ->where('retail_store.name', 'like', '%' . $character . '%')
-    ->get();
-
-    return response()->json(["store" => $store]);
-});
+//Route::post('/searchOverview', function () {
+//    $character = Request::input('inputValue');
+//    $company = thisCompany();
+//
+//    $store = DB::table('retail_store')
+//    ->select('retail_store.*')
+//    ->join('company', 'company.id', '=', 'retail_store.company_id')
+//    ->where('company.id', $company->id)
+//    ->where('retail_store.name', 'like', '%' . $character . '%')
+//    ->get();
+//
+//    return response()->json(["store" => $store]);
+//});
 
 
 
@@ -115,7 +115,6 @@ Route::get('/overview/{date}', function ($urlDate) {
     $week = getWeekArray($urlDate);
 
     $manyTimeEvent = allTimeEventOfCompany($company->id, $week);
-    $manyWorktimeEvent = allWorktimeFixOfCompany($company->id, $week);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
@@ -131,7 +130,6 @@ Route::get('/overview/{date}', function ($urlDate) {
             ->with('allRetailStores', $allRetailStores)
             ->with('allEmployees', $allEmployees)
             ->with('manyTimeEvent', $manyTimeEvent)
-            ->with('manyWorktimeEvent', $manyWorktimeEvent)
             ->with('manyAlldayEvent', $manyAlldayEvent)
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
@@ -162,7 +160,6 @@ Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
         $addressRetailStore = oneAddress($thisRetailStore->address_id);
 
         $manyTimeEvent = allTimeEventOfCompany($company->id, $week);
-        $manyWorktimeEvent = allWorktimeFixOfCompany($company->id, $week);
         $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
 
         return view('admin.planning')
@@ -171,7 +168,6 @@ Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
             ->with('allEmployees', $allEmployees)
             ->with('countEmployees', $countEmployees)
             ->with('manyTimeEvent', $manyTimeEvent)
-            ->with('manyWorktimeEvent', $manyWorktimeEvent)
             ->with('manyAlldayEvent', $manyAlldayEvent)
             ->with('addressRetailStore', $addressRetailStore)
             ->with('amountOfRetailStores', $amountOfRetailStores)
@@ -195,7 +191,6 @@ Route::get('/planning-single/{id}/{date}', function ($employeeId, $urlDate) {
     $week = getWeekArray($urlDate);
 
     $manyTimeEvent = allTimeEventOfCompany($company->id, $week);
-    $manyWorktimeEvent = allWorktimeFixOfCompany($company->id, $week);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
 
 
@@ -212,7 +207,6 @@ Route::get('/planning-single/{id}/{date}', function ($employeeId, $urlDate) {
             ->with('company', $company)
             ->with('address', $address)
             ->with('manyTimeEvent', $manyTimeEvent)
-            ->with('manyWorktimeEvent', $manyWorktimeEvent)
             ->with('manyAlldayEvent', $manyAlldayEvent)
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);

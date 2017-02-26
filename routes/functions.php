@@ -98,17 +98,6 @@ function timeEventOfEmployee($employeeId, $week)
         ->get();
 }
 
-function worktimeFixOfEmployee($employeeId, $week)
-{
-    return DB::table('worktime_fix')
-        ->where('worktime_fix.date', '>=', $week[0])
-        ->where('worktime_fix.date', '<=', $week[6])
-        ->join('category', 'category.id', '=', 'worktime_fix.category_id')
-        ->where('worktime_fix.employee_id', $employeeId)
-        ->select('worktime_fix.id as id', 'date', 'from', 'to', 'color', 'employee_id', 'category.name as name')
-        ->get();
-}
-
 function alldayEventOfEmployee($employeeId, $week)
 {
 
@@ -131,19 +120,6 @@ function allTimeEventOfCompany($companyId, $week)
         ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
         ->where('retail_store.company_id', $companyId)
         ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color', 'accepted')
-        ->get();
-}
-
-function allWorktimeFixOfCompany($companyId, $week)
-{
-    return DB::table('worktime_fix')
-        ->where('worktime_fix.date', '>=', $week[0])
-        ->where('worktime_fix.date', '<=', $week[6])
-        ->join('category', 'category.id', '=', 'worktime_fix.category_id')
-        ->join('employees', 'employees.id', '=', 'worktime_fix.employee_id')
-        ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-        ->where('retail_store.company_id', $companyId)
-        ->select('worktime_fix.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color')
         ->get();
 }
 

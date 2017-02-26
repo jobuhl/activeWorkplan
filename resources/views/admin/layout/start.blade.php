@@ -11,9 +11,7 @@
     @include('admin.includes.header')
 
     <noscript>
-        <p class="no-script-message">
-            This Website requires JavaScript. Please make sure to activate JavaScript in your Browser.
-        </p>
+        <p class="no-script-message">This Website requires JavaScript. Please make sure to activate JavaScript in your Browser.</p>
     </noscript>
 
     @yield('content')
@@ -22,6 +20,7 @@
 
     @include('includes.head-js')
     @yield('js')
+
 
 </body>
 

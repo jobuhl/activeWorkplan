@@ -67,13 +67,19 @@ input.form-control:focus {
 
 button:not(.full-opacity).form-control:hover,
 a:not(.full-opacity).form-control:hover,
-.round-button:hover {
+.round-button:hover,
+.red-button:hover,
+.yellow-button:hover,
+.green-button:hover {
     opacity: 0.9;
 }
 
 button:not(.full-opacity).form-control:active,
 a:not(.full-opacity).form-control:active,
-.round-button:active {
+.round-button:active,
+.red-button:active,
+.yellow-button:active,
+.green-button:active{
     opacity: 0.8;
 }
 

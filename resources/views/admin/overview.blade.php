@@ -62,6 +62,5 @@
 
 @section('js')
     <script type="text/javascript" src="{{ asset('/js/admin/overview.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('/js/global/side-bar.js') }}"></script>
-
+    <script type="text/javascript" src="{{ asset('/js/admin/side-bar.js') }}"></script>
 @endsection

@@ -57,7 +57,7 @@
                                     <div class="event-dropdown-content options-proposal-allday-{{ $oneAlldayEvent->id }}">
                                         <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
                                             @include('includes.calendar.thisUrl')
-                                            <button class="add-event-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
+                                            <button class="green-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
                                         </form>
                                     </div>
                                 @endif
@@ -68,7 +68,7 @@
                                     <div class="event-dropdown-content options-proposal-allday-{{ $oneAlldayEvent->id }}">
                                         <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
                                             @include('includes.calendar.thisUrl')
-                                            <button class="delete-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
+                                            <button class="red-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
                                         </form>
                                     </div>
                                 @endif
@@ -82,11 +82,11 @@
                             <!-- +++++++++++++++ OPTIONS CHANGE DELETE +++++++++++++++ -->
                                 <div class="event-dropdown-content options-proposal-allday-{{ $oneAlldayEvent->id }}">
 
-                                    <button onclick="openModalEvent('event-proposal-allday-', '{{ $oneAlldayEvent->id }}', 'modal-change-allday-event','NULL' )" class="change-event-button">⇄</button>
+                                    <!-- Change Button -->
+                                    <button onclick="openModalEvent('event-proposal-allday-', '{{ $oneAlldayEvent->id }}', 'modal-change-allday-event','NULL' )" class="yellow-button">⇄</button>
 
                                     <!-- JS Aufruf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
-                                    <button class="delete-event-button" onclick="deleteEventAJAX('event-proposal-allday', '{{ $oneAlldayEvent->id }}', '{{ url('/deleteAlldayEventAJAX') }}' )">-
-                                    </button>
+                                    <button class="red-button" onclick="deleteEventAJAX('event-proposal-allday', '{{ $oneAlldayEvent->id }}', '{{ url('/deleteAlldayEventAJAX') }}' )">-</button>
 
                                 </div>
 

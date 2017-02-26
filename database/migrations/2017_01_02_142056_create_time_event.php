@@ -37,6 +37,6 @@ class CreateTimeEvent extends Migration
      */
     public function down()
 {
-    Schema::dropIfExists('time-event');
+    Schema::dropIfExists('time_event');
 }
 }

@@ -13,7 +13,6 @@ $('body')[0].onresize = function () {
 };
 
 function sideBarBorder() {
-
     /* Nur wenn Fensterbreite auf "nicht-mobil" dargestellt */
     if ($(window).width() >= 768) {
         /* Links: Side-Bar Hoehe */

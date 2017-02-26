@@ -39,7 +39,7 @@
                             <select class="selectpicker form-control modal-input space-cap" name="category">
 
                                 @if( strpos(url()->current(),'/admin/planning'))
-                                    <option>Work</option>
+                                    <option>Work Final</option>
                                 @else
                                     <option class="category-overwrite">overwrite</option>
                                     <option disabled>----------</option>

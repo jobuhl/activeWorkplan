@@ -20,13 +20,11 @@ Route::get('/workplan/{date}', function ($urlDate) {
     $week = getWeekArray($urlDate);
 
     $manyTimeEvent = timeEventOfEmployee($thisEmployee->id, $week);
-    $manyWorktimeEvent = worktimeFixOfEmployee($thisEmployee->id, $week);
     $manyAlldayEvent = alldayEventOfEmployee($thisEmployee->id, $week);
 
 
     return view('employee.workplan')
         ->with('manyTimeEvent', $manyTimeEvent)
-        ->with('manyWorktimeEvent', $manyWorktimeEvent)
         ->with('manyAlldayEvent', $manyAlldayEvent)
         ->with('thisEmployee',$thisEmployee)
         ->with('week', $week);

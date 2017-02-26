@@ -199,7 +199,7 @@
                 <!-- Modal footer-->
                 <div class="modal-footer">
                     <input style="display: none;" name="thisDate" value="{{ $week[0] }}"/>
-                    <button class="form-control set-right yellow-button" type="submit" value="{{ $thisEmployee->id }}" name="thisEmployeeId">Change</button>
+                    <button class="form-control yellow-button" type="submit" value="{{ $thisEmployee->id }}" name="thisEmployeeId">Change</button>
                 </div>
             </form>
         </div>
