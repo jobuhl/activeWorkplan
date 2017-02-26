@@ -1,19 +1,11 @@
 /* überschrift ausrichtung im Change Menü*/
-.modal-ueberschrift, .select-ueberschrift{
+.modal-ueberschrift,
+.select-ueberschrift{
     text-align: center;
 }
 
-
-/* Change Button im Change Menue*/
-/*.modal-change-button{*/
-    /*margin: 0;*/
-    /*width: 100%;*/
-    /*!*background: var(--button-yellow);*!*/
-    /*!*color: white;*!*/
-/*}*/
-
 /* Länge vom Feld im Change Menue*/
-.modal-input{
+.modal-input {
     margin: 0;
     width: 100%;
 }
@@ -66,23 +58,8 @@
     margin-bottom: 10px;
 }
 
-/*.add-button{*/
-    /*background-color: var(--button-green);*/
-    /*color: white;*/
-/*}*/
-
-/*.next-button{*/
-    /*background-color: var(--blue-highlight);*/
-    /*color: white;*/
-/*}*/
-
-/*.delete-button{*/
-    /*background-color: var(--button-red);*/
-    /*color: white;*/
-/*}*/
-
-.inputmodal{
-    color:black;
+.inputmodal {
+    color: black;
 }
 
 #modal-body-admin{
@@ -176,4 +153,9 @@
         text-align: center;
     }
 
+}
+
+/* --------------------- ADD EVENT SHOW TIME -------------------*/
+.hide-time-input {
+    display: none;
 }

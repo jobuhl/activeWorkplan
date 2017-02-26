@@ -16,10 +16,9 @@ class EventController extends Controller
 {
     /* ---------------------------- EMPLOYEE -------------------------------- */
 
-    // Employee adds an Allday Event
-    function addAlldayEvent(Request $request)
+    // Employee adds an Event
+    function addEvent(Request $request)
     {
-
         $thisEmployee = oneEmployee(Auth::user()->id);
 
         $category = DB::table('category')
@@ -28,37 +27,28 @@ class EventController extends Controller
 
         $newDate = (new DateTime($request['date']))->format('d-m-Y');
 
-        AlldayEvent::create(array(
-            'date' => $newDate,
-            'accepted' => false,
-            'category_id' => $category->id,
-            'employee_id' => $thisEmployee->id
+        // If Input Values are empty
+        if ($request['time-from'] + $request['time-to'] == "") {
 
-        ));
+            // Add AlldayEvent
+            AlldayEvent::create(array(
+                'date' => $newDate,
+                'accepted' => false,
+                'category_id' => $category->id,
+                'employee_id' => $thisEmployee->id
+            ));
+        } else {
 
-        return redirect('/employee/planning/' . $request['thisDate']);
-    }
-
-    // Employee adds a Time Event
-    function addTimeEvent(Request $request)
-    {
-
-        $thisEmployee = oneEmployee(Auth::user()->id);
-
-        $category = DB::table('category')
-            ->where('category.name', $request['category'])
-            ->get()[0];
-
-        $newDate = (new DateTime($request['date']))->format('d-m-Y');
-
-        TimeEvent::create(array(
-            'date' => $newDate,
-            'from' => $request['time-from'],
-            'to' => $request['time-to'],
-            'accepted' => false,
-            'category_id' => $category->id,
-            'employee_id' => $thisEmployee->id
-        ));
+            // Add TimeEvent
+            TimeEvent::create(array(
+                'date' => $newDate,
+                'from' => $request['time-from'],
+                'to' => $request['time-to'],
+                'accepted' => false,
+                'category_id' => $category->id,
+                'employee_id' => $thisEmployee->id
+            ));
+        }
 
         return redirect('/employee/planning/' . $request['thisDate']);
     }
@@ -118,10 +108,11 @@ class EventController extends Controller
 
         $newDate = (new DateTime($request['date']))->format('d-m-Y');
 
-        WorktimeFix::create(array(
+        TimeEvent::create(array(
             'date' => $newDate,
             'from' => $request['time-from'],
             'to' => $request['time-to'],
+            'accepted' => false,
             'category_id' => $category->id,
             'employee_id' => $request['thisEmployeeId']
         ));
@@ -138,7 +129,7 @@ class EventController extends Controller
 
         $newDate = (new DateTime($request['date']))->format('d-m-Y');
 
-        WorktimeFix::where('worktime_fix.id', $request['thisEventId'])
+        TimeEvent::where('time_event.id', $request['thisEventId'])
             ->update(array(
                 'date' => $newDate,
                 'from' => $request['time-from'],
@@ -149,6 +140,9 @@ class EventController extends Controller
 
         return redirect($request['thisUrl']);
     }
+
+
+    /* ---------------------------- (NOT) ACCEPT VACATION ILLNESS -------------------------------- */
 
     // Admin accepts an Allday Event (Vacation / Illness)
     function acceptAlldayEvent(Request $request)

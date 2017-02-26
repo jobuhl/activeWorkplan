@@ -90,7 +90,7 @@ function fixFooter() {
     var bodyHeight = $(".fake-body").height() + getHeaderHeight() + 120;
 
     var windowHeight = $(window).height();
-    /*alert("fake-body: " + bodyHeight + "\nwindow     : " + windowHeight + "\nVielleicht Problem mit Bootstrap Klassen (col-xx-xx)");*/
+    // alert("fake-body: " + bodyHeight + "\nwindow     : " + windowHeight + "\nVielleicht Problem mit Bootstrap Klassen (col-xx-xx)");
 
     /* Wenn Window groesser Body */
     if (windowHeight > bodyHeight) {

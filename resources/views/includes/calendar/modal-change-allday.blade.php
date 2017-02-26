@@ -37,7 +37,9 @@
                                 <option class="category-overwrite">overwrite</option>
                                 <option disabled>----------</option>
                                 @foreach($category as $cat )
-                                    <option>{{ $cat->name }}</option>
+                                    @if ($cat->name != 'Work Final')
+                                        <option>{{ $cat->name }}</option>
+                                    @endif
                                 @endforeach
                             </select>
 

@@ -113,3 +113,35 @@ function deleteEventAJAX(divPrefix, eventId, routesURL) {
     // danach mit AJAX in der datenbank loeschen
     thisEvent.load(routesURL + '?eventId=' + eventId);
 }
+
+
+/* ------------------------------- Add Event Show Time ----------------------------------- */
+
+function openTimeInput() {
+
+    // Div ueber Time rausfinden
+    var time = $(".hide-time-input");
+    var button = $(".overwrite-time-button");
+    var input = $(".overwrite-empty");
+    var category = $(".hide-option");
+
+    // Wenn Time ausgeblendet (also nicht geoeffnet)
+    if (time.is(':hidden')) {
+
+        // Options div einblenden
+        time.show();
+
+        // Show / Hide Button change text
+        button.text("Hide Time");
+    } else {
+
+        // Options div ausblenden
+        time.hide();
+
+        // Show / Hide Button change text
+        button.text("Show Time");
+
+        // Empty input values -> damit controller erkennt, ob alldayx oder time
+        input.val("");
+    }
+}

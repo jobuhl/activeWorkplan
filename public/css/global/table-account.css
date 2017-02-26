@@ -42,3 +42,7 @@
 .header {
     text-align: center;
 }
+
+.row {
+    padding: 0 15px 0 15px;
+}

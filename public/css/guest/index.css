@@ -97,13 +97,3 @@
     width: 80px;
     margin: 20px auto 20px auto;
 }
-
-.more-info-button:hover {
-    color: white;
-    text-decoration: none;
-    opacity: 0.9;
-}
-
-.more-info-button:active {
-    opacity: 0.8;
-}

@@ -5,23 +5,23 @@
 
 
 /* Ueberschrift im small header */
-.side-bar p {
-    font-weight: bold;
-    text-align: center;
-}
+/*.side-bar p {*/
+    /*font-weight: bold;*/
+    /*text-align: center;*/
+/*}*/
 
-.side-bar li {
-    list-style: none; /* damit keine punkte */
-}
+/*.side-bar li {*/
+    /*list-style: none; !* damit keine punkte *!*/
+/*}*/
 
 
-.side-bar p,
-.side-bar a,
-.side-bar input {
-    width: 100%;
-    display: block;
-    border-bottom: 1px solid var(--grey-border);
-    margin: 0;
-    text-decoration: none;
-    color: var(--text-black);
-}
+/*.side-bar p,*/
+/*.side-bar a,*/
+/*.side-bar input {*/
+    /*width: 100%;*/
+    /*display: block;*/
+    /*border-bottom: 1px solid var(--grey-border);*/
+    /*margin: 0;*/
+    /*text-decoration: none;*/
+    /*color: var(--text-black);*/
+/*}*/

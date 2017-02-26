@@ -44,7 +44,9 @@
                                     <option class="category-overwrite">overwrite</option>
                                     <option disabled>----------</option>
                                     @foreach($category as $cat )
-                                        <option>{{ $cat->name }}</option>
+                                        @if ($cat->name != 'Work Final')
+                                            <option>{{ $cat->name }}</option>
+                                        @endif
                                     @endforeach
                                 @endif
 
@@ -91,7 +93,7 @@
 
                     <!-- important EventID wird reingeschrieben -->
                         <input style="display: none;" class="id-overwrite" name="thisEventId" value=""/>
-                        <button type="submit" class="form-control to-right modal-change-button" name="thisDate" value="{{ $week[0] }}">Change</button>
+                        <button type="submit" class="form-control to-right yellow-button" name="thisDate" value="{{ $week[0] }}">Change</button>
                 @endif
 
                 @if( strpos(url()->current(),'/admin/planning'))
