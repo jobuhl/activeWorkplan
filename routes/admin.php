@@ -152,7 +152,6 @@ Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
             ->with('week', $week);
     } else {
 
-
         $allRetailStores = allRetailStoresOfCompany($company->id);
         $thisRetailStore = thisRetailStore($thisRetailStoreId);
         $allEmployees = allEmployeesOfCompany($company->id);

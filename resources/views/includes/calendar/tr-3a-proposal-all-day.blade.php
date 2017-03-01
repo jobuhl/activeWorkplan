@@ -26,12 +26,10 @@
             <td class="today">@else
             <td>@endif
 
-
             <!-- +++++++++++++++ ALL ALL-DAY EVENT +++++++++++++++ -->
             @foreach($manyAlldayEvent as $oneAlldayEvent)
                 @if( (new DateTime($oneAlldayEvent->date))->format('d-m-Y') == $week[$i]
                 && $oneAlldayEvent->employee_id == $thisEmployee->id)
-
 
                     <!-- +++++++++++++++ ONE ALL-DAY EVENT +++++++++++++++ -->
                         <div class="drop-btn one-allday-event {{ $oneAlldayEvent->color }}"

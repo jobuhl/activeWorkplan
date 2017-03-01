@@ -47,11 +47,11 @@
                 <h5>Verantwortung</h5>
                 <h3>Selbsteinteilung der Arbeitszeit</h3>
 
-                <div class="col-sm-6 col-xs-12" style="margin: 0; padding: 0;">
+                <div class="col-sm-6 col-xs-12 no-margin-1">
                     <img style="margin: 0; padding: 0;" src="{{asset('img/features/events2.png')}}" alt="Bild">
                 </div>
 
-                <div class="col-sm-6 col-xs-12" style="margin: 0; padding: 3px 0 20px 0;">
+                <div class="col-sm-6 col-xs-12 no-margin-2">
                     <img style="margin: 0; padding: 0;" src="{{asset('img/features/events1.png')}}" alt="Bild">
                 </div>
 

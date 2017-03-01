@@ -260,6 +260,7 @@ class DatabaseSeeder extends Seeder
 
 
                 $DBdate = ((new DateTime())->modify($day . ' days'))->format('d-m-Y');
+                echo $DBdate . "  ";
 
                 // Seltener Allday-Event
                 if (($day + rand(-3, 3)) % rand(2, 5) == 0) {
@@ -322,9 +323,9 @@ class DatabaseSeeder extends Seeder
 
                             // Krankheit (Category==3) nur wenn in vergangenheit
                             if ($day <= 1) {
-                                $cat = rand(4, 8);
-                            } else {
                                 $cat = rand(3, 8);
+                            } else {
+                                $cat = rand(4, 8);
                             }
                         } else {
                             $cat = 1;
