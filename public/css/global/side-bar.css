@@ -95,7 +95,8 @@
 /* ------------------------------- UNTERLISTE ----------------------------- */
 /* Unterliste initial ausblenden */
 .each-element .sub-element {
-    display: none;
+    display: none; /* initial nicht anzeigen -> nur onclick mit javascript */
+    margin: 0; /* weil voreingestellt "ul" mit margin */
 }
 
 /* Unterliste */
@@ -114,8 +115,10 @@
     color: var(--text-black);
 }
 
+/* unterster Employee eines Stores */
 .side-bar .sub-element li:last-child a {
-    border: none;
+    border: none; /* keine untere border */
+    margin-bottom: 10px; /* abstand zum nächsten Store (wird beim filter mit verschwinden) */
 }
 
 
