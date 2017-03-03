@@ -6,7 +6,7 @@ Route::get('/home', function () {
     $users[] = Auth::guard()->user();
     $users[] = Auth::guard('employee')->user();
 
-    return redirect('/employee/workplan/' . (new DateTime())->format('d-m-Y'));
+    return redirect('/employee/workplan/' . (new DateTime())->format('Y-m-d'));
 })->name('home');
 
 

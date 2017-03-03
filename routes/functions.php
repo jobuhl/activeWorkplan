@@ -100,7 +100,6 @@ function timeEventOfEmployee($employeeId, $week)
 
 function alldayEventOfEmployee($employeeId, $week)
 {
-
     return DB::table('allday_event')
         ->where('allday_event.date', '>=', $week[0])
         ->where('allday_event.date', '<=', $week[6])
@@ -113,13 +112,13 @@ function alldayEventOfEmployee($employeeId, $week)
 function allTimeEventOfCompany($companyId, $week)
 {
     return DB::table('time_event')
-        ->where('time_event.date', '>=', $week[0])
+        ->where('time_event.date', '>=',  $week[0])
         ->where('time_event.date', '<=', $week[6])
         ->join('category', 'category.id', '=', 'time_event.category_id')
         ->join('employees', 'employees.id', '=', 'time_event.employee_id')
         ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
         ->where('retail_store.company_id', $companyId)
-        ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color', 'accepted')
+        ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id', 'color', 'accepted')
         ->get();
 }
 
@@ -132,7 +131,7 @@ function allAlldayEventOfCompany($companyId, $week)
         ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
         ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
         ->where('retail_store.company_id', $companyId)
-        ->select('allday_event.id as id', 'category.name as name', 'date', 'employee_id','color', 'accepted')
+        ->select('allday_event.id as id', 'category.name as name', 'date', 'employee_id', 'color', 'accepted')
         ->get();
 }
 
@@ -142,6 +141,8 @@ function allCategory()
         ->get();
 }
 
+
+
 function getWeekArray($urlDate) {
 
     $day = new DateTime($urlDate);
@@ -149,12 +150,12 @@ function getWeekArray($urlDate) {
     $monday = clone $day->modify('-' . ($day->format('N') - 1) . ' days');
 
     return array(
-        (clone $monday)->format('d-m-Y'),
-        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
-        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
-        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
-        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
-        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
-        (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y')
+        (clone $monday)->format('Y-m-d'),
+        (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d'),
+        (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d'),
+        (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d'),
+        (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d'),
+        (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d'),
+        (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d')
     );
 }

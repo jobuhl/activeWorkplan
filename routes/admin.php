@@ -5,7 +5,7 @@ include('functions.php');
 /* --------------------------- LINK ------------------------------- */
 
 Route::get('/home', function () {
-    return redirect('/admin/overview/' . (new DateTime())->format('d-m-Y'));
+    return redirect('/admin/overview/' . (new DateTime())->format('Y-m-d'));
 });
 
 
@@ -116,6 +116,8 @@ Route::get('/overview/{date}', function ($urlDate) {
 
     $manyTimeEvent = allTimeEventOfCompany($company->id, $week);
     $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
+
+//    dd($manyTimeEvent);
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
 
     // Wenn keine Stores vorhanden sind

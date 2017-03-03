@@ -8,14 +8,14 @@
 
 
     <!-- +++++++++++++++ IF TODAY +++++++++++++++ -->
-        @if((new DateTime())->format('d-m-Y') == $week[$i])
+        @if((new DateTime())->format('Y-m-d') == $week[$i])
             <td class="today">@else
             <td>@endif
 
 
             <!-- +++++++++++++++ ALL TIME EVENT +++++++++++++++ -->
             @foreach($manyTimeEvent as $oneTimeEvent)
-                @if( (new DateTime($oneTimeEvent->date))->format('d-m-Y') == $week[$i]
+                @if( (new DateTime($oneTimeEvent->date))->format('Y-m-d') == $week[$i]
                     && $oneTimeEvent->name != 'Work Final'
                     && $oneTimeEvent->employee_id == $thisEmployee->id )
 

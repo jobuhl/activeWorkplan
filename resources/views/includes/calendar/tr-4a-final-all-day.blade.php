@@ -22,13 +22,13 @@
 
 
     <!-- +++++++++++++++ IF TODAY +++++++++++++++ -->
-        @if((new DateTime())->format('d-m-Y') == $week[$i])
+        @if((new DateTime())->format('Y-m-d') == $week[$i])
             <td class="today">@else
             <td>@endif
 
             <!-- +++++++++++++++ ALL ALL-DAY EVENT +++++++++++++++ -->
             @foreach($manyAlldayEvent as $oneAlldayEvent)
-                @if( (new DateTime($oneAlldayEvent->date))->format('d-m-Y') == $week[$i]
+                @if( (new DateTime($oneAlldayEvent->date))->format('Y-m-d') == $week[$i]
                     && (( $oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness") && $oneAlldayEvent->accepted == 1)
                     && $oneAlldayEvent->employee_id == $thisEmployee->id)
 

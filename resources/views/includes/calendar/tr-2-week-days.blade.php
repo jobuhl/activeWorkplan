@@ -5,7 +5,7 @@
     </td>
 
     @for ($i = 0; $i < 7; $i++)
-        @if((new DateTime())->format('d-m-Y') == $week[$i])
+        @if((new DateTime())->format('Y-m-d') == $week[$i])
             <td class="today">
         @else
             <td>

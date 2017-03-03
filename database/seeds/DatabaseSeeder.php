@@ -256,11 +256,10 @@ class DatabaseSeeder extends Seeder
         foreach ($allEmployees as $emp) {
 
             // 7 tage vor und zurück
-            for ($day = -7; $day < 7; $day++) {
+            for ($day = -7; $day < $nextNextSunnday + 7; $day++) {
 
 
-                $DBdate = ((new DateTime())->modify($day . ' days'))->format('d-m-Y');
-                echo $DBdate . "  ";
+                $DBdate = ((new DateTime())->modify($day . ' days'))->format('Y-m-d');
 
                 // Seltener Allday-Event
                 if (($day + rand(-3, 3)) % rand(2, 5) == 0) {
@@ -321,11 +320,18 @@ class DatabaseSeeder extends Seeder
                         // another category (except Vacation) OR Work
                         if (($day + rand(-3, 3)) % rand(2, 5) == 0) {
 
-                            // Krankheit (Category==3) nur wenn in vergangenheit
+                            // Illness (Category==3) nur wenn in vergangenheit
                             if ($day <= 1) {
-                                $cat = rand(3, 8);
+
+                                // 1/5 wenn Illness
+                                if (rand(0, 4) == 0) {
+                                    $cat = 3;
+                                    // 4/5 else
+                                } else {
+                                    $cat = rand(5, 8);
+                                }
                             } else {
-                                $cat = rand(4, 8);
+                                $cat = rand(5, 8);
                             }
                         } else {
                             $cat = 1;

@@ -25,7 +25,7 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('d-m-Y');
+        $newDate = (new DateTime($request['date']))->format('Y-m-d');
 
         // If Input Values are empty
         if ($request['time-from'] + $request['time-to'] == "") {
@@ -60,7 +60,7 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('d-m-Y');
+        $newDate = (new DateTime($request['date']))->format('Y-m-d');
 
         $eventId = $request['thisEventId'];
 
@@ -81,7 +81,7 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('d-m-Y');
+        $newDate = (new DateTime($request['date']))->format('Y-m-d');
 
         $eventId = $request['thisEventId'];
 
@@ -106,7 +106,7 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('d-m-Y');
+        $newDate = (new DateTime($request['date']))->format('Y-m-d');
 
         TimeEvent::create(array(
             'date' => $newDate,
@@ -127,7 +127,7 @@ class EventController extends Controller
             ->where('category.name', $request['category'])
             ->get()[0];
 
-        $newDate = (new DateTime($request['date']))->format('d-m-Y');
+        $newDate = (new DateTime($request['date']))->format('Y-m-d');
 
         TimeEvent::where('time_event.id', $request['thisEventId'])
             ->update(array(

@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 class Functions extends Controller
 {
 
-
     function thisCompany()
     {
         return DB::table('company')
@@ -106,20 +105,8 @@ class Functions extends Controller
             ->get();
     }
 
-    function worktimeFixOfEmployee($employeeId, $week)
-    {
-        return DB::table('worktime_fix')
-            ->where('worktime_fix.date', '>=', $week[0])
-            ->where('worktime_fix.date', '<=', $week[6])
-            ->join('category', 'category.id', '=', 'worktime_fix.category_id')
-            ->where('worktime_fix.employee_id', $employeeId)
-            ->select('worktime_fix.id as id', 'date', 'from', 'to', 'color', 'employee_id', 'category.name as name')
-            ->get();
-    }
-
     function alldayEventOfEmployee($employeeId, $week)
     {
-
         return DB::table('allday_event')
             ->where('allday_event.date', '>=', $week[0])
             ->where('allday_event.date', '<=', $week[6])
@@ -132,26 +119,13 @@ class Functions extends Controller
     function allTimeEventOfCompany($companyId, $week)
     {
         return DB::table('time_event')
-            ->where('time_event.date', '>=', $week[0])
-            ->where('time_event.date', '<=', $week[6])
+            ->where('time_event.date', $week[0])
+            ->where('time_event.date', '=', $week[6])
             ->join('category', 'category.id', '=', 'time_event.category_id')
             ->join('employees', 'employees.id', '=', 'time_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.company_id', $companyId)
-            ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color', 'accepted')
-            ->get();
-    }
-
-    function allWorktimeFixOfCompany($companyId, $week)
-    {
-        return DB::table('worktime_fix')
-            ->where('worktime_fix.date', '>=', $week[0])
-            ->where('worktime_fix.date', '<=', $week[6])
-            ->join('category', 'category.id', '=', 'worktime_fix.category_id')
-            ->join('employees', 'employees.id', '=', 'worktime_fix.employee_id')
-            ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('retail_store.company_id', $companyId)
-            ->select('worktime_fix.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id','color')
+            ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id', 'color', 'accepted')
             ->get();
     }
 
@@ -164,7 +138,7 @@ class Functions extends Controller
             ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.company_id', $companyId)
-            ->select('allday_event.id as id', 'category.name as name', 'date', 'employee_id','color', 'accepted')
+            ->select('allday_event.id as id', 'category.name as name', 'date', 'employee_id', 'color', 'accepted')
             ->get();
     }
 
@@ -174,6 +148,8 @@ class Functions extends Controller
             ->get();
     }
 
+
+
     function getWeekArray($urlDate) {
 
         $day = new DateTime($urlDate);
@@ -181,15 +157,16 @@ class Functions extends Controller
         $monday = clone $day->modify('-' . ($day->format('N') - 1) . ' days');
 
         return array(
-            (clone $monday)->format('d-m-Y'),
-            (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
-            (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
-            (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
-            (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
-            (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y'),
-            (clone $monday->add(new DateInterval('P1D')))->format('d-m-Y')
+            (clone $monday)->format('Y-m-d'),
+            (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d'),
+            (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d'),
+            (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d'),
+            (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d'),
+            (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d'),
+            (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d')
         );
     }
+
 
 
 
