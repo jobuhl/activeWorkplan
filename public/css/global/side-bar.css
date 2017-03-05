@@ -147,7 +147,7 @@
 /* Wenn Cursor ueber dem Element */
 .element-text:hover,
 .element-arrow:hover,
-.element-sub-text:hover {
+:not(.no-employees).element-sub-text:hover {
     background-color: var(--blue-highlight); /* Variable in header-footer.css deklariert */
     color: var(--text-white) !important; /* text-farbe */
     cursor: pointer;

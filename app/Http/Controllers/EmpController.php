@@ -62,7 +62,7 @@ class EmpController extends Controller
         ]);
 
         flash('Employee added', 'success');
-        return redirect('/admin/planning-single/' . $thisEmployee->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning-employee/' . $thisEmployee->id . '/' . $request['thisDate']);
     }
 
 
@@ -90,21 +90,15 @@ class EmpController extends Controller
         return redirect('/employee/account/' . $request['thisDate']);
     }
 
-    public function updatePassword(Request $request){
-
-
+    public function updatePassword(Request $request)
+    {
         $this->validate($request, [
-
             'old-password' => 'required',
             'password' => 'required|min:6|confirmed',
-
         ]);
-
-
 
         if (Hash::check($request['old-password'], Auth::user()->password)) {
             $user = Employee::find(Auth::user()->id);
-
 
             Employee::where('employees.id', $user->id)
                 ->update(array(
@@ -160,12 +154,6 @@ class EmpController extends Controller
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('employees.id', $employee->get()[0]->id);
 
-        $worktimFix = DB::table('worktime_fix')
-            ->select('worktime_fix.*')
-            ->join('employees', 'employees.id', '=', 'worktime_fix.employee_id')
-            ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('employees.id', $employee->get()[0]->id);
-
         $company = DB::table('company')
             ->where('company.admin_id', Auth::user()->id)
             ->get()[0];
@@ -179,7 +167,6 @@ class EmpController extends Controller
 
         $alldayEvent->delete();
         $timeEvent->delete();
-        $worktimFix->delete();
         $employee->delete();
         $contracts->delete();
         $roles->delete();
@@ -188,7 +175,7 @@ class EmpController extends Controller
 
 
         flash('Store delete successful', 'success');
-        return redirect('/admin/planning/' . $allRetailStores[0]->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning-store/' . $allRetailStores[0]->id . '/' . $request['thisDate']);
 
     }
 
@@ -231,23 +218,18 @@ class EmpController extends Controller
 
         flash('Employee change successful', 'success');
 
-        return redirect('/admin/planning-single/' . $employee->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning-employee/' . $employee->id . '/' . $request['thisDate']);
 
 
     }
 
     public function changeEmail(Request $request)
     {
-
         $employee = Employee::find($request['thisEmployeeId']);
 
-
         $this->validate($request, [
-
             'email' => 'required|email|max:255|unique:employees',
-
         ]);
-
 
         Employee::where('employees.id', $employee->id)
             ->update(array(
@@ -256,22 +238,16 @@ class EmpController extends Controller
 
         flash('E-Mail change successful', 'success');
 
-        return redirect('/admin/planning-single/' . $employee->id . '/' . $request['thisDate']);
-
-
+        return redirect('/admin/planning-employee/' . $employee->id . '/' . $request['thisDate']);
     }
 
 
     public function changePassword(Request $request)
     {
-
         $employee = Employee::find($request['thisEmployeeId']);
 
-
         $this->validate($request, [
-
             'password' => 'required|min:6|confirmed',
-
         ]);
 
         Employee::where('employees.id', $employee->id)
@@ -279,10 +255,7 @@ class EmpController extends Controller
                 'password' => Hash::make($request['password']),
             ))[0];
 
-
         flash('Password change successful', 'success');
-        return redirect('/admin/planning-single/' . $employee->id . '/' . $request['thisDate']);
-
-
+        return redirect('/admin/planning-employee/' . $employee->id . '/' . $request['thisDate']);
     }
 }

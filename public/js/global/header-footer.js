@@ -16,8 +16,8 @@ function highlightTab() {
     var tabId = url.replace(/.+(guest|admin|employee)\/([a-zA-Z_-]+).*/, "$2");
 
     /* Sonderfall, da die Mitarbeiter Seite im gleichen Tab wie Planning ist */
-    if (tabId == "planning-single") {
-        tabId = "planning";
+    if (tabId == "planning-employee") {
+        tabId = "planning-store";
     }
 
     /* da die header Listen-IDs gleich benannt sind wie die dateien, kann ich diese exakt ansprechen */

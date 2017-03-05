@@ -18,11 +18,9 @@
         </li>
 
         @if ($amountOfRetailStores == 0)
-            <li><a id="planning" href=" {{ url('/admin/planning') . '/0/' . $week[0] }}">Planning</a>
-            </li>
+            <li><a id="planning-store" href=" {{ url('/admin/planning-store') . '/0/' . $week[0] }}">Planning</a></li>
         @else
-            <li><a id="planning" href=" {{ url('/admin/planning') . '/' . $allRetailStores[0]->id . '/' . $week[0] }}">Planning</a>
-            </li>
+            <li><a id="planning-store" href=" {{ url('/admin/planning-store') . '/' . $allRetailStores[0]->id . '/' . $week[0] }}">Planning</a></li>
         @endif
         <li><a id="account" href="{{ url('/admin/account') . '/' . $week[0] }}"> {{ Auth::user()->name }}</a>
         </li>

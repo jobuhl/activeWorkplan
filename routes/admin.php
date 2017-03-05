@@ -128,7 +128,7 @@ Route::get('/overview/{date}', function ($urlDate) {
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     } else {
-        return view('admin.home')
+        return view('admin.overview')
             ->with('allRetailStores', $allRetailStores)
             ->with('allEmployees', $allEmployees)
             ->with('manyTimeEvent', $manyTimeEvent)
@@ -138,7 +138,7 @@ Route::get('/overview/{date}', function ($urlDate) {
     }
 })->name('home');
 
-Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
+Route::get('/planning-store/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
     authUser();
 
     $company = thisCompany();
@@ -158,16 +158,18 @@ Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
         $thisRetailStore = thisRetailStore($thisRetailStoreId);
         $allEmployees = allEmployeesOfCompany($company->id);
         $countEmployees = countEmployees($thisRetailStore->id);
+        $allCountEmployees = allCountEmployees($company->id);
         $addressRetailStore = oneAddress($thisRetailStore->address_id);
 
         $manyTimeEvent = allTimeEventOfCompany($company->id, $week);
         $manyAlldayEvent = allAlldayEventOfCompany($company->id, $week);
 
-        return view('admin.planning')
+        return view('admin.planning-store')
             ->with('allRetailStores', $allRetailStores)
             ->with('thisRetailStore', $thisRetailStore)
             ->with('allEmployees', $allEmployees)
             ->with('countEmployees', $countEmployees)
+            ->with('allCountEmployees', $allCountEmployees)
             ->with('manyTimeEvent', $manyTimeEvent)
             ->with('manyAlldayEvent', $manyAlldayEvent)
             ->with('addressRetailStore', $addressRetailStore)
@@ -178,13 +180,14 @@ Route::get('/planning/{id}/{date}', function ($thisRetailStoreId, $urlDate) {
 
 })->name('home');
 
-Route::get('/planning-single/{id}/{date}', function ($employeeId, $urlDate) {
+Route::get('/planning-employee/{id}/{date}', function ($employeeId, $urlDate) {
     authUser();
 
     $company = thisCompany();
     $allRetailStores = allRetailStoresOfCompany($company->id);
     $allEmployees = allEmployeesOfCompany($company->id);
     $thisEmployee = oneEmployee($employeeId);
+    $allCountEmployees = allCountEmployees($company->id);
     $address = oneAddress($thisEmployee->retail_store_id);
     $thisRetailStore = thisRetailStore($thisEmployee->retail_store_id);
     $amountOfRetailStores = amountOfRetailStoresOfCompany($company->id);
@@ -196,13 +199,14 @@ Route::get('/planning-single/{id}/{date}', function ($employeeId, $urlDate) {
 
 
     if ($amountOfRetailStores == 0) {
-        return view('admin.planning-single')
+        return view('admin.planning-employee')
             ->with('amountOfRetailStores', $amountOfRetailStores)
             ->with('week', $week);
     } else {
-        return view('admin.planning-single')
+        return view('admin.planning-employee')
             ->with('allRetailStores', $allRetailStores)
             ->with('thisRetailStore', $thisRetailStore)
+            ->with('allCountEmployees', $allCountEmployees)
             ->with('allEmployees', $allEmployees)
             ->with('thisEmployee', $thisEmployee)
             ->with('company', $company)

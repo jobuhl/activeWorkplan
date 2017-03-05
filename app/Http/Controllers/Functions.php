@@ -75,6 +75,14 @@ class Functions extends Controller
             ->count();
     }
 
+    function allCountEmployees($companyId) {
+        return DB::table('retail_store')
+            ->select(DB::raw('count(employees.id) as countEmployees, retail_store.id as retailStoreId'))
+            ->leftJoin('employees', 'retail_store.id', '=', 'employees.retail_store_id')
+            ->where('retail_store.company_id', $companyId)
+            ->groupBy('retail_store.id')
+            ->get();
+    }
 
     function oneEmployee($employeeId)
     {
@@ -84,14 +92,6 @@ class Functions extends Controller
             ->where('employees.id', $employeeId)
             ->select('employees.id', 'employees.name as surname', 'forename', 'email', 'password', 'role.name as role', 'period_of_agreement', 'working_hours', 'classification', 'retail_store_id')
             ->get()[0];
-    }
-
-
-    function employeePerHourOfRetailStore($retailStoreId)
-    {
-        return DB::table('employee_per_hour')
-            ->where('employee_per_hour.retail_store_id', $retailStoreId)
-            ->get();
     }
 
     function timeEventOfEmployee($employeeId, $week)
@@ -119,8 +119,8 @@ class Functions extends Controller
     function allTimeEventOfCompany($companyId, $week)
     {
         return DB::table('time_event')
-            ->where('time_event.date', $week[0])
-            ->where('time_event.date', '=', $week[6])
+            ->where('time_event.date', '>=',  $week[0])
+            ->where('time_event.date', '<=', $week[6])
             ->join('category', 'category.id', '=', 'time_event.category_id')
             ->join('employees', 'employees.id', '=', 'time_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
@@ -166,8 +166,6 @@ class Functions extends Controller
             (clone $monday->add(new DateInterval('P1D')))->format('Y-m-d')
         );
     }
-
-
 
 
 

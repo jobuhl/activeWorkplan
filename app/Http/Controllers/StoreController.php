@@ -19,18 +19,13 @@ class StoreController extends Controller
     // Admin erstellt Reatil Store
     public function create(Request $request)
     {
-
         $this->validate($request, [
-
-
               'name' => 'required|max:255|',
               'street' => 'required|max:255|',
               'postcode' => 'required|max:255|',
               'city' => 'required|max:255|',
               'street_nr' => 'required|max:255|',
               'country' => 'required|max:255|',
-
-
         ]);
 
         /* Aktuelle Company rausbekommen */
@@ -64,23 +59,18 @@ class StoreController extends Controller
 
 
         flash('Store added', 'success');
-        return redirect('/admin/planning/' . $thisRetailStore->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning-store/' . $thisRetailStore->id . '/' . $request['thisDate']);
     }
 
     public function change(Request $request)
     {
-
         $this->validate($request, [
-
-
             'store_name' => 'required|max:255|',
             'street' => 'required|max:255|',
             'postcode' => 'required|max:255|',
             'city' => 'required|max:255|',
             'nr' => 'required|max:255|',
             'country' => 'required|max:255|',
-
-
         ]);
 
         $store = RetailStore::find($request['thisRetailStoreId']);
@@ -102,7 +92,6 @@ class StoreController extends Controller
                 'postcode' => $request['postcode'],
                 'city_id' => $city->id,
             ));
-
 
         $address = DB::table('address')
             ->where('address.id', $store->address_id)
@@ -126,7 +115,7 @@ class StoreController extends Controller
 
         flash('Change successful', 'success');
 
-        return redirect('/admin/planning/' . $store->id . '/' . $request['thisDate']);
+        return redirect('/admin/planning-store/' . $store->id . '/' . $request['thisDate']);
 
     }
 
@@ -139,11 +128,6 @@ class StoreController extends Controller
         $addressRetailStore = DB::table('address')
             ->select('address.*')
             ->join('retail_store', 'retail_store.address_id', '=', 'address.id')
-            ->where('retail_store.id', $retailStore->get()[0]->id);
-
-        $employeePerHour = DB::table('employee_per_hour')
-            ->select('employee_per_hour.*')
-            ->join('retail_store', 'retail_store.id', '=', 'employee_per_hour.retail_store_id')
             ->where('retail_store.id', $retailStore->get()[0]->id);
 
         $employees = DB::table('employees')
@@ -176,17 +160,9 @@ class StoreController extends Controller
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('retail_store.id', $retailStore->get()[0]->id);
 
-        $worktimeFix = DB::table('worktime_fix')
-            ->select('worktime_fix.*')
-            ->join('employees', 'employees.id', '=', 'worktime_fix.employee_id')
-            ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('retail_store.id', $retailStore->get()[0]->id);
-
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
         $alldayEvent->delete();
         $timeEvent->delete();
-        $worktimeFix->delete();
-        $employeePerHour->delete();
         $employees->delete();
         $contracts->delete();
         $roles->delete();
@@ -210,7 +186,7 @@ class StoreController extends Controller
             ->get();
 
         flash('Store delete was successful', 'success');
-        return redirect('/admin/planning/' . ($amountOfRetailStores == 0 ? '0' : $allRetailStores[0]->id) . '/' . $request['thisDate']);
+        return redirect('/admin/planning-store/' . ($amountOfRetailStores == 0 ? '0' : $allRetailStores[0]->id) . '/' . $request['thisDate']);
 
     }
 }
