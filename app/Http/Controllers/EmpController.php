@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 
-
 use DB;
 use Auth;
 use Illuminate\Support\Facades\Hash;
@@ -11,7 +10,6 @@ use App\Employee;
 use App\Role;
 use App\Contract;
 use Validator;
-
 
 
 use Illuminate\Http\Request;
@@ -22,18 +20,13 @@ class EmpController extends Controller
 //Admin legt user an
     public function create(Request $request)
     {
-
         $this->validate($request, [
-
-
             'password' => 'required|min:6|confirmed',
             'name' => 'required|max:255|',
             'forename' => 'required|max:255|',
             'email' => 'required|email|max:255|unique:employees',
             'roleid' => 'required|max:255|',
             'working_hours' => 'required|integer|max:255|',
-
-
         ]);
 
         $retailStore = DB::table('retail_store')
@@ -113,7 +106,8 @@ class EmpController extends Controller
         return redirect('/employee/account/' . $request['thisDate']);
     }
 
-    public function updateEmail(Request $request){
+    public function updateEmail(Request $request)
+    {
         $employee = Employee::find(Auth::user()->id);
 
 
@@ -129,7 +123,9 @@ class EmpController extends Controller
 //Admin löscht user
     public function delete(Request $request)
     {
-        $employee = Employee::find($request['thisEmployeeId']);
+
+        $employee = DB::table('employees')
+            ->where('employees.id', $request['thisEmployeeId']);
 
         $contracts = DB::table('contract')
             ->select('contract.*')
@@ -182,7 +178,8 @@ class EmpController extends Controller
 //Admin ändert User
     public function change(Request $request)
     {
-        $employee = Employee::find($request['thisEmployeeId']);
+        $employee = DB::table('employees')
+            ->where('employees.id', $request['thisEmployeeId']);
 
         $this->validate($request, [
             'name' => 'required|max:255|',
@@ -225,7 +222,8 @@ class EmpController extends Controller
 
     public function changeEmail(Request $request)
     {
-        $employee = Employee::find($request['thisEmployeeId']);
+        $employee = DB::table('employees')
+            ->where('employees.id', $request['thisEmployeeId']);
 
         $this->validate($request, [
             'email' => 'required|email|max:255|unique:employees',
@@ -244,7 +242,8 @@ class EmpController extends Controller
 
     public function changePassword(Request $request)
     {
-        $employee = Employee::find($request['thisEmployeeId']);
+        $employee = DB::table('employees')
+            ->where('employees.id', $request['thisEmployeeId']);
 
         $this->validate($request, [
             'password' => 'required|min:6|confirmed',

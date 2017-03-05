@@ -166,14 +166,21 @@ class DatabaseSeeder extends Seeder
             $email = $forename . '.' . $surname . '@web.de';
         }
 
-        Employee::create(array(
-            'forename' => $forename,
-            'name' => $surname,
-            'email' => $email,
-            'password' => bcrypt('123456'),
-            'retail_store_id' => rand(1, $amountOfStores),
-            'contract_id' => $thisContract->id
-        ));
+        /* Hoehere Wahscheinlichkeit fuer store 1 */
+        if (rand(0,1) == 0) {
+            $retailStoreId = 1;
+        } else {
+            $retailStoreId = rand(1, $amountOfStores);
+        }
+
+            Employee::create(array(
+                'forename' => $forename,
+                'name' => $surname,
+                'email' => $email,
+                'password' => bcrypt('123456'),
+                'retail_store_id' => $retailStoreId,
+                'contract_id' => $thisContract->id
+            ));
     }
 
 
@@ -188,7 +195,7 @@ class DatabaseSeeder extends Seeder
         $adminAddress1 = $this->addAddress('Alexanderplatz', '1', '10178', 'Berlin', 'Deutschland');
         $adminAddress2 = $this->addAddress('Sonnenstraße', '19', '80331', 'München', 'Deutschland');
 
-        $this->addCompanies('Fshion Style GmbH', 'Daniel', 'Maier', $adminAddress1); // fuer login
+        $this->addCompanies('Fashion Style GmbH', 'Daniel', 'Maier', $adminAddress1); // fuer login
         $this->addCompanies('IT-Support GmbH', 'Dieter', 'Menge', $adminAddress2);
 
 

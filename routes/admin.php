@@ -186,7 +186,10 @@ Route::get('/planning-employee/{id}/{date}', function ($employeeId, $urlDate) {
     $company = thisCompany();
     $allRetailStores = allRetailStoresOfCompany($company->id);
     $allEmployees = allEmployeesOfCompany($company->id);
+
+    /* hier eventuell ein Fehler, finde ihn nicht */
     $thisEmployee = oneEmployee($employeeId);
+
     $allCountEmployees = allCountEmployees($company->id);
     $address = oneAddress($thisEmployee->retail_store_id);
     $thisRetailStore = thisRetailStore($thisEmployee->retail_store_id);

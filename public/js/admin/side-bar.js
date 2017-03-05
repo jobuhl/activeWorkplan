@@ -62,11 +62,10 @@ function searchStoreEmp(search) {
     var list = $(".each-element");
     if (search != "") {
 
+        /* ACHTUNG: Reihenfolge wichtig! */
+
         /* Wenn Store nicht dabei -> ausblenden */
         $(list).find(".element-text:not(:Contains(" + search + "))").parent().hide();
-
-        /* Wenn Store gefunden -> anzeigen */
-        $(list).find(".element-text:Contains(" + search + ")").parent().show();
 
         /* Wenn Employee nicht dabei -> ausblenden */
         $(list).find(".element-sub-text:not(:Contains(" + search + "))").parent().hide();
@@ -75,6 +74,14 @@ function searchStoreEmp(search) {
         var element = $(list).find(".element-sub-text:Contains(" + search + ")");
         element.parent().show();
         element.parent().parent().siblings().show();
+
+        /* das "No Employees" Element verstecken */
+        var noEmployee = $(list).find(".no-employees");
+        noEmployee.parent().hide();
+        noEmployee.parent().parent().siblings().hide();
+
+        /* Wenn Store gefunden -> anzeigen */
+        $(list).find(".element-text:Contains(" + search + ")").parent().show();
 
     } else {
 
@@ -113,6 +120,9 @@ function showSubList(search) {
     if (search == "") {
         $(".sub-element").show();
         $(".element-arrow").text("⋀");
+
+        /* das "No Employees" Element verstecken */
+        $(list).find(".no-employees").parent().hide();
     }
 }
 
@@ -124,5 +134,7 @@ $(document).mouseup(function (e) {
 
         $(".sub-element").hide();
         $(".element-arrow").text("⋁");
+
+
     }
 });
