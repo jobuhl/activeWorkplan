@@ -24,26 +24,19 @@
     max-width: 100%;
 }
 
-.features .carousel img {
-    width: auto;
-    margin-bottom: 30px;
-    height: 300px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto
-}
-
+/* event image */
 .no-margin-1 {
     padding: 0 2px 0 0;
     margin: 20px 0 40px 0;
 }
 
+/* event image */
 .no-margin-2 {
     padding: 0 0 0 2px;
     margin: 20px 0 40px 0;
 }
 
-/* ------------------ ALEX --------------------- */
+/* abwechselnde zeilen grau weiß */
 .features .grey {
     background-color: var(--grey-60);
 }
@@ -57,7 +50,6 @@
         padding: 0 150px 0 150px;
     }
 }
-
 
 @media screen and (min-width: 768px) {
     .features .row {
@@ -73,10 +65,6 @@
 
     .features .row p {
         text-align: justify;
-    }
-
-    .display-none-heading {
-        display: none;
     }
 
     /* event images */

@@ -2,17 +2,3 @@
     padding-top: 25px;
     padding-bottom: 25px;
 }
-
-.impressum hr {
-    border: 0.1px solid var(--grey-border); /* Trennlinie zwischen den Abschnitten */
-}
-
-@media screen and (max-width: 767px) {
-    .display-none-heading {
-        display: none;
-    }
-
-    p {
-        text-align: justify;
-    }
-}

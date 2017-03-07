@@ -8,14 +8,11 @@
     <!-- Der eigentliche Content -->
     <div class="fake-body impressum">
 
-        <div class="col-xs-12 mainsection">
-            <div class="main-article">
-                <aside>
-                    <img src="{{asset('img/guest/impressum.gif')}}" alt="Bild">
-                </aside>
-                <aside class="display-none-heading">
-                    <h2>Impressum</h2>
-                </aside>
+        <!-- sub-header -->
+        <div class="sub-header">
+            <div class="sub-header-div">
+                <img class="sub-header-image" src="{{asset('img/guest/impressum.gif')}}" alt="Bild">
+                <h2 class="sub-header-text">Impressum</h2>
             </div>
         </div>
 

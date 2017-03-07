@@ -130,3 +130,13 @@ function signupPicture() {
     document.getElementById("overwrite-pw1").value = pw1;
     document.getElementById("overwrite-pw2").value = pw2;
 }
+
+
+/* Beim Sign in die Input Daten aus Formular 1 beim Admin in Formular 2 beim Employee kopieren */
+function copyInputSignIn() {
+    var email = $("#sign-in-email").val();
+    var password = $("#sign-in-password").val();
+
+    $(".overwrite-emp-email").val(email);
+    $(".overwrite-emp-password").val(password);
+}

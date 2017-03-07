@@ -7,15 +7,11 @@
 
     <div class="fake-body contact">
 
-        <!-- oben -->
-        <div class="col-xs-12 mainsection">
-            <div class="main-article">
-                <aside>
-                    <img src="{{asset('img/guest/contact.gif')}}" alt="Bild">
-                </aside>
-                <aside class="display-none-heading">
-                    <h2>Contact</h2>
-                </aside>
+        <!-- sub-header -->
+        <div class="sub-header">
+            <div class="sub-header-div">
+                <img class="sub-header-image" src="{{asset('img/guest/contact.gif')}}" alt="Bild">
+                <h2 class="sub-header-text">Contact</h2>
             </div>
         </div>
 

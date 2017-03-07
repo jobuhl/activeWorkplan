@@ -1,49 +1,22 @@
-<form class="form-horizontal" method="POST" action="{{ url('/employee/login') }}"> {{ csrf_field() }}
+<div class="modal-footer-2">
+    <form method="POST" action="{{ url('/employee/login') }}"> {{ csrf_field() }}
 
-    <div class="modal-body">
+        <input style="display: none;" type="email" class="overwrite-emp-email" name="email">
 
-        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-            <div class="col-xs-12">
-                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}"
-                       placeholder="E-Mail">
-                @if ($errors->has('email'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
+        <input style="display: none;" type="password" class="overwrite-emp-password" name="password">
 
-        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-            <div class="col-xs-12">
-                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-                @if ($errors->has('password'))
-                    <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
-                @endif
-            </div>
-        </div>
+        <input style="display: none;" type="checkbox" id="checkbox-emp-input" name="remember"/>
 
-    </div>
+        <button type="submit" class="form-control green-button space-just-bottom">Login as Employee</button>
 
-    <div class="modal-footer">
+    </form>
+</div>
 
-        <div class="form-group">
-            <div class="col-xs-12 col-sm-8">
-                <button type="submit" class="form-control green-button space-just-bottom">Login</button>
-            </div>
 
-            <div class="col-xs-12 col-sm-4">
-                <div class="my-checkbox">
-                    <input type="checkbox" id="checkbox-emp-input" name="remember"/>
-                    <label for="checkbox-emp-input">Remember Me</label>
-                </div>
-            </div>
 
-        </div>
-    </div>
-</form>
+
+
+
 
 
 

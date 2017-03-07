@@ -3,6 +3,7 @@
 @section('css')
     <link rel="stylesheet" type="text/css" href="{{asset('/css/guest/guest.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/guest/features.css')}}">
+
 @endsection
 
 @section('content')
@@ -10,16 +11,11 @@
     <!--Body-->
     <div class="fakebody">
 
-
-        <!-- oben -->
-        <div class="col-xs-12 mainsection">
-            <div class="main-article">
-                <aside>
-                    <img src="{{asset('img/guest/features.gif')}}" alt="Bild">
-                </aside>
-                <aside class="display-none-heading">
-                    <h2>Features</h2>
-                </aside>
+        <!-- sub-header -->
+        <div class="sub-header">
+            <div class="sub-header-div">
+                <img class="sub-header-image" src="{{asset('img/guest/features.gif')}}" alt="Bild">
+                <h2 class="sub-header-text">Features</h2>
             </div>
         </div>
 

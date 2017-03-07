@@ -1,51 +1,28 @@
-/* mainsection ist der graue obere Bereich auf den general Seiten */
-.mainsection {
-    height: 200px;
+/* sub-header ist der graue obere Bereich auf den general Seiten */
+.sub-header {
+    height: 180px;
     background-color: var(--grey-30);
+    padding: 60px 0 60px 0;
 }
 
-.mainsection .main-article {
-    width: 60%; /* muss leider fix festgelegt werden */
-    height: 100px;
+.sub-header-div {
+    height: 60px;
+    display: table;
     margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: table; /* passt die Hoehe an Inhalt an */
 }
 
-.mainsection .main-article aside {
+.sub-header-image {
+    height: inherit;
     float: left;
-    width: 50%;
 }
 
-.mainsection h2 {
-    float: left;
+.sub-header-text {
     color: var(--text-guest-header);
-    font-size: 30pt;
-    font-weight: normal;
-    padding-left: 10px;
+    float: left;
+    height: inherit;
     margin: 0;
-    bottom: 0;
-    position: absolute;
-}
-
-.mainsection img {
-    float: right;
-    height: 100px;
-}
-
-/* subheader nur in contact */
-.subheader {
-    height: 100px;
-}
-
-/* Achtung global */
-h1 , h2, h3 {
-    text-align: center;
-    font-weight: normal;
+    padding: 0 0 0 10px;
+    font-size: 65px;
 }
 
 @media screen and (max-width: 767px) {
@@ -53,5 +30,33 @@ h1 , h2, h3 {
         margin: 0;
         padding: 0;
     }
+
+    .sub-header {
+        height: 60px;
+        padding: 15px 0 15px 0;
+    }
+
+    .sub-header-div {
+        margin: 0 0 0 10px;
+        height: 30px;
+    }
+
+    .sub-header-text {
+        font-size: 33px;
+        /*display: none;*/
+    }
 }
 
+
+h1, h2, h3 {
+    text-align: center;
+    font-weight: normal;
+}
+
+p {
+    text-align: justify; /* Blocksatz */
+}
+
+hr {
+    border: 0.1px solid var(--grey-border); /* Trennlinie zwischen den Abschnitten */
+}

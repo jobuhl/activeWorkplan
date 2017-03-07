@@ -5,7 +5,7 @@
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 
             <div class="col-xs-12">
-                <input type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail" autofocus>
+                <input id="sign-in-email" onkeyup="copyInputSignIn()" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="E-Mail" autofocus>
 
                 @if ($errors->has('email'))
                     <span class="help-block">
@@ -18,7 +18,7 @@
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
 
             <div class="col-xs-12">
-                <input type="password" class="form-control" name="password" placeholder="Password">
+                <input id="sign-in-password" onkeyup="copyInputSignIn()" type="password" class="form-control" name="password" placeholder="Password">
 
                 @if ($errors->has('password'))
                     <span class="help-block">
@@ -31,13 +31,6 @@
     </div>
 
     <div class="modal-footer">
-
-
-        <div class="form-group">
-            <div class="col-xs-12">
-                <button type="submit" class="form-control green-button">Login</button>
-            </div>
-        </div>
 
         <div class="form-group">
 
@@ -52,6 +45,8 @@
                 <a class="form-control blue-light-button" href="{{ url('/admin/password/reset') }}">Forgot Your Password?</a>
             </div>
         </div>
+
+        <button type="submit" class="form-control green-button">Login as Admin</button>
     </div>
 </form>
 
