@@ -36,7 +36,7 @@
 
             <div class="col-xs-12 col-sm-6">
                 <div class="my-checkbox">
-                    <input type="checkbox" id="checkbox-adm-input" name="remember"/>
+                    <input onclick="markCheckbox()" type="checkbox" id="checkbox-adm-input" name="remember"/>
                     <label for="checkbox-adm-input">Remember Me</label>
                 </div>
             </div>

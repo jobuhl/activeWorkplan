@@ -140,3 +140,12 @@ function copyInputSignIn() {
     $(".overwrite-emp-email").val(email);
     $(".overwrite-emp-password").val(password);
 }
+
+/* Beim Sign in die Checkbox true oder false aus Formular 1 beim Admin in Formular 2 beim Employee kopieren */
+function markCheckbox() {
+    if ($('.overwrite-emp-checkbox').is(':checked')) {
+        $(".overwrite-emp-checkbox").prop("checked", false);
+    } else {
+        $(".overwrite-emp-checkbox").prop("checked", true);
+    }
+}
