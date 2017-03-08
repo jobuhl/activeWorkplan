@@ -61,7 +61,7 @@
                                     <div class="event-dropdown-content options-final-time-{{ $oneTimeEvent->id }}">
 
                                         <!-- Change Button -->
-                                        <button onclick="openModalEvent('event-final-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event', 'NULL' )" class="yellow-button">⇄</button>
+                                        <button onclick="openModalEvent('event-final-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event-admin-change-final', 'NULL' )" class="yellow-button">⇄</button>
 
                                         <!-- Delete-Button JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
                                         <button class="red-button" onclick="deleteEventAJAX('event-final-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteWorktimeEventAJAX') }}' )">

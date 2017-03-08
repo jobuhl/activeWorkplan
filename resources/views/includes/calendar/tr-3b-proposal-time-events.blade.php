@@ -42,7 +42,7 @@
                             <p style="display: none;" class="event-employee-hidden">{{ $thisEmployee->id }}</p>
 
 
-                            <!-- If calendar in Admin Planning or Single -->
+                            <!-- If calendar in Admin Planning Store or Employee -->
                             @if( strpos(url()->current(),'/admin/planning'))
 
 
@@ -54,7 +54,7 @@
                                         <!-- +++++++++++++++ OPTIONS PUT TO WORKTIME FIX +++++++++++++++ -->
                                     @if ( $oneTimeEvent->name == "Work")
                                         <!-- Add Button -->
-                                            <button onclick="openModalChangeTime('event-proposal-time-', '{{ $oneTimeEvent->id }}' )" class="green-button">+</button>
+                                            <button onclick="openModalEvent('event-proposal-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event-admin-add-final', 'NULL' )" class="green-button">+</button>
                                     @endif
 
 
@@ -88,7 +88,7 @@
                                 <div class="event-dropdown-content options-proposal-time-{{ $oneTimeEvent->id }}">
 
                                     <!-- Change Button -->
-                                    <button onclick="openModalEvent('event-proposal-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event', 'NULL' )" class="yellow-button">⇄</button>
+                                    <button onclick="openModalEvent('event-proposal-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event-employee', 'NULL' )" class="yellow-button">⇄</button>
 
                                     <!-- JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
                                     <button class="red-button" onclick="deleteEventAJAX('event-proposal-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteTimeEventAJAX') }}' )">-</button>

@@ -27,7 +27,7 @@ function openEventOptions(eventId) {
 }
 
 
-// Employee changes Time Event
+// Employee or Admin changes Time Event
 function openModalEvent(eventDivIdPrefix, eventId, modalId, tableDate) {
 
     var event = $("#" + modalId);
@@ -38,7 +38,9 @@ function openModalEvent(eventDivIdPrefix, eventId, modalId, tableDate) {
         /** Employee change Time
          *  Admin add final Time
          *  Admin change finale Time */
-        case 'modal-change-time-event':
+        case 'modal-change-time-event-admin-add-final':
+        case 'modal-change-time-event-admin-change-final':
+        case 'modal-change-time-event-employee':
 
             //Daten aus dem Event auslesen
             var employee = $("#" + eventDivIdPrefix + eventId + " .event-employee-hidden").text();
@@ -68,6 +70,7 @@ function openModalEvent(eventDivIdPrefix, eventId, modalId, tableDate) {
         /** Employee add Allday
          *  Employee Add Time */
         case 'modal-add-event':
+
             // date der Tabellenspalte aus dem Add-Button
             if (modalId == 'modal-add-event') {
                 var date = tableDate;
@@ -78,7 +81,7 @@ function openModalEvent(eventDivIdPrefix, eventId, modalId, tableDate) {
             break;
 
         default:
-            alert('openModalEvent Error');
+        // alert('openModalEvent Error');
     }
 
     // change modal oeffnen

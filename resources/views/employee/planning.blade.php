@@ -62,7 +62,7 @@
 
     @include('includes.calendar.modal-add')
     @include('includes.calendar.modal-change-allday')
-    @include('includes.calendar.modal-change-time')
+    @include('includes.calendar.modal-change-time-employee')
 
 @endsection
 
