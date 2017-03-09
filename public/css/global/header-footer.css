@@ -74,6 +74,11 @@ footer {
     z-index: 200; /* damit immer oberste Ebene (JS Calendar war sonst manchmal höher) */
 }
 
+
+.header-flash {
+    background-color: var(--blue-highlight);
+}
+
 /* ---------------------------- UL ---------------------------- */
 header ul,
 footer ul {
