@@ -54,7 +54,7 @@
                                 @if ( ($oneAlldayEvent->name ==  "Vacation" || $oneAlldayEvent->name =="Illness" ) && $oneAlldayEvent->accepted == 0)
                                     <div class="event-dropdown-content options-proposal-allday-{{ $oneAlldayEvent->id }}">
                                         <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
-                                            @include('includes.calendar.thisUrl')
+                                            <input style="display: none;" name="thisUrl" value="{{ url()->current() }}">
                                             <button class="green-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
                                         </form>
                                     </div>
@@ -65,7 +65,7 @@
                                 @if ( ($oneAlldayEvent->name ==  "Vacation" || $oneAlldayEvent->name =="Illness" ) && $oneAlldayEvent->accepted == 1)
                                     <div class="event-dropdown-content options-proposal-allday-{{ $oneAlldayEvent->id }}">
                                         <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
-                                            @include('includes.calendar.thisUrl')
+                                            <input style="display: none;" name="thisUrl" value="{{ url()->current() }}">
                                             <button class="red-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
                                         </form>
                                     </div>
