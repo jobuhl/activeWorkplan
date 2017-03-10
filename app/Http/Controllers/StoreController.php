@@ -130,6 +130,7 @@ class StoreController extends Controller
             ->join('retail_store', 'retail_store.address_id', '=', 'address.id')
             ->where('retail_store.id', $retailStore->get()[0]->id);
 
+
         $employees = DB::table('employees')
             ->select('employees.*')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')

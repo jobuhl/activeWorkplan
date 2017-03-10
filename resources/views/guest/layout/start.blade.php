@@ -29,6 +29,10 @@
         <script type="text/javascript" src="{{ asset('/js/guest/signup_in.js') }}"></script>
         @yield('js')
 
+        <!-- selectpicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>
+
+
     </body>
 
 
