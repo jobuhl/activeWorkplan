@@ -49,6 +49,7 @@ class EventController extends Controller
                 'date' => $newDate,
                 'from' => $request['time-from'],
                 'to' => $request['time-to'],
+                'accepted' => false,
                 'category_id' => $category->id,
                 'employee_id' => $request["thisEmployeeId"]
             ));

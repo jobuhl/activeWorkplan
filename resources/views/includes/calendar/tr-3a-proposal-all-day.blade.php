@@ -1,14 +1,17 @@
-<!-- +++++++++++++++ MOBILE EMPLOYEE ROW +++++++++++++++ -->
-<tr class="button-hide">
-    <td class="button-show"></td>
-    <td>{{ $thisEmployee->surname }}</td>
-    <td class="no-border-bottom">{{ $thisEmployee->forename }}</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-</tr>
+@if( strpos(url()->current(),'/admin/'))
+
+    <!-- +++++++++++++++ MOBILE EMPLOYEE ROW +++++++++++++++ -->
+    <tr class="button-hide">
+        <td class="button-show"></td>
+        <td>{{ $thisEmployee->surname }}</td>
+        <td class="no-border-bottom">{{ $thisEmployee->forename }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+@endif
 
 
 <!-- +++++++++++++++ ALL-DAY +++++++++++++++ -->
