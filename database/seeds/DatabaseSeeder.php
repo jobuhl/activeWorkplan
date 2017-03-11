@@ -11,9 +11,7 @@ use App\Role;
 use App\Contract;
 use App\Employee;
 use App\Category;
-use App\AlldayEvent;
-use App\WorktimeFix;
-use App\TimeEvent;
+use App\CalendarEvent;
 
 
 class DatabaseSeeder extends Seeder
@@ -291,8 +289,10 @@ class DatabaseSeeder extends Seeder
                     }
 
                     // Create Allday Event
-                    AlldayEvent::create(array(
+                    CalendarEvent::create(array(
                         'date' => $DBdate,
+                        'from' => '',
+                        'to' => '',
                         'accepted' => $accepted,
                         'employee_id' => $emp->id,
                         'category_id' => $cat,
@@ -357,7 +357,7 @@ class DatabaseSeeder extends Seeder
                         }
 
                         // Create Time-Event
-                        TimeEvent::create(array(
+                        CalendarEvent::create(array(
                             'date' => $DBdate,
                             'from' => $time[$i] . ':' . $randomMinute1,
                             'to' => $time[$i + 1] . ':' . $randomMinute2,
@@ -371,7 +371,7 @@ class DatabaseSeeder extends Seeder
                         if ($day <= $nextNextSunnday && $cat == 1 && (rand(0, 1) == 0 || rand(0, 2) == 0)) {
 
                             // Create TimeEvent
-                            TimeEvent::create(array(
+                            CalendarEvent::create(array(
                                 'date' => $DBdate,
                                 'from' => $time[$i] . ':' . $randomMinute1,
                                 'to' => $time[$i + 1] . ':' . $randomMinute2,

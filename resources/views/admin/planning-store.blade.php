@@ -141,8 +141,8 @@
 
         </div>
 
-        @include('includes.calendar.modal-change-time-admin-add-final')
-        @include('includes.calendar.modal-change-time-admin-change-final')
+        @include('includes.calendar.modal-event-admin-add-final')
+        @include('includes.calendar.modal-event-admin-change-final')
         @include('admin.includes.change-store')
         @include('admin.includes.delete-store')
 

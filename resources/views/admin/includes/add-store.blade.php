@@ -15,7 +15,7 @@
                 <br>
 
             </div>
-            <form  method="POST" action="{{ url('/admin/storeCreate') }}"> {{ csrf_field() }}
+            <form  method="POST" action="{{ url('/admin/addStore') }}"> {{ csrf_field() }}
 
                 <!-- Modal body-->
                 <!-- Basic-->

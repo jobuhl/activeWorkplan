@@ -17,7 +17,7 @@ class StoreController extends Controller
 {
 
     // Admin erstellt Reatil Store
-    public function create(Request $request)
+    public function add(Request $request)
     {
         $this->validate($request, [
               'name' => 'required|max:255|',

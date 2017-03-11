@@ -54,13 +54,13 @@
                                         <!-- +++++++++++++++ OPTIONS PUT TO WORKTIME FIX +++++++++++++++ -->
                                     @if ( $oneTimeEvent->name == "Work")
                                         <!-- Add Button -->
-                                            <button onclick="openModalEvent('event-proposal-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event-admin-add-final', 'NULL' )" class="green-button">+</button>
+                                            <button onclick="openModalEvent('event-proposal-time-', '{{ $oneTimeEvent->id }}', 'modal-event-admin-add-final', 'NULL' )" class="green-button">+</button>
                                     @endif
 
 
                                     <!-- +++++++++++++++ OPTIONS VACATION ILLNESS ACCEPT +++++++++++++++ -->
                                         @if ( ($oneTimeEvent->name ==  "Vacation" || $oneTimeEvent->name =="Illness" ) && $oneTimeEvent->accepted == 0)
-                                            <form method="POST" action="{{ url('admin/acceptTimeEvent') }}"> {{ csrf_field() }}
+                                            <form method="POST" action="{{ url('admin/acceptEvent') }}"> {{ csrf_field() }}
                                                 <input style="display: none;" name="thisUrl" value="{{ url()->current() }}">
                                                 <button class="green-button" name="eventId" value="{{ $oneTimeEvent->id }}">OK</button>
                                             </form>
@@ -69,7 +69,7 @@
 
                                     <!-- +++++++++++++++ OPTIONS VACATION ILLNESS NOT-ACCEPT +++++++++++++++ -->
                                         @if ( ($oneTimeEvent->name ==  "Vacation" || $oneTimeEvent->name =="Illness" ) && $oneTimeEvent->accepted == 1)
-                                            <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
+                                            <form method="POST" action="{{ url('admin/notAcceptEvent') }}"> {{ csrf_field() }}
                                                 <input style="display: none;" name="thisUrl" value="{{ url()->current() }}">
                                                 <button class="red-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
                                             </form>
@@ -88,10 +88,10 @@
                                 <div class="event-dropdown-content options-proposal-time-{{ $oneTimeEvent->id }}">
 
                                     <!-- Change Button -->
-                                    <button onclick="openModalEvent('event-proposal-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event-employee', 'NULL' )" class="yellow-button">⇄</button>
+                                    <button onclick="openModalEvent('event-proposal-time-', '{{ $oneTimeEvent->id }}', 'modal-event-employee-change', 'NULL' )" class="yellow-button">⇄</button>
 
                                     <!-- JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
-                                    <button class="red-button" onclick="deleteEventAJAX('event-proposal-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteTimeEventAJAX') }}' )">-</button>
+                                    <button class="red-button" onclick="deleteEventAJAX('event-proposal-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteEventAJAX') }}' )">-</button>
                                 </div>
                             @endif
 

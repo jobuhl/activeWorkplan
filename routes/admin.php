@@ -8,36 +8,29 @@ Route::get('/home', function () {
     return redirect('/admin/overview/' . (new DateTime())->format('Y-m-d'));
 });
 
-
-/* --------------------------- FORMULAR ------------------------------- */
-
-Route::post('/storeCreate', 'StoreController@create');
+/* ------------------------------ EMPLOYEE ----------------------------------*/
 
 Route::post('/addEmp', 'EmpController@create');
 Route::post('/changeEmp', 'EmpController@change');
 Route::post('/changeEmailEmp', 'EmpController@changeEmail');
 Route::post('/changePasswordEmp', 'EmpController@changePassword');
-
-
 Route::post('/deleteEmp', 'EmpController@delete');
 
+/* ------------------------------ ADMIN ----------------------------------*/
 Route::post('/changeAdmin', 'AdminController@update');
 Route::post('/changeEmailAdmin', 'AdminController@update_email');
 Route::post('/changePasswordAdmin', 'AdminController@update_password');
 Route::post('/deleteAdmin', 'AdminController@delete');
 
+/* ------------------------------ STORE ----------------------------------*/
+
+Route::post('/addStore', 'StoreController@add');
 Route::post('/changeStore', 'StoreController@change');
 Route::post('/deleteStore', 'StoreController@delete');
 
-Route::post('/addWorktimeFix', 'EventController@addWorktimeFixEvent');
-Route::post('/deleteWorktimeFix', 'EventController@deleteWorktimeFixEvent');
-Route::post('/changeWorktimeFix', 'EventController@changeWorktimeFixEvent');
-
-Route::post('/acceptTimeEvent', 'EventController@acceptTimeEvent');
-Route::post('/acceptAlldayEvent', 'EventController@acceptAlldayEvent');
-
-Route::post('/notAcceptTimeEvent', 'EventController@notAcceptTimeEvent');
-Route::post('/notAcceptAlldayEvent', 'EventController@notAcceptAlldayEvent');
+/* ------------------------------ ACCEPT EVENTS ----------------------------------*/
+Route::post('/acceptEvent', 'EventController@acceptEvent');
+Route::post('/notAcceptEvent', 'EventController@notAcceptEvent');
 
 
 //Route::post('/searchOverview', function () {

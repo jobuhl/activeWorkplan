@@ -35,31 +35,34 @@ function openModalEvent(eventDivIdPrefix, eventId, modalId, tableDate) {
     // Absichtlich nur vor dem default ein break; gesetzt, damit alle cases durchlaufen werden koennen
     switch (modalId) {
 
-        /** Employee change Time
-         *  Admin add final Time
-         *  Admin change finale Time */
-        case 'modal-change-time-event-admin-add-final':
-        case 'modal-change-time-event-admin-change-final':
-        case 'modal-change-time-event-employee':
+        case 'modal-event-admin-add-final':
+        case 'modal-event-admin-change-final':
 
             //Daten aus dem Event auslesen
             var employee = $("#" + eventDivIdPrefix + eventId + " .event-employee-hidden").text();
-            var from = $("#" + eventDivIdPrefix + eventId + " .event-from").text();
-            var to = $("#" + eventDivIdPrefix + eventId + " .event-to").text();
-
-            // Uebertragen der daten in das change-modal
-            event.find(".from-overwrite").val(from);
-            event.find(".to-overwrite").val(to);
 
             // um beim submit im Controller auf die id zugreifen zu können
             event.find(".employee-overwrite").val(employee);
 
-        /** Employee change Allday */
-        case 'modal-change-allday-event':
+        case 'modal-event-employee-change':
 
             //Daten aus dem Event auslesen
             var date = $("#" + eventDivIdPrefix + eventId + " .event-date-hidden").text();
             var category = $("#" + eventDivIdPrefix + eventId + " .event-category").text();
+
+            // Eventuell befuellt
+            var from = $("#" + eventDivIdPrefix + eventId + " .event-from").text();
+            var to = $("#" + eventDivIdPrefix + eventId + " .event-to").text();
+
+            if (from != '' && to != '') {
+                openTime();
+
+                // Uebertragen der daten in das change-modal
+                event.find(".from-overwrite").val(from);
+                event.find(".to-overwrite").val(to);
+            } else {
+                hideTime();
+            }
 
             // Uebertragen der daten in das change-modal
             event.find(".category-overwrite").text(category);
@@ -67,12 +70,10 @@ function openModalEvent(eventDivIdPrefix, eventId, modalId, tableDate) {
             // um beim submit im Controller auf die id zugreifen zu können
             event.find(".id-overwrite").val(eventId);
 
-        /** Employee add Allday
-         *  Employee Add Time */
-        case 'modal-add-event':
+        case 'modal-event-employee-add':
 
             // date der Tabellenspalte aus dem Add-Button
-            if (modalId == 'modal-add-event') {
+            if (modalId == 'modal-event-employee-add') {
                 var date = tableDate;
             }
 
@@ -87,6 +88,59 @@ function openModalEvent(eventDivIdPrefix, eventId, modalId, tableDate) {
     // change modal oeffnen
     $("#open-" + modalId).click();
 }
+
+/* ------------------------------- AJAX ----------------------------------- */
+
+// Delete Event
+function deleteEventAJAX(divPrefix, eventId, routesURL) {
+    var thisEvent = $("#" + divPrefix + eventId);
+
+    // zuerst einfach ausblenden
+    thisEvent.hide();
+
+    // danach mit AJAX in der datenbank loeschen
+    thisEvent.load(routesURL + '?eventId=' + eventId);
+}
+
+
+/* -------------------------------  Modal Event Show Hide Time ----------------------------------- */
+
+function toggleTime() {
+
+    // Button Inhalt Text
+    var buttonText = $(".time-button-overwrite").html();
+
+    if (buttonText == "Show Time") {
+        openTime();
+    }
+
+    if (buttonText == "Hide Time"){
+        hideTime();
+    }
+}
+
+function openTime() {
+
+    // Options div einblenden
+    $(".hide-time-input").show();
+
+    // Show / Hide Button change text
+    $(".time-button-overwrite").text("Hide Time");
+}
+
+function hideTime() {
+
+    // Options div ausblenden
+    $(".hide-time-input").hide();
+
+    // Show / Hide Button change text
+    $(".time-button-overwrite").text("Show Time");
+
+    // Empty input values -> damit controller erkennt, ob alldayx oder time
+    $(".empty-overwrite").val("");
+}
+
+
 
 
 // Drag and Drop
@@ -103,48 +157,3 @@ function openModalEvent(eventDivIdPrefix, eventId, modalId, tableDate) {
 //     var data = ev.dataTransfer.getData("text");
 //     ev.target.appendChild(document.getElementById(data));
 // }
-
-/* ------------------------------- AJAX ----------------------------------- */
-
-// Delete Event
-function deleteEventAJAX(divPrefix, eventId, routesURL) {
-    var thisEvent = $("#" + divPrefix + eventId);
-
-    // zuerst einfach ausblenden
-    thisEvent.hide();
-
-    // danach mit AJAX in der datenbank loeschen
-    thisEvent.load(routesURL + '?eventId=' + eventId);
-}
-
-
-/* ------------------------------- Add Event Show Time ----------------------------------- */
-
-function openTimeInput() {
-
-    // Div ueber Time rausfinden
-    var time = $(".hide-time-input");
-    var button = $(".overwrite-time-button");
-    var input = $(".overwrite-empty");
-    var category = $(".hide-option");
-
-    // Wenn Time ausgeblendet (also nicht geoeffnet)
-    if (time.is(':hidden')) {
-
-        // Options div einblenden
-        time.show();
-
-        // Show / Hide Button change text
-        button.text("Hide Time");
-    } else {
-
-        // Options div ausblenden
-        time.hide();
-
-        // Show / Hide Button change text
-        button.text("Show Time");
-
-        // Empty input values -> damit controller erkennt, ob alldayx oder time
-        input.val("");
-    }
-}

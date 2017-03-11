@@ -29,7 +29,7 @@
             <!-- +++++++++++++++ ALL ALL-DAY EVENT +++++++++++++++ -->
             @foreach($manyAlldayEvent as $oneAlldayEvent)
                 @if( (new DateTime($oneAlldayEvent->date))->format('Y-m-d') == $week[$i]
-                    && (( $oneAlldayEvent->name == "Vacation" || $oneAlldayEvent->name == "Illness") && $oneAlldayEvent->accepted == 1)
+                    && ($oneAlldayEvent->name == 'Work Final' || (( $oneAlldayEvent->name == ("Vacation" || "Illness")) && $oneAlldayEvent->accepted == 1) )
                     && $oneAlldayEvent->employee_id == $thisEmployee->id)
 
 
@@ -48,7 +48,7 @@
                             <!-- +++++++++++++++ OPTIONS VACATION ILLNESS ACCEPT +++++++++++++++ -->
                                 @if ( ($oneAlldayEvent->name == ("Vacation" || "Illness" )) && $oneAlldayEvent->accepted == 0)
                                     <div class="event-dropdown-content options-final-allday-{{ $oneAlldayEvent->id }}">
-                                        <form method="POST" action="{{ url('admin/acceptAlldayEvent') }}"> {{ csrf_field() }}
+                                        <form method="POST" action="{{ url('admin/acceptEvent') }}"> {{ csrf_field() }}
                                             <input style="display: none;" name="thisUrl" value="{{ url()->current() }}">
                                             <button class="green-button" name="eventId" value="{{ $oneAlldayEvent->id }}">OK</button>
                                         </form>
@@ -59,7 +59,7 @@
                             <!-- +++++++++++++++ OPTIONS VACATION ILLNESS NOT-ACCEPT +++++++++++++++ -->
                                 @if ( ($oneAlldayEvent->name == ( "Vacation" || "Illness" )) && $oneAlldayEvent->accepted == 1)
                                     <div class="event-dropdown-content options-final-allday-{{ $oneAlldayEvent->id }}">
-                                        <form method="POST" action="{{ url('admin/notAcceptAlldayEvent') }}"> {{ csrf_field() }}
+                                        <form method="POST" action="{{ url('admin/notAcceptEvent') }}"> {{ csrf_field() }}
                                             <input style="display: none;" name="thisUrl" value="{{ url()->current() }}">
                                             <button class="red-button" name="eventId" value="{{ $oneAlldayEvent->id }}">-</button>
                                         </form>

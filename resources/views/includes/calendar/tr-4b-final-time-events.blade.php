@@ -18,7 +18,6 @@
             @foreach($manyTimeEvent as $oneTimeEvent)
                 @if( (new DateTime($oneTimeEvent->date))->format('Y-m-d') == $week[$i]
                     && ($oneTimeEvent->name == 'Work Final' || (( $oneTimeEvent->name == ("Vacation" || "Illness")) && $oneTimeEvent->accepted == 1) )
-
                     && $oneTimeEvent->employee_id == $thisEmployee->id)
 
                     <!-- +++++++++++++++ ONE TIME EVENT +++++++++++++++ -->
@@ -41,7 +40,7 @@
 
                                         <!-- +++++++++++++++ OPTIONS VACATION ILLNESS NOT-ACCEPT +++++++++++++++ -->
                                         @if ( ($oneTimeEvent->name == ("Vacation" || "Illness" )) && $oneTimeEvent->accepted == 1)
-                                            <form method="POST" action="{{ url('admin/notAcceptTimeEvent') }}"> {{ csrf_field() }}
+                                            <form method="POST" action="{{ url('admin/notAcceptEvent') }}"> {{ csrf_field() }}
                                                 <input style="display: none;" name="thisUrl" value="{{ url()->current() }}">
                                                 <button class="red-button" name="eventId" value="{{ $oneTimeEvent->id }}">-</button>
                                             </form>
@@ -61,10 +60,10 @@
                                     <div class="event-dropdown-content options-final-time-{{ $oneTimeEvent->id }}">
 
                                         <!-- Change Button -->
-                                        <button onclick="openModalEvent('event-final-time-', '{{ $oneTimeEvent->id }}', 'modal-change-time-event-admin-change-final', 'NULL' )" class="yellow-button">⇄</button>
+                                        <button onclick="openModalEvent('event-final-time-', '{{ $oneTimeEvent->id }}', 'modal-event-admin-change-final', 'NULL' )" class="yellow-button">⇄</button>
 
                                         <!-- Delete-Button JS aufurf mit eventId und RoutesURL -> Controller loescht Event und ersetzt es in View mit "nichts" -->
-                                        <button class="red-button" onclick="deleteEventAJAX('event-final-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteWorktimeEventAJAX') }}' )">
+                                        <button class="red-button" onclick="deleteEventAJAX('event-final-time-', '{{ $oneTimeEvent->id }}', '{{ url('/deleteEventAJAX') }}' )">
                                             -
                                         </button>
 

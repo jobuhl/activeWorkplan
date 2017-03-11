@@ -60,9 +60,8 @@
 
     </div>
 
-    @include('includes.calendar.modal-add')
-    @include('includes.calendar.modal-change-allday')
-    @include('includes.calendar.modal-change-time-employee')
+    @include('includes.calendar.modal-event-employee-add')
+    @include('includes.calendar.modal-event-employee-change')
 
 @endsection
 

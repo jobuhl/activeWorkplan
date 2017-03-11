@@ -40,13 +40,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/deleteAlldayEventAJAX/{eventId?}', 'EventController@deleteAlldayEventAJAX');
-Route::get('/deleteTimeEventAJAX/{eventId?}', 'EventController@deleteTimeEventAJAX');
-Route::get('/deleteWorktimeEventAJAX/{eventId?}', 'EventController@deleteWorktimeEventAJAX');
+// ------------------------ EVENTS ------------------------
+
+Route::post('/addEvent', 'EventController@addEvent');
+Route::post('/changeEvent', 'EventController@changeEvent');
+Route::get('/deleteEventAJAX/{eventId?}', 'EventController@deleteEventAJAX');
 
 
-
-// ------------------------ guest ------------------------
+// ------------------------ GUEST ------------------------
 Route::get('/', function () {
     return redirect('/guest/index');
 });
@@ -60,7 +61,7 @@ Route::get('/guest/feature', function () {
 });
 
 
-// ------------------------ Footer ------------------------
+// ------------------------ FOOTER ------------------------
 Route::get('/guest/contact', function () {
     return view('guest.footer.contact');
 });

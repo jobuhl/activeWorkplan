@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTimeEvent extends Migration
+class CreateCalendarEvent extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTimeEvent extends Migration
      */
     public function up()
 {
-    Schema::create('time_event', function (Blueprint $table) {
+    Schema::create('calendar_event', function (Blueprint $table) {
         $table->increments('id');
         $table->string('date');
         $table->string('from');
@@ -37,6 +37,6 @@ class CreateTimeEvent extends Migration
      */
     public function down()
 {
-    Schema::dropIfExists('time_event');
+    Schema::dropIfExists('calendar_event');
 }
 }

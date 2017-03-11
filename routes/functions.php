@@ -89,49 +89,57 @@ function oneEmployee($employeeId)
 
 function timeEventOfEmployee($employeeId, $week)
 {
-    return DB::table('time_event')
-        ->where('time_event.date', '>=', $week[0])
-        ->where('time_event.date', '<=', $week[6])
-        ->join('category', 'category.id', '=', 'time_event.category_id')
-        ->where('time_event.employee_id', $employeeId)
-        ->select('time_event.id as id', 'date', 'from', 'to', 'color', 'category.name as name', 'employee_id', 'accepted')
+    return DB::table('calendar_event')
+        ->where('calendar_event.date', '>=', $week[0])
+        ->where('calendar_event.date', '<=', $week[6])
+        ->where('calendar_event.from', '!=', '')
+        ->where('calendar_event.to', '!=', '')
+        ->where('calendar_event.employee_id', $employeeId)
+        ->join('category', 'category.id', '=', 'calendar_event.category_id')
+        ->select('calendar_event.id as id', 'date', 'from', 'to', 'color', 'category.name as name', 'employee_id', 'accepted')
         ->get();
 }
 
 function alldayEventOfEmployee($employeeId, $week)
 {
-    return DB::table('allday_event')
-        ->where('allday_event.date', '>=', $week[0])
-        ->where('allday_event.date', '<=', $week[6])
-        ->join('category', 'category.id', '=', 'allday_event.category_id')
-        ->where('allday_event.employee_id', $employeeId)
-        ->select('allday_event.id as id', 'date', 'color', 'category.name as name', 'employee_id', 'accepted')
+    return DB::table('calendar_event')
+        ->where('calendar_event.date', '>=', $week[0])
+        ->where('calendar_event.date', '<=', $week[6])
+        ->where('calendar_event.employee_id', $employeeId)
+        ->where('calendar_event.from', '')
+        ->where('calendar_event.to', '')
+        ->join('category', 'category.id', '=', 'calendar_event.category_id')
+        ->select('calendar_event.id as id', 'date', 'color', 'category.name as name', 'employee_id', 'accepted')
         ->get();
 }
 
 function allTimeEventOfCompany($companyId, $week)
 {
-    return DB::table('time_event')
-        ->where('time_event.date', '>=',  $week[0])
-        ->where('time_event.date', '<=', $week[6])
-        ->join('category', 'category.id', '=', 'time_event.category_id')
-        ->join('employees', 'employees.id', '=', 'time_event.employee_id')
+    return DB::table('calendar_event')
+        ->where('calendar_event.date', '>=',  $week[0])
+        ->where('calendar_event.date', '<=', $week[6])
+        ->where('calendar_event.from', '!=', '')
+        ->where('calendar_event.to', '!=', '')
+        ->join('category', 'category.id', '=', 'calendar_event.category_id')
+        ->join('employees', 'employees.id', '=', 'calendar_event.employee_id')
         ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
         ->where('retail_store.company_id', $companyId)
-        ->select('time_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id', 'color', 'accepted')
+        ->select('calendar_event.id as id', 'category.name as name', 'from', 'to', 'date', 'employee_id', 'color', 'accepted')
         ->get();
 }
 
 function allAlldayEventOfCompany($companyId, $week)
 {
-    return DB::table('allday_event')
-        ->where('allday_event.date', '>=', $week[0])
-        ->where('allday_event.date', '<=', $week[6])
-        ->join('category', 'category.id', '=', 'allday_event.category_id')
-        ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
+    return DB::table('calendar_event')
+        ->where('calendar_event.date', '>=', $week[0])
+        ->where('calendar_event.date', '<=', $week[6])
+        ->where('calendar_event.from', '')
+        ->where('calendar_event.to', '')
+        ->join('category', 'category.id', '=', 'calendar_event.category_id')
+        ->join('employees', 'employees.id', '=', 'calendar_event.employee_id')
         ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
         ->where('retail_store.company_id', $companyId)
-        ->select('allday_event.id as id', 'category.name as name', 'date', 'employee_id', 'color', 'accepted')
+        ->select('calendar_event.id as id', 'category.name as name', 'date', 'employee_id', 'color', 'accepted')
         ->get();
 }
 
