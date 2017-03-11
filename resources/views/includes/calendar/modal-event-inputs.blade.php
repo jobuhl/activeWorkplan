@@ -14,7 +14,7 @@
                 @endif
 
                 @if( strpos(url()->current(),'/employee/planning') )
-                    <option class="category-overwrite">Work</option>
+                    {{--<option class="category-overwrite">Work</option>--}}
                     {{--<option disabled>------------</option>--}}
                     @foreach($category as $cat)
                         @if ($cat->name != "Work Final")
@@ -64,72 +64,6 @@
         </div>
 
     </div>
-
-    <script>
-
-        // Fuer jede InputLaenge eine RegExp
-        var regex = [
-            new RegExp("[0-2]"),
-            new RegExp("([01][0-9]|2[0-3])"),
-            new RegExp("([01][0-9]|2[0-3]):"),
-            new RegExp("([01][0-9]|2[0-3]):[0-5]"),
-            new RegExp("([01][0-9]|2[0-3]):[0-5][05]")
-        ];
-
-        function validateTimeInput(inputValueOld, inputClass) {
-
-            var inputValue = inputValueOld;
-            var from = $(".from-overwrite").val();
-            var to = $(".to-overwrite").val();
-            var current = $("." + inputClass);
-
-            // Schnellschreibweise, wenn erste Zahl 3,...,9
-            if (inputValue.length == 1 && (new RegExp("[3-9]")).test(inputValue)) {
-                inputValue = "0" + inputValue + ":";
-
-                if (inputClass == "from-overwrite") {
-                    from = inputValue;
-                }
-                if (inputClass == "to-overwrite") {
-
-                    to = inputValue;
-                }
-            }
-
-            // Vergleich der aktuellen inputLaenge mit entsprechender RegExp
-            if (!regex[Math.min(inputValue.length - 1, 4)].test(inputValue) || isFromLowerTo(from, to)) {
-
-                // Den letzten Character loeschen
-                if (inputValue.length == 3) {
-                    inputValue = "";
-                } else {
-                    inputValue = inputValue.substring(0, inputValue.length - 1);
-                }
-            }
-
-            // Wenn beide Inputs komplett befuellt sind, darf die Uhrzeit nicht gleich sein
-            if (from.length == 5 && to.length == 5 && from >= to) {
-                inputValue = inputValue.substring(0, 4);
-            }
-
-            current.val(inputValue);
-        }
-
-        function isFromLowerTo(from, to) {
-
-            // Min Length of both Inputs
-            var shorterInput = Math.min(from.length, to.length);
-
-            // Substring of both Inputs
-            var shortFrom = from.substring(0, shorterInput);
-            var shortTo = to.substring(0, shorterInput);
-
-//            alert(shortFrom + " " + shortTo);
-
-            return shortFrom > shortTo;
-        }
-
-    </script>
 
 
     <!-- If calendar in Employee Planning -->
