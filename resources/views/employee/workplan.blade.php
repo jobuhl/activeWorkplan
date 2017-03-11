@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div class="fake-body container emp-planning final-workplan">
+    <div class="fake-body container emp-planning final-workplan workplan">
 
         <div class="space_emp col-xs-12"></div>
 

@@ -121,7 +121,7 @@ $("body")[0].onresize = function () {
 /** In Overview wird nichts bearbeitet, deshalb der Verweis auf Planning */
 
 /* on click down auf jedes Event im Admin Overview */
-$(".overview .drop-btn").mousedown( function () {
+$(".overview .drop-btn, .workplan .drop-btn").mousedown( function () {
 
     /* Hintergund orange */
     $("header #planning-store").addClass("header-flash");
@@ -129,13 +129,10 @@ $(".overview .drop-btn").mousedown( function () {
 });
 
 /* on click up auf jedes Event im Admin Overview */
-$(".overview .drop-btn").mouseup( function () {
+$(".overview .drop-btn, .workplan .drop-btn").mouseup( function () {
 
     /* Hintergund wieder wie vorher: grau */
     $("header #planning-store").removeClass("header-flash");
     $(".nav-toggle").removeClass("header-flash");
 
 });
-
-
-

@@ -165,20 +165,198 @@ class DatabaseSeeder extends Seeder
         }
 
         /* Hoehere Wahscheinlichkeit fuer store 1 */
-        if (rand(0,1) == 0) {
+        if (rand(0, 1) == 0) {
             $retailStoreId = 1;
         } else {
             $retailStoreId = rand(1, $amountOfStores);
         }
 
-            Employee::create(array(
-                'forename' => $forename,
-                'name' => $surname,
-                'email' => $email,
-                'password' => bcrypt('123456'),
-                'retail_store_id' => $retailStoreId,
-                'contract_id' => $thisContract->id
+        Employee::create(array(
+            'forename' => $forename,
+            'name' => $surname,
+            'email' => $email,
+            'password' => bcrypt('123456'),
+            'retail_store_id' => $retailStoreId,
+            'contract_id' => $thisContract->id
+        ));
+    }
+
+    /* ------------------------------------- EVENTS ------------------------------------ */
+    function addCalendarEvents()
+    {
+        $allEmployees = DB::table('employees')
+            ->get();
+
+        $nextNextSunnday = 14 - (new DateTime())->format('N');
+
+
+        // alle Employees
+        foreach ($allEmployees as $emp) {
+
+            // 7 tage zurueck und bis zum uebernaechsten Sonntag
+            for ($day = -7; $day < $nextNextSunnday + 7; $day++) {
+
+
+                $DBdate = ((new DateTime())->modify($day . ' days'))->format('Y-m-d');
+
+                // Seltener Allday-Event
+                if (($day + rand(-3, 3)) % rand(2, 5) == 0) {
+
+                    $this->addAlldayEvents($day, $DBdate, $emp);
+
+                } // Oefter Time-Event
+                else {
+
+                    $this->addTimeEvents($day, $DBdate, $emp, $nextNextSunnday);
+                }
+            }
+        }
+
+    }
+
+
+    function addAlldayEvents($day, $DBdate, $emp)
+    {
+        // Category ID
+        // wenn in vergangenheit
+        if ($day <= 1) {
+            // Illness / Vacation / Else Categorys
+            $cat = rand(3, 8);
+        } else {
+            // Vacation / Else Category
+            $cat = rand(4, 8);
+        }
+
+        // Normalerweise bei Events kein accepted
+        $accepted = false;
+
+        // Bei Illness und Vacation manchmal schon akzeptiert
+        if (($cat == 3 || $cat == 4) && rand(0, 1) == 0) {
+            $accepted = true;
+        }
+
+        // Create Allday Event
+        CalendarEvent::create(array(
+            'date' => $DBdate,
+            'from' => '',
+            'to' => '',
+            'accepted' => $accepted,
+            'employee_id' => $emp->id,
+            'category_id' => $cat,
+        ));
+    }
+
+    function getHoursArray()
+    {
+        // Randomize start / end time
+        $time = array(
+            rand(8, 15),
+            rand(16, 22),
+            rand(8, 11),
+            rand(12, 15),
+            rand(16, 18),
+            rand(19, 22)
+        );
+
+        // Null vor Stunden, wenn Einer-Zahl
+        for ($t = 0; $t < 6; $t++) {
+            if ($time[$t] <= 9) {
+                $time[$t] = "0" . $time[$t];
+            }
+        }
+        return $time;
+    }
+
+    function getCategoryForTimeEvent($day)
+    {
+        // another category (except Vacation) OR Work
+        if (($day + rand(-3, 3)) % rand(2, 5) == 0) {
+
+            // Illness (Category==3) nur wenn in vergangenheit
+            if ($day <= 1) {
+
+                // 1/5 wenn Illness
+                if (rand(0, 4) == 0) {
+                    $cat = 3;
+                    // 4/5 else
+                } else {
+                    $cat = rand(5, 8);
+                }
+            } else {
+                $cat = rand(5, 8);
+            }
+        } else {
+            $cat = 1;
+        }
+
+        return $cat;
+    }
+
+    function addTimeEvents($day, $DBdate, $emp, $nextNextSunnday)
+    {
+        $time = $this->getHoursArray();
+
+        // Normalerweise 1 Durchlauf -> 1 Event am Tag
+        $i = 0;
+
+        //zufalls-Variable speichern
+        $bool = ($day + rand(-3, 3)) % rand(4, 5) == 0;
+
+        // Seltener 2 Durchlauufe -> 2 Events am Tag
+        if ($bool) {
+            $i = 2;
+        }
+
+        // Falls mehrere Events an einem Tag
+        while ($i < 6) {
+
+            $cat = $this->getCategoryForTimeEvent($day);
+
+            // vordefinierte Minuten // Damit in Creates die gleichen Minuten verwendet werden
+            $min = array("00", "15", "30", "45");
+            $randomMinute1 = $min[rand(0, 3)];
+            $randomMinute2 = $min[rand(0, 3)];
+
+            // Normalerweise bei Events kein accepted
+            $accepted = false;
+
+            // Bei Illness und Vacation manchmal schon akzeptiert
+            if (($cat == 3 || $cat == 4) && rand(0, 1) == 0) {
+                $accepted = true;
+            }
+
+            // Create Time-Event
+            CalendarEvent::create(array(
+                'date' => $DBdate,
+                'from' => $time[$i] . ':' . $randomMinute1,
+                'to' => $time[$i + 1] . ':' . $randomMinute2,
+                'accepted' => $accepted,
+                'employee_id' => $emp->id,
+                'category_id' => $cat,
             ));
+
+
+            // Manchmal Workt Final Event
+            if ($day <= $nextNextSunnday && $cat == 1 && (rand(0, 1) == 0 || rand(0, 2) == 0)) {
+
+                // Create TimeEvent
+                CalendarEvent::create(array(
+                    'date' => $DBdate,
+                    'from' => $time[$i] . ':' . $randomMinute1,
+                    'to' => $time[$i + 1] . ':' . $randomMinute2,
+                    'accepted' => $accepted,
+                    'employee_id' => $emp->id,
+                    'category_id' => 2,
+                ));
+            }
+
+
+            $i += 2;
+
+            if (!$bool) {
+                break;
+            }
+        }
     }
 
 
@@ -248,150 +426,8 @@ class DatabaseSeeder extends Seeder
         $this->addEmployee('Steffen', 'Rahm');
 
 
-        /* ----------------------- Time Event -------------------------- */
+        /* ----------------------- Event -------------------------- */
 
-        $allEmployees = DB::table('employees')
-            ->get();
-
-        $min = array("00", "15", "30", "45");
-
-        $nextNextSunnday = 14 - (new DateTime())->format('N');
-
-        // alle Employees
-        foreach ($allEmployees as $emp) {
-
-            // 7 tage vor und zurück
-            for ($day = -7; $day < $nextNextSunnday + 7; $day++) {
-
-
-                $DBdate = ((new DateTime())->modify($day . ' days'))->format('Y-m-d');
-
-                // Seltener Allday-Event
-                if (($day + rand(-3, 3)) % rand(2, 5) == 0) {
-
-                    // Category ID
-                    // wenn in vergangenheit
-                    if ($day <= 1) {
-                        // Illness / Vacation / Else Categorys
-                        $cat = rand(3, 8);
-                    } else {
-                        // Vacation / Else Category
-                        $cat = rand(4, 8);
-                    }
-
-
-                    // Normalerweise bei Events kein accepted
-                    $accepted = false;
-
-                    // Bei Illness und Vacation manchmal schon akzeptiert
-                    if (($cat == 3 || $cat == 4) && rand(0, 1) == 0) {
-                        $accepted = true;
-                    }
-
-                    // Create Allday Event
-                    CalendarEvent::create(array(
-                        'date' => $DBdate,
-                        'from' => '',
-                        'to' => '',
-                        'accepted' => $accepted,
-                        'employee_id' => $emp->id,
-                        'category_id' => $cat,
-                    ));
-                } // Oefter Time-Event
-                else {
-
-                    // Randomize start / end time
-                    $time = array(
-                        rand(8, 15),
-                        rand(16, 22),
-                        rand(8, 11),
-                        rand(12, 15),
-                        rand(16, 18),
-                        rand(19, 22)
-                    );
-
-                    // Normalerweise 1 Durchlauf -> 1 Event am Tag
-                    $i = 0;
-
-                    //zufalls-Variable speichern
-                    $bool = ($day + rand(-3, 3)) % rand(4, 5) == 0;
-
-                    // Seltener 2 Durchlauufe -> 2 Events am Tag
-                    if ($bool) {
-                        $i = 2;
-                    }
-
-                    // Falls mehrere Events an einem Tag
-                    while ($i < 6) {
-
-                        // another category (except Vacation) OR Work
-                        if (($day + rand(-3, 3)) % rand(2, 5) == 0) {
-
-                            // Illness (Category==3) nur wenn in vergangenheit
-                            if ($day <= 1) {
-
-                                // 1/5 wenn Illness
-                                if (rand(0, 4) == 0) {
-                                    $cat = 3;
-                                    // 4/5 else
-                                } else {
-                                    $cat = rand(5, 8);
-                                }
-                            } else {
-                                $cat = rand(5, 8);
-                            }
-                        } else {
-                            $cat = 1;
-                        }
-
-                        // Damit in Creates die gleichen Minuten verwendet werden
-                        $randomMinute1 = $min[rand(0, 3)];
-                        $randomMinute2 = $min[rand(0, 3)];
-
-                        // Normalerweise bei Events kein accepted
-                        $accepted = false;
-
-                        // Bei Illness und Vacation manchmal schon akzeptiert
-                        if (($cat == 3 || $cat == 4) && rand(0, 1) == 0) {
-                            $accepted = true;
-                        }
-
-                        // Create Time-Event
-                        CalendarEvent::create(array(
-                            'date' => $DBdate,
-                            'from' => $time[$i] . ':' . $randomMinute1,
-                            'to' => $time[$i + 1] . ':' . $randomMinute2,
-                            'accepted' => $accepted,
-                            'employee_id' => $emp->id,
-                            'category_id' => $cat,
-                        ));
-
-
-                        // Manchmal Workt Final Event
-                        if ($day <= $nextNextSunnday && $cat == 1 && (rand(0, 1) == 0 || rand(0, 2) == 0)) {
-
-                            // Create TimeEvent
-                            CalendarEvent::create(array(
-                                'date' => $DBdate,
-                                'from' => $time[$i] . ':' . $randomMinute1,
-                                'to' => $time[$i + 1] . ':' . $randomMinute2,
-                                'accepted' => $accepted,
-                                'employee_id' => $emp->id,
-                                'category_id' => 2,
-                            ));
-                        }
-
-
-                        $i += 2;
-
-                        if (!$bool) {
-                            break;
-                        }
-                    }
-                }
-            }
-        }
-        /* ---------------------- Time Event Ende-------------------------- */
-
+        $this->addCalendarEvents();
     }
 }
