@@ -110,12 +110,12 @@
 }
 
 /* Samstag Sonntag Hintergrund */
-.calendar-days-one-emp .all-day td:nth-child(7),
-.calendar-days-one-emp .all-day td:nth-child(8),
-.calendar-days-one-emp .time-events td:nth-child(7),
-.calendar-days-one-emp .time-events td:nth-child(8),
-.calendar-days-one-emp .add-buttons td:nth-child(7),
-.calendar-days-one-emp .add-buttons td:nth-child(8) {
+.calendar-days-one-emp .all-day td:nth-last-child(1),
+.calendar-days-one-emp .all-day td:nth-last-child(2),
+.calendar-days-one-emp .time-events td:nth-last-child(1),
+.calendar-days-one-emp .time-events td:nth-last-child(2),
+.calendar-days-one-emp .add-buttons td:nth-last-child(1),
+.calendar-days-one-emp .add-buttons td:nth-last-child(2) {
     background-color: var(--grey-50);
 }
 
@@ -183,7 +183,7 @@
 
 .one-time-event,
 .one-allday-event {
-    margin: 2px;/* damit event abstand zur week-day border hat */
+    margin: 1px;/* damit event abstand zur week-day border hat */
     border-radius: 5px;
     cursor: pointer;
     overflow: hidden;

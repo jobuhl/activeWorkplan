@@ -138,15 +138,9 @@ class EmpController extends Controller
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('employees.id', $employee->get()[0]->id);
 
-        $timeEvent = DB::table('time_event')
-            ->select('time_event.*')
+        $calendarEvent = DB::table('calendar_event')
+            ->select('calendar_event.*')
             ->join('employees', 'employees.id', '=', 'time_event.employee_id')
-            ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
-            ->where('employees.id', $employee->get()[0]->id);
-
-        $alldayEvent = DB::table('allday_event')
-            ->select('allday_event.*')
-            ->join('employees', 'employees.id', '=', 'allday_event.employee_id')
             ->join('retail_store', 'retail_store.id', '=', 'employees.retail_store_id')
             ->where('employees.id', $employee->get()[0]->id);
 
@@ -161,8 +155,7 @@ class EmpController extends Controller
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
 
-        $alldayEvent->delete();
-        $timeEvent->delete();
+        $calendarEvent->delete();
         $employee->delete();
         $contracts->delete();
         $roles->delete();

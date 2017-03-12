@@ -14,8 +14,8 @@
                 @endif
 
                 @if( strpos(url()->current(),'/employee/planning') )
-                    {{--<option class="category-overwrite">Work</option>--}}
-                    {{--<option disabled>------------</option>--}}
+                    <option class="category-overwrite">Work</option>
+                    <option disabled>------------</option>
                     @foreach($category as $cat)
                         @if ($cat->name != "Work Final")
                             <option>{{ $cat->name }}</option>

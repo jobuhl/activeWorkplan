@@ -65,8 +65,8 @@ function openModalEvent(eventDivIdPrefix, eventId, modalId, tableDate) {
             }
 
             // Uebertragen der daten in das change-modal
-            // event.find(".category-overwrite").text(category);
-            $(".selectpicker").val(category);
+            event.find(".category-overwrite").text(category);
+            // $(".selectpicker").val(category);
 
 
             // um beim submit im Controller auf die id zugreifen zu können
@@ -115,7 +115,6 @@ function toggleTime() {
     if (buttonText == "Show Time") {
         openTime();
         allowSendButton(false);
-        // $(".selectpicker option").hide();
     }
 
     if (buttonText == "Hide Time") {

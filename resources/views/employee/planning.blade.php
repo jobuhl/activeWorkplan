@@ -49,8 +49,7 @@
             @include('includes.calendar.tr-2-week-days')
 
             @include('includes.calendar.tr-3a-proposal-all-day')
-            @include('includes.calendar.tr-3b-proposal-time-events')
-
+            @include("includes.calendar.tr-3b-proposal-time-events-timeline")
             @include('includes.calendar.tr-5-add-buttons')
 
 
