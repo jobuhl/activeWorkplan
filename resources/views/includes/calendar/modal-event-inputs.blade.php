@@ -46,7 +46,7 @@
             <!-- rechts -->
             <aside class="col-xs-12 col-sm-8 aside-right">
                 <p>
-                    <input class="from-overwrite empty-overwrite inputmodal form-control" maxlength="5" type="text" onkeyup="validateTimeInput(this.value, 'from-overwrite')" name="time-from" placeholder="09:00">
+                    <input class="from-overwrite empty-overwrite inputmodal form-control" maxlength="5" type="text" onkeyup="validateTimeInput('from-overwrite')" name="time-from" placeholder="09:00">
                 </p>
             </aside>
         </div>
@@ -58,7 +58,7 @@
             <!-- rechts -->
             <aside class="col-xs-12 col-sm-8 aside-right">
                 <p>
-                    <input class="to-overwrite empty-overwrite inputmodal form-control" maxlength="5" type="text" onkeyup="validateTimeInput(this.value, 'to-overwrite')" name="time-to" placeholder="15:00">
+                    <input class="to-overwrite empty-overwrite inputmodal form-control" maxlength="5" type="text" onkeyup="validateTimeInput('to-overwrite')" name="time-to" placeholder="15:00">
                 </p>
             </aside>
         </div>

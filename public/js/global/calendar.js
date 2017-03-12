@@ -114,10 +114,13 @@ function toggleTime() {
 
     if (buttonText == "Show Time") {
         openTime();
+        allowSendButton(false);
+        // $(".selectpicker option").hide();
     }
 
-    if (buttonText == "Hide Time"){
+    if (buttonText == "Hide Time") {
         hideTime();
+        allowSendButton(true);
     }
 }
 
@@ -142,9 +145,55 @@ function hideTime() {
     $(".empty-overwrite").val("");
 }
 
+function validateTimeInput(inputClass) {
 
-function validateTimeInput(inputValueOld, inputClass) {
+    var readyToSend = true;
 
+    var from = $(".from-overwrite").val();
+    var to = $(".to-overwrite").val();
+    var inputValue = inputClass == "from-overwrite" ? from : to;
+
+    // Schnellschreibweise, wenn erste Zahl 3,...,9
+    if (inputValue.length == 1 && (new RegExp("[3-9]")).test(inputValue)) {
+
+        inputValue = "0" + inputValue + ":";
+
+        if (inputClass == "from-overwrite") {
+            from = inputValue;
+        } else {
+            to = inputValue;
+        }
+    }
+
+    if (!isCorrect(inputValue) || isFromHigherTo(from, to)) {
+
+        if (inputValue.length == 3 && inputValue.substring(0, 1) == "0") {
+            inputValue = "";
+        } else {
+            inputValue = deleteLastCharacter(inputValue);
+        }
+    }
+
+    if ((from.length + to.length) % 10 == 0) {
+        if (from >= to) {
+            inputValue = deleteLastCharacter(inputValue);
+            readyToSend = false;
+        }
+    } else {
+        readyToSend = false;
+    }
+
+    $("." + inputClass).val(inputValue);
+
+    allowSendButton(readyToSend);
+
+}
+
+function allowSendButton(bool) {
+    $(".modal-footer button").prop("disabled", !bool);
+}
+
+function isCorrect(text) {
     // Fuer jede InputLaenge eine RegExp
     var regex = [
         new RegExp("[0-2]"),
@@ -154,40 +203,12 @@ function validateTimeInput(inputValueOld, inputClass) {
         new RegExp("([01][0-9]|2[0-3]):[0-5][05]")
     ];
 
-    var inputValue = inputValueOld;
-    var from = $(".from-overwrite").val();
-    var to = $(".to-overwrite").val();
-    var current = $("." + inputClass);
+    // Maximale text Laenge ist 5! Deshalb Stelle 4
+    return regex[Math.min(text.length - 1, 4)].test(text);
+}
 
-    // Schnellschreibweise, wenn erste Zahl 3,...,9
-    if (inputValue.length == 1 && (new RegExp("[3-9]")).test(inputValue)) {
-        inputValue = "0" + inputValue + ":";
-
-        if (inputClass == "from-overwrite") {
-            from = inputValue;
-        }
-        if (inputClass == "to-overwrite") {
-            to = inputValue;
-        }
-    }
-
-    // Vergleich der aktuellen inputLaenge mit entsprechender RegExp
-    if (!regex[Math.min(inputValue.length - 1, 4)].test(inputValue) || isFromHigherTo(from, to)) {
-
-        // Den letzten Character loeschen
-        if (inputValue.length == 3) {
-            inputValue = "";
-        } else {
-            inputValue = inputValue.substring(0, inputValue.length - 1);
-        }
-    }
-
-    // Wenn beide Inputs komplett befuellt sind, darf die Uhrzeit nicht gleich sein
-    if (from.length == 5 && to.length == 5 && from >= to) {
-        inputValue = inputValue.substring(0, 4);
-    }
-
-    current.val(inputValue);
+function deleteLastCharacter(text) {
+    return text.substring(0, text.length - 1);
 }
 
 function isFromHigherTo(from, to) {
