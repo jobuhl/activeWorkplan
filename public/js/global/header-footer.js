@@ -119,9 +119,8 @@ $("body")[0].onresize = function () {
 };
 
 /** In Overview wird nichts bearbeitet, deshalb der Verweis auf Planning */
-
 /* on click down auf jedes Event im Admin Overview */
-$(".overview .drop-btn, .workplan .drop-btn").mousedown( function () {
+$(".overview .drop-btn, .workplan .drop-btn").mousedown(function () {
 
     /* Hintergund orange */
     $("header #planning-store").addClass("header-flash");
@@ -129,10 +128,66 @@ $(".overview .drop-btn, .workplan .drop-btn").mousedown( function () {
 });
 
 /* on click up auf jedes Event im Admin Overview */
-$(".overview .drop-btn, .workplan .drop-btn").mouseup( function () {
+$(".overview .drop-btn, .workplan .drop-btn").mouseup(function () {
 
     /* Hintergund wieder wie vorher: grau */
     $("header #planning-store").removeClass("header-flash");
     $(".nav-toggle").removeClass("header-flash");
 
 });
+
+
+/* Click on a Select Element */
+$(".select-div").click( function() {
+
+    // Read value of this element */
+    var parentValue = $(this).find(".select-text").text();
+
+    /* search for all Options */
+    $(".select-p").each( function() {
+
+        /* remove the Highlight Class on every Option */
+        $(this).removeClass("select-highlight");
+
+        if ($(this).text() == parentValue) {
+
+            /* Add the Highloight Class on the Option where the input is the same as the selected one */
+            $(this).addClass("select-highlight");
+        }
+    });
+
+    /* Change Arrow */
+    toggleArrow($(this).children().find("#select-arrow"));
+
+    /* Show or Hide the Options menu */
+    $(this).siblings().toggle();
+});
+
+/* Click on a Select-Option Element */
+$(".select-p").click( function() {
+
+    /* read the value of the clicked Option */
+    var selectedValue = $(this).text();
+
+    /* Set the text of the selected parent div new */
+    $(this).parent().siblings().find(".select-text").text(selectedValue);
+
+    var arrowDiv = $(this).parent().siblings().children().find("#select-arrow");
+    toggleArrow(arrowDiv);
+
+    /* Hide the Options menu */
+    $(this).parent().hide();
+});
+
+
+function toggleArrow(thisObject) {
+    if (thisObject.hasClass("arrow-down")) {
+        thisObject.removeClass("arrow-down");
+        thisObject.addClass("arrow-up");
+    }
+
+    if (thisObject.hasClass("arrow-up")) {
+        thisObject.removeClass("arrow-up");
+        thisObject.addClass("arrow-down");
+    }
+}

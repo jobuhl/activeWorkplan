@@ -69,9 +69,6 @@
 
                         $lastMargin = fmod($from, 1);
                         $middleMargin = $fullMargin - $firstMargin - $lastMargin;
-
-
-
                         ?>
 
                         @if ($fullMargin >= 1)

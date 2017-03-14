@@ -185,7 +185,6 @@ function validateTimeInput(inputClass) {
     $("." + inputClass).val(inputValue);
 
     allowSendButton(readyToSend);
-
 }
 
 function allowSendButton(bool) {
