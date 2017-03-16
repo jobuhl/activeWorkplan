@@ -28,7 +28,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('password') ? ' has-error' : '' }}">
-                            <p><input type="password" class="form-control" name="password" placeholder="password..."></p>
+                            <p><input type="password" class="form-control" name="password" placeholder="Password"></p>
                             @if ($errors->has('password'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -46,7 +46,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><input type="password" class="form-control" name="password_confirmation" placeholder="confirm password..."></p>
+                            <p><input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password"></p>
                             @if ($errors->has('password_confirmation'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
@@ -68,7 +68,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('name') ? ' has-error' : '' }}">
-                            <p><input id="name" type="text" class="form-control" name="name" placeholder="surename" value="{{ old('name') }}">
+                            <p><input id="name" type="text" class="form-control" name="name" placeholder="Surename" value="{{ old('name') }}">
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -86,7 +86,7 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right {{ $errors->has('forename') ? ' has-error' : '' }}">
-                            <p><input id="forename" type="text" class="form-control" name="forename" placeholder="forename" value="{{ old('forename') }}">
+                            <p><input id="forename" type="text" class="form-control" name="forename" placeholder="Forename" value="{{ old('forename') }}">
                                 @if ($errors->has('forename'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('forename') }}</strong>
@@ -126,11 +126,19 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap" name="retail_store_name">
+                            <div class="select-parent">
+                                <div class="select-div form-control" draggable="true">
+                                    <div class="select-text">{{ $allRetailStores[0]->name }}</div>
+                                    <input style="display: none;" class="select-text" name="retail_store_name" value="Overwrite"/>
+                                    <div id="select-arrow" class="arrow-down"></div>
+                                </div>
+
+                                <div class="select-hidden">
                                     @foreach($allRetailStores as $retailStore)
-                                        <option>{{ $retailStore->name }}</option>
+                                        <p class="select-p">{{ $retailStore->name }}</p>
                                     @endforeach
-                                </select></p>
+                                </div>
+                            </div>
                         </aside>
 
                     </div>
@@ -147,11 +155,18 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap" name="period_of_agreement">
-                                    <option>limited</option>
-                                    <option>unlimited</option>
-                                </select>
-                            </p>
+                            <div class="select-parent">
+                                <div class="select-div form-control" draggable="true">
+                                    <div class="select-text">limitted</div>
+                                    <input style="display: none;" class="select-text" name="period_of_agreement" value="Overwrite"/>
+                                    <div id="select-arrow" class="arrow-down"></div>
+                                </div>
+
+                                <div class="select-hidden">
+                                    <p class="select-p">limitted</p>
+                                    <p class="select-p">unlimitted</p>
+                                </div>
+                            </div>
                         </aside>
 
                     </div>
@@ -184,13 +199,21 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap" name="classification">
-                                    <option>Full Time</option>
-                                    <option>Part Time</option>
-                                    <option>Student Employee</option>
-                                    <option>Temporary Help</option>
-                                </select>
-                            </p>
+                            <div class="select-parent">
+                                <div class="select-div form-control" draggable="true">
+                                    <div class="select-text">Full Time</div>
+                                    <input style="display: none;" class="select-text" name="classification" value="Overwrite"/>
+                                    <div id="select-arrow" class="arrow-down"></div>
+                                </div>
+
+                                <div class="select-hidden">
+                                    <p class="select-p">Full Time</p>
+                                    <p class="select-p">Part Time</p>
+                                    <p class="select-p">Student Employee</p>
+                                    <p class="select-p">Temporary Help</p>
+                                </div>
+                            </div>
+
                         </aside>
 
                     </div>

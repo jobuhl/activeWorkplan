@@ -138,41 +138,41 @@ $(".overview .drop-btn, .workplan .drop-btn").mouseup(function () {
 
 
 /* Click on a Select Element */
-$(".select-div").click( function() {
+$(".select-div").click(function () {
 
     // Read value of this element */
-    var parentValue = $(this).find(".select-text").text();
+    var parentValue = $(this).find(".select-text:first-child").text();
 
     /* search for all Options */
-    $(".select-p").each( function() {
+    $(this).parent().find(".select-p").each(function () {
 
         /* remove the Highlight Class on every Option */
         $(this).removeClass("select-highlight");
 
         if ($(this).text() == parentValue) {
-
             /* Add the Highloight Class on the Option where the input is the same as the selected one */
             $(this).addClass("select-highlight");
         }
     });
 
     /* Change Arrow */
-    toggleArrow($(this).children().find("#select-arrow"));
+    toggleArrow($(this).find("#select-arrow"));
 
     /* Show or Hide the Options menu */
     $(this).siblings().toggle();
 });
 
 /* Click on a Select-Option Element */
-$(".select-p").click( function() {
+$(".select-p").click(function () {
 
     /* read the value of the clicked Option */
     var selectedValue = $(this).text();
 
     /* Set the text of the selected parent div new */
     $(this).parent().siblings().find(".select-text").text(selectedValue);
+    $(this).parent().siblings().find(".select-text").val(selectedValue);
 
-    var arrowDiv = $(this).parent().siblings().children().find("#select-arrow");
+    var arrowDiv = $(this).parent().siblings().find("#select-arrow");
     toggleArrow(arrowDiv);
 
     /* Hide the Options menu */
@@ -182,12 +182,27 @@ $(".select-p").click( function() {
 
 function toggleArrow(thisObject) {
     if (thisObject.hasClass("arrow-down")) {
+
+        // Open Dropdown Content
+        thisObject.parent().parent().find(".select-div").css("z-index", "20");
+        thisObject.parent().parent().find(".select-hidden").css("z-index", "19");
+        thisObject.parent().parent().find(".select-p").css("z-index", "18");
+
+        // Turn arrow downside
         thisObject.removeClass("arrow-down");
         thisObject.addClass("arrow-up");
-    }
+    } else {
+        if (thisObject.hasClass("arrow-up")) {
 
-    if (thisObject.hasClass("arrow-up")) {
-        thisObject.removeClass("arrow-up");
-        thisObject.addClass("arrow-down");
+            // Close Dropdown Content
+            thisObject.parent().parent().find(".select-div").css("z-index", "10");
+            thisObject.parent().parent().find(".select-hidden").css("z-index", "9");
+            thisObject.parent().parent().find(".select-p").css("z-index", "8");
+
+
+            // Turn arrow upside
+            thisObject.removeClass("arrow-up");
+            thisObject.addClass("arrow-down");
+        }
     }
 }

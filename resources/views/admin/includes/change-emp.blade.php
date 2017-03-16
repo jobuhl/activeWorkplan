@@ -98,10 +98,20 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner" name="agreement">
-                                    <option>unlimited</option>
-                                    <option>limited</option>
-                                </select></p>
+
+                            <p>limitted / unlimitted aus DB lesen!</p>
+                            <div class="select-parent">
+                                <div class="select-div form-control" draggable="true">
+                                    <div class="select-text">limitted</div>
+                                    <input style="display: none;" class="select-text" name="agreement" value="Overwrite"/>
+                                    <div id="select-arrow" class="arrow-down"></div>
+                                </div>
+
+                                <div class="select-hidden">
+                                    <p class="select-p">limitted</p>
+                                    <p class="select-p">unlimitted</p>
+                                </div>
+                            </div>
 
                         </aside>
 
@@ -132,12 +142,22 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner" name="classification">
-                                    <option>Full Time</option>
-                                    <option>Part Time</option>
-                                    <option>Student Employee</option>
-                                    <option>Temporary Help</option>
-                                </select></p>
+
+                            <p>Classification aus DB lesen!</p>
+                            <div class="select-parent">
+                                <div class="select-div form-control" draggable="true">
+                                    <div class="select-text">Full Time</div>
+                                    <input style="display: none;" class="select-text" name="classification" value="Overwrite"/>
+                                    <div id="select-arrow" class="arrow-down"></div>
+                                </div>
+
+                                <div class="select-hidden">
+                                    <p class="select-p">Full Time</p>
+                                    <p class="select-p">Part Time</p>
+                                    <p class="select-p">Student Employee</p>
+                                    <p class="select-p">Temporary Help</p>
+                                </div>
+                            </div>
                         </aside>
 
                     </div>
@@ -183,14 +203,19 @@
 
                         <!-- rechts -->
                         <aside class="col-xs-12 col-sm-8 aside-right">
-                            <p><select class="selectpicker form-control to-right modal-input space-cap-inner" name="retail_store_value">
-                                    <option value="{{ $thisRetailStore->id}}">{{ $thisRetailStore->name }}</option>
+                            <div class="select-parent">
+                                <div class="select-div form-control" draggable="true">
+                                    <div class="select-text">{{ $thisRetailStore->name }}</div>
+                                    <input style="display: none;" class="select-text" name="retail_store_value" value="{{ $thisRetailStore->name }}"/>
+                                    <div id="select-arrow" class="arrow-down"></div>
+                                </div>
+
+                                <div class="select-hidden">
                                     @foreach($allRetailStores as $retailStore)
-                                        @if($retailStore->name != $thisRetailStore->name)
-                                            <option value="{{$retailStore->id}}">{{ $retailStore->name }}</option>
-                                        @endif
+                                        <p class="select-p">{{ $retailStore->name }}</p>
                                     @endforeach
-                                </select></p>
+                                </div>
+                            </div>
                         </aside>
 
                     </div>

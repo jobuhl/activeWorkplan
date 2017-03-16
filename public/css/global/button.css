@@ -77,7 +77,8 @@ a:not(.full-opacity).form-control:active,
 .round-button:active,
 .red-button:active,
 .yellow-button:active,
-.green-button:active {
+.green-button:active,
+div.form-control:active{
     opacity: 0.8;
 }
 
@@ -93,31 +94,17 @@ a.form-control:hover {
     text-align: center;
 }
 
-/*.selectpicker {*/
-/*background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;*/
-/*height: 29px;*/
-/*overflow: hidden;*/
-/*width: 240px;*/
 
-/*background: none;*/
-/*border: none;*/
-/*font-size: 14px;*/
-/*!*height: 29px;*!*/
-/*padding: 5px; !* If you add too much padding here, the options won't show in IE *!*/
-/*!*width: 268px;*!*/
-/*-webkit-border-radius: 20px;*/
-/*-moz-border-radius: 20px;*/
-/*border-radius: 20px;*/
-/*}*/
+/* ---------------------------- SELECT ---------------------------- */
 
 .select-parent {
     width: 100%;
 }
 
 .select-div {
-    background-color: var(--grey-60);
+    background-color: var(--grey-50);
     position: relative;
-    z-index: 2;
+    z-index: 10;
 }
 
 .select-hidden {
@@ -132,6 +119,7 @@ a.form-control:hover {
     left: 15px; /* because of the bootstrap col-...-... margin of 15px */
     right: 15px;
     display: none;
+    z-index: 9;
 }
 
 .select-p {
@@ -139,7 +127,7 @@ a.form-control:hover {
     border-bottom: 1px solid var(--grey-25-border-input);
     margin: 0;
     padding: 6px 12px;
-    color: var(--grey-10);
+    color: var(--text-black);
     position: relative;
     z-index: 1;
 }
@@ -162,8 +150,7 @@ a.form-control:hover {
 
 .select-highlight {
     background-color: var(--blue-focus);
-    color: var(--grey-00-form-control);
-
+    color: var(--text-black);
 }
 
 .arrow-down {

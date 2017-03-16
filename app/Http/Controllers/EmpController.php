@@ -172,7 +172,8 @@ class EmpController extends Controller
     public function change(Request $request)
     {
         $employee = DB::table('employees')
-            ->where('employees.id', $request['thisEmployeeId']);
+            ->where('employees.id', $request['thisEmployeeId'])
+            ->get()[0];
 
         $this->validate($request, [
             'name' => 'required|max:255|',
@@ -184,13 +185,17 @@ class EmpController extends Controller
         $contract = DB::table('contract')
             ->join('employees', 'employees.contract_id', '=', 'contract.id')
             ->where('employees.id', $employee->id)
-            ->get();
+            ->get()[0];
+
+        $retailStore = DB::table('retail_store')
+            ->where('retail_store.name', $request['retail_store_value'])
+            ->get()[0];
 
         Employee::where('employees.id', $employee->id)
             ->update(array(
                 'forename' => $request['forename'],
                 'name' => $request['name'],
-                'retail_store_id' => $request['retail_store_value']
+                'retail_store_id' => $retailStore->id
             ));
 
         Contract::where('contract.id', $employee->contract_id)
@@ -200,7 +205,7 @@ class EmpController extends Controller
                 'working_hours' => $request['working_hours']
             ));
 
-        Role::where('role.id', $contract[0]->role_id)
+        Role::where('role.id', $contract->role_id)
             ->update(array(
                 'name' => $request['role'],
             ));

@@ -38,11 +38,11 @@
                         </div>
                     </div>
 
-                    <input class="margin form-control" type="text" placeholder="Name....">
-                    <input class="margin form-control" type="text" placeholder="E-Mail....">
-                    <input class="margin form-control" type="text" placeholder="Subject....">
+                    <input class="margin form-control" type="text" placeholder="Name">
+                    <input class="margin form-control" type="text" placeholder="E-Mail">
+                    <input class="margin form-control" type="text" placeholder="Subject">
 
-                    <input class="margin filestyle form-control" type="file">
+                    <input class="margin" type="file">
                 </form>
             </aside>
 
