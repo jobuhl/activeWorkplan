@@ -45,7 +45,7 @@
         <!-- links -->
         <aside class="col-xs-12 col-sm-4 aside-left-add"></aside>
         <!-- rechts -->
-        <aside class="col-xs-4 col-xs-offset-4 col-sm-8 col-sm-offset-0 aside-right">
+        <aside class="col-xs-6 col-xs-offset-3 col-sm-8 col-sm-offset-0 aside-right">
             <input class="id-overwrite" style="display: none;" name="thisEventId">
             <button type="button" class="time-button-overwrite form-control blue-light-button" onclick="toggleTime()">Show Time</button>
         </aside>

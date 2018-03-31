@@ -1,6 +1,6 @@
 /* überschrift ausrichtung im Change Menü*/
 .modal-ueberschrift,
-.select-ueberschrift{
+.select-ueberschrift {
     text-align: center;
 }
 
@@ -11,49 +11,48 @@
 }
 
 /* Textausrichtung der linken Tabellen haelfte Change Menue*/
-.aside-left{
+.aside-left {
     text-align: right;
 }
 
-.aside-left-add, .aside-left-add-special{
+.aside-left-add, .aside-left-add-special {
     text-align: right;
     padding-top: 10px; /* von alex weil text zu hoch */
 }
 
-.aside-left-delete{
+.aside-left-delete {
     text-align: right;
 }
 
-.aside-right-delete{
+.aside-right-delete {
     border-left: solid 1px var(--grey-border);
 }
 
-.aside-right{
+.aside-right {
     border-left: solid 1px var(--grey-border);
 }
-
 
 /* Linie zwischen den Bereichen im change Menü*/
-.placeholder-mobil{
+.placeholder-mobil {
     display: none;
 }
 
-.space-line{
+.space-line {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-.space-cap{
+.space-cap {
     margin-top: 10px;
     margin-bottom: 3px;
 }
 
-.space-cap-inner{
+.space-cap-inner {
     margin-top: 3px;
     margin-bottom: 3px;
 }
 
-.space-cap-bottom{
+.space-cap-bottom {
     margin-top: 3px;
     margin-bottom: 10px;
 }
@@ -62,19 +61,17 @@
     color: black;
 }
 
-#modal-body-admin{
+#modal-body-admin {
     display: none;
 }
 
-.modal-sub{
+.modal-sub {
     text-align: center;
 }
 
-
-
 /* ---------------------SIGN IN/UP HEAD --------------------*/
 .signin-head1,
-.signin-head2{
+.signin-head2 {
     padding-bottom: 15px;
     margin-bottom: 0px;
     text-align: center;
@@ -92,7 +89,6 @@
     border-bottom: 5px solid var(--grey-40);
 }
 
-
 /* on HOVER */
 .signin-head1:hover,
 .signin-head2:hover {
@@ -107,49 +103,49 @@
     background-color: var(--grey-30);
     color: black;
 }
+
 /* ---------------------SIGN IN/UP HEAD ENDE -------------------*/
 
-
-
-
 /*Mobile divice ansicht*/
-@media(max-width:767px){
+@media (max-width: 767px) {
     /*Kapitel weden ausgeblendet*/
-    .aside-left{
+    .aside-left {
         display: none;
     }
 
-    .aside-left-add{
+    .aside-left-add {
         text-align: center;
         font-weight: bold;
     }
 
-    .aside-left-add-special{
+    .aside-left-add-special {
         font-weight: bold;
     }
+
     /* Specialfall zeile 1*/
-    .special-case-left{
+    .special-case-left {
         display: block;
         text-align: left;
     }
 
     /*div zwischen den Kapitel*/
-    .placeholder-mobil{
+    .placeholder-mobil {
         display: block;
     }
+
     /*linie zwischen den Kapitel*/
-    .hr-line{
+    .hr-line {
         height: 5px;
         background-color: var(--grey-border);
         margin-left: 30%;
         margin-right: 30%;
     }
 
-    .aside-right{
+    .aside-right {
         border-left: none;
     }
 
-    .aside-right-add{
+    .aside-right-add {
         text-align: center;
     }
 

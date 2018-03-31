@@ -24,9 +24,6 @@
         @include('includes.head-js')
         @yield('js')
 
-        <!-- selectpicker -->
-        {{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.min.js"></script>--}}
-
     </body>
 
 </html>

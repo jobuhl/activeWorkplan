@@ -77,8 +77,7 @@ a:not(.full-opacity).form-control:active,
 .round-button:active,
 .red-button:active,
 .yellow-button:active,
-.green-button:active,
-div.form-control:active{
+.green-button:active {
     opacity: 0.8;
 }
 
@@ -120,6 +119,7 @@ a.form-control:hover {
     right: 15px;
     display: none;
     z-index: 9;
+    box-shadow: 0 0px 10px var(--grey-00-darkest); /* horizontal / vertical / blurr / color */
 }
 
 .select-p {

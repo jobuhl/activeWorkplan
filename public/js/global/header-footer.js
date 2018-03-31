@@ -122,16 +122,16 @@ $("body")[0].onresize = function () {
 /* on click down auf jedes Event im Admin Overview */
 $(".overview .drop-btn, .workplan .drop-btn").mousedown(function () {
 
-    /* Hintergund orange */
-    $("header #planning-store").addClass("header-flash");
+    /* Hintergund hervorgehoben */
+    $("header #planning-store, header #planning").addClass("header-flash");
     $(".nav-toggle").addClass("header-flash");
 });
 
 /* on click up auf jedes Event im Admin Overview */
 $(".overview .drop-btn, .workplan .drop-btn").mouseup(function () {
 
-    /* Hintergund wieder wie vorher: grau */
-    $("header #planning-store").removeClass("header-flash");
+    /* Hintergund wieder wie zuvor: grau */
+    $("header #planning-store, header #planning").removeClass("header-flash");
     $(".nav-toggle").removeClass("header-flash");
 
 });
